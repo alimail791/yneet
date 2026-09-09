@@ -1,0 +1,265 @@
+generator client {
+  provider = "prisma-client-js"
+}
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+model User {
+  // NOTE: id is NOT auto-generated. It is set to the Raise Academy (Mongo) student's
+  // _id string at provisioning time, so a YNeet user always maps 1:1 to a Raise Academy
+  // student — there is no separate YNeet signup/login anymore (see auth bridge).
+  id            String    @id
+  email         String    @unique
+  name          String
+  phone         String?
+  gender        String?
+  place         String?
+  neetDate      String?
+  isVerified    Boolean   @default(true)
+  // Synced from Raise Academy's Student.role on every SSO login — "student" | "admin".
+  // Determines access to the /admin content-management panel.
+  role          String    @default("student")
+  // Copy of the JWT's `sid` claim from the last time this device's token was used
+  // here — see middleware/auth.js. Lets YNeet also enforce single-active-session,
+  // in step with Raise Academy, without a network round-trip on every request.
+  sessionId     String?
+  createdAt     DateTime  @default(now())
+  updatedAt     DateTime  @updatedAt
+  profile       Profile?
+  attempts      Attempt[]
+  mistakes      Mistake[]
+  streak        Streak?
+  subscription  Subscription?
+  xp            XP?
+  userBadges    UserBadge[]
+  practiceStats PracticeStat[]
+  quizResults   QuizResult[]
+  quizItems     QuizItem[]
+  studyPlan     StudyPlan?
+  @@map("users")
+}
+model Profile {
+  id               String   @id @default(cuid())
+  userId           String   @unique
+  user             User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  // Allowed values: "6th","7th","8th","9th","10th","11th","12th","Dropper"
+  class            String   @default("12th")
+  targetScore      Int      @default(650)
+  currentScore     Int      @default(0)
+  examYear         Int      @default(2026)
+  neetDate         String?
+  studyHoursPerDay Float    @default(6)
+  weakSubjects     String[]
+  strongSubjects   String[]
+  phone            String?
+  gender           String?
+  place            String?
+  createdAt        DateTime @default(now())
+  updatedAt        DateTime @updatedAt
+  @@map("profiles")
+}
+model MockTest {
+  id          String     @id @default(cuid())
+  title       String
+  type        String
+  classLevel  String     @default("12th")
+  subject     String?
+  totalMarks  Int        @default(720)
+  totalQs     Int        @default(200)
+  durationMin Int        @default(200)
+  isActive    Boolean    @default(true)
+  createdAt   DateTime   @default(now())
+  questions   Question[]
+  attempts    Attempt[]
+  @@map("mock_tests")
+}
+model Question {
+  id            String            @id @default(cuid())
+  mockTestId    String?
+  mockTest      MockTest?         @relation(fields: [mockTestId], references: [id])
+  subject       String
+  // "6th".."12th" or "Dropper" — content is scoped strictly to this class's syllabus
+  classLevel    String            @default("12th")
+  chapter       String
+  topic         String
+  difficulty    String            @default("medium")
+  questionText  String            @db.Text
+  optionA       String
+  optionB       String
+  optionC       String
+  optionD       String
+  correctOpt    Int
+  explanation   String            @db.Text
+  isPYQ         Boolean           @default(false)
+  isRepeated    Boolean           @default(false)
+  pyqYear       Int?
+  createdAt     DateTime          @default(now())
+  responses     AttemptResponse[]
+  mistakes      Mistake[]
+  practiceStats PracticeStat[]
+  quizItems     QuizItem[]
+  @@map("questions")
+}
+model Attempt {
+  id           String            @id @default(cuid())
+  userId       String
+  user         User              @relation(fields: [userId], references: [id], onDelete: Cascade)
+  mockTestId   String
+  mockTest     MockTest          @relation(fields: [mockTestId], references: [id])
+  status       String            @default("in_progress")
+  score        Int               @default(0)
+  totalMarks   Int               @default(720)
+  accuracy     Float             @default(0)
+  timeTaken    Int               @default(0)
+  physicsScore Int               @default(0)
+  chemScore    Int               @default(0)
+  bioScore     Int               @default(0)
+  startedAt    DateTime          @default(now())
+  submittedAt  DateTime?
+  responses    AttemptResponse[]
+  @@map("attempts")
+}
+model AttemptResponse {
+  id         String   @id @default(cuid())
+  attemptId  String
+  attempt    Attempt  @relation(fields: [attemptId], references: [id], onDelete: Cascade)
+  questionId String
+  question   Question @relation(fields: [questionId], references: [id])
+  selected   Int?
+  isCorrect  Boolean  @default(false)
+  isMarked   Boolean  @default(false)
+  timeSec    Int      @default(0)
+  @@unique([attemptId, questionId])
+  @@map("attempt_responses")
+}
+model Mistake {
+  id         String   @id @default(cuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  questionId String
+  question   Question @relation(fields: [questionId], references: [id])
+  source     String   @default("mock")
+  count      Int      @default(1)
+  lastSeen   DateTime @default(now())
+  @@unique([userId, questionId, source])
+  @@map("mistakes")
+}
+model PracticeStat {
+  id         String   @id @default(cuid())
+  userId     String
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  questionId String
+  question   Question @relation(fields: [questionId], references: [id])
+  solved     Boolean  @default(true)
+  correct    Boolean  @default(false)
+  solvedAt   DateTime @default(now())
+  @@unique([userId, questionId])
+  @@map("practice_stats")
+}
+model QuizResult {
+  id        String   @id @default(cuid())
+  userId    String
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  date      String
+  score     Int
+  total     Int
+  createdAt DateTime @default(now())
+  @@map("quiz_results")
+}
+model QuizItem {
+  id         String   @id @default(cuid())
+  quizDate   String
+  questionId String
+  question   Question @relation(fields: [questionId], references: [id])
+  userId     String?
+  user       User?    @relation(fields: [userId], references: [id])
+  @@unique([quizDate, questionId])
+  @@map("quiz_items")
+}
+model StudyPlan {
+  id        String   @id @default(cuid())
+  userId    String   @unique
+  user      User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  plan      Json
+  updatedAt DateTime @updatedAt
+  @@map("study_plans")
+}
+model Streak {
+  id         String   @id @default(cuid())
+  userId     String   @unique
+  user       User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  current    Int      @default(0)
+  longest    Int      @default(0)
+  lastActive DateTime @default(now())
+  @@map("streaks")
+}
+model Subscription {
+  id                String    @id @default(cuid())
+  userId            String    @unique
+  user              User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  // NONE (never paid) | TRIAL_5D | MONTHLY
+  plan              String    @default("NONE")
+  // inactive | active | expired
+  status            String    @default("inactive")
+  startDate         DateTime?
+  endDate           DateTime?
+  amount            Int? // in paise
+  razorpayOrderId   String?
+  razorpayPaymentId String?
+  razorpaySignature String?
+  createdAt         DateTime  @default(now())
+  updatedAt         DateTime  @updatedAt
+  @@map("subscriptions")
+}
+
+model Flashcard {
+  id         String   @id @default(cuid())
+  subject    String // Physics | Chemistry | Biology
+  classLevel String // "6th".."12th" | "Dropper"
+  chapter    String
+  front      String   @db.Text
+  back       String   @db.Text
+  createdAt  DateTime @default(now())
+  @@map("flashcards")
+}
+
+model Formula {
+  id         String   @id @default(cuid())
+  subject    String // Physics | Chemistry
+  classLevel String
+  chapter    String
+  title      String
+  expression String   @db.Text
+  notes      String?  @db.Text
+  createdAt  DateTime @default(now())
+  @@map("formulas")
+}
+model XP {
+  id     String @id @default(cuid())
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  total  Int    @default(0)
+  level  Int    @default(1)
+  @@map("xp")
+}
+model Badge {
+  id          String      @id @default(cuid())
+  name        String      @unique
+  description String
+  icon        String
+  condition   String
+  userBadges  UserBadge[]
+  @@map("badges")
+}
+model UserBadge {
+  id       String   @id @default(cuid())
+  userId   String
+  user     User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  badgeId  String
+  badge    Badge    @relation(fields: [badgeId], references: [id])
+  earnedAt DateTime @default(now())
+  @@unique([userId, badgeId])
+  @@map("user_badges")
+}
