@@ -32,6 +32,41 @@ const computeEndDate = (planKey, startDate) => {
   return endOfMonth(startDate); // MONTHLY
 };
 
+// Called after a successful MONTHLY payment. Marks this person's own referral
+// row (if they were referred by someone) as qualified, then checks whether
+// their referrer has now hit 2 qualified-but-unrewarded referrals — if so,
+// grants a free month. Trial (₹99) purchases never count toward this.
+const checkReferralReward = async (userId) => {
+  const myReferral = await prisma.referral.findUnique({ where: { referredId: userId } });
+  if (!myReferral || myReferral.qualified) return; // not referred, or already counted
+
+  await prisma.referral.update({ where: { id: myReferral.id }, data: { qualified: true } });
+
+  const unrewarded = await prisma.referral.findMany({
+    where: { referrerId: myReferral.referrerId, qualified: true, rewardGranted: false },
+    orderBy: { createdAt: "asc" },
+    take: 2,
+  });
+  if (unrewarded.length < 2) return; // needs exactly 2 qualified referrals per reward
+
+  const referrerSub = await prisma.subscription.findUnique({ where: { userId: myReferral.referrerId } });
+  const alreadyActive = referrerSub?.status === "active" && referrerSub?.endDate && new Date(referrerSub.endDate) > new Date();
+  // Stack onto their existing expiry if still active, otherwise start today —
+  // either way they get one genuinely free calendar month added.
+  const rewardStart = alreadyActive ? new Date(referrerSub.endDate) : new Date();
+  const rewardEnd = new Date(rewardStart);
+  rewardEnd.setDate(rewardEnd.getDate() + 30);
+
+  await prisma.subscription.update({
+    where: { userId: myReferral.referrerId },
+    data: { plan: "REFERRAL_FREE", status: "active", startDate: alreadyActive ? referrerSub.startDate : rewardStart, endDate: rewardEnd, amount: 0 },
+  });
+  await prisma.referral.updateMany({
+    where: { id: { in: unrewarded.map(r => r.id) } },
+    data: { rewardGranted: true },
+  });
+};
+
 // GET /api/v1/subscription/plans — public plan list for the pricing page
 exports.getPlans = async (_req, res) => {
   res.json({
@@ -122,6 +157,11 @@ exports.verifyPayment = async (req, res) => {
         razorpaySignature: razorpay_signature,
       },
     });
+
+    // Referral reward check — only the Monthly plan qualifies, not the trial.
+    if (existing.plan === "MONTHLY") {
+      await checkReferralReward(req.user.id).catch((e) => console.warn("Referral reward check failed:", e.message));
+    }
 
     // Best-effort: let Raise Academy know this student now has an active YNeet plan,
     // so their Raise Academy dashboard button can say "Continue" instead of "Start".

@@ -8,6 +8,8 @@ export default function MistakesPage() {
   const [total, setTotal] = useState(0);
   const [pages, setPages] = useState(1);
   const [revealed, setRevealed] = useState({});
+  const [aiExplanations, setAiExplanations] = useState({});
+  const [aiLoading, setAiLoading] = useState({});
   const [loading, setLoading] = useState(true);
   const [filters, setFilters] = useState({
     source: searchParams.get("source") || "",
@@ -32,6 +34,17 @@ export default function MistakesPage() {
   };
 
   useEffect(() => { fetchMistakes(); }, []);
+
+  const askAiMentor = async (i, questionId) => {
+    setAiLoading(l => ({ ...l, [i]: true }));
+    try {
+      const { data } = await api.post(`/ai/explain/${questionId}`);
+      setAiExplanations(e => ({ ...e, [i]: data.explanation }));
+    } catch (err) {
+      setAiExplanations(e => ({ ...e, [i]: err?.response?.data?.message || "AI Mentor is unavailable right now — try again later." }));
+    }
+    setAiLoading(l => ({ ...l, [i]: false }));
+  };
 
   const setFilter = (k, v) => {
     const f = { ...filters, [k]: v, page: 1 };
@@ -117,12 +130,22 @@ export default function MistakesPage() {
               </div>
 
               {/* Show/Hide Explanation */}
-              <button className="btn btn-outline btn-sm" onClick={() => setRevealed(r => ({ ...r, [i]: !r[i] }))}>
-                {revealed[i] ? "Hide" : "👁 Show"} Explanation
-              </button>
+              <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                <button className="btn btn-outline btn-sm" onClick={() => setRevealed(r => ({ ...r, [i]: !r[i] }))}>
+                  {revealed[i] ? "Hide" : "👁 Show"} Explanation
+                </button>
+                <button className="btn btn-purple btn-sm" onClick={() => askAiMentor(i, m.question?.id)} disabled={aiLoading[i]}>
+                  {aiLoading[i] ? "Thinking..." : "🤖 Still confused? Ask AI Mentor"}
+                </button>
+              </div>
               {revealed[i] && (
                 <div style={{ marginTop: 10, background: "var(--blue-light)", borderLeft: "3px solid var(--blue-mid)", padding: "10px 14px", borderRadius: "0 8px 8px 0", fontSize: 13, lineHeight: 1.7, color: "var(--text)" }}>
                   {m.question?.explanation}
+                </div>
+              )}
+              {aiExplanations[i] && (
+                <div style={{ marginTop: 10, background: "var(--purple-light)", borderLeft: "3px solid var(--purple)", padding: "10px 14px", borderRadius: "0 8px 8px 0", fontSize: 13, lineHeight: 1.7, color: "var(--text)" }}>
+                  <strong style={{ color: "var(--purple)" }}>🤖 AI Mentor: </strong>{aiExplanations[i]}
                 </div>
               )}
             </div>

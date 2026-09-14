@@ -14,10 +14,12 @@ import PhysicsPage          from "./pages/PhysicsPage";
 import ChemistryPage        from "./pages/ChemistryPage";
 import MistakesPage         from "./pages/MistakesPage";
 import ProfilePage          from "./pages/ProfilePage";
+import ReferralPage         from "./pages/ReferralPage";
 import AdminLayout          from "./components/admin/AdminLayout";
 import AdminSummaryPage     from "./pages/admin/AdminSummaryPage";
 import AdminUsersPage       from "./pages/admin/AdminUsersPage";
 import AdminQuestionsPage   from "./pages/admin/AdminQuestionsPage";
+import AdminMockTestsPage   from "./pages/admin/AdminMockTestsPage";
 import AdminFlashcardsPage  from "./pages/admin/AdminFlashcardsPage";
 import AdminFormulasPage    from "./pages/admin/AdminFormulasPage";
 
@@ -67,6 +69,7 @@ export default function App() {
         <Route index                element={<AdminSummaryPage />} />
         <Route path="users"         element={<AdminUsersPage />} />
         <Route path="questions"     element={<AdminQuestionsPage />} />
+        <Route path="mocktests"     element={<AdminMockTestsPage />} />
         <Route path="flashcards"    element={<AdminFlashcardsPage />} />
         <Route path="formulas"      element={<AdminFormulasPage />} />
       </Route>
@@ -83,6 +86,7 @@ export default function App() {
         <Route path="chemistry"      element={<ChemistryPage />} />
         <Route path="mistakes"       element={<MistakesPage />} />
         <Route path="profile"        element={<ProfilePage />} />
+        <Route path="referral"       element={<ReferralPage />} />
       </Route>
     </Routes>
   );

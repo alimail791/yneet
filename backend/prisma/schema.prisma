@@ -21,6 +21,10 @@ model User {
   // Synced from Raise Academy's Student.role on every SSO login — "student" | "admin".
   // Determines access to the /admin content-management panel.
   role          String    @default("student")
+  // A short unique code this user can share — see Referral model below.
+  referralCode  String?   @unique
+  referralsMade Referral[] @relation("ReferralsMade")
+  referredBy    Referral?  @relation("ReferredUser")
   // Copy of the JWT's `sid` claim from the last time this device's token was used
   // here — see middleware/auth.js. Lets YNeet also enforce single-active-session,
   // in step with Raise Academy, without a network round-trip on every request.
@@ -71,14 +75,16 @@ model MockTest {
   durationMin Int        @default(200)
   isActive    Boolean    @default(true)
   createdAt   DateTime   @default(now())
+  // Many-to-many: the same question can belong to several mock tests at once —
+  // this used to be a single mockTestId FK, which meant assigning a question to
+  // a new test silently unassigned it from every other test it was in.
   questions   Question[]
   attempts    Attempt[]
   @@map("mock_tests")
 }
 model Question {
   id            String            @id @default(cuid())
-  mockTestId    String?
-  mockTest      MockTest?         @relation(fields: [mockTestId], references: [id])
+  mockTests     MockTest[]
   subject       String
   // "6th".."12th" or "Dropper" — content is scoped strictly to this class's syllabus
   classLevel    String            @default("12th")
@@ -212,6 +218,24 @@ model Subscription {
   createdAt         DateTime  @default(now())
   updatedAt         DateTime  @updatedAt
   @@map("subscriptions")
+}
+
+// Tracks one referral: referrer shared their code, referred person registered
+// using it. `qualified` flips true once the referred person pays for the
+// MONTHLY plan specifically (not the 5-day trial). Once a referrer has 2
+// qualified-but-unrewarded referrals, they get a free month — see
+// subscriptionController.checkReferralReward — and those 2 rows get
+// rewardGranted=true so they're not counted again for the next reward.
+model Referral {
+  id            String   @id @default(cuid())
+  referrerId    String
+  referrer      User     @relation("ReferralsMade", fields: [referrerId], references: [id], onDelete: Cascade)
+  referredId    String   @unique
+  referred      User     @relation("ReferredUser", fields: [referredId], references: [id], onDelete: Cascade)
+  qualified     Boolean  @default(false)
+  rewardGranted Boolean  @default(false)
+  createdAt     DateTime @default(now())
+  @@map("referrals")
 }
 
 model Flashcard {

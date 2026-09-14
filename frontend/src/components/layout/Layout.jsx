@@ -33,6 +33,7 @@ export default function Layout() {
     { to: "/physics",  label: "Physics" },
     { to: "/chemistry",label: "Chemistry" },
     { to: "/mistakes", label: "Mistakes" },
+    { to: "/referral", label: "Refer & Earn" },
   ];
 
   const mobileTabs = [
@@ -48,6 +49,7 @@ export default function Layout() {
     { to: "/physics",   label: "Physics Formulas",   icon: "⚛️" },
     { to: "/chemistry", label: "Chemistry Hub",      icon: "🧪" },
     { to: "/mistakes",  label: "Mistake Notebook",   icon: "❌" },
+    { to: "/referral",  label: "Refer & Earn",       icon: "🎁" },
     { to: "/profile",   label: "Profile",            icon: "👤" },
     ...(user?.role === "admin" ? [{ to: "/admin", label: "Admin Panel", icon: "⚙️" }] : []),
   ];

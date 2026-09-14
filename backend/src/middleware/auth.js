@@ -35,10 +35,10 @@ const protect = async (req, res, next) => {
     req.user = user;
     next();
   } catch (err) {
-    console.error("AUTH DEBUG — protect middleware threw:", err.name, "-", err.message);
     res.status(401).json({ success: false, message: "Invalid or expired token" });
   }
 };
+
 const requirePlan = (plans) => (req, res, next) => {
   const plan = req.user?.subscription?.plan || "NONE";
   if (!plans.includes(plan))

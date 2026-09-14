@@ -14,6 +14,12 @@ export default function AdminFlashcardsPage() {
   const [form, setForm] = useState(empty);
   const [saving, setSaving] = useState(false);
 
+  const [aiModal, setAiModal] = useState(false);
+  const [aiForm, setAiForm] = useState({ subject: "Biology", classLevel: "12th", chapter: "", count: 5 });
+  const [aiGenerating, setAiGenerating] = useState(false);
+  const [aiItems, setAiItems] = useState(null);
+  const [aiError, setAiError] = useState(null);
+
   const load = () => {
     setLoading(true);
     api.get("/admin/flashcards", { params: { classLevel: classFilter || undefined, subject: subjectFilter || undefined } })
@@ -42,11 +48,43 @@ export default function AdminFlashcardsPage() {
     load();
   };
 
+  const openAi = () => { setAiForm(f => ({ ...f, chapter: "" })); setAiItems(null); setAiError(null); setAiModal(true); };
+  const closeAi = () => setAiModal(false);
+
+  const generateWithAi = async () => {
+    setAiGenerating(true);
+    setAiError(null);
+    try {
+      const { data } = await api.post("/admin/ai/generate", { type: "flashcard", ...aiForm });
+      setAiItems(data.items.map(item => ({ ...item, _keep: true })));
+    } catch (err) {
+      setAiError(err?.response?.data?.message || "Generation failed");
+    }
+    setAiGenerating(false);
+  };
+
+  const saveAiItems = async () => {
+    const toSave = aiItems.filter(i => i._keep);
+    if (toSave.length === 0) return;
+    setAiGenerating(true);
+    let created = 0;
+    for (const { _keep, ...item } of toSave) {
+      try { await api.post("/admin/flashcards", item); created++; } catch { /* skip failed row */ }
+    }
+    setAiGenerating(false);
+    closeAi();
+    load();
+    alert(`${created} of ${toSave.length} flashcard(s) added.`);
+  };
+
   return (
     <div>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16, flexWrap: "wrap", gap: 10 }}>
         <h1 style={{ fontSize: 22, fontWeight: 800 }}>Flashcards ({items.length})</h1>
-        <button className="btn btn-blue" onClick={openNew}>+ Add Flashcard</button>
+        <div style={{ display: "flex", gap: 8 }}>
+          <button className="btn btn-purple" onClick={openAi}>✨ Generate with AI</button>
+          <button className="btn btn-blue" onClick={openNew}>+ Add Flashcard</button>
+        </div>
       </div>
 
       <div style={{ display: "flex", gap: 8, marginBottom: 16, flexWrap: "wrap" }}>
@@ -99,6 +137,70 @@ export default function AdminFlashcardsPage() {
               <button className="btn btn-outline" onClick={close}>Cancel</button>
               <button className="btn btn-blue" onClick={save} disabled={saving}>{saving ? "Saving..." : "Save"}</button>
             </div>
+          </div>
+        </div>
+      )}
+
+      {aiModal && (
+        <div className="admin-modal-backdrop" onClick={closeAi}>
+          <div className="admin-modal" onClick={e => e.stopPropagation()} style={{ maxWidth: 640 }}>
+            <h2 style={{ fontSize: 18, fontWeight: 800, marginBottom: 12 }}>✨ Generate Flashcards with AI</h2>
+
+            {!aiItems && (
+              <>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 12 }}>
+                  <div>
+                    <label className="form-label">Subject</label>
+                    <select className="form-select" value={aiForm.subject} onChange={e => setAiForm(f => ({ ...f, subject: e.target.value }))}>{SUBJECTS.map(s => <option key={s}>{s}</option>)}</select>
+                  </div>
+                  <div>
+                    <label className="form-label">Class Level</label>
+                    <select className="form-select" value={aiForm.classLevel} onChange={e => setAiForm(f => ({ ...f, classLevel: e.target.value }))}>{CLASS_LEVELS.map(c => <option key={c}>{c}</option>)}</select>
+                  </div>
+                  <div>
+                    <label className="form-label">Chapter</label>
+                    <input className="form-input" value={aiForm.chapter} onChange={e => setAiForm(f => ({ ...f, chapter: e.target.value }))} placeholder="e.g. Genetics" />
+                  </div>
+                  <div>
+                    <label className="form-label">How many? (max 10)</label>
+                    <input className="form-input" type="number" min="1" max="10" value={aiForm.count} onChange={e => setAiForm(f => ({ ...f, count: e.target.value }))} />
+                  </div>
+                </div>
+                {aiError && <p style={{ fontSize: 13, color: "var(--red)", marginBottom: 12 }}>{aiError}</p>}
+                <div style={{ display: "flex", justifyContent: "flex-end", gap: 10 }}>
+                  <button className="btn btn-outline" onClick={closeAi}>Cancel</button>
+                  <button className="btn btn-purple" onClick={generateWithAi} disabled={aiGenerating || !aiForm.chapter}>
+                    {aiGenerating ? "Generating..." : "Generate"}
+                  </button>
+                </div>
+              </>
+            )}
+
+            {aiItems && (
+              <>
+                <p style={{ fontSize: 13, color: "var(--text2)", marginBottom: 12 }}>
+                  {aiItems.length} flashcard{aiItems.length === 1 ? "" : "s"} generated — uncheck any you don't want to keep.
+                </p>
+                <div style={{ maxHeight: 340, overflowY: "auto", marginBottom: 16 }}>
+                  {aiItems.map((item, i) => (
+                    <label key={i} style={{ display: "flex", gap: 10, padding: "10px 0", borderBottom: "1px solid var(--gray3)", cursor: "pointer", alignItems: "flex-start" }}>
+                      <input type="checkbox" checked={item._keep} style={{ marginTop: 4 }}
+                        onChange={(e) => setAiItems(items => items.map((it, idx) => idx === i ? { ...it, _keep: e.target.checked } : it))} />
+                      <div>
+                        <p style={{ fontSize: 13.5, fontWeight: 600, marginBottom: 4 }}>{item.front}</p>
+                        <p style={{ fontSize: 12, color: "var(--text3)" }}>{item.back}</p>
+                      </div>
+                    </label>
+                  ))}
+                </div>
+                <div style={{ display: "flex", justifyContent: "flex-end", gap: 10 }}>
+                  <button className="btn btn-outline" onClick={() => setAiItems(null)}>← Back</button>
+                  <button className="btn btn-blue" onClick={saveAiItems} disabled={aiGenerating || aiItems.every(i => !i._keep)}>
+                    {aiGenerating ? "Saving..." : `Add ${aiItems.filter(i => i._keep).length} Flashcard${aiItems.filter(i => i._keep).length === 1 ? "" : "s"}`}
+                  </button>
+                </div>
+              </>
+            )}
           </div>
         </div>
       )}

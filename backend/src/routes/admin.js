@@ -8,11 +8,19 @@ router.use(requireAdmin);
 router.get("/summary", c.getSummary);
 
 router.get("/users", c.listUsers);
+router.get("/users/:id", c.getUserDetail);
+router.put("/users/:id/subscription", c.updateUserSubscription);
+router.put("/users/:id/role", c.updateUserRole);
+router.delete("/users/:id", c.deleteUser);
 
 router.get("/mocktests", c.listMockTests);
+router.post("/mocktests", c.createMockTest);
+router.put("/mocktests/:id", c.updateMockTest);
+router.delete("/mocktests/:id", c.deleteMockTest);
 
 router.get("/questions", c.listQuestions);
 router.post("/questions", c.createQuestion);
+router.post("/questions/bulk", c.bulkCreateQuestions);
 router.put("/questions/:id", c.updateQuestion);
 router.delete("/questions/:id", c.deleteQuestion);
 

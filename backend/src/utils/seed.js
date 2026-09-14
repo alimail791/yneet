@@ -81,11 +81,16 @@ const QUESTIONS = [
 ];
 
 const MOCK_TESTS = [
-  ...Array.from({length:10},(_,i)=>({ title:`YNeet Full Mock Test ${String(i+1).padStart(2,"0")}`, type:"full", totalMarks:720, totalQs:200, durationMin:200 })),
-  ...Array.from({length:3},(_,i)=>({ title:`Biology Mock Test ${String(i+1).padStart(2,"0")}`, type:"subject", subject:"Biology", totalMarks:360, totalQs:90, durationMin:90 })),
-  ...Array.from({length:3},(_,i)=>({ title:`Physics Mock Test ${String(i+1).padStart(2,"0")}`, type:"subject", subject:"Physics", totalMarks:180, totalQs:45, durationMin:60 })),
-  ...Array.from({length:3},(_,i)=>({ title:`Chemistry Mock Test ${String(i+1).padStart(2,"0")}`, type:"subject", subject:"Chemistry", totalMarks:180, totalQs:45, durationMin:60 })),
+  ...Array.from({length:2},(_,i)=>({ title:`YNeet Full Mock Test ${String(i+1).padStart(2,"0")}`, type:"full", totalMarks:720, totalQs:200, durationMin:200 })),
+  { title:"Biology Mock Test 01", type:"subject", subject:"Biology", totalMarks:360, totalQs:90, durationMin:90 },
+  { title:"Physics Mock Test 01", type:"subject", subject:"Physics", totalMarks:180, totalQs:45, durationMin:60 },
+  { title:"Chemistry Mock Test 01", type:"subject", subject:"Chemistry", totalMarks:180, totalQs:45, durationMin:60 },
 ];
+// NOTE: with ~70 total seeded questions per class, this deliberately stays small
+// rather than declaring 19 tests that would mostly duplicate the same content —
+// add more real questions via the admin panel first, then add more mock tests
+// here (or directly through /admin) once there's enough content to make each
+// test genuinely distinct.
 
 // ── BIOLOGY FLASHCARDS — one core flashcard per NCERT chapter (Class 11 + 12 combined,
 // since NEET Biology draws from both years). Organized chapter-wise as the syllabus is. ──
@@ -273,9 +278,24 @@ async function main() {
     const chemQs = createdQs.filter(q => q.subject === "Chemistry");
 
     for (const mt of MOCK_TESTS) {
-      const test = await prisma.mockTest.create({ data: { title: `${mt.title} (${classLevel})`, type: mt.type, classLevel, subject: mt.subject || null, totalMarks: mt.totalMarks, totalQs: mt.totalQs, durationMin: mt.durationMin } });
       const qToLink = mt.type === "full" ? createdQs : mt.subject === "Biology" ? bioQs : mt.subject === "Physics" ? phyQs : chemQs;
-      for (const q of qToLink) await prisma.question.update({ where: { id: q.id }, data: { mockTestId: test.id } }).catch(() => {});
+      // totalQs/totalMarks reflect what's ACTUALLY connected, not a placeholder
+      // number — with a limited question bank, several tests legitimately share
+      // the same underlying pool (now possible via the many-to-many relation),
+      // rather than each needing its own exclusive 200 unique questions.
+      const actualQs = qToLink.length;
+      await prisma.mockTest.create({
+        data: {
+          title: `${mt.title} (${classLevel})`,
+          type: mt.type,
+          classLevel,
+          subject: mt.subject || null,
+          totalMarks: actualQs * 4,
+          totalQs: actualQs,
+          durationMin: mt.durationMin,
+          questions: { connect: qToLink.map(q => ({ id: q.id })) },
+        },
+      });
       totalTests++;
     }
 

@@ -1,5 +1,6 @@
 const axios = require("axios");
 const jwt = require("jsonwebtoken");
+const crypto = require("crypto");
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
 
@@ -11,6 +12,17 @@ const toClassLevel = (raiseUser) => {
   if (!raw) return "12th";
   if (raw === "Dropper" || raw === "Repeater") return "Dropper";
   return `${raw}th`;
+};
+
+// Short, shareable, human-typeable code — e.g. "X7K2QPLM". Collisions are
+// astronomically unlikely at this scale, but we retry once just in case.
+const generateReferralCode = async () => {
+  for (let i = 0; i < 5; i++) {
+    const code = crypto.randomBytes(6).toString("hex").toUpperCase().slice(0, 8);
+    const exists = await prisma.user.findUnique({ where: { referralCode: code } });
+    if (!exists) return code;
+  }
+  throw new Error("Could not generate a unique referral code");
 };
 
 // Fetches the student's profile from Raise Academy using the same bearer token,
@@ -34,41 +46,77 @@ const provisionFromRaiseAcademy = async (token) => {
   // token's signature is valid.
   const sid = jwt.decode(token)?.sid || null;
 
-  let user = await prisma.user.upsert({
-    where: { id: raiseUser.id },
-    update: {
-      email: raiseUser.email,
-      name: raiseUser.fullName,
-      phone: raiseUser.phone || null,
-      gender: raiseUser.gender || null,
-      place: raiseUser.place || null,
-      role: raiseUser.role || "student",
-      sessionId: sid,
-    },
-    create: {
-      id: raiseUser.id,
-      email: raiseUser.email,
-      name: raiseUser.fullName,
-      phone: raiseUser.phone || null,
-      gender: raiseUser.gender || null,
-      place: raiseUser.place || null,
-      isVerified: true,
-      role: raiseUser.role || "student",
-      sessionId: sid,
-      profile: {
-        create: {
-          class: classLevel,
-          examYear: raiseUser.neetExamYear || new Date().getFullYear() + 1,
-          weakSubjects: [],
-          strongSubjects: [],
-        },
+  const existingUser = await prisma.user.findUnique({ where: { id: raiseUser.id } });
+  const isNewUser = !existingUser;
+  const referralCode = existingUser?.referralCode || await generateReferralCode();
+
+  let user;
+  try {
+    user = await prisma.user.upsert({
+      where: { id: raiseUser.id },
+      update: {
+        email: raiseUser.email,
+        name: raiseUser.fullName,
+        phone: raiseUser.phone || null,
+        gender: raiseUser.gender || null,
+        place: raiseUser.place || null,
+        role: raiseUser.role || "student",
+        sessionId: sid,
+        referralCode,
       },
-      subscription: { create: { plan: "NONE", status: "inactive" } },
-      streak: { create: {} },
-      xp: { create: {} },
-    },
-    include: { profile: true, subscription: true, streak: true, xp: true },
-  });
+      create: {
+        id: raiseUser.id,
+        email: raiseUser.email,
+        name: raiseUser.fullName,
+        phone: raiseUser.phone || null,
+        gender: raiseUser.gender || null,
+        place: raiseUser.place || null,
+        isVerified: true,
+        role: raiseUser.role || "student",
+        sessionId: sid,
+        referralCode,
+        profile: {
+          create: {
+            class: classLevel,
+            examYear: raiseUser.neetExamYear || new Date().getFullYear() + 1,
+            weakSubjects: [],
+            strongSubjects: [],
+          },
+        },
+        subscription: { create: { plan: "NONE", status: "inactive" } },
+        streak: { create: {} },
+        xp: { create: {} },
+      },
+      include: { profile: true, subscription: true, streak: true, xp: true },
+    });
+  } catch (err) {
+    // P2002 = unique constraint violation. The nested profile/subscription/streak/xp
+    // creates force Prisma into a check-then-write upsert rather than a single atomic
+    // statement, so two near-simultaneous bridge calls for a brand-new user (two tabs,
+    // a slow request the frontend retried, etc.) can both see "doesn't exist yet" and
+    // both try to create it — only one write wins. Rather than surface that race as a
+    // login failure, just fetch what the other request already created.
+    if (err.code === "P2002") {
+      user = await prisma.user.findUnique({
+        where: { id: raiseUser.id },
+        include: { profile: true, subscription: true, streak: true, xp: true },
+      });
+      if (!user) throw err; // genuinely something else — don't swallow it
+    } else {
+      throw err;
+    }
+  }
+
+  // First time this person has ever hit YNeet — if Raise Academy recorded that
+  // they registered via someone's referral link, create the Referral row now.
+  // Only ever happens once per user (existingUser check above), so this can't
+  // be gamed by re-logging-in with a different code later.
+  if (isNewUser && raiseUser.referredByCode) {
+    const referrer = await prisma.user.findUnique({ where: { referralCode: raiseUser.referredByCode } });
+    if (referrer && referrer.id !== user.id) {
+      await prisma.referral.create({ data: { referrerId: referrer.id, referredId: user.id } }).catch(() => {});
+    }
+  }
 
   // Keep class level in sync on every login in case the student's class changed
   // on the Raise Academy side (e.g. promoted a grade, switched to Dropper).
