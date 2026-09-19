@@ -6,6 +6,12 @@ const morgan = require("morgan");
 const rateLimit = require("express-rate-limit");
 
 const app = express();
+// Railway (like most PaaS platforms) sits behind a reverse proxy that adds an
+// X-Forwarded-For header. Without telling Express to trust it, express-rate-limit
+// throws ERR_ERL_UNEXPECTED_X_FORWARDED_FOR on every request and the endpoint
+// crashes — this happened to be surfacing as an SSO bridge failure. `1` means
+// trust exactly one hop of proxy (Railway's own edge), which is correct here.
+app.set("trust proxy", 1);
 app.use(helmet());
 const allowedOrigins = [process.env.FRONTEND_URL, process.env.RAISE_ACADEMY_FRONTEND_URL].filter(Boolean);
 app.use(cors({ origin: allowedOrigins.length ? allowedOrigins : true, credentials: true }));
