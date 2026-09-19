@@ -28,14 +28,13 @@ exports.getReferralInfo = async (req, res) => {
       orderBy: { createdAt: "desc" },
     });
     const qualifiedCount = referrals.filter(r => r.qualified).length;
-    const freeMonthsEarned = referrals.filter(r => r.rewardGranted).length / 2;
+    const freeMonthsEarned = referrals.filter(r => r.rewardGranted).length; // 1 qualified referral = 1 free month
     res.json({
       success: true,
       referralCode: req.user.referralCode,
       registerUrl: `${process.env.RAISE_ACADEMY_FRONTEND_URL || ""}/register?ref=${req.user.referralCode}`,
       referrals: referrals.map(r => ({ name: r.referred.name, qualified: r.qualified, rewardGranted: r.rewardGranted, joinedAt: r.createdAt })),
       qualifiedCount,
-      progressToNextReward: qualifiedCount % 2, // 0 or 1 out of 2 needed
       freeMonthsEarned,
     });
   } catch (err) { res.status(500).json({ success: false, message: err.message }); }

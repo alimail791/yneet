@@ -15,6 +15,7 @@ app.use(morgan("dev"));
 const limiter = rateLimit({ windowMs: 15 * 60 * 1000, max: 200 });
 app.use("/api", limiter);
 
+app.use("/api/v1/public",    require("./routes/public"));
 app.use("/api/v1/auth",      require("./routes/auth"));
 app.use("/api/v1/user",      require("./routes/user"));
 app.use("/api/v1/mock",      require("./routes/mock"));

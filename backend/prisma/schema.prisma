@@ -25,6 +25,12 @@ model User {
   referralCode  String?   @unique
   referralsMade Referral[] @relation("ReferralsMade")
   referredBy    Referral?  @relation("ReferredUser")
+  // UPI ID for the ₹200 cash referral reward, entered by the student
+  // themselves in their profile. Payouts are sent manually by an admin via
+  // their own UPI app — see ReferralPayout below — this is just where that
+  // admin gets the payment address to send it to.
+  upiId         String?
+  referralPayouts ReferralPayout[]
   // Copy of the JWT's `sid` claim from the last time this device's token was used
   // here — see middleware/auth.js. Lets YNeet also enforce single-active-session,
   // in step with Raise Academy, without a network round-trip on every request.
@@ -222,10 +228,9 @@ model Subscription {
 
 // Tracks one referral: referrer shared their code, referred person registered
 // using it. `qualified` flips true once the referred person pays for the
-// MONTHLY plan specifically (not the 5-day trial). Once a referrer has 2
-// qualified-but-unrewarded referrals, they get a free month — see
-// subscriptionController.checkReferralReward — and those 2 rows get
-// rewardGranted=true so they're not counted again for the next reward.
+// MONTHLY plan specifically (not the 5-day trial). As soon as one referral
+// qualifies, the referrer gets both a free month and a ₹200 cash reward — see
+// subscriptionController.checkReferralReward and the ReferralPayout model below.
 model Referral {
   id            String   @id @default(cuid())
   referrerId    String
@@ -236,6 +241,24 @@ model Referral {
   rewardGranted Boolean  @default(false)
   createdAt     DateTime @default(now())
   @@map("referrals")
+}
+
+// Tracks the ₹200 cash reward owed to a referrer once their referral qualifies
+// (the referred friend buys the Monthly plan). This is NOT an automated bank
+// transfer — actually moving money automatically needs a licensed payment
+// gateway payout integration (KYC, compliance, business agreements), well
+// beyond this app's scope. Instead, this just tracks who's owed what and
+// their UPI ID, so an admin can pay manually via their own UPI app and mark
+// it paid here for bookkeeping.
+model ReferralPayout {
+  id         String    @id @default(cuid())
+  userId     String
+  user       User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  amount     Int       @default(200) // rupees
+  status     String    @default("pending") // pending | paid
+  paidAt     DateTime?
+  createdAt  DateTime  @default(now())
+  @@map("referral_payouts")
 }
 
 model Flashcard {

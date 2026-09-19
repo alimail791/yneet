@@ -69,9 +69,46 @@ const SCHEMAS = {
 // whole batch (flashcards/formulas) from the review screen, same as anything
 // typed by hand. This keeps a human in the loop before anything goes live for
 // students, given an LLM can get a fact or a NEET-syllabus detail wrong.
-exports.generateContent = async (req, res) => {
+// POST /api/v1/admin/ai/extract-questions
+// Body: { imageBase64, mediaType, subject, classLevel }
+// Reads a photo/scan of a real question paper page using Claude's vision and
+// extracts every question on it into the same draft format as generateContent
+// — reviewed and approved by the admin before anything is saved, same as
+// everywhere else AI touches content here.
+exports.extractQuestionsFromImage = async (req, res) => {
   if (!process.env.ANTHROPIC_API_KEY) return aiUnavailable(res);
-  const { type, subject, classLevel, chapter, count } = req.body;
+  const { imageBase64, mediaType, subject, classLevel } = req.body;
+  if (!imageBase64 || !mediaType) return res.status(400).json({ success: false, message: "imageBase64 and mediaType are required" });
+  if (!["image/jpeg", "image/png", "image/webp"].includes(mediaType)) {
+    return res.status(400).json({ success: false, message: "Image must be JPEG, PNG, or WebP" });
+  }
+
+  try {
+    const msg = await anthropic.messages.create({
+      model: MODEL,
+      max_tokens: 4000,
+      system: `You transcribe NEET exam question papers from photos/scans into structured JSON. Respond with ONLY a raw JSON array, no prose, no markdown fences. Each item needs exactly these fields: subject, classLevel, chapter, topic, difficulty (easy/medium/hard — your best estimate), questionText, optionA, optionB, optionC, optionD, correctOpt (0-3 integer — leave your best guess if not marked on the page, but prefer the paper's own answer key if one is visible), explanation (write a brief one if the paper doesn't include one). Skip anything you genuinely cannot read clearly rather than guessing at garbled text.`,
+      messages: [{
+        role: "user",
+        content: [
+          { type: "image", source: { type: "base64", media_type: mediaType, data: imageBase64 } },
+          { type: "text", text: `Transcribe every multiple-choice question visible in this image.${subject ? ` Subject: ${subject}.` : ""}${classLevel ? ` Class level: ${classLevel}.` : ""} Return the JSON array now.` },
+        ],
+      }],
+    });
+
+    const text = msg.content.find((b) => b.type === "text")?.text || "";
+    const items = extractJson(text);
+    if (!Array.isArray(items)) throw new Error("AI did not return an array");
+    if (items.length === 0) return res.status(422).json({ success: false, message: "No readable questions found in that image — try a clearer photo." });
+
+    res.json({ success: true, items });
+  } catch (err) {
+    res.status(502).json({ success: false, message: "Question extraction failed: " + err.message });
+  }
+};
+
+exports.generateContent = async (req, res) => {
   const schema = SCHEMAS[type];
   if (!schema) return res.status(400).json({ success: false, message: "type must be 'question', 'flashcard', or 'formula'" });
   if (!subject || !classLevel || !chapter) return res.status(400).json({ success: false, message: "subject, classLevel, and chapter are required" });

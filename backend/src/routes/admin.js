@@ -1,9 +1,13 @@
 const router = require("express").Router();
 const { protect, requireAdmin } = require("../middleware/auth");
 const c = require("../controllers/adminController");
+const { generateContent, extractQuestionsFromImage } = require("../controllers/aiController");
 
 router.use(protect);
 router.use(requireAdmin);
+
+router.post("/ai/generate", generateContent);
+router.post("/ai/extract-questions", extractQuestionsFromImage);
 
 router.get("/summary", c.getSummary);
 
