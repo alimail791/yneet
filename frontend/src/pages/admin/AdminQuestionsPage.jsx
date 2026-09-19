@@ -34,6 +34,13 @@ export default function AdminQuestionsPage() {
   const [aiGenerating, setAiGenerating] = useState(false);
   const [aiItems, setAiItems] = useState(null);
   const [aiError, setAiError] = useState(null);
+  const [scanModal, setScanModal] = useState(false);
+  const [scanForm, setScanForm] = useState({ subject: "Biology", classLevel: "12th" });
+  const [scanFile, setScanFile] = useState(null);
+  const [scanPreview, setScanPreview] = useState(null);
+  const [scanning, setScanning] = useState(false);
+  const [scanItems, setScanItems] = useState(null);
+  const [scanError, setScanError] = useState(null);
 
   const load = () => {
     setLoading(true);
@@ -134,6 +141,56 @@ export default function AdminQuestionsPage() {
     setAiGenerating(false);
   };
 
+  const openScan = () => { setScanFile(null); setScanPreview(null); setScanItems(null); setScanError(null); setScanModal(true); };
+  const closeScan = () => setScanModal(false);
+
+  const handleScanFile = (e) => {
+    const file = e.target.files?.[0];
+    if (!file) return;
+    if (!["image/jpeg", "image/png", "image/webp"].includes(file.type)) {
+      alert("Please choose a JPEG, PNG, or WebP image (a clear photo or scan of the paper page).");
+      return;
+    }
+    setScanFile(file);
+    setScanPreview(URL.createObjectURL(file));
+    setScanItems(null);
+    setScanError(null);
+  };
+
+  const runScan = async () => {
+    if (!scanFile) return;
+    setScanning(true);
+    setScanError(null);
+    try {
+      const base64 = await new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result.split(",")[1]);
+        reader.onerror = reject;
+        reader.readAsDataURL(scanFile);
+      });
+      const { data } = await api.post("/admin/ai/extract-questions", {
+        imageBase64: base64, mediaType: scanFile.type, ...scanForm,
+      });
+      setScanItems(data.items.map(item => ({ ...item, _keep: true })));
+    } catch (err) {
+      setScanError(err?.response?.data?.message || "Scan failed");
+    }
+    setScanning(false);
+  };
+
+  const saveScanItems = async () => {
+    const toSave = scanItems.filter(i => i._keep).map(({ _keep, ...rest }) => rest);
+    if (toSave.length === 0) return;
+    setScanning(true);
+    try {
+      const { data } = await api.post("/admin/questions/bulk", { questions: toSave });
+      closeScan();
+      load();
+      alert(`${data.created} question(s) added.${data.failed ? ` ${data.failed} failed.` : ""}`);
+    } catch (err) { alert(err?.response?.data?.message || "Save failed"); }
+    setScanning(false);
+  };
+
   const set = (k) => (e) => setForm(f => ({ ...f, [k]: e.target?.type === "checkbox" ? e.target.checked : e.target.value }));
 
   return (
@@ -142,6 +199,7 @@ export default function AdminQuestionsPage() {
         <h1 style={{ fontSize: 22, fontWeight: 800 }}>Questions ({total})</h1>
         <div style={{ display: "flex", gap: 8 }}>
           <button className="btn btn-purple" onClick={openAi}>✨ Generate with AI</button>
+          <button className="btn btn-purple" onClick={openScan}>📄 Scan Question Paper</button>
           <button className="btn btn-outline" onClick={openBulk}>⬆ Bulk Upload CSV</button>
           <button className="btn btn-blue" onClick={openNew}>+ Add Question</button>
         </div>
@@ -389,6 +447,71 @@ export default function AdminQuestionsPage() {
                   <button className="btn btn-outline" onClick={() => setAiItems(null)}>← Back</button>
                   <button className="btn btn-blue" onClick={saveAiItems} disabled={aiGenerating || aiItems.every(i => !i._keep)}>
                     {aiGenerating ? "Saving..." : `Add ${aiItems.filter(i => i._keep).length} Question${aiItems.filter(i => i._keep).length === 1 ? "" : "s"}`}
+                  </button>
+                </div>
+              </>
+            )}
+          </div>
+        </div>
+      )}
+
+      {scanModal && (
+        <div className="admin-modal-backdrop" onClick={closeScan}>
+          <div className="admin-modal" onClick={e => e.stopPropagation()} style={{ maxWidth: 640 }}>
+            <h2 style={{ fontSize: 18, fontWeight: 800, marginBottom: 12 }}>📄 Scan Question Paper</h2>
+
+            {!scanItems && (
+              <>
+                <p style={{ fontSize: 13, color: "var(--text2)", marginBottom: 14 }}>
+                  Upload a clear photo or scan of one question paper page. The AI reads it and transcribes every question it can — review each one before saving, since handwriting or a blurry photo can trip it up.
+                </p>
+                <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 12, marginBottom: 14 }}>
+                  <div>
+                    <label className="form-label">Subject (helps it read correctly)</label>
+                    <select className="form-select" value={scanForm.subject} onChange={e => setScanForm(f => ({ ...f, subject: e.target.value }))}>{SUBJECTS.map(s => <option key={s}>{s}</option>)}</select>
+                  </div>
+                  <div>
+                    <label className="form-label">Class Level</label>
+                    <select className="form-select" value={scanForm.classLevel} onChange={e => setScanForm(f => ({ ...f, classLevel: e.target.value }))}>{CLASS_LEVELS.map(c => <option key={c}>{c}</option>)}</select>
+                  </div>
+                </div>
+                <input type="file" accept="image/jpeg,image/png,image/webp" onChange={handleScanFile} style={{ marginBottom: 14 }} />
+                {scanPreview && (
+                  <img src={scanPreview} alt="Preview" style={{ maxWidth: "100%", maxHeight: 240, borderRadius: 8, border: "1px solid var(--gray3)", marginBottom: 14, display: "block" }} />
+                )}
+                {scanError && <p style={{ fontSize: 13, color: "var(--red)", marginBottom: 12 }}>{scanError}</p>}
+                <div style={{ display: "flex", justifyContent: "flex-end", gap: 10 }}>
+                  <button className="btn btn-outline" onClick={closeScan}>Cancel</button>
+                  <button className="btn btn-purple" onClick={runScan} disabled={scanning || !scanFile}>
+                    {scanning ? "Reading paper..." : "Scan & Extract"}
+                  </button>
+                </div>
+              </>
+            )}
+
+            {scanItems && (
+              <>
+                <p style={{ fontSize: 13, color: "var(--text2)", marginBottom: 12 }}>
+                  {scanItems.length} question{scanItems.length === 1 ? "" : "s"} read from the image — uncheck any that look wrong, and fix answers/text elsewhere afterward if needed.
+                </p>
+                <div style={{ maxHeight: 340, overflowY: "auto", marginBottom: 16 }}>
+                  {scanItems.map((item, i) => (
+                    <label key={i} style={{ display: "flex", gap: 10, padding: "10px 0", borderBottom: "1px solid var(--gray3)", cursor: "pointer", alignItems: "flex-start" }}>
+                      <input type="checkbox" checked={item._keep} style={{ marginTop: 4 }}
+                        onChange={(e) => setScanItems(items => items.map((it, idx) => idx === i ? { ...it, _keep: e.target.checked } : it))} />
+                      <div>
+                        <p style={{ fontSize: 13.5, fontWeight: 600, marginBottom: 4 }}>{item.questionText}</p>
+                        <p style={{ fontSize: 12, color: "var(--text3)" }}>
+                          {item.chapter} · Correct: {["A", "B", "C", "D"][item.correctOpt]}) {[item.optionA, item.optionB, item.optionC, item.optionD][item.correctOpt]}
+                        </p>
+                      </div>
+                    </label>
+                  ))}
+                </div>
+                <div style={{ display: "flex", justifyContent: "flex-end", gap: 10 }}>
+                  <button className="btn btn-outline" onClick={() => setScanItems(null)}>← Back</button>
+                  <button className="btn btn-blue" onClick={saveScanItems} disabled={scanning || scanItems.every(i => !i._keep)}>
+                    {scanning ? "Saving..." : `Add ${scanItems.filter(i => i._keep).length} Question${scanItems.filter(i => i._keep).length === 1 ? "" : "s"}`}
                   </button>
                 </div>
               </>

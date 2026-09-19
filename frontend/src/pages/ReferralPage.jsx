@@ -24,7 +24,7 @@ export default function ReferralPage() {
       <div className="section-header mb-4">
         <div>
           <div className="section-title" style={{ fontSize: 22 }}>🎁 Refer &amp; Earn</div>
-          <p style={{ fontSize: 13, color: "var(--text2)" }}>Get 2 friends to enroll in the Monthly plan, earn a free month yourself.</p>
+          <p style={{ fontSize: 13, color: "var(--text2)" }}>Get one friend to enroll in the Monthly plan — you get a free month.</p>
         </div>
       </div>
 
@@ -56,15 +56,6 @@ export default function ReferralPage() {
         </div>
       </div>
 
-      <div className="card" style={{ marginBottom: 20 }}>
-        <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 8 }}>
-          Progress to next free month: {data.progressToNextReward}/2 qualified
-        </div>
-        <div style={{ background: "var(--gray2)", borderRadius: 20, height: 10, overflow: "hidden" }}>
-          <div style={{ width: `${(data.progressToNextReward / 2) * 100}%`, height: "100%", background: "linear-gradient(90deg,var(--blue-mid),var(--purple))", borderRadius: 20, transition: "width .3s" }} />
-        </div>
-      </div>
-
       <div className="section-title mb-2" style={{ fontSize: 15 }}>Your Referrals</div>
       {data.referrals.length === 0 ? (
         <div className="card text-center" style={{ padding: 30 }}>
@@ -79,7 +70,7 @@ export default function ReferralPage() {
                 <div style={{ fontSize: 12, color: "var(--text3)" }}>Joined {new Date(r.joinedAt).toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" })}</div>
               </div>
               {r.rewardGranted ? (
-                <span className="chip chip-green">Reward Given</span>
+                <span className="chip chip-green">Reward Given — Free Month</span>
               ) : r.qualified ? (
                 <span className="chip chip-blue">Qualified</span>
               ) : (
