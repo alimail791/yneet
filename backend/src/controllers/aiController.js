@@ -108,7 +108,56 @@ exports.extractQuestionsFromImage = async (req, res) => {
   }
 };
 
+// POST /api/v1/planner/generate
+// Reads the student's own profile (weak/strong subjects, target score, exam
+// date, study hours/day) and asks Claude for a 4-week rolling plan — not the
+// full months-until-exam span, since that would be a huge one-shot AI call
+// and go stale fast anyway. The student re-generates every few weeks as their
+// weak areas shift. Saves directly to StudyPlan and returns it.
+exports.generateStudyPlan = async (req, res) => {
+  if (!process.env.ANTHROPIC_API_KEY) return aiUnavailable(res);
+  try {
+    const user = await prisma.user.findUnique({ where: { id: req.user.id }, include: { profile: true } });
+    const p = user?.profile;
+    if (!p) return res.status(400).json({ success: false, message: "Complete your profile first (target score, weak subjects) so the plan can be personalized." });
+
+    const examDate = p.neetDate || `${p.examYear}-05-03`;
+    const daysLeft = Math.max(1, Math.ceil((new Date(examDate) - new Date()) / 86400000));
+
+    const msg = await anthropic.messages.create({
+      model: MODEL,
+      max_tokens: 4000,
+      system: `You are a NEET (Physics/Chemistry/Biology) exam prep coach. Respond with ONLY a raw JSON object, no prose, no markdown fences. Shape exactly:
+{"weeks":[{"weekNumber":1,"focus":"one-line summary of this week's priority","days":[{"day":"Monday","tasks":[{"id":"unique-string","text":"specific, concrete task","subject":"Physics|Chemistry|Biology|Mixed","done":false}]}]}]}
+Generate exactly 4 weeks, 7 days each. 2-4 tasks per day. Weight tasks toward the student's weak subjects (more repetition, more practice questions) while keeping strong subjects on light maintenance. Mix task types: revising a specific chapter/topic, solving practice questions on the app, taking a mock test (schedule roughly one full mock test every 7-10 days), reviewing the mistake notebook. Be specific about chapter/topic names within the given subjects, not generic like "study physics".`,
+      messages: [{
+        role: "user",
+        content: `Student class: ${p.class} | Target score: ${p.targetScore}/720 | Current score: ${p.currentScore || "not yet taken a mock"} | Study hours/day: ${p.studyHoursPerDay}
+Weak subjects/topics: ${p.weakSubjects?.length ? p.weakSubjects.join(", ") : "not specified"}
+Strong subjects/topics: ${p.strongSubjects?.length ? p.strongSubjects.join(", ") : "not specified"}
+Days until NEET exam (${examDate}): ${daysLeft}
+
+Generate the 4-week plan now.`,
+      }],
+    });
+
+    const text = msg.content.find((b) => b.type === "text")?.text || "";
+    const plan = extractJson(text);
+    if (!plan?.weeks) throw new Error("AI did not return a valid plan structure");
+
+    const saved = await prisma.studyPlan.upsert({
+      where: { userId: req.user.id },
+      update: { plan },
+      create: { userId: req.user.id, plan },
+    });
+    res.json({ success: true, plan: saved.plan });
+  } catch (err) {
+    res.status(502).json({ success: false, message: "Plan generation failed: " + err.message });
+  }
+};
+
 exports.generateContent = async (req, res) => {
+  const { type, subject, classLevel, chapter, count } = req.body;
   const schema = SCHEMAS[type];
   if (!schema) return res.status(400).json({ success: false, message: "type must be 'question', 'flashcard', or 'formula'" });
   if (!subject || !classLevel || !chapter) return res.status(400).json({ success: false, message: "subject, classLevel, and chapter are required" });

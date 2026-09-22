@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const { protect, requireActiveSubscription } = require("../middleware/auth");
 const { PrismaClient } = require("@prisma/client");
+const { generateStudyPlan } = require("../controllers/aiController");
 const prisma = new PrismaClient();
 router.use(protect);
 router.use(requireActiveSubscription);
@@ -17,4 +18,5 @@ router.post("/save", async (req, res) => {
     res.json({ success: true, plan: saved.plan });
   } catch (err) { res.status(500).json({ success: false, message: err.message }); }
 });
+router.post("/generate", generateStudyPlan);
 module.exports = router;
