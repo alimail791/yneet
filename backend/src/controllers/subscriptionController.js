@@ -51,7 +51,7 @@ const checkReferralReward = async (userId) => {
 
   await prisma.subscription.update({
     where: { userId: myReferral.referrerId },
-    data: { plan: "REFERRAL_FREE", status: "active", startDate: alreadyActive ? referrerSub.startDate : rewardStart, endDate: rewardEnd, amount: 0 },
+    data: { plan: "REFERRAL_FREE", status: "active", startDate: alreadyActive ? referrerSub.startDate : rewardStart, endDate: rewardEnd, amount: 0, expiryReminderSent: false },
   });
   await prisma.referral.update({ where: { id: myReferral.id }, data: { rewardGranted: true } });
 };
@@ -144,6 +144,7 @@ exports.verifyPayment = async (req, res) => {
         endDate,
         razorpayPaymentId: razorpay_payment_id,
         razorpaySignature: razorpay_signature,
+        expiryReminderSent: false,
       },
     });
 

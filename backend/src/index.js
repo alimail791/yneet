@@ -30,6 +30,7 @@ app.use("/api/v1/practice",  require("./routes/practice"));
 app.use("/api/v1/dashboard", require("./routes/dashboard"));
 app.use("/api/v1/mistakes",  require("./routes/mistakes"));
 app.use("/api/v1/planner",   require("./routes/planner"));
+app.use("/api/v1/leaderboard", require("./routes/leaderboard"));
 app.use("/api/v1/subscription", require("./routes/subscription"));
 app.use("/api/v1/content",   require("./routes/content"));
 app.use("/api/v1/ai",        require("./routes/ai"));
@@ -44,3 +45,5 @@ app.use((err, req, res, next) => {
 
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`🚀 YNeet API running on port ${PORT}`));
+
+require("./utils/scheduledJobs").startScheduledJobs();

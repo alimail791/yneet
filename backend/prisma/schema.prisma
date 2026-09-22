@@ -66,6 +66,10 @@ model Profile {
   phone            String?
   gender           String?
   place            String?
+  // Optional — if set, a weekly progress digest email goes here (score,
+  // streak, weak areas). Set by the student themselves in their Profile.
+  parentEmail      String?
+  lastParentDigestSent DateTime?
   createdAt        DateTime @default(now())
   updatedAt        DateTime @updatedAt
   @@map("profiles")
@@ -221,6 +225,10 @@ model Subscription {
   razorpayOrderId   String?
   razorpayPaymentId String?
   razorpaySignature String?
+  // Set true once the "your plan expires soon" email has gone out for the
+  // CURRENT endDate, so the daily check doesn't email the same person twice.
+  // Reset to false whenever endDate changes (renewal, admin edit, etc.).
+  expiryReminderSent Boolean  @default(false)
   createdAt         DateTime  @default(now())
   updatedAt         DateTime  @updatedAt
   @@map("subscriptions")

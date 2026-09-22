@@ -1,10 +1,11 @@
 const router = require("express").Router();
 const { protect, requireActiveSubscription } = require("../middleware/auth");
-const { getQuestions, getChapters, getStats, markSolved } = require("../controllers/practiceController");
+const { getQuestions, getChapters, getStats, getRecommended, markSolved } = require("../controllers/practiceController");
 router.use(protect);
 router.use(requireActiveSubscription);
 router.get("/questions", getQuestions);
 router.get("/chapters", getChapters);
 router.get("/stats", getStats);
+router.get("/recommended", getRecommended);
 router.post("/solve", markSolved);
 module.exports = router;

@@ -68,7 +68,7 @@ exports.updateUserSubscription = async (req, res) => {
       data: {
         ...(plan !== undefined && { plan }),
         ...(status !== undefined && { status }),
-        ...(endDate !== undefined && { endDate: endDate ? new Date(endDate) : null }),
+        ...(endDate !== undefined && { endDate: endDate ? new Date(endDate) : null, expiryReminderSent: false }),
         ...(activating && { startDate: new Date() }),
       },
     });

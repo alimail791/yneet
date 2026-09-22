@@ -44,6 +44,56 @@ exports.getStats = async (req, res) => {
   } catch (err) { res.status(500).json({ success: false, message: err.message }); }
 };
 
+// GET /api/v1/practice/recommended — pulls from this student's own mistake
+// history to find their top 3 most-missed chapters, then serves a focused set
+// of questions from those chapters (their actual missed ones first, then
+// fresh ones from the same chapters they haven't tried) — instead of making
+// them browse the whole bank manually to find where they're actually weak.
+exports.getRecommended = async (req, res) => {
+  try {
+    const classLevel = req.user.profile?.class || "12th";
+
+    const mistakes = await prisma.mistake.findMany({
+      where: { userId: req.user.id },
+      include: { question: { select: { id: true, chapter: true, subject: true } } },
+    });
+
+    if (mistakes.length === 0) {
+      return res.json({ success: true, questions: [], weakChapters: [], message: "No mistakes tracked yet — take a mock test or daily quiz first, then check back here." });
+    }
+
+    // Aggregate mistake weight (count) per chapter+subject, pick the top 3.
+    const chapterWeight = {};
+    for (const m of mistakes) {
+      const key = `${m.question.subject}|||${m.question.chapter}`;
+      chapterWeight[key] = (chapterWeight[key] || 0) + m.count;
+    }
+    const topChapters = Object.entries(chapterWeight)
+      .sort((a, b) => b[1] - a[1])
+      .slice(0, 3)
+      .map(([key]) => { const [subject, chapter] = key.split("|||"); return { subject, chapter }; });
+
+    const mistakenQuestionIds = mistakes.map((m) => m.question.id);
+
+    const [alreadyCorrect, pool] = await Promise.all([
+      prisma.practiceStat.findMany({ where: { userId: req.user.id, correct: true }, select: { questionId: true } }),
+      prisma.question.findMany({
+        where: { classLevel, OR: topChapters.map((c) => ({ subject: c.subject, chapter: c.chapter })) },
+        select: { id:true,subject:true,chapter:true,topic:true,difficulty:true,questionText:true,optionA:true,optionB:true,optionC:true,optionD:true,correctOpt:true,explanation:true,isPYQ:true },
+        take: 60,
+      }),
+    ]);
+    const correctIds = new Set(alreadyCorrect.map((s) => s.questionId));
+    const mistakenSet = new Set(mistakenQuestionIds);
+
+    const filtered = pool.filter((q) => !correctIds.has(q.id));
+    // Actual missed questions surface first, then other fresh ones from the same weak chapters.
+    filtered.sort((a, b) => (mistakenSet.has(b.id) ? 1 : 0) - (mistakenSet.has(a.id) ? 1 : 0));
+
+    res.json({ success: true, questions: filtered.slice(0, 15), weakChapters: topChapters });
+  } catch (err) { res.status(500).json({ success: false, message: err.message }); }
+};
+
 exports.markSolved = async (req, res) => {
   try {
     const { questionId, correct } = req.body;
