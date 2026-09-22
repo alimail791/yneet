@@ -9,6 +9,7 @@ import MockTestPage         from "./pages/MockTestPage";
 import AnalysisPage         from "./pages/AnalysisPage";
 import QuizPage             from "./pages/QuizPage";
 import PracticePage         from "./pages/PracticePage";
+import PlannerPage          from "./pages/PlannerPage";
 import BiologyPage          from "./pages/BiologyPage";
 import PhysicsPage          from "./pages/PhysicsPage";
 import ChemistryPage        from "./pages/ChemistryPage";
@@ -81,6 +82,7 @@ export default function App() {
         <Route path="mock/:attemptId/analysis" element={<AnalysisPage />} />
         <Route path="quiz"           element={<QuizPage />} />
         <Route path="practice"       element={<PracticePage />} />
+        <Route path="planner"        element={<PlannerPage />} />
         <Route path="biology"        element={<BiologyPage />} />
         <Route path="physics"        element={<PhysicsPage />} />
         <Route path="chemistry"      element={<ChemistryPage />} />
