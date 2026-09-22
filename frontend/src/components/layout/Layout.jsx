@@ -30,12 +30,13 @@ export default function Layout() {
     { to: "/quiz",     label: "Daily Quiz" },
     { to: "/practice", label: "Practice" },
     { to: "/planner",  label: "Planner" },
-    { to: "/leaderboard", label: "Leaderboard" },
+    { to: "/leaderboard", label: "Leaderboard" }, 
     { to: "/biology",  label: "Biology" },
     { to: "/physics",  label: "Physics" },
     { to: "/chemistry",label: "Chemistry" },
     { to: "/mistakes", label: "Mistakes" },
     { to: "/referral", label: "Refer & Earn" },
+    { to: "/help", label: "Help & FAQ", icon: "❓" },
   ];
 
   const mobileTabs = [

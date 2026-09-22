@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { useAuth } from "./context/AuthContext";
 import Layout from "./components/layout/Layout";
+import HelpPage from "./pages/HelpPage"; 
 import BridgePage           from "./pages/BridgePage";
 import PricingPage          from "./pages/PricingPage";
 import DashboardPage        from "./pages/DashboardPage";
@@ -64,6 +65,7 @@ function RequireAdmin({ children }) {
 export default function App() {
   return (
     <Routes>
+      <Route path="help" element={<HelpPage />} />
       <Route path="/bridge" element={<BridgePage />} />
       <Route path="/pricing" element={<Guard><PricingPage /></Guard>} />
 
