@@ -10,6 +10,30 @@ export default function PracticePage() {
   const [stats, setStats] = useState({ totalSolved:0, totalCorrect:0, accuracy:0 });
   const [revealed, setRevealed] = useState({});
   const [loading, setLoading] = useState(false);
+  const [mode, setMode] = useState("browse"); // "browse" | "recommended"
+  const [weakChapters, setWeakChapters] = useState([]);
+  const [recoMessage, setRecoMessage] = useState(null);
+
+  const fetchRecommended = async () => {
+    setLoading(true);
+    setRecoMessage(null);
+    try {
+      const { data } = await api.get("/practice/recommended");
+      setQuestions(data.questions || []);
+      setWeakChapters(data.weakChapters || []);
+      setTotal(data.questions?.length || 0);
+      setPages(1);
+      if (data.message) setRecoMessage(data.message);
+    } catch (e) { console.error(e); }
+    setLoading(false);
+  };
+
+  const switchMode = (m) => {
+    setMode(m);
+    setFilters(f => ({ ...f, page: 1 }));
+    if (m === "recommended") fetchRecommended();
+    else fetchQuestions();
+  };
 
   const fetchQuestions = async (f = filters) => {
     setLoading(true);
@@ -66,6 +90,30 @@ export default function PracticePage() {
         <div><div className="section-title">Practice Questions</div><p style={{fontSize:13,color:"var(--text2)"}}>PYQs · Repeated Questions · Subject-wise</p></div>
       </div>
 
+      {/* Mode toggle */}
+      <div className="chip-row mb-4" style={{ display: "flex", gap: 8 }}>
+        <span onClick={() => switchMode("browse")} className="chip" style={{ cursor: "pointer", background: mode === "browse" ? "var(--blue-light)" : "var(--gray2)", color: mode === "browse" ? "var(--blue)" : "var(--text2)" }}>
+          Browse All
+        </span>
+        <span onClick={() => switchMode("recommended")} className="chip" style={{ cursor: "pointer", background: mode === "recommended" ? "var(--purple-light)" : "var(--gray2)", color: mode === "recommended" ? "var(--purple)" : "var(--text2)" }}>
+          🎯 Recommended for You
+        </span>
+      </div>
+
+      {mode === "recommended" && weakChapters.length > 0 && (
+        <div className="card mb-4" style={{ background: "var(--purple-light)" }}>
+          <p style={{ fontSize: 13, color: "var(--text)" }}>
+            <strong>Based on your mistakes, focusing on:</strong> {weakChapters.map(c => `${c.subject} · ${c.chapter}`).join("  ·  ")}
+          </p>
+        </div>
+      )}
+
+      {mode === "recommended" && recoMessage && (
+        <div className="card text-center mb-4" style={{ padding: 30 }}>
+          <p style={{ color: "var(--text2)" }}>{recoMessage}</p>
+        </div>
+      )}
+
       {/* Stats Bar */}
       <div className="grid3 mb-5">
         <div className="card"><div className="card-title">Problems Solved</div><div className="card-value" style={{color:"var(--blue)"}}>{stats.totalSolved}</div><div className="card-sub">total attempted</div></div>
@@ -74,6 +122,7 @@ export default function PracticePage() {
       </div>
 
       {/* Filters */}
+      {mode === "browse" && (
       <div className="card mb-5">
         <div style={{display:"flex",gap:12,flexWrap:"wrap",alignItems:"flex-end"}}>
           <div style={{flex:1,minWidth:140}}>
@@ -104,9 +153,10 @@ export default function PracticePage() {
           <div style={{fontSize:13,color:"var(--text3)",alignSelf:"center"}}>{total} questions found</div>
         </div>
       </div>
+      )}
 
       {/* Questions */}
-      {loading ? (
+      {mode === "recommended" && recoMessage ? null : loading ? (
         <div className="loading-screen" style={{minHeight:200}}><div className="spinner"></div></div>
       ) : questions.length === 0 ? (
         <div className="card text-center" style={{padding:40}}>
@@ -165,7 +215,7 @@ export default function PracticePage() {
       )}
 
       {/* Pagination */}
-      {pages > 1 && (
+      {mode === "browse" && pages > 1 && (
         <div style={{display:"flex",gap:8,justifyContent:"center",marginTop:24}}>
           <button className="btn btn-outline btn-sm" disabled={filters.page<=1} onClick={()=>setFilter("page",filters.page-1)}>← Prev</button>
           <span style={{padding:"6px 14px",fontSize:13,color:"var(--text2)"}}>Page {filters.page} of {pages}</span>

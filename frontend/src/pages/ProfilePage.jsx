@@ -19,7 +19,7 @@ export default function ProfilePage() {
     studyHoursPerDay: p.studyHoursPerDay || 6,
     weakSubjects: p.weakSubjects || [], strongSubjects: p.strongSubjects || [],
     phone: p.phone || user?.phone || "", gender: p.gender || user?.gender || "",
-    place: p.place || user?.place || "",
+    place: p.place || user?.place || "", parentEmail: p.parentEmail || "",
   });
   const [saved, setSaved] = useState(false);
   const [saving, setSaving] = useState(false);
@@ -98,6 +98,11 @@ export default function ProfilePage() {
           </div>
           <div className="form-group"><label className="form-label">Phone <span className="optional-tag">(optional)</span></label><input className="form-input" type="tel" placeholder="+91 XXXXX XXXXX" value={form.phone} onChange={set("phone")} /></div>
           <div className="form-group" style={{ gridColumn: "1/-1" }}><label className="form-label">City / Place <span className="optional-tag">(optional)</span></label><input className="form-input" placeholder="e.g. Chennai, Mumbai" value={form.place} onChange={set("place")} /></div>
+          <div className="form-group" style={{ gridColumn: "1/-1" }}>
+            <label className="form-label">Parent's Email <span className="optional-tag">(optional)</span></label>
+            <input className="form-input" type="email" placeholder="e.g. parent@example.com" value={form.parentEmail} onChange={set("parentEmail")} />
+            <p style={{ fontSize: 11, color: "var(--text3)", marginTop: 4 }}>If added, your parent gets a weekly email with your score, streak, and weak areas — no login needed on their end.</p>
+          </div>
         </div>
 
         {/* Weak subjects */}
