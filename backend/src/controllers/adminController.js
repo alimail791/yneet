@@ -134,11 +134,12 @@ exports.getUserDetail = async (req, res) => {
 
 exports.listQuestions = async (req, res) => {
   try {
-    const { classLevel, subject, search, page = 1, limit = 50 } = req.query;
+    const { classLevel, subject, search, isPYQ, page = 1, limit = 50 } = req.query;
     const where = {};
     if (classLevel) where.classLevel = classLevel;
     if (subject) where.subject = subject;
     if (search) where.questionText = { contains: search, mode: "insensitive" };
+    if (isPYQ === "true") where.isPYQ = true;
     const [questions, total] = await Promise.all([
       prisma.question.findMany({
         where, orderBy: { createdAt: "desc" }, skip: (page - 1) * limit, take: Number(limit),

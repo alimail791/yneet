@@ -4,13 +4,14 @@ const prisma = new PrismaClient();
 
 exports.getQuestions = async (req, res) => {
   try {
-    const { subject, chapter, isPYQ, isRepeated, page = 1, limit = 20 } = req.query;
+    const { subject, chapter, isPYQ, isRepeated, pyqYear, page = 1, limit = 20 } = req.query;
     // Every question served is scoped to the logged-in student's own class syllabus.
     const where = { classLevel: req.user.profile?.class || "12th" };
     if (subject) where.subject = subject;
     if (chapter) where.chapter = chapter;
     if (isPYQ === "true") where.isPYQ = true;
     if (isRepeated === "true") where.isRepeated = true;
+    if (pyqYear) where.pyqYear = Number(pyqYear);
     const [questions, total] = await Promise.all([
       prisma.question.findMany({ where, skip: (parseInt(page)-1)*parseInt(limit), take: parseInt(limit), orderBy: [{ isPYQ: "desc" }, { pyqYear: "desc" }, { subject: "asc" }], select: { id:true,subject:true,chapter:true,topic:true,difficulty:true,questionText:true,optionA:true,optionB:true,optionC:true,optionD:true,correctOpt:true,explanation:true,isPYQ:true,isRepeated:true,pyqYear:true } }),
       prisma.question.count({ where }),
@@ -21,6 +22,32 @@ exports.getQuestions = async (req, res) => {
       stats.forEach(s => { solvedMap[s.questionId] = s; });
     }
     res.json({ success: true, questions: questions.map(q => ({ ...q, userStat: solvedMap[q.id] || null })), total, page: parseInt(page), pages: Math.ceil(total/parseInt(limit)) });
+  } catch (err) { res.status(500).json({ success: false, message: err.message }); }
+};
+
+// GET /api/v1/practice/pyq-years — powers the dedicated Previous Year
+// Questions page: which exam years actually have questions loaded, broken
+// down by subject, so the page can show real counts instead of a blind
+// year picker. Scoped to the student's own class like everything else here
+// (PYQs are typically tagged 12th/Dropper by the admin, since that's the
+// actual NEET syllabus a past paper covers).
+exports.getPyqYears = async (req, res) => {
+  try {
+    const classLevel = req.user.profile?.class || "12th";
+    const rows = await prisma.question.groupBy({
+      by: ["pyqYear", "subject"],
+      where: { classLevel, isPYQ: true, pyqYear: { not: null } },
+      _count: { _all: true },
+    });
+    const byYear = {};
+    for (const r of rows) {
+      const y = r.pyqYear;
+      if (!byYear[y]) byYear[y] = { year: y, total: 0, Physics: 0, Chemistry: 0, Biology: 0 };
+      byYear[y][r.subject] = r._count._all;
+      byYear[y].total += r._count._all;
+    }
+    const years = Object.values(byYear).sort((a, b) => b.year - a.year);
+    res.json({ success: true, years });
   } catch (err) { res.status(500).json({ success: false, message: err.message }); }
 };
 

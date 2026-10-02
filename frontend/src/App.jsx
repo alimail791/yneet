@@ -10,6 +10,7 @@ import MockTestPage         from "./pages/MockTestPage";
 import AnalysisPage         from "./pages/AnalysisPage";
 import QuizPage             from "./pages/QuizPage";
 import PracticePage         from "./pages/PracticePage";
+import PYQPage               from "./pages/PYQPage";
 import PlannerPage          from "./pages/PlannerPage";
 import LeaderboardPage      from "./pages/LeaderboardPage";
 import BiologyPage          from "./pages/BiologyPage";
@@ -89,6 +90,7 @@ export default function App() {
         <Route path="mock/:attemptId/analysis" element={<AnalysisPage />} />
         <Route path="quiz"           element={<QuizPage />} />
         <Route path="practice"       element={<PracticePage />} />
+        <Route path="pyq"            element={<PYQPage />} />
         <Route path="planner"        element={<PlannerPage />} />
         <Route path="leaderboard"    element={<LeaderboardPage />} />
         <Route path="biology"        element={<BiologyPage />} />

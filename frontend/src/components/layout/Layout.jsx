@@ -29,6 +29,7 @@ export default function Layout() {
     { to: "/mock",     label: "Mock Tests" },
     { to: "/quiz",     label: "Daily Quiz" },
     { to: "/practice", label: "Practice" },
+    { to: "/pyq",      label: "PYQs" },
     { to: "/planner",  label: "Planner" },
     { to: "/leaderboard", label: "Leaderboard" }, 
     { to: "/biology",  label: "Biology" },
@@ -48,6 +49,7 @@ export default function Layout() {
 
   // Everything that doesn't fit in the 5-slot bottom bar lives behind "More".
   const moreLinks = [
+    { to: "/pyq",        label: "Previous Year Qs",   icon: "📅" },
     { to: "/biology",   label: "Biology Flashcards", icon: "🧬" },
     { to: "/physics",   label: "Physics Formulas",   icon: "⚛️" },
     { to: "/chemistry", label: "Chemistry Hub",      icon: "🧪" },

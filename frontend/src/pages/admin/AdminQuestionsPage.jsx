@@ -19,6 +19,7 @@ export default function AdminQuestionsPage() {
   const [loading, setLoading] = useState(true);
   const [classFilter, setClassFilter] = useState("");
   const [subjectFilter, setSubjectFilter] = useState("");
+  const [pyqFilter, setPyqFilter] = useState(false);
   const [search, setSearch] = useState("");
   const [modal, setModal] = useState(null); // null | "new" | question object being edited
   const [form, setForm] = useState(emptyQ);
@@ -44,12 +45,12 @@ export default function AdminQuestionsPage() {
 
   const load = () => {
     setLoading(true);
-    api.get("/admin/questions", { params: { classLevel: classFilter || undefined, subject: subjectFilter || undefined, search: search || undefined, limit: 100 } })
+    api.get("/admin/questions", { params: { classLevel: classFilter || undefined, subject: subjectFilter || undefined, search: search || undefined, isPYQ: pyqFilter ? "true" : undefined, limit: 100 } })
       .then(r => { setQuestions(r.data.questions); setTotal(r.data.total); })
       .finally(() => setLoading(false));
   };
 
-  useEffect(load, [classFilter, subjectFilter]);
+  useEffect(load, [classFilter, subjectFilter, pyqFilter]);
 
   // Mock test dropdown options depend on the form's own class/subject — e.g. a
   // Physics question can go into a "full" test or a Physics-specific one, but
@@ -215,6 +216,7 @@ export default function AdminQuestionsPage() {
           <option value="">All Classes</option>
           {CLASS_LEVELS.map(c => <option key={c}>{c}</option>)}
         </select>
+        <button className={`btn btn-sm ${pyqFilter ? "btn-amber" : "btn-outline"}`} onClick={() => setPyqFilter(v => !v)}>PYQ Only</button>
         <button className="btn btn-outline" onClick={load}>Search</button>
       </div>
 
