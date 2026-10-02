@@ -25,6 +25,8 @@ import AdminQuestionsPage   from "./pages/admin/AdminQuestionsPage";
 import AdminMockTestsPage   from "./pages/admin/AdminMockTestsPage";
 import AdminFlashcardsPage  from "./pages/admin/AdminFlashcardsPage";
 import AdminFormulasPage    from "./pages/admin/AdminFormulasPage";
+import BulkGeneratorPage    from "./pages/admin/BulkGeneratorPage";
+import MockTestBuilderPage  from "./pages/admin/MockTestBuilderPage";
 
 // There is no local login here anymore — a session only ever starts via
 // /bridge?token=... coming from the Raise Academy "YNeet" button.
@@ -76,6 +78,8 @@ export default function App() {
         <Route path="mocktests"     element={<AdminMockTestsPage />} />
         <Route path="flashcards"    element={<AdminFlashcardsPage />} />
         <Route path="formulas"      element={<AdminFormulasPage />} />
+        <Route path="bulk-generator" element={<BulkGeneratorPage />} />
+        <Route path="mock-builder"  element={<MockTestBuilderPage />} />
       </Route>
 
       <Route path="/" element={<Guard><RequireSubscription><Layout /></RequireSubscription></Guard>}>

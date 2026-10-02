@@ -2,12 +2,18 @@ const router = require("express").Router();
 const { protect, requireAdmin } = require("../middleware/auth");
 const c = require("../controllers/adminController");
 const { generateContent, extractQuestionsFromImage } = require("../controllers/aiController");
+const { getContentCoverage } = require("../controllers/contentCoverageController");
+const { getPoolStats, buildMockTest } = require("../controllers/mockBuilderController");
 
 router.use(protect);
 router.use(requireAdmin);
 
 router.post("/ai/generate", generateContent);
 router.post("/ai/extract-questions", extractQuestionsFromImage);
+
+router.get("/content-coverage", getContentCoverage);
+router.get("/mock-builder/pool-stats", getPoolStats);
+router.post("/mock-builder/build", buildMockTest);
 
 router.get("/summary", c.getSummary);
 
