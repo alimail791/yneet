@@ -7,6 +7,17 @@ export default function PhysicsFormulasPage() {
   const [filter, setFilter] = useState("");
   const [search, setSearch] = useState("");
   const [bookmarked, setBookmarked] = useState({});
+  const [copiedId, setCopiedId] = useState(null);
+
+  const copyFormula = (f) => {
+    const text = `${f.title}: ${f.expression}`;
+    if (navigator.clipboard?.writeText) {
+      navigator.clipboard.writeText(text).then(() => {
+        setCopiedId(f.id);
+        setTimeout(() => setCopiedId(null), 1500);
+      }).catch(() => {});
+    }
+  };
 
   useEffect(() => {
     api.get("/content/formulas", { params: { subject: "Physics" } })
@@ -68,13 +79,23 @@ export default function PhysicsFormulasPage() {
           <div key={f.id} className="formula-card">
             <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 6 }}>
               <div style={{ fontSize: 10, color: "var(--blue-mid)", fontWeight: 700, textTransform: "uppercase", letterSpacing: 1 }}>{f.chapter}</div>
-              <button
-                onClick={() => toggleBookmark(f.id)}
-                style={{ background: "none", border: "none", fontSize: 16, cursor: "pointer", lineHeight: 1 }}
-                aria-label="Bookmark"
-              >
-                {bookmarked[f.id] ? "⭐" : "☆"}
-              </button>
+              <div style={{ display: "flex", gap: 6 }}>
+                <button
+                  onClick={() => copyFormula(f)}
+                  style={{ background: "none", border: "none", fontSize: 14, cursor: "pointer", lineHeight: 1 }}
+                  aria-label="Copy formula"
+                  title="Copy formula"
+                >
+                  {copiedId === f.id ? "✅" : "📋"}
+                </button>
+                <button
+                  onClick={() => toggleBookmark(f.id)}
+                  style={{ background: "none", border: "none", fontSize: 16, cursor: "pointer", lineHeight: 1 }}
+                  aria-label="Bookmark"
+                >
+                  {bookmarked[f.id] ? "⭐" : "☆"}
+                </button>
+              </div>
             </div>
             <div style={{ fontSize: 15, fontWeight: 700, color: "var(--text)", marginBottom: 4 }}>{f.title}</div>
             <div className="formula-eq">{f.expression}</div>

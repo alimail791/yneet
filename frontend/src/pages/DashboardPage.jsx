@@ -25,15 +25,20 @@ export default function DashboardPage() {
   const [stats, setStats] = useState(null);
   const [history, setHistory] = useState([]);
   const [loading, setLoading] = useState(true);
+  const [loadError, setLoadError] = useState(false);
 
   const examDate = user?.profile?.neetDate || user?.neetDate || "2026-05-03";
   const countdown = useCountdown(examDate);
   const p = user?.profile || {};
 
-  useEffect(() => {
+  const fetchDashboard = () => {
+    setLoading(true);
+    setLoadError(false);
     api.get("/dashboard").then(r => { setStats(r.data.stats); setHistory(r.data.scoreHistory||[]); })
-      .catch(()=>{}).finally(()=>setLoading(false));
-  }, []);
+      .catch(()=>setLoadError(true)).finally(()=>setLoading(false));
+  };
+
+  useEffect(() => { fetchDashboard(); }, []);
 
   const xpLevel = user?.xp?.level || 1;
   const xpTotal = user?.xp?.total || 0;
@@ -51,6 +56,17 @@ export default function DashboardPage() {
   };
 
   if (loading) return <div className="loading-screen"><div className="spinner"></div></div>;
+
+  if (loadError) {
+    return (
+      <div className="card text-center" style={{ padding: 40 }}>
+        <div style={{ fontSize: 32, marginBottom: 10 }}>⚠️</div>
+        <h3>Couldn't load your dashboard</h3>
+        <p style={{ color: "var(--text2)", marginTop: 6, marginBottom: 16 }}>Check your connection and try again.</p>
+        <button className="btn btn-blue" onClick={fetchDashboard}>Retry</button>
+      </div>
+    );
+  }
 
   const motiv = MOTIVATIONS[new Date().getDay() % MOTIVATIONS.length];
   const rankEst = s => s>=680?"AIR ~500":s>=650?"AIR ~2,000":s>=600?"AIR ~8,000":s>=550?"AIR ~20,000":s>=500?"AIR ~45,000":"AIR ~90,000+";

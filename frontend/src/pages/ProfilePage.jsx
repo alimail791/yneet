@@ -19,7 +19,7 @@ export default function ProfilePage() {
     studyHoursPerDay: p.studyHoursPerDay || 6,
     weakSubjects: p.weakSubjects || [], strongSubjects: p.strongSubjects || [],
     phone: p.phone || user?.phone || "", gender: p.gender || user?.gender || "",
-    place: p.place || user?.place || "", parentEmail: p.parentEmail || "",
+    place: p.place || user?.place || "",
   });
   const [saved, setSaved] = useState(false);
   const [saving, setSaving] = useState(false);
@@ -30,7 +30,21 @@ export default function ProfilePage() {
     setForm({ ...form, [arr]: current.includes(s) ? current.filter(x => x !== s) : [...current, s] });
   };
 
+  // Validation: keeps bad data out of the DB and gives the student immediate feedback
+  // instead of a generic "Failed to save" alert after a round trip to the server.
+  const errors = {};
+  if (!form.name?.trim()) errors.name = "Name can't be empty.";
+  const target = Number(form.targetScore);
+  if (form.targetScore === "" || isNaN(target) || target < 100 || target > 720) errors.targetScore = "Enter a score between 100 and 720.";
+  const current = Number(form.currentScore);
+  if (form.currentScore === "" || isNaN(current) || current < 0 || current > 720) errors.currentScore = "Enter a score between 0 and 720.";
+  const hours = Number(form.studyHoursPerDay);
+  if (form.studyHoursPerDay === "" || isNaN(hours) || hours < 1 || hours > 16) errors.studyHoursPerDay = "Enter hours between 1 and 16.";
+  if (form.phone && !/^(\+91[\s-]?)?[6-9]\d{9}$/.test(form.phone.replace(/\s/g, ""))) errors.phone = "Enter a valid 10-digit Indian phone number.";
+  const isValid = Object.keys(errors).length === 0;
+
   const save = async () => {
+    if (!isValid) return;
     setSaving(true);
     try {
       await api.put("/user/profile", { ...form, targetScore: parseInt(form.targetScore), currentScore: parseInt(form.currentScore), examYear: parseInt(form.neetDate?.split("-")[0]) || 2026, studyHoursPerDay: parseFloat(form.studyHoursPerDay) });
@@ -70,7 +84,11 @@ export default function ProfilePage() {
 
         {/* Form */}
         <div className="grid2 mb-5">
-          <div className="form-group"><label className="form-label">Full Name</label><input className="form-input" value={form.name} onChange={set("name")} /></div>
+          <div className="form-group">
+            <label className="form-label">Full Name</label>
+            <input className="form-input" value={form.name} onChange={set("name")} style={errors.name ? { borderColor: "var(--red)" } : undefined} />
+            {errors.name && <p style={{ fontSize: 11, color: "var(--red)", marginTop: 4 }}>{errors.name}</p>}
+          </div>
           <div className="form-group">
             <label className="form-label">Class</label>
             <div className="form-input" style={{ display: "flex", alignItems: "center", background: "var(--gray2)", color: "var(--text2)", cursor: "not-allowed" }}>
@@ -84,9 +102,21 @@ export default function ProfilePage() {
               {NEET_DATES.map(d => <option key={d.value} value={d.value}>{d.label}</option>)}
             </select>
           </div>
-          <div className="form-group"><label className="form-label">Target Score</label><input className="form-input" type="number" min="100" max="720" value={form.targetScore} onChange={set("targetScore")} /></div>
-          <div className="form-group"><label className="form-label">Current Score</label><input className="form-input" type="number" min="0" max="720" value={form.currentScore} onChange={set("currentScore")} /></div>
-          <div className="form-group"><label className="form-label">Study Hours / Day</label><input className="form-input" type="number" min="1" max="16" step="0.5" value={form.studyHoursPerDay} onChange={set("studyHoursPerDay")} /></div>
+          <div className="form-group">
+            <label className="form-label">Target Score</label>
+            <input className="form-input" type="number" min="100" max="720" value={form.targetScore} onChange={set("targetScore")} style={errors.targetScore ? { borderColor: "var(--red)" } : undefined} />
+            {errors.targetScore && <p style={{ fontSize: 11, color: "var(--red)", marginTop: 4 }}>{errors.targetScore}</p>}
+          </div>
+          <div className="form-group">
+            <label className="form-label">Current Score</label>
+            <input className="form-input" type="number" min="0" max="720" value={form.currentScore} onChange={set("currentScore")} style={errors.currentScore ? { borderColor: "var(--red)" } : undefined} />
+            {errors.currentScore && <p style={{ fontSize: 11, color: "var(--red)", marginTop: 4 }}>{errors.currentScore}</p>}
+          </div>
+          <div className="form-group">
+            <label className="form-label">Study Hours / Day</label>
+            <input className="form-input" type="number" min="1" max="16" step="0.5" value={form.studyHoursPerDay} onChange={set("studyHoursPerDay")} style={errors.studyHoursPerDay ? { borderColor: "var(--red)" } : undefined} />
+            {errors.studyHoursPerDay && <p style={{ fontSize: 11, color: "var(--red)", marginTop: 4 }}>{errors.studyHoursPerDay}</p>}
+          </div>
           <div className="form-group">
             <label className="form-label">Gender <span className="optional-tag">(optional)</span></label>
             <select className="form-select" value={form.gender} onChange={set("gender")}>
@@ -96,13 +126,12 @@ export default function ProfilePage() {
               <option value="other">Other</option>
             </select>
           </div>
-          <div className="form-group"><label className="form-label">Phone <span className="optional-tag">(optional)</span></label><input className="form-input" type="tel" placeholder="+91 XXXXX XXXXX" value={form.phone} onChange={set("phone")} /></div>
-          <div className="form-group" style={{ gridColumn: "1/-1" }}><label className="form-label">City / Place <span className="optional-tag">(optional)</span></label><input className="form-input" placeholder="e.g. Chennai, Mumbai" value={form.place} onChange={set("place")} /></div>
-          <div className="form-group" style={{ gridColumn: "1/-1" }}>
-            <label className="form-label">Parent's Email <span className="optional-tag">(optional)</span></label>
-            <input className="form-input" type="email" placeholder="e.g. parent@example.com" value={form.parentEmail} onChange={set("parentEmail")} />
-            <p style={{ fontSize: 11, color: "var(--text3)", marginTop: 4 }}>If added, your parent gets a weekly email with your score, streak, and weak areas — no login needed on their end.</p>
+          <div className="form-group">
+            <label className="form-label">Phone <span className="optional-tag">(optional)</span></label>
+            <input className="form-input" type="tel" placeholder="+91 XXXXX XXXXX" value={form.phone} onChange={set("phone")} style={errors.phone ? { borderColor: "var(--red)" } : undefined} />
+            {errors.phone && <p style={{ fontSize: 11, color: "var(--red)", marginTop: 4 }}>{errors.phone}</p>}
           </div>
+          <div className="form-group" style={{ gridColumn: "1/-1" }}><label className="form-label">City / Place <span className="optional-tag">(optional)</span></label><input className="form-input" placeholder="e.g. Chennai, Mumbai" value={form.place} onChange={set("place")} /></div>
         </div>
 
         {/* Weak subjects */}
@@ -127,7 +156,7 @@ export default function ProfilePage() {
 
         {/* Save */}
         <div style={{ display: "flex", gap: 12, alignItems: "center" }}>
-          <button className="btn btn-blue" onClick={save} disabled={saving}>{saving ? "Saving..." : "Save Profile"}</button>
+          <button className="btn btn-blue" onClick={save} disabled={saving || !isValid} title={!isValid ? "Fix the highlighted fields before saving" : undefined}>{saving ? "Saving..." : "Save Profile"}</button>
           {saved && <span className="chip chip-green">✓ Saved!</span>}
           <button className="btn btn-outline" style={{ marginLeft: "auto", color: "var(--red)", borderColor: "var(--red-light)" }} onClick={() => { if (window.confirm("Log out of YNeet?")) logout(); }}>Logout</button>
         </div>

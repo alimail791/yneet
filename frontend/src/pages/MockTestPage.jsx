@@ -42,6 +42,17 @@ export default function MockTestPage() {
     return () => clearInterval(timerRef.current);
   }, []);
 
+  // Warn before an accidental refresh/back/close wipes an in-progress attempt.
+  useEffect(() => {
+    const handler = (e) => {
+      if (submitting) return;
+      e.preventDefault();
+      e.returnValue = "";
+    };
+    window.addEventListener("beforeunload", handler);
+    return () => window.removeEventListener("beforeunload", handler);
+  }, [submitting]);
+
   const pad = n => String(n).padStart(2, "0");
   const fmt = s => `${Math.floor(s / 3600)}:${pad(Math.floor((s % 3600) / 60))}:${pad(s % 60)}`;
 
@@ -56,6 +67,13 @@ export default function MockTestPage() {
     const marked = !responses[q.id]?.marked;
     setResponses(r => ({ ...r, [q.id]: { ...r[q.id], marked } }));
     await api.post(`/mock/${attemptId}/response`, { questionId: q.id, selected: responses[q.id]?.selected ?? null, isMarked: marked, timeSec: 0 }).catch(() => {});
+  };
+
+  const markForReviewAndNext = async () => {
+    const q = questions[current];
+    setResponses(r => ({ ...r, [q.id]: { ...r[q.id], marked: true } }));
+    await api.post(`/mock/${attemptId}/response`, { questionId: q.id, selected: responses[q.id]?.selected ?? null, isMarked: true, timeSec: 0 }).catch(() => {});
+    setCurrent(c => Math.min(questions.length - 1, c + 1));
   };
 
   if (!questions.length) return <div className="loading-screen"><div className="spinner"></div><p>Loading test...</p></div>;
@@ -99,6 +117,7 @@ export default function MockTestPage() {
             <button className={`btn btn-sm ${resp?.marked ? "btn-purple" : "btn-outline"}`} onClick={toggleMark}>
               🔖 {resp?.marked ? "Marked" : "Mark for Review"}
             </button>
+            <button className="btn btn-outline btn-sm" onClick={markForReviewAndNext} disabled={current === questions.length - 1}>🔖 Mark for Review & Next</button>
             <button className="btn btn-outline btn-sm" onClick={() => setResponses(r => ({ ...r, [q.id]: { ...r[q.id], selected: null } }))} disabled={resp?.selected === undefined || resp?.selected === null}>Clear</button>
             <div style={{ marginLeft: "auto", display: "flex", gap: 8 }}>
               <button className="btn btn-outline btn-sm" onClick={() => setCurrent(c => Math.max(0, c - 1))} disabled={current === 0}>← Prev</button>
