@@ -230,13 +230,19 @@ exports.deleteMockTest = async (req, res) => {
 };
 
 // The form now sends `mockTestIds: string[]` (a question can belong to several
-// tests). Prisma needs this expressed as a `set` on the implicit many-to-many
-// relation, and the raw array field itself must not be passed through directly.
-const sanitizeQuestionPayload = (body) => {
+// tests). Prisma needs this expressed on the implicit many-to-many relation,
+// and the raw array field itself must not be passed through directly.
+// IMPORTANT: Prisma's nested-write type differs between create and update —
+// `set` (replace the full list) is only valid on update; a nested create only
+// accepts `connect`/`create`/`connectOrCreate`. Using `set` inside a
+// `question.create()` throws "Unknown argument `set`". So the clause shape
+// must depend on which operation is being performed.
+const sanitizeQuestionPayload = (body, { isUpdate = false } = {}) => {
   const { mockTestIds, ...rest } = body;
+  const ids = (mockTestIds || []).map((id) => ({ id }));
   return {
     ...rest,
-    mockTests: { set: (mockTestIds || []).map((id) => ({ id })) },
+    mockTests: isUpdate ? { set: ids } : { connect: ids },
   };
 };
 
@@ -249,7 +255,7 @@ exports.createQuestion = async (req, res) => {
 
 exports.updateQuestion = async (req, res) => {
   try {
-    const q = await prisma.question.update({ where: { id: req.params.id }, data: sanitizeQuestionPayload(req.body), include: { mockTests: true } });
+    const q = await prisma.question.update({ where: { id: req.params.id }, data: sanitizeQuestionPayload(req.body, { isUpdate: true }), include: { mockTests: true } });
     res.json({ success: true, question: q });
   } catch (err) { res.status(400).json({ success: false, message: err.message }); }
 };
