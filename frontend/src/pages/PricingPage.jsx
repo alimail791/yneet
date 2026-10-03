@@ -83,7 +83,7 @@ export default function PricingPage() {
         <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: 20 }}>
           {(plans.length ? plans : [
             { key: "TRIAL_5D", label: "5-Day Full Access", amountRupees: 99, duration: "5 days" },
-            { key: "MONTHLY", label: "Monthly Full Access", amountRupees: 299, duration: "Till end of current calendar month" },
+            { key: "MONTHLY", label: "Monthly Full Access", amountRupees: 500, duration: "Till end of current calendar month" },
           ]).map((p) => (
             <div key={p.key} className="card" style={{ padding: 28, textAlign: "left" }}>
               <p style={{ fontSize: 13, fontWeight: 700, color: "var(--blue-mid)", textTransform: "uppercase", letterSpacing: 0.4 }}>
@@ -92,7 +92,10 @@ export default function PricingPage() {
               <p style={{ fontSize: 26, fontWeight: 800, color: "var(--text)", marginTop: 6 }}>
                 ₹{p.amountRupees}
               </p>
-              <p style={{ fontSize: 13, color: "var(--text3)", marginBottom: 18 }}>{p.duration}</p>
+              <p style={{ fontSize: 13, color: "var(--text3)", marginBottom: 18 }}>
+                {p.duration}
+                {p.key === "MONTHLY" && <> · priced for your class</>}
+              </p>
               <ul style={{ listStyle: "none", padding: 0, margin: "0 0 24px", fontSize: 14, color: "var(--text2)", lineHeight: 2 }}>
                 <li>✓ Mock tests</li>
                 <li>✓ Daily quiz</li>

@@ -39,6 +39,29 @@ const protect = async (req, res, next) => {
   }
 };
 
+// Like `protect`, but never rejects the request — just attaches req.user when a
+// valid token is present, and leaves it undefined otherwise. Used by routes (like
+// the public plans list) that must still work before login but want to personalise
+// their response (e.g. class-based pricing) when a session is available.
+const optionalAuth = async (req, _res, next) => {
+  try {
+    const token = req.headers.authorization?.split(" ")[1];
+    if (!token) return next();
+
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+    const user = await prisma.user.findUnique({
+      where: { id: decoded.id },
+      include: { subscription: true, profile: true, xp: true, streak: true },
+    });
+    if (user && !(user.sessionId && decoded.sid && decoded.sid !== user.sessionId)) {
+      req.user = user;
+    }
+  } catch {
+    // Invalid/expired token — fine, just proceed unauthenticated.
+  }
+  next();
+};
+
 const requirePlan = (plans) => (req, res, next) => {
   const plan = req.user?.subscription?.plan || "NONE";
   if (!plans.includes(plan))
@@ -69,4 +92,4 @@ const requireAdmin = (req, res, next) => {
   next();
 };
 
-module.exports = { protect, requirePlan, requireActiveSubscription, requireAdmin };
+module.exports = { protect, optionalAuth, requirePlan, requireActiveSubscription, requireAdmin };

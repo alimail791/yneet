@@ -1,5 +1,5 @@
 const router = require("express").Router();
-const { protect } = require("../middleware/auth");
+const { protect, optionalAuth } = require("../middleware/auth");
 const {
   getPlans,
   getMySubscription,
@@ -7,7 +7,7 @@ const {
   verifyPayment,
 } = require("../controllers/subscriptionController");
 
-router.get("/plans", getPlans); // public — pricing page needs this before login-gated content
+router.get("/plans", optionalAuth, getPlans); // public — pricing page needs this before login-gated content; optionalAuth personalises MONTHLY price by class when logged in
 router.get("/me", protect, getMySubscription);
 router.post("/checkout", protect, createCheckout);
 router.post("/verify", protect, verifyPayment);

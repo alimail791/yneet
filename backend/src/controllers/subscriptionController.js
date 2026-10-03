@@ -13,8 +13,24 @@ const razorpay = new Razorpay({
 // Amounts are in paise (Razorpay's unit). Keep these in sync with the pricing page copy.
 const PLANS = {
   TRIAL_5D: { label: "5-Day Full Access", amount: 9900, days: 5 }, // ₹99
-  MONTHLY: { label: "Monthly Full Access", amount: 29900 }, // ₹299, always ends at month-end
+  MONTHLY: { label: "Monthly Full Access" }, // amount varies by class — see MONTHLY_AMOUNT_BY_CLASS below; always ends at month-end
 };
+
+// MONTHLY plan price depends on the student's class tier. Amounts are in paise.
+// Dropper ₹600, 11th/12th ₹500, 9th/10th ₹400, 6th/7th/8th ₹300.
+const MONTHLY_AMOUNT_BY_CLASS = {
+  Dropper: 60000,
+  "12th": 50000,
+  "11th": 50000,
+  "10th": 40000,
+  "9th": 40000,
+  "8th": 30000,
+  "7th": 30000,
+  "6th": 30000,
+};
+const DEFAULT_MONTHLY_AMOUNT = MONTHLY_AMOUNT_BY_CLASS["12th"]; // fallback when class is unknown (e.g. logged-out visitor)
+
+const getMonthlyAmount = (classLevel) => MONTHLY_AMOUNT_BY_CLASS[classLevel] ?? DEFAULT_MONTHLY_AMOUNT;
 
 // "Enrolled on Aug 20 → active till 23:59:59 on Aug 31" — i.e. always the last
 // instant of the calendar month the subscription started in, never a rolling 30 days.
@@ -56,13 +72,17 @@ const checkReferralReward = async (userId) => {
   await prisma.referral.update({ where: { id: myReferral.id }, data: { rewardGranted: true } });
 };
 
-// GET /api/v1/subscription/plans — public plan list for the pricing page
-exports.getPlans = async (_req, res) => {
+// GET /api/v1/subscription/plans — public plan list for the pricing page.
+// Route uses optionalAuth, so req.user (and their class) is available whenever a
+// valid session token is present, letting the MONTHLY price reflect their class tier.
+exports.getPlans = async (req, res) => {
+  const classLevel = req.user?.profile?.class;
+  const monthlyAmount = getMonthlyAmount(classLevel);
   res.json({
     success: true,
     plans: [
       { key: "TRIAL_5D", label: PLANS.TRIAL_5D.label, amountRupees: PLANS.TRIAL_5D.amount / 100, duration: "5 days" },
-      { key: "MONTHLY", label: PLANS.MONTHLY.label, amountRupees: PLANS.MONTHLY.amount / 100, duration: "Till end of current calendar month" },
+      { key: "MONTHLY", label: PLANS.MONTHLY.label, amountRupees: monthlyAmount / 100, duration: "Till end of current calendar month" },
     ],
   });
 };
@@ -81,7 +101,8 @@ exports.createCheckout = async (req, res) => {
     const { plan } = req.body;
     if (!PLANS[plan]) return res.status(400).json({ success: false, message: "Invalid plan" });
 
-    const { amount } = PLANS[plan];
+    // MONTHLY's price depends on the student's class tier; TRIAL_5D is flat.
+    const amount = plan === "MONTHLY" ? getMonthlyAmount(req.user.profile?.class) : PLANS[plan].amount;
     const order = await razorpay.orders.create({
       amount,
       currency: "INR",
