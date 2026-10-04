@@ -1,9 +1,23 @@
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 import api from "../../lib/api";
 import { CLASS_LEVELS } from "../../utils/curriculum";
 
 const POOL_STATS_URL = "/admin/mock-builder/pool-stats";
 const BUILD_URL = "/admin/mock-builder/build";
+const BULK_BUILD_URL = "/admin/mock-builder/bulk-build";
+const BULK_STATUS_URL = "/admin/mock-builder/bulk-status";
+
+// Mirrors backend/src/controllers/mockBuilderController.js buildDefaultSpec() —
+// kept here only to show the admin what "Run the Oct 2026 batch" is about to
+// create before they click it. The backend is the source of truth; if the
+// counts there change, update this table too.
+const BULK_BATCH_TABLE = [
+  { classLevel: "Dropper", full: 30, half: 50, subjPhysics: 30, subjChemistry: 30, subjBiology: 60, daily: 200 },
+  { classLevel: "12th", full: 10, half: 30, subjPhysics: 20, subjChemistry: 20, subjBiology: 40, daily: 100 },
+  { classLevel: "11th", full: 10, half: 30, subjPhysics: 20, subjChemistry: 20, subjBiology: 40, daily: 100 },
+];
+const bulkRowTotal = (r) => r.full + r.half + r.subjPhysics + r.subjChemistry + r.subjBiology + r.daily;
+const BULK_BATCH_TOTAL = BULK_BATCH_TABLE.reduce((sum, r) => sum + bulkRowTotal(r), 0);
 
 // Presets covering the common paper shapes you'd actually want to generate.
 const PRESETS = [
@@ -29,6 +43,43 @@ export default function MockTestBuilderPage() {
   const [building, setBuilding] = useState(false);
   const [result, setResult] = useState(null);
   const [error, setError] = useState(null);
+
+  const [bulkJob, setBulkJob] = useState(null);
+  const [bulkError, setBulkError] = useState(null);
+  const pollRef = useRef(null);
+
+  const pollBulkStatus = () => {
+    api.get(BULK_STATUS_URL).then((r) => {
+      setBulkJob(r.data.job);
+      if (!r.data.job || !r.data.job.running) {
+        clearInterval(pollRef.current);
+        pollRef.current = null;
+      }
+    }).catch(() => {});
+  };
+
+  useEffect(() => {
+    // Pick up an already-running job on page load (e.g. admin navigated away
+    // and came back), and clean up polling on unmount.
+    api.get(BULK_STATUS_URL).then((r) => {
+      setBulkJob(r.data.job);
+      if (r.data.job?.running && !pollRef.current) {
+        pollRef.current = setInterval(pollBulkStatus, 2000);
+      }
+    }).catch(() => {});
+    return () => clearInterval(pollRef.current);
+  }, []);
+
+  const startBulkBuild = async () => {
+    setBulkError(null);
+    try {
+      const { data } = await api.post(BULK_BUILD_URL, {});
+      setBulkJob(data.job);
+      if (!pollRef.current) pollRef.current = setInterval(pollBulkStatus, 2000);
+    } catch (err) {
+      setBulkError(err?.response?.data?.message || "Failed to start the bulk build.");
+    }
+  };
 
   const togglePoolClass = (cl) => {
     setPoolClassLevels((prev) => (prev.includes(cl) ? prev.filter((x) => x !== cl) : [...prev, cl]));
@@ -178,6 +229,83 @@ export default function MockTestBuilderPage() {
 
         <button className="btn btn-purple" onClick={build} disabled={building}>
           {building ? "Building…" : "🏗️ Build Mock Test"}
+        </button>
+      </div>
+
+      <div className="card" style={{ padding: 20, marginTop: 24, maxWidth: 640 }}>
+        <div style={{ fontWeight: 800, fontSize: 15, marginBottom: 4 }}>📦 Bulk-Generate the Oct 2026 Batch</div>
+        <p style={{ fontSize: 12.5, color: "var(--text2)", marginBottom: 12 }}>
+          Builds {BULK_BATCH_TOTAL} tests in one background job — full mocks, half mocks, single-subject
+          tests, and daily practice sets for Dropper, 12th and 11th. Dropper pulls questions from the
+          11th + 12th + Dropper pools combined; 11th and 12th each draw only from their own class. Picks
+          are chapter-balanced and rotate through the whole pool before any question repeats, so reuse
+          spreads evenly instead of clustering on the same subset.
+        </p>
+
+        <div style={{ overflowX: "auto", marginBottom: 14 }}>
+          <table style={{ width: "100%", fontSize: 12, borderCollapse: "collapse" }}>
+            <thead>
+              <tr style={{ color: "var(--text3)", textAlign: "left" }}>
+                <th style={{ padding: "4px 8px" }}>Class</th>
+                <th style={{ padding: "4px 8px" }}>Full (180)</th>
+                <th style={{ padding: "4px 8px" }}>Half (90)</th>
+                <th style={{ padding: "4px 8px" }}>Phy (45)</th>
+                <th style={{ padding: "4px 8px" }}>Chem (45)</th>
+                <th style={{ padding: "4px 8px" }}>Bio (45)</th>
+                <th style={{ padding: "4px 8px" }}>Daily (20)</th>
+                <th style={{ padding: "4px 8px" }}>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              {BULK_BATCH_TABLE.map((r) => (
+                <tr key={r.classLevel} style={{ borderTop: "1px solid var(--gray2)" }}>
+                  <td style={{ padding: "6px 8px", fontWeight: 700 }}>{r.classLevel}</td>
+                  <td style={{ padding: "6px 8px" }}>{r.full}</td>
+                  <td style={{ padding: "6px 8px" }}>{r.half}</td>
+                  <td style={{ padding: "6px 8px" }}>{r.subjPhysics}</td>
+                  <td style={{ padding: "6px 8px" }}>{r.subjChemistry}</td>
+                  <td style={{ padding: "6px 8px" }}>{r.subjBiology}</td>
+                  <td style={{ padding: "6px 8px" }}>{r.daily}</td>
+                  <td style={{ padding: "6px 8px", fontWeight: 700 }}>{bulkRowTotal(r)}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+        {bulkError && <div style={{ background: "var(--red-light,#fee)", color: "var(--red)", padding: 10, borderRadius: 8, fontSize: 13, marginBottom: 12 }}>{bulkError}</div>}
+
+        {bulkJob && (
+          <div className="card" style={{ background: "var(--gray2)", padding: 14, marginBottom: 14 }}>
+            <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 6 }}>
+              {bulkJob.running
+                ? `Building… ${bulkJob.done}/${bulkJob.total} tests (${bulkJob.failed} failed)`
+                : `Finished — ${bulkJob.done}/${bulkJob.total} tests created${bulkJob.failed ? `, ${bulkJob.failed} failed` : ""}`}
+            </div>
+            <div style={{ height: 6, borderRadius: 3, background: "var(--gray3,#e2e2e2)", overflow: "hidden", marginBottom: 10 }}>
+              <div style={{ height: "100%", width: `${bulkJob.total ? Math.round((bulkJob.done / bulkJob.total) * 100) : 0}%`, background: "var(--blue-mid)" }} />
+            </div>
+            {bulkJob.log?.length > 0 && (
+              <div style={{ maxHeight: 160, overflowY: "auto", fontSize: 11.5, color: "var(--text2)", lineHeight: 1.6 }}>
+                {bulkJob.log.map((l, i) => <div key={i}>{l}</div>)}
+              </div>
+            )}
+            {!bulkJob.running && bulkJob.shortfalls?.length > 0 && (
+              <div style={{ marginTop: 10, fontSize: 11.5, color: "var(--amber)" }}>
+                <div style={{ fontWeight: 700, marginBottom: 4 }}>Pool was smaller than total demand (questions got reused):</div>
+                {bulkJob.shortfalls.map((s, i) => (
+                  <div key={i}>
+                    ⚠️ {s.subject} ({s.poolClassLevels.join("+")}): {s.poolSize} questions in pool, {s.totalSlotsRequested} question-slots requested
+                    {s.avgReusePerQuestion ? ` — each question reused ~${s.avgReusePerQuestion}× on average` : ""}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+
+        <button className="btn btn-purple" onClick={startBulkBuild} disabled={bulkJob?.running}>
+          {bulkJob?.running ? `Building… (${bulkJob.done}/${bulkJob.total})` : `📦 Run the Oct 2026 batch (${BULK_BATCH_TOTAL} tests)`}
         </button>
       </div>
     </div>

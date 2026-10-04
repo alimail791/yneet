@@ -1,4 +1,5 @@
 const { PrismaClient } = require("@prisma/client");
+const { createRotatingPool } = require("../utils/rotatingPicker");
 const prisma = new PrismaClient();
 
 // Shuffle helper (Fisher-Yates).
@@ -124,4 +125,196 @@ exports.buildMockTest = async (req, res) => {
   } catch (err) {
     res.status(400).json({ success: false, message: err.message || "Failed to build mock test" });
   }
+};
+
+// ---------------------------------------------------------------------------
+// Bulk builder — generates a whole batch of mock tests (full/half/subject/
+// daily, across several class levels) from the existing question bank in one
+// background job, instead of one admin API call per test. Runs async so the
+// HTTP request returns immediately; progress is polled via getBulkStatus.
+// ---------------------------------------------------------------------------
+
+// The Oct 2026 batch Akbar asked for. classLevel is what the test is listed
+// under for students (Profile.class); poolClassLevels is which classes'
+// question pools it draws from — Dropper students cover the 11th+12th
+// syllabus, so Dropper pools from all three; 11th/12th each pool from their
+// own class only.
+function buildDefaultSpec() {
+  const classes = [
+    { classLevel: "Dropper", poolClassLevels: ["11th", "12th", "Dropper"], full: 30, half: 50, subjPhysics: 30, subjChemistry: 30, subjBiology: 60, daily: 200 },
+    { classLevel: "12th", poolClassLevels: ["12th"], full: 10, half: 30, subjPhysics: 20, subjChemistry: 20, subjBiology: 40, daily: 100 },
+    { classLevel: "11th", poolClassLevels: ["11th"], full: 10, half: 30, subjPhysics: 20, subjChemistry: 20, subjBiology: 40, daily: 100 },
+  ];
+
+  const jobs = [];
+  for (const c of classes) {
+    jobs.push({
+      classLevel: c.classLevel, poolClassLevels: c.poolClassLevels, type: "full", subject: null,
+      label: `${c.classLevel} Full Mock Test`,
+      title: (i) => `${c.classLevel} Full Mock Test ${String(i).padStart(2, "0")}`,
+      durationMin: 180, count: c.full,
+      subjectCounts: () => ({ Physics: 45, Chemistry: 45, Biology: 90 }),
+    });
+    jobs.push({
+      classLevel: c.classLevel, poolClassLevels: c.poolClassLevels, type: "half", subject: null,
+      label: `${c.classLevel} Half Mock Test`,
+      title: (i) => `${c.classLevel} Half Mock Test ${String(i).padStart(2, "0")}`,
+      durationMin: 90, count: c.half,
+      // Half of the full-mock ratio (Phy45/Chem45/Bio90 -> 22.5/22.5/45); the
+      // odd question alternates between Physics and Chemistry so it comes out
+      // exactly even (23/22 then 22/23) across the whole batch instead of
+      // always favouring one subject by a point.
+      subjectCounts: (i) => (i % 2 === 0 ? { Physics: 23, Chemistry: 22, Biology: 45 } : { Physics: 22, Chemistry: 23, Biology: 45 }),
+    });
+    jobs.push({
+      classLevel: c.classLevel, poolClassLevels: c.poolClassLevels, type: "subject", subject: "Physics",
+      label: `${c.classLevel} Physics Subject Test`,
+      title: (i) => `${c.classLevel} Physics Subject Test ${String(i).padStart(2, "0")}`,
+      durationMin: 45, count: c.subjPhysics,
+      subjectCounts: () => ({ Physics: 45 }),
+    });
+    jobs.push({
+      classLevel: c.classLevel, poolClassLevels: c.poolClassLevels, type: "subject", subject: "Chemistry",
+      label: `${c.classLevel} Chemistry Subject Test`,
+      title: (i) => `${c.classLevel} Chemistry Subject Test ${String(i).padStart(2, "0")}`,
+      durationMin: 45, count: c.subjChemistry,
+      subjectCounts: () => ({ Chemistry: 45 }),
+    });
+    jobs.push({
+      classLevel: c.classLevel, poolClassLevels: c.poolClassLevels, type: "subject", subject: "Biology",
+      label: `${c.classLevel} Biology Subject Test`,
+      title: (i) => `${c.classLevel} Biology Subject Test ${String(i).padStart(2, "0")}`,
+      durationMin: 45, count: c.subjBiology,
+      subjectCounts: () => ({ Biology: 45 }),
+    });
+    jobs.push({
+      classLevel: c.classLevel, poolClassLevels: c.poolClassLevels, type: "daily", subject: null,
+      label: `${c.classLevel} Daily Practice`,
+      title: (i) => `${c.classLevel} Daily Practice ${String(i).padStart(3, "0")}`,
+      durationMin: 20, count: c.daily,
+      subjectCounts: () => ({ Physics: 5, Chemistry: 5, Biology: 10 }),
+    });
+  }
+  return jobs;
+}
+
+// Single in-memory job — one bulk run at a time is plenty for an admin-panel
+// tool like this; it isn't meant to be a persisted multi-user queue.
+let bulkJob = null;
+
+// GET /api/v1/admin/mock-builder/bulk-status
+exports.getBulkStatus = async (req, res) => {
+  if (!bulkJob) return res.json({ success: true, job: null });
+  const { log, createdTitles, ...rest } = bulkJob;
+  res.json({ success: true, job: { ...rest, log: log.slice(-50), createdCount: createdTitles.length } });
+};
+
+async function runBulkJob(jobs) {
+  const totalTests = jobs.reduce((sum, j) => sum + j.count, 0);
+  bulkJob.total = totalTests;
+
+  // Build every distinct (subject, poolClassLevels) rotating pool ONCE up
+  // front and share it across every job/test that draws from it — e.g. all
+  // six Dropper categories share the same Physics pool, so reuse spreads
+  // evenly across the whole Dropper batch, not just within one category.
+  const pools = {};
+  const poolKey = (subject, poolClassLevels) => `${subject}||${[...poolClassLevels].sort().join(",")}`;
+  async function getPool(subject, poolClassLevels) {
+    const key = poolKey(subject, poolClassLevels);
+    if (!pools[key]) pools[key] = await createRotatingPool(prisma, subject, poolClassLevels);
+    return pools[key];
+  }
+
+  const shortfalls = {}; // poolKey -> { requested, available }
+
+  for (const job of jobs) {
+    for (let i = 1; i <= job.count; i++) {
+      try {
+        const counts = job.subjectCounts(i);
+        const selected = [];
+        for (const [subject, want] of Object.entries(counts)) {
+          if (!want) continue;
+          const pool = await getPool(subject, job.poolClassLevels);
+          const key = poolKey(subject, job.poolClassLevels);
+          const picked = pool.take(want);
+          selected.push(...picked);
+          const reqCount = (shortfalls[key]?.requested || 0) + want;
+          shortfalls[key] = { subject, poolClassLevels: job.poolClassLevels, requested: reqCount, available: pool.size };
+        }
+
+        if (selected.length === 0) {
+          bulkJob.failed++;
+          bulkJob.log.push(`⚠️ Skipped ${job.title(i)}: no questions available in the pool at all.`);
+          continue;
+        }
+
+        await prisma.mockTest.create({
+          data: {
+            title: job.title(i),
+            type: job.type,
+            classLevel: job.classLevel,
+            subject: job.subject,
+            totalMarks: selected.length * 4,
+            totalQs: selected.length,
+            durationMin: job.durationMin,
+            questions: { connect: selected.map((q) => ({ id: q.id })) },
+          },
+        });
+
+        bulkJob.done++;
+        bulkJob.createdTitles.push(job.title(i));
+      } catch (err) {
+        bulkJob.failed++;
+        bulkJob.log.push(`❌ ${job.title(i)}: ${err.message}`);
+      }
+    }
+    bulkJob.log.push(`✅ Finished ${job.label} (${job.count} tests)`);
+  }
+
+  // Flag any pool that was asked for materially more than it actually holds —
+  // not an error (reuse is expected at this volume), just visibility into
+  // how many times, on average, each question got reused.
+  bulkJob.shortfalls = Object.values(shortfalls)
+    .filter((s) => s.requested > s.available)
+    .map((s) => ({
+      subject: s.subject,
+      poolClassLevels: s.poolClassLevels,
+      poolSize: s.available,
+      totalSlotsRequested: s.requested,
+      avgReusePerQuestion: s.available ? +(s.requested / s.available).toFixed(1) : null,
+    }));
+
+  bulkJob.running = false;
+  bulkJob.finishedAt = new Date().toISOString();
+}
+
+// POST /api/v1/admin/mock-builder/bulk-build
+// body: { jobs?: [...] } — omit to run the standard Oct 2026 batch (Dropper/
+// 12th/11th full+half+subject+daily counts). Starts the job and returns
+// immediately; poll bulk-status for progress. Refuses to start a second job
+// while one is already running.
+exports.startBulkBuild = async (req, res) => {
+  if (bulkJob && bulkJob.running) {
+    return res.status(409).json({ success: false, message: "A bulk build is already running.", job: bulkJob });
+  }
+
+  const jobs = buildDefaultSpec();
+  bulkJob = {
+    running: true,
+    startedAt: new Date().toISOString(),
+    finishedAt: null,
+    total: jobs.reduce((sum, j) => sum + j.count, 0),
+    done: 0,
+    failed: 0,
+    createdTitles: [],
+    log: [],
+    shortfalls: [],
+  };
+
+  res.status(202).json({ success: true, message: "Bulk build started.", job: { ...bulkJob, log: [] } });
+
+  runBulkJob(jobs).catch((err) => {
+    bulkJob.running = false;
+    bulkJob.log.push(`❌ Job crashed: ${err.message}`);
+  });
 };
