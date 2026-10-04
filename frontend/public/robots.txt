@@ -1,0 +1,8 @@
+User-agent: *
+Disallow: /
+
+# app.yneet.in is the logged-in student application (dashboard, mock tests,
+# practice, etc.) — everything here sits behind login and/or an active
+# subscription, so there is nothing for search engines to usefully index.
+# All public SEO content for YNeet lives on https://www.yneet.in — see its
+# sitemap at https://www.yneet.in/sitemap.xml.
