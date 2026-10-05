@@ -40,6 +40,21 @@ const sendExpiryReminder = async (user, daysLeft) => {
   });
 };
 
+// Sent once to a student who hasn't opened YNeet for ~5 days.
+const sendInactivityReminder = async (user) => {
+  const url = process.env.FRONTEND_URL || "https://app.yneet.in";
+  await send({
+    to: user.email,
+    subject: `We miss you, ${user.name.split(" ")[0]} — your NEET prep is waiting 🎯`,
+    html: `<div style="${baseStyle}">${header}
+      <h2 style="color:#0f172a">Hi ${user.name}, it's been a few days</h2>
+      <p style="color:#475569;font-size:15px;line-height:1.6">You haven't opened YNeet in about 5 days. A little practice every day adds up — a quick 20-question daily practice test or a mistake-notebook revision takes just a few minutes and keeps your streak and rank moving.</p>
+      <a href="${url}" style="${btnStyle}background:#2563eb;color:white;">Continue My Prep →</a>
+      <p style="color:#94a3b8;font-size:12px;margin-top:24px">You're receiving this because you have a YNeet account. Log in any time to pick up where you left off.</p>
+    </div>`,
+  });
+};
+
 // Weekly-ish progress summary sent to a parent's email, if the student added
 // one in their Profile. Purely informational — no login/action needed from
 // the parent.
@@ -61,4 +76,4 @@ const sendParentDigest = async (parentEmail, student, stats) => {
   });
 };
 
-module.exports = { sendExpiryReminder, sendParentDigest };
+module.exports = { sendExpiryReminder, sendParentDigest, sendInactivityReminder };

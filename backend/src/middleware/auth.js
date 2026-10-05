@@ -33,6 +33,14 @@ const protect = async (req, res, next) => {
     }
 
     req.user = user;
+
+    // Record "last seen" on the user's existing Streak row so the inactivity
+    // email job can tell who has gone quiet. Throttled to once an hour so we
+    // don't add a DB write to every API request. Fire-and-forget.
+    const lastActive = user.streak?.lastActive ? new Date(user.streak.lastActive).getTime() : 0;
+    if (user.streak && Date.now() - lastActive > 60 * 60 * 1000) {
+      prisma.streak.update({ where: { userId: user.id }, data: { lastActive: new Date() } }).catch(() => {});
+    }
     next();
   } catch (err) {
     res.status(401).json({ success: false, message: "Invalid or expired token" });

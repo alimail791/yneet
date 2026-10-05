@@ -24,6 +24,21 @@ export default function Layout() {
     }
   }, [user?.subscription?.endDate, user?.subscription?.status]);
 
+  // Refer & Earn nudge: shown at most once per calendar day (per browser) to
+  // encourage referrals. localStorage can be unavailable (private mode), so
+  // every access is guarded and the popup simply doesn't show in that case.
+  const [referralPopup, setReferralPopup] = useState(false);
+  useEffect(() => {
+    try {
+      const today = new Date().toISOString().slice(0, 10);
+      if (localStorage.getItem("yneet_referral_popup_day") !== today) {
+        localStorage.setItem("yneet_referral_popup_day", today);
+        const t = setTimeout(() => setReferralPopup(true), 1500);
+        return () => clearTimeout(t);
+      }
+    } catch { /* storage unavailable — skip the popup */ }
+  }, []);
+
   const tabs = [
     { to: "/",         label: "Dashboard", end: true },
     { to: "/mock",     label: "Mock Tests" },
@@ -100,6 +115,22 @@ export default function Layout() {
             <div style={{ display: "flex", gap: 10, justifyContent: "center" }}>
               <button className="btn btn-outline" onClick={() => setExpiryNotice(null)}>Later</button>
               <button className="btn btn-blue" onClick={() => { setExpiryNotice(null); navigate("/pricing"); }}>Renew Now</button>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {referralPopup && !expiryNotice && (
+        <div onClick={() => setReferralPopup(false)} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,.5)", zIndex: 90, display: "flex", alignItems: "center", justifyContent: "center", padding: 20 }}>
+          <div onClick={e => e.stopPropagation()} style={{ background: "#fff", borderRadius: 18, padding: 28, maxWidth: 380, width: "100%", textAlign: "center", boxShadow: "0 20px 50px rgba(0,0,0,.3)" }}>
+            <div style={{ fontSize: 40, marginBottom: 10 }}>🎁</div>
+            <h2 style={{ fontSize: 18, fontWeight: 800, marginBottom: 8 }}>Get a free month of YNeet!</h2>
+            <p style={{ fontSize: 14, color: "var(--text2)", lineHeight: 1.5, marginBottom: 20 }}>
+              Refer a friend — when they join on the Monthly plan, you get one month free. Share your link in just a tap.
+            </p>
+            <div style={{ display: "flex", gap: 10, justifyContent: "center" }}>
+              <button className="btn btn-outline" onClick={() => setReferralPopup(false)}>Maybe later</button>
+              <button className="btn btn-blue" onClick={() => { setReferralPopup(false); navigate("/referral"); }}>Refer &amp; Earn</button>
             </div>
           </div>
         </div>

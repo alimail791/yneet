@@ -3,7 +3,7 @@
 // serverless). Runs once shortly after startup, then every 24 hours.
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
-const { sendExpiryReminder, sendParentDigest } = require("./mailer");
+const { sendExpiryReminder, sendParentDigest, sendInactivityReminder } = require("./mailer");
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 
@@ -65,12 +65,37 @@ async function sendParentDigests() {
   }
 }
 
+// Emails students whose last visit (Streak.lastActive, kept fresh by the auth
+// middleware) was 5-6 days ago. The one-day window means each absent student
+// is emailed once, on the daily run that first catches them at 5 days away;
+// a guard keeps a same-day restart from running the job twice.
+let lastInactivityRun = 0;
+async function sendInactivityEmails() {
+  if (Date.now() - lastInactivityRun < 20 * 60 * 60 * 1000) return;
+  lastInactivityRun = Date.now();
+  const streaks = await prisma.streak.findMany({
+    where: {
+      lastActive: { lte: new Date(Date.now() - 5 * DAY_MS), gt: new Date(Date.now() - 6 * DAY_MS) },
+    },
+    include: { user: { select: { name: true, email: true } } },
+  });
+  for (const s of streaks) {
+    try {
+      await sendInactivityReminder(s.user);
+      console.log(`Inactivity reminder sent to ${s.user.email}`);
+    } catch (err) {
+      console.warn(`Failed to send inactivity reminder to ${s.user.email}:`, err.message);
+    }
+  }
+}
+
 async function runDailyJobs() {
   if (!process.env.RESEND_API_KEY) {
     console.log("Skipping scheduled emails — RESEND_API_KEY not configured.");
     return;
   }
   await checkExpiringSubscriptions().catch((e) => console.warn("checkExpiringSubscriptions failed:", e.message));
+  await sendInactivityEmails().catch((e) => console.warn("sendInactivityEmails failed:", e.message));
   await sendParentDigests().catch((e) => console.warn("sendParentDigests failed:", e.message));
 }
 
