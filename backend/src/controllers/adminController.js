@@ -355,17 +355,17 @@ exports.bulkCreateQuestions = async (req, res) => {
   res.json({ success: true, created, skipped, failed: errors.length, errors });
 };
 
-// Duplicate questions = same subject + class + year + exact question text.
+// Duplicate questions = same subject + class + year + question text + all four options + answer.
 // Keeps the copy used by a mock test (else the oldest) and, on remove, deletes
 // only extras that no mock test uses and nothing else references (FK-protected).
 async function findDuplicateGroups() {
   const all = await prisma.question.findMany({
-    select: { id: true, subject: true, classLevel: true, pyqYear: true, questionText: true, createdAt: true, _count: { select: { mockTests: true } } },
+    select: { id: true, subject: true, classLevel: true, pyqYear: true, questionText: true, optionA: true, optionB: true, optionC: true, optionD: true, correctOpt: true, createdAt: true, _count: { select: { mockTests: true } } },
     orderBy: { createdAt: "asc" },
   });
   const groups = new Map();
   for (const q of all) {
-    const key = [q.subject, q.classLevel, q.pyqYear ?? "", q.questionText.trim().replace(/\s+/g, " ").toLowerCase()].join("|");
+    const key = [q.subject, q.classLevel, q.pyqYear ?? "", [q.questionText, q.optionA, q.optionB, q.optionC, q.optionD].map((t) => String(t).trim().replace(/\s+/g, " ").toLowerCase()).join("¦"), q.correctOpt].join("|");
     if (!groups.has(key)) groups.set(key, []);
     groups.get(key).push(q);
   }
