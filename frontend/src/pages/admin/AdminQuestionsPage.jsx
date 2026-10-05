@@ -104,8 +104,8 @@ export default function AdminQuestionsPage() {
   const submitBulk = async () => {
     if (bulkRows.length === 0) return;
     setBulkUploading(true);
-    // Server accepts max 500 rows per request, so send in batches of 200.
-    const BATCH = 200;
+    // Server accepts max 500 rows per request, so send in batches of 100.
+    const BATCH = 100;
     const total = { success: true, created: 0, failed: 0, skipped: 0, errors: [] };
     try {
       for (let start = 0; start < bulkRows.length; start += BATCH) {

@@ -286,9 +286,10 @@ exports.bulkCreateQuestions = async (req, res) => {
   }
 
   const required = ["subject", "chapter", "topic", "classLevel", "questionText", "optionA", "optionB", "optionC", "optionD", "correctOpt", "explanation"];
-  let created = 0;
   let skipped = 0;
   const errors = [];
+  const toInsert = [];
+  const truthy = (v) => v === true || String(v).toLowerCase() === "true";
 
   for (let i = 0; i < questions.length; i++) {
     const row = questions[i];
@@ -302,39 +303,53 @@ exports.bulkCreateQuestions = async (req, res) => {
       errors.push({ row: i + 1, message: "correctOpt must be 0, 1, 2, or 3" });
       continue;
     }
-    try {
-      // Re-uploading the same PYQ file must not create duplicates.
-      const isPyqRow = row.isPYQ === true || String(row.isPYQ).toLowerCase() === "true";
-      if (isPyqRow && row.pyqYear) {
-        const dup = await prisma.question.findFirst({
-          where: { isPYQ: true, pyqYear: Number(row.pyqYear), questionText: row.questionText },
-          select: { id: true },
-        });
-        if (dup) { skipped++; continue; }
-      }
-      await prisma.question.create({
-        data: {
-          subject: row.subject,
-          chapter: row.chapter,
-          topic: row.topic,
-          classLevel: row.classLevel,
-          difficulty: row.difficulty || "medium",
-          questionText: row.questionText,
-          optionA: row.optionA,
-          optionB: row.optionB,
-          optionC: row.optionC,
-          optionD: row.optionD,
-          correctOpt,
-          explanation: row.explanation,
-          isPYQ: row.isPYQ === true || row.isPYQ === "true" || row.isPYQ === "TRUE",
-          pyqYear: row.pyqYear ? Number(row.pyqYear) : null,
-          isRepeated: row.isRepeated === true || row.isRepeated === "true" || row.isRepeated === "TRUE",
-        },
+    toInsert.push({
+      _row: i + 1,
+      data: {
+        subject: row.subject,
+        chapter: row.chapter,
+        topic: row.topic,
+        classLevel: row.classLevel,
+        difficulty: row.difficulty || "medium",
+        questionText: row.questionText,
+        optionA: row.optionA,
+        optionB: row.optionB,
+        optionC: row.optionC,
+        optionD: row.optionD,
+        correctOpt,
+        explanation: row.explanation,
+        isPYQ: truthy(row.isPYQ),
+        pyqYear: row.pyqYear ? Number(row.pyqYear) : null,
+        isRepeated: truthy(row.isRepeated),
+      },
+    });
+  }
+
+  let created = 0;
+  try {
+    // One lookup for all PYQ duplicates (same year + same text) instead of one per row.
+    const years = [...new Set(toInsert.filter((x) => x.data.isPYQ && x.data.pyqYear).map((x) => x.data.pyqYear))];
+    const existing = new Set();
+    if (years.length) {
+      const found = await prisma.question.findMany({
+        where: { isPYQ: true, pyqYear: { in: years } },
+        select: { pyqYear: true, questionText: true },
       });
-      created++;
-    } catch (err) {
-      errors.push({ row: i + 1, message: err.message });
+      found.forEach((q) => existing.add(`${q.pyqYear}|${q.questionText}`));
     }
+    const fresh = [];
+    for (const x of toInsert) {
+      const key = `${x.data.pyqYear}|${x.data.questionText}`;
+      if (x.data.isPYQ && x.data.pyqYear && existing.has(key)) { skipped++; continue; }
+      existing.add(key); // also dedupes within the same batch
+      fresh.push(x.data);
+    }
+    if (fresh.length) {
+      const r = await prisma.question.createMany({ data: fresh });
+      created = r.count;
+    }
+  } catch (err) {
+    errors.push({ row: "-", message: err.message });
   }
 
   res.json({ success: true, created, skipped, failed: errors.length, errors });
