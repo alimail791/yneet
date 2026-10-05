@@ -355,6 +355,49 @@ exports.bulkCreateQuestions = async (req, res) => {
   res.json({ success: true, created, skipped, failed: errors.length, errors });
 };
 
+// Duplicate questions = same subject + class + year + exact question text.
+// Keeps the copy used by a mock test (else the oldest) and, on remove, deletes
+// only extras that no mock test uses and nothing else references (FK-protected).
+async function findDuplicateGroups() {
+  const all = await prisma.question.findMany({
+    select: { id: true, subject: true, classLevel: true, pyqYear: true, questionText: true, createdAt: true, _count: { select: { mockTests: true } } },
+    orderBy: { createdAt: "asc" },
+  });
+  const groups = new Map();
+  for (const q of all) {
+    const key = [q.subject, q.classLevel, q.pyqYear ?? "", q.questionText.trim().replace(/\s+/g, " ").toLowerCase()].join("|");
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(q);
+  }
+  const dups = [...groups.values()].filter((g) => g.length > 1);
+  return { total: all.length, dups };
+}
+
+exports.getDuplicateQuestions = async (req, res) => {
+  try {
+    const { total, dups } = await findDuplicateGroups();
+    const extra = dups.reduce((n, g) => n + g.length - 1, 0);
+    res.json({ success: true, total, duplicateGroups: dups.length, extraCopies: extra, uniqueAfterCleanup: total - extra });
+  } catch (err) { res.status(500).json({ success: false, message: err.message }); }
+};
+
+exports.removeDuplicateQuestions = async (req, res) => {
+  try {
+    const { total, dups } = await findDuplicateGroups();
+    let deleted = 0, kept = 0;
+    for (const g of dups) {
+      const keep = g.find((q) => q._count.mockTests > 0) || g[0];
+      for (const q of g) {
+        if (q.id === keep.id) continue;
+        if (q._count.mockTests > 0) { kept++; continue; }
+        try { await prisma.question.delete({ where: { id: q.id } }); deleted++; }
+        catch { kept++; } // referenced by attempts/bookmarks etc. — leave it
+      }
+    }
+    res.json({ success: true, totalBefore: total, deleted, leftBecauseInUse: kept });
+  } catch (err) { res.status(500).json({ success: false, message: err.message }); }
+};
+
 // ───────────────────────── Flashcards ─────────────────────────
 
 exports.listFlashcards = async (req, res) => {

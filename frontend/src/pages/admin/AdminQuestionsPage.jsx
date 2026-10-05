@@ -88,6 +88,17 @@ export default function AdminQuestionsPage() {
   const openBulk = () => { setBulkRows([]); setBulkFileName(""); setBulkResult(null); setBulkModal(true); };
   const closeBulk = () => setBulkModal(false);
 
+  const cleanDuplicates = async () => {
+    try {
+      const { data: d } = await api.get("/admin/questions/duplicates");
+      if (!d.extraCopies) { alert(`No duplicates found. Total questions: ${d.total}.`); return; }
+      if (!window.confirm(`Total ${d.total} questions. Found ${d.extraCopies} duplicate copies (${d.duplicateGroups} questions repeated).\n\nRemove the extra copies? ${d.uniqueAfterCleanup} will remain. Copies used inside a mock test are kept.`)) return;
+      const { data: r } = await api.post("/admin/questions/duplicates/remove");
+      alert(`Removed ${r.deleted} duplicate(s).${r.leftBecauseInUse ? ` ${r.leftBecauseInUse} left because they are in use.` : ""}`);
+      load();
+    } catch (err) { alert(err?.response?.data?.message || "Duplicate check failed"); }
+  };
+
   const handleCsvFile = (e) => {
     const file = e.target.files?.[0];
     if (!file) return;
@@ -213,6 +224,7 @@ export default function AdminQuestionsPage() {
           <button className="btn btn-purple" onClick={openAi}>✨ Generate with AI</button>
           <button className="btn btn-purple" onClick={openScan}>📄 Scan Question Paper</button>
           <button className="btn btn-outline" onClick={openBulk}>⬆ Bulk Upload CSV</button>
+          <button className="btn btn-outline" onClick={cleanDuplicates}>🧹 Remove Duplicates</button>
           <button className="btn btn-blue" onClick={openNew}>+ Add Question</button>
         </div>
       </div>
