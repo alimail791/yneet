@@ -106,7 +106,12 @@ export default function AdminQuestionsPage() {
       const yrs = Object.entries(d.perYear).map(([y, n]) => `${y}: ${n}`).join(", ");
       if (!window.confirm(`PYQs: ${d.totalPyq}. Found ${d.extraCopies} repeated copies (same year, same question start, same correct answer).\n\nBy year → ${yrs}\n\nExample: "${d.sample[0] || ""}…"\n\nRemove the extra copies? ${d.remaining} PYQs will remain. Copies used in mock tests are kept.`)) return;
       const { data: r } = await api.post("/admin/questions/near-duplicate-pyqs/remove");
-      alert(`Removed ${r.deleted} repeated PYQ(s). PYQs now: ${r.pyqNow}.${r.leftBecauseInUse ? ` ${r.leftBecauseInUse} left because they are in use.` : ""}`);
+      if (r.leftBecauseInUse > 0 && window.confirm(`Removed ${r.deleted}. PYQs now: ${r.pyqNow}.\n\n${r.leftBecauseInUse} more repeated PYQs are used inside mock tests. Swap them for the kept copy inside those tests (same question, so tests stay the same size) and remove the extras?`)) {
+        const { data: r2 } = await api.post("/admin/questions/near-duplicate-pyqs/remove", { relink: true });
+        alert(`Swapped ${r2.swapped} in mock tests and removed ${r2.deleted}. PYQs now: ${r2.pyqNow}.${r2.leftBecauseInUse ? ` ${r2.leftBecauseInUse} could not be removed (a student has attempted them).` : ""}`);
+      } else {
+        alert(`Removed ${r.deleted} repeated PYQ(s). PYQs now: ${r.pyqNow}.${r.leftBecauseInUse ? ` ${r.leftBecauseInUse} left because they are in use.` : ""}`);
+      }
       load();
     } catch (err) { alert(err?.response?.data?.message || "Check failed"); }
   };

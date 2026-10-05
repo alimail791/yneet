@@ -440,20 +440,30 @@ exports.getNearDuplicatePyqs = async (req, res) => {
 
 exports.removeNearDuplicatePyqs = async (req, res) => {
   try {
+    const relink = req.body?.relink === true;
     const { dups } = await findNearDuplicatePyqs();
-    let deleted = 0, kept = 0;
+    let deleted = 0, kept = 0, swapped = 0;
     for (const g of dups) {
       // keep the copy used in a mock test, else the one with the fullest explanation, else the oldest
-      const keep = g.find((q) => q._count.mockTests > 0) ||
-        [...g].sort((a, b) => String(b.explanation || "").length - String(a.explanation || "").length)[0];
+      const byExplanation = [...g].sort((a, b) => String(b.explanation || "").length - String(a.explanation || "").length)[0];
+      const keep = relink ? byExplanation : (g.find((q) => q._count.mockTests > 0) || byExplanation);
       for (const q of g) {
         if (q.id === keep.id) continue;
-        if (q._count.mockTests > 0) { kept++; continue; }
+        if (q._count.mockTests > 0) {
+          if (!relink) { kept++; continue; }
+          // Swap this copy for the kept one inside every mock test that uses it.
+          const tests = await prisma.mockTest.findMany({ where: { questions: { some: { id: q.id } } }, select: { id: true, questions: { where: { id: keep.id }, select: { id: true } } } });
+          if (tests.some((t) => t.questions.length > 0)) { kept++; continue; } // test already has the kept copy; don't shrink it
+          for (const t of tests) {
+            await prisma.mockTest.update({ where: { id: t.id }, data: { questions: { connect: { id: keep.id }, disconnect: { id: q.id } } } });
+          }
+          swapped++;
+        }
         try { await prisma.question.delete({ where: { id: q.id } }); deleted++; } catch { kept++; }
       }
     }
     const pyq = await prisma.question.count({ where: { isPYQ: true } });
-    res.json({ success: true, deleted, leftBecauseInUse: kept, pyqNow: pyq });
+    res.json({ success: true, deleted, swapped, leftBecauseInUse: kept, pyqNow: pyq });
   } catch (err) { res.status(500).json({ success: false, message: err.message }); }
 };
 
