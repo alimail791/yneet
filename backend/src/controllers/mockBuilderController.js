@@ -318,3 +318,48 @@ exports.startBulkBuild = async (req, res) => {
     bulkJob.log.push(`❌ Job crashed: ${err.message}`);
   });
 };
+
+
+// ── Previous bulk batch cleanup ─────────────────────────────────────────────
+// Matches ONLY tests created by the bulk generator (title pattern) on/after the
+// first batch run, so the original hand-made / seeded tests are never touched.
+const BULK_TITLE_RE = /^(Dropper|11th|12th) (Full Mock Test|Half Mock Test|Physics Subject Test|Chemistry Subject Test|Biology Subject Test|Daily Practice) \d+$/;
+const BULK_SINCE = new Date("2026-10-04T16:00:00.000Z");
+
+async function findOldBulkTests() {
+  const tests = await prisma.mockTest.findMany({
+    where: { createdAt: { gte: BULK_SINCE } },
+    select: { id: true, title: true, classLevel: true, _count: { select: { attempts: true } } },
+  });
+  return tests.filter((t) => BULK_TITLE_RE.test(t.title));
+}
+
+exports.getOldBulkBatch = async (req, res) => {
+  try {
+    const tests = await findOldBulkTests();
+    const byClass = {};
+    tests.forEach((t) => { byClass[t.classLevel] = (byClass[t.classLevel] || 0) + 1; });
+    res.json({
+      success: true, tests: tests.length, byClass,
+      testsWithAttempts: tests.filter((t) => t._count.attempts > 0).length,
+      attempts: tests.reduce((n, t) => n + t._count.attempts, 0),
+    });
+  } catch (err) { res.status(500).json({ success: false, message: err.message }); }
+};
+
+exports.deleteOldBulkBatch = async (req, res) => {
+  try {
+    if (bulkJob && bulkJob.running) return res.status(409).json({ success: false, message: "A bulk build is running — wait for it to finish." });
+    const tests = await findOldBulkTests();
+    const ids = tests.map((t) => t.id);
+    let deleted = 0, attemptsDeleted = 0;
+    for (let i = 0; i < ids.length; i += 50) {
+      const chunk = ids.slice(i, i + 50);
+      const a = await prisma.attempt.deleteMany({ where: { mockTestId: { in: chunk } } });
+      attemptsDeleted += a.count;
+      const r = await prisma.mockTest.deleteMany({ where: { id: { in: chunk } } });
+      deleted += r.count;
+    }
+    res.json({ success: true, deleted, attemptsDeleted });
+  } catch (err) { res.status(500).json({ success: false, message: err.message }); }
+};

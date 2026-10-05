@@ -81,6 +81,18 @@ export default function MockTestBuilderPage() {
     }
   };
 
+  const deleteOldBatch = async () => {
+    try {
+      const { data: d } = await api.get("/admin/mock-builder/old-batch");
+      if (!d.tests) { alert("No previously generated bulk tests found."); return; }
+      const cls = Object.entries(d.byClass).map(([c, n]) => `${c}: ${n}`).join(", ");
+      const warn = d.attempts ? `\n\n⚠️ ${d.attempts} student attempt(s) on ${d.testsWithAttempts} of these tests will be deleted too.` : "\n\nNo student has attempted any of them.";
+      if (!window.confirm(`Delete ${d.tests} previously generated tests (${cls})?${warn}\n\nYour original tests (the ones not made by the bulk generator) are not touched. Questions are not deleted.`)) return;
+      const { data: r } = await api.post("/admin/mock-builder/old-batch/delete");
+      alert(`Deleted ${r.deleted} tests${r.attemptsDeleted ? ` and ${r.attemptsDeleted} attempts` : ""}. You can now run the new batch.`);
+    } catch (err) { alert(err?.response?.data?.message || "Delete failed"); }
+  };
+
   const togglePoolClass = (cl) => {
     setPoolClassLevels((prev) => (prev.includes(cl) ? prev.filter((x) => x !== cl) : [...prev, cl]));
   };
@@ -304,6 +316,9 @@ export default function MockTestBuilderPage() {
           </div>
         )}
 
+        <button className="btn btn-outline" style={{ marginRight: 10 }} onClick={deleteOldBatch} disabled={bulkJob?.running}>
+          🗑 Delete previous batch
+        </button>
         <button className="btn btn-purple" onClick={startBulkBuild} disabled={bulkJob?.running}>
           {bulkJob?.running ? `Building… (${bulkJob.done}/${bulkJob.total})` : `📦 Run the Oct 2026 batch (${BULK_BATCH_TOTAL} tests)`}
         </button>
