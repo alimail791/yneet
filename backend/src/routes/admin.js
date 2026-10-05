@@ -33,6 +33,7 @@ router.delete("/mocktests/:id", c.deleteMockTest);
 router.get("/questions", c.listQuestions);
 router.post("/questions", c.createQuestion);
 router.post("/questions/bulk", c.bulkCreateQuestions);
+router.get("/questions/stats", c.getQuestionStats);
 router.get("/questions/duplicates", c.getDuplicateQuestions);
 router.post("/questions/duplicates/remove", c.removeDuplicateQuestions);
 router.put("/questions/:id", c.updateQuestion);

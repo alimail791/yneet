@@ -373,6 +373,24 @@ async function findDuplicateGroups() {
   return { total: all.length, dups };
 }
 
+exports.getQuestionStats = async (req, res) => {
+  try {
+    const [total, pyq, byYear, bySubject, byClass] = await Promise.all([
+      prisma.question.count(),
+      prisma.question.count({ where: { isPYQ: true } }),
+      prisma.question.groupBy({ by: ["pyqYear"], where: { isPYQ: true }, _count: { _all: true }, orderBy: { pyqYear: "asc" } }),
+      prisma.question.groupBy({ by: ["subject"], _count: { _all: true } }),
+      prisma.question.groupBy({ by: ["classLevel"], _count: { _all: true } }),
+    ]);
+    res.json({
+      success: true, total, pyq,
+      pyqByYear: byYear.map((r) => ({ year: r.pyqYear, count: r._count._all })),
+      bySubject: bySubject.map((r) => ({ subject: r.subject, count: r._count._all })),
+      byClass: byClass.map((r) => ({ classLevel: r.classLevel, count: r._count._all })),
+    });
+  } catch (err) { res.status(500).json({ success: false, message: err.message }); }
+};
+
 exports.getDuplicateQuestions = async (req, res) => {
   try {
     const { total, dups } = await findDuplicateGroups();
