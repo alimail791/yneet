@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { Outlet, NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
+import InstallPrompt from "../InstallPrompt";
 
 export default function Layout() {
   const { user, logout } = useAuth();
@@ -78,6 +79,7 @@ export default function Layout() {
 
   return (
     <>
+      <InstallPrompt />
       <nav className="app-nav">
         <div className="nav-logo">YNeet 🎯</div>
         <div className="nav-tabs">
