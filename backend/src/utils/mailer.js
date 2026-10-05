@@ -17,11 +17,28 @@ const baseStyle = `font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-
 const btnStyle = `display:inline-block;padding:12px 28px;border-radius:8px;text-decoration:none;font-weight:700;font-size:15px;margin:16px 0;`;
 const header = `<h1 style="color:#1e3a8a;font-size:28px;margin-bottom:4px">YNeet 🎯</h1><p style="color:#7c3aed;font-size:13px;margin-bottom:24px">Your Personal NEET Mentor</p>`;
 
+// Plain-text alternative + optional reply-to: HTML-only mail is a spam signal,
+// and a real reply-to mailbox helps sender reputation. Links are kept in the
+// text version as "label: url" so they still work without HTML.
+const htmlToText = (html) => html
+  .replace(/<style[\s\S]*?<\/style>/gi, "")
+  .replace(/<a [^>]*href="([^"]+)"[^>]*>([\s\S]*?)<\/a>/gi, "$2: $1")
+  .replace(/<\/(p|div|tr|h\d)>/gi, "\n")
+  .replace(/<br\s*\/?>/gi, "\n")
+  .replace(/<[^>]+>/g, " ")
+  .replace(/&nbsp;/g, " ")
+  .replace(/[ \t]+/g, " ")
+  .replace(/\n\s+/g, "\n")
+  .trim();
+
 const send = async ({ to, subject, html }) => {
-  const { error } = await getResend().emails.send({
+  const payload = {
     from: process.env.RESEND_FROM_EMAIL || "YNeet <noreply@yneet.in>",
     to, subject, html,
-  });
+    text: htmlToText(html),
+  };
+  if (process.env.RESEND_REPLY_TO) payload.replyTo = process.env.RESEND_REPLY_TO;
+  const { error } = await getResend().emails.send(payload);
   if (error) throw new Error(error.message || "Failed to send email via Resend");
 };
 
