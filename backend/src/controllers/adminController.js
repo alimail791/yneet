@@ -377,13 +377,14 @@ async function findDuplicateGroups() {
 // uploader didn't recognise: they have pyqYear set but isPYQ=false. Also tidies
 // class names ("11"/"12") and difficulty casing.
 async function dataFixCounts() {
-  const [pyq, c11, c12, diff] = await Promise.all([
+  const [pyq, c11, c12, diff, sub] = await Promise.all([
     prisma.question.count({ where: { isPYQ: false, pyqYear: { not: null } } }),
     prisma.question.count({ where: { classLevel: "11" } }),
     prisma.question.count({ where: { classLevel: "12" } }),
     prisma.question.count({ where: { difficulty: { in: ["Easy", "Medium", "Hard"] } } }),
+    prisma.question.count({ where: { subject: { in: ["Botany", "Zoology", "Biotechnology"] } } }),
   ]);
-  return { pyqFlagMissing: pyq, class11: c11, class12: c12, difficultyCase: diff };
+  return { pyqFlagMissing: pyq, class11: c11, class12: c12, difficultyCase: diff, subjectMerge: sub };
 }
 
 exports.getDataFixPreview = async (req, res) => {
@@ -397,11 +398,62 @@ exports.applyDataFix = async (req, res) => {
     await prisma.question.updateMany({ where: { isPYQ: false, pyqYear: { not: null } }, data: { isPYQ: true } });
     await prisma.question.updateMany({ where: { classLevel: "11" }, data: { classLevel: "11th" } });
     await prisma.question.updateMany({ where: { classLevel: "12" }, data: { classLevel: "12th" } });
+    await prisma.question.updateMany({ where: { subject: { in: ["Botany", "Zoology", "Biotechnology"] } }, data: { subject: "Biology" } });
     for (const d of ["Easy", "Medium", "Hard"]) {
       await prisma.question.updateMany({ where: { difficulty: d }, data: { difficulty: d.toLowerCase() } });
     }
     const pyq = await prisma.question.count({ where: { isPYQ: true } });
     res.json({ success: true, fixed: before, pyqNow: pyq });
+  } catch (err) { res.status(500).json({ success: false, message: err.message }); }
+};
+
+// Near-duplicate PYQs: same year, same first 100 characters of the question
+// (ignoring case/punctuation) AND the same correct-answer text. Catches the same
+// paper uploaded twice with slightly different wording of the rest.
+const normTxt = (t) => String(t || "").toLowerCase().replace(/[^a-z0-9]+/g, " ").trim();
+async function findNearDuplicatePyqs() {
+  const all = await prisma.question.findMany({
+    where: { isPYQ: true, pyqYear: { not: null } },
+    select: { id: true, pyqYear: true, questionText: true, optionA: true, optionB: true, optionC: true, optionD: true, correctOpt: true, explanation: true, createdAt: true, _count: { select: { mockTests: true } } },
+    orderBy: { createdAt: "asc" },
+  });
+  const groups = new Map();
+  for (const q of all) {
+    const correct = [q.optionA, q.optionB, q.optionC, q.optionD][q.correctOpt] || "";
+    const key = `${q.pyqYear}|${normTxt(q.questionText).slice(0, 100)}|${normTxt(correct)}`;
+    if (!groups.has(key)) groups.set(key, []);
+    groups.get(key).push(q);
+  }
+  return { total: all.length, dups: [...groups.values()].filter((g) => g.length > 1) };
+}
+
+exports.getNearDuplicatePyqs = async (req, res) => {
+  try {
+    const { total, dups } = await findNearDuplicatePyqs();
+    const extra = dups.reduce((n, g) => n + g.length - 1, 0);
+    const perYear = {};
+    dups.forEach((g) => { perYear[g[0].pyqYear] = (perYear[g[0].pyqYear] || 0) + g.length - 1; });
+    res.json({ success: true, totalPyq: total, groups: dups.length, extraCopies: extra, perYear, remaining: total - extra,
+      sample: dups.slice(0, 3).map((g) => g[0].questionText.slice(0, 90)) });
+  } catch (err) { res.status(500).json({ success: false, message: err.message }); }
+};
+
+exports.removeNearDuplicatePyqs = async (req, res) => {
+  try {
+    const { dups } = await findNearDuplicatePyqs();
+    let deleted = 0, kept = 0;
+    for (const g of dups) {
+      // keep the copy used in a mock test, else the one with the fullest explanation, else the oldest
+      const keep = g.find((q) => q._count.mockTests > 0) ||
+        [...g].sort((a, b) => String(b.explanation || "").length - String(a.explanation || "").length)[0];
+      for (const q of g) {
+        if (q.id === keep.id) continue;
+        if (q._count.mockTests > 0) { kept++; continue; }
+        try { await prisma.question.delete({ where: { id: q.id } }); deleted++; } catch { kept++; }
+      }
+    }
+    const pyq = await prisma.question.count({ where: { isPYQ: true } });
+    res.json({ success: true, deleted, leftBecauseInUse: kept, pyqNow: pyq });
   } catch (err) { res.status(500).json({ success: false, message: err.message }); }
 };
 

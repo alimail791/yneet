@@ -91,12 +91,24 @@ export default function AdminQuestionsPage() {
   const fixData = async () => {
     try {
       const { data: d } = await api.get("/admin/questions/fix-data");
-      if (!d.pyqFlagMissing && !d.class11 && !d.class12 && !d.difficultyCase) { alert("Nothing to fix."); return; }
-      if (!window.confirm(`Fix question data?\n\n• ${d.pyqFlagMissing} questions have a PYQ year but are not marked as PYQ → mark as PYQ\n• ${d.class11 + d.class12} questions with class "11"/"12" → "11th"/"12th"\n• ${d.difficultyCase} difficulty labels → lowercase\n\nNo questions are deleted.`)) return;
+      if (!d.pyqFlagMissing && !d.class11 && !d.class12 && !d.difficultyCase && !d.subjectMerge) { alert("Nothing to fix."); return; }
+      if (!window.confirm(`Fix question data?\n\n• ${d.pyqFlagMissing} questions have a PYQ year but are not marked as PYQ → mark as PYQ\n• ${d.class11 + d.class12} questions with class "11"/"12" → "11th"/"12th"\n• ${d.difficultyCase} difficulty labels → lowercase\n• ${d.subjectMerge} Botany/Zoology/Biotechnology questions → Biology\n\nNo questions are deleted.`)) return;
       const { data: r } = await api.post("/admin/questions/fix-data");
       alert(`Done. PYQ questions now: ${r.pyqNow}.`);
       load();
     } catch (err) { alert(err?.response?.data?.message || "Fix failed"); }
+  };
+
+  const cleanNearDupPyqs = async () => {
+    try {
+      const { data: d } = await api.get("/admin/questions/near-duplicate-pyqs");
+      if (!d.extraCopies) { alert(`No near-duplicate PYQs found (${d.totalPyq} PYQs checked).`); return; }
+      const yrs = Object.entries(d.perYear).map(([y, n]) => `${y}: ${n}`).join(", ");
+      if (!window.confirm(`PYQs: ${d.totalPyq}. Found ${d.extraCopies} repeated copies (same year, same question start, same correct answer).\n\nBy year → ${yrs}\n\nExample: "${d.sample[0] || ""}…"\n\nRemove the extra copies? ${d.remaining} PYQs will remain. Copies used in mock tests are kept.`)) return;
+      const { data: r } = await api.post("/admin/questions/near-duplicate-pyqs/remove");
+      alert(`Removed ${r.deleted} repeated PYQ(s). PYQs now: ${r.pyqNow}.${r.leftBecauseInUse ? ` ${r.leftBecauseInUse} left because they are in use.` : ""}`);
+      load();
+    } catch (err) { alert(err?.response?.data?.message || "Check failed"); }
   };
 
   const showStats = async () => {
@@ -244,6 +256,7 @@ export default function AdminQuestionsPage() {
           <button className="btn btn-purple" onClick={openScan}>📄 Scan Question Paper</button>
           <button className="btn btn-outline" onClick={openBulk}>⬆ Bulk Upload CSV</button>
           <button className="btn btn-outline" onClick={fixData}>🔧 Fix PYQ Data</button>
+          <button className="btn btn-outline" onClick={cleanNearDupPyqs}>🧹 Repeated PYQs</button>
           <button className="btn btn-outline" onClick={showStats}>📊 Stats</button>
           <button className="btn btn-outline" onClick={cleanDuplicates}>🧹 Remove Duplicates</button>
           <button className="btn btn-blue" onClick={openNew}>+ Add Question</button>

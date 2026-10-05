@@ -35,6 +35,8 @@ router.post("/questions", c.createQuestion);
 router.post("/questions/bulk", c.bulkCreateQuestions);
 router.get("/questions/fix-data", c.getDataFixPreview);
 router.post("/questions/fix-data", c.applyDataFix);
+router.get("/questions/near-duplicate-pyqs", c.getNearDuplicatePyqs);
+router.post("/questions/near-duplicate-pyqs/remove", c.removeNearDuplicatePyqs);
 router.get("/questions/stats", c.getQuestionStats);
 router.get("/questions/duplicates", c.getDuplicateQuestions);
 router.post("/questions/duplicates/remove", c.removeDuplicateQuestions);
