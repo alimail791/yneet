@@ -287,6 +287,7 @@ exports.bulkCreateQuestions = async (req, res) => {
 
   const required = ["subject", "chapter", "topic", "classLevel", "questionText", "optionA", "optionB", "optionC", "optionD", "correctOpt", "explanation"];
   let created = 0;
+  let skipped = 0;
   const errors = [];
 
   for (let i = 0; i < questions.length; i++) {
@@ -302,6 +303,15 @@ exports.bulkCreateQuestions = async (req, res) => {
       continue;
     }
     try {
+      // Re-uploading the same PYQ file must not create duplicates.
+      const isPyqRow = row.isPYQ === true || String(row.isPYQ).toLowerCase() === "true";
+      if (isPyqRow && row.pyqYear) {
+        const dup = await prisma.question.findFirst({
+          where: { isPYQ: true, pyqYear: Number(row.pyqYear), questionText: row.questionText },
+          select: { id: true },
+        });
+        if (dup) { skipped++; continue; }
+      }
       await prisma.question.create({
         data: {
           subject: row.subject,
@@ -327,7 +337,7 @@ exports.bulkCreateQuestions = async (req, res) => {
     }
   }
 
-  res.json({ success: true, created, failed: errors.length, errors });
+  res.json({ success: true, created, skipped, failed: errors.length, errors });
 };
 
 // ───────────────────────── Flashcards ─────────────────────────

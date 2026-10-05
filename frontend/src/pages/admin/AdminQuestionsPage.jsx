@@ -104,13 +104,24 @@ export default function AdminQuestionsPage() {
   const submitBulk = async () => {
     if (bulkRows.length === 0) return;
     setBulkUploading(true);
+    // Server accepts max 500 rows per request, so send in batches of 200.
+    const BATCH = 200;
+    const total = { success: true, created: 0, failed: 0, skipped: 0, errors: [] };
     try {
-      const { data } = await api.post("/admin/questions/bulk", { questions: bulkRows });
-      setBulkResult(data);
-      if (data.created > 0) load();
+      for (let start = 0; start < bulkRows.length; start += BATCH) {
+        setBulkFileName(`Uploading ${Math.min(start + BATCH, bulkRows.length)} / ${bulkRows.length}…`);
+        const { data } = await api.post("/admin/questions/bulk", { questions: bulkRows.slice(start, start + BATCH) });
+        total.created += data.created || 0;
+        total.failed += data.failed || 0;
+        total.skipped += data.skipped || 0;
+        (data.errors || []).forEach((e) => total.errors.push({ ...e, row: e.row + start }));
+      }
     } catch (err) {
-      alert(err?.response?.data?.message || "Bulk upload failed");
+      total.errors.push({ row: "-", message: err?.response?.data?.message || "Upload stopped: " + err.message });
+      total.failed += 1;
     }
+    setBulkResult(total);
+    if (total.created > 0) load();
     setBulkUploading(false);
   };
 
@@ -364,6 +375,7 @@ export default function AdminQuestionsPage() {
               <div style={{ marginBottom: 14 }}>
                 <p style={{ fontSize: 14, marginBottom: 8 }}>
                   <span className="chip chip-green">{bulkResult.created} created</span>{" "}
+                  {bulkResult.skipped > 0 && <span className="chip">{bulkResult.skipped} duplicates skipped</span>}{" "}
                   {bulkResult.failed > 0 && <span className="chip chip-red">{bulkResult.failed} failed</span>}
                 </p>
                 {bulkResult.errors.length > 0 && (
