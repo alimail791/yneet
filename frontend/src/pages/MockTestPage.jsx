@@ -76,6 +76,16 @@ export default function MockTestPage() {
     setCurrent(c => Math.min(questions.length - 1, c + 1));
   };
 
+  // Last question has no "next" — this button takes its place so the student
+  // can finish the paper without hunting for the Submit button at the top.
+  const finishTest = () => {
+    const unanswered = questions.filter(x => responses[x.id]?.selected === undefined || responses[x.id]?.selected === null).length;
+    const msg = unanswered > 0
+      ? `You have ${unanswered} unanswered question${unanswered === 1 ? "" : "s"}. Submit anyway? This cannot be undone.`
+      : "Submit test? This cannot be undone.";
+    if (window.confirm(msg)) submitTest();
+  };
+
   if (!questions.length) return <div className="loading-screen"><div className="spinner"></div><p>Loading test...</p></div>;
 
   const q = questions[current];
@@ -117,11 +127,15 @@ export default function MockTestPage() {
             <button className={`btn btn-sm ${resp?.marked ? "btn-purple" : "btn-outline"}`} onClick={toggleMark}>
               🔖 {resp?.marked ? "Marked" : "Mark for Review"}
             </button>
-            <button className="btn btn-outline btn-sm" onClick={markForReviewAndNext} disabled={current === questions.length - 1}>🔖 Mark for Review & Next</button>
-            <button className="btn btn-outline btn-sm" onClick={() => setResponses(r => ({ ...r, [q.id]: { ...r[q.id], selected: null } }))} disabled={resp?.selected === undefined || resp?.selected === null}>Clear</button>
+            <button className="btn btn-outline btn-sm" onClick={markForReviewAndNext}>🔖 {current === questions.length - 1 ? "Mark for Review" : "Mark for Review & Next"}</button>
+            <button className="btn btn-outline btn-sm" onClick={() => { setResponses(r => ({ ...r, [q.id]: { ...r[q.id], selected: null } })); api.post(`/mock/${attemptId}/response`, { questionId: q.id, selected: null, isMarked: resp?.marked || false, timeSec: 0 }).catch(() => {}); }} disabled={resp?.selected === undefined || resp?.selected === null}>Clear</button>
             <div style={{ marginLeft: "auto", display: "flex", gap: 8 }}>
               <button className="btn btn-outline btn-sm" onClick={() => setCurrent(c => Math.max(0, c - 1))} disabled={current === 0}>← Prev</button>
-              <button className="btn btn-blue btn-sm" onClick={() => setCurrent(c => Math.min(questions.length - 1, c + 1))} disabled={current === questions.length - 1}>Next →</button>
+              {current === questions.length - 1 ? (
+                <button className="btn btn-green btn-sm" onClick={finishTest} disabled={submitting}>{submitting ? "Submitting..." : "Finish & Submit ✓"}</button>
+              ) : (
+                <button className="btn btn-blue btn-sm" onClick={() => setCurrent(c => Math.min(questions.length - 1, c + 1))}>Next →</button>
+              )}
             </div>
           </div>
         </div>

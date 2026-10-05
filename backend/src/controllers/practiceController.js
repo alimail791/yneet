@@ -5,8 +5,11 @@ const prisma = new PrismaClient();
 exports.getQuestions = async (req, res) => {
   try {
     const { subject, chapter, isPYQ, isRepeated, pyqYear, page = 1, limit = 20 } = req.query;
-    // Every question served is scoped to the logged-in student's own class syllabus.
-    const where = { classLevel: req.user.profile?.class || "12th" };
+    // Every question served is scoped to the logged-in student's own class syllabus —
+    // except Previous Year Questions: a past NEET paper isn't class-specific, so
+    // PYQs are shown to every student regardless of which class the admin tagged
+    // them under (otherwise a PYQ tagged "Dropper" would be invisible to a 12th student).
+    const where = isPYQ === "true" ? {} : { classLevel: req.user.profile?.class || "12th" };
     if (subject) where.subject = subject;
     if (chapter) where.chapter = chapter;
     if (isPYQ === "true") where.isPYQ = true;
@@ -33,10 +36,9 @@ exports.getQuestions = async (req, res) => {
 // actual NEET syllabus a past paper covers).
 exports.getPyqYears = async (req, res) => {
   try {
-    const classLevel = req.user.profile?.class || "12th";
     const rows = await prisma.question.groupBy({
       by: ["pyqYear", "subject"],
-      where: { classLevel, isPYQ: true, pyqYear: { not: null } },
+      where: { isPYQ: true, pyqYear: { not: null } },
       _count: { _all: true },
     });
     const byYear = {};
