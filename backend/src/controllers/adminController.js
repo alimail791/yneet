@@ -373,6 +373,38 @@ async function findDuplicateGroups() {
   return { total: all.length, dups };
 }
 
+// One-off repair for rows uploaded with "True" (capital T), which the old bulk
+// uploader didn't recognise: they have pyqYear set but isPYQ=false. Also tidies
+// class names ("11"/"12") and difficulty casing.
+async function dataFixCounts() {
+  const [pyq, c11, c12, diff] = await Promise.all([
+    prisma.question.count({ where: { isPYQ: false, pyqYear: { not: null } } }),
+    prisma.question.count({ where: { classLevel: "11" } }),
+    prisma.question.count({ where: { classLevel: "12" } }),
+    prisma.question.count({ where: { difficulty: { in: ["Easy", "Medium", "Hard"] } } }),
+  ]);
+  return { pyqFlagMissing: pyq, class11: c11, class12: c12, difficultyCase: diff };
+}
+
+exports.getDataFixPreview = async (req, res) => {
+  try { res.json({ success: true, ...(await dataFixCounts()) }); }
+  catch (err) { res.status(500).json({ success: false, message: err.message }); }
+};
+
+exports.applyDataFix = async (req, res) => {
+  try {
+    const before = await dataFixCounts();
+    await prisma.question.updateMany({ where: { isPYQ: false, pyqYear: { not: null } }, data: { isPYQ: true } });
+    await prisma.question.updateMany({ where: { classLevel: "11" }, data: { classLevel: "11th" } });
+    await prisma.question.updateMany({ where: { classLevel: "12" }, data: { classLevel: "12th" } });
+    for (const d of ["Easy", "Medium", "Hard"]) {
+      await prisma.question.updateMany({ where: { difficulty: d }, data: { difficulty: d.toLowerCase() } });
+    }
+    const pyq = await prisma.question.count({ where: { isPYQ: true } });
+    res.json({ success: true, fixed: before, pyqNow: pyq });
+  } catch (err) { res.status(500).json({ success: false, message: err.message }); }
+};
+
 exports.getQuestionStats = async (req, res) => {
   try {
     const [total, pyq, byYear, bySubject, byClass] = await Promise.all([

@@ -88,6 +88,17 @@ export default function AdminQuestionsPage() {
   const openBulk = () => { setBulkRows([]); setBulkFileName(""); setBulkResult(null); setBulkModal(true); };
   const closeBulk = () => setBulkModal(false);
 
+  const fixData = async () => {
+    try {
+      const { data: d } = await api.get("/admin/questions/fix-data");
+      if (!d.pyqFlagMissing && !d.class11 && !d.class12 && !d.difficultyCase) { alert("Nothing to fix."); return; }
+      if (!window.confirm(`Fix question data?\n\n• ${d.pyqFlagMissing} questions have a PYQ year but are not marked as PYQ → mark as PYQ\n• ${d.class11 + d.class12} questions with class "11"/"12" → "11th"/"12th"\n• ${d.difficultyCase} difficulty labels → lowercase\n\nNo questions are deleted.`)) return;
+      const { data: r } = await api.post("/admin/questions/fix-data");
+      alert(`Done. PYQ questions now: ${r.pyqNow}.`);
+      load();
+    } catch (err) { alert(err?.response?.data?.message || "Fix failed"); }
+  };
+
   const showStats = async () => {
     try {
       const { data: d } = await api.get("/admin/questions/stats");
@@ -232,6 +243,7 @@ export default function AdminQuestionsPage() {
           <button className="btn btn-purple" onClick={openAi}>✨ Generate with AI</button>
           <button className="btn btn-purple" onClick={openScan}>📄 Scan Question Paper</button>
           <button className="btn btn-outline" onClick={openBulk}>⬆ Bulk Upload CSV</button>
+          <button className="btn btn-outline" onClick={fixData}>🔧 Fix PYQ Data</button>
           <button className="btn btn-outline" onClick={showStats}>📊 Stats</button>
           <button className="btn btn-outline" onClick={cleanDuplicates}>🧹 Remove Duplicates</button>
           <button className="btn btn-blue" onClick={openNew}>+ Add Question</button>
