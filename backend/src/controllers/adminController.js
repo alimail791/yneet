@@ -599,7 +599,10 @@ exports.getSummary = async (req, res) => {
 // the Bulk Upload accepts, so the file can be re-uploaded as-is.
 exports.exportQuestionsCsv = async (req, res) => {
   try {
-    const cols = ["subject","chapter","topic","classLevel","difficulty","questionText","optionA","optionB","optionC","optionD","correctOpt","explanation","isPYQ","pyqYear","isRepeated"];
+    const dbCols = ["id","subject","chapter","topic","classLevel","difficulty","questionText","optionA","optionB","optionC","optionD","correctOpt","explanation","isPYQ","pyqYear","isRepeated"];
+    // id first, then the upload columns, with the readable answer columns next to correctOpt.
+    const cols = ["id","subject","chapter","topic","classLevel","difficulty","questionText","optionA","optionB","optionC","optionD","correctAnswer","correctOptionText","correctOpt","explanation","isPYQ","pyqYear","isRepeated"];
+    const derive = (r) => ({ ...r, correctAnswer: "ABCD"[r.correctOpt] || "", correctOptionText: [r.optionA, r.optionB, r.optionC, r.optionD][r.correctOpt] || "" });
     const esc = (v) => {
       if (v === null || v === undefined) return "";
       const s = String(v);
@@ -614,10 +617,10 @@ exports.exportQuestionsCsv = async (req, res) => {
         take: 1000,
         ...(cursor ? { skip: 1, cursor: { id: cursor } } : {}),
         orderBy: { id: "asc" },
-        select: { id: true, ...Object.fromEntries(cols.map((c) => [c, true])) },
+        select: Object.fromEntries(dbCols.map((c) => [c, true])),
       });
       if (!rows.length) break;
-      res.write(rows.map((r) => cols.map((c) => esc(r[c])).join(",")).join("\r\n") + "\r\n");
+      res.write(rows.map((r) => { const d = derive(r); return cols.map((c) => esc(d[c])).join(","); }).join("\r\n") + "\r\n");
       cursor = rows[rows.length - 1].id;
     }
     res.end();
