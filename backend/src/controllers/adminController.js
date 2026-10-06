@@ -594,3 +594,35 @@ exports.getSummary = async (req, res) => {
     res.json({ success: true, summary: { totalUsers, activeSubs, totalQuestions, totalFlashcards, totalFormulas } });
   } catch (err) { res.status(500).json({ success: false, message: err.message }); }
 };
+
+// GET /admin/questions/export.csv — every question, in the same column order
+// the Bulk Upload accepts, so the file can be re-uploaded as-is.
+exports.exportQuestionsCsv = async (req, res) => {
+  try {
+    const cols = ["subject","chapter","topic","classLevel","difficulty","questionText","optionA","optionB","optionC","optionD","correctOpt","explanation","isPYQ","pyqYear","isRepeated"];
+    const esc = (v) => {
+      if (v === null || v === undefined) return "";
+      const s = String(v);
+      return /[",\r\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s;
+    };
+    res.setHeader("Content-Type", "text/csv; charset=utf-8");
+    res.setHeader("Content-Disposition", `attachment; filename="yneet_questions_${new Date().toISOString().slice(0, 10)}.csv"`);
+    res.write("﻿" + cols.join(",") + "\r\n");
+    let cursor = null;
+    for (;;) {
+      const rows = await prisma.question.findMany({
+        take: 1000,
+        ...(cursor ? { skip: 1, cursor: { id: cursor } } : {}),
+        orderBy: { id: "asc" },
+        select: { id: true, ...Object.fromEntries(cols.map((c) => [c, true])) },
+      });
+      if (!rows.length) break;
+      res.write(rows.map((r) => cols.map((c) => esc(r[c])).join(",")).join("\r\n") + "\r\n");
+      cursor = rows[rows.length - 1].id;
+    }
+    res.end();
+  } catch (err) {
+    if (!res.headersSent) res.status(500).json({ success: false, message: err.message });
+    else res.end();
+  }
+};

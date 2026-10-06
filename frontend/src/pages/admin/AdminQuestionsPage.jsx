@@ -88,6 +88,18 @@ export default function AdminQuestionsPage() {
   const openBulk = () => { setBulkRows([]); setBulkFileName(""); setBulkResult(null); setBulkModal(true); };
   const closeBulk = () => setBulkModal(false);
 
+  const exportCsv = async () => {
+    try {
+      const r = await api.get("/admin/questions/export.csv", { responseType: "blob" });
+      const url = URL.createObjectURL(r.data);
+      const a = document.createElement("a");
+      a.href = url;
+      a.download = `yneet_questions_${new Date().toISOString().slice(0, 10)}.csv`;
+      document.body.appendChild(a); a.click(); a.remove();
+      URL.revokeObjectURL(url);
+    } catch { alert("Export failed"); }
+  };
+
   const fixData = async () => {
     try {
       const { data: d } = await api.get("/admin/questions/fix-data");
@@ -263,6 +275,7 @@ export default function AdminQuestionsPage() {
           <button className="btn btn-outline" onClick={fixData}>🔧 Fix PYQ Data</button>
           <button className="btn btn-outline" onClick={cleanNearDupPyqs}>🧹 Repeated PYQs</button>
           <button className="btn btn-outline" onClick={showStats}>📊 Stats</button>
+          <button className="btn btn-outline" onClick={exportCsv}>⬇️ Download CSV</button>
           <button className="btn btn-outline" onClick={cleanDuplicates}>🧹 Remove Duplicates</button>
           <button className="btn btn-blue" onClick={openNew}>+ Add Question</button>
         </div>
