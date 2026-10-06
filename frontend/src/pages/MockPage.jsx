@@ -8,6 +8,7 @@ export default function MockPage() {
   const [tests, setTests] = useState([]);
   const [filter, setFilter] = useState("all");
   const [search, setSearch] = useState("");
+  const [chSubject, setChSubject] = useState("all"); // Chapter Tests sub-filter
   const [visible, setVisible] = useState(PAGE_SIZE);
   const [loading, setLoading] = useState(true);
   const navigate = useNavigate();
@@ -17,7 +18,7 @@ export default function MockPage() {
   }, []);
 
   // Reset pagination whenever the visible set changes shape.
-  useEffect(() => { setVisible(PAGE_SIZE); }, [filter, search]);
+  useEffect(() => { setVisible(PAGE_SIZE); }, [filter, search, chSubject]);
 
   const startTest = async (testId) => {
     try {
@@ -33,12 +34,14 @@ export default function MockPage() {
     t.type === "full" ? "Full Length" :
     t.type === "half" ? "Half Length" :
     t.type === "daily" ? "Daily Practice" :
-    t.type === "subject" ? `${t.subject} · Subject` : t.type;
+    t.type === "subject" ? `${t.subject} · Subject` :
+    t.type === "chapter" ? `${t.subject} · Chapter Test` : t.type;
 
   const fullTests = tests.filter(t => t.type === "full");
   const halfTests = tests.filter(t => t.type === "half");
   const subjectTests = tests.filter(t => t.type === "subject");
   const dailyTests = tests.filter(t => t.type === "daily");
+  const chapterTests = tests.filter(t => t.type === "chapter");
   const completedFull = fullTests.filter(t => t.lastAttempt?.status === "submitted").length;
 
   const filtered = useMemo(() => tests.filter(t => {
@@ -47,12 +50,13 @@ export default function MockPage() {
       case "full": return t.type === "full";
       case "half": return t.type === "half";
       case "daily": return t.type === "daily";
+      case "chapter": return t.type === "chapter" && (chSubject === "all" || t.subject === chSubject);
       case "phy": return t.type === "subject" && t.subject === "Physics";
       case "chem": return t.type === "subject" && t.subject === "Chemistry";
       case "bio": return t.type === "subject" && t.subject === "Biology";
-      default: return true;
+      default: return t.type !== "chapter"; // chapter tests live under their own tab
     }
-  }), [tests, filter, search]);
+  }), [tests, filter, search, chSubject]);
 
   const visibleTests = filtered.slice(0, visible);
 
@@ -71,7 +75,7 @@ export default function MockPage() {
 
       {/* Stats */}
       <div className="grid4 mb-5">
-        <div className="card"><div className="card-title">Total Tests</div><div className="card-value" style={{ color: "var(--blue)" }}>{tests.length}</div><div className="card-sub">{tests.length} in total</div></div>
+        <div className="card"><div className="card-title">Total Tests</div><div className="card-value" style={{ color: "var(--blue)" }}>{tests.length}</div><div className="card-sub">{chapterTests.length} chapter tests incl.</div></div>
         <div className="card"><div className="card-title">Full Length</div><div className="card-value" style={{ color: "var(--purple)" }}>{fullTests.length}</div><div className="card-sub">720 marks each</div></div>
         <div className="card"><div className="card-title">Subject Tests</div><div className="card-value" style={{ color: "var(--green)" }}>{subjectTests.length}</div><div className="card-sub">Bio+Phy+Chem</div></div>
         <div className="card"><div className="card-title">Completed</div><div className="card-value" style={{ color: "var(--amber)" }}>{tests.filter(t => t.lastAttempt?.status === "submitted").length}</div><div className="card-sub">attempts done</div></div>
@@ -80,7 +84,8 @@ export default function MockPage() {
       {/* Filter Tabs */}
       <div className="chip-row mb-3" style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
         {[
-          ["all", `All Tests (${tests.length})`],
+          ["all", `All Tests (${tests.length - chapterTests.length})`],
+          ...(chapterTests.length ? [["chapter", `Chapter Tests (${chapterTests.length})`]] : []),
           ["full", `Full Length (${fullTests.length})`],
           ["half", `Half Length (${halfTests.length})`],
           ["phy", `Physics (${subjectTests.filter(t => t.subject === "Physics").length})`],
@@ -91,6 +96,16 @@ export default function MockPage() {
           <span key={val} onClick={() => setFilter(val)} className="chip" style={{ cursor: "pointer", background: filter === val ? "var(--blue-light)" : "var(--gray2)", color: filter === val ? "var(--blue)" : "var(--text2)" }}>{label}</span>
         ))}
       </div>
+
+      {filter === "chapter" && (
+        <div className="chip-row mb-3" style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
+          {["all", "Physics", "Chemistry", "Botany", "Zoology"].map(sub => (
+            <span key={sub} onClick={() => setChSubject(sub)} className="chip" style={{ cursor: "pointer", background: chSubject === sub ? "var(--green-light, #dcfce7)" : "var(--gray2)", color: chSubject === sub ? "var(--green)" : "var(--text2)" }}>
+              {sub === "all" ? "All subjects" : sub} ({chapterTests.filter(t => sub === "all" || t.subject === sub).length})
+            </span>
+          ))}
+        </div>
+      )}
 
       <input
         className="form-input mb-5"

@@ -3,6 +3,7 @@ const { protect, requireAdmin } = require("../middleware/auth");
 const c = require("../controllers/adminController");
 const { generateContent, extractQuestionsFromImage } = require("../controllers/aiController");
 const { getContentCoverage } = require("../controllers/contentCoverageController");
+const ct = require("../controllers/chapterTestController");
 const { getPoolStats, buildMockTest, startBulkBuild, getBulkStatus, getOldBulkBatch, deleteOldBulkBatch } = require("../controllers/mockBuilderController");
 
 router.use(protect);
@@ -18,6 +19,10 @@ router.post("/mock-builder/bulk-build", startBulkBuild);
 router.get("/mock-builder/bulk-status", getBulkStatus);
 router.get("/mock-builder/old-batch", getOldBulkBatch);
 router.post("/mock-builder/old-batch/delete", deleteOldBulkBatch);
+router.get("/mock-builder/chapter-tests/preview", ct.previewChapterTests);
+router.post("/mock-builder/chapter-tests/build", ct.startChapterBuild);
+router.get("/mock-builder/chapter-tests/status", ct.getChapterBuildStatus);
+router.post("/mock-builder/chapter-tests/delete", ct.deleteChapterTests);
 
 router.get("/summary", c.getSummary);
 

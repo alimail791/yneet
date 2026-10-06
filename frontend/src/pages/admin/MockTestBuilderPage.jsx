@@ -1,4 +1,5 @@
 import { useState, useEffect, useRef } from "react";
+import ChapterTestsPanel from "./ChapterTestsPanel";
 import api from "../../lib/api";
 import { CLASS_LEVELS } from "../../utils/curriculum";
 
@@ -323,6 +324,7 @@ export default function MockTestBuilderPage() {
           {bulkJob?.running ? `Building… (${bulkJob.done}/${bulkJob.total})` : `📦 Run the Oct 2026 batch (${BULK_BATCH_TOTAL} tests)`}
         </button>
       </div>
+      <ChapterTestsPanel />
     </div>
   );
 }
