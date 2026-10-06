@@ -91,6 +91,7 @@ export default function App() {
         <Route path="quiz"           element={<QuizPage />} />
         <Route path="practice"       element={<PracticePage />} />
         <Route path="pyq"            element={<PYQPage />} />
+        <Route path="pyq/:year"      element={<PYQPage />} />
         <Route path="planner"        element={<PlannerPage />} />
         <Route path="leaderboard"    element={<LeaderboardPage />} />
         <Route path="biology"        element={<BiologyPage />} />

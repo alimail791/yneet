@@ -1,4 +1,5 @@
 import { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import api from "../lib/api";
 
 // A dedicated Previous Year Questions page — separate from the general
@@ -7,6 +8,8 @@ import api from "../lib/api";
 // a filter. Pulls from the same Question records (isPYQ + pyqYear), just a
 // different entry point focused on year-wise browsing.
 export default function PYQPage() {
+  const { year: yearParam } = useParams();
+  const navigate = useNavigate();
   const [years, setYears] = useState([]);
   const [yearsLoading, setYearsLoading] = useState(true);
   const [selectedYear, setSelectedYear] = useState(null);
@@ -23,7 +26,7 @@ export default function PYQPage() {
       .then((r) => {
         const ys = r.data.years || [];
         setYears(ys);
-        if (ys.length > 0) setSelectedYear(ys[0].year);
+        if (yearParam) setSelectedYear(Number(yearParam));
       })
       .catch(() => {})
       .finally(() => setYearsLoading(false));
@@ -37,7 +40,7 @@ export default function PYQPage() {
     params.set("pyqYear", year);
     if (subj) params.set("subject", subj);
     params.set("page", pg);
-    params.set("limit", 20);
+    params.set("limit", 30);
     api.get(`/practice/questions?${params}`)
       .then((r) => {
         setQuestions(r.data.questions || []);
@@ -52,6 +55,8 @@ export default function PYQPage() {
   useEffect(() => {
     if (selectedYear) fetchQuestions(selectedYear, subject, 1);
   }, [selectedYear, subject]);
+
+  useEffect(() => { setSelectedYear(yearParam ? Number(yearParam) : null); setSubject(""); setRevealed({}); }, [yearParam]);
 
   const toggleReveal = (id) => setRevealed((r) => ({ ...r, [id]: !r[id] }));
 
@@ -82,14 +87,31 @@ export default function PYQPage() {
             in the admin Question Bank, it'll show up here automatically, grouped by year.
           </p>
         </div>
+      ) : !yearParam ? (
+        <div className="grid3">
+          {years.map((y) => (
+            <div key={y.year} className="card" style={{ cursor: "pointer", position: "relative", overflow: "hidden" }} onClick={() => navigate(`/pyq/${y.year}`)}>
+              <div style={{ position: "absolute", top: 0, left: 0, right: 0, height: 3, background: "linear-gradient(90deg,var(--blue-mid),var(--purple))" }}></div>
+              <div style={{ fontSize: 22, fontWeight: 800, margin: "4px 0" }}>NEET {y.year}</div>
+              <div style={{ fontSize: 13, color: "var(--text2)", marginBottom: 10 }}>{y.total} questions</div>
+              <div style={{ display: "flex", gap: 6, flexWrap: "wrap", marginBottom: 12 }}>
+                <span className="chip chip-blue">Phy {y.Physics || 0}</span>
+                <span className="chip chip-amber">Chem {y.Chemistry || 0}</span>
+                <span className="chip chip-green">Bio {y.Biology || 0}</span>
+              </div>
+              <button className="btn btn-blue btn-full btn-sm">View {y.year} paper →</button>
+            </div>
+          ))}
+        </div>
       ) : (
         <>
+          <button className="btn btn-outline btn-sm mb-3" onClick={() => navigate("/pyq")}>← All years</button>
           {/* Year tabs */}
           <div className="chip-row mb-3" style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
             {years.map((y) => (
               <span
                 key={y.year}
-                onClick={() => setSelectedYear(y.year)}
+                onClick={() => navigate(`/pyq/${y.year}`)}
                 style={{
                   cursor: "pointer", padding: "7px 16px", borderRadius: 20, fontSize: 13, fontWeight: 700,
                   background: selectedYear === y.year ? "linear-gradient(135deg,var(--blue-mid),var(--purple))" : "var(--gray2)",
@@ -113,7 +135,12 @@ export default function PYQPage() {
                 {s || "All Subjects"}
               </span>
             ))}
-            <div style={{ fontSize: 13, color: "var(--text3)", alignSelf: "center", marginLeft: "auto" }}>{total} questions</div>
+            <div style={{ fontSize: 13, color: "var(--text3)", alignSelf: "center", marginLeft: "auto", display: "flex", gap: 10, alignItems: "center" }}>
+              {total} questions
+              <button className="btn btn-outline btn-sm" onClick={() => setRevealed(Object.fromEntries(questions.map((q) => [q.id, !questions.every((x) => revealed[x.id])])))}>
+                {questions.length > 0 && questions.every((q) => revealed[q.id]) ? "Hide all answers" : "Show all answers"}
+              </button>
+            </div>
           </div>
 
           {/* Questions */}
@@ -128,7 +155,7 @@ export default function PYQPage() {
               {questions.map((q, i) => (
                 <div key={q.id} className="card" style={{ borderLeft: `3px solid ${q.subject === "Biology" ? "var(--green)" : q.subject === "Physics" ? "var(--blue)" : "var(--amber)"}` }}>
                   <div style={{ display: "flex", gap: 8, flexWrap: "wrap", marginBottom: 10, alignItems: "center" }}>
-                    <span style={{ fontSize: 12, color: "var(--text3)", fontWeight: 600 }}>Q{(page - 1) * 20 + i + 1}</span>
+                    <span style={{ fontSize: 12, color: "var(--text3)", fontWeight: 600 }}>Q{(page - 1) * 30 + i + 1}</span>
                     <span className={`chip ${q.subject === "Biology" ? "chip-green" : q.subject === "Physics" ? "chip-blue" : "chip-amber"}`}>{q.subject}</span>
                     <span style={{ fontSize: 12, color: "var(--text2)" }}>{q.chapter} · {q.topic}</span>
                     <span className="pyq-badge">NEET {q.pyqYear}</span>
