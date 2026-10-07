@@ -45,6 +45,15 @@ export default function PricingPage() {
         handler: async (response) => {
           try {
             await api.post("/subscription/verify", response);
+            // Google Analytics / Ads conversion: a paid plan (value in rupees).
+            try {
+              window.gtag?.("event", "purchase", {
+                transaction_id: response.razorpay_payment_id,
+                value: order.amount / 100,
+                currency: order.currency || "INR",
+                items: [{ item_id: planKey, item_name: planKey === "TRIAL_5D" ? "5-Day Full Access" : "Monthly Full Access" }],
+              });
+            } catch { /* analytics must never block activation */ }
             await refreshUser();
             navigate("/", { replace: true });
           } catch {
