@@ -3,6 +3,7 @@ const jwt = require("jsonwebtoken");
 const crypto = require("crypto");
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
+const { applyInstituteAccess } = require("../utils/instituteAccess");
 
 // Maps Raise Academy's class fields to YNeet's classLevel vocabulary.
 // School Tuition students use `class` (6-12), NEET Coaching students use
@@ -124,6 +125,16 @@ const provisionFromRaiseAcademy = async (token) => {
     await prisma.profile.update({ where: { userId: user.id }, data: { class: classLevel } });
     user.profile.class = classLevel;
   }
+
+  // Institute bulk pack: Raise Academy's /auth/me reports instituteAccess when an
+  // institute has assigned this student a seat. Apply or end the INSTITUTE plan.
+  try {
+    const ia = raiseUser.instituteAccess;
+    if (ia?.endDate || user.subscription?.plan === "INSTITUTE") {
+      const sub = await applyInstituteAccess(user.id, !!ia?.endDate, ia?.endDate);
+      if (sub) user.subscription = sub;
+    }
+  } catch (e) { console.warn("Institute access sync failed:", e.message); }
 
   return user;
 };

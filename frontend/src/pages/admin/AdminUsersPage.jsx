@@ -104,7 +104,7 @@ export default function AdminUsersPage() {
                 <td style={{ fontWeight: 600 }}>{u.name}{u.role === "admin" && <span className="chip chip-purple" style={{ marginLeft: 6 }}>admin</span>}</td>
                 <td>{u.email}<br /><span style={{ color: "var(--text3)", fontSize: 12 }}>{u.phone || "—"}</span></td>
                 <td>{u.class === "Dropper" ? "Dropper" : u.class ? `Class ${u.class.replace("th", "")}` : "—"}</td>
-                <td>{u.subscription?.plan === "TRIAL_5D" ? "5-Day Trial" : u.subscription?.plan === "MONTHLY" ? "Monthly" : u.subscription?.plan === "REFERRAL_FREE" ? "Referral Free" : "—"}</td>
+                <td>{u.subscription?.plan === "TRIAL_5D" ? "5-Day Trial" : u.subscription?.plan === "MONTHLY" ? "Monthly" : u.subscription?.plan === "REFERRAL_FREE" ? "Referral Free" : u.subscription?.plan === "INSTITUTE" ? "Institute" : "—"}</td>
                 <td>
                   {u.subscription?.isActive
                     ? <span className="chip chip-green">Active</span>

@@ -18,6 +18,9 @@ app.use(cors({ origin: allowedOrigins.length ? allowedOrigins : true, credential
 app.use(express.json({ limit: "10mb" }));
 app.use(morgan("dev"));
 
+// Server-to-server calls from Raise Academy (bulk institute adds) sit before the rate limiter.
+app.use("/api/v1/internal", require("./routes/internal"));
+
 const limiter = rateLimit({ windowMs: 15 * 60 * 1000, max: 200 });
 app.use("/api", limiter);
 
