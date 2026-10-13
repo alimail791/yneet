@@ -128,6 +128,40 @@ export default function AdminQuestionsPage() {
     } catch (err) { alert(err?.response?.data?.message || "Check failed"); }
   };
 
+  const downloadPyqAudit = async () => {
+    const r = await api.get("/admin/questions/pyq-audit.csv", { responseType: "blob" });
+    const url = URL.createObjectURL(r.data);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `pyq_audit_${new Date().toISOString().slice(0, 10)}.csv`;
+    document.body.appendChild(a); a.click(); a.remove();
+    URL.revokeObjectURL(url);
+  };
+
+  const pyqAudit = async () => {
+    try {
+      const { data: d } = await api.get("/admin/questions/pyq-audit");
+      const sub = (o) => ["Physics", "Chemistry", "Biology"].map((s) => `${s[0]}${o[s] || 0}`).join("/");
+      const lines = d.years.map((y) => {
+        const flag = y.diff === 0 ? "✓" : y.diff > 0 ? `+${y.diff} over` : `${y.diff} short`;
+        const notes = [y.looseExtra && `${y.looseExtra} dup`, y.fuzzyPairs && `${y.fuzzyPairs} near-match`, y.crossYear && `${y.crossYear} in other year`].filter(Boolean).join(", ");
+        return `${y.year}: ${y.count}/${y.official} ${flag}  [${sub(y.bySubject)} vs ${sub(y.officialSplit)}]${notes ? `  → ${notes}` : ""}`;
+      }).join("\n");
+      const extra = [d.noYear && `• ${d.noYear} PYQs have no year`, d.notFlagged && `• ${d.notFlagged} have a year but aren't marked PYQ (use Fix PYQ Data)`, d.crossPairs && `• ${d.crossPairs} questions are tagged in two different years — check the CSV`, d.answerConflicts && `• ${d.answerConflicts} duplicates have different answer keys — fix by hand (in the CSV as ANSWER DIFFERS)`].filter(Boolean).join("\n");
+      alert(`PYQ Year Audit — ${d.totalPyq} PYQs\n(official: 200 for 2021–2024, 180 other years)\n\n${lines}${extra ? `\n\n${extra}` : ""}`);
+      if (d.suspectCount && window.confirm(`Download the ${d.suspectCount} suspect questions as CSV to review (each with the question it matches)?`)) await downloadPyqAudit();
+      if (d.looseExtra && window.confirm(`Remove ${d.looseExtra} same-year duplicate PYQs (same question and options, re-uploaded with options shuffled or a different answer key)?\n\nThe copy used in a mock test, or with the fullest explanation, is kept. Duplicates with different answers, near-matches and other-year matches are NOT touched.`)) {
+        let { data: r } = await api.post("/admin/questions/pyq-audit/remove-duplicates");
+        if (r.leftBecauseInUse > 0 && window.confirm(`Removed ${r.deleted}. ${r.leftBecauseInUse} more are used in mock tests. Swap them for the kept copy inside those tests and remove them too?`)) {
+          const { data: r2 } = await api.post("/admin/questions/pyq-audit/remove-duplicates", { relink: true });
+          r = { ...r2, deleted: r.deleted + r2.deleted };
+        }
+        alert(`Removed ${r.deleted}. PYQs now: ${r.pyqNow}.${r.leftBecauseInUse ? ` ${r.leftBecauseInUse} left (attempted by students).` : ""}`);
+        load();
+      }
+    } catch (err) { alert(err?.response?.data?.message || "Audit failed"); }
+  };
+
   const showStats = async () => {
     try {
       const { data: d } = await api.get("/admin/questions/stats");
@@ -274,6 +308,7 @@ export default function AdminQuestionsPage() {
           <button className="btn btn-outline" onClick={openBulk}>⬆ Bulk Upload CSV</button>
           <button className="btn btn-outline" onClick={fixData}>🔧 Fix PYQ Data</button>
           <button className="btn btn-outline" onClick={cleanNearDupPyqs}>🧹 Repeated PYQs</button>
+          <button className="btn btn-outline" onClick={pyqAudit}>🔎 PYQ Year Audit</button>
           <button className="btn btn-outline" onClick={showStats}>📊 Stats</button>
           <button className="btn btn-outline" onClick={exportCsv}>⬇️ Download CSV</button>
           <button className="btn btn-outline" onClick={cleanDuplicates}>🧹 Remove Duplicates</button>

@@ -442,6 +442,16 @@ exports.removeNearDuplicatePyqs = async (req, res) => {
   try {
     const relink = req.body?.relink === true;
     const { dups } = await findNearDuplicatePyqs();
+    const r = await removePyqGroups(dups, relink);
+    const pyq = await prisma.question.count({ where: { isPYQ: true } });
+    res.json({ success: true, ...r, pyqNow: pyq });
+  } catch (err) { res.status(500).json({ success: false, message: err.message }); }
+};
+
+// Deletes all but one copy in each group. Keeps the copy used in a mock test,
+// else the one with the fullest explanation. With relink, swaps in-use extras
+// for the kept copy inside their mock tests first.
+async function removePyqGroups(dups, relink) {
     let deleted = 0, kept = 0, swapped = 0;
     for (const g of dups) {
       // keep the copy used in a mock test, else the one with the fullest explanation, else the oldest
@@ -462,8 +472,110 @@ exports.removeNearDuplicatePyqs = async (req, res) => {
         try { await prisma.question.delete({ where: { id: q.id } }); deleted++; } catch { kept++; }
       }
     }
+    return { deleted, swapped, leftBecauseInUse: kept };
+}
+
+// ───────────── PYQ year audit ─────────────
+// Explains why a year has more or fewer PYQs than the real paper.
+// Official size: 2021–2024 papers had 200 questions (Section B choice), others 180.
+const officialPyq = (y) => (y >= 2021 && y <= 2024 ? 200 : 180);
+const officialSplit = (y) => (y >= 2021 && y <= 2024 ? { Physics: 50, Chemistry: 50, Biology: 100 } : { Physics: 45, Chemistry: 45, Biology: 90 });
+const subjGroup = (s) => (["Botany", "Zoology", "Biotechnology", "Biology"].includes(s) ? "Biology" : s);
+const optsOf = (q) => [q.optionA, q.optionB, q.optionC, q.optionD];
+// Same question text + same four options in any order (catches a re-upload
+// with shuffled options or a different answer key).
+const looseKey = (q) => `${normTxt(q.questionText)}#${optsOf(q).map(normTxt).sort().join("¦")}`;
+const tokens = (q) => new Set(normTxt(`${q.questionText} ${optsOf(q).join(" ")}`).split(" ").filter((w) => w.length > 1));
+const jaccard = (a, b) => { let i = 0; for (const t of a) if (b.has(t)) i++; return i / (a.size + b.size - i || 1); };
+
+async function pyqAudit() {
+  const all = await prisma.question.findMany({
+    where: { OR: [{ isPYQ: true }, { pyqYear: { not: null } }] },
+    select: { id: true, subject: true, chapter: true, pyqYear: true, isPYQ: true, isRepeated: true, questionText: true, optionA: true, optionB: true, optionC: true, optionD: true, correctOpt: true, explanation: true, createdAt: true, _count: { select: { mockTests: true } } },
+    orderBy: { createdAt: "asc" },
+  });
+  const pyqs = all.filter((q) => q.isPYQ && q.pyqYear != null);
+  const noYear = all.filter((q) => q.isPYQ && q.pyqYear == null).length;
+  const notFlagged = all.filter((q) => !q.isPYQ && q.pyqYear != null).length;
+  const suspects = []; // rows for the CSV
+
+  // 1) Same-year loose duplicates
+  const byYear = new Map();
+  for (const q of pyqs) { if (!byYear.has(q.pyqYear)) byYear.set(q.pyqYear, []); byYear.get(q.pyqYear).push(q); }
+  const looseGroups = [];
+  const years = [];
+  for (const [year, qs] of [...byYear.entries()].sort((a, b) => a[0] - b[0])) {
+    const g = new Map();
+    qs.forEach((q) => { const k = looseKey(q); if (!g.has(k)) g.set(k, []); g.get(k).push(q); });
+    const dupGroups = [...g.values()].filter((x) => x.length > 1);
+    looseGroups.push(...dupGroups);
+    dupGroups.forEach((grp) => grp.slice(1).forEach((q) => suspects.push({ reason: optsOf(q)[q.correctOpt] === optsOf(grp[0])[grp[0].correctOpt] ? "same-year duplicate (options shuffled)" : "same-year duplicate (ANSWER DIFFERS)", q, match: grp[0], score: 1 })));
+
+    // 2) Fuzzy near-matches among the remaining distinct questions (report only)
+    const reps = [...g.values()].map((x) => ({ q: x[0], t: tokens(x[0]) })).filter((r) => r.t.size >= 6);
+    let fuzzy = 0;
+    for (let i = 0; i < reps.length; i++) for (let j = i + 1; j < reps.length; j++) {
+      const s = jaccard(reps[i].t, reps[j].t);
+      if (s >= 0.85) { fuzzy++; suspects.push({ reason: "same-year near match", q: reps[j].q, match: reps[i].q, score: s }); }
+    }
+
+    const bySubject = {};
+    qs.forEach((q) => { const s = subjGroup(q.subject); bySubject[s] = (bySubject[s] || 0) + 1; });
+    years.push({ year, count: qs.length, official: officialPyq(year), diff: qs.length - officialPyq(year), bySubject, officialSplit: officialSplit(year),
+      looseExtra: dupGroups.reduce((n, x) => n + x.length - 1, 0), fuzzyPairs: fuzzy, crossYear: 0 });
+  }
+
+  // 3) Same question tagged in two different years (likely wrong year on upload)
+  const cross = new Map();
+  pyqs.forEach((q) => { const k = looseKey(q); if (!cross.has(k)) cross.set(k, []); cross.get(k).push(q); });
+  let crossPairs = 0;
+  for (const grp of cross.values()) {
+    const yrs = [...new Set(grp.map((q) => q.pyqYear))];
+    if (yrs.length < 2) continue;
+    const first = grp[0];
+    grp.filter((q) => q.pyqYear !== first.pyqYear).forEach((q) => {
+      crossPairs++;
+      years.forEach((y) => { if (y.year === q.pyqYear || y.year === first.pyqYear) y.crossYear++; });
+      suspects.push({ reason: q.isRepeated || first.isRepeated ? `also in ${first.pyqYear} (marked repeated)` : `also in ${first.pyqYear} (check year)`, q, match: first, score: 1 });
+    });
+  }
+  return { totalPyq: pyqs.length, noYear, notFlagged, years, looseGroups, crossPairs, suspects };
+}
+
+exports.getPyqAudit = async (req, res) => {
+  try {
+    const { totalPyq, noYear, notFlagged, years, looseGroups, crossPairs, suspects } = await pyqAudit();
+    const agree = (g) => new Set(g.map((q) => normTxt(optsOf(q)[q.correctOpt]))).size === 1;
+    res.json({ success: true, totalPyq, noYear, notFlagged, years, crossPairs, suspectCount: suspects.length,
+      looseExtra: looseGroups.filter(agree).reduce((n, g) => n + g.length - 1, 0),
+      answerConflicts: looseGroups.filter((g) => !agree(g)).length });
+  } catch (err) { res.status(500).json({ success: false, message: err.message }); }
+};
+
+exports.exportPyqAuditCsv = async (req, res) => {
+  try {
+    const { suspects } = await pyqAudit();
+    const esc = (v) => { if (v === null || v === undefined) return ""; const s = String(v); return /[",\r\n]/.test(s) ? `"${s.replace(/"/g, '""')}"` : s; };
+    const cols = ["reason", "similarity", "year", "subject", "chapter", "id", "questionText", "correctAnswer", "inMockTests", "matchYear", "matchId", "matchQuestionText", "matchCorrectAnswer"];
+    const rows = suspects.sort((a, b) => a.q.pyqYear - b.q.pyqYear).map(({ reason, q, match, score }) => [
+      reason, Math.round(score * 100) + "%", q.pyqYear, q.subject, q.chapter, q.id, q.questionText, optsOf(q)[q.correctOpt] || "", q._count.mockTests,
+      match.pyqYear, match.id, match.questionText, optsOf(match)[match.correctOpt] || "",
+    ].map(esc).join(","));
+    res.setHeader("Content-Type", "text/csv; charset=utf-8");
+    res.setHeader("Content-Disposition", `attachment; filename="pyq_audit_${new Date().toISOString().slice(0, 10)}.csv"`);
+    res.send("﻿" + cols.join(",") + "\r\n" + rows.join("\r\n") + "\r\n");
+  } catch (err) { res.status(500).json({ success: false, message: err.message }); }
+};
+
+// Removes only the same-year loose duplicates (same text + same options in any order).
+exports.removePyqLooseDuplicates = async (req, res) => {
+  try {
+    const { looseGroups } = await pyqAudit();
+    // Skip groups whose copies disagree on the answer — those need a manual check.
+    const safe = looseGroups.filter((g) => new Set(g.map((q) => normTxt(optsOf(q)[q.correctOpt]))).size === 1);
+    const r = await removePyqGroups(safe, req.body?.relink === true);
     const pyq = await prisma.question.count({ where: { isPYQ: true } });
-    res.json({ success: true, deleted, swapped, leftBecauseInUse: kept, pyqNow: pyq });
+    res.json({ success: true, ...r, pyqNow: pyq });
   } catch (err) { res.status(500).json({ success: false, message: err.message }); }
 };
 
