@@ -31,32 +31,21 @@ async function checkExpiringSubscriptions() {
 }
 
 async function sendParentDigests() {
-  const weekAgo = new Date(Date.now() - 7 * DAY_MS);
+  const { buildParentReport } = require("./parentReport");
+  const weekAgo = new Date(Date.now() - 7 * DAY_MS + 60 * 60 * 1000); // 1h slack so the daily run doesn't drift past a week
   const profiles = await prisma.profile.findMany({
     where: {
       parentEmail: { not: null },
       OR: [{ lastParentDigestSent: null }, { lastParentDigestSent: { lt: weekAgo } }],
     },
-    include: {
-      user: {
-        select: {
-          name: true,
-          streak: { select: { current: true } },
-          _count: { select: { attempts: { where: { status: "submitted" } } } },
-        },
-      },
-    },
+    select: { id: true, userId: true, parentEmail: true },
   });
 
   for (const p of profiles) {
     try {
-      await sendParentDigest(p.parentEmail, p.user, {
-        currentScore: p.currentScore,
-        targetScore: p.targetScore,
-        streak: p.user.streak?.current || 0,
-        mockCount: p.user._count.attempts,
-        weakSubjects: p.weakSubjects,
-      });
+      const stats = await buildParentReport(p.userId);
+      if (!stats) continue;
+      await sendParentDigest(p.parentEmail, stats);
       await prisma.profile.update({ where: { id: p.id }, data: { lastParentDigestSent: new Date() } });
       console.log(`Parent digest sent to ${p.parentEmail}`);
     } catch (err) {

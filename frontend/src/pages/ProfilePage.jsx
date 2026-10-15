@@ -1,6 +1,7 @@
 import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import api from "../lib/api";
+import ParentUpdates from "../components/ParentUpdates";
 
 const SUBJECTS = ["Physics","Chemistry","Biology","Thermodynamics","Optics","Electrostatics","Magnetism","Modern Physics","Organic Chemistry","Inorganic Chemistry","Physical Chemistry","Coordination Compounds","Electrochemistry","Genetics","Cell Biology","Human Physiology","Plant Physiology","Ecology","Evolution","Biotechnology"];
 const NEET_DATES = [
@@ -161,6 +162,7 @@ export default function ProfilePage() {
           <button className="btn btn-outline" style={{ marginLeft: "auto", color: "var(--red)", borderColor: "var(--red-light)" }} onClick={() => { if (window.confirm("Log out of YNeet?")) logout(); }}>Logout</button>
         </div>
       </div>
+      <ParentUpdates />
     </div>
   );
 }

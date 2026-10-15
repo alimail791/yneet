@@ -75,20 +75,15 @@ const sendInactivityReminder = async (user) => {
 // Weekly-ish progress summary sent to a parent's email, if the student added
 // one in their Profile. Purely informational — no login/action needed from
 // the parent.
-const sendParentDigest = async (parentEmail, student, stats) => {
+// Weekly parent report — see utils/parentReport.js for how the numbers are built.
+const sendParentDigest = async (parentEmail, stats) => {
+  const { reportHtml } = require("./parentReport");
   await send({
     to: parentEmail,
-    subject: `${student.name}'s NEET prep update — YNeet`,
+    subject: `${stats.name}'s weekly NEET progress — YNeet`,
     html: `<div style="${baseStyle}">${header}
-      <h2 style="color:#0f172a">Weekly update for ${student.name}</h2>
-      <table style="width:100%;border-collapse:collapse;margin:16px 0;">
-        <tr><td style="padding:8px 0;color:#64748b;">Current score</td><td style="padding:8px 0;text-align:right;font-weight:700;color:#1e293b;">${stats.currentScore}/720</td></tr>
-        <tr><td style="padding:8px 0;color:#64748b;">Target score</td><td style="padding:8px 0;text-align:right;font-weight:700;color:#1e293b;">${stats.targetScore}/720</td></tr>
-        <tr><td style="padding:8px 0;color:#64748b;">Study streak</td><td style="padding:8px 0;text-align:right;font-weight:700;color:#1e293b;">${stats.streak} days</td></tr>
-        <tr><td style="padding:8px 0;color:#64748b;">Mock tests taken</td><td style="padding:8px 0;text-align:right;font-weight:700;color:#1e293b;">${stats.mockCount}</td></tr>
-      </table>
-      ${stats.weakSubjects?.length ? `<p style="color:#475569;font-size:14px;">Areas needing more focus: <strong>${stats.weakSubjects.join(", ")}</strong></p>` : ""}
-      <p style="color:#94a3b8;font-size:12px;margin-top:24px">You're receiving this because ${student.name} added your email in their YNeet profile for progress updates.</p>
+      ${reportHtml(stats)}
+      <p style="color:#94a3b8;font-size:12px;margin-top:24px">You're receiving this because ${stats.name} added your email in their YNeet profile for weekly progress updates. To stop these emails, ask them to remove it under Profile → Parent Updates, or reply to this email.</p>
     </div>`,
   });
 };

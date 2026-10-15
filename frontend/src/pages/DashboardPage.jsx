@@ -162,6 +162,16 @@ export default function DashboardPage() {
         </div>
       )}
 
+      {/* Parent report */}
+      <div className="card mb-5" style={{ display: "flex", alignItems: "center", gap: 14, flexWrap: "wrap", cursor: "pointer" }} onClick={() => navigate("/profile#parent-updates")}>
+        <div style={{ fontSize: 28 }}>👨‍👩‍👧</div>
+        <div style={{ flex: 1, minWidth: 180 }}>
+          <div style={{ fontWeight: 700 }}>{user?.profile?.parentEmail ? "Share this week's report with your parents" : "Send weekly progress reports to your parents"}</div>
+          <div style={{ fontSize: 13, color: "var(--text2)" }}>{user?.profile?.parentEmail ? "Email goes every week automatically. Share it on WhatsApp too." : "Add a parent's email for weekly updates, or share on WhatsApp in one tap."}</div>
+        </div>
+        <span className="btn" style={{ background: "#25D366", color: "#fff", fontWeight: 700 }}>📲 Open</span>
+      </div>
+
       {/* XP */}
       <div className="card mb-5">
         <div className="section-header"><div className="section-title">Level & XP</div><span className="chip chip-purple">Lv.{xpLevel} {LEVEL_NAMES[xpLevel]||"Legend"}</span></div>
