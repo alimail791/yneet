@@ -1,8 +1,9 @@
 User-agent: *
-Disallow: /
+Allow: /
 
-# app.yneet.in is the logged-in student application (dashboard, mock tests,
-# practice, etc.) — everything here sits behind login and/or an active
-# subscription, so there is nothing for search engines to usefully index.
-# All public SEO content for YNeet lives on https://www.yneet.in — see its
-# sitemap at https://www.yneet.in/sitemap.xml.
+# app.yneet.in is the logged-in student application. Crawling is allowed so
+# search engines can see the "noindex" tag on every page (index.html) and keep
+# these pages out of results. A robots.txt Disallow would hide that tag and
+# leave URL-only "blocked by robots.txt" entries in Search Console.
+# All public YNeet pages live on https://www.yneet.in — sitemap:
+Sitemap: https://www.yneet.in/sitemap.xml
