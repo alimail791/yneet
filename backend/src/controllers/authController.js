@@ -119,6 +119,13 @@ const provisionFromRaiseAcademy = async (token) => {
     }
   }
 
+  // Parent email set by the student's institute (Raise Academy) — fill it in if
+  // the student hasn't set one themselves, so weekly parent reports start.
+  if (raiseUser.parentEmail && user.profile && !user.profile.parentEmail) {
+    await prisma.profile.update({ where: { userId: user.id }, data: { parentEmail: String(raiseUser.parentEmail).toLowerCase() } }).catch(() => {});
+    user.profile.parentEmail = String(raiseUser.parentEmail).toLowerCase();
+  }
+
   // Keep class level in sync on every login in case the student's class changed
   // on the Raise Academy side (e.g. promoted a grade, switched to Dropper).
   if (user.profile && user.profile.class !== classLevel) {

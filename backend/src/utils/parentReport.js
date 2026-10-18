@@ -24,10 +24,15 @@ async function buildParentReport(userId) {
     prisma.attempt.findMany({ where: { userId, status: "submitted", submittedAt: { gte: prevFrom, lt: from } }, select: { score: true, totalMarks: true } }),
     prisma.quizResult.findMany({ where: { userId, createdAt: { gte: from } }, select: { score: true, total: true, createdAt: true } }),
     prisma.practiceStat.findMany({ where: { userId, solvedAt: { gte: from } }, select: { correct: true, solvedAt: true } }),
-    prisma.attemptResponse.findMany({
-      where: { isCorrect: false, selected: { not: null }, attempt: { userId, status: "submitted", submittedAt: { gte: from } } },
-      select: { question: { select: { subject: true, chapter: true } } },
-    }),
+    // Wrong (attempted) answers this week, counted per chapter in the database.
+    prisma.$queryRaw`
+      SELECT q.subject AS subject, q.chapter AS chapter, COUNT(*)::int AS wrong
+      FROM attempt_responses r
+      JOIN attempts a ON a.id = r."attemptId"
+      JOIN questions q ON q.id = r."questionId"
+      WHERE a."userId" = ${userId} AND a.status = 'submitted' AND a."submittedAt" >= ${from}
+        AND r."isCorrect" = false AND r.selected IS NOT NULL
+      GROUP BY q.subject, q.chapter`,
   ]);
   if (!user) return null;
 
@@ -41,7 +46,7 @@ async function buildParentReport(userId) {
   const latestFull = fullMocks[fullMocks.length - 1] || null;
 
   const chapters = {};
-  wrong.forEach((r) => { const k = `${r.question.chapter} (${r.question.subject})`; chapters[k] = (chapters[k] || 0) + 1; });
+  wrong.forEach((r) => { const k = `${r.chapter} (${r.subject})`; chapters[k] = (chapters[k] || 0) + Number(r.wrong); });
   const weakChapters = Object.entries(chapters).sort((a, b) => b[1] - a[1]).slice(0, 3).map(([k]) => k);
 
   const activeDays = new Set([

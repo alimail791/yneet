@@ -1,5 +1,7 @@
 const router = require("express").Router();
 const { applyInstituteAccess } = require("../utils/instituteAccess");
+const { PrismaClient } = require("@prisma/client");
+const prisma = new PrismaClient();
 
 // Server-to-server only (Raise Academy backend), shared INTERNAL_SERVICE_KEY.
 router.use((req, res, next) => {
@@ -35,6 +37,41 @@ router.post("/institute-student", async (req, res) => {
     const { studentDetail } = require("../utils/instituteProgress");
     if (!req.body?.userId) return res.status(400).json({ success: false, message: "userId is required" });
     res.json({ success: true, ...(await studentDetail(req.body.userId)) });
+  } catch (err) { res.status(500).json({ success: false, message: err.message }); }
+});
+
+// POST /api/v1/internal/parent-contact { userId, parentEmail } — set by an institute.
+// A new/changed email gets this week's report straight away, then weekly.
+router.post("/parent-contact", async (req, res) => {
+  try {
+    const userId = String(req.body?.userId || "");
+    const email = String(req.body?.parentEmail || "").trim().toLowerCase() || null;
+    if (!userId) return res.status(400).json({ success: false, message: "userId is required" });
+    const profile = await prisma.profile.findUnique({ where: { userId } });
+    if (!profile) return res.json({ success: true, provisioned: false }); // applied at first login via /auth/me
+    if ((profile.parentEmail || null) === email) return res.json({ success: true, provisioned: true, changed: false });
+    await prisma.profile.update({ where: { userId }, data: { parentEmail: email, lastParentDigestSent: null } });
+    let sent = false;
+    if (email) {
+      try {
+        const { buildParentReport } = require("../utils/parentReport");
+        const { sendParentDigest } = require("../utils/mailer");
+        await sendParentDigest(email, await buildParentReport(userId));
+        await prisma.profile.update({ where: { userId }, data: { lastParentDigestSent: new Date() } });
+        sent = true;
+      } catch (e) { console.warn("First parent report (institute) failed:", e.message); }
+    }
+    res.json({ success: true, provisioned: true, changed: true, sent });
+  } catch (err) { res.status(500).json({ success: false, message: err.message }); }
+});
+
+// POST /api/v1/internal/parent-report { userId } — this week's numbers + WhatsApp text
+router.post("/parent-report", async (req, res) => {
+  try {
+    const { buildParentReport, reportText } = require("../utils/parentReport");
+    const stats = await buildParentReport(String(req.body?.userId || ""));
+    if (!stats) return res.json({ success: true, joined: false });
+    res.json({ success: true, joined: true, stats, text: reportText(stats) });
   } catch (err) { res.status(500).json({ success: false, message: err.message }); }
 });
 

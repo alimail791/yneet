@@ -88,13 +88,24 @@ async function runDailyJobs() {
   await sendParentDigests().catch((e) => console.warn("sendParentDigests failed:", e.message));
 }
 
+// Runs once a day at 10:00 IST (04:30 UTC) — a fixed time, not "2 minutes after
+// boot", so redeploys don't send extra emails (the inactivity reminder has no
+// "already sent" flag and was going out again on every deploy).
+const RUN_AT_UTC_MIN = 4 * 60 + 30;
+function msUntilNextRun(now = new Date()) {
+  const next = new Date(now);
+  next.setUTCHours(0, RUN_AT_UTC_MIN, 0, 0);
+  if (next <= now) next.setUTCDate(next.getUTCDate() + 1);
+  return next - now;
+}
+
 function startScheduledJobs() {
-  // Wait 2 minutes after boot before the first run (let the server fully
-  // settle, avoid racing DB connection setup), then repeat every 24 hours.
-  setTimeout(() => {
-    runDailyJobs();
-    setInterval(runDailyJobs, DAY_MS);
-  }, 2 * 60 * 1000);
+  const schedule = () => setTimeout(async () => {
+    await runDailyJobs().catch((e) => console.warn("Daily jobs failed:", e.message));
+    schedule();
+  }, msUntilNextRun());
+  schedule();
+  console.log(`Daily email jobs scheduled — next run in ${Math.round(msUntilNextRun() / 60000)} min (10:00 IST).`);
 }
 
 module.exports = { startScheduledJobs };
