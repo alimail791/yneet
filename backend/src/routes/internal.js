@@ -20,4 +20,22 @@ router.post("/institute-access", async (req, res) => {
   } catch (err) { res.status(500).json({ success: false, message: err.message }); }
 });
 
+// POST /api/v1/internal/institute-progress  { userIds: [] } — summary for an institute's students
+router.post("/institute-progress", async (req, res) => {
+  try {
+    const { institutesSummary } = require("../utils/instituteProgress");
+    const ids = Array.isArray(req.body?.userIds) ? req.body.userIds : [];
+    res.json({ success: true, ...(await institutesSummary(ids)) });
+  } catch (err) { res.status(500).json({ success: false, message: err.message }); }
+});
+
+// POST /api/v1/internal/institute-student  { userId } — one student's tests and weak chapters
+router.post("/institute-student", async (req, res) => {
+  try {
+    const { studentDetail } = require("../utils/instituteProgress");
+    if (!req.body?.userId) return res.status(400).json({ success: false, message: "userId is required" });
+    res.json({ success: true, ...(await studentDetail(req.body.userId)) });
+  } catch (err) { res.status(500).json({ success: false, message: err.message }); }
+});
+
 module.exports = router;
