@@ -75,4 +75,50 @@ router.post("/parent-report", async (req, res) => {
   } catch (err) { res.status(500).json({ success: false, message: err.message }); }
 });
 
+// ───────── Razorpay for Raise Academy institute plans ─────────
+// YNeet holds the Razorpay keys; Raise Academy asks for an order and later for
+// verification, so the secret never leaves this service.
+let rzp = null;
+const razorpay = () => {
+  if (!rzp) { const Razorpay = require("razorpay"); rzp = new Razorpay({ key_id: process.env.RAZORPAY_KEY_ID, key_secret: process.env.RAZORPAY_KEY_SECRET }); }
+  return rzp;
+};
+
+// POST /api/v1/internal/razorpay/order { amount (paise), receipt, notes }
+router.post("/razorpay/order", async (req, res) => {
+  try {
+    const amount = Number(req.body?.amount);
+    if (!Number.isInteger(amount) || amount < 100) return res.status(400).json({ success: false, message: "Invalid amount" });
+    const order = await razorpay().orders.create({
+      amount, currency: "INR",
+      receipt: String(req.body?.receipt || `inst_${Date.now()}`).slice(0, 40),
+      notes: { ...(req.body?.notes || {}), source: "raiseacademy-institute" },
+    });
+    res.json({ success: true, orderId: order.id, amount: order.amount, currency: order.currency, keyId: process.env.RAZORPAY_KEY_ID });
+  } catch (err) {
+    console.error("Institute razorpay order error:", err?.error || err.message);
+    res.status(502).json({ success: false, message: "Could not start payment" });
+  }
+});
+
+// POST /api/v1/internal/razorpay/verify { orderId, paymentId, signature }
+// Checks the checkout signature AND asks Razorpay that this payment really is
+// for this order and was paid, before anything is activated.
+router.post("/razorpay/verify", async (req, res) => {
+  try {
+    const crypto = require("crypto");
+    const { orderId, paymentId, signature } = req.body || {};
+    if (!orderId || !paymentId || !signature) return res.status(400).json({ success: false, message: "Missing fields" });
+    const expected = crypto.createHmac("sha256", process.env.RAZORPAY_KEY_SECRET).update(`${orderId}|${paymentId}`).digest("hex");
+    const sigOk = expected.length === String(signature).length && crypto.timingSafeEqual(Buffer.from(expected), Buffer.from(String(signature)));
+    if (!sigOk) return res.json({ success: true, valid: false, reason: "signature" });
+    const payment = await razorpay().payments.fetch(paymentId);
+    const paid = payment && payment.order_id === orderId && ["captured", "authorized"].includes(payment.status);
+    res.json({ success: true, valid: !!paid, status: payment?.status, amount: payment?.amount, method: payment?.method, reason: paid ? null : "not paid" });
+  } catch (err) {
+    console.error("Institute razorpay verify error:", err?.error || err.message);
+    res.status(502).json({ success: false, message: "Could not verify payment" });
+  }
+});
+
 module.exports = router;
