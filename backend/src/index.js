@@ -50,3 +50,24 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`🚀 YNeet API running on port ${PORT}`));
 
 require("./utils/scheduledJobs").startScheduledJobs();
+
+// One line at startup with the live test catalogue (counts per class/type/subject
+// and question counts) — read from the Railway logs for sales material.
+setTimeout(async () => {
+  try {
+    const { PrismaClient } = require("@prisma/client");
+    const prisma = new PrismaClient();
+    const rows = await prisma.mockTest.groupBy({
+      by: ["classLevel", "type", "subject"], where: { isActive: true },
+      _count: { _all: true }, _min: { totalQs: true }, _max: { totalQs: true }, _avg: { totalQs: true, durationMin: true },
+    });
+    const [questions, pyq, bySubject] = await Promise.all([
+      prisma.question.count(), prisma.question.count({ where: { isPYQ: true } }),
+      prisma.question.groupBy({ by: ["subject"], _count: { _all: true } }),
+    ]);
+    console.log("TEST_CATALOGUE " + JSON.stringify({
+      tests: rows.map((r) => ({ c: r.classLevel, t: r.type, s: r.subject, n: r._count._all, qMin: r._min.totalQs, qMax: r._max.totalQs, qAvg: Math.round(r._avg.totalQs || 0), min: Math.round(r._avg.durationMin || 0) })),
+      questions, pyq, bySubject: bySubject.map((b) => ({ s: b.subject, n: b._count._all })),
+    }));
+  } catch (e) { console.warn("TEST_CATALOGUE failed:", e.message); }
+}, 15000);
