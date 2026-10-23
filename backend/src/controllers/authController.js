@@ -84,7 +84,8 @@ const provisionFromRaiseAcademy = async (token) => {
             strongSubjects: [],
           },
         },
-        subscription: { create: { plan: "NONE", status: "inactive" } },
+        // Every new student starts with the free 30-day full-access trial.
+        subscription: { create: (() => { const s = new Date(), e = new Date(s); e.setDate(e.getDate() + 30); return { plan: "TRIAL_30D", status: "active", amount: 0, startDate: s, endDate: e }; })() },
         streak: { create: {} },
         xp: { create: {} },
       },

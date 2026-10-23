@@ -104,7 +104,7 @@ export default function AdminUsersPage() {
                 <td style={{ fontWeight: 600 }}>{u.name}{u.role === "admin" && <span className="chip chip-purple" style={{ marginLeft: 6 }}>admin</span>}</td>
                 <td>{u.email}<br /><span style={{ color: "var(--text3)", fontSize: 12 }}>{u.phone || "—"}</span></td>
                 <td>{u.class === "Dropper" ? "Dropper" : u.class ? `Class ${u.class.replace("th", "")}` : "—"}</td>
-                <td>{u.subscription?.plan === "TRIAL_5D" ? "5-Day Trial" : u.subscription?.plan === "MONTHLY" ? "Monthly" : u.subscription?.plan === "REFERRAL_FREE" ? "Referral Free" : u.subscription?.plan === "INSTITUTE" ? "Institute" : "—"}</td>
+                <td>{u.subscription?.plan === "TRIAL_30D" ? "Free Trial" : u.subscription?.plan === "TRIAL_5D" ? "5-Day Trial" : u.subscription?.plan === "MONTHLY" ? "Monthly" : u.subscription?.plan === "REFERRAL_FREE" ? "Referral Free" : u.subscription?.plan === "INSTITUTE" ? "Institute" : "—"}</td>
                 <td>
                   {u.subscription?.isActive
                     ? <span className="chip chip-green">Active</span>
@@ -136,7 +136,8 @@ export default function AdminUsersPage() {
                 <label className="form-label">Plan</label>
                 <select className="form-select" value={subForm.plan} onChange={e => setSubForm(f => ({ ...f, plan: e.target.value }))}>
                   <option value="NONE">None</option>
-                  <option value="TRIAL_5D">5-Day Trial</option>
+                  <option value="TRIAL_30D">30-Day Free Trial</option>
+                  <option value="TRIAL_5D">5-Day Trial (old ₹99)</option>
                   <option value="MONTHLY">Monthly</option>
                   <option value="REFERRAL_FREE">Referral Free Month</option>
                 </select>

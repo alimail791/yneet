@@ -12,8 +12,24 @@ const razorpay = new Razorpay({
 // Plan catalogue — the single source of truth for pricing on both frontend and backend.
 // Amounts are in paise (Razorpay's unit). Keep these in sync with the pricing page copy.
 const PLANS = {
-  TRIAL_5D: { label: "5-Day Full Access", amount: 9900, days: 5 }, // ₹99
   MONTHLY: { label: "Monthly Full Access" }, // amount varies by class — see MONTHLY_AMOUNT_BY_CLASS below; always ends at month-end
+};
+
+// Free trial: 30 days of full access, no payment, once per student. Replaces the
+// old paid ₹99 5-day trial (TRIAL_5D rows from before stay valid till they end).
+const TRIAL_DAYS = 30;
+const TRIAL_PLAN = "TRIAL_30D";
+// A student can buy 1..MAX_MONTHS months of the MONTHLY plan in one payment.
+const MAX_MONTHS = 12;
+const monthsOf = (v) => Math.min(MAX_MONTHS, Math.max(1, parseInt(v, 10) || 1));
+
+// Eligible for the free trial = never had any plan activated (no paid, trial,
+// referral or institute period). An abandoned checkout doesn't count.
+const trialEligible = (sub) => !sub || (!sub.startDate && !sub.razorpayPaymentId);
+const trialWindow = (from = new Date()) => {
+  const end = new Date(from);
+  end.setDate(end.getDate() + TRIAL_DAYS);
+  return { startDate: new Date(from), endDate: end };
 };
 
 // MONTHLY plan price depends on the student's class tier. Amounts are in paise.
@@ -39,18 +55,18 @@ const endOfMonth = (from) => {
   return new Date(d.getFullYear(), d.getMonth() + 1, 0, 23, 59, 59, 999);
 };
 
-const computeEndDate = (planKey, startDate) => {
-  if (planKey === "TRIAL_5D") {
-    const end = new Date(startDate);
-    end.setDate(end.getDate() + PLANS.TRIAL_5D.days);
-    return end;
-  }
-  return endOfMonth(startDate); // MONTHLY
+// N months of the MONTHLY plan: the current calendar month plus N-1 more, each
+// to its last day. When the student still has an active plan, the new months
+// start the day after it ends, so renewing early never loses days.
+const isActiveSub = (sub) => !!(sub?.status === "active" && sub?.endDate && new Date(sub.endDate) > new Date());
+const monthlyEndDate = (months, sub, now = new Date()) => {
+  const from = isActiveSub(sub) ? new Date(new Date(sub.endDate).getTime() + 1) : now;
+  return endOfMonth(new Date(from.getFullYear(), from.getMonth() + (months - 1), 1));
 };
 
 // Called after a successful MONTHLY payment. Marks this person's own referral
 // row (if they were referred by someone) as qualified, then immediately gives
-// their referrer a free month. Trial (₹99) purchases never count toward this.
+// their referrer a free month. The free trial never counts toward this.
 const checkReferralReward = async (userId) => {
   const myReferral = await prisma.referral.findUnique({ where: { referredId: userId } });
   if (!myReferral || myReferral.qualified) return; // not referred, or already counted
@@ -81,9 +97,9 @@ exports.getPlans = async (req, res) => {
   res.json({
     success: true,
     plans: [
-      { key: "TRIAL_5D", label: PLANS.TRIAL_5D.label, amountRupees: PLANS.TRIAL_5D.amount / 100, duration: "5 days" },
-      { key: "MONTHLY", label: PLANS.MONTHLY.label, amountRupees: monthlyAmount / 100, duration: "Till end of current calendar month" },
+      { key: "MONTHLY", label: PLANS.MONTHLY.label, amountRupees: monthlyAmount / 100, duration: "Till end of current calendar month", maxMonths: MAX_MONTHS },
     ],
+    trial: { days: TRIAL_DAYS, eligible: req.user ? trialEligible(req.user.subscription) : true },
   });
 };
 
@@ -94,25 +110,45 @@ exports.getMySubscription = async (req, res) => {
   res.json({ success: true, subscription: sub, isActive });
 };
 
-// POST /api/v1/subscription/checkout  { plan: "TRIAL_5D" | "MONTHLY" }
+// POST /api/v1/subscription/start-trial — activates the free 30-day trial (once per student).
+exports.startTrial = async (req, res) => {
+  try {
+    const sub = await prisma.subscription.findUnique({ where: { userId: req.user.id } });
+    if (!trialEligible(sub)) return res.status(400).json({ success: false, message: "Your free trial has already been used." });
+    const subscription = await prisma.subscription.upsert({
+      where: { userId: req.user.id },
+      update: { plan: TRIAL_PLAN, status: "active", amount: 0, expiryReminderSent: false, ...trialWindow() },
+      create: { userId: req.user.id, plan: TRIAL_PLAN, status: "active", amount: 0, ...trialWindow() },
+    });
+    res.json({ success: true, subscription });
+  } catch (err) {
+    console.error("startTrial error:", err);
+    res.status(500).json({ success: false, message: "Could not start the free trial" });
+  }
+};
+
+// POST /api/v1/subscription/checkout  { plan: "MONTHLY", months: 1..12 }
 // Creates a Razorpay order for the chosen plan.
 exports.createCheckout = async (req, res) => {
   try {
     const { plan } = req.body;
     if (!PLANS[plan]) return res.status(400).json({ success: false, message: "Invalid plan" });
 
-    // MONTHLY's price depends on the student's class tier; TRIAL_5D is flat.
-    const amount = plan === "MONTHLY" ? getMonthlyAmount(req.user.profile?.class) : PLANS[plan].amount;
+    // Price = the student's class-tier monthly price × number of months.
+    const months = monthsOf(req.body.months);
+    const amount = getMonthlyAmount(req.user.profile?.class) * months;
     const order = await razorpay.orders.create({
       amount,
       currency: "INR",
       receipt: `yneet_${req.user.id}_${Date.now()}`,
-      notes: { userId: req.user.id, plan },
+      notes: { userId: req.user.id, plan, months: String(months) },
     });
 
+    // Only the pending order id is stored here — the student's current plan
+    // (e.g. an active trial) stays untouched until the payment is verified.
     await prisma.subscription.update({
       where: { userId: req.user.id },
-      data: { razorpayOrderId: order.id, plan, amount, status: "inactive" },
+      data: { razorpayOrderId: order.id },
     });
 
     res.json({
@@ -122,6 +158,7 @@ exports.createCheckout = async (req, res) => {
       currency: "INR",
       keyId: process.env.RAZORPAY_KEY_ID,
       plan,
+      months,
     });
   } catch (err) {
     console.error("createCheckout error:", err);
@@ -154,12 +191,21 @@ exports.verifyPayment = async (req, res) => {
       return res.status(400).json({ success: false, message: "Order mismatch" });
     }
 
-    const startDate = new Date();
-    const endDate = computeEndDate(existing.plan, startDate);
+    // Months and amount come from the Razorpay order itself (set at checkout).
+    const order = await razorpay.orders.fetch(razorpay_order_id);
+    if (String(order.notes?.userId) !== String(req.user.id)) {
+      return res.status(400).json({ success: false, message: "Order mismatch" });
+    }
+    const months = monthsOf(order.notes?.months);
+    const extending = isActiveSub(existing);
+    const startDate = extending ? existing.startDate || new Date() : new Date();
+    const endDate = monthlyEndDate(months, existing);
 
     const subscription = await prisma.subscription.update({
       where: { userId: req.user.id },
       data: {
+        plan: "MONTHLY",
+        amount: order.amount,
         status: "active",
         startDate,
         endDate,
@@ -170,7 +216,7 @@ exports.verifyPayment = async (req, res) => {
     });
 
     // Referral reward check — only the Monthly plan qualifies, not the trial.
-    if (existing.plan === "MONTHLY") {
+    {
       await checkReferralReward(req.user.id).catch((e) => console.warn("Referral reward check failed:", e.message));
     }
 
@@ -195,3 +241,6 @@ exports.verifyPayment = async (req, res) => {
     res.status(500).json({ success: false, message: "Payment verification failed" });
   }
 };
+
+// exported for tests
+exports._internal = { monthlyEndDate, trialEligible, trialWindow, monthsOf, endOfMonth };

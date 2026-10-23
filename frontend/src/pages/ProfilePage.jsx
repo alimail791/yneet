@@ -73,7 +73,7 @@ export default function ProfilePage() {
                 const sub = user?.subscription;
                 const isActive = sub?.status === "active" && sub?.endDate && new Date(sub.endDate) > new Date();
                 if (!isActive) return <span className="chip" style={{ background: "var(--gray2)", color: "var(--text3)" }}>No Active Plan</span>;
-                const label = sub.plan === "TRIAL_5D" ? "5-Day Trial" : sub.plan === "MONTHLY" ? "Monthly Plan" : sub.plan === "INSTITUTE" ? "Institute Plan (1 year)" : "Active Plan";
+                const label = sub.plan === "TRIAL_30D" ? "30-Day Free Trial" : sub.plan === "TRIAL_5D" ? "5-Day Trial" : sub.plan === "REFERRAL_FREE" ? "Referral Free Month" : sub.plan === "MONTHLY" ? "Monthly Plan" : sub.plan === "INSTITUTE" ? "Institute Plan (1 year)" : "Active Plan";
                 const endStr = new Date(sub.endDate).toLocaleDateString("en-IN", { day: "2-digit", month: "short" });
                 return <span className="chip chip-green">{label} · till {endStr}</span>;
               })()}
