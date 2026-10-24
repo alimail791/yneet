@@ -20,6 +20,7 @@ app.use(morgan("dev"));
 
 // Server-to-server calls from Raise Academy (bulk institute adds) sit before the rate limiter.
 app.use("/api/v1/internal", require("./routes/internal"));
+app.use("/api/v1/games", require("./routes/games"));
 
 const limiter = rateLimit({ windowMs: 15 * 60 * 1000, max: 200 });
 app.use("/api", limiter);
