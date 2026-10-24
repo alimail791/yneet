@@ -153,3 +153,12 @@ h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;letter-spacing:-.
 .panel.yneet{display:flex;flex-direction:column;gap:8px;border-color:var(--accent);background:color-mix(in srgb,var(--accent) 7%,var(--surface))}
 .yn-title{font-family:var(--display);font-size:19px;font-weight:800;line-height:1.2}
 .yn-login{text-align:center;font-weight:600;font-size:14px;color:var(--accent)}
+
+.lbbtn{border:0;cursor:pointer;background:var(--hi);color:var(--hi-ink)}
+.lbpanel{display:flex;flex-direction:column;gap:10px}
+.lbhead{display:flex;align-items:center;gap:10px}
+.lbhead strong{flex:1;font-family:var(--display);font-size:18px}
+.lbcount{font-family:var(--mono);font-size:12px;color:var(--muted)}
+.gicon.sm{width:32px;height:32px;font-size:15px;border-width:2px;border-radius:8px}
+.board div.me{background:color-mix(in srgb,var(--hi) 35%,var(--surface));font-weight:700}
+.lbplay{align-self:flex-start}

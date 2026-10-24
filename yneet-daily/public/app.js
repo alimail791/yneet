@@ -68,6 +68,8 @@ function home() {
   });
   app.append(list);
   app.append(yneetPanel(null, null));
+  const lb = $(`<button class="primary lbbtn">🏆 Leaderboard · your All-India rank</button>`);
+  lb.onclick = leaderboard; app.insertBefore(lb, list);
   const st = $(`<button class="ghost" style="align-self:center">📲 Make today's WhatsApp Status card</button>`);
   st.onclick = statusCard; app.append(st);
   if (me) { const lo = $(`<button class="ghost" style="align-self:center;font-size:13px">Not ${esc(me.name.split(' ')[0])}? Log out</button>`); lo.onclick = () => { token = null; me = null; ls.del('yd-token'); home(); }; app.append(lo); }
@@ -418,13 +420,48 @@ function registerView(sh, g) {
 function shareText(g, d) {
   return `🧬 YNeet Daily #${P.no} · ${dateLabel(P.date)}\n${g.name}: ${d.line}\n${d.emoji}\n🔥 Streak: ${me.streak} day${me.streak === 1 ? '' : 's'}\n\nCan you beat me? Play free 👇\n${playUrl()}?r=${me.code}`;
 }
+/* ---------- LEADERBOARD: all five games ---------- */
+async function leaderboard() {
+  stopTick(); sheetRoot.innerHTML = '';
+  app.innerHTML = '';
+  const head = $(`<div class="stagehead"><button class="back">← Games</button><h2>Leaderboard <small class="eyebrow">#${P.no}</small></h2></div>`);
+  head.querySelector('.back').onclick = home;
+  app.append(head, $(`<p class="how">Today's All-India top 10 for each game. Ranks go by score, then by time. Boards reset at midnight.</p>`));
+  const box = $(`<div style="display:flex;flex-direction:column;gap:12px"><div class="loading">Loading boards…</div></div>`);
+  app.append(box);
+  window.scrollTo(0, 0);
+  let data;
+  try { data = await api('/api/boards?date=' + P.date); } catch (e) { box.innerHTML = `<div class="loading">${esc(e.message)}</div>`; return; }
+  box.innerHTML = '';
+  if (!me) {
+    const join = $(`<div class="panel" style="display:flex;flex-direction:column;gap:8px"><strong>See your own rank</strong><span class="how">Finish any game today and save your score with your WhatsApp number. Your rank then shows here on any phone.</span></div>`);
+    box.append(join);
+  }
+  for (const g of GAMES) {
+    const b = data.boards[g.id];
+    const p = $(`<div class="panel lbpanel"><div class="lbhead"><span class="gicon sm" style="background:${g.color}">${g.icon}</span><strong>${g.name}</strong><span class="lbcount">${b.total} solved</span></div></div>`);
+    if (me) {
+      let mine;
+      if (b.mine && b.mine.rank) mine = `<div class="rankline">🏆 Your rank: #${b.mine.rank} of ${b.mine.total} · ${esc(b.mine.line)}</div>`;
+      else if (b.mine) mine = `<div class="how">You played (${esc(b.mine.line)}) but didn't solve it today.</div>`;
+      else mine = `<button class="ghost lbplay">Play ${g.name} to get ranked</button>`;
+      const m = $(`<div>${mine}</div>`); const btn = m.querySelector('.lbplay'); if (btn) btn.onclick = () => openGame(g.id);
+      p.append(m);
+    }
+    p.append($(`<div class="board">${b.top.length ? b.top.map(x => `<div class="${x.me ? 'me' : ''}"><b>#${x.rank}</b><span>${esc(x.name)}${x.me ? ' (you)' : ''}</span><span>${esc(x.line)}</span></div>`).join('') : '<div>No one has solved it yet today. Be the first!</div>'}</div>`));
+    box.append(p);
+  }
+}
+
 async function shareView(sh, g) {
   const d = resultOf(g.id), local = day.done[g.id];
   const txt = shareText(g, d), need = me.needed, r = Math.min(me.referrals, need);
   sh.innerHTML = '';
   const rank = local && local.rank;
   sh.append($(`<div class="eyebrow">Saved for ${esc(me.name)}</div>`), $(`<h3>Share your result</h3>`));
-  if (rank) sh.append($(`<div class="rankline">🏆 All-India rank #${rank.rank} of ${rank.total} today</div>`));
+  const rankEl = $(`<div class="rankline"></div>`); sh.append(rankEl);
+  if (rank) rankEl.textContent = `🏆 All-India rank #${rank.rank} of ${rank.total} today`;
+  else { rankEl.hidden = true; api('/api/boards?date=' + P.date).then(j => { const m = j.boards[g.id] && j.boards[g.id].mine; if (m && m.rank) { rankEl.textContent = `🏆 All-India rank #${m.rank} of ${m.total} today`; rankEl.hidden = false; } }).catch(() => {}); }
   const res = $(`<div class="result"></div>`); res.textContent = txt; sh.append(res);
   sh.append($(`<a class="primary wa" target="_blank" rel="noopener" href="https://wa.me/?text=${encodeURIComponent(txt)}">Share on WhatsApp</a>`));
   const row = $(`<div class="row2"><button class="ghost" id="cp">Copy message</button><button class="ghost" id="sc">Status card</button></div>`);

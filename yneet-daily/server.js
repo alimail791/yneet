@@ -235,6 +235,33 @@ app.get('/api/leaderboard', wrap(async (req, res) => {
   res.json(rows.map((r, i) => ({ rank: i + 1, name: shortName(r.name), line: r.line })));
 }));
 
+// All five boards at once, plus the logged-in player's own rank in each (works on any device).
+const GAME_IDS = ['bioword', 'pinpoint', 'zip', 'queens', 'daily5'];
+app.get('/api/boards', wrap(async (req, res) => {
+  const day = /^\d{4}-\d{2}-\d{2}$/.test(req.query.date || '') ? req.query.date : G.today();
+  const t = unsign((req.headers.authorization || '').replace(/^Bearer /, ''));
+  const { rows } = await q(`SELECT * FROM (
+      SELECT r.game, r.player_id, p.name, r.line,
+             ROW_NUMBER() OVER (PARTITION BY r.game ORDER BY r.score DESC, r.seconds ASC, r.created_at ASC)::int AS rank,
+             COUNT(*) OVER (PARTITION BY r.game)::int AS total
+      FROM results r JOIN players p ON p.id = r.player_id
+      WHERE r.day = $1 AND r.solved) x
+    WHERE rank <= 10 OR player_id = $2 ORDER BY game, rank`, [day, t ? t.id : 0]);
+  const { rows: mineAll } = t ? await q('SELECT game, line, solved FROM results WHERE player_id=$1 AND day=$2', [t.id, day]) : { rows: [] };
+  const out = {};
+  for (const g of GAME_IDS) {
+    const list = rows.filter(r => r.game === g);
+    const meRow = t && list.find(r => r.player_id === t.id);
+    const played = mineAll.find(r => r.game === g);
+    out[g] = {
+      total: list.length ? list[0].total : 0,
+      top: list.filter(r => r.rank <= 10).map(r => ({ rank: r.rank, name: shortName(r.name), line: r.line, me: !!(t && r.player_id === t.id) })),
+      mine: meRow ? { rank: meRow.rank, total: meRow.total, line: meRow.line } : played ? { rank: null, line: played.line } : null,
+    };
+  }
+  res.set('Cache-Control', 'no-store').json({ date: day, boards: out });
+}));
+
 // ---------- admin (header: x-admin-key) ----------
 function admin(req, res, next) {
   const k = process.env.ADMIN_KEY;
