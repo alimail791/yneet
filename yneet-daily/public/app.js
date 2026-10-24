@@ -66,16 +66,56 @@ function home() {
     list.append(c);
   });
   app.append(list);
+  app.append(yneetPanel(null, null));
   const st = $(`<button class="ghost" style="align-self:center">📲 Make today's WhatsApp Status card</button>`);
   st.onclick = statusCard; app.append(st);
   if (me) { const lo = $(`<button class="ghost" style="align-self:center;font-size:13px">Not ${esc(me.name.split(' ')[0])}? Log out</button>`); lo.onclick = () => { token = null; me = null; ls.del('yd-token'); home(); }; app.append(lo); }
 }
+function rewardBox() {
+  return me.rewardApplied
+    ? `<div class="unlock">🎉 Your free YNeet month has been added to your account. Log in at <b>www.yneet.in</b> with this WhatsApp number.</div>`
+    : `<div class="unlock">🎉 Unlocked! 1 month of YNeet free (code <code>${esc(me.rewardCode)}</code>). Sign up or log in at <b>www.yneet.in</b> with this same WhatsApp number and the month is added automatically.</div>`;
+}
+
+/* ---------- YNeet panel: the step from free games to YNeet ---------- */
+const YNEET_SITE = 'https://www.yneet.in';
+function yneetLink(path, campaign) {
+  const u = new URLSearchParams({ utm_source: 'yneet_daily', utm_medium: 'game', utm_campaign: campaign || 'home' });
+  if (path === '/register' && me) { u.set('name', me.name); if (me.phone) u.set('phone', me.phone); }
+  return `${YNEET_SITE}${path}?${u}`;
+}
+function track(kind, detail) {
+  try { fetch('/api/track', { method: 'POST', keepalive: true, headers: { 'Content-Type': 'application/json', ...(token ? { Authorization: 'Bearer ' + token } : {}) }, body: JSON.stringify({ kind, detail }) }); } catch (e) {}
+}
+function yneetPanel(gameId, d) {
+  const SUBJ = { Bio: 'Biology', Chem: 'Chemistry', Phy: 'Physics' };
+  let title = 'Prepare for NEET on YNeet', text = 'Full NEET mock tests, chapter-wise practice and PYQs with instant analysis of your weak areas.';
+  if (gameId === 'pinpoint' && d && d.topic) { title = `Revise “${d.topic}”`; text = 'Practise this chapter with NEET-level questions and PYQs on YNeet, with explanations for every answer.'; }
+  else if (gameId === 'daily5' && d && d.weak && d.weak.length) { title = `Missed ${d.weak.map(s => SUBJ[s] || s).join(' and ')} today?`; text = 'Practise those chapters on YNeet with full mock tests, PYQs and instant analysis of your weak areas.'; }
+  else if (gameId === 'daily5' && d && d.line === '5/5') { title = 'Perfect score! Try a full NEET mock'; text = 'Test yourself on a full 720-mark NEET mock test on YNeet, with All-India analysis.'; }
+  else if (gameId) { title = 'Turn your daily streak into marks'; }
+  const p = $(`<div class="panel yneet">
+    <div class="eyebrow">YNeet · NEET preparation</div>
+    <strong class="yn-title"></strong>
+    <p class="how" style="margin:0"></p>
+    <a class="primary" target="_blank" rel="noopener">Start free 30-day trial</a>
+    <a class="yn-login" target="_blank" rel="noopener">Already on YNeet? Log in</a>
+  </div>`);
+  p.querySelector('.yn-title').textContent = title;
+  p.querySelector('.how').textContent = text;
+  const [go, login] = p.querySelectorAll('a');
+  go.href = yneetLink('/register', gameId); login.href = yneetLink('/login', gameId);
+  go.onclick = () => track('yneet_signup', gameId || 'home');
+  login.onclick = () => track('yneet_login', gameId || 'home');
+  return p;
+}
+
 function refPanel() {
   const need = me ? me.needed : 3, r = me ? Math.min(me.referrals, need) : 0;
   const p = $(`<div class="panel ref" style="display:flex;flex-direction:column;gap:10px"></div>`);
   p.append($(`<h3>Invite ${need} friends → 1 month YNeet free</h3>`));
   p.append($(`<div><div class="bar"><i style="width:${r / need * 100}%"></i></div><div class="reftext"><span>${r}/${need} friends registered</span><span>${me ? 'Your code: <b>' + me.code + '</b>' : 'Play a game to get your link'}</span></div></div>`));
-  if (me && me.rewardCode) p.append($(`<div class="unlock">🎉 Unlocked! 1 month YNeet free. Your code: <code>${esc(me.rewardCode)}</code>. Send it to Raise Academy on WhatsApp to activate.</div>`));
+  if (me && me.rewardCode) p.append($(rewardBox()));
   return p;
 }
 
@@ -201,7 +241,7 @@ function pinpoint(st) {
         over = true;
         if (j.clues) j.clues.forEach((c, i) => { cl.children[i].classList.add('on'); cl.children[i].innerHTML = `<b>${i + 1}</b>${esc(c)}`; });
         const rb = [...op.children].find(x => x.textContent === j.answer); if (rb) rb.classList.add('right');
-        finish('pinpoint', { guesses, seconds: elapsed() }, { line: j.correct ? `${guesses.length}/${T}` : `X/${T}`, emoji: marks.join('') });
+        finish('pinpoint', { guesses, seconds: elapsed() }, { line: j.correct ? `${guesses.length}/${T}` : `X/${T}`, emoji: marks.join(''), topic: j.answer });
       }
     };
   });
@@ -292,7 +332,7 @@ function daily5(st) {
   const bars = $(`<div class="qnum">${Q.map(() => '<i></i>').join('')}</div>`);
   const box = $(`<div style="display:flex;flex-direction:column;gap:12px"></div>`);
   st.append(bars, box);
-  let i = 0, score = 0, left = 120, over = false; const answers = [], marks = [];
+  let i = 0, score = 0, left = 120, over = false; const answers = [], marks = [], weak = [];
   const t0 = Date.now(), tm = document.getElementById('tm'); tm.textContent = fmt(left);
   tick = setInterval(() => { left = 120 - Math.floor((Date.now() - t0) / 1000); tm.textContent = fmt(Math.max(left, 0)); if (left <= 0 && !over) end(); }, 500);
   function show() {
@@ -308,7 +348,7 @@ function daily5(st) {
         try { j = await api('/api/check/daily5', { date: P.date, q: i, option: k }); }
         catch (e) { delete m.dataset.locked; box.append($(`<div class="toast">${esc(e.message)}</div>`)); return; }
         if (over) return;
-        answers[i] = k; if (j.correct) score++; marks.push(j.correct ? '✅' : '❌');
+        answers[i] = k; if (j.correct) score++; else if (!weak.includes(Q[i].s)) weak.push(Q[i].s); marks.push(j.correct ? '✅' : '❌');
         b.classList.add(j.correct ? 'right' : 'wrong'); m.children[j.answer].classList.add('right');
         box.append($(`<div class="fact">${esc(j.explanation)}</div>`));
         bars.children[i].classList.remove('cur'); bars.children[i].classList.add(j.correct ? 'ok' : 'no');
@@ -322,7 +362,7 @@ function daily5(st) {
     over = true; stopTick();
     while (marks.length < Q.length) marks.push('⏳');
     box.innerHTML = `<div class="qtext">You scored ${score}/${Q.length}</div>`;
-    finish('daily5', { answers, seconds: Math.min(120, Math.floor((Date.now() - t0) / 1000)) }, { line: `${score}/${Q.length}`, emoji: marks.join('') });
+    finish('daily5', { answers, seconds: Math.min(120, Math.floor((Date.now() - t0) / 1000)) }, { line: `${score}/${Q.length}`, emoji: marks.join(''), weak: Q.filter((q, n) => answers[n] == null).reduce((w, q) => w.includes(q.s) ? w : w.concat(q.s), weak.slice()) });
   }
   show();
 }
@@ -397,7 +437,8 @@ async function shareView(sh, g) {
     <strong>Invite ${need} friends → 1 month YNeet free</strong>
     <div class="bar"><i style="width:${r / need * 100}%"></i></div>
     <div class="reftext"><span>${r}/${need} registered with your link</span><span>Code ${me.code}</span></div>
-    ${me.rewardCode ? `<div class="unlock">🎉 Unlocked! Code <code>${esc(me.rewardCode)}</code>. Send it to Raise Academy on WhatsApp to activate.</div>` : '<span class="how">A friend counts when they register using your link.</span>'}</div>`));
+    ${me.rewardCode ? rewardBox() : '<span class="how">A friend counts when they register using your link.</span>'}</div>`));
+  sh.append(yneetPanel(g.id, (local && local.preview) || d));
   const board = $(`<div class="panel" style="display:flex;flex-direction:column;gap:8px"><strong>Today's top 10 · ${g.name}</strong><div class="board"><div>Loading…</div></div></div>`);
   sh.append(board);
   const done = $(`<button class="ghost">Back to games</button>`); done.onclick = home; sh.append(done);

@@ -74,11 +74,12 @@ async function rankOf(day, game, score, seconds) {
   return rows[0];
 }
 async function playerSummary(id) {
-  const { rows: [p] } = await q('SELECT id,name,code,reward_code FROM players WHERE id=$1', [id]);
+  const { rows: [p] } = await q('SELECT id,name,phone,code,reward_code,reward_applied_at FROM players WHERE id=$1', [id]);
   if (!p) return null;
   const { rows: [r] } = await q('SELECT COUNT(*)::int AS n FROM players WHERE referred_by=$1', [p.code]);
   const { rows: done } = await q('SELECT game,line,emoji,score,seconds,solved FROM results WHERE player_id=$1 AND day=$2', [id, G.today()]);
-  return { name: p.name, code: p.code, referrals: r.n, needed: REFERRALS_NEEDED, rewardCode: p.reward_code,
+  return { name: p.name, phone: p.phone, code: p.code, referrals: r.n, needed: REFERRALS_NEEDED, rewardCode: p.reward_code,
+    rewardApplied: !!p.reward_applied_at,
     streak: await streakOf(id), today: Object.fromEntries(done.map(d => [d.game, d])) };
 }
 
@@ -164,15 +165,48 @@ app.post('/api/otp/verify', wrap(async (req, res) => {
 }));
 
 function notifyReward(r) {
-  wa.sendReward(r.phone, r.name.split(' ')[0], r.reward_code).catch(e => console.error('Reward WhatsApp failed', e.message));
-  if (process.env.YNEET_REWARD_WEBHOOK) {
-    fetch(process.env.YNEET_REWARD_WEBHOOK, {
-      method: 'POST', headers: { 'Content-Type': 'application/json', 'X-Webhook-Secret': process.env.YNEET_WEBHOOK_SECRET || '' },
-      body: JSON.stringify({ event: 'referral_reward', phone: r.phone, name: r.name, code: r.code, rewardCode: r.reward_code, months: 1 })
-    }).catch(e => console.error('Reward webhook failed', e.message));
-  }
   console.log(`🎉 Reward unlocked for ${r.name} (${r.code}): ${r.reward_code}`);
+  wa.sendReward(r.phone, r.name.split(' ')[0], r.reward_code).catch(e => console.error('Reward WhatsApp failed', e.message));
+  applyReward(r.id).catch(e => console.error('Reward apply failed', e.message));
 }
+
+// Adds the free month to the player's YNeet account (matched by WhatsApp number).
+// If they have no YNeet account yet, it stays pending and is retried every 30 minutes
+// for 60 days, so it lands as soon as they sign up at www.yneet.in with that number.
+const YNEET_API = (process.env.YNEET_API_URL || '').replace(/\/$/, '');
+async function applyReward(playerId) {
+  if (!YNEET_API || !process.env.YNEET_GAMES_KEY) return { skipped: true };
+  const { rows: [p] } = await q('SELECT id, phone, reward_code, reward_applied_at FROM players WHERE id=$1', [playerId]);
+  if (!p || !p.reward_code || p.reward_applied_at) return { skipped: true };
+  const r = await fetch(`${YNEET_API}/api/v1/games/bonus-month`, {
+    method: 'POST', headers: { 'Content-Type': 'application/json', 'x-games-key': process.env.YNEET_GAMES_KEY },
+    body: JSON.stringify({ phone: p.phone, days: 30 }), signal: AbortSignal.timeout(15000)
+  });
+  const j = await r.json().catch(() => ({}));
+  if (!r.ok) throw new Error(j.message || `YNeet API ${r.status}`);
+  if (j.applied) {
+    await q('UPDATE players SET reward_applied_at=now(), reward_note=$2 WHERE id=$1 AND reward_applied_at IS NULL', [p.id, 'YNeet plan until ' + String(j.endDate).slice(0, 10)]);
+    console.log(`✅ Free month added in YNeet for player ${p.id} (until ${String(j.endDate).slice(0, 10)})`);
+  } else {
+    await q('UPDATE players SET reward_note=$2 WHERE id=$1', [p.id, 'Waiting: no YNeet account with this number yet']);
+  }
+  return j;
+}
+async function retryPendingRewards() {
+  const { rows } = await q(`SELECT id FROM players WHERE reward_code IS NOT NULL AND reward_applied_at IS NULL
+    AND reward_at > now() - interval '60 days' ORDER BY reward_at LIMIT 100`);
+  for (const { id } of rows) await applyReward(id).catch(e => console.error('Reward retry failed', id, e.message));
+}
+
+// Counts taps on the YNeet buttons, so you can see which games bring students to YNeet.
+app.post('/api/track', wrap(async (req, res) => {
+  if (limited('trk:' + req.ip, 120, 36e5)) return res.json({ ok: true });
+  const kind = String(req.body.kind || '').replace(/[^a-z_]/g, '').slice(0, 30);
+  if (!['yneet_signup', 'yneet_login'].includes(kind)) return err(res, 400, 'Unknown event');
+  const t = unsign((req.headers.authorization || '').replace(/^Bearer /, ''));
+  await q('INSERT INTO events(player_id, kind, detail) VALUES($1,$2,$3)', [t ? t.id : null, kind, String(req.body.detail || '').slice(0, 40)]);
+  res.json({ ok: true });
+}));
 
 // ---------- player ----------
 app.get('/api/me', auth, wrap(async (req, res) => {
@@ -209,24 +243,29 @@ function admin(req, res, next) {
 }
 app.get('/api/admin/stats', admin, wrap(async (req, res) => {
   const day = G.today();
-  const [tot, newToday, bySource, plays, rewards, topRef] = await Promise.all([
+  const [tot, newToday, bySource, plays, rewards, topRef, clicks, applied] = await Promise.all([
     q('SELECT COUNT(*)::int n FROM players'),
     q(`SELECT COUNT(*)::int n FROM players WHERE (created_at AT TIME ZONE 'Asia/Kolkata')::date = $1`, [day]),
     q('SELECT COALESCE(source,\'direct\') source, COUNT(*)::int n FROM players GROUP BY 1 ORDER BY 2 DESC'),
     q('SELECT game, COUNT(*)::int plays, COUNT(*) FILTER (WHERE solved)::int solved FROM results WHERE day=$1 GROUP BY 1', [day]),
     q('SELECT COUNT(*)::int n FROM players WHERE reward_code IS NOT NULL'),
-    q(`SELECT r.code, r.name, COUNT(p.id)::int referrals FROM players r JOIN players p ON p.referred_by=r.code GROUP BY r.id ORDER BY 3 DESC LIMIT 10`)
+    q(`SELECT r.code, r.name, COUNT(p.id)::int referrals FROM players r JOIN players p ON p.referred_by=r.code GROUP BY r.id ORDER BY 3 DESC LIMIT 10`),
+    q(`SELECT kind, detail, COUNT(*)::int total, COUNT(*) FILTER (WHERE (created_at AT TIME ZONE 'Asia/Kolkata')::date = $1)::int today
+       FROM events GROUP BY 1,2 ORDER BY 3 DESC`, [day]),
+    q('SELECT COUNT(*)::int n FROM players WHERE reward_applied_at IS NOT NULL')
   ]);
-  res.json({ day, players: tot.rows[0].n, newToday: newToday.rows[0].n, bySource: bySource.rows, playsToday: plays.rows, rewardsUnlocked: rewards.rows[0].n, topReferrers: topRef.rows });
+  res.json({ day, players: tot.rows[0].n, newToday: newToday.rows[0].n, bySource: bySource.rows, playsToday: plays.rows,
+    rewardsUnlocked: rewards.rows[0].n, rewardsAddedInYneet: applied.rows[0].n, yneetClicks: clicks.rows, topReferrers: topRef.rows });
 }));
 app.get('/api/admin/players.csv', admin, wrap(async (req, res) => {
-  const { rows } = await q(`SELECT p.name, p.phone, p.code, p.referred_by, p.source, p.reward_code,
+  const { rows } = await q(`SELECT p.name, p.phone, p.code, p.referred_by, p.source, p.reward_code, p.reward_note,
+      (SELECT COUNT(*) FROM events e WHERE e.player_id=p.id AND e.kind='yneet_signup') yneet_clicks,
       (SELECT COUNT(*) FROM players x WHERE x.referred_by=p.code) referrals,
       (SELECT COUNT(*) FROM results r WHERE r.player_id=p.id) games_played,
       (SELECT MAX(day)::text FROM results r WHERE r.player_id=p.id) last_played,
       to_char(p.created_at AT TIME ZONE 'Asia/Kolkata','YYYY-MM-DD HH24:MI') joined
     FROM players p ORDER BY p.created_at DESC`);
-  const cols = ['name', 'phone', 'code', 'referred_by', 'source', 'referrals', 'games_played', 'last_played', 'reward_code', 'joined'];
+  const cols = ['name', 'phone', 'code', 'referred_by', 'source', 'referrals', 'games_played', 'last_played', 'yneet_clicks', 'reward_code', 'reward_note', 'joined'];
   const esc = v => v == null ? '' : /[",\n]/.test(String(v)) ? `"${String(v).replace(/"/g, '""')}"` : String(v);
   res.set('Content-Type', 'text/csv').set('Content-Disposition', 'attachment; filename="yneet-daily-players.csv"');
   res.send([cols.join(','), ...rows.map(r => cols.map(c => esc(r[c])).join(','))].join('\n'));
@@ -241,5 +280,8 @@ app.get(['/play', '/play/*'], (req, res) => res.sendFile(path.join(__dirname, 'p
   await q(fs.readFileSync(path.join(__dirname, 'schema.sql'), 'utf8'));
   const last = G.DATES[G.DATES.length - 1], left = G.dayDiff(last, G.today());
   console.log(`Puzzles loaded through ${last} (${left} days left). WhatsApp OTP: ${wa.configured() ? 'on' : (process.env.DEV_OTP ? 'DEMO code ' + process.env.DEV_OTP : 'off')}`);
+  console.log(`Free-month sync with YNeet: ${YNEET_API && process.env.YNEET_GAMES_KEY ? 'on' : 'off'}`);
+  setInterval(() => retryPendingRewards().catch(e => console.error('Reward retry loop', e.message)), 30 * 60e3).unref();
+  setTimeout(() => retryPendingRewards().catch(() => {}), 20e3).unref();
   app.listen(PORT, () => console.log(`YNeet Daily on :${PORT}`));
 })().catch(e => { console.error('Startup failed:', e.message); process.exit(1); });

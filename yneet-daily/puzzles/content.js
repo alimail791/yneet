@@ -121,7 +121,7 @@ exports.bio = [
   ['ADH is stored in and released from the:', ['Posterior pituitary', 'Anterior pituitary', 'Adrenal cortex', 'Thyroid'], 0, 'ADH is made in the hypothalamus and released by the neurohypophysis.'],
   ['Diabetes insipidus is caused by a deficiency of:', ['ADH', 'Insulin', 'Glucagon', 'Thyroxine'], 0, 'Without ADH, the kidney cannot concentrate urine.'],
   ['A sarcomere is the region between two successive:', ['Z lines', 'M lines', 'H zones', 'A bands'], 0, 'The sarcomere is the functional unit of contraction.'],
-  ['Insulin is secreted by which cells of the islets of Langerhans?', ['β-cells', 'α-cells', 'δ-cells', 'Acinar cells'], 0, 'β-cells secrete insulin; α-cells secrete glucagon.'],
+  ['Insulin is secreted by which cells of the islets of Langerhans?', ['β-cells', 'α-cells', 'δ-cells', 'Acinar cells'], 0, 'Insulin lowers blood glucose by helping cells take it up.'],
   ['Glucagon is secreted by:', ['α-cells', 'β-cells', 'Kupffer cells', 'Chief cells'], 0, 'Glucagon raises blood glucose.'],
   ['Rod cells of the retina contain the pigment:', ['Rhodopsin', 'Iodopsin', 'Melanin', 'Haemoglobin'], 0, 'Rhodopsin is a purplish-red protein needed for dim-light vision.'],
   ['Number of cervical vertebrae in humans:', ['7', '12', '5', '4'], 0, 'Almost all mammals, including humans, have 7.'],

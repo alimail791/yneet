@@ -34,3 +34,15 @@ CREATE TABLE IF NOT EXISTS results (
   UNIQUE (player_id, day, game)
 );
 CREATE INDEX IF NOT EXISTS results_board ON results(day, game, score DESC, seconds ASC);
+
+-- Added: free month sync with YNeet, and YNeet button taps
+ALTER TABLE players ADD COLUMN IF NOT EXISTS reward_applied_at TIMESTAMPTZ;
+ALTER TABLE players ADD COLUMN IF NOT EXISTS reward_note TEXT;
+CREATE TABLE IF NOT EXISTS events (
+  id         SERIAL PRIMARY KEY,
+  player_id  INT REFERENCES players(id) ON DELETE SET NULL,
+  kind       TEXT NOT NULL,
+  detail     TEXT,
+  created_at TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+CREATE INDEX IF NOT EXISTS events_kind ON events(kind, created_at);

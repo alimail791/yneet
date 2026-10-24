@@ -149,3 +149,7 @@ h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;letter-spacing:-.
 
 .wgrid.long .tile{font-size:20px}
 .qgrid .qc{min-width:0}
+
+.panel.yneet{display:flex;flex-direction:column;gap:8px;border-color:var(--accent);background:color-mix(in srgb,var(--accent) 7%,var(--surface))}
+.yn-title{font-family:var(--display);font-size:19px;font-weight:800;line-height:1.2}
+.yn-login{text-align:center;font-weight:600;font-size:14px;color:var(--accent)}

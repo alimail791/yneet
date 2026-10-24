@@ -186,7 +186,7 @@ The knee is an example of a: | Hinge joint | Ball and socket joint | Pivot joint
 The joint between atlas and axis is a: | Pivot joint | Hinge joint | Ball and socket | Saddle joint | It lets the head rotate.
 The joint between carpals is a: | Gliding joint | Hinge joint | Pivot joint | Ball and socket | Bones slide on each other.
 The joint between the carpal and metacarpal of the thumb is a: | Saddle joint | Pivot joint | Hinge joint | Fibrous joint | It allows the thumb wide movement.
-Myasthenia gravis is an: | Autoimmune disorder affecting neuromuscular junctions | Infection | Inherited bone disease | Calcium deficiency | It causes fatigue and paralysis of skeletal muscles.
+Myasthenia gravis is an: | Autoimmune disorder affecting neuromuscular junctions | Infection | Inherited bone disease | Calcium deficiency | It causes muscle fatigue, weakness and paralysis.
 Muscular dystrophy is: | Progressive degeneration of skeletal muscle | Muscle spasm | Joint inflammation | Bone thinning | It is mostly genetic.
 Osteoporosis is linked to: | Decreased bone mass with age | Uric acid crystals | Low calcium in blood only | Viral infection | Low estrogen is a common cause.
 Arthritis is: | Inflammation of joints | Bone thinning | Muscle spasm | Low calcium | It causes pain and stiffness.
