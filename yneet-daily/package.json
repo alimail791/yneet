@@ -1,0 +1,16 @@
+{
+  "name": "yneet-daily",
+  "version": "1.0.0",
+  "description": "YNeet Daily: daily NEET puzzle games with WhatsApp sign-up and referral rewards",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "puzzles": "node puzzles/generate.js",
+    "test": "node test/e2e.js"
+  },
+  "engines": { "node": ">=18" },
+  "dependencies": {
+    "express": "4.21.2",
+    "pg": "8.13.1"
+  }
+}

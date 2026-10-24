@@ -1,0 +1,5092 @@
+{
+ "2026-10-24": {
+  "no": 2,
+  "date": "2026-10-24",
+  "bioword": {
+   "answer": "AUXIN",
+   "hint": "A plant growth hormone",
+   "fact": "Auxin (IAA) causes apical dominance and phototropism."
+  },
+  "pinpoint": {
+   "answer": "Breathing and Exchange of Gases",
+   "clues": [
+    "Residual volume",
+    "Partial pressure of O₂",
+    "Oxyhaemoglobin",
+    "Diaphragm",
+    "Alveoli"
+   ],
+   "options": [
+    "Breathing and Exchange of Gases",
+    "Principles of Inheritance and Variation",
+    "Locomotion and Movement",
+    "Excretory Products and their Elimination",
+    "Organisms and Populations",
+    "Neural Control and Coordination"
+   ]
+  },
+  "zip": {
+   "title": "Krebs cycle",
+   "labels": [
+    "Acetyl CoA",
+    "Citrate",
+    "α-Ketoglutarate",
+    "Succinyl CoA",
+    "Fumarate",
+    "Oxaloacetate"
+   ],
+   "size": 5,
+   "nodes": {
+    "2": 1,
+    "6": 6,
+    "8": 3,
+    "11": 5,
+    "19": 2,
+    "22": 4
+   },
+   "solution": [
+    2,
+    3,
+    4,
+    9,
+    14,
+    19,
+    24,
+    23,
+    18,
+    13,
+    8,
+    7,
+    12,
+    17,
+    22,
+    21,
+    20,
+    15,
+    16,
+    11,
+    10,
+    5,
+    0,
+    1,
+    6
+   ]
+  },
+  "queens": {
+   "size": 6,
+   "regions": [
+    "AAADDB",
+    "ECDDDB",
+    "ECDDDB",
+    "EEDDDB",
+    "EEDDDB",
+    "EDDDFB"
+   ],
+   "solution": [
+    2,
+    5,
+    1,
+    3,
+    0,
+    4
+   ],
+   "names": {
+    "A": "s-block",
+    "B": "p-block",
+    "C": "d-block",
+    "D": "f-block",
+    "E": "Noble gases",
+    "F": "Halogens"
+   }
+  },
+  "daily5": [
+   {
+    "s": "Bio",
+    "q": "Sickle-cell anaemia is inherited as a trait that is:",
+    "o": [
+     "Autosomal recessive",
+     "Autosomal dominant",
+     "Y-linked",
+     "X-linked recessive"
+    ],
+    "a": 0,
+    "e": "It is controlled by a pair of alleles on an autosome (HbA and HbS)."
+   },
+   {
+    "s": "Bio",
+    "q": "In humans, fertilisation normally occurs in the:",
+    "o": [
+     "Isthmus",
+     "Ampullary region of the fallopian tube",
+     "Uterus",
+     "Cervix"
+    ],
+    "a": 1,
+    "e": "The ovum and sperm meet in the ampulla."
+   },
+   {
+    "s": "Chem",
+    "q": "Hybridisation of carbon in methane is:",
+    "o": [
+     "sp²",
+     "sp",
+     "sp³",
+     "dsp²"
+    ],
+    "a": 2,
+    "e": "Four σ bonds give a tetrahedral shape."
+   },
+   {
+    "s": "Bio",
+    "q": "Number of chromosomes in a human primary spermatocyte:",
+    "o": [
+     "92",
+     "46",
+     "44",
+     "23"
+    ],
+    "a": 1,
+    "e": "Primary spermatocytes are diploid (2n = 46)."
+   },
+   {
+    "s": "Phy",
+    "q": "The SI unit of force is:",
+    "o": [
+     "Pascal",
+     "Watt",
+     "Newton",
+     "Joule"
+    ],
+    "a": 2,
+    "e": "1 N = 1 kg m s⁻²."
+   }
+  ]
+ },
+ "2026-10-25": {
+  "no": 3,
+  "date": "2026-10-25",
+  "bioword": {
+   "answer": "CODON",
+   "hint": "Triplet of bases on mRNA",
+   "fact": "There are 64 codons; 61 code for amino acids and 3 are stop codons."
+  },
+  "pinpoint": {
+   "answer": "Body Fluids and Circulation",
+   "clues": [
+    "Erythroblastosis fetalis",
+    "Purkinje fibres",
+    "SA node",
+    "Systole",
+    "Blood groups"
+   ],
+   "options": [
+    "Reproductive Health",
+    "Body Fluids and Circulation",
+    "Sexual Reproduction in Flowering Plants",
+    "Animal Kingdom",
+    "Biotechnology and its Applications",
+    "Morphology of Flowering Plants"
+   ]
+  },
+  "zip": {
+   "title": "Glycolysis",
+   "labels": [
+    "Glucose",
+    "Glucose-6-P",
+    "Fructose-1,6-bisP",
+    "Glyceraldehyde-3-P",
+    "PEP",
+    "Pyruvate"
+   ],
+   "size": 5,
+   "nodes": {
+    "0": 1,
+    "6": 4,
+    "8": 6,
+    "9": 5,
+    "18": 3,
+    "21": 2
+   },
+   "solution": [
+    0,
+    5,
+    10,
+    15,
+    20,
+    21,
+    22,
+    23,
+    24,
+    19,
+    18,
+    17,
+    16,
+    11,
+    6,
+    1,
+    2,
+    3,
+    4,
+    9,
+    14,
+    13,
+    12,
+    7,
+    8
+   ]
+  },
+  "queens": {
+   "size": 6,
+   "regions": [
+    "BAACDD",
+    "BCCCDD",
+    "CCCCDD",
+    "EEEEDD",
+    "EEEEDD",
+    "EEEEFD"
+   ],
+   "solution": [
+    2,
+    0,
+    3,
+    5,
+    1,
+    4
+   ],
+   "names": {
+    "A": "s-block",
+    "B": "p-block",
+    "C": "d-block",
+    "D": "f-block",
+    "E": "Noble gases",
+    "F": "Halogens"
+   }
+  },
+  "daily5": [
+   {
+    "s": "Bio",
+    "q": "Okazaki fragments are formed on the:",
+    "o": [
+     "Leading strand",
+     "mRNA",
+     "Both strands",
+     "Lagging strand"
+    ],
+    "a": 3,
+    "e": "The lagging strand is made discontinuously, in short fragments."
+   },
+   {
+    "s": "Bio",
+    "q": "The enzyme that joins DNA fragments is:",
+    "o": [
+     "Primase",
+     "DNA ligase",
+     "Helicase",
+     "DNA polymerase"
+    ],
+    "a": 1,
+    "e": "Ligase seals the gaps between Okazaki fragments."
+   },
+   {
+    "s": "Chem",
+    "q": "According to VSEPR theory, the shape of NH₃ is:",
+    "o": [
+     "Tetrahedral",
+     "Trigonal pyramidal",
+     "Trigonal planar",
+     "Bent"
+    ],
+    "a": 1,
+    "e": "One lone pair on N gives a pyramid."
+   },
+   {
+    "s": "Bio",
+    "q": "Mitochondrial DNA is:",
+    "o": [
+     "Linear and double-stranded",
+     "Circular and double-stranded",
+     "Linear and single-stranded",
+     "Circular and single-stranded"
+    ],
+    "a": 1,
+    "e": "Mitochondria carry their own circular dsDNA."
+   },
+   {
+    "s": "Phy",
+    "q": "The dimensional formula of work is:",
+    "o": [
+     "[ML²T⁻³]",
+     "[MLT⁻²]",
+     "[ML⁻¹T⁻²]",
+     "[ML²T⁻²]"
+    ],
+    "a": 3,
+    "e": "Work = force × distance."
+   }
+  ]
+ },
+ "2026-10-26": {
+  "no": 4,
+  "date": "2026-10-26",
+  "bioword": {
+   "answer": "OVARY",
+   "hint": "Female reproductive organ",
+   "fact": "In flowers, the ovary ripens into the fruit after fertilisation."
+  },
+  "pinpoint": {
+   "answer": "Excretory Products and their Elimination",
+   "clues": [
+    "JG apparatus",
+    "Countercurrent mechanism",
+    "Bowman's capsule",
+    "Loop of Henle",
+    "Nephron"
+   ],
+   "options": [
+    "Anatomy of Flowering Plants",
+    "Cell Cycle and Cell Division",
+    "Breathing and Exchange of Gases",
+    "Morphology of Flowering Plants",
+    "Excretory Products and their Elimination",
+    "Evolution"
+   ]
+  },
+  "zip": {
+   "title": "Path of food",
+   "labels": [
+    "Mouth",
+    "Pharynx",
+    "Oesophagus",
+    "Stomach",
+    "Small intestine",
+    "Large intestine"
+   ],
+   "size": 5,
+   "nodes": {
+    "0": 6,
+    "7": 5,
+    "10": 3,
+    "14": 4,
+    "19": 2,
+    "20": 1
+   },
+   "solution": [
+    20,
+    21,
+    22,
+    23,
+    24,
+    19,
+    18,
+    17,
+    16,
+    15,
+    10,
+    11,
+    12,
+    13,
+    14,
+    9,
+    4,
+    3,
+    8,
+    7,
+    2,
+    1,
+    6,
+    5,
+    0
+   ]
+  },
+  "queens": {
+   "size": 6,
+   "regions": [
+    "BBBBAC",
+    "BBBBBC",
+    "DDDDCC",
+    "FDFFCE",
+    "FFFEEE",
+    "FFFEEE"
+   ],
+   "solution": [
+    4,
+    2,
+    5,
+    1,
+    3,
+    0
+   ],
+   "names": {
+    "A": "s-block",
+    "B": "p-block",
+    "C": "d-block",
+    "D": "f-block",
+    "E": "Noble gases",
+    "F": "Halogens"
+   }
+  },
+  "daily5": [
+   {
+    "s": "Bio",
+    "q": "The inducer of the lac operon is:",
+    "o": [
+     "Lactose",
+     "Glucose",
+     "The repressor protein",
+     "Galactose"
+    ],
+    "a": 0,
+    "e": "Lactose inactivates the repressor so the genes are transcribed."
+   },
+   {
+    "s": "Bio",
+    "q": "Which base is found in RNA but not in DNA?",
+    "o": [
+     "Uracil",
+     "Adenine",
+     "Cytosine",
+     "Thymine"
+    ],
+    "a": 0,
+    "e": "RNA has uracil in place of thymine."
+   },
+   {
+    "s": "Chem",
+    "q": "The H–O–H bond angle in water is about:",
+    "o": [
+     "107°",
+     "120°",
+     "104.5°",
+     "109.5°"
+    ],
+    "a": 2,
+    "e": "Two lone pairs squeeze the bond angle."
+   },
+   {
+    "s": "Bio",
+    "q": "If q² = 0.16 in a Hardy-Weinberg population, q equals:",
+    "o": [
+     "0.16",
+     "0.4",
+     "0.6",
+     "0.84"
+    ],
+    "a": 1,
+    "e": "q = √0.16 = 0.4."
+   },
+   {
+    "s": "Phy",
+    "q": "Acceleration due to gravity at Earth's surface is about:",
+    "o": [
+     "98 m/s²",
+     "6.67 m/s²",
+     "9.8 m/s²",
+     "1.6 m/s²"
+    ],
+    "a": 2,
+    "e": "On the Moon it is about 1.6 m/s²."
+   }
+  ]
+ },
+ "2026-10-27": {
+  "no": 5,
+  "date": "2026-10-27",
+  "bioword": {
+   "answer": "SPORE",
+   "hint": "Reproductive unit of fungi and ferns",
+   "fact": "Spores are usually haploid and can survive harsh conditions."
+  },
+  "pinpoint": {
+   "answer": "Neural Control and Coordination",
+   "clues": [
+    "Saltatory conduction",
+    "Node of Ranvier",
+    "Resting potential",
+    "Synapse",
+    "Neuron"
+   ],
+   "options": [
+    "Neural Control and Coordination",
+    "Human Health and Disease",
+    "Biotechnology and its Applications",
+    "Cell: The Unit of Life",
+    "Biodiversity and Conservation",
+    "Human Reproduction"
+   ]
+  },
+  "zip": {
+   "title": "Pulmonary circulation",
+   "labels": [
+    "Vena cava",
+    "Right atrium",
+    "Right ventricle",
+    "Pulmonary artery",
+    "Lungs",
+    "Pulmonary vein"
+   ],
+   "size": 5,
+   "nodes": {
+    "1": 2,
+    "8": 3,
+    "16": 4,
+    "18": 6,
+    "19": 5,
+    "20": 1
+   },
+   "solution": [
+    20,
+    15,
+    10,
+    5,
+    0,
+    1,
+    2,
+    3,
+    4,
+    9,
+    8,
+    7,
+    6,
+    11,
+    16,
+    21,
+    22,
+    23,
+    24,
+    19,
+    14,
+    13,
+    12,
+    17,
+    18
+   ]
+  },
+  "queens": {
+   "size": 6,
+   "regions": [
+    "CBAACC",
+    "CBCCCC",
+    "CCCCCC",
+    "ECDCCC",
+    "EEEECC",
+    "EEECCF"
+   ],
+   "solution": [
+    3,
+    1,
+    4,
+    2,
+    0,
+    5
+   ],
+   "names": {
+    "A": "s-block",
+    "B": "p-block",
+    "C": "d-block",
+    "D": "f-block",
+    "E": "Noble gases",
+    "F": "Halogens"
+   }
+  },
+  "daily5": [
+   {
+    "s": "Bio",
+    "q": "Which blood group is called the universal donor?",
+    "o": [
+     "AB",
+     "B",
+     "A",
+     "O"
+    ],
+    "a": 3,
+    "e": "Group O red cells carry no A or B antigens."
+   },
+   {
+    "s": "Bio",
+    "q": "The normal tidal volume of a healthy human is about:",
+    "o": [
+     "1200 mL",
+     "150 mL",
+     "500 mL",
+     "3000 mL"
+    ],
+    "a": 2,
+    "e": "Tidal volume is about 500 mL per breath."
+   },
+   {
+    "s": "Chem",
+    "q": "Number of moles in 22 g of CO₂:",
+    "o": [
+     "2",
+     "0.25",
+     "0.5",
+     "1"
+    ],
+    "a": 2,
+    "e": "Molar mass of CO₂ is 44 g, so 22/44 = 0.5."
+   },
+   {
+    "s": "Bio",
+    "q": "The pacemaker of the human heart is the:",
+    "o": [
+     "SA node",
+     "AV node",
+     "Bundle of His",
+     "Purkinje fibres"
+    ],
+    "a": 0,
+    "e": "The SA node generates the maximum number of action potentials."
+   },
+   {
+    "s": "Phy",
+    "q": "The escape velocity from Earth is about:",
+    "o": [
+     "30 km/s",
+     "3 km/s",
+     "7.9 km/s",
+     "11.2 km/s"
+    ],
+    "a": 3,
+    "e": "7.9 km/s is the orbital velocity near the surface."
+   }
+  ]
+ },
+ "2026-10-28": {
+  "no": 6,
+  "date": "2026-10-28",
+  "bioword": {
+   "answer": "HELIX",
+   "hint": "The shape of the DNA molecule",
+   "fact": "Watson and Crick proposed the double helix model in 1953."
+  },
+  "pinpoint": {
+   "answer": "Chemical Coordination and Integration",
+   "clues": [
+    "Zona glomerulosa",
+    "Pineal gland",
+    "Thyroxine",
+    "Insulin",
+    "Endocrine glands"
+   ],
+   "options": [
+    "Plant Growth and Development",
+    "Breathing and Exchange of Gases",
+    "Biotechnology: Principles and Processes",
+    "Animal Kingdom",
+    "Neural Control and Coordination",
+    "Chemical Coordination and Integration"
+   ]
+  },
+  "zip": {
+   "title": "Urine formation",
+   "labels": [
+    "Glomerulus",
+    "Bowman's capsule",
+    "PCT",
+    "Loop of Henle",
+    "DCT",
+    "Collecting duct"
+   ],
+   "size": 5,
+   "nodes": {
+    "6": 1,
+    "7": 2,
+    "10": 4,
+    "14": 3,
+    "17": 5,
+    "18": 6
+   },
+   "solution": [
+    6,
+    5,
+    0,
+    1,
+    2,
+    7,
+    8,
+    3,
+    4,
+    9,
+    14,
+    13,
+    12,
+    11,
+    10,
+    15,
+    20,
+    21,
+    16,
+    17,
+    22,
+    23,
+    24,
+    19,
+    18
+   ]
+  },
+  "queens": {
+   "size": 6,
+   "regions": [
+    "DABBBB",
+    "DDCBBB",
+    "DDCCBB",
+    "DDCCEB",
+    "DDEEEB",
+    "DDDEEF"
+   ],
+   "solution": [
+    1,
+    4,
+    2,
+    0,
+    3,
+    5
+   ],
+   "names": {
+    "A": "s-block",
+    "B": "p-block",
+    "C": "d-block",
+    "D": "f-block",
+    "E": "Noble gases",
+    "F": "Halogens"
+   }
+  },
+  "daily5": [
+   {
+    "s": "Bio",
+    "q": "The structural and functional unit of the kidney is the:",
+    "o": [
+     "Glomerulus",
+     "Neuron",
+     "Ureter",
+     "Nephron"
+    ],
+    "a": 3,
+    "e": "Each kidney has about a million nephrons."
+   },
+   {
+    "s": "Bio",
+    "q": "ADH is stored in and released from the:",
+    "o": [
+     "Thyroid",
+     "Adrenal cortex",
+     "Posterior pituitary",
+     "Anterior pituitary"
+    ],
+    "a": 2,
+    "e": "ADH is made in the hypothalamus and released by the neurohypophysis."
+   },
+   {
+    "s": "Chem",
+    "q": "The value of Avogadro's number is:",
+    "o": [
+     "3.0 × 10⁸",
+     "6.022 × 10²²",
+     "1.6 × 10⁻¹⁹",
+     "6.022 × 10²³"
+    ],
+    "a": 3,
+    "e": "It is the number of particles in one mole."
+   },
+   {
+    "s": "Bio",
+    "q": "Diabetes insipidus is caused by a deficiency of:",
+    "o": [
+     "Insulin",
+     "ADH",
+     "Glucagon",
+     "Thyroxine"
+    ],
+    "a": 1,
+    "e": "Without ADH, the kidney cannot concentrate urine."
+   },
+   {
+    "s": "Phy",
+    "q": "The SI unit of power is:",
+    "o": [
+     "Volt",
+     "Joule",
+     "Watt",
+     "Newton"
+    ],
+    "a": 2,
+    "e": "1 W = 1 J/s."
+   }
+  ]
+ },
+ "2026-10-29": {
+  "no": 7,
+  "date": "2026-10-29",
+  "bioword": {
+   "answer": "CILIA",
+   "hint": "Hair-like projections that help in movement",
+   "fact": "Paramecium moves using cilia; they show a 9+2 microtubule arrangement."
+  },
+  "pinpoint": {
+   "answer": "Locomotion and Movement",
+   "clues": [
+    "Tropomyosin",
+    "Sarcomere",
+    "Sliding filament theory",
+    "Synovial joint",
+    "Skeletal muscle"
+   ],
+   "options": [
+    "Chemical Coordination and Integration",
+    "Biological Classification",
+    "Molecular Basis of Inheritance",
+    "Cell Cycle and Cell Division",
+    "Principles of Inheritance and Variation",
+    "Locomotion and Movement"
+   ]
+  },
+  "zip": {
+   "title": "Heart conduction",
+   "labels": [
+    "SA node",
+    "AV node",
+    "Bundle of His",
+    "Bundle branches",
+    "Purkinje fibres"
+   ],
+   "size": 5,
+   "nodes": {
+    "4": 1,
+    "6": 4,
+    "10": 2,
+    "18": 5,
+    "24": 3
+   },
+   "solution": [
+    4,
+    3,
+    2,
+    1,
+    0,
+    5,
+    10,
+    15,
+    20,
+    21,
+    22,
+    23,
+    24,
+    19,
+    14,
+    9,
+    8,
+    7,
+    6,
+    11,
+    16,
+    17,
+    12,
+    13,
+    18
+   ]
+  },
+  "queens": {
+   "size": 6,
+   "regions": [
+    "AAABBB",
+    "AAABBB",
+    "AACDDD",
+    "AACDDD",
+    "EEEEDD",
+    "FEEEDD"
+   ],
+   "solution": [
+    1,
+    4,
+    2,
+    5,
+    3,
+    0
+   ],
+   "names": {
+    "A": "s-block",
+    "B": "p-block",
+    "C": "d-block",
+    "D": "f-block",
+    "E": "Noble gases",
+    "F": "Halogens"
+   }
+  },
+  "daily5": [
+   {
+    "s": "Bio",
+    "q": "A sarcomere is the region between two successive:",
+    "o": [
+     "M lines",
+     "Z lines",
+     "H zones",
+     "A bands"
+    ],
+    "a": 1,
+    "e": "The sarcomere is the functional unit of contraction."
+   },
+   {
+    "s": "Bio",
+    "q": "Insulin is secreted by which cells of the islets of Langerhans?",
+    "o": [
+     "α-cells",
+     "δ-cells",
+     "Acinar cells",
+     "β-cells"
+    ],
+    "a": 3,
+    "e": "β-cells secrete insulin; α-cells secrete glucagon."
+   },
+   {
+    "s": "Chem",
+    "q": "The most electronegative element is:",
+    "o": [
+     "Fluorine",
+     "Chlorine",
+     "Oxygen",
+     "Nitrogen"
+    ],
+    "a": 0,
+    "e": "F has an electronegativity of 4.0 on the Pauling scale."
+   },
+   {
+    "s": "Bio",
+    "q": "Glucagon is secreted by:",
+    "o": [
+     "α-cells",
+     "Chief cells",
+     "β-cells",
+     "Kupffer cells"
+    ],
+    "a": 0,
+    "e": "Glucagon raises blood glucose."
+   },
+   {
+    "s": "Phy",
+    "q": "Linear momentum is the product of:",
+    "o": [
+     "Mass and velocity",
+     "Mass and acceleration",
+     "Force and distance",
+     "Force and time"
+    ],
+    "a": 0,
+    "e": "p = mv."
+   }
+  ]
+ },
+ "2026-10-30": {
+  "no": 8,
+  "date": "2026-10-30",
+  "bioword": {
+   "answer": "LIPID",
+   "hint": "Fats and oils belong to this group",
+   "fact": "Lipids are not true polymers, so they appear in the acid-insoluble fraction."
+  },
+  "pinpoint": {
+   "answer": "Cell Cycle and Cell Division",
+   "clues": [
+    "Synaptonemal complex",
+    "Chiasmata",
+    "Crossing over",
+    "Metaphase",
+    "Mitosis and meiosis"
+   ],
+   "options": [
+    "Biological Classification",
+    "Sexual Reproduction in Flowering Plants",
+    "Biotechnology and its Applications",
+    "Molecular Basis of Inheritance",
+    "Cell Cycle and Cell Division",
+    "Respiration in Plants"
+   ]
+  },
+  "zip": {
+   "title": "Path of sound",
+   "labels": [
+    "Pinna",
+    "Ear canal",
+    "Tympanic membrane",
+    "Malleus",
+    "Incus",
+    "Stapes"
+   ],
+   "size": 5,
+   "nodes": {
+    "0": 1,
+    "9": 2,
+    "10": 3,
+    "12": 6,
+    "13": 5,
+    "22": 4
+   },
+   "solution": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    9,
+    8,
+    7,
+    6,
+    5,
+    10,
+    15,
+    20,
+    21,
+    22,
+    23,
+    24,
+    19,
+    14,
+    13,
+    18,
+    17,
+    16,
+    11,
+    12
+   ]
+  },
+  "queens": {
+   "size": 6,
+   "regions": [
+    "AAAAAD",
+    "BAAAAD",
+    "BAACCD",
+    "BEFFFD",
+    "EEFFFF",
+    "EFFFFF"
+   ],
+   "solution": [
+    2,
+    0,
+    3,
+    5,
+    1,
+    4
+   ],
+   "names": {
+    "A": "s-block",
+    "B": "p-block",
+    "C": "d-block",
+    "D": "f-block",
+    "E": "Noble gases",
+    "F": "Halogens"
+   }
+  },
+  "daily5": [
+   {
+    "s": "Bio",
+    "q": "Rod cells of the retina contain the pigment:",
+    "o": [
+     "Melanin",
+     "Rhodopsin",
+     "Haemoglobin",
+     "Iodopsin"
+    ],
+    "a": 1,
+    "e": "Rhodopsin is a purplish-red protein needed for dim-light vision."
+   },
+   {
+    "s": "Bio",
+    "q": "Number of cervical vertebrae in humans:",
+    "o": [
+     "12",
+     "4",
+     "5",
+     "7"
+    ],
+    "a": 3,
+    "e": "Almost all mammals, including humans, have 7."
+   },
+   {
+    "s": "Chem",
+    "q": "Which element has the highest first ionisation enthalpy?",
+    "o": [
+     "Helium",
+     "Fluorine",
+     "Hydrogen",
+     "Neon"
+    ],
+    "a": 0,
+    "e": "Helium holds its 1s² electrons most tightly."
+   },
+   {
+    "s": "Bio",
+    "q": "How many pairs of ribs do humans have?",
+    "o": [
+     "14",
+     "7",
+     "10",
+     "12"
+    ],
+    "a": 3,
+    "e": "There are 12 pairs: 7 true, 3 false and 2 floating."
+   },
+   {
+    "s": "Phy",
+    "q": "Work done by the centripetal force in uniform circular motion is:",
+    "o": [
+     "Negative",
+     "Maximum",
+     "Positive",
+     "Zero"
+    ],
+    "a": 3,
+    "e": "The force is always perpendicular to the motion."
+   }
+  ]
+ },
+ "2026-10-31": {
+  "no": 9,
+  "date": "2026-10-31",
+  "bioword": {
+   "answer": "VIRUS",
+   "hint": "Acellular infectious agent",
+   "fact": "Viruses are inert outside a host cell and contain either DNA or RNA."
+  },
+  "pinpoint": {
+   "answer": "Cell: The Unit of Life",
+   "clues": [
+    "Cisternae",
+    "Svedberg unit",
+    "Fluid mosaic model",
+    "Mitochondria",
+    "Cell theory"
+   ],
+   "options": [
+    "Plant Kingdom",
+    "Ecosystem",
+    "Neural Control and Coordination",
+    "Sexual Reproduction in Flowering Plants",
+    "Human Health and Disease",
+    "Cell: The Unit of Life"
+   ]
+  },
+  "zip": {
+   "title": "Path of sperm",
+   "labels": [
+    "Seminiferous tubules",
+    "Rete testis",
+    "Vasa efferentia",
+    "Epididymis",
+    "Vas deferens",
+    "Urethra"
+   ],
+   "size": 5,
+   "nodes": {
+    "0": 6,
+    "7": 5,
+    "12": 1,
+    "14": 4,
+    "21": 2,
+    "24": 3
+   },
+   "solution": [
+    12,
+    11,
+    10,
+    15,
+    20,
+    21,
+    16,
+    17,
+    22,
+    23,
+    24,
+    19,
+    18,
+    13,
+    14,
+    9,
+    4,
+    3,
+    8,
+    7,
+    2,
+    1,
+    6,
+    5,
+    0
+   ]
+  },
+  "queens": {
+   "size": 6,
+   "regions": [
+    "BBBBCA",
+    "BBBBCC",
+    "DDBCCC",
+    "DDBECC",
+    "DDEEEE",
+    "DFEEEE"
+   ],
+   "solution": [
+    5,
+    2,
+    4,
+    0,
+    3,
+    1
+   ],
+   "names": {
+    "A": "s-block",
+    "B": "p-block",
+    "C": "d-block",
+    "D": "f-block",
+    "E": "Noble gases",
+    "F": "Halogens"
+   }
+  },
+  "daily5": [
+   {
+    "s": "Bio",
+    "q": "The largest gland of the human body is the:",
+    "o": [
+     "Pancreas",
+     "Thyroid",
+     "Salivary gland",
+     "Liver"
+    ],
+    "a": 3,
+    "e": "An adult liver weighs about 1.2–1.5 kg."
+   },
+   {
+    "s": "Bio",
+    "q": "Pepsinogen is converted to pepsin by:",
+    "o": [
+     "Mucus",
+     "Trypsin",
+     "Bile",
+     "HCl"
+    ],
+    "a": 3,
+    "e": "HCl in the stomach activates pepsinogen."
+   },
+   {
+    "s": "Chem",
+    "q": "The pH of 0.001 M HCl is:",
+    "o": [
+     "11",
+     "1",
+     "0.001",
+     "3"
+    ],
+    "a": 3,
+    "e": "[H⁺] = 10⁻³ M, so pH = 3."
+   },
+   {
+    "s": "Bio",
+    "q": "Bile does NOT contain:",
+    "o": [
+     "Bile pigments",
+     "Cholesterol",
+     "Digestive enzymes",
+     "Bile salts"
+    ],
+    "a": 2,
+    "e": "Bile has no enzymes; its salts emulsify fats."
+   },
+   {
+    "s": "Phy",
+    "q": "If the velocity of a body doubles, its kinetic energy becomes:",
+    "o": [
+     "2 times",
+     "8 times",
+     "Half",
+     "4 times"
+    ],
+    "a": 3,
+    "e": "KE = ½mv², so it goes up by 2² = 4."
+   }
+  ]
+ },
+ "2026-11-01": {
+  "no": 10,
+  "date": "2026-11-01",
+  "bioword": {
+   "answer": "GENUS",
+   "hint": "Taxonomic rank just above species",
+   "fact": "In Panthera leo, Panthera is the genus."
+  },
+  "pinpoint": {
+   "answer": "Biomolecules",
+   "clues": [
+    "Zwitterion",
+    "Glycosidic bond",
+    "Peptide bond",
+    "Enzyme inhibition",
+    "Amino acids"
+   ],
+   "options": [
+    "Animal Kingdom",
+    "Structural Organisation in Animals",
+    "Molecular Basis of Inheritance",
+    "Biomolecules",
+    "Principles of Inheritance and Variation",
+    "Biotechnology and its Applications"
+   ]
+  },
+  "zip": {
+   "title": "Central dogma",
+   "labels": [
+    "DNA",
+    "Transcription",
+    "mRNA",
+    "Translation",
+    "Protein"
+   ],
+   "size": 5,
+   "nodes": {
+    "6": 4,
+    "8": 2,
+    "12": 3,
+    "20": 5,
+    "24": 1
+   },
+   "solution": [
+    24,
+    19,
+    14,
+    9,
+    4,
+    3,
+    8,
+    13,
+    18,
+    23,
+    22,
+    17,
+    12,
+    7,
+    2,
+    1,
+    0,
+    5,
+    6,
+    11,
+    10,
+    15,
+    16,
+    21,
+    20
+   ]
+  },
+  "queens": {
+   "size": 6,
+   "regions": [
+    "BBBAAC",
+    "BBBBBC",
+    "DDBBBC",
+    "DDBBCC",
+    "DDEBCC",
+    "DDEFFF"
+   ],
+   "solution": [
+    3,
+    1,
+    5,
+    0,
+    2,
+    4
+   ],
+   "names": {
+    "A": "s-block",
+    "B": "p-block",
+    "C": "d-block",
+    "D": "f-block",
+    "E": "Noble gases",
+    "F": "Halogens"
+   }
+  },
+  "daily5": [
+   {
+    "s": "Bio",
+    "q": "Kwashiorkor is caused by a deficiency of:",
+    "o": [
+     "Protein",
+     "Iron",
+     "Iodine",
+     "Vitamin A"
+    ],
+    "a": 0,
+    "e": "It is protein deficiency with enough calories."
+   },
+   {
+    "s": "Bio",
+    "q": "The oxygen dissociation curve of haemoglobin is:",
+    "o": [
+     "Parabolic",
+     "Hyperbolic",
+     "Linear",
+     "Sigmoid"
+    ],
+    "a": 3,
+    "e": "Its S-shape reflects cooperative binding of O₂."
+   },
+   {
+    "s": "Chem",
+    "q": "The oxidation number of Mn in KMnO₄ is:",
+    "o": [
+     "+2",
+     "+7",
+     "+6",
+     "+4"
+    ],
+    "a": 1,
+    "e": "+1 + Mn + 4(−2) = 0 gives Mn = +7."
+   },
+   {
+    "s": "Bio",
+    "q": "Emphysema mainly damages the:",
+    "o": [
+     "Pleura",
+     "Larynx",
+     "Trachea",
+     "Alveolar walls"
+    ],
+    "a": 3,
+    "e": "Damaged alveoli reduce the area for gas exchange; smoking is a major cause."
+   },
+   {
+    "s": "Phy",
+    "q": "The SI unit of electric charge is:",
+    "o": [
+     "Coulomb",
+     "Ohm",
+     "Volt",
+     "Ampere"
+    ],
+    "a": 0,
+    "e": "1 C = 1 A × 1 s."
+   }
+  ]
+ },
+ "2026-11-02": {
+  "no": 11,
+  "date": "2026-11-02",
+  "bioword": {
+   "answer": "TAXON",
+   "hint": "Any unit of classification",
+   "fact": "Kingdom, phylum, class, order, family, genus and species are all taxa."
+  },
+  "pinpoint": {
+   "answer": "Respiration in Plants",
+   "clues": [
+    "Respiratory quotient",
+    "Oxidative phosphorylation",
+    "Pyruvic acid",
+    "Krebs cycle",
+    "Glycolysis"
+   ],
+   "options": [
+    "Human Health and Disease",
+    "Biotechnology: Principles and Processes",
+    "Respiration in Plants",
+    "Breathing and Exchange of Gases",
+    "Morphology of Flowering Plants",
+    "Excretory Products and their Elimination"
+   ]
+  },
+  "zip": {
+   "title": "Mitosis",
+   "labels": [
+    "Interphase",
+    "Prophase",
+    "Metaphase",
+    "Anaphase",
+    "Telophase",
+    "Cytokinesis"
+   ],
+   "size": 5,
+   "nodes": {
+    "2": 4,
+    "3": 2,
+    "11": 5,
+    "20": 6,
+    "22": 3,
+    "24": 1
+   },
+   "solution": [
+    24,
+    19,
+    14,
+    9,
+    4,
+    3,
+    8,
+    13,
+    18,
+    23,
+    22,
+    17,
+    12,
+    7,
+    2,
+    1,
+    0,
+    5,
+    6,
+    11,
+    10,
+    15,
+    16,
+    21,
+    20
+   ]
+  },
+  "queens": {
+   "size": 6,
+   "regions": [
+    "AAAAAA",
+    "DDCEEB",
+    "DDCEEE",
+    "DDFEEE",
+    "DFFEEE",
+    "FFFEEE"
+   ],
+   "solution": [
+    3,
+    5,
+    2,
+    0,
+    4,
+    1
+   ],
+   "names": {
+    "A": "s-block",
+    "B": "p-block",
+    "C": "d-block",
+    "D": "f-block",
+    "E": "Noble gases",
+    "F": "Halogens"
+   }
+  },
+  "daily5": [
+   {
+    "s": "Bio",
+    "q": "Oxygenated blood from the lungs returns to the heart through the:",
+    "o": [
+     "Aorta",
+     "Pulmonary veins",
+     "Pulmonary artery",
+     "Vena cava"
+    ],
+    "a": 1,
+    "e": "Pulmonary veins carry oxygenated blood to the left atrium."
+   },
+   {
+    "s": "Bio",
+    "q": "Double circulation is found in:",
+    "o": [
+     "Fishes",
+     "Reptiles only",
+     "Amphibians only",
+     "Birds and mammals"
+    ],
+    "a": 3,
+    "e": "Birds and mammals have fully separate pulmonary and systemic circuits."
+   },
+   {
+    "s": "Chem",
+    "q": "The oxidation state of Cr in K₂Cr₂O₇ is:",
+    "o": [
+     "+3",
+     "+7",
+     "+6",
+     "+12"
+    ],
+    "a": 2,
+    "e": "2(+1) + 2Cr + 7(−2) = 0 gives Cr = +6."
+   },
+   {
+    "s": "Bio",
+    "q": "In an ECG, the QRS complex represents:",
+    "o": [
+     "Rest of the heart",
+     "Depolarisation of the atria",
+     "Repolarisation of the ventricles",
+     "Depolarisation of the ventricles"
+    ],
+    "a": 3,
+    "e": "The QRS complex marks the start of ventricular contraction."
+   },
+   {
+    "s": "Phy",
+    "q": "Ohm's law states:",
+    "o": [
+     "V = IR",
+     "V = IR²",
+     "P = VI",
+     "V = I/R"
+    ],
+    "a": 0,
+    "e": "At constant temperature, V is proportional to I."
+   }
+  ]
+ },
+ "2026-11-03": {
+  "no": 12,
+  "date": "2026-11-03",
+  "bioword": {
+   "answer": "ATRIA",
+   "hint": "The upper chambers of the heart",
+   "fact": "The right atrium receives deoxygenated blood from the vena cava."
+  },
+  "pinpoint": {
+   "answer": "Plant Growth and Development",
+   "clues": [
+    "Bolting",
+    "Vernalisation",
+    "Apical dominance",
+    "Gibberellins",
+    "Auxin"
+   ],
+   "options": [
+    "Ecosystem",
+    "Biotechnology: Principles and Processes",
+    "Biological Classification",
+    "Plant Growth and Development",
+    "Human Health and Disease",
+    "Molecular Basis of Inheritance"
+   ]
+  },
+  "zip": {
+   "title": "Prophase I",
+   "labels": [
+    "Leptotene",
+    "Zygotene",
+    "Pachytene",
+    "Diplotene",
+    "Diakinesis"
+   ],
+   "size": 5,
+   "nodes": {
+    "6": 2,
+    "8": 4,
+    "12": 3,
+    "18": 5,
+    "20": 1
+   },
+   "solution": [
+    20,
+    15,
+    10,
+    5,
+    0,
+    1,
+    6,
+    11,
+    16,
+    21,
+    22,
+    17,
+    12,
+    7,
+    2,
+    3,
+    4,
+    9,
+    8,
+    13,
+    14,
+    19,
+    24,
+    23,
+    18
+   ]
+  },
+  "queens": {
+   "size": 6,
+   "regions": [
+    "BDACCC",
+    "BDDCCC",
+    "DDDDCE",
+    "DDDDEE",
+    "DDDFEE",
+    "DDFFFF"
+   ],
+   "solution": [
+    2,
+    0,
+    4,
+    1,
+    5,
+    3
+   ],
+   "names": {
+    "A": "s-block",
+    "B": "p-block",
+    "C": "d-block",
+    "D": "f-block",
+    "E": "Noble gases",
+    "F": "Halogens"
+   }
+  },
+  "daily5": [
+   {
+    "s": "Bio",
+    "q": "The main nitrogenous waste in humans is:",
+    "o": [
+     "Uric acid",
+     "Urea",
+     "Ammonia",
+     "Creatinine"
+    ],
+    "a": 1,
+    "e": "Humans are ureotelic."
+   },
+   {
+    "s": "Bio",
+    "q": "Birds excrete nitrogen mainly as uric acid. They are:",
+    "o": [
+     "Ureotelic",
+     "Uricotelic",
+     "Ammonotelic",
+     "Aminotelic"
+    ],
+    "a": 1,
+    "e": "Uric acid saves water."
+   },
+   {
+    "s": "Chem",
+    "q": "Maximum number of electrons in the shell with n = 3:",
+    "o": [
+     "18",
+     "9",
+     "8",
+     "32"
+    ],
+    "a": 0,
+    "e": "Maximum is 2n² = 18."
+   },
+   {
+    "s": "Bio",
+    "q": "Renin is secreted by the:",
+    "o": [
+     "Collecting duct",
+     "Adrenal medulla",
+     "Podocytes",
+     "JG cells"
+    ],
+    "a": 3,
+    "e": "JG cells respond to a fall in blood pressure or GFR."
+   },
+   {
+    "s": "Phy",
+    "q": "Resistors of 2 Ω and 3 Ω connected in parallel give:",
+    "o": [
+     "1.2 Ω",
+     "6 Ω",
+     "5 Ω",
+     "0.83 Ω"
+    ],
+    "a": 0,
+    "e": "R = (2 × 3)/(2 + 3) = 1.2 Ω."
+   }
+  ]
+ },
+ "2026-11-04": {
+  "no": 13,
+  "date": "2026-11-04",
+  "bioword": {
+   "answer": "SEPAL",
+   "hint": "Part of the outermost floral whorl",
+   "fact": "Sepals together form the calyx."
+  },
+  "pinpoint": {
+   "answer": "Morphology of Flowering Plants",
+   "clues": [
+    "Aestivation",
+    "Phyllotaxy",
+    "Racemose inflorescence",
+    "Tap root",
+    "Floral formula"
+   ],
+   "options": [
+    "Biomolecules",
+    "Chemical Coordination and Integration",
+    "Morphology of Flowering Plants",
+    "Excretory Products and their Elimination",
+    "Molecular Basis of Inheritance",
+    "Organisms and Populations"
+   ]
+  },
+  "zip": {
+   "title": "Food chain",
+   "labels": [
+    "Grass",
+    "Grasshopper",
+    "Frog",
+    "Snake",
+    "Hawk"
+   ],
+   "size": 5,
+   "nodes": {
+    "4": 2,
+    "6": 4,
+    "12": 3,
+    "16": 5,
+    "22": 1
+   },
+   "solution": [
+    22,
+    23,
+    24,
+    19,
+    14,
+    9,
+    4,
+    3,
+    8,
+    13,
+    18,
+    17,
+    12,
+    7,
+    2,
+    1,
+    0,
+    5,
+    6,
+    11,
+    10,
+    15,
+    20,
+    21,
+    16
+   ]
+  },
+  "queens": {
+   "size": 6,
+   "regions": [
+    "AAAACC",
+    "AABBCC",
+    "EEEBCC",
+    "EEEDDC",
+    "EEEEDC",
+    "EEEEFC"
+   ],
+   "solution": [
+    0,
+    2,
+    5,
+    3,
+    1,
+    4
+   ],
+   "names": {
+    "A": "s-block",
+    "B": "p-block",
+    "C": "d-block",
+    "D": "f-block",
+    "E": "Noble gases",
+    "F": "Halogens"
+   }
+  },
+  "daily5": [
+   {
+    "s": "Bio",
+    "q": "Nodes of Ranvier are found in:",
+    "o": [
+     "Non-myelinated fibres",
+     "Cardiac muscle",
+     "Bone",
+     "Myelinated nerve fibres"
+    ],
+    "a": 3,
+    "e": "Impulses jump from node to node (saltatory conduction)."
+   },
+   {
+    "s": "Bio",
+    "q": "At rest, the axoplasm has a high concentration of:",
+    "o": [
+     "K⁺",
+     "Ca²⁺",
+     "Cl⁻",
+     "Na⁺"
+    ],
+    "a": 0,
+    "e": "The Na⁺/K⁺ pump keeps K⁺ high inside the axon."
+   },
+   {
+    "s": "Chem",
+    "q": "For a d orbital, the azimuthal quantum number l is:",
+    "o": [
+     "3",
+     "1",
+     "0",
+     "2"
+    ],
+    "a": 3,
+    "e": "s = 0, p = 1, d = 2, f = 3."
+   },
+   {
+    "s": "Bio",
+    "q": "The part of the brain that controls body temperature and hunger:",
+    "o": [
+     "Medulla",
+     "Hypothalamus",
+     "Pons",
+     "Cerebellum"
+    ],
+    "a": 1,
+    "e": "The hypothalamus also controls the pituitary."
+   },
+   {
+    "s": "Phy",
+    "q": "The SI unit of capacitance is:",
+    "o": [
+     "Henry",
+     "Farad",
+     "Tesla",
+     "Weber"
+    ],
+    "a": 1,
+    "e": "1 F = 1 C/V."
+   }
+  ]
+ },
+ "2026-11-05": {
+  "no": 14,
+  "date": "2026-11-05",
+  "bioword": {
+   "answer": "STOMA",
+   "hint": "A pore on the leaf surface",
+   "fact": "Each stoma is surrounded by two guard cells that control its opening."
+  },
+  "pinpoint": {
+   "answer": "Anatomy of Flowering Plants",
+   "clues": [
+    "Bulliform cells",
+    "Casparian strips",
+    "Annual rings",
+    "Meristem",
+    "Vascular bundles"
+   ],
+   "options": [
+    "Breathing and Exchange of Gases",
+    "Cell: The Unit of Life",
+    "Excretory Products and their Elimination",
+    "Chemical Coordination and Integration",
+    "Plant Kingdom",
+    "Anatomy of Flowering Plants"
+   ]
+  },
+  "zip": {
+   "title": "Path of light in the eye",
+   "labels": [
+    "Cornea",
+    "Aqueous humour",
+    "Lens",
+    "Vitreous humour",
+    "Retina",
+    "Optic nerve"
+   ],
+   "size": 5,
+   "nodes": {
+    "2": 4,
+    "6": 1,
+    "11": 2,
+    "13": 5,
+    "18": 6,
+    "22": 3
+   },
+   "solution": [
+    6,
+    1,
+    0,
+    5,
+    10,
+    11,
+    16,
+    15,
+    20,
+    21,
+    22,
+    17,
+    12,
+    7,
+    2,
+    3,
+    4,
+    9,
+    8,
+    13,
+    14,
+    19,
+    24,
+    23,
+    18
+   ]
+  },
+  "queens": {
+   "size": 6,
+   "regions": [
+    "CCCCCA",
+    "BCCCCA",
+    "BCCCCC",
+    "DDCCCC",
+    "DDDEEE",
+    "FFFFEE"
+   ],
+   "solution": [
+    5,
+    0,
+    3,
+    1,
+    4,
+    2
+   ],
+   "names": {
+    "A": "s-block",
+    "B": "p-block",
+    "C": "d-block",
+    "D": "f-block",
+    "E": "Noble gases",
+    "F": "Halogens"
+   }
+  },
+  "daily5": [
+   {
+    "s": "Bio",
+    "q": "The cerebellum mainly helps in:",
+    "o": [
+     "Breathing",
+     "Vision",
+     "Balance and coordination",
+     "Memory"
+    ],
+    "a": 2,
+    "e": "It coordinates voluntary movements and posture."
+   },
+   {
+    "s": "Bio",
+    "q": "The fovea of the retina contains only:",
+    "o": [
+     "Cones",
+     "Ganglion cells",
+     "Blind spot cells",
+     "Rods"
+    ],
+    "a": 0,
+    "e": "The fovea is the point of sharpest vision."
+   },
+   {
+    "s": "Chem",
+    "q": "Number of σ bonds in benzene (C₆H₆):",
+    "o": [
+     "12",
+     "6",
+     "9",
+     "15"
+    ],
+    "a": 0,
+    "e": "6 C–C σ bonds plus 6 C–H σ bonds."
+   },
+   {
+    "s": "Bio",
+    "q": "The organ of Corti is located in the:",
+    "o": [
+     "Cochlea",
+     "Eustachian tube",
+     "Semicircular canals",
+     "Middle ear"
+    ],
+    "a": 0,
+    "e": "Its hair cells are the receptors for hearing."
+   },
+   {
+    "s": "Phy",
+    "q": "The speed of light in vacuum is about:",
+    "o": [
+     "340 m/s",
+     "3 × 10⁶ m/s",
+     "3 × 10⁸ m/s",
+     "3 × 10⁵ m/s"
+    ],
+    "a": 2,
+    "e": "340 m/s is roughly the speed of sound in air."
+   }
+  ]
+ },
+ "2026-11-06": {
+  "no": 15,
+  "date": "2026-11-06",
+  "bioword": {
+   "answer": "GLAND",
+   "hint": "An organ that secretes hormones or enzymes",
+   "fact": "The liver is the largest gland in the human body."
+  },
+  "pinpoint": {
+   "answer": "Biological Classification",
+   "clues": [
+    "Diatomaceous earth",
+    "Viroids",
+    "Mycoplasma",
+    "Five kingdom system",
+    "Whittaker"
+   ],
+   "options": [
+    "Biological Classification",
+    "Reproductive Health",
+    "Molecular Basis of Inheritance",
+    "Anatomy of Flowering Plants",
+    "Locomotion and Movement",
+    "Body Fluids and Circulation"
+   ]
+  },
+  "zip": {
+   "title": "Path of the ovum",
+   "labels": [
+    "Ovary",
+    "Fimbriae",
+    "Infundibulum",
+    "Ampulla",
+    "Isthmus",
+    "Uterus"
+   ],
+   "size": 5,
+   "nodes": {
+    "2": 6,
+    "5": 5,
+    "8": 1,
+    "12": 3,
+    "19": 2,
+    "20": 4
+   },
+   "solution": [
+    8,
+    3,
+    4,
+    9,
+    14,
+    19,
+    24,
+    23,
+    18,
+    13,
+    12,
+    17,
+    22,
+    21,
+    20,
+    15,
+    16,
+    11,
+    10,
+    5,
+    0,
+    1,
+    6,
+    7,
+    2
+   ]
+  },
+  "queens": {
+   "size": 6,
+   "regions": [
+    "AADBBB",
+    "AADBBB",
+    "ACDDDD",
+    "DDDDDE",
+    "DDDDEE",
+    "DDFDEE"
+   ],
+   "solution": [
+    0,
+    4,
+    1,
+    3,
+    5,
+    2
+   ],
+   "names": {
+    "A": "s-block",
+    "B": "p-block",
+    "C": "d-block",
+    "D": "f-block",
+    "E": "Noble gases",
+    "F": "Halogens"
+   }
+  },
+  "daily5": [
+   {
+    "s": "Bio",
+    "q": "Gibberellins cause:",
+    "o": [
+     "Fruit ripening",
+     "Stomatal closure",
+     "Bolting",
+     "Apical dominance"
+    ],
+    "a": 2,
+    "e": "Bolting is internode elongation just before flowering."
+   },
+   {
+    "s": "Bio",
+    "q": "Which plant hormone is called the stress hormone?",
+    "o": [
+     "Auxin",
+     "Cytokinin",
+     "Abscisic acid",
+     "Gibberellin"
+    ],
+    "a": 2,
+    "e": "ABA closes stomata during water stress."
+   },
+   {
+    "s": "Chem",
+    "q": "The IUPAC name of CH₃CH₂OH is:",
+    "o": [
+     "Ethanol",
+     "Methanol",
+     "Ethanoic acid",
+     "Ethanal"
+    ],
+    "a": 0,
+    "e": "Two carbons with an –OH group."
+   },
+   {
+    "s": "Bio",
+    "q": "Which hormone promotes fruit ripening?",
+    "o": [
+     "Gibberellin",
+     "Cytokinin",
+     "Auxin",
+     "Ethylene"
+    ],
+    "a": 3,
+    "e": "Ethylene is a gaseous plant hormone."
+   },
+   {
+    "s": "Phy",
+    "q": "If light travels at 2 × 10⁸ m/s in glass, the refractive index is:",
+    "o": [
+     "2",
+     "1.33",
+     "1.5",
+     "0.67"
+    ],
+    "a": 2,
+    "e": "n = c/v = 3/2 = 1.5."
+   }
+  ]
+ },
+ "2026-11-07": {
+  "no": 16,
+  "date": "2026-11-07",
+  "bioword": {
+   "answer": "LYASE",
+   "hint": "Enzyme class that removes groups without hydrolysis",
+   "fact": "Lyases form double bonds as they remove groups from substrates."
+  },
+  "pinpoint": {
+   "answer": "Plant Kingdom",
+   "clues": [
+    "Heterospory",
+    "Protonema",
+    "Gymnosperms",
+    "Bryophytes",
+    "Algae"
+   ],
+   "options": [
+    "Biological Classification",
+    "Cell: The Unit of Life",
+    "Plant Kingdom",
+    "Breathing and Exchange of Gases",
+    "Cell Cycle and Cell Division",
+    "Respiration in Plants"
+   ]
+  },
+  "zip": {
+   "title": "Taxonomic hierarchy",
+   "labels": [
+    "Kingdom",
+    "Phylum",
+    "Class",
+    "Order",
+    "Family",
+    "Genus",
+    "Species"
+   ],
+   "size": 5,
+   "nodes": {
+    "0": 3,
+    "2": 5,
+    "8": 6,
+    "14": 7,
+    "16": 4,
+    "20": 2,
+    "24": 1
+   },
+   "solution": [
+    24,
+    23,
+    22,
+    21,
+    20,
+    15,
+    10,
+    5,
+    0,
+    1,
+    6,
+    11,
+    16,
+    17,
+    12,
+    7,
+    2,
+    3,
+    4,
+    9,
+    8,
+    13,
+    18,
+    19,
+    14
+   ]
+  },
+  "queens": {
+   "size": 6,
+   "regions": [
+    "AAAACC",
+    "EEBECC",
+    "EEEECC",
+    "EEEDDC",
+    "EEEFFC",
+    "EEEFFF"
+   ],
+   "solution": [
+    0,
+    2,
+    5,
+    3,
+    1,
+    4
+   ],
+   "names": {
+    "A": "s-block",
+    "B": "p-block",
+    "C": "d-block",
+    "D": "f-block",
+    "E": "Noble gases",
+    "F": "Halogens"
+   }
+  },
+  "daily5": [
+   {
+    "s": "Bio",
+    "q": "Cytokinins mainly promote:",
+    "o": [
+     "Cell division",
+     "Dormancy",
+     "Leaf fall",
+     "Stomatal closure"
+    ],
+    "a": 0,
+    "e": "They also delay leaf senescence."
+   },
+   {
+    "s": "Bio",
+    "q": "In C₄ plants, Kranz anatomy refers to large cells around vascular bundles called:",
+    "o": [
+     "Bundle sheath cells",
+     "Palisade cells",
+     "Guard cells",
+     "Companion cells"
+    ],
+    "a": 0,
+    "e": "The Calvin cycle runs in bundle sheath cells in C₄ plants."
+   },
+   {
+    "s": "Chem",
+    "q": "Adding HBr to propene (no peroxide) mainly gives:",
+    "o": [
+     "2-Bromopropane",
+     "1,2-Dibromopropane",
+     "1-Bromopropane",
+     "Propane"
+    ],
+    "a": 0,
+    "e": "This follows Markovnikov's rule."
+   },
+   {
+    "s": "Bio",
+    "q": "The first stable product of the Calvin cycle is:",
+    "o": [
+     "3-PGA",
+     "PEP",
+     "RuBP",
+     "OAA"
+    ],
+    "a": 0,
+    "e": "3-phosphoglyceric acid is a 3-carbon compound."
+   },
+   {
+    "s": "Phy",
+    "q": "A concave mirror has a radius of curvature of 20 cm. Its focal length is:",
+    "o": [
+     "40 cm",
+     "5 cm",
+     "20 cm",
+     "10 cm"
+    ],
+    "a": 3,
+    "e": "f = R/2."
+   }
+  ]
+ },
+ "2026-11-08": {
+  "no": 17,
+  "date": "2026-11-08",
+  "bioword": {
+   "answer": "ACTIN",
+   "hint": "Protein of the thin filaments in muscle",
+   "fact": "Actin filaments slide over myosin during muscle contraction."
+  },
+  "pinpoint": {
+   "answer": "Animal Kingdom",
+   "clues": [
+    "Metamerism",
+    "Coelom",
+    "Notochord",
+    "Radial symmetry",
+    "Chordata"
+   ],
+   "options": [
+    "Animal Kingdom",
+    "Chemical Coordination and Integration",
+    "Organisms and Populations",
+    "Plant Growth and Development",
+    "Structural Organisation in Animals",
+    "Biomolecules"
+   ]
+  },
+  "zip": {
+   "title": "Early development",
+   "labels": [
+    "Fertilisation",
+    "Zygote",
+    "Morula",
+    "Blastocyst",
+    "Implantation"
+   ],
+   "size": 6,
+   "nodes": {
+    "6": 2,
+    "11": 4,
+    "12": 1,
+    "33": 3,
+    "34": 5
+   },
+   "solution": [
+    12,
+    18,
+    24,
+    30,
+    31,
+    25,
+    19,
+    13,
+    7,
+    6,
+    0,
+    1,
+    2,
+    8,
+    14,
+    20,
+    26,
+    32,
+    33,
+    27,
+    21,
+    15,
+    9,
+    3,
+    4,
+    5,
+    11,
+    10,
+    16,
+    17,
+    23,
+    22,
+    28,
+    29,
+    35,
+    34
+   ]
+  },
+  "queens": {
+   "size": 7,
+   "regions": [
+    "AAAAAAA",
+    "ABBBBBB",
+    "CBBBBBD",
+    "CBEBDDD",
+    "BBEEDDD",
+    "EEEEDDF",
+    "EEEEGFF"
+   ],
+   "solution": [
+    1,
+    3,
+    0,
+    5,
+    2,
+    6,
+    4
+   ],
+   "names": {
+    "A": "s-block",
+    "B": "p-block",
+    "C": "d-block",
+    "D": "f-block",
+    "E": "Noble gases",
+    "F": "Halogens",
+    "G": "Metalloids"
+   }
+  },
+  "daily5": [
+   {
+    "s": "Bio",
+    "q": "Splitting of water in photosynthesis is linked to:",
+    "o": [
+     "Photosystem I",
+     "Calvin cycle",
+     "Stroma",
+     "Photosystem II"
+    ],
+    "a": 3,
+    "e": "Photolysis supplies electrons to PS II and releases O₂."
+   },
+   {
+    "s": "Bio",
+    "q": "The respiratory quotient of carbohydrates is:",
+    "o": [
+     "Greater than 1",
+     "0",
+     "1",
+     "0.7"
+    ],
+    "a": 2,
+    "e": "Equal volumes of CO₂ are released and O₂ consumed."
+   },
+   {
+    "s": "Chem",
+    "q": "The peroxide (Kharasch) effect is shown only with:",
+    "o": [
+     "HI",
+     "HCl",
+     "HF",
+     "HBr"
+    ],
+    "a": 3,
+    "e": "With peroxide, HBr adds anti-Markovnikov."
+   },
+   {
+    "s": "Bio",
+    "q": "The respiratory quotient of fats is about:",
+    "o": [
+     "0",
+     "1.3",
+     "0.7",
+     "1"
+    ],
+    "a": 2,
+    "e": "Fats need more O₂ than the CO₂ they release."
+   },
+   {
+    "s": "Phy",
+    "q": "Power of a convex lens of focal length 50 cm is:",
+    "o": [
+     "−2 D",
+     "+2 D",
+     "+50 D",
+     "+0.5 D"
+    ],
+    "a": 1,
+    "e": "P = 1/f (in metres) = 1/0.5 = +2 D."
+   }
+  ]
+ },
+ "2026-11-09": {
+  "no": 18,
+  "date": "2026-11-09",
+  "bioword": {
+   "answer": "CLONE",
+   "hint": "A genetically identical copy",
+   "fact": "Dolly the sheep was the first mammal cloned from an adult cell."
+  },
+  "pinpoint": {
+   "answer": "Structural Organisation in Animals",
+   "clues": [
+    "Mushroom gland",
+    "Ommatidia",
+    "Malpighian tubules",
+    "Nictitating membrane",
+    "Cockroach and frog"
+   ],
+   "options": [
+    "Locomotion and Movement",
+    "Principles of Inheritance and Variation",
+    "Biological Classification",
+    "Structural Organisation in Animals",
+    "Neural Control and Coordination",
+    "Biodiversity and Conservation"
+   ]
+  },
+  "zip": {
+   "title": "Nitrogen cycle",
+   "labels": [
+    "Atmospheric N₂",
+    "Ammonia",
+    "Nitrite",
+    "Nitrate",
+    "Plant proteins"
+   ],
+   "size": 6,
+   "nodes": {
+    "0": 3,
+    "8": 5,
+    "11": 1,
+    "28": 4,
+    "34": 2
+   },
+   "solution": [
+    11,
+    5,
+    4,
+    10,
+    16,
+    17,
+    23,
+    29,
+    35,
+    34,
+    33,
+    32,
+    31,
+    30,
+    24,
+    18,
+    12,
+    6,
+    0,
+    1,
+    7,
+    13,
+    19,
+    25,
+    26,
+    27,
+    28,
+    22,
+    21,
+    20,
+    14,
+    15,
+    9,
+    3,
+    2,
+    8
+   ]
+  },
+  "queens": {
+   "size": 7,
+   "regions": [
+    "BBBBCCA",
+    "BBBBBCC",
+    "EBBBCCC",
+    "EEEDDCC",
+    "EEEFFCC",
+    "EEEEFFC",
+    "GEEEEEE"
+   ],
+   "solution": [
+    6,
+    2,
+    5,
+    3,
+    1,
+    4,
+    0
+   ],
+   "names": {
+    "A": "s-block",
+    "B": "p-block",
+    "C": "d-block",
+    "D": "f-block",
+    "E": "Noble gases",
+    "F": "Halogens",
+    "G": "Metalloids"
+   }
+  },
+  "daily5": [
+   {
+    "s": "Bio",
+    "q": "According to NCERT, net ATP gain from aerobic respiration of one glucose is:",
+    "o": [
+     "2",
+     "36",
+     "38",
+     "8"
+    ],
+    "a": 2,
+    "e": "NCERT gives a net gain of 38 ATP."
+   },
+   {
+    "s": "Bio",
+    "q": "The final electron acceptor in aerobic respiration is:",
+    "o": [
+     "Cytochrome c",
+     "FAD",
+     "NAD⁺",
+     "Oxygen"
+    ],
+    "a": 3,
+    "e": "O₂ accepts electrons and forms water."
+   },
+   {
+    "s": "Chem",
+    "q": "Lucas reagent is:",
+    "o": [
+     "Alkaline CuSO₄",
+     "Conc. HCl + anhydrous ZnCl₂",
+     "Conc. H₂SO₄ + HNO₃",
+     "Ammoniacal AgNO₃"
+    ],
+    "a": 1,
+    "e": "It tells 1°, 2° and 3° alcohols apart."
+   },
+   {
+    "s": "Bio",
+    "q": "Glycolysis takes place in the:",
+    "o": [
+     "Nucleus",
+     "Inner mitochondrial membrane",
+     "Cytoplasm",
+     "Mitochondrial matrix"
+    ],
+    "a": 2,
+    "e": "Glycolysis does not need mitochondria."
+   },
+   {
+    "s": "Phy",
+    "q": "A rainbow forms mainly due to:",
+    "o": [
+     "Diffraction",
+     "Polarisation",
+     "Dispersion of light",
+     "Photoelectric effect"
+    ],
+    "a": 2,
+    "e": "Water droplets refract, disperse and internally reflect sunlight."
+   }
+  ]
+ },
+ "2026-11-10": {
+  "no": 19,
+  "date": "2026-11-10",
+  "bioword": {
+   "answer": "FUNGI",
+   "hint": "Kingdom that includes yeast and mushrooms",
+   "fact": "Fungal cell walls are made of chitin."
+  },
+  "pinpoint": {
+   "answer": "Sexual Reproduction in Flowering Plants",
+   "clues": [
+    "Pollen-pistil interaction",
+    "Apomixis",
+    "Double fertilisation",
+    "Endosperm",
+    "Pollination"
+   ],
+   "options": [
+    "Ecosystem",
+    "Anatomy of Flowering Plants",
+    "Biotechnology: Principles and Processes",
+    "Breathing and Exchange of Gases",
+    "Biotechnology and its Applications",
+    "Sexual Reproduction in Flowering Plants"
+   ]
+  },
+  "zip": {
+   "title": "Hydrarch succession",
+   "labels": [
+    "Phytoplankton",
+    "Submerged plants",
+    "Floating plants",
+    "Reed swamp",
+    "Marsh meadow",
+    "Shrubs",
+    "Forest"
+   ],
+   "size": 6,
+   "nodes": {
+    "1": 7,
+    "3": 6,
+    "15": 5,
+    "19": 3,
+    "21": 4,
+    "26": 2,
+    "33": 1
+   },
+   "solution": [
+    33,
+    34,
+    35,
+    29,
+    28,
+    27,
+    26,
+    32,
+    31,
+    30,
+    24,
+    25,
+    19,
+    18,
+    12,
+    13,
+    14,
+    20,
+    21,
+    22,
+    23,
+    17,
+    16,
+    15,
+    9,
+    10,
+    11,
+    5,
+    4,
+    3,
+    2,
+    8,
+    7,
+    6,
+    0,
+    1
+   ]
+  },
+  "queens": {
+   "size": 7,
+   "regions": [
+    "BBBACCC",
+    "BBBECCC",
+    "DDEECCC",
+    "DEECCCC",
+    "EEEGGGF",
+    "EGGGGGF",
+    "EGGGGGG"
+   ],
+   "solution": [
+    3,
+    1,
+    5,
+    0,
+    2,
+    6,
+    4
+   ],
+   "names": {
+    "A": "s-block",
+    "B": "p-block",
+    "C": "d-block",
+    "D": "f-block",
+    "E": "Noble gases",
+    "F": "Halogens",
+    "G": "Metalloids"
+   }
+  },
+  "daily5": [
+   {
+    "s": "Bio",
+    "q": "The Krebs cycle takes place in the:",
+    "o": [
+     "Cytoplasm",
+     "Mitochondrial matrix",
+     "Ribosome",
+     "Chloroplast"
+    ],
+    "a": 1,
+    "e": "It is also called the TCA cycle."
+   },
+   {
+    "s": "Bio",
+    "q": "Guttation occurs through special openings called:",
+    "o": [
+     "Plasmodesmata",
+     "Hydathodes",
+     "Lenticels",
+     "Stomata"
+    ],
+    "a": 1,
+    "e": "Guttation is caused by root pressure."
+   },
+   {
+    "s": "Chem",
+    "q": "Tollens' reagent gives a silver mirror with:",
+    "o": [
+     "Ketones",
+     "Aldehydes",
+     "Ethers",
+     "Alcohols"
+    ],
+    "a": 1,
+    "e": "Aldehydes reduce Ag⁺ to silver."
+   },
+   {
+    "s": "Bio",
+    "q": "Casparian strips are found in the:",
+    "o": [
+     "Endodermis",
+     "Pericycle",
+     "Pith",
+     "Epidermis"
+    ],
+    "a": 0,
+    "e": "They are bands of suberin that block apoplastic flow."
+   },
+   {
+    "s": "Phy",
+    "q": "Optical fibres work on the principle of:",
+    "o": [
+     "Refraction only",
+     "Interference",
+     "Diffraction",
+     "Total internal reflection"
+    ],
+    "a": 3,
+    "e": "Light keeps reflecting inside the core."
+   }
+  ]
+ },
+ "2026-11-11": {
+  "no": 20,
+  "date": "2026-11-11",
+  "bioword": {
+   "answer": "EXONS",
+   "hint": "Coding sequences of a split gene",
+   "fact": "Introns are removed and exons are joined during splicing."
+  },
+  "pinpoint": {
+   "answer": "Human Reproduction",
+   "clues": [
+    "Leydig cells",
+    "Graafian follicle",
+    "Spermatogenesis",
+    "Menstrual cycle",
+    "Placenta"
+   ],
+   "options": [
+    "Molecular Basis of Inheritance",
+    "Respiration in Plants",
+    "Microbes in Human Welfare",
+    "Organisms and Populations",
+    "Morphology of Flowering Plants",
+    "Human Reproduction"
+   ]
+  },
+  "zip": {
+   "title": "Blood clotting",
+   "labels": [
+    "Injury",
+    "Thrombokinase",
+    "Thrombin",
+    "Fibrin",
+    "Clot"
+   ],
+   "size": 6,
+   "nodes": {
+    "2": 1,
+    "11": 3,
+    "18": 2,
+    "30": 5,
+    "35": 4
+   },
+   "solution": [
+    2,
+    1,
+    0,
+    6,
+    7,
+    8,
+    14,
+    13,
+    12,
+    18,
+    19,
+    20,
+    21,
+    15,
+    9,
+    3,
+    4,
+    5,
+    11,
+    10,
+    16,
+    17,
+    23,
+    22,
+    28,
+    29,
+    35,
+    34,
+    33,
+    27,
+    26,
+    32,
+    31,
+    25,
+    24,
+    30
+   ]
+  },
+  "queens": {
+   "size": 7,
+   "regions": [
+    "CCCCABB",
+    "CCCCCBB",
+    "DCCCCBB",
+    "DDCCCBB",
+    "DGEFFFF",
+    "GGGFFFF",
+    "GGGFFFF"
+   ],
+   "solution": [
+    4,
+    6,
+    3,
+    0,
+    2,
+    5,
+    1
+   ],
+   "names": {
+    "A": "s-block",
+    "B": "p-block",
+    "C": "d-block",
+    "D": "f-block",
+    "E": "Noble gases",
+    "F": "Halogens",
+    "G": "Metalloids"
+   }
+  },
+  "daily5": [
+   {
+    "s": "Bio",
+    "q": "Annual rings are formed by the activity of the:",
+    "o": [
+     "Apical meristem",
+     "Cork cambium",
+     "Vascular cambium",
+     "Pericycle"
+    ],
+    "a": 2,
+    "e": "Spring wood and autumn wood form one ring per year."
+   },
+   {
+    "s": "Bio",
+    "q": "Vexillary aestivation is found in:",
+    "o": [
+     "Mustard",
+     "Calotropis",
+     "Cotton",
+     "Pea"
+    ],
+    "a": 3,
+    "e": "It is typical of the family Fabaceae."
+   },
+   {
+    "s": "Chem",
+    "q": "Which of these gives a positive iodoform test?",
+    "o": [
+     "Benzaldehyde",
+     "Propan-1-ol",
+     "Ethanol",
+     "Methanol"
+    ],
+    "a": 2,
+    "e": "Ethanol oxidises to acetaldehyde, which has a CH₃CO– group."
+   },
+   {
+    "s": "Bio",
+    "q": "Placentation in pea is:",
+    "o": [
+     "Free central",
+     "Axile",
+     "Marginal",
+     "Parietal"
+    ],
+    "a": 2,
+    "e": "Ovules lie along the ventral suture."
+   },
+   {
+    "s": "Phy",
+    "q": "The energy of a photon is directly proportional to its:",
+    "o": [
+     "Speed",
+     "Wavelength",
+     "Frequency",
+     "Amplitude"
+    ],
+    "a": 2,
+    "e": "E = hν."
+   }
+  ]
+ },
+ "2026-11-12": {
+  "no": 21,
+  "date": "2026-11-12",
+  "bioword": {
+   "answer": "SERUM",
+   "hint": "Plasma without clotting factors",
+   "fact": "Serum is the fluid left after blood clots."
+  },
+  "pinpoint": {
+   "answer": "Reproductive Health",
+   "clues": [
+    "ZIFT",
+    "Amniocentesis",
+    "MTP",
+    "IUDs",
+    "Contraception"
+   ],
+   "options": [
+    "Molecular Basis of Inheritance",
+    "Ecosystem",
+    "Chemical Coordination and Integration",
+    "Principles of Inheritance and Variation",
+    "Reproductive Health",
+    "Biotechnology and its Applications"
+   ]
+  },
+  "zip": {
+   "title": "Synaptic transmission",
+   "labels": [
+    "Action potential",
+    "Vesicles fuse",
+    "Neurotransmitter released",
+    "Binds receptors",
+    "New potential"
+   ],
+   "size": 6,
+   "nodes": {
+    "2": 2,
+    "13": 3,
+    "23": 5,
+    "25": 1,
+    "32": 4
+   },
+   "solution": [
+    25,
+    31,
+    30,
+    24,
+    18,
+    12,
+    6,
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    11,
+    10,
+    9,
+    8,
+    7,
+    13,
+    19,
+    20,
+    14,
+    15,
+    21,
+    27,
+    26,
+    32,
+    33,
+    34,
+    35,
+    29,
+    28,
+    22,
+    16,
+    17,
+    23
+   ]
+  },
+  "queens": {
+   "size": 7,
+   "regions": [
+    "BAABBBB",
+    "BBBBBBB",
+    "BBBBCBB",
+    "BDECCBB",
+    "GEEEEEB",
+    "GGGEEFB",
+    "GGGGEEE"
+   ],
+   "solution": [
+    2,
+    6,
+    4,
+    1,
+    3,
+    5,
+    0
+   ],
+   "names": {
+    "A": "s-block",
+    "B": "p-block",
+    "C": "d-block",
+    "D": "f-block",
+    "E": "Noble gases",
+    "F": "Halogens",
+    "G": "Metalloids"
+   }
+  },
+  "daily5": [
+   {
+    "s": "Bio",
+    "q": "The fruit of mango is a:",
+    "o": [
+     "Berry",
+     "Drupe",
+     "Capsule",
+     "Pome"
+    ],
+    "a": 1,
+    "e": "A drupe has a hard stony endocarp."
+   },
+   {
+    "s": "Bio",
+    "q": "The edible part of coconut (white kernel and water) is the:",
+    "o": [
+     "Endosperm",
+     "Embryo",
+     "Pericarp",
+     "Cotyledon"
+    ],
+    "a": 0,
+    "e": "Coconut water is free-nuclear endosperm."
+   },
+   {
+    "s": "Chem",
+    "q": "Aspirin is chemically:",
+    "o": [
+     "Paracetamol",
+     "Acetylsalicylic acid",
+     "Salicylic acid",
+     "Benzoic acid"
+    ],
+    "a": 1,
+    "e": "It is an analgesic and antipyretic."
+   },
+   {
+    "s": "Bio",
+    "q": "The endosperm of angiosperms is usually:",
+    "o": [
+     "Haploid",
+     "Tetraploid",
+     "Triploid",
+     "Diploid"
+    ],
+    "a": 2,
+    "e": "It forms from triple fusion (one male gamete + two polar nuclei)."
+   },
+   {
+    "s": "Phy",
+    "q": "Einstein's photoelectric equation is:",
+    "o": [
+     "λ = h/p",
+     "K_max = hν + φ",
+     "E = mc²",
+     "K_max = hν − φ"
+    ],
+    "a": 3,
+    "e": "φ is the work function of the metal."
+   }
+  ]
+ },
+ "2026-11-13": {
+  "no": 22,
+  "date": "2026-11-13",
+  "bioword": {
+   "answer": "RENIN",
+   "hint": "Enzyme released by JG cells of the kidney",
+   "fact": "Renin converts angiotensinogen into angiotensin I."
+  },
+  "pinpoint": {
+   "answer": "Principles of Inheritance and Variation",
+   "clues": [
+    "Pleiotropy",
+    "Test cross",
+    "Incomplete dominance",
+    "Law of segregation",
+    "Mendel"
+   ],
+   "options": [
+    "Plant Kingdom",
+    "Biodiversity and Conservation",
+    "Principles of Inheritance and Variation",
+    "Excretory Products and their Elimination",
+    "Organisms and Populations",
+    "Cell Cycle and Cell Division"
+   ]
+  },
+  "zip": {
+   "title": "EM spectrum (short to long λ)",
+   "labels": [
+    "Gamma rays",
+    "X-rays",
+    "Ultraviolet",
+    "Visible",
+    "Infrared",
+    "Microwaves",
+    "Radio waves"
+   ],
+   "size": 6,
+   "nodes": {
+    "1": 2,
+    "3": 3,
+    "10": 4,
+    "20": 1,
+    "23": 5,
+    "24": 7,
+    "33": 6
+   },
+   "solution": [
+    20,
+    19,
+    18,
+    12,
+    6,
+    0,
+    1,
+    7,
+    13,
+    14,
+    8,
+    2,
+    3,
+    9,
+    15,
+    21,
+    22,
+    16,
+    10,
+    4,
+    5,
+    11,
+    17,
+    23,
+    29,
+    35,
+    34,
+    28,
+    27,
+    33,
+    32,
+    26,
+    25,
+    31,
+    30,
+    24
+   ]
+  },
+  "queens": {
+   "size": 7,
+   "regions": [
+    "ECAAAAA",
+    "ECCCBDA",
+    "ECCCBDA",
+    "ECCCCDA",
+    "EGGGGGA",
+    "GGGFFFF",
+    "GGGFFFF"
+   ],
+   "solution": [
+    6,
+    4,
+    2,
+    5,
+    0,
+    3,
+    1
+   ],
+   "names": {
+    "A": "s-block",
+    "B": "p-block",
+    "C": "d-block",
+    "D": "f-block",
+    "E": "Noble gases",
+    "F": "Halogens",
+    "G": "Metalloids"
+   }
+  },
+  "daily5": [
+   {
+    "s": "Bio",
+    "q": "A typical angiosperm embryo sac at maturity is:",
+    "o": [
+     "8-celled and 8-nucleate",
+     "7-celled and 7-nucleate",
+     "8-celled and 7-nucleate",
+     "7-celled and 8-nucleate"
+    ],
+    "a": 3,
+    "e": "The central cell has two polar nuclei."
+   },
+   {
+    "s": "Bio",
+    "q": "Apomixis is:",
+    "o": [
+     "Fusion of gametes",
+     "Seed formation without fertilisation",
+     "Germination of seeds",
+     "Pollen transfer by wind"
+    ],
+    "a": 1,
+    "e": "It is a form of asexual reproduction that mimics sexual reproduction."
+   },
+   {
+    "s": "Chem",
+    "q": "The ideal gas equation is:",
+    "o": [
+     "PV = constant × T²",
+     "PV = RT/n",
+     "P = nRTV",
+     "PV = nRT"
+    ],
+    "a": 3,
+    "e": "It combines Boyle's, Charles' and Avogadro's laws."
+   },
+   {
+    "s": "Bio",
+    "q": "The tapetum in an anther:",
+    "o": [
+     "Forms the pollen wall",
+     "Forms the stigma",
+     "Nourishes developing pollen grains",
+     "Opens the anther"
+    ],
+    "a": 2,
+    "e": "The tapetum is the innermost wall layer of the microsporangium."
+   },
+   {
+    "s": "Phy",
+    "q": "The de Broglie wavelength of a particle is:",
+    "o": [
+     "λ = p/h",
+     "λ = h/p",
+     "λ = hν",
+     "λ = mc²"
+    ],
+    "a": 1,
+    "e": "p is the momentum of the particle."
+   }
+  ]
+ },
+ "2026-11-14": {
+  "no": 23,
+  "date": "2026-11-14",
+  "bioword": {
+   "answer": "TESTA",
+   "hint": "Outer coat of a seed",
+   "fact": "The inner seed coat is called the tegmen."
+  },
+  "pinpoint": {
+   "answer": "Molecular Basis of Inheritance",
+   "clues": [
+    "Okazaki fragments",
+    "Lac operon",
+    "Transcription",
+    "Translation",
+    "DNA replication"
+   ],
+   "options": [
+    "Ecosystem",
+    "Evolution",
+    "Animal Kingdom",
+    "Molecular Basis of Inheritance",
+    "Locomotion and Movement",
+    "Organisms and Populations"
+   ]
+  },
+  "zip": {
+   "title": "VIBGYOR (short to long λ)",
+   "labels": [
+    "Violet",
+    "Indigo",
+    "Blue",
+    "Green",
+    "Yellow",
+    "Orange",
+    "Red"
+   ],
+   "size": 6,
+   "nodes": {
+    "0": 1,
+    "10": 5,
+    "11": 2,
+    "12": 4,
+    "20": 7,
+    "25": 6,
+    "33": 3
+   },
+   "solution": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    11,
+    17,
+    23,
+    29,
+    35,
+    34,
+    33,
+    32,
+    31,
+    30,
+    24,
+    18,
+    12,
+    6,
+    7,
+    8,
+    9,
+    10,
+    16,
+    22,
+    28,
+    27,
+    26,
+    25,
+    19,
+    13,
+    14,
+    15,
+    21,
+    20
+   ]
+  },
+  "queens": {
+   "size": 7,
+   "regions": [
+    "AABCCCC",
+    "DABCCCC",
+    "DDDCCCC",
+    "DDDECCC",
+    "DDDEEFF",
+    "DDDEEFF",
+    "DDDGFFF"
+   ],
+   "solution": [
+    0,
+    2,
+    5,
+    1,
+    4,
+    6,
+    3
+   ],
+   "names": {
+    "A": "s-block",
+    "B": "p-block",
+    "C": "d-block",
+    "D": "f-block",
+    "E": "Noble gases",
+    "F": "Halogens",
+    "G": "Metalloids"
+   }
+  },
+  "daily5": [
+   {
+    "s": "Bio",
+    "q": "The exine of pollen grains is made of:",
+    "o": [
+     "Sporopollenin",
+     "Lignin",
+     "Cellulose",
+     "Pectin"
+    ],
+    "a": 0,
+    "e": "Sporopollenin is one of the most resistant organic materials known."
+   },
+   {
+    "s": "Bio",
+    "q": "hCG during pregnancy is produced by the:",
+    "o": [
+     "Placenta",
+     "Hypothalamus",
+     "Anterior pituitary",
+     "Ovary"
+    ],
+    "a": 0,
+    "e": "Pregnancy tests detect hCG."
+   },
+   {
+    "s": "Chem",
+    "q": "The value of R in J mol⁻¹ K⁻¹ is:",
+    "o": [
+     "6.022",
+     "8.314",
+     "0.0821",
+     "1.987"
+    ],
+    "a": 1,
+    "e": "0.0821 is in L atm mol⁻¹ K⁻¹."
+   },
+   {
+    "s": "Bio",
+    "q": "Leydig cells in the testis secrete:",
+    "o": [
+     "Estrogen",
+     "FSH",
+     "Androgens",
+     "Sperm"
+    ],
+    "a": 2,
+    "e": "Leydig (interstitial) cells make testosterone."
+   },
+   {
+    "s": "Phy",
+    "q": "In a p-type semiconductor, the majority charge carriers are:",
+    "o": [
+     "Ions",
+     "Protons",
+     "Holes",
+     "Electrons"
+    ],
+    "a": 2,
+    "e": "Trivalent dopants such as boron create holes."
+   }
+  ]
+ },
+ "2026-11-15": {
+  "no": 24,
+  "date": "2026-11-15",
+  "bioword": {
+   "answer": "OVULE",
+   "hint": "Develops into a seed after fertilisation",
+   "fact": "The integuments of the ovule become the seed coats."
+  },
+  "pinpoint": {
+   "answer": "Evolution",
+   "clues": [
+    "Hardy-Weinberg principle",
+    "Adaptive radiation",
+    "Homologous organs",
+    "Natural selection",
+    "Darwin"
+   ],
+   "options": [
+    "Biotechnology: Principles and Processes",
+    "Anatomy of Flowering Plants",
+    "Sexual Reproduction in Flowering Plants",
+    "Morphology of Flowering Plants",
+    "Locomotion and Movement",
+    "Evolution"
+   ]
+  },
+  "zip": {
+   "title": "Group 17, top to bottom",
+   "labels": [
+    "Fluorine",
+    "Chlorine",
+    "Bromine",
+    "Iodine",
+    "Astatine"
+   ],
+   "size": 6,
+   "nodes": {
+    "0": 4,
+    "5": 2,
+    "14": 3,
+    "25": 5,
+    "26": 1
+   },
+   "solution": [
+    26,
+    32,
+    33,
+    34,
+    35,
+    29,
+    23,
+    17,
+    11,
+    5,
+    4,
+    10,
+    16,
+    22,
+    28,
+    27,
+    21,
+    20,
+    14,
+    15,
+    9,
+    3,
+    2,
+    8,
+    7,
+    1,
+    0,
+    6,
+    12,
+    13,
+    19,
+    18,
+    24,
+    30,
+    31,
+    25
+   ]
+  },
+  "queens": {
+   "size": 7,
+   "regions": [
+    "EEBDDAA",
+    "EBBDDCA",
+    "EEDDDCD",
+    "EEEDDDD",
+    "EEFFDDD",
+    "EEFFGGD",
+    "EEGGGGG"
+   ],
+   "solution": [
+    6,
+    1,
+    5,
+    3,
+    0,
+    2,
+    4
+   ],
+   "names": {
+    "A": "s-block",
+    "B": "p-block",
+    "C": "d-block",
+    "D": "f-block",
+    "E": "Noble gases",
+    "F": "Halogens",
+    "G": "Metalloids"
+   }
+  },
+  "daily5": [
+   {
+    "s": "Bio",
+    "q": "In a 28-day menstrual cycle, ovulation occurs around day:",
+    "o": [
+     "28",
+     "1",
+     "14",
+     "5"
+    ],
+    "a": 2,
+    "e": "Ovulation happens mid-cycle."
+   },
+   {
+    "s": "Bio",
+    "q": "Ovulation is triggered by a surge of:",
+    "o": [
+     "Progesterone",
+     "Prolactin",
+     "LH",
+     "Oxytocin"
+    ],
+    "a": 2,
+    "e": "The LH surge causes the Graafian follicle to rupture."
+   },
+   {
+    "s": "Chem",
+    "q": "For an exothermic reaction, ΔH is:",
+    "o": [
+     "Zero",
+     "Infinite",
+     "Negative",
+     "Positive"
+    ],
+    "a": 2,
+    "e": "Heat is released to the surroundings."
+   },
+   {
+    "s": "Bio",
+    "q": "Which of these is a copper-releasing IUD?",
+    "o": [
+     "Saheli",
+     "CuT",
+     "Lippes loop",
+     "LNG-20"
+    ],
+    "a": 1,
+    "e": "Lippes loop is non-medicated; LNG-20 releases hormones."
+   },
+   {
+    "s": "Phy",
+    "q": "When a p-n junction is forward biased, the depletion layer:",
+    "o": [
+     "Increases",
+     "Stays the same",
+     "Disappears and reverses",
+     "Decreases"
+    ],
+    "a": 3,
+    "e": "The barrier potential is lowered."
+   }
+  ]
+ },
+ "2026-11-16": {
+  "no": 25,
+  "date": "2026-11-16",
+  "bioword": {
+   "answer": "CHYME",
+   "hint": "Acidic food mass leaving the stomach",
+   "fact": "Chyme passes from the stomach into the duodenum."
+  },
+  "pinpoint": {
+   "answer": "Human Health and Disease",
+   "clues": [
+    "Interferons",
+    "Plasmodium",
+    "Vaccination",
+    "Cancer",
+    "Immunity"
+   ],
+   "options": [
+    "Body Fluids and Circulation",
+    "Cell Cycle and Cell Division",
+    "Biotechnology and its Applications",
+    "Morphology of Flowering Plants",
+    "Human Health and Disease",
+    "Ecosystem"
+   ]
+  },
+  "zip": {
+   "title": "Group 1, top to bottom",
+   "labels": [
+    "Lithium",
+    "Sodium",
+    "Potassium",
+    "Rubidium",
+    "Caesium"
+   ],
+   "size": 6,
+   "nodes": {
+    "10": 4,
+    "12": 2,
+    "20": 3,
+    "21": 5,
+    "29": 1
+   },
+   "solution": [
+    29,
+    35,
+    34,
+    33,
+    32,
+    31,
+    30,
+    24,
+    18,
+    12,
+    6,
+    0,
+    1,
+    7,
+    13,
+    19,
+    25,
+    26,
+    20,
+    14,
+    8,
+    2,
+    3,
+    4,
+    5,
+    11,
+    10,
+    9,
+    15,
+    16,
+    17,
+    23,
+    22,
+    28,
+    27,
+    21
+   ]
+  },
+  "queens": {
+   "size": 7,
+   "regions": [
+    "AAACCCC",
+    "AADBCCC",
+    "AADDCCC",
+    "AADCCCC",
+    "EEDCCCC",
+    "EEGGGFF",
+    "EGGGGGG"
+   ],
+   "solution": [
+    1,
+    3,
+    5,
+    2,
+    0,
+    6,
+    4
+   ],
+   "names": {
+    "A": "s-block",
+    "B": "p-block",
+    "C": "d-block",
+    "D": "f-block",
+    "E": "Noble gases",
+    "F": "Halogens",
+    "G": "Metalloids"
+   }
+  },
+  "daily5": [
+   {
+    "s": "Bio",
+    "q": "Saheli, developed at CDRI Lucknow, is a:",
+    "o": [
+     "Barrier method",
+     "Hormone injection",
+     "Copper IUD",
+     "Non-steroidal oral contraceptive pill"
+    ],
+    "a": 3,
+    "e": "It is taken once a week."
+   },
+   {
+    "s": "Bio",
+    "q": "India banned amniocentesis for sex determination to check:",
+    "o": [
+     "Female foeticide",
+     "Infertility",
+     "Genetic disorders",
+     "Maternal deaths"
+    ],
+    "a": 0,
+    "e": "Amniocentesis is still allowed for genetic disorder testing."
+   },
+   {
+    "s": "Chem",
+    "q": "A process at constant T and P is spontaneous when:",
+    "o": [
+     "ΔH > 0",
+     "ΔG > 0",
+     "ΔG < 0",
+     "ΔG = 0"
+    ],
+    "a": 2,
+    "e": "Gibbs energy must decrease."
+   },
+   {
+    "s": "Bio",
+    "q": "Plasmodium enters the human body as:",
+    "o": [
+     "Gametocytes",
+     "Merozoites",
+     "Sporozoites",
+     "Trophozoites"
+    ],
+    "a": 2,
+    "e": "Sporozoites are injected by an infected female Anopheles mosquito."
+   },
+   {
+    "s": "Phy",
+    "q": "An alpha particle is a:",
+    "o": [
+     "Helium nucleus",
+     "Neutron",
+     "Electron",
+     "Photon"
+    ],
+    "a": 0,
+    "e": "It has 2 protons and 2 neutrons."
+   }
+  ]
+ },
+ "2026-11-17": {
+  "no": 26,
+  "date": "2026-11-17",
+  "bioword": {
+   "answer": "BOLUS",
+   "hint": "Ball of chewed food that is swallowed",
+   "fact": "Peristalsis pushes the bolus down the oesophagus."
+  },
+  "pinpoint": {
+   "answer": "Microbes in Human Welfare",
+   "clues": [
+    "Activated sludge",
+    "Trichoderma",
+    "Biogas",
+    "Penicillin",
+    "Curd and Lactobacillus"
+   ],
+   "options": [
+    "Human Reproduction",
+    "Biological Classification",
+    "Microbes in Human Welfare",
+    "Chemical Coordination and Integration",
+    "Biotechnology and its Applications",
+    "Breathing and Exchange of Gases"
+   ]
+  },
+  "zip": {
+   "title": "Alkane series",
+   "labels": [
+    "Methane",
+    "Ethane",
+    "Propane",
+    "Butane",
+    "Pentane",
+    "Hexane"
+   ],
+   "size": 6,
+   "nodes": {
+    "4": 4,
+    "7": 2,
+    "14": 6,
+    "22": 5,
+    "30": 1,
+    "34": 3
+   },
+   "solution": [
+    30,
+    24,
+    18,
+    12,
+    6,
+    0,
+    1,
+    7,
+    13,
+    19,
+    25,
+    31,
+    32,
+    33,
+    34,
+    35,
+    29,
+    23,
+    17,
+    11,
+    5,
+    4,
+    3,
+    2,
+    8,
+    9,
+    10,
+    16,
+    22,
+    28,
+    27,
+    26,
+    20,
+    21,
+    15,
+    14
+   ]
+  },
+  "queens": {
+   "size": 7,
+   "regions": [
+    "BAAAAAD",
+    "BBAAADD",
+    "BBCAADD",
+    "BCCADDD",
+    "FFFAADE",
+    "FFFAAAG",
+    "FFFFAGG"
+   ],
+   "solution": [
+    3,
+    0,
+    2,
+    4,
+    6,
+    1,
+    5
+   ],
+   "names": {
+    "A": "s-block",
+    "B": "p-block",
+    "C": "d-block",
+    "D": "f-block",
+    "E": "Noble gases",
+    "F": "Halogens",
+    "G": "Metalloids"
+   }
+  },
+  "daily5": [
+   {
+    "s": "Bio",
+    "q": "Typhoid fever is caused by:",
+    "o": [
+     "Salmonella typhi",
+     "Plasmodium vivax",
+     "Streptococcus pneumoniae",
+     "Wuchereria"
+    ],
+    "a": 0,
+    "e": "It spreads through contaminated food and water."
+   },
+   {
+    "s": "Bio",
+    "q": "The Widal test is used to confirm:",
+    "o": [
+     "Tuberculosis",
+     "Typhoid",
+     "AIDS",
+     "Malaria"
+    ],
+    "a": 1,
+    "e": "It detects antibodies against Salmonella typhi."
+   },
+   {
+    "s": "Chem",
+    "q": "The unit of the rate constant of a first-order reaction is:",
+    "o": [
+     "L mol⁻¹ s⁻¹",
+     "mol L⁻¹ s⁻¹",
+     "s⁻¹",
+     "mol² L⁻² s⁻¹"
+    ],
+    "a": 2,
+    "e": "For first order, k = rate/[A]."
+   },
+   {
+    "s": "Bio",
+    "q": "Ringworm in humans is caused by:",
+    "o": [
+     "Fungi",
+     "Viruses",
+     "Bacteria",
+     "Worms"
+    ],
+    "a": 0,
+    "e": "Microsporum, Trichophyton and Epidermophyton cause it."
+   },
+   {
+    "s": "Phy",
+    "q": "The SI unit of magnetic field is:",
+    "o": [
+     "Tesla",
+     "Weber",
+     "Gauss",
+     "Henry"
+    ],
+    "a": 0,
+    "e": "1 T = 10⁴ gauss."
+   }
+  ]
+ },
+ "2026-11-18": {
+  "no": 27,
+  "date": "2026-11-18",
+  "bioword": {
+   "answer": "STELE",
+   "hint": "Central vascular cylinder of a root or stem",
+   "fact": "The stele includes pericycle, vascular bundles and pith."
+  },
+  "pinpoint": {
+   "answer": "Biotechnology: Principles and Processes",
+   "clues": [
+    "Ori",
+    "Gel electrophoresis",
+    "Restriction enzyme",
+    "Plasmid",
+    "Recombinant DNA"
+   ],
+   "options": [
+    "Body Fluids and Circulation",
+    "Biotechnology: Principles and Processes",
+    "Breathing and Exchange of Gases",
+    "Principles of Inheritance and Variation",
+    "Locomotion and Movement",
+    "Human Health and Disease"
+   ]
+  },
+  "zip": {
+   "title": "Aufbau filling order",
+   "labels": [
+    "1s",
+    "2s",
+    "2p",
+    "3s",
+    "3p",
+    "4s",
+    "3d"
+   ],
+   "size": 6,
+   "nodes": {
+    "3": 3,
+    "8": 2,
+    "11": 7,
+    "20": 1,
+    "23": 6,
+    "25": 4,
+    "33": 5
+   },
+   "solution": [
+    20,
+    19,
+    18,
+    12,
+    13,
+    14,
+    8,
+    7,
+    6,
+    0,
+    1,
+    2,
+    3,
+    9,
+    15,
+    21,
+    27,
+    26,
+    25,
+    24,
+    30,
+    31,
+    32,
+    33,
+    34,
+    35,
+    29,
+    28,
+    22,
+    23,
+    17,
+    16,
+    10,
+    4,
+    5,
+    11
+   ]
+  },
+  "queens": {
+   "size": 7,
+   "regions": [
+    "BBBBACC",
+    "BBBBACC",
+    "DBBBCCC",
+    "DDBBCCE",
+    "DDBCCCE",
+    "DFBCCCE",
+    "DFBGCCE"
+   ],
+   "solution": [
+    4,
+    2,
+    5,
+    0,
+    6,
+    1,
+    3
+   ],
+   "names": {
+    "A": "s-block",
+    "B": "p-block",
+    "C": "d-block",
+    "D": "f-block",
+    "E": "Noble gases",
+    "F": "Halogens",
+    "G": "Metalloids"
+   }
+  },
+  "daily5": [
+   {
+    "s": "Bio",
+    "q": "Antibodies are produced by:",
+    "o": [
+     "T-lymphocytes",
+     "B-lymphocytes",
+     "Erythrocytes",
+     "Platelets"
+    ],
+    "a": 1,
+    "e": "B-cells turn into plasma cells that secrete antibodies."
+   },
+   {
+    "s": "Bio",
+    "q": "Colostrum gives a newborn:",
+    "o": [
+     "Passive immunity",
+     "Active immunity",
+     "Vaccination",
+     "Innate barriers only"
+    ],
+    "a": 0,
+    "e": "It is rich in IgA antibodies."
+   },
+   {
+    "s": "Chem",
+    "q": "Half-life of a first-order reaction is:",
+    "o": [
+     "[A]₀/2k",
+     "1/k[A]₀",
+     "k/0.693",
+     "0.693/k"
+    ],
+    "a": 3,
+    "e": "It does not depend on starting concentration."
+   },
+   {
+    "s": "Bio",
+    "q": "HIV mainly attacks:",
+    "o": [
+     "Platelets",
+     "Red blood cells",
+     "B-cells",
+     "Helper T-cells"
+    ],
+    "a": 3,
+    "e": "Loss of helper T-cells weakens the immune system."
+   },
+   {
+    "s": "Phy",
+    "q": "Lenz's law follows from conservation of:",
+    "o": [
+     "Energy",
+     "Mass",
+     "Momentum",
+     "Charge"
+    ],
+    "a": 0,
+    "e": "The induced current opposes the change that causes it."
+   }
+  ]
+ },
+ "2026-11-19": {
+  "no": 28,
+  "date": "2026-11-19",
+  "bioword": {
+   "answer": "ALGAE",
+   "hint": "Simple photosynthetic organisms like Spirogyra",
+   "fact": "Algae are divided into green, brown and red algae."
+  },
+  "pinpoint": {
+   "answer": "Biotechnology and its Applications",
+   "clues": [
+    "RNA interference",
+    "Bt cotton",
+    "Gene therapy",
+    "Transgenic animals",
+    "Golden rice"
+   ],
+   "options": [
+    "Human Health and Disease",
+    "Cell: The Unit of Life",
+    "Biological Classification",
+    "Sexual Reproduction in Flowering Plants",
+    "Biotechnology and its Applications",
+    "Neural Control and Coordination"
+   ]
+  },
+  "zip": {
+   "title": "Path of air",
+   "labels": [
+    "Nostrils",
+    "Pharynx",
+    "Larynx",
+    "Trachea",
+    "Bronchi",
+    "Bronchioles",
+    "Alveoli"
+   ],
+   "size": 6,
+   "nodes": {
+    "9": 6,
+    "13": 4,
+    "16": 7,
+    "18": 3,
+    "21": 5,
+    "22": 1,
+    "27": 2
+   },
+   "solution": [
+    22,
+    23,
+    29,
+    35,
+    34,
+    28,
+    27,
+    33,
+    32,
+    31,
+    30,
+    24,
+    18,
+    12,
+    6,
+    0,
+    1,
+    7,
+    13,
+    19,
+    25,
+    26,
+    20,
+    21,
+    15,
+    14,
+    8,
+    2,
+    3,
+    9,
+    10,
+    4,
+    5,
+    11,
+    17,
+    16
+   ]
+  },
+  "queens": {
+   "size": 7,
+   "regions": [
+    "BBBBBAA",
+    "BBBBBAA",
+    "BBBBCCA",
+    "BBCCCCD",
+    "GECCCCC",
+    "GEEFFCC",
+    "GGGGFCC"
+   ],
+   "solution": [
+    5,
+    2,
+    4,
+    6,
+    1,
+    3,
+    0
+   ],
+   "names": {
+    "A": "s-block",
+    "B": "p-block",
+    "C": "d-block",
+    "D": "f-block",
+    "E": "Noble gases",
+    "F": "Halogens",
+    "G": "Metalloids"
+   }
+  },
+  "daily5": [
+   {
+    "s": "Bio",
+    "q": "Heroin (smack) is chemically:",
+    "o": [
+     "Cannabinoid",
+     "Nicotine",
+     "Cocaine",
+     "Diacetylmorphine"
+    ],
+    "a": 3,
+    "e": "It is made by acetylating morphine."
+   },
+   {
+    "s": "Bio",
+    "q": "Lactobacillus turns milk into curd by producing:",
+    "o": [
+     "Acetic acid",
+     "Ethanol",
+     "Citric acid",
+     "Lactic acid"
+    ],
+    "a": 3,
+    "e": "Lactic acid coagulates milk proteins."
+   },
+   {
+    "s": "Chem",
+    "q": "Due to lanthanoid contraction, which pair has almost identical radii?",
+    "o": [
+     "Fe and Co",
+     "Sc and Y",
+     "Ti and Zr",
+     "Zr and Hf"
+    ],
+    "a": 3,
+    "e": "Poor shielding by 4f electrons shrinks Hf."
+   },
+   {
+    "s": "Bio",
+    "q": "Penicillin was discovered by:",
+    "o": [
+     "Robert Koch",
+     "Alexander Fleming",
+     "Louis Pasteur",
+     "Edward Jenner"
+    ],
+    "a": 1,
+    "e": "Fleming found it while working on Staphylococcus."
+   },
+   {
+    "s": "Phy",
+    "q": "A transformer works on the principle of:",
+    "o": [
+     "Self induction",
+     "Electrostatic induction",
+     "Photoelectric effect",
+     "Mutual induction"
+    ],
+    "a": 3,
+    "e": "It works only with alternating current."
+   }
+  ]
+ },
+ "2026-11-20": {
+  "no": 29,
+  "date": "2026-11-20",
+  "bioword": {
+   "answer": "BIOME",
+   "hint": "A large ecosystem type such as tundra",
+   "fact": "Biome distribution depends mainly on temperature and rainfall."
+  },
+  "pinpoint": {
+   "answer": "Organisms and Populations",
+   "clues": [
+    "Logistic growth",
+    "Age pyramid",
+    "Mutualism",
+    "Predation",
+    "Population"
+   ],
+   "options": [
+    "Organisms and Populations",
+    "Morphology of Flowering Plants",
+    "Human Health and Disease",
+    "Evolution",
+    "Microbes in Human Welfare",
+    "Breathing and Exchange of Gases"
+   ]
+  },
+  "zip": {
+   "title": "Path of bile",
+   "labels": [
+    "Liver",
+    "Hepatic duct",
+    "Common bile duct",
+    "Hepato-pancreatic duct",
+    "Duodenum"
+   ],
+   "size": 6,
+   "nodes": {
+    "9": 4,
+    "13": 5,
+    "14": 3,
+    "19": 1,
+    "27": 2
+   },
+   "solution": [
+    19,
+    18,
+    24,
+    30,
+    31,
+    25,
+    26,
+    32,
+    33,
+    27,
+    28,
+    34,
+    35,
+    29,
+    23,
+    22,
+    21,
+    20,
+    14,
+    15,
+    16,
+    17,
+    11,
+    5,
+    4,
+    10,
+    9,
+    3,
+    2,
+    8,
+    7,
+    1,
+    0,
+    6,
+    12,
+    13
+   ]
+  },
+  "queens": {
+   "size": 7,
+   "regions": [
+    "DBBBBAC",
+    "DBBBEAC",
+    "DDBBEEC",
+    "DDEBEEE",
+    "DDEEEEE",
+    "DFEEEEE",
+    "DGGGEEE"
+   ],
+   "solution": [
+    5,
+    2,
+    6,
+    0,
+    4,
+    1,
+    3
+   ],
+   "names": {
+    "A": "s-block",
+    "B": "p-block",
+    "C": "d-block",
+    "D": "f-block",
+    "E": "Noble gases",
+    "F": "Halogens",
+    "G": "Metalloids"
+   }
+  },
+  "daily5": [
+   {
+    "s": "Bio",
+    "q": "Blood-cholesterol-lowering statins are produced by:",
+    "o": [
+     "Trichoderma polysporum",
+     "Streptococcus",
+     "Aspergillus niger",
+     "Monascus purpureus"
+    ],
+    "a": 3,
+    "e": "Statins inhibit an enzyme of cholesterol synthesis."
+   },
+   {
+    "s": "Bio",
+    "q": "The main component of biogas is:",
+    "o": [
+     "Carbon dioxide",
+     "Hydrogen sulphide",
+     "Nitrogen",
+     "Methane"
+    ],
+    "a": 3,
+    "e": "Methanogens like Methanobacterium produce it."
+   },
+   {
+    "s": "Chem",
+    "q": "Which of these is a colligative property?",
+    "o": [
+     "Surface tension",
+     "Osmotic pressure",
+     "Refractive index",
+     "Viscosity"
+    ],
+    "a": 1,
+    "e": "It depends only on the number of solute particles."
+   },
+   {
+    "s": "Bio",
+    "q": "In EcoRI, the letter \"E\" stands for:",
+    "o": [
+     "Ecology",
+     "Enzyme",
+     "Escherichia",
+     "Endonuclease"
+    ],
+    "a": 2,
+    "e": "It comes from the genus of E. coli."
+   },
+   {
+    "s": "Phy",
+    "q": "Sound cannot travel through:",
+    "o": [
+     "Water",
+     "Air",
+     "Vacuum",
+     "Steel"
+    ],
+    "a": 2,
+    "e": "Sound needs a medium."
+   }
+  ]
+ },
+ "2026-11-21": {
+  "no": 30,
+  "date": "2026-11-21",
+  "bioword": {
+   "answer": "NICHE",
+   "hint": "The functional role of a species",
+   "fact": "No two species can occupy exactly the same niche for long."
+  },
+  "pinpoint": {
+   "answer": "Ecosystem",
+   "clues": [
+    "Detritus",
+    "Ecological pyramid",
+    "Primary productivity",
+    "Food chain",
+    "Decomposition"
+   ],
+   "options": [
+    "Animal Kingdom",
+    "Human Health and Disease",
+    "Ecosystem",
+    "Structural Organisation in Animals",
+    "Body Fluids and Circulation",
+    "Human Reproduction"
+   ]
+  },
+  "zip": {
+   "title": "HPG axis",
+   "labels": [
+    "Hypothalamus",
+    "GnRH",
+    "Anterior pituitary",
+    "LH and FSH",
+    "Gonads"
+   ],
+   "size": 6,
+   "nodes": {
+    "3": 2,
+    "14": 1,
+    "23": 3,
+    "29": 5,
+    "31": 4
+   },
+   "solution": [
+    14,
+    13,
+    12,
+    6,
+    0,
+    1,
+    7,
+    8,
+    2,
+    3,
+    9,
+    15,
+    16,
+    10,
+    4,
+    5,
+    11,
+    17,
+    23,
+    22,
+    21,
+    20,
+    19,
+    18,
+    24,
+    30,
+    31,
+    25,
+    26,
+    32,
+    33,
+    27,
+    28,
+    34,
+    35,
+    29
+   ]
+  },
+  "queens": {
+   "size": 7,
+   "regions": [
+    "CCCAAAA",
+    "CCCDBFA",
+    "CDDDDFF",
+    "GEDDDFF",
+    "GEGGDFF",
+    "GGGGGFF",
+    "GGGGGGF"
+   ],
+   "solution": [
+    6,
+    4,
+    0,
+    3,
+    1,
+    5,
+    2
+   ],
+   "names": {
+    "A": "s-block",
+    "B": "p-block",
+    "C": "d-block",
+    "D": "f-block",
+    "E": "Noble gases",
+    "F": "Halogens",
+    "G": "Metalloids"
+   }
+  },
+  "daily5": [
+   {
+    "s": "Bio",
+    "q": "In gel electrophoresis, DNA fragments move toward the:",
+    "o": [
+     "Both electrodes",
+     "Cathode",
+     "Anode",
+     "Neither electrode"
+    ],
+    "a": 2,
+    "e": "DNA is negatively charged."
+   },
+   {
+    "s": "Bio",
+    "q": "Bt cotton carries genes called:",
+    "o": [
+     "ori genes",
+     "lac genes",
+     "nif genes",
+     "cry genes"
+    ],
+    "a": 3,
+    "e": "cry genes code for insecticidal Bt toxin proteins."
+   },
+   {
+    "s": "Chem",
+    "q": "Coordination number of Co in [Co(NH₃)₆]³⁺:",
+    "o": [
+     "4",
+     "9",
+     "3",
+     "6"
+    ],
+    "a": 3,
+    "e": "Six NH₃ ligands bind to Co."
+   },
+   {
+    "s": "Bio",
+    "q": "Golden rice is rich in:",
+    "o": [
+     "Vitamin C",
+     "Lysine",
+     "β-carotene",
+     "Iron"
+    ],
+    "a": 2,
+    "e": "β-carotene is a precursor of vitamin A."
+   },
+   {
+    "s": "Phy",
+    "q": "Absolute zero on the Celsius scale is:",
+    "o": [
+     "0 °C",
+     "−273.15 °C",
+     "−459 °C",
+     "−100 °C"
+    ],
+    "a": 1,
+    "e": "0 K = −273.15 °C."
+   }
+  ]
+ },
+ "2026-11-22": {
+  "no": 31,
+  "date": "2026-11-22",
+  "bioword": {
+   "answer": "FEMUR",
+   "hint": "Longest bone in the human body",
+   "fact": "The femur is the thigh bone."
+  },
+  "pinpoint": {
+   "answer": "Biodiversity and Conservation",
+   "clues": [
+    "Sacred groves",
+    "Alien species invasion",
+    "Biodiversity hotspots",
+    "Endemism",
+    "National parks"
+   ],
+   "options": [
+    "Human Reproduction",
+    "Sexual Reproduction in Flowering Plants",
+    "Biodiversity and Conservation",
+    "Morphology of Flowering Plants",
+    "Animal Kingdom",
+    "Human Health and Disease"
+   ]
+  },
+  "zip": {
+   "title": "Water uptake in plants",
+   "labels": [
+    "Soil water",
+    "Root hair",
+    "Cortex",
+    "Endodermis",
+    "Xylem",
+    "Leaf",
+    "Stomata"
+   ],
+   "size": 6,
+   "nodes": {
+    "2": 3,
+    "8": 7,
+    "15": 6,
+    "19": 2,
+    "23": 4,
+    "26": 1,
+    "27": 5
+   },
+   "solution": [
+    26,
+    32,
+    31,
+    30,
+    24,
+    25,
+    19,
+    18,
+    12,
+    6,
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    11,
+    17,
+    23,
+    29,
+    35,
+    34,
+    33,
+    27,
+    28,
+    22,
+    16,
+    10,
+    9,
+    15,
+    21,
+    20,
+    14,
+    13,
+    7,
+    8
+   ]
+  },
+  "queens": {
+   "size": 7,
+   "regions": [
+    "ACCBBBB",
+    "CCCBBBB",
+    "CCCBBBB",
+    "CCCCDBB",
+    "CGGGDBE",
+    "GGGFGBB",
+    "GGGGGBB"
+   ],
+   "solution": [
+    0,
+    5,
+    2,
+    4,
+    6,
+    3,
+    1
+   ],
+   "names": {
+    "A": "s-block",
+    "B": "p-block",
+    "C": "d-block",
+    "D": "f-block",
+    "E": "Noble gases",
+    "F": "Halogens",
+    "G": "Metalloids"
+   }
+  },
+  "daily5": [
+   {
+    "s": "Bio",
+    "q": "The first clinical gene therapy (1990) treated:",
+    "o": [
+     "Diabetes",
+     "ADA deficiency",
+     "Haemophilia",
+     "Sickle-cell anaemia"
+    ],
+    "a": 1,
+    "e": "A 4-year-old girl received the therapy."
+   },
+   {
+    "s": "Bio",
+    "q": "The 10 percent law of energy transfer was given by:",
+    "o": [
+     "Lindeman",
+     "Odum",
+     "Darwin",
+     "Tansley"
+    ],
+    "a": 0,
+    "e": "Only about 10% of energy passes to the next trophic level."
+   },
+   {
+    "s": "Chem",
+    "q": "Which of these is a non-reducing sugar?",
+    "o": [
+     "Fructose",
+     "Sucrose",
+     "Glucose",
+     "Maltose"
+    ],
+    "a": 1,
+    "e": "In sucrose, both reducing groups are used in the glycosidic bond."
+   },
+   {
+    "s": "Bio",
+    "q": "The pyramid of energy is always:",
+    "o": [
+     "Either upright or inverted",
+     "Spindle-shaped",
+     "Inverted",
+     "Upright"
+    ],
+    "a": 3,
+    "e": "Energy decreases at each trophic level."
+   },
+   {
+    "s": "Phy",
+    "q": "The time period of a simple pendulum does NOT depend on the:",
+    "o": [
+     "Mass of the bob",
+     "Latitude of the place",
+     "Acceleration due to gravity",
+     "Length of the string"
+    ],
+    "a": 0,
+    "e": "T = 2π√(l/g)."
+   }
+  ]
+ }
+}
