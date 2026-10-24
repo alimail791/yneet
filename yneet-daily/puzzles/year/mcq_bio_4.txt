@@ -1,0 +1,192 @@
+# Plant Growth and Development
+Plant growth is unique because it is: | Indeterminate and open | Limited to youth | Only in length | Only at night | Meristems keep dividing throughout life.
+In arithmetic growth, the curve of growth against time is: | Linear | Sigmoid | Exponential | J-shaped only | Only one daughter cell keeps dividing.
+The sigmoid growth curve has lag, log and: | Stationary phase | Death phase | Decline phase | Rapid phase | Growth slows when resources run short.
+Relative growth rate is growth per unit time per unit: | Initial size | Final size | Water used | Leaf area only | Small and large leaves can grow equal absolute amounts at different rates.
+Living differentiated cells that regain the ability to divide undergo: | Dedifferentiation | Redifferentiation | Differentiation | Senescence | Interfascicular cambium forms this way.
+Different leaf shapes on the same plant at different stages is: | Heterophylly | Plasticity in roots | Phototropism | Vernalisation | Cotton, coriander and larkspur show it.
+Plasticity means plants can: | Follow different paths in response to environment | Not grow | Only grow in light | Only grow in water | Buttercup leaves differ in air and water.
+The first plant growth regulator discovered was: | Auxin | Gibberellin | Cytokinin | Ethylene | Darwin's coleoptile experiments led to auxin.
+Auxin was isolated by: | F.W. Went | Charles Darwin | Kurosawa | Skoog | Went isolated it from oat coleoptile tips.
+Bakanae disease of rice is caused by: | Gibberella fujikuroi | Puccinia | Albugo | Ustilago | The fungus produces gibberellins.
+Kinetin was discovered from: | Autoclaved herring sperm DNA | Coconut milk | Corn kernels | Rice seedlings | Skoog and Miller found it.
+Zeatin was isolated from: | Corn kernels and coconut milk | Herring sperm | Rice | Wheat | It is a natural cytokinin.
+The gaseous plant hormone is: | Ethylene | Auxin | Gibberellin | ABA | It promotes fruit ripening.
+ABA was earlier called: | Dormin and inhibitor B | Florigen | Kinetin | Zeatin | It regulates abscission and dormancy.
+Natural auxins include: | IAA and IBA | NAA and 2,4-D | GA3 | Kinetin | NAA and 2,4-D are synthetic.
+2,4-D is used to: | Kill dicot weeds | Ripen fruits | Break dormancy | Induce bolting | Monocot crops are not affected.
+Apical dominance is due to: | Auxin from the shoot tip | Cytokinin | Gibberellin | Ethylene | Removing the tip lets lateral buds grow.
+Tea plantations use decapitation to: | Get bushy plants | Make them tall | Ripen leaves | Stop flowering | Removing apical dominance increases branching.
+Auxins help in rooting of: | Stem cuttings | Leaves | Flowers | Seeds | Used in plant propagation.
+Parthenocarpy in tomatoes can be induced by: | Auxins | ABA | Ethylene | Cytokinins | Seedless fruits form without fertilisation.
+Gibberellins increase the length of: | Grape stalks | Roots only | Leaves only | Seeds | They also make apples elongated.
+Spraying sugarcane with gibberellins: | Increases stem length and yield | Kills it | Ripens it | Stops flowering | Yield can rise by about 20 tonnes per acre.
+Gibberellins speed up malting in the: | Brewing industry | Paper industry | Leather industry | Dairy industry | They hasten breakdown of starch in barley seeds.
+Bolting in cabbage is caused by: | Gibberellins | Auxins | ABA | Ethylene | Internodes elongate just before flowering.
+Cytokinins help overcome: | Apical dominance | Fruit ripening | Seed germination | Abscission | They promote lateral shoot growth.
+Cytokinins delay: | Leaf senescence | Cell division | Shoot growth | Chloroplast formation | They help keep leaves green.
+The Richmond-Lang effect is linked to: | Cytokinins | Auxins | Gibberellins | Ethylene | Cytokinins delay ageing.
+Ethylene causes the triple response in: | Pea seedlings | Rice | Wheat | Maize | Horizontal growth, swelling and short stems.
+Ethephon releases: | Ethylene | Auxin | ABA | Gibberellin | It hastens fruit ripening.
+Ethylene promotes rapid elongation of internodes in: | Deep water rice | Wheat | Maize | Sugarcane | It helps leaves stay above water.
+Ethylene helps in flowering and synchronised fruit set in: | Pineapple | Mango | Grapes | Apple | It is used commercially.
+A fruit showing a rise in respiration during ripening is called: | Climacteric | Non-climacteric | Parthenocarpic | Dormant | Ethylene triggers this rise.
+ABA is called the stress hormone because it: | Helps plants survive stress | Promotes growth | Ripens fruit | Breaks dormancy | It increases tolerance to stresses.
+ABA induces: | Stomatal closure | Stomatal opening | Seed germination | Bolting | It reduces water loss.
+ABA and gibberellins are often: | Antagonistic | Identical | Synthetic | Gaseous | ABA promotes dormancy; GA breaks it.
+Seed dormancy can be broken by: | Gibberellic acid and chilling | ABA | Ethylene only | Darkness | Scarification also helps.
+Promoters of growth include auxins, gibberellins and: | Cytokinins | ABA | Ethylene only | Dormin | ABA is an inhibitor.
+# Breathing and Exchange of Gases
+Earthworms breathe through their: | Moist skin | Gills | Lungs | Tracheae | This is cutaneous respiration.
+Insects breathe through a network of: | Tracheal tubes | Gills | Lungs | Book lungs | Air enters through spiracles.
+Fishes breathe mainly using: | Gills | Lungs | Skin | Tracheae | Gills absorb dissolved oxygen.
+The conducting part of the respiratory system ends at the: | Terminal bronchioles | Alveoli | Trachea | Larynx | Exchange happens in alveoli.
+The trachea divides into two primary bronchi at the level of the: | 5th thoracic vertebra | 2nd cervical vertebra | 1st lumbar vertebra | 10th thoracic vertebra | Bronchi enter each lung.
+Incomplete cartilage rings support the: | Trachea and bronchi | Alveoli | Pleura | Diaphragm | They keep airways open.
+The lungs are covered by a double-layered: | Pleura | Pericardium | Peritoneum | Meninges | Pleural fluid reduces friction.
+The thoracic chamber is closed below by the: | Diaphragm | Sternum | Ribs | Larynx | It is a dome-shaped muscle.
+Breathing in happens when the pressure in the lungs is: | Lower than atmospheric | Higher than atmospheric | Equal to atmospheric | Zero | Air moves from high to low pressure.
+During inspiration the diaphragm: | Contracts and flattens | Relaxes and domes up | Does not move | Moves sideways | This increases chest volume.
+External intercostal muscles help in: | Inspiration | Expiration only | Swallowing | Speaking | They lift the ribs and sternum.
+Normal breathing rate in an adult is about: | 12 to 16 times per minute | 30 to 40 per minute | 4 to 6 per minute | 60 per minute | A spirometer measures breathing volumes.
+Air remaining in lungs after maximum exhalation is: | Residual volume | Tidal volume | Vital capacity | ERV | It is about 1100 to 1200 mL.
+Vital capacity is: | ERV + TV + IRV | TV + RV | IRV + RV | ERV + RV | It is the maximum air one can breathe out after a forced inspiration.
+Functional residual capacity is: | ERV + RV | TV + IRV | TV + ERV | IRV + RV | It is air left after a normal expiration.
+Inspiratory capacity is: | TV + IRV | TV + ERV | ERV + RV | VC + RV | It is the total air inhaled after a normal expiration.
+Total lung capacity equals: | VC + RV | TV + RV | IRV + ERV | IC + ERV | It is the air in the lungs after a forced inspiration.
+The main site of gas exchange is the: | Alveoli | Trachea | Bronchi | Pharynx | Alveolar walls are very thin.
+The diffusion membrane has: | Three layers | One layer | Five layers | Ten layers | Alveolar epithelium, basement substance and capillary endothelium.
+CO2 diffuses faster than O2 because its: | Solubility is 20 to 25 times higher | Pressure is higher | Molecule is smaller | It is lighter | Higher solubility speeds diffusion.
+About what percent of oxygen is carried by haemoglobin? | 97 percent | 3 percent | 50 percent | 20 percent | Only 3 percent dissolves in plasma.
+About what percent of CO2 is carried as bicarbonate? | 70 percent | 20 to 25 percent | 7 percent | 97 percent | About 20 to 25 percent is carried as carbamino-haemoglobin.
+Every 100 mL of oxygenated blood delivers about how much O2 to tissues? | 5 mL | 20 mL | 1 mL | 50 mL | This is under normal conditions.
+Every 100 mL of deoxygenated blood delivers about how much CO2 to the alveoli? | 4 mL | 20 mL | 40 mL | 1 mL | CO2 is released in the lungs.
+Oxyhaemoglobin formation is favoured by: | High pO2, low pCO2, low H+ and lower temperature | Low pO2 | High pCO2 | High temperature | These conditions are found in alveoli.
+Carbonic anhydrase is found in high concentration in: | Red blood cells | Plasma | Platelets | WBCs | It converts CO2 and water to carbonic acid.
+The respiratory rhythm centre is in the: | Medulla | Pons | Cerebellum | Cerebrum | It sets the basic breathing rhythm.
+The pneumotaxic centre is in the: | Pons | Medulla | Cerebellum | Thalamus | It can shorten inspiration and change rate.
+The chemosensitive area near the rhythm centre responds to: | CO2 and H+ | Oxygen only | Glucose | Temperature | A rise in CO2 increases breathing.
+Receptors in the aortic arch and carotid artery detect changes in: | CO2 and H+ | Glucose | Temperature | Light | They signal the rhythm centre.
+Asthma is caused by: | Inflammation of bronchi and bronchioles | Damaged alveolar walls | Fibrosis | Infection only | It makes breathing difficult with wheezing.
+Emphysema is mainly caused by: | Cigarette smoking | Pollen | Dust only | Viruses | Alveolar walls are damaged.
+Long exposure to stone-grinding dust can cause: | Fibrosis of the lungs | Asthma only | Anaemia | Goitre | Workers should wear protective masks.
+Partial pressure of O2 in alveoli is about: | 104 mm Hg | 159 mm Hg | 40 mm Hg | 95 mm Hg | Atmospheric pO2 is 159 mm Hg.
+Partial pressure of CO2 in deoxygenated blood is about: | 45 mm Hg | 40 mm Hg | 0.3 mm Hg | 104 mm Hg | Alveolar pCO2 is 40 mm Hg.
+# Body Fluids and Circulation
+Plasma makes up about what share of blood? | 55 percent | 45 percent | 90 percent | 10 percent | Formed elements make up about 45 percent.
+The main plasma proteins are: | Fibrinogen, globulins and albumins | Haemoglobin and myosin | Insulin and glucagon | Keratin and collagen | Each has a different role.
+Globulins mainly help in: | Defence | Clotting | Osmotic balance | Transport of oxygen | Antibodies are globulins.
+Albumins help maintain: | Osmotic balance | Clotting | Immunity | Oxygen transport | They are the most plentiful plasma proteins.
+Plasma without clotting factors is called: | Serum | Lymph | Tissue fluid | Whole blood | Serum is left after blood clots.
+A healthy adult has about how many RBCs per cubic mm? | 5 to 5.5 million | 6000 to 8000 | 1.5 to 3.5 lakh | 500,000 | RBCs are the most abundant blood cells.
+In adults, RBCs are made in the: | Red bone marrow | Liver | Spleen | Kidney | The spleen destroys old RBCs.
+The average life of an RBC is: | 120 days | 30 days | 10 days | 1 year | Old RBCs are destroyed in the spleen.
+Haemoglobin in a healthy person is about: | 12 to 16 g per 100 mL | 1 to 2 g per 100 mL | 30 g per 100 mL | 5 g per 100 mL | It carries oxygen.
+WBC count in a healthy adult is about: | 6000 to 8000 per cubic mm | 5 million | 1 lakh | 500 | They are fewer than RBCs and platelets.
+The most abundant WBCs are: | Neutrophils | Lymphocytes | Monocytes | Basophils | They make up 60 to 65 percent of WBCs.
+Phagocytic WBCs that destroy foreign organisms are: | Neutrophils and monocytes | Basophils | Eosinophils | Lymphocytes only | Monocytes become macrophages.
+Eosinophils increase during: | Allergic reactions and infections | Anaemia | Clotting | Dehydration | They resist infection.
+Basophils secrete: | Histamine, serotonin and heparin | Antibodies | Insulin | Thrombin | They are involved in inflammation.
+B and T lymphocytes are responsible for: | Immune responses | Clotting | Oxygen transport | Osmotic balance | They form 20 to 25 percent of WBCs.
+Platelets are fragments of: | Megakaryocytes | RBCs | Lymphocytes | Neutrophils | They are made in bone marrow.
+Platelet count is normally: | 1.5 to 3.5 lakh per cubic mm | 5 million | 8000 | 50 | Low counts cause clotting problems.
+A person with blood group AB has antibodies: | None | Anti-A | Anti-B | Both anti-A and anti-B | AB is the universal recipient.
+Group O blood has antigens: | None | A only | B only | A and B | O is the universal donor.
+Erythroblastosis fetalis can occur when: | An Rh-negative mother carries an Rh-positive foetus | Both are Rh-negative | Both are Rh-positive | The father is Rh-negative | Mother's antibodies attack foetal RBCs in later pregnancies.
+To prevent erythroblastosis fetalis, the mother is given: | Anti-Rh antibodies after the first delivery | Rh antigen | Vitamin K | Iron | This stops her from making her own antibodies.
+Thrombokinase converts: | Prothrombin to thrombin | Fibrinogen to fibrin | Fibrin to fibrinogen | Thrombin to prothrombin | Thrombin then acts on fibrinogen.
+Which ion plays an important role in blood clotting? | Calcium | Sodium | Potassium | Iron | Ca2+ is needed for coagulation.
+Lymph differs from blood in lacking: | RBCs and large proteins | WBCs | Water | Glucose | Lymph has lymphocytes.
+Fishes have a heart with: | Two chambers | Three chambers | Four chambers | One chamber | Fishes have single circulation.
+In fishes, the heart pumps: | Deoxygenated blood | Oxygenated blood | Mixed blood | No blood | Blood goes to the gills for oxygen.
+Amphibians and most reptiles show: | Incomplete double circulation | Single circulation | Complete double circulation | No circulation | Mixed blood is pumped by one ventricle.
+The human heart is covered by a double membrane called the: | Pericardium | Pleura | Peritoneum | Meninges | Pericardial fluid protects the heart.
+The valve between the left atrium and left ventricle is the: | Bicuspid or mitral valve | Tricuspid valve | Semilunar valve | Pulmonary valve | It has two cusps.
+The SA node is found in the: | Upper right corner of the right atrium | Left ventricle | Interventricular septum | Left atrium | It is the pacemaker.
+The normal heart rate is about: | 70 to 75 beats per minute | 120 per minute | 40 per minute | 200 per minute | The SA node sets this rhythm.
+The duration of one cardiac cycle is about: | 0.8 seconds | 0.1 seconds | 2 seconds | 5 seconds | At 72 beats per minute.
+Stroke volume is about: | 70 mL | 5000 mL | 7 mL | 700 mL | Each ventricle pumps this much per beat.
+Cardiac output in a healthy person is about: | 5000 mL per minute | 70 mL per minute | 500 mL per minute | 50 L per minute | Stroke volume times heart rate.
+The first heart sound 'lub' is due to closing of: | Tricuspid and bicuspid valves | Semilunar valves | Pulmonary valve only | Aortic valve only | The second sound 'dub' is semilunar valve closure.
+The P wave of an ECG shows: | Atrial depolarisation | Ventricular depolarisation | Ventricular repolarisation | Atrial repolarisation | It leads to atrial contraction.
+The T wave of an ECG shows: | Ventricular repolarisation | Atrial depolarisation | Ventricular depolarisation | SA node firing | It marks the end of systole.
+Heart rate can be counted from an ECG by counting: | QRS complexes | P waves only | T waves only | ST segments | Each QRS is one beat.
+The vessel that carries blood from intestine to liver is the: | Hepatic portal vein | Hepatic artery | Hepatic vein | Renal vein | It is part of the hepatic portal system.
+The heart muscle is supplied with blood by: | Coronary arteries | Pulmonary arteries | Hepatic artery | Carotid arteries | Their narrowing causes coronary artery disease.
+Normal blood pressure is about: | 120/80 mm Hg | 140/90 mm Hg | 90/60 mm Hg | 160/100 mm Hg | 120 is systolic, 80 is diastolic.
+Hypertension is blood pressure repeatedly at or above: | 140/90 mm Hg | 120/80 mm Hg | 100/70 mm Hg | 110/70 mm Hg | It can damage heart, brain and kidneys.
+Heart failure means the heart: | Does not pump blood effectively | Stops completely | Beats too fast | Has a hole | It is also called congestive heart failure.
+Cardiac arrest is when the heart: | Stops beating | Pumps weakly | Beats faster | Skips beats | It differs from heart failure.
+Neural signals through sympathetic nerves: | Increase heart rate | Decrease heart rate | Stop the heart | Have no effect | Parasympathetic signals slow it down.
+# Excretory Products and their Elimination
+Ammonia excretion needs: | Large amounts of water | Little water | No water | Oxygen | Ammonia is very toxic and soluble.
+Ammonotelic animals include: | Bony fishes and aquatic amphibians | Birds | Mammals | Land snails | Ammonia diffuses out easily in water.
+Mammals and terrestrial amphibians are mainly: | Ureotelic | Ammonotelic | Uricotelic | Guanotelic | Urea is less toxic than ammonia.
+Birds, reptiles and insects are mainly: | Uricotelic | Ureotelic | Ammonotelic | Aminotelic | Uric acid is excreted as a paste with little water.
+Protonephridia or flame cells are found in: | Flatworms | Earthworms | Insects | Prawns | They help in osmoregulation.
+Green glands are excretory organs of: | Crustaceans like prawns | Insects | Earthworms | Fishes | They are also called antennal glands.
+Each human kidney weighs about: | 120 to 170 g | 500 g | 50 g | 1 kg | Kidneys are reddish-brown and bean-shaped.
+The notch on the inner side of the kidney is the: | Hilum | Cortex | Medulla | Pelvis | Ureter, blood vessels and nerves enter here.
+Extensions of the cortex into the medulla are called: | Columns of Bertini | Pyramids | Calyces | Papillae | They lie between medullary pyramids.
+Bowman's capsule and the glomerulus together form the: | Malpighian body or renal corpuscle | Loop of Henle | Collecting duct | Renal pelvis | Filtration happens here.
+In cortical nephrons, the loop of Henle is: | Short | Very long | Absent | In the pelvis | Juxtamedullary nephrons have long loops.
+The vasa recta runs parallel to the: | Loop of Henle | PCT | Glomerulus | Ureter | It is reduced in cortical nephrons.
+About how much filtrate do kidneys form per day? | 180 litres | 1.5 litres | 18 litres | 1800 litres | About 99 percent is reabsorbed.
+Normal GFR in a healthy person is about: | 125 mL per minute | 1 mL per minute | 500 mL per minute | 1.5 L per minute | This equals about 180 L per day.
+Podocytes are found in: | Bowman's capsule | PCT | Loop of Henle | Collecting duct | They leave filtration slits.
+Most reabsorption of nutrients occurs in the: | PCT | DCT | Collecting duct | Loop of Henle | Its brush border increases surface area.
+The descending limb of the loop of Henle is permeable to: | Water but not electrolytes | Electrolytes but not water | Both | Neither | Filtrate becomes concentrated as it descends.
+The ascending limb of the loop of Henle is: | Impermeable to water | Permeable to water | Permeable to glucose | Absent | Electrolytes are pumped out, diluting the filtrate.
+The countercurrent mechanism helps to: | Concentrate urine | Dilute urine | Filter blood | Store urine | It keeps the medulla hyperosmotic.
+The osmolarity of the inner medulla is up to about: | 1200 mOsmol per L | 300 mOsmol per L | 50 mOsmol per L | 3000 mOsmol per L | NaCl and urea create this gradient.
+Human kidneys can make urine nearly how concentrated compared to filtrate? | Four times | Ten times | Twice | Same | The countercurrent mechanism makes this possible.
+ADH acts mainly on the: | DCT and collecting duct | Glomerulus | PCT | Bowman's capsule | It increases water reabsorption.
+ADH is also called: | Vasopressin | Aldosterone | Renin | ANF | It also constricts blood vessels.
+ANF acts as a check on the: | Renin-angiotensin mechanism | ADH system | Insulin | Thyroxine | It causes vasodilation and lowers blood pressure.
+ANF is released by: | The atria of the heart | Kidney | Pituitary | Adrenal cortex | It is released when blood pressure rises.
+Angiotensin II stimulates the adrenal cortex to release: | Aldosterone | Cortisol | Adrenaline | ADH | Aldosterone increases Na+ and water reabsorption.
+An adult human excretes about how much urine per day? | 1 to 1.5 litres | 180 litres | 5 litres | 0.1 litre | Urine is slightly acidic with pH about 6.
+About how much urea is excreted per day? | 25 to 30 g | 1 to 2 g | 100 g | 250 g | Urea comes from protein breakdown.
+Glucose in urine is called: | Glycosuria | Ketonuria | Uremia | Haematuria | It suggests diabetes mellitus.
+Accumulation of urea in blood is: | Uremia | Glycosuria | Ketonuria | Gout | It can cause kidney failure.
+Inflammation of the glomeruli is: | Glomerulonephritis | Renal calculi | Uremia | Gout | It is a kidney disorder.
+Renal calculi are: | Kidney stones | Inflamed glomeruli | Excess urea | Sugar in urine | They are insoluble crystals of salts like oxalates.
+In haemodialysis, the anticoagulant used is: | Heparin | Vitamin K | Thrombin | Calcium | Blood is cleaned in an artificial kidney.
+Sebaceous glands remove: | Sterols, hydrocarbons and waxes | Urea only | Glucose | Proteins | They secrete sebum.
+The liver excretes: | Bile pigments like bilirubin | Urea only | Glucose | Proteins | Bile also carries cholesterol and drugs.
+Micturition is the process of: | Releasing urine | Filtering blood | Forming urine | Reabsorbing water | It is a reflex controlled by the nervous system.
+Our lungs remove CO2 at roughly: | 200 mL per minute | 2 mL per minute | 2 L per minute | 20 L per minute | They also remove some water.
+# Locomotion and Movement
+Macrophages and leucocytes show: | Amoeboid movement | Ciliary movement | Muscular movement | No movement | They move using pseudopodia.
+Ciliary movement helps in the: | Trachea and fallopian tubes | Biceps | Heart | Diaphragm | Cilia remove dust and move the ovum.
+About what share of human body weight is muscle? | 40 to 50 percent | 10 percent | 70 percent | 25 percent | Muscles are mesodermal in origin.
+Each muscle fibre is lined by a plasma membrane called the: | Sarcolemma | Sarcoplasm | Sarcomere | Tonoplast | The cytoplasm is the sarcoplasm.
+The endoplasmic reticulum of a muscle fibre stores: | Calcium ions | Sodium ions | Glucose | ATP | It is called the sarcoplasmic reticulum.
+The dark band of a muscle fibre is the: | A band | I band | Z line | H zone | A band contains myosin.
+The light band of a muscle fibre is the: | I band | A band | M line | H zone | I band contains actin.
+The thin filaments are attached to the: | Z line | M line | H zone | A band | The Z line bisects the I band.
+Myosin heads bind: | ATP and actin | Calcium | Troponin | Tropomyosin | The head has ATPase activity.
+In resting muscle, troponin masks binding sites on: | Actin | Myosin | Calcium | ATP | Calcium removes this block.
+During contraction, the length of the A band: | Stays the same | Shortens | Lengthens | Disappears | I bands and H zone shorten.
+Muscle fatigue is caused by accumulation of: | Lactic acid | Urea | Glucose | Oxygen | Anaerobic breakdown of glycogen produces it.
+Red muscle fibres are rich in: | Myoglobin and mitochondria | Sarcoplasmic reticulum only | Glycogen only | Fat | They work aerobically.
+White muscle fibres have: | Little myoglobin and fewer mitochondria | Lots of myoglobin | No mitochondria at all | Many red pigments | They rely on anaerobic energy.
+The human skeleton has: | 206 bones | 300 bones | 106 bones | 212 bones | 80 axial and 126 appendicular.
+The axial skeleton has: | 80 bones | 126 bones | 206 bones | 33 bones | Skull, vertebral column, sternum and ribs.
+The human vertebral column has: | 26 vertebrae | 33 vertebrae | 7 vertebrae | 12 vertebrae | Fusion reduces the count in adults.
+Cervical vertebrae in humans number: | 7 | 12 | 5 | 4 | Almost all mammals have seven.
+False ribs are: | 8th, 9th and 10th pairs | 1st to 7th pairs | 11th and 12th pairs | All 12 pairs | They join the 7th rib by cartilage.
+Floating ribs are the: | 11th and 12th pairs | 1st and 2nd | 8th to 10th | 7th pair | They do not reach the sternum.
+The hyoid bone is: | U-shaped | Flat | Long | Irregular | It lies at the base of the buccal cavity.
+The pectoral girdle has the clavicle and: | Scapula | Ilium | Sternum | Patella | It connects the upper limbs.
+The acetabulum is a cavity in the: | Pelvic girdle | Pectoral girdle | Skull | Sternum | The femur's head fits into it.
+Joints between skull bones are: | Fibrous joints | Cartilaginous joints | Synovial joints | Ball and socket joints | They do not allow movement.
+Joints between vertebrae are: | Cartilaginous joints | Fibrous joints | Ball and socket | Hinge joints | They allow limited movement.
+The knee is an example of a: | Hinge joint | Ball and socket joint | Pivot joint | Gliding joint | It allows movement in one plane.
+The joint between atlas and axis is a: | Pivot joint | Hinge joint | Ball and socket | Saddle joint | It lets the head rotate.
+The joint between carpals is a: | Gliding joint | Hinge joint | Pivot joint | Ball and socket | Bones slide on each other.
+The joint between the carpal and metacarpal of the thumb is a: | Saddle joint | Pivot joint | Hinge joint | Fibrous joint | It allows the thumb wide movement.
+Myasthenia gravis is an: | Autoimmune disorder affecting neuromuscular junctions | Infection | Inherited bone disease | Calcium deficiency | It causes fatigue and paralysis of skeletal muscles.
+Muscular dystrophy is: | Progressive degeneration of skeletal muscle | Muscle spasm | Joint inflammation | Bone thinning | It is mostly genetic.
+Osteoporosis is linked to: | Decreased bone mass with age | Uric acid crystals | Low calcium in blood only | Viral infection | Low estrogen is a common cause.
+Arthritis is: | Inflammation of joints | Bone thinning | Muscle spasm | Low calcium | It causes pain and stiffness.

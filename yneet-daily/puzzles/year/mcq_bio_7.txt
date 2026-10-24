@@ -1,0 +1,182 @@
+# Microbes in Human Welfare
+Curd has more nutritional value than milk because LAB increase: | Vitamin B12 | Vitamin C | Vitamin D | Vitamin K | Lactic acid bacteria also check disease-causing microbes in the stomach.
+Dough for dosa and idli is fermented by: | Bacteria | Yeast only | Fungi only | Viruses | CO2 makes the dough puffy.
+Baker's yeast is: | Saccharomyces cerevisiae | Penicillium notatum | Aspergillus niger | Lactobacillus | It is also used in brewing.
+Large holes in Swiss cheese are made by: | Propionibacterium sharmanii | Lactobacillus | Penicillium roqueforti | Yeast | The bacterium releases a lot of CO2.
+Roquefort cheese is ripened by: | Specific fungi | Lactobacillus | Propionibacterium | Yeast | The fungi give it a special flavour.
+Wine and beer are made without: | Distillation | Fermentation | Yeast | Sugar | Whisky, brandy and rum are distilled.
+The first antibiotic discovered was: | Penicillin | Streptomycin | Tetracycline | Erythromycin | Fleming discovered it.
+Fleming discovered penicillin while working on: | Staphylococcus | E. coli | Salmonella | Vibrio | Mould growth stopped the bacteria.
+The full potential of penicillin as an antibiotic was shown by: | Ernest Chain and Howard Florey | Fleming alone | Pasteur | Koch | They shared the 1945 Nobel Prize with Fleming.
+Citric acid is produced by: | Aspergillus niger | Acetobacter aceti | Clostridium butylicum | Lactobacillus | It is a fungus.
+Acetic acid is produced by: | Acetobacter aceti | Aspergillus niger | Clostridium butylicum | Saccharomyces | It is a bacterium.
+Butyric acid is produced by: | Clostridium butylicum | Acetobacter aceti | Aspergillus niger | Lactobacillus | It is an anaerobic bacterium.
+Lactic acid is produced by: | Lactobacillus | Aspergillus niger | Acetobacter | Clostridium | It also curdles milk.
+Ethanol is produced commercially using: | Saccharomyces cerevisiae | Aspergillus | Trichoderma | Monascus | Yeast ferments sugar.
+Lipases are used in detergent formulations to: | Remove oily stains | Remove ink | Bleach | Soften water | Lipases break down fats.
+Bottled fruit juices are cleared using: | Pectinases and proteases | Lipases | Amylases only | Streptokinase | They make juices clear.
+Streptokinase is used as a: | Clot buster | Immunosuppressant | Antibiotic | Cholesterol reducer | It dissolves clots in blood vessels.
+Streptokinase is produced by: | Streptococcus | Trichoderma | Monascus | Penicillium | It is modified by genetic engineering.
+Cyclosporin A is produced by: | Trichoderma polysporum | Monascus purpureus | Streptococcus | Aspergillus | It is an immunosuppressant.
+Cyclosporin A is used in: | Organ transplant patients | Heart attacks | Bread making | Cheese making | It prevents rejection.
+Primary sewage treatment involves: | Physical removal of particles | Microbial digestion | Chlorination only | Methanogenesis | Filtration and sedimentation are used.
+Flocs are: | Masses of bacteria with fungal filaments | Rocks | Dead plants | Chemical salts | They digest organic matter in aeration tanks.
+BOD refers to the amount of oxygen: | Used by microbes to oxidise organic matter in a litre of water | Dissolved in water | In the air | Used by fish | Higher BOD means more polluted water.
+In anaerobic sludge digesters, bacteria produce: | Methane, hydrogen sulphide and CO2 | Oxygen | Nitrogen only | Chlorine | These gases form biogas.
+The Ganga Action Plan was started by the: | Ministry of Environment and Forests | Ministry of Health | WHO | UNESCO | It aimed to build sewage treatment plants.
+The technology of biogas production in India was developed mainly by: | IARI and KVIC | ISRO | DRDO | BARC | Indian Agricultural Research Institute and Khadi and Village Industries Commission.
+Bacillus thuringiensis is used to control: | Butterfly caterpillars | Weeds | Fungi | Mosquito larvae only | Its toxin kills caterpillars.
+Trichoderma is used to control: | Plant pathogens | Insects | Weeds | Rodents | It is a free-living fungus in root ecosystems.
+Nucleopolyhedrovirus belongs to the genus: | Baculovirus | Bacteriophage | Retrovirus | TMV | It is a narrow-spectrum insecticide.
+Ladybirds and dragonflies help to control: | Aphids and mosquitoes | Weeds | Bacteria | Fungi | They are natural predators.
+Glomus forms: | Mycorrhiza | Root nodules | Biogas | Antibiotics | It helps plants absorb phosphorus.
+Free-living nitrogen-fixing bacteria in soil include: | Azotobacter and Azospirillum | Rhizobium | Glomus | Methanobacterium | Rhizobium is symbiotic.
+Cyanobacteria used as biofertilisers in paddy fields include: | Anabaena, Nostoc and Oscillatoria | Rhizobium | Glomus | Trichoderma | They also add organic matter.
+Methanobacterium is found in the: | Rumen of cattle | Human gut only | Soil only | Leaves | It breaks down cellulose and produces methane.
+# Biotechnology: Principles and Processes
+The first recombinant DNA was made in 1972 by: | Stanley Cohen and Herbert Boyer | Watson and Crick | Kary Mullis | Arber and Smith | They linked a gene to a Salmonella plasmid.
+The plasmid used in the first recombinant DNA came from: | Salmonella typhimurium | E. coli | Agrobacterium | Yeast | The antibiotic resistance gene was linked to it.
+The first restriction endonuclease isolated was: | Hind II | EcoRI | BamHI | Taq | It cuts at a specific six base-pair sequence.
+In EcoRI, 'R' stands for: | The strain RY13 | Restriction | Recombinant | Rhizobium | 'Co' stands for coli and 'I' for the order of isolation.
+Restriction enzymes recognise: | Palindromic sequences | Random sequences | Only introns | Promoters only | The sequence reads the same on both strands in the same orientation.
+EcoRI cuts DNA between: | G and A | A and T | C and G | G and C | GAATTC is its recognition site.
+Overhanging single-stranded ends left by restriction enzymes are: | Sticky ends | Blunt ends | Primers | Origins | They help ligase join DNA.
+DNA fragments move in gel electrophoresis towards the: | Anode | Cathode | Middle | Top of the gel | DNA is negatively charged.
+The most common matrix in gel electrophoresis is: | Agarose | Cellulose | Starch | Gelatin | Agarose comes from seaweed.
+DNA bands are stained with: | Ethidium bromide | Iodine | Methylene blue | Safranin | Bands glow orange under UV light.
+Cutting out the DNA band from the gel is: | Elution | Ligation | Annealing | Transformation | Purified DNA is used for cloning.
+The sequence from where replication starts is the: | Ori | Promoter | Terminator | Selectable marker | It also controls copy number.
+In pBR322, ampicillin and tetracycline resistance genes are: | Selectable markers | Promoters | Origins | Restriction sites | They help select transformants.
+Inserting a foreign gene in the tetracycline resistance gene of pBR322 causes: | Loss of tetracycline resistance | Loss of ampicillin resistance | No change | Death of the host | This is insertional inactivation.
+In blue-white selection, recombinant colonies appear: | White | Blue | Red | Green | The insert disrupts beta-galactosidase.
+The Ti plasmid comes from: | Agrobacterium tumefaciens | E. coli | Bacillus thuringiensis | Salmonella | It causes tumours in dicot plants.
+Retroviruses are used as vectors in: | Animal cells | Plants | Bacteria | Yeast | They are disarmed before use.
+Bacterial cells are made competent to take up DNA by treating them with: | Divalent cations like calcium | Lysozyme | Ethanol | Heat only | This increases DNA entry.
+Injecting DNA directly into the nucleus of an animal cell is: | Microinjection | Biolistics | Electroporation | Transformation | Biolistics uses a gene gun.
+In biolistics, cells are bombarded with: | Gold or tungsten particles coated with DNA | Viruses | Radiation | Enzymes | It is used for plant cells.
+Bacterial cell walls are broken down with: | Lysozyme | Cellulase | Chitinase | Ligase | Plant cells use cellulase; fungi use chitinase.
+DNA is precipitated by adding: | Chilled ethanol | Water | Salt only | Acetone | DNA appears as fine threads.
+PCR stands for: | Polymerase chain reaction | Protein chain reaction | Primer copy reaction | Plasmid cloning reaction | It amplifies DNA in vitro.
+PCR was developed by: | Kary Mullis | Cohen and Boyer | Watson | Sanger | It copies DNA many times.
+Taq polymerase is obtained from: | Thermus aquaticus | E. coli | Agrobacterium | Bacillus | It stays active at high temperatures.
+After 30 cycles of PCR, one DNA molecule gives about: | One billion copies | 30 copies | 60 copies | 1000 copies | Copies double each cycle.
+Large vessels used to grow cells for products are: | Bioreactors | Incubators | Centrifuges | Gel tanks | They can hold 100 to 1000 litres.
+The most commonly used bioreactor is the: | Stirred-tank bioreactor | Sparged-tank only | Batch flask | Petri plate | It has a curved base for mixing.
+Separation and purification of the product after biosynthesis is: | Downstream processing | Upstream processing | Transformation | Elution | The product is then formulated.
+Continuous culture keeps cells in their: | Log or exponential phase | Lag phase | Stationary phase | Death phase | Fresh medium is added as used medium is removed.
+# Biotechnology and its Applications
+GM plants are useful because they can: | Be more tolerant to stresses and reduce pesticide use | Grow without soil | Not need water | Make their own fertiliser always | They can also reduce post-harvest losses.
+Golden rice is enriched with: | Vitamin A precursor | Iron | Protein | Vitamin C | It contains beta-carotene.
+Bt toxin is coded by genes named: | cry | lac | nif | ori | cry genes make crystal proteins.
+cryIAc and cryIIAb control: | Cotton bollworms | Corn borer | Aphids | Nematodes | cryIAb controls corn borer.
+cryIAb controls: | Corn borer | Cotton bollworm | Nematodes | Weeds | It is used in Bt corn.
+Bt toxin is activated in the insect gut because of the: | Alkaline pH | Acidic pH | Neutral pH | Low temperature | The active toxin binds midgut cells.
+The bacterium does not get killed by its own Bt toxin because: | It stores the toxin in an inactive protoxin form | It lacks receptors | It has a vaccine | It never makes the toxin | The protoxin activates only in the insect gut.
+Meloidogyne incognita infects the roots of: | Tobacco | Cotton | Rice | Wheat | It is a nematode.
+RNAi works by: | Silencing a specific mRNA with complementary dsRNA | Producing toxins | Killing the plant | Increasing yield directly | It is a natural defence in eukaryotes.
+Agrobacterium vectors were used to introduce nematode-specific genes into: | Host plants | Bacteria | Animals | Fungi | The plant made dsRNA against the parasite.
+Eli Lilly prepared human insulin in: | 1983 | 1953 | 1973 | 2003 | Chains A and B were made separately in E. coli.
+Mature insulin lacks the: | C-peptide | A chain | B chain | Disulphide bonds | Proinsulin has an extra C-peptide.
+Before recombinant insulin, insulin was taken from: | Slaughtered cattle and pigs | Plants | Bacteria | Human blood | It caused allergies in some patients.
+The first clinical gene therapy was given in 1990 to a 4-year-old girl with: | ADA deficiency | Haemophilia | Diabetes | Thalassemia | ADA is adenosine deaminase.
+A permanent cure for ADA deficiency could be: | Introducing the ADA gene into early embryonic bone marrow cells | Enzyme injections | Blood transfusion | Antibiotics | Lymphocytes alone are not immortal.
+Early detection of disease using PCR, ELISA and recombinant DNA is: | Molecular diagnosis | Gene therapy | Biopiracy | Transgenesis | It finds pathogens at low concentration.
+PCR can detect HIV in suspected AIDS patients because it: | Amplifies very low amounts of nucleic acid | Kills HIV | Stains HIV | Makes antibodies | It also detects mutations in cancer.
+A radioactive single-stranded DNA used to detect a mutated gene is a: | Probe | Primer | Vector | Plasmid | It hybridises to its complementary sequence.
+Animals whose DNA has been manipulated to carry an extra foreign gene are: | Transgenic animals | Clones | Hybrids | Mutants only | Over 95 percent of transgenic animals are mice.
+Rosie, the first transgenic cow, produced milk with: | Human alpha-lactalbumin | Insulin | Vitamin A | Antibodies only | The milk was 2.4 grams of protein per litre.
+Rosie was produced in: | 1997 | 1983 | 2003 | 1990 | Her milk was nutritionally better for human babies.
+Transgenic mice are used to test the safety of: | Polio vaccine | Insulin | Antibiotics | Cosmetics | This may replace monkeys in testing.
+GEAC is an Indian government body that: | Decides on validity of GM research and safety of GM organisms for public use | Issues patents | Makes vaccines | Grows Bt cotton | It is the Genetic Engineering Appraisal Committee.
+Using bio-resources without proper authorisation or compensation is: | Biopiracy | Biotechnology | Gene therapy | Bioremediation | The basmati case is an example.
+India has about how many varieties of rice? | 200,000 | 2000 | 27 | 2 million | 27 documented varieties of basmati grow in India.
+An American company got a patent on basmati rice in: | 1997 | 1983 | 2001 | 1990 | It drew wide criticism.
+Indian Parliament cleared the second amendment to the Patents Bill to address: | Biopiracy and patent issues | Space research | Taxation | Education | It covers emergency provisions and research initiatives.
+# Organisms and Populations
+Ecology is the study of interactions among organisms and with their: | Physical environment | Cells | Genes | Molecules only | It covers organisms, populations, communities and biomes.
+The most important ecological factor is: | Temperature | Light | Soil | Wind | It affects enzyme kinetics and metabolism.
+Organisms tolerating a wide range of temperatures are: | Eurythermal | Stenothermal | Euryhaline | Stenohaline | Most organisms are stenothermal.
+Organisms tolerating a wide range of salinity are: | Euryhaline | Stenohaline | Eurythermal | Stenothermal | Many freshwater animals cannot live long in sea water.
+Salinity of inland sea water can exceed: | 100 parts per thousand | 1 part per thousand | 10 parts per thousand | 30 parts per thousand | Sea water is 30 to 35 ppt.
+Animals that maintain a constant internal temperature are: | Regulators | Conformers | Partial regulators | Migrants | Birds and mammals are regulators.
+Small animals like shrews and hummingbirds are rare in polar regions because: | They lose body heat fast due to large surface area to volume ratio | They cannot fly | They need sunlight | They lack fur | Small bodies lose heat quickly.
+Moving away temporarily to escape stress is: | Migration | Hibernation | Aestivation | Diapause | Siberian birds migrate to Keoladeo National Park.
+Bears going into hibernation in winter is an example of: | Suspending activity | Migration | Regulation | Conforming | They escape in time.
+Zooplankton in lakes and ponds enter a state of suspended development called: | Diapause | Hibernation | Aestivation | Migration | It helps them survive bad conditions.
+Altitude sickness occurs because at high altitude: | Atmospheric pressure is low | Oxygen percentage is low | It is very hot | Air is humid | The body gets less oxygen.
+At high altitude, the body adapts by: | Increasing RBC production | Decreasing breathing | Lowering heart rate | Reducing haemoglobin | It also lowers haemoglobin's binding affinity.
+Desert plants with CAM photosynthesis open stomata: | At night | During the day | Never | Only in rain | This reduces water loss.
+Kangaroo rats in deserts meet water needs through: | Internal oxidation of fat | Drinking lots of water | Eating cacti only | Absorbing dew | They also concentrate urine.
+Allen's rule says mammals in colder climates have: | Shorter ears and limbs | Longer ears and limbs | Larger eyes | More fur on the tail | This reduces heat loss.
+Desert lizards regulate body temperature by: | Behaviour, like basking and burrowing | Sweating | Shivering | Panting only | They lack physiological regulation.
+The number of tigers in a reserve is a measure of: | Population density | Biodiversity | Biomass | Productivity | Population size changes with births, deaths and migration.
+An age pyramid with a broad base indicates a population that is: | Expanding | Stable | Declining | Extinct | Many young individuals.
+An urn-shaped age pyramid indicates a: | Declining population | Growing population | Stable population | Young population | Fewer young than older individuals.
+The equation dN/dt = rN describes: | Exponential growth | Logistic growth | Declining growth | Zero growth | Resources are unlimited.
+The logistic growth equation includes: | Carrying capacity K | Only r | No limits | Temperature | Growth slows as N approaches K.
+The r value for the Norway rat is: | 0.015 | 0.12 | 4.2 | 1.5 | The flour beetle's r is 0.12.
+Organisms that breed only once in their lifetime include: | Pacific salmon and bamboo | Most birds | Mammals | Humans | Others breed many times.
+In predation, cattle avoid eating Calotropis because it: | Produces poisonous cardiac glycosides | Has thorns | Tastes sweet | Is too small | Plants use chemicals for defence.
+The prickly pear cactus in Australia was controlled by introducing: | A moth that feeds on it | A virus | A fungus | Cattle | Biological control used a natural predator.
+Abingdon tortoise in the Galapagos became extinct after: | Goats were introduced | A volcano erupted | Humans hunted it | Climate changed | Goats outcompeted it for food.
+Balanus dominating the intertidal area and excluding Chathamalus is an example of: | Competition | Mutualism | Commensalism | Predation | Connell showed this on the Scottish coast.
+Warblers feeding in different parts of a tree is an example of: | Resource partitioning | Competitive exclusion | Parasitism | Mutualism | MacArthur showed this.
+The cuckoo laying eggs in the crow's nest is: | Brood parasitism | Commensalism | Mutualism | Predation | The crow incubates the cuckoo's eggs.
+An orchid growing on a mango branch is an example of: | Commensalism | Parasitism | Mutualism | Amensalism | The mango tree is not affected.
+Barnacles growing on the back of a whale is an example of: | Commensalism | Mutualism | Parasitism | Predation | The whale gets no benefit or harm.
+Cattle egrets foraging near grazing cattle is an example of: | Commensalism | Parasitism | Competition | Predation | Egrets eat insects stirred up by cattle.
+The sea anemone and clown fish show: | Commensalism | Parasitism | Competition | Amensalism | The fish gets protection.
+Fig trees and wasps show: | Mutualism | Commensalism | Parasitism | Competition | The wasp pollinates and lays eggs in the fruit.
+The Mediterranean orchid Ophrys uses: | Sexual deceit to get pollinated | Nectar | Bright colour only | Wind | Its petal resembles a female bee.
+# Ecosystem
+Primary production is the amount of biomass produced per unit area over time by: | Plants during photosynthesis | Herbivores | Carnivores | Decomposers | It is expressed as g per square metre per year.
+NPP equals: | GPP minus respiration losses | GPP plus respiration | Respiration only | Secondary productivity | It is available to consumers.
+The annual NPP of the whole biosphere is about: | 170 billion tons dry weight | 55 billion tons | 1 billion tons | 1000 billion tons | Oceans produce only 55 billion tons.
+Oceans occupy about 70 percent of Earth's surface but produce about: | 55 billion tons of NPP | 170 billion tons | 115 billion tons | 5 billion tons | Their productivity is low.
+Breakdown of detritus into smaller particles by earthworms is: | Fragmentation | Leaching | Catabolism | Mineralisation | It increases surface area for microbes.
+Water-soluble inorganic nutrients going into the soil and getting precipitated is: | Leaching | Fragmentation | Humification | Catabolism | It is a step in decomposition.
+Decomposition is faster when detritus is rich in: | Nitrogen and water-soluble sugars | Lignin | Chitin | Lignin and chitin | Warm, moist conditions also speed it up.
+Humus is: | Dark, amorphous and resistant to microbial action | Light and easily decomposed | Purely inorganic | Made of rocks | It decomposes very slowly.
+Less than what share of PAR is captured by plants? | 2 to 10 percent | 50 percent | 90 percent | 25 percent | This small fraction sustains all life.
+Energy flow in an ecosystem is: | Unidirectional | Cyclic | Bidirectional | Random | Energy flows from the sun to producers and then consumers.
+Energy flow obeys the: | Second law of thermodynamics | First law only | Law of conservation of mass | Newton's laws | Some energy is lost as heat at each level.
+In aquatic ecosystems, the main producers are: | Phytoplankton, algae and higher plants | Trees | Grasses | Fungi | Phytoplankton are microscopic.
+In terrestrial ecosystems, the detritus food chain carries: | A major part of the energy | Very little energy | No energy | Only light energy | Most energy flows through detritus.
+Standing crop is the: | Mass of living material at a trophic level at a time | Total yield of a farm | Number of species | Amount of detritus | It is measured as biomass or number.
+The pyramid of biomass in the sea is generally: | Inverted | Upright | Spindle-shaped | Flat | Fish biomass far exceeds phytoplankton biomass.
+The pyramid of numbers in a tree ecosystem is: | Inverted | Upright | Always flat | Absent | One tree supports many insects.
+The pyramid of energy is always upright because: | Energy is lost at each level | Energy increases upward | Biomass is equal | Numbers are equal | It can never be inverted.
+A limitation of ecological pyramids is that they do not account for: | Saprophytes and organisms at multiple levels | Producers | Herbivores | Energy | They assume simple food chains.
+The 10 percent law was proposed by: | Lindeman | Odum | Tansley | Elton | About 10 percent of energy passes to the next level.
+The reservoir of the carbon cycle is mainly the: | Atmosphere and oceans | Rocks only | Living organisms only | Soil only | Oceans hold about 71 percent of dissolved carbon.
+The natural reservoir of phosphorus is: | Rocks | The atmosphere | Oceans only | Living organisms | Phosphorus has no significant gaseous exchange.
+Carbon fixed through photosynthesis each year is about: | 4 x 10^13 kg | 4 x 10^3 kg | 4 x 10^6 kg | 4 x 10^20 kg | A large amount returns by respiration.
+Pollination, oxygen release and nutrient cycling are examples of: | Ecosystem services | Ecological pyramids | Primary productivity | Biomes | Robert Constanza priced them at about 33 trillion US dollars a year.
+# Biodiversity and Conservation
+The term biodiversity was popularised by: | Edward Wilson | Ernst Mayr | Paul Ehrlich | Robert May | It covers genetic, species and ecological diversity.
+Rauwolfia vomitoria from the Himalaya shows genetic diversity in the potency of: | Reserpine | Morphine | Quinine | Taxol | Variation exists between populations.
+India has more than how many genetically different strains of rice? | 50,000 | 500 | 5000 | 5 million | And about 1000 varieties of mango.
+Robert May estimated the global species diversity at about: | 7 million | 1.5 million | 20 million | 50 million | About 1.5 million species are recorded.
+Of all recorded animal species, insects make up about: | 70 percent | 10 percent | 30 percent | 90 percent | Seven out of every ten animals is an insect.
+India has about what share of the world's land area? | 2.4 percent | 8.1 percent | 10 percent | 0.5 percent | But it has 8.1 percent of global species diversity.
+India is one of how many megadiversity countries? | 12 | 25 | 5 | 34 | It has high species richness.
+Species diversity generally decreases as we move from: | Equator to poles | Poles to equator | Mountains to plains | Land to sea | The tropics are richest.
+Colombia has nearly how many bird species? | 1400 | 100 | 50 | 5000 | Greenland has only 56 bird species.
+The Amazon rain forest has the greatest: | Biodiversity on Earth | Desert area | Ice cover | Population of humans | It has over 40,000 plant species.
+In the species-area relationship, the slope Z for small areas is about: | 0.1 to 0.2 | 0.6 to 1.2 | 2 to 3 | 5 | For very large areas Z is 0.6 to 1.2.
+The rivet popper hypothesis was used by: | Paul Ehrlich | Alexander von Humboldt | David Tilman | Robert May | Losing species weakens the ecosystem like losing rivets.
+David Tilman found that plots with more species showed: | Less year-to-year variation in biomass | More variation | No growth | Less productivity | Diversity adds stability.
+The IUCN Red List (2004) recorded how many extinctions in the last 500 years? | 784 | 78 | 7840 | 78,400 | Including 338 vertebrates and 359 invertebrates.
+Recent extinctions include the dodo, quagga, thylacine, Steller's sea cow and: | Three subspecies of tiger | Lion | Elephant | Giraffe | The Bali, Javan and Caspian tigers are extinct.
+The current rate of species extinction is estimated to be: | 100 to 1000 times faster than pre-human times | Same as before | Ten times slower | Twice as slow | Humans are the main cause.
+The 'Evil Quartet' includes habitat loss, over-exploitation, alien species invasion and: | Co-extinctions | Ozone depletion | Earthquakes | Volcanoes | These are the main causes of biodiversity loss.
+Nile perch introduced into Lake Victoria caused extinction of over 200 species of: | Cichlid fish | Frogs | Snakes | Birds | It is an example of alien species invasion.
+Clarias gariepinus is a threat to: | Indigenous catfish of India | Tigers | Coral reefs | Rice | It is an African catfish introduced for aquaculture.
+Tropical rain forests once covered about 14 percent of land but now cover: | No more than 6 percent | 14 percent | 1 percent | 30 percent | Huge areas were cleared.
+Biodiversity hotspots cover less than what share of Earth's land area? | 2 percent | 20 percent | 10 percent | 50 percent | Yet they have very high species richness.
+The total number of biodiversity hotspots in the world is: | 34 | 25 | 12 | 3 | India is part of three.
+India has how many biosphere reserves (NCERT)? | 14 | 90 | 448 | 4 | It also has 90 national parks and 448 wildlife sanctuaries.
+Sacred groves in India are found in: | Khasi and Jaintia Hills, Western Ghats and Aravalli Hills | Thar desert | Andaman only | Ladakh only | Tribes protect them for religious reasons.
+Preserving gametes of threatened species at low temperatures is: | Cryopreservation | In situ conservation | Sacred groves | Biosphere reserve | It is an ex situ method.
+The Earth Summit was held in 1992 in: | Rio de Janeiro | Johannesburg | Kyoto | Paris | It led to the Convention on Biological Diversity.
+The World Summit on Sustainable Development was held in 2002 in: | Johannesburg | Rio de Janeiro | Kyoto | Montreal | Nations pledged to reduce biodiversity loss by 2010.

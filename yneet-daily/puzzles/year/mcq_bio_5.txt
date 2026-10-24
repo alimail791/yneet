@@ -1,0 +1,171 @@
+# Neural Control and Coordination
+The human neural system is divided into the CNS and the: | PNS | ANS only | Spinal cord | Brain stem | CNS includes brain and spinal cord.
+Afferent nerve fibres carry impulses: | From tissues to the CNS | From CNS to muscles | Between two muscles | Only within the brain | Efferent fibres carry them away from the CNS.
+The autonomic neural system controls: | Involuntary organs and smooth muscles | Skeletal muscles | Voluntary actions | Only the brain | It has sympathetic and parasympathetic parts.
+Nissl's granules are found in the: | Cell body and dendrites of a neuron | Axon | Myelin sheath | Synaptic knob | They are clusters of ribosomes.
+A neuron with one axon and one dendrite is: | Bipolar | Multipolar | Unipolar | Apolar | Found in the retina.
+Multipolar neurons are found in the: | Cerebral cortex | Retina | Embryo only | Spinal ganglia only | They have one axon and many dendrites.
+Unipolar neurons are found mainly in the: | Embryonic stage | Cerebral cortex | Retina | Adult brain | They have only one process.
+Myelin sheath in peripheral nerves is formed by: | Schwann cells | Neurons | Astrocytes | Microglia | Gaps between them are nodes of Ranvier.
+At rest, the inside of an axon is: | Negatively charged | Positively charged | Neutral | Highly acidic | This is the resting potential.
+The sodium-potassium pump moves: | 3 Na+ out and 2 K+ in | 2 Na+ out and 3 K+ in | 1 Na+ out and 1 K+ in | 3 K+ out and 2 Na+ in | It maintains the resting potential.
+During depolarisation, there is a rapid influx of: | Na+ | K+ | Cl- | Ca2+ | The inner surface becomes positive.
+Repolarisation is due to: | K+ moving out | Na+ moving in | Cl- moving in | Ca2+ moving out | The resting state is restored.
+Impulse transmission at an electrical synapse is: | Faster than at a chemical synapse | Slower | Absent in humans | Only one-way by chemicals | Current flows directly between neurons.
+In a chemical synapse, the gap between neurons is the: | Synaptic cleft | Node of Ranvier | Axon hillock | Synaptic knob | Neurotransmitters cross it.
+Neurotransmitters are released by: | Exocytosis of synaptic vesicles | Diffusion from the nucleus | Active pumping of ions | Breaking of the axon | Calcium triggers release.
+The brain is protected by the skull and three layers called: | Cranial meninges | Pleura | Pericardium | Peritoneum | Dura, arachnoid and pia mater.
+The outermost layer of the meninges is the: | Dura mater | Arachnoid | Pia mater | Cortex | The innermost is the pia mater.
+The two cerebral hemispheres are connected by the: | Corpus callosum | Pons | Medulla | Cerebellum | It is a tract of nerve fibres.
+The grey matter of the cerebrum is the: | Cerebral cortex | Corpus callosum | Thalamus | White matter | It has neuron cell bodies.
+The cerebral cortex has motor areas, sensory areas and large: | Association areas | Respiratory centres | Cardiac centres | Reflex centres | Association areas handle memory and communication.
+The main relay centre for sensory and motor signals is the: | Thalamus | Hypothalamus | Pons | Cerebellum | The cerebrum wraps around it.
+Body temperature, hunger and thirst are controlled by the: | Hypothalamus | Thalamus | Cerebellum | Medulla | It also makes hypothalamic hormones.
+The limbic system is involved in: | Emotions, sexual behaviour and motivation | Breathing | Balance only | Vision only | It includes the amygdala and hippocampus.
+The corpora quadrigemina are found in the: | Midbrain | Forebrain | Hindbrain | Spinal cord | They are four round swellings.
+The hindbrain includes the pons, medulla and: | Cerebellum | Thalamus | Hypothalamus | Cerebrum | The cerebellum has a very convoluted surface.
+The brain stem consists of the: | Midbrain, pons and medulla | Cerebrum and cerebellum | Thalamus and hypothalamus | Spinal cord only | It connects the brain to the spinal cord.
+The canal that runs through the midbrain is the: | Cerebral aqueduct | Central canal | Corpus callosum | Ventricle | It connects the third and fourth ventricles.
+Gastric secretions, cardiovascular reflexes and breathing are controlled by the: | Medulla | Cerebellum | Thalamus | Cerebrum | The medulla connects to the spinal cord.
+The parasympathetic system generally: | Slows the heart and aids digestion | Speeds up the heart | Dilates pupils | Raises blood sugar | It works at rest.
+The somatic neural system carries impulses from the CNS to: | Skeletal muscles | Smooth muscles | Glands | Heart | It controls voluntary movements.
+Visceral nervous system is part of the: | Peripheral neural system | CNS | Brain only | Spinal cord only | It links the CNS to the viscera.
+# Chemical Coordination and Integration
+Hormones are: | Non-nutrient chemicals acting as intercellular messengers | Enzymes only | Vitamins | Minerals | They act in trace amounts.
+The hypothalamus controls the pituitary through: | Releasing and inhibiting hormones | Nerves only | Enzymes | Bile | GnRH is a releasing hormone.
+Somatostatin from the hypothalamus inhibits release of: | Growth hormone | Insulin | Thyroxine | Oxytocin | It is an inhibiting hormone.
+The posterior pituitary is also called the: | Neurohypophysis | Adenohypophysis | Pars intermedia | Pars distalis | It stores hormones made by the hypothalamus.
+The posterior pituitary releases: | Oxytocin and vasopressin | GH and TSH | FSH and LH | ACTH and prolactin | These are made in the hypothalamus.
+Excess growth hormone in childhood causes: | Gigantism | Dwarfism | Cretinism | Acromegaly | Low GH causes pituitary dwarfism.
+Excess GH in adults, especially middle age, causes: | Acromegaly | Gigantism | Myxoedema | Goitre | Face and hands become enlarged.
+Prolactin regulates: | Growth of mammary glands and milk formation | Uterine contraction | Water reabsorption | Blood sugar | Oxytocin causes milk ejection.
+In females, LH induces: | Ovulation and maintains the corpus luteum | Spermatogenesis | Milk ejection | Thyroid growth | It also stimulates ovarian hormones.
+In males, LH stimulates: | Leydig cells to secrete androgens | Sertoli cells only | Milk production | Ovulation | LH is also called ICSH in males.
+MSH acts on: | Melanocytes | Thyroid | Adrenal cortex | Liver | It regulates skin pigmentation.
+The pineal gland secretes: | Melatonin | Thyroxine | Insulin | Cortisol | It regulates the 24-hour rhythm.
+The thyroid gland has two lobes joined by the: | Isthmus | Hilum | Bridge | Cortex | The isthmus is a thin connective tissue flap.
+Iodine is needed to make: | Thyroid hormones | Insulin | Adrenaline | Cortisol | Deficiency causes goitre.
+Hypothyroidism during pregnancy can cause in the baby: | Cretinism | Gigantism | Acromegaly | Diabetes | It leads to stunted growth and mental retardation.
+Thyrocalcitonin regulates: | Blood calcium levels | Blood sugar | Water balance | Heart rate | TCT lowers blood calcium.
+Parathyroid hormone increases: | Blood calcium levels | Blood sugar | Water reabsorption | Heart rate | PTH and TCT act together on calcium balance.
+The thymus secretes: | Thymosins | Thyroxine | Melatonin | Insulin | Thymosins help T-lymphocyte differentiation.
+The adrenal medulla secretes: | Adrenaline and noradrenaline | Cortisol | Aldosterone | Insulin | These are catecholamines.
+The adrenal cortex has three layers, the outermost being: | Zona glomerulosa | Zona fasciculata | Zona reticularis | Medulla | Aldosterone is made here.
+Cortisol is the main: | Glucocorticoid | Mineralocorticoid | Catecholamine | Sex hormone | It raises blood glucose and suppresses immunity.
+Aldosterone acts mainly on the: | Renal tubules | Liver | Pancreas | Heart | It increases Na+ and water reabsorption.
+Underproduction of adrenal cortex hormones causes: | Addison's disease | Cushing's syndrome | Graves' disease | Diabetes | It changes carbohydrate metabolism and causes weakness.
+The islets of Langerhans make up about what share of the pancreas? | 1 to 2 percent | 50 percent | 20 percent | 10 percent | There are about 1 to 2 million islets.
+Glucagon acts mainly on: | Liver cells | Muscle cells only | Brain cells | Bone cells | It stimulates glycogenolysis.
+Insulin acts mainly on: | Liver cells and adipocytes | Brain cells only | Red blood cells | Bone | It increases glucose uptake.
+Long-lasting high blood sugar is: | Diabetes mellitus | Diabetes insipidus | Acromegaly | Goitre | It is linked to loss of glucose in urine.
+Testosterone is secreted by: | Leydig cells | Sertoli cells | Corpus luteum | Graafian follicle | It regulates male secondary sexual characters.
+Estrogen is mainly secreted by the: | Growing ovarian follicles | Corpus luteum only | Placenta only | Pituitary | It develops female secondary sexual characters.
+Progesterone is mainly secreted by the: | Corpus luteum | Graafian follicle | Pituitary | Hypothalamus | It supports pregnancy.
+Atrial natriuretic factor causes: | Fall in blood pressure | Rise in blood pressure | Rise in blood sugar | Fall in heart rate only | It dilates blood vessels.
+Erythropoietin is made by the: | Kidney | Liver | Heart | Bone marrow | It stimulates RBC production.
+Gastrin acts on gastric glands to: | Secrete HCl and pepsinogen | Secrete bile | Secrete insulin | Absorb water | It is a gut hormone.
+Secretin acts on the: | Exocrine pancreas | Stomach | Liver | Gall bladder only | It stimulates secretion of water and bicarbonate.
+CCK acts on: | Pancreas and gall bladder | Kidney | Heart | Thyroid | It stimulates pancreatic enzymes and bile release.
+GIP inhibits: | Gastric secretion and motility | Bile release | Insulin | Heart rate | It is a gastric inhibitory peptide.
+Hormones that act through intracellular receptors include: | Steroid and iodothyronine hormones | Insulin | Glucagon | Adrenaline | They act on gene expression.
+Protein hormones usually act through: | Membrane receptors and second messengers | Nuclear receptors only | Direct DNA binding | No receptors | cAMP and Ca2+ are second messengers.
+# Sexual Reproduction in Flowering Plants
+A typical anther is: | Bilobed and dithecous | Monolobed | Trilobed | Tetralobed | Each lobe has two thecae.
+A typical anther has how many microsporangia? | Four | Two | One | Eight | It is tetrasporangiate.
+The innermost wall layer of the microsporangium is the: | Tapetum | Endothecium | Epidermis | Middle layer | It nourishes developing pollen.
+Each microspore mother cell forms by meiosis: | A tetrad of four microspores | Two microspores | One pollen grain | Eight microspores | Microspores develop into pollen.
+The hardest organic material known, found in pollen, is: | Sporopollenin | Lignin | Cellulose | Chitin | It resists strong acids and alkalis.
+Pollen grains have openings called: | Germ pores | Micropyles | Stomata | Lenticels | Sporopollenin is absent at germ pores.
+At the time of shedding, pollen in about 60 percent of angiosperms is: | Two-celled | Three-celled | One-celled | Four-celled | The rest shed three-celled pollen.
+The vegetative cell of a pollen grain is: | Bigger with abundant food reserve | Smaller and spindle-shaped | Absent | Haploid with no nucleus | The generative cell floats in it.
+Pollen grains of many species can cause: | Allergies | Fevers | Skin cancer | Anaemia | Parthenium pollen causes allergy.
+Pollen can be stored for years in: | Liquid nitrogen at -196 C | Water | Sunlight | Warm rooms | Pollen banks store them for breeding.
+The stalk of an ovule is the: | Funicle | Hilum | Micropyle | Chalaza | It attaches the ovule to the placenta.
+The opening at the tip of the ovule is the: | Micropyle | Chalaza | Hilum | Funicle | The pollen tube usually enters here.
+The basal part of the ovule opposite the micropyle is the: | Chalaza | Hilum | Funicle | Nucellus | Antipodals lie near it.
+Megasporogenesis forms: | Four megaspores, one functional | Two megaspores | Eight megaspores | One megaspore | The other three degenerate.
+A mature embryo sac is: | 7-celled and 8-nucleate | 8-celled and 8-nucleate | 7-celled and 7-nucleate | 6-celled and 8-nucleate | The central cell has two polar nuclei.
+Filiform apparatus is found in: | Synergids | Antipodals | Egg cell | Central cell | It guides the pollen tube.
+Transfer of pollen to the stigma of the same flower is: | Autogamy | Geitonogamy | Xenogamy | Cleistogamy only | Geitonogamy is between flowers of the same plant.
+Geitonogamy is genetically similar to: | Autogamy | Xenogamy | Apomixis | Parthenocarpy | Pollen comes from the same plant.
+Cleistogamous flowers: | Never open | Always open | Have no anthers | Are wind pollinated | Viola, Oxalis and Commelina have them.
+Wind-pollinated flowers usually have: | Light, non-sticky pollen and feathery stigmas | Bright petals | Nectar | Strong scent | Grasses are wind pollinated.
+Water pollination is seen in: | Vallisneria and Hydrilla | Lotus and water hyacinth | Wheat | Maize | Water lily and water hyacinth are insect or wind pollinated.
+In Vallisneria, female flowers reach the water surface by: | Long stalks | Floating leaves | Wind | Insects | Male flowers float to them.
+Amorphophallus flowers provide: | Safe places to lay eggs | Nectar only | Pollen only | Wind | Its flower is very tall.
+The moth that pollinates Yucca lays eggs in the: | Ovary | Petals | Stigma | Leaf | The moth and plant depend on each other.
+Pollen-pistil interaction decides: | Compatibility of pollen | Petal colour | Fruit size | Leaf shape | Incompatible pollen is rejected.
+Removing anthers from a bisexual flower before they shed pollen is: | Emasculation | Bagging | Pollination | Hybridisation | It is done in artificial hybridisation.
+Covering an emasculated flower with paper bags is: | Bagging | Emasculation | Self-pollination | Grafting | It keeps out unwanted pollen.
+The primary endosperm nucleus is: | Triploid | Diploid | Haploid | Tetraploid | It forms from triple fusion.
+The most common type of endosperm development is: | Free-nuclear | Cellular | Helobial | Ruminate | Coconut water is free-nuclear endosperm.
+Embryo develops at the: | Micropylar end of the embryo sac | Chalazal end | Centre | Outside the ovule | Most zygotes divide after some endosperm forms.
+The cotyledon of grass is called the: | Scutellum | Coleoptile | Plumule | Radicle | It lies to one side of the embryonal axis.
+Persistent nucellus in seeds is called: | Perisperm | Endosperm | Pericarp | Testa | It is seen in black pepper and beet.
+Seeds of wheat, maize and castor are: | Albuminous | Ex-albuminous | Non-viable | Seedless | They keep part of the endosperm.
+Fruits of apple, strawberry and cashew are: | False fruits | True fruits | Parthenocarpic | Seedless | The thalamus contributes to the fruit.
+Seeds formed without fertilisation are produced by: | Apomixis | Parthenocarpy | Pollination | Double fertilisation | It is common in Asteraceae and grasses.
+Polyembryony is common in: | Citrus and mango | Wheat | Pea | Rice | Nucellar cells form extra embryos.
+The oldest viable seed recorded was of: | Lupinus arcticus, about 10,000 years old | Rice | Phoenix dactylifera, 50 years | Wheat | It germinated after excavation from Arctic Tundra.
+A 2000-year-old viable seed of date palm was found at: | King Herod's palace near the Dead Sea | Indus valley | Egyptian pyramids | Arctic tundra | Phoenix dactylifera seeds were recovered there.
+# Human Reproduction
+The testes are located in the scrotum because they need: | A temperature 2 to 2.5 C lower | A warmer temperature | Light | More blood | Lower temperature is needed for spermatogenesis.
+Each testicular lobule contains up to: | Three seminiferous tubules | Ten tubules | One tubule | Twenty tubules | Each testis has about 250 lobules.
+Sertoli cells: | Nourish developing germ cells | Secrete androgens | Make sperm | Form the scrotum | They are found in seminiferous tubules.
+The male accessory glands are the seminal vesicles, the prostate and the: | Bulbourethral glands | Bartholin's glands | Sebaceous glands | Thyroid | Their secretions form seminal plasma.
+Seminal plasma is rich in: | Fructose, calcium and enzymes | Glucose only | Proteins only | Fat | Fructose gives energy to sperm.
+The enlarged end of the penis is the: | Glans penis | Foreskin | Prostate | Urethra | It is covered by the foreskin.
+The cup-shaped part of the fallopian tube near the ovary is the: | Infundibulum | Ampulla | Isthmus | Fimbriae | The fimbriae are at its edge.
+The narrow part of the fallopian tube joining the uterus is the: | Isthmus | Ampulla | Infundibulum | Cervix | It has a narrow lumen.
+The inner glandular layer of the uterus is the: | Endometrium | Myometrium | Perimetrium | Cervix | It changes during the menstrual cycle.
+The thick middle muscular layer of the uterus is the: | Myometrium | Endometrium | Perimetrium | Serosa | It contracts strongly during childbirth.
+Spermatogenesis begins at: | Puberty | Birth | Foetal stage | Old age | It is controlled by GnRH.
+The transformation of spermatids into sperm is called: | Spermiogenesis | Spermiation | Spermatogenesis | Oogenesis | Sperm heads embed in Sertoli cells.
+Release of sperm from seminiferous tubules is: | Spermiation | Spermiogenesis | Ejaculation | Fertilisation | Sperm are then moved through the ducts.
+The acrosome of a sperm contains: | Enzymes that help fertilisation | Mitochondria | The nucleus | Food reserve | It is a cap-like structure.
+The middle piece of a sperm contains: | Many mitochondria | The nucleus | The acrosome | No organelles | They provide energy for swimming.
+A human male ejaculates about how many sperm? | 200 to 300 million | 2 to 3 million | 20 thousand | 2 billion | At least 60 percent must have normal shape.
+Oogenesis begins: | During foetal development | At puberty | At menopause | After fertilisation | Millions of oogonia form in each foetal ovary.
+At puberty, each ovary has about how many primary follicles? | 60,000 to 80,000 | 2 million | 400 | 5,000 | Many degenerate between birth and puberty.
+The first meiotic division in the tertiary follicle forms a secondary oocyte and the: | First polar body | Second polar body | Ovum | Zygote | The division is unequal.
+The second meiotic division of the oocyte is completed: | After the sperm enters | Before ovulation | At puberty | In the foetus | It forms the ovum and second polar body.
+The first menstruation is called: | Menarche | Menopause | Ovulation | Parturition | It begins at puberty.
+The menstrual cycle lasts on average: | 28 or 29 days | 14 days | 40 days | 7 days | It repeats until menopause.
+The corpus luteum secretes large amounts of: | Progesterone | FSH | LH | Oxytocin | Progesterone maintains the endometrium.
+If fertilisation does not occur, the corpus luteum: | Degenerates | Grows larger | Forms a follicle | Forms a placenta | This leads to menstruation.
+The mitotic divisions of the zygote are called: | Cleavage | Implantation | Gastrulation | Ovulation | They produce blastomeres.
+The outer layer of the blastocyst is the: | Trophoblast | Inner cell mass | Morula | Amnion | It attaches to the endometrium.
+The embryo develops from the: | Inner cell mass | Trophoblast | Placenta | Corpus luteum | The inner cell mass contains stem cells.
+The placenta secretes: | hCG, hPL, estrogens and progesterone | Insulin | Thyroxine | ADH | It is an endocrine organ during pregnancy.
+Relaxin during pregnancy is secreted by the: | Ovary | Placenta | Pituitary | Thyroid | It is released in the later phase of pregnancy.
+The three primary germ layers are formed from the: | Inner cell mass | Trophoblast | Placenta | Umbilical cord | They are ectoderm, mesoderm and endoderm.
+The average duration of human pregnancy is about: | 9 months | 6 months | 12 months | 7 months | It ends in parturition.
+Milk ejection is caused by: | Oxytocin | Prolactin | Progesterone | Relaxin | Prolactin causes milk formation.
+The milk produced in the first few days after birth is: | Colostrum | Lactose | Serum | Plasma | It is rich in IgA antibodies.
+# Reproductive Health
+India started a family planning programme in: | 1951 | 1971 | 1991 | 2001 | India was among the first countries to do this.
+The improved programme covering wider reproductive health is called: | RCH | MTP | IVF | WHO | Reproductive and Child Health Care programme.
+Statutory ban on amniocentesis for sex determination was to: | Prevent female foeticide | Stop genetic testing | Reduce population | Stop all pregnancies | Amniocentesis is still allowed for genetic disorders.
+India's population in 2011 was about: | 1.2 billion | 350 million | 2 billion | 800 million | It was about 350 million at Independence.
+The ideal contraceptive is: | User-friendly, effective, reversible with few side effects | Permanent | Expensive | Hard to obtain | It should not interfere with sexual drive.
+Avoiding coitus from day 10 to 17 of the menstrual cycle is: | Periodic abstinence | Coitus interruptus | Lactational amenorrhea | Sterilisation | Ovulation is expected in this period.
+Lactational amenorrhea is effective for up to about: | Six months after childbirth | One month | Two years | One week | It works only with full breastfeeding.
+Condoms are a: | Barrier method | Natural method | Hormonal method | Surgical method | They also protect against STIs.
+Diaphragms, cervical caps and vaults are: | Barrier methods for females | IUDs | Pills | Surgical methods | They cover the cervix.
+CuT, Cu7 and Multiload 375 are: | Copper-releasing IUDs | Hormone-releasing IUDs | Non-medicated IUDs | Pills | Copper ions reduce sperm motility.
+Progestasert and LNG-20 are: | Hormone-releasing IUDs | Copper IUDs | Non-medicated IUDs | Barrier methods | They make the uterus unsuitable for implantation.
+Oral contraceptive pills usually contain: | Progestogens or progestogen-estrogen combinations | Testosterone | Oxytocin | Prolactin | They inhibit ovulation.
+Emergency contraception should be taken within: | 72 hours of coitus | 1 week | 1 month | 24 days | It can prevent pregnancy after unprotected sex.
+Vasectomy involves cutting the: | Vas deferens | Fallopian tube | Ureter | Urethra | It is a male sterilisation method.
+Tubectomy involves cutting the: | Fallopian tubes | Vas deferens | Uterus | Ovary | It is a female sterilisation method.
+MTP is considered relatively safe during the: | First trimester | Second trimester | Third trimester | Any time | MTP is up to 12 weeks in most cases.
+The MTP (Amendment) Act was passed in India in: | 2017 | 1951 | 1971 only | 2001 | It set conditions for medical termination.
+STIs are also called: | Venereal diseases or RTIs | Cardiovascular diseases | Genetic disorders | Deficiency diseases | They spread through sexual contact.
+Which STI is completely curable if detected early? | Gonorrhoea | Genital herpes | Hepatitis B | HIV infection | Herpes, hepatitis B and HIV are not completely curable.
+Hepatitis B and HIV can also spread by: | Sharing injection needles | Shaking hands | Eating together | Mosquito bites | They also pass from mother to foetus.
+Infertility treatments are called: | Assisted reproductive technologies | Contraceptives | Sterilisation | MTP | IVF is one example.
+In IVF, fertilisation happens: | Outside the body | In the fallopian tube | In the uterus | In the ovary | It is called a test tube baby programme.
+In ZIFT, the embryo with up to 8 blastomeres is transferred into the: | Fallopian tube | Uterus | Ovary | Cervix | Embryos with more than 8 blastomeres go to the uterus (IUT).
+In GIFT, the ovum is transferred into the: | Fallopian tube of a female who cannot produce ova | Uterus | Ovary | Cervix | Fertilisation then happens naturally.
+In ICSI, the sperm is: | Injected directly into the ovum | Placed in the fallopian tube | Placed in the uterus | Frozen | It is used for male infertility.
+Artificial insemination into the uterus is called: | IUI | IUT | ZIFT | GIFT | Semen from husband or donor is used.

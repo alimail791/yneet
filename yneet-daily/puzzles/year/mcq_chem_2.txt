@@ -1,0 +1,223 @@
+# Organic Chemistry: Some Basic Principles and Techniques
+The IUPAC name of CH3CH2CH2OH is: | Propan-1-ol | Propan-2-ol | Propanal | Propanone | The OH is on carbon 1.
+The IUPAC name of CH3COCH3 is: | Propanone | Propanal | Propan-2-ol | Ethanone | Acetone is its common name.
+Butane and 2-methylpropane are: | Chain isomers | Position isomers | Functional isomers | Metamers | They have the same formula C4H10.
+Ethanol and dimethyl ether are: | Functional isomers | Chain isomers | Position isomers | Tautomers | Both are C2H6O.
+The +I effect is shown by: | Alkyl groups | Nitro group | Halogens | Carboxyl group | Alkyl groups release electrons.
+The -I effect is shown most strongly by: | -NO2 | -CH3 | -C2H5 | -H | Nitro withdraws electrons.
+The most stable carbocation among these is: | (CH3)3C+ | CH3+ | CH3CH2+ | (CH3)2CH+ | Tertiary carbocations are stabilised by hyperconjugation.
+Homolytic cleavage of a bond forms: | Free radicals | Carbocations | Carbanions | Ions | Each atom keeps one electron.
+A reagent that seeks electrons is an: | Electrophile | Nucleophile | Free radical only | Base | NO2+ is an electrophile.
+Which is a nucleophile? | OH- | NO2+ | H+ | BF3 | Nucleophiles donate electron pairs.
+Lassaigne's test detects nitrogen, sulphur, halogens and: | Phosphorus | Carbon | Hydrogen | Oxygen | The organic compound is fused with sodium.
+Prussian blue in Lassaigne's test indicates: | Nitrogen | Sulphur | Chlorine | Phosphorus | Iron(III) hexacyanoferrate(II) forms.
+Kjeldahl's method is used to estimate: | Nitrogen | Carbon | Sulphur | Halogens | It does not work for nitro and azo compounds.
+Carius method is used to estimate: | Halogens and sulphur | Nitrogen | Carbon | Hydrogen | The compound is heated with fuming nitric acid.
+Separating liquids with a small difference in boiling points is done by: | Fractional distillation | Simple distillation | Sublimation | Crystallisation | It is used in petroleum refining.
+Aniline is purified by: | Steam distillation | Sublimation | Crystallisation | Filtration | It is steam volatile and immiscible with water.
+Camphor and naphthalene can be purified by: | Sublimation | Distillation | Chromatography | Crystallisation | They change directly from solid to vapour.
+In paper chromatography, the Rf value is: | Distance moved by substance / distance moved by solvent | Mass / volume | Volume / time | Always more than 1 | It is a characteristic value.
+The number of sigma and pi bonds in ethyne is: | 3 sigma and 2 pi | 2 sigma and 3 pi | 5 sigma | 4 sigma and 1 pi | One C-C sigma, two C-H sigma, two pi.
+# Hydrocarbons
+Alkanes are also called: | Paraffins | Olefins | Arenes | Acetylenes | They are not very reactive.
+Wurtz reaction joins two alkyl halides using: | Sodium in dry ether | Zinc and HCl | Alcoholic KOH | Lindlar catalyst | It gives higher alkanes.
+Wurtz reaction cannot prepare: | Methane | Ethane | Butane | Hexane | Each product has at least two carbons.
+Alkanes undergo halogenation by a: | Free radical mechanism | Electrophilic addition | Nucleophilic substitution | Ionic mechanism | Light starts the chain reaction.
+The staggered form of ethane is: | More stable than eclipsed | Less stable | Equally stable | Unstable | There is less torsional strain.
+Alkenes are also called: | Olefins | Paraffins | Arenes | Alkynes | They contain a C=C double bond.
+cis-But-2-ene and trans-but-2-ene are: | Geometrical isomers | Chain isomers | Functional isomers | Metamers | They differ in arrangement around the double bond.
+Addition of HBr to propene with peroxide gives mainly: | 1-Bromopropane | 2-Bromopropane | Propane | 1,2-Dibromopropane | This is anti-Markovnikov addition.
+Ozonolysis of ethene followed by Zn and water gives: | Methanal | Ethanal | Propanone | Ethanol | Two molecules of HCHO form.
+Baeyer's reagent is: | Cold dilute alkaline KMnO4 | Acidic K2Cr2O7 | Bromine water | Tollens' reagent | Loss of pink colour shows unsaturation.
+Partial reduction of alkynes to cis-alkenes uses: | Lindlar's catalyst | Sodium in liquid ammonia | Raney nickel | Zn and HCl | Sodium in liquid ammonia gives trans-alkenes.
+Ethyne is acidic compared to ethene because its carbon is: | sp hybridised with more s-character | sp3 hybridised | sp2 hybridised | Not hybridised | Higher s-character holds electrons closer.
+Ethyne reacts with sodium to give: | Sodium acetylide and hydrogen | Ethane | Ethene | No reaction | This shows its acidic nature.
+Benzene undergoes mainly: | Electrophilic substitution | Electrophilic addition | Nucleophilic substitution | Free radical addition | It keeps its aromatic stability.
+The electrophile in nitration of benzene is: | NO2+ | NO2- | NO3- | HNO3 | It forms from conc. HNO3 and H2SO4.
+In Friedel-Crafts alkylation, the catalyst is: | Anhydrous AlCl3 | Pt | Lindlar catalyst | Fe | It generates the carbocation.
+Huckel's rule for aromaticity requires: | (4n + 2) pi electrons | 4n pi electrons | 8 pi electrons | Odd number of electrons | Benzene has six pi electrons.
+The -NO2 group on benzene directs incoming groups to the: | Meta position | Ortho and para positions | Ortho only | Para only | It is deactivating.
+The -OH group on benzene is: | Ortho and para directing | Meta directing | Non-directing | Deactivating | It activates the ring.
+Benzene is a known: | Carcinogen | Vitamin | Fertiliser | Food additive | Polynuclear hydrocarbons are also carcinogenic.
+# Solutions
+A solution of 1 mol of solute in 1 kg of water is: | 1 molal | 1 molar | 1 normal | 1 percent | Molality uses mass of solvent.
+Henry's law relates gas solubility to its: | Partial pressure | Temperature only | Molar mass | Colour | Higher pressure increases solubility.
+Scuba divers suffer bends due to: | Nitrogen bubbles in blood | Oxygen excess | CO2 shortage | Helium | Helium-diluted air is used to avoid this.
+At high altitudes, low blood oxygen causes: | Anoxia | Bends | Hypertension | Jaundice | Climbers become weak and unable to think clearly.
+Raoult's law states that partial vapour pressure of a component equals: | Its mole fraction times its pure vapour pressure | Its molality | Its mass percent | Its molarity | It applies to ideal solutions.
+An ideal solution has: | Delta mix H = 0 and Delta mix V = 0 | Positive Delta H | Negative Delta V | Large deviation | Benzene and toluene form a near-ideal solution.
+Ethanol and acetone show: | Positive deviation from Raoult's law | Negative deviation | Ideal behaviour | No vapour pressure | Their interactions are weaker than in pure liquids.
+Chloroform and acetone show: | Negative deviation | Positive deviation | Ideal behaviour | No interaction | Hydrogen bonds form between them.
+A minimum boiling azeotrope is formed by solutions showing: | Large positive deviation | Large negative deviation | Ideal behaviour | No deviation | Ethanol-water (95 percent ethanol) is an example.
+Colligative properties depend on: | The number of solute particles | Nature of solute | Colour of solution | Type of solvent only | They include osmotic pressure.
+The relative lowering of vapour pressure equals the: | Mole fraction of solute | Molality | Molarity | Mass of solute | This is for a non-volatile solute.
+The boiling point elevation constant Kb is also called the: | Ebullioscopic constant | Cryoscopic constant | Gas constant | Rate constant | Kf is the cryoscopic constant.
+Osmotic pressure is given by: | pi = CRT | pi = nR/T | pi = RT/C | pi = C/RT | C is molar concentration.
+Osmotic pressure is preferred for finding molar masses of: | Proteins and polymers | Simple salts | Gases | Small molecules | It is measurable at room temperature.
+Red blood cells placed in a hypotonic solution: | Swell and may burst | Shrink | Stay the same | Freeze | Water enters the cells.
+Desalination of sea water uses: | Reverse osmosis | Simple osmosis | Distillation only | Filtration only | Pressure greater than osmotic pressure is applied.
+The van't Hoff factor for complete dissociation of K2SO4 is: | 3 | 2 | 1 | 4 | It gives two K+ and one SO4 2-.
+Acetic acid in benzene shows a van't Hoff factor close to: | 0.5 | 1 | 2 | 3 | It forms dimers.
+# Electrochemistry
+In a galvanic cell, oxidation occurs at the: | Anode | Cathode | Salt bridge | Electrolyte only | Anode is negative in a galvanic cell.
+The salt bridge: | Completes the circuit and keeps solutions neutral | Supplies electrons | Acts as an electrode | Stops current | It contains an inert electrolyte like KCl.
+The standard hydrogen electrode has a potential of: | 0 V | 1 V | -1 V | 0.34 V | It is the reference electrode.
+A positive standard reduction potential means the species is: | Easily reduced | Easily oxidised | Inert | A strong reducing agent | Fluorine has the highest value.
+The strongest reducing agent among these is: | Li | Na | K | Cu | Li has the most negative E standard.
+The Nernst equation relates electrode potential to: | Concentration | Time | Mass | Volume | E = E standard - (RT/nF) ln Q.
+Delta G standard = -nFE standard cell. A spontaneous cell has: | Positive E cell | Negative E cell | Zero E cell | Infinite E cell | Delta G is negative.
+Molar conductivity of a strong electrolyte with dilution: | Increases slightly | Decreases | Stays constant | Becomes zero | Ions move more freely.
+Conductivity of a solution with dilution: | Decreases | Increases | Stays constant | Doubles | Fewer ions per unit volume.
+Kohlrausch's law is used to find limiting molar conductivity of: | Weak electrolytes | Metals only | Non-electrolytes | Gases | It adds individual ion contributions.
+The SI unit of conductivity is: | S m^-1 | Ohm m | S m^2 mol^-1 | Ohm | Molar conductivity has units S m^2 mol^-1.
+One Faraday of charge is about: | 96487 C | 9648 C | 1 C | 6.022 x 10^23 C | It is the charge on one mole of electrons.
+During electrolysis of aqueous NaCl, the gas at the cathode is: | H2 | Cl2 | O2 | Na vapour | Water is reduced in preference to Na+.
+The dry cell (Leclanche cell) uses an anode of: | Zinc | Carbon | Lead | Mercury | MnO2 and carbon form the cathode.
+The lead storage battery uses an electrolyte of: | Sulphuric acid | Hydrochloric acid | KOH | NaCl | About 38 percent H2SO4.
+The fuel cell used in the Apollo space programme was the: | Hydrogen-oxygen cell | Lead cell | Dry cell | Mercury cell | Its product water was used for drinking.
+Rusting of iron is prevented by coating with zinc. This is: | Galvanisation | Electroplating with copper | Anodising | Bluing | Zinc corrodes first and protects iron.
+# Chemical Kinetics
+The rate of a reaction is the change in concentration per unit: | Time | Volume | Mass | Temperature | It is expressed in mol L^-1 s^-1.
+The units of the rate constant for a zero-order reaction are: | mol L^-1 s^-1 | s^-1 | L mol^-1 s^-1 | L^2 mol^-2 s^-1 | Rate equals k for zero order.
+The units of the rate constant for a second-order reaction are: | L mol^-1 s^-1 | s^-1 | mol L^-1 s^-1 | mol^2 L^-2 s^-1 | Rate = k[A]^2.
+Decomposition of NH3 on a hot platinum surface at high pressure is: | Zero order | First order | Second order | Third order | The surface is saturated.
+Hydrogenation of ethene is a: | First order reaction | Zero order reaction | Second order reaction | Third order reaction | Rate = k[C2H4].
+Hydrolysis of ethyl acetate in large excess of water is: | Pseudo first order | Second order | Zero order | Third order | Water concentration stays nearly constant.
+Molecularity of a reaction can: | Not be zero or fractional | Be zero | Be fractional | Be negative | It applies only to elementary steps.
+The rate-determining step is the: | Slowest step | Fastest step | First step | Last step | It controls the overall rate.
+The half-life of a zero-order reaction is: | [A]0 / 2k | 0.693/k | 1/k[A]0 | Constant | It depends on initial concentration.
+A first-order reaction has k = 0.693 per minute. Its half-life is: | 1 minute | 0.693 minute | 2 minutes | 10 minutes | t1/2 = 0.693/k.
+Time for 99.9 percent completion of a first-order reaction is about: | 10 half-lives | 2 half-lives | 5 half-lives | 100 half-lives | It is about 10 times t1/2.
+In the Arrhenius equation k = A e^(-Ea/RT), A is the: | Frequency factor | Activation energy | Rate constant | Temperature | It is also called the pre-exponential factor.
+For many reactions, a 10 degree rise in temperature: | Nearly doubles the rate | Halves the rate | Does not change the rate | Stops the reaction | More molecules exceed activation energy.
+A catalyst increases rate by: | Lowering activation energy | Raising activation energy | Changing Delta G | Shifting equilibrium | It provides an alternate path.
+A plot of ln k against 1/T gives a slope of: | -Ea/R | Ea/R | -R/Ea | A | Used to find activation energy.
+Radioactive decay follows: | First-order kinetics | Zero-order kinetics | Second-order kinetics | No order | Half-life is constant.
+# The d- and f-Block Elements
+Transition elements have partly filled: | d orbitals | s orbitals only | p orbitals | f orbitals only | In the atom or in common ions.
+Zn, Cd and Hg are not regarded as transition metals because: | Their d orbitals are full in the ground state and common ions | They are non-metals | They have no d electrons | They are liquids | Their configuration is (n-1)d10 ns2.
+Transition metals form coloured ions due to: | d-d transitions | s-s transitions | Nuclear changes | Full d orbitals | Partly filled d orbitals absorb visible light.
+Which ion is colourless? | Sc3+ | Ti3+ | Cu2+ | Fe3+ | Sc3+ has no d electrons.
+Which transition metal shows the most oxidation states in the first series? | Manganese | Scandium | Zinc | Copper | It shows +2 to +7.
+Transition metals and their compounds are good catalysts because they: | Show variable oxidation states and form complexes | Are colourless | Are non-metals | Have full d orbitals | Iron is used in the Haber process.
+Interstitial compounds form when small atoms like H, C or N are trapped in: | Metal crystal lattices | Noble gas lattices | Ionic crystals | Liquids | They are hard and have high melting points.
+The spin-only magnetic moment of Fe3+ (3d5) is about: | 5.92 BM | 4.90 BM | 3.87 BM | 1.73 BM | mu = square root of n(n+2), n = 5.
+Potassium dichromate is prepared from: | Chromite ore | Pyrolusite | Haematite | Bauxite | Chromite is FeCr2O4.
+Potassium permanganate is made from: | Pyrolusite (MnO2) | Chromite | Bauxite | Magnetite | MnO2 is fused with KOH and an oxidiser.
+Orange dichromate in alkaline solution changes to yellow: | Chromate | Chromium(III) | Chromyl chloride | Chromic acid | Equilibrium depends on pH.
+Lanthanoid contraction is due to: | Poor shielding by 4f electrons | Good shielding by 4f | More shells | Fewer protons | Atomic radii decrease steadily across the series.
+The most common oxidation state of lanthanoids is: | +3 | +2 | +4 | +1 | Ce shows +4 and Eu shows +2 too.
+Misch metal contains about 95 percent lanthanoid metal and about 5 percent: | Iron | Copper | Zinc | Lead | It is used in lighter flints.
+Actinoids are: | All radioactive | Mostly stable | Non-metals | Gases | Many are man-made.
+# Coordination Compounds
+In [Co(NH3)6]Cl3, the coordination sphere is: | [Co(NH3)6]3+ | Cl3 | NH3 only | Co only | Ions outside are counter ions.
+The oxidation state of Fe in K4[Fe(CN)6] is: | +2 | +3 | 0 | +4 | Four K+ balance the complex charge of -4.
+EDTA is a: | Hexadentate ligand | Bidentate ligand | Monodentate ligand | Tridentate ligand | It binds through two N and four O atoms.
+A ligand that can bind through two different atoms is: | Ambidentate | Bidentate | Chelating | Hexadentate | NO2- can bind through N or O.
+The IUPAC name of [Pt(NH3)2Cl2] is: | Diamminedichloridoplatinum(II) | Dichlorodiammineplatinum(IV) | Platinum diammine dichloride | Diamminedichloroplatinate(II) | Ligands are named alphabetically.
+cis-[Pt(NH3)2Cl2] is known as: | Cisplatin, an anticancer drug | Haemoglobin | Chlorophyll | Vitamin B12 | It binds DNA in cancer cells.
+Square planar complexes of type MA2B2 show: | Geometrical isomerism | Optical isomerism | No isomerism | Ionisation isomerism only | Cis and trans forms exist.
+[Co(NH3)5(SO4)]Br and [Co(NH3)5Br]SO4 show: | Ionisation isomerism | Linkage isomerism | Geometrical isomerism | Optical isomerism | They give different ions in solution.
+In an octahedral crystal field, d orbitals split into: | t2g (lower) and eg (higher) | eg (lower) and t2g (higher) | Five equal levels | Three levels | Splitting is Delta o.
+A strong field ligand produces: | Low spin complexes | High spin complexes | No splitting | Tetrahedral complexes only | Electrons pair in t2g.
+[Ni(CN)4]2- is: | Square planar and diamagnetic | Tetrahedral and paramagnetic | Octahedral | Linear | CN- is a strong field ligand.
+The metal in chlorophyll is: | Magnesium | Iron | Cobalt | Copper | Haemoglobin contains iron.
+Vitamin B12 contains: | Cobalt | Iron | Magnesium | Zinc | It is called cyanocobalamin.
+Hardness of water is estimated by titration with: | EDTA | KMnO4 | HCl | NaOH | Ca2+ and Mg2+ form stable complexes.
+The colour of a complex depends on the: | Wavelength of light absorbed | Mass of the metal | Number of counter ions | Temperature only | The colour seen is complementary to that absorbed.
+# Haloalkanes and Haloarenes
+Chloroform is: | CHCl3 | CH2Cl2 | CCl4 | CH3Cl | It was once used as an anaesthetic.
+Chloroform is stored in dark bottles because it forms: | Phosgene in air and light | Methane | Chlorine | Water | Phosgene is very poisonous.
+Iodoform was used as an: | Antiseptic | Anaesthetic | Fertiliser | Refrigerant | It releases free iodine.
+Freons are: | Chlorofluorocarbons | Hydrocarbons | Alcohols | Ethers | They damage the ozone layer.
+DDT was the first chlorinated organic: | Insecticide | Antibiotic | Refrigerant | Anaesthetic | It is persistent and harms wildlife.
+SN2 reactions proceed with: | Inversion of configuration | Retention of configuration | Racemisation | No change | Walden inversion occurs.
+SN1 reactions of optically active halides give: | Racemic mixtures | Pure inverted products | Pure retained products | No product | The carbocation is planar.
+Tertiary alkyl halides react fastest by: | SN1 | SN2 | E2 only | Free radical | They form stable carbocations.
+Haloarenes are less reactive towards nucleophilic substitution because the C-X bond has: | Partial double bond character due to resonance | Weak bonding | Ionic nature | sp3 carbon | The carbon is also sp2 hybridised.
+Chlorobenzene is made from benzenediazonium chloride and CuCl. This is the: | Sandmeyer reaction | Finkelstein reaction | Swarts reaction | Wurtz reaction | Copper(I) halides are used.
+Alkyl iodides are made from alkyl chlorides and NaI in dry acetone. This is the: | Finkelstein reaction | Swarts reaction | Sandmeyer reaction | Wurtz reaction | NaCl precipitates and drives the reaction.
+Alkyl fluorides are made by heating alkyl chlorides with AgF. This is the: | Swarts reaction | Finkelstein reaction | Kolbe reaction | Wurtz-Fittig reaction | Hg2F2 or CoF2 can also be used.
+Dehydrohalogenation of 2-bromobutane gives mainly: | But-2-ene | But-1-ene | Butane | Butanol | Saytzeff rule favours the more substituted alkene.
+Grignard reagents are made with: | Magnesium in dry ether | Sodium in water | Zinc in HCl | Aluminium in benzene | They are RMgX.
+The Wurtz-Fittig reaction joins: | An alkyl halide and an aryl halide | Two aryl halides only | Two alcohols | Two acids | Sodium in dry ether is used.
+# Alcohols, Phenols and Ethers
+Wood spirit is: | Methanol | Ethanol | Propanol | Glycerol | It is made by destructive distillation of wood.
+Drinking even small amounts of methanol can cause: | Blindness | Diabetes | Goitre | Rickets | Large amounts cause death.
+Ethanol made unfit for drinking by adding copper sulphate and pyridine is: | Denatured alcohol | Absolute alcohol | Rectified spirit | Wood spirit | This avoids misuse.
+The Lucas test turbidity appears immediately with: | Tertiary alcohols | Primary alcohols | Secondary alcohols | Phenols | Tertiary alcohols react fastest.
+Primary alcohols are oxidised by PCC to: | Aldehydes | Ketones | Carboxylic acids | Ethers | PCC stops at the aldehyde.
+Secondary alcohols on oxidation give: | Ketones | Aldehydes | Acids | Esters | For example, propan-2-ol gives propanone.
+Phenol is more acidic than ethanol because: | The phenoxide ion is resonance stabilised | Phenol is larger | Ethanol has no H | Phenol is a gas | The negative charge spreads over the ring.
+Electron-withdrawing groups like -NO2 on phenol: | Increase acidity | Decrease acidity | Have no effect | Make it basic | They stabilise the phenoxide ion.
+Phenol reacts with bromine water to give: | 2,4,6-Tribromophenol | o-Bromophenol only | p-Bromophenol only | Bromobenzene | A white precipitate forms.
+Phenol is converted into salicylic acid by: | Kolbe's reaction | Reimer-Tiemann reaction | Williamson synthesis | Lucas test | CO2 reacts with sodium phenoxide.
+In the Reimer-Tiemann reaction, phenol with CHCl3 and NaOH gives: | Salicylaldehyde | Salicylic acid | Picric acid | Benzene | A -CHO group is introduced.
+Picric acid is: | 2,4,6-Trinitrophenol | Trinitrotoluene | Nitrobenzene | p-Nitrophenol | It is a strong acid.
+Williamson synthesis prepares: | Ethers | Esters | Alcohols | Aldehydes | An alkoxide reacts with a primary alkyl halide.
+Anisole is: | Methoxybenzene | Phenol | Ethoxyethane | Benzyl alcohol | It is an aromatic ether.
+Ethers are cleaved by: | HI | NaOH | Water | Na | Alkyl iodides and alcohols form.
+Alcohols have higher boiling points than ethers of similar mass because of: | Hydrogen bonding | Larger size | Ionic bonds | Lower polarity | Ethers cannot hydrogen bond with each other.
+# Aldehydes, Ketones and Carboxylic Acids
+Formalin is a 40 percent solution of: | Formaldehyde | Acetaldehyde | Acetone | Formic acid | It is used to preserve biological specimens.
+The carbonyl carbon in aldehydes is: | sp2 hybridised | sp3 hybridised | sp hybridised | dsp2 | The C=O group is planar.
+Aldehydes are more reactive than ketones towards nucleophiles because of: | Less steric hindrance and fewer electron-donating groups | Higher mass | Being gases | Having no oxygen | Ketones have two alkyl groups.
+Fehling's solution gives a red-brown precipitate of: | Cu2O | CuO | Cu | CuSO4 | Aromatic aldehydes do not respond.
+Aldehydes without alpha hydrogen undergo: | Cannizzaro reaction | Aldol condensation | Clemmensen reduction only | Iodoform test | Formaldehyde and benzaldehyde are examples.
+Aldol condensation requires an aldehyde or ketone with: | At least one alpha hydrogen | No alpha hydrogen | A carboxyl group | An amine group | Dilute alkali is used.
+Clemmensen reduction converts C=O to CH2 using: | Zinc amalgam and conc. HCl | Hydrazine and KOH | LiAlH4 | NaBH4 | It suits compounds stable in acid.
+Wolff-Kishner reduction uses: | Hydrazine and KOH in ethylene glycol | Zn-Hg and HCl | H2 and Pd | Na and ethanol | It suits compounds stable in base.
+Rosenmund reduction converts acyl chlorides to: | Aldehydes | Ketones | Alcohols | Acids | H2 over Pd on BaSO4 is used.
+Carboxylic acids are stronger acids than phenols because: | Carboxylate is stabilised by two equivalent resonance structures | Phenol has no OH | Acids are larger | Phenol is a gas | The negative charge sits on two oxygens.
+The HVZ reaction introduces halogen at the: | Alpha carbon of a carboxylic acid | Carbonyl carbon | Benzene ring | OH group | Red phosphorus and halogen are used.
+Formic acid gives a positive Tollens' test because it: | Has an aldehyde-like H | Is a ketone | Is an ester | Has no carbon | HCOOH can be oxidised.
+Esters are formed from carboxylic acids and: | Alcohols | Aldehydes | Ketones | Amines | Acid catalyst is used.
+Benzoic acid on nitration gives mainly: | m-Nitrobenzoic acid | o-Nitrobenzoic acid | p-Nitrobenzoic acid | Nitrobenzene | COOH is meta directing.
+Decarboxylation of sodium salts of carboxylic acids with soda lime gives: | Alkanes with one carbon less | Alkenes | Alcohols | Aldehydes | Soda lime is NaOH and CaO.
+# Amines
+Primary amines have the general formula: | R-NH2 | R2NH | R3N | R4N+ | Secondary amines are R2NH.
+Gabriel phthalimide synthesis gives: | Pure primary aliphatic amines | Secondary amines | Tertiary amines | Aromatic amines | Aryl halides do not react.
+Hofmann bromamide degradation gives amines with: | One carbon less than the amide | One carbon more | Same carbons | Two carbons less | Br2 and NaOH are used.
+Aniline is a weaker base than methylamine because: | Its lone pair is delocalised into the ring | It is a gas | It has no N | It is smaller | Less lone pair is available for protons.
+The carbylamine test is given by: | Primary amines | Secondary amines | Tertiary amines | Amides | A foul-smelling isocyanide forms.
+The Hinsberg reagent is: | Benzenesulphonyl chloride | Benzoyl chloride | Acetyl chloride | Chloroform | It distinguishes primary, secondary and tertiary amines.
+Aniline with bromine water gives: | 2,4,6-Tribromoaniline | p-Bromoaniline only | Bromobenzene | No reaction | -NH2 strongly activates the ring.
+To get mono-substitution of aniline, the -NH2 group is first: | Acetylated | Removed | Oxidised | Reduced | Acetanilide is less activating.
+Nitration of aniline gives a lot of meta product because: | Anilinium ion forms in acid | Aniline is meta directing | NH2 is deactivating | The ring is saturated | The -NH3+ group is meta directing.
+Diazonium salts are prepared at: | 273 to 278 K | Room temperature | 373 K | 1000 K | They are unstable at higher temperatures.
+Benzenediazonium chloride couples with phenol to form: | p-Hydroxyazobenzene, an orange dye | Benzene | Phenol | Aniline | This is a coupling reaction.
+Benzenediazonium chloride with H3PO2 gives: | Benzene | Phenol | Chlorobenzene | Aniline | The diazo group is replaced by H.
+Warming benzenediazonium chloride with water gives: | Phenol | Benzene | Aniline | Benzoic acid | N2 gas is released.
+# Biomolecules
+Glucose is an: | Aldohexose | Ketohexose | Aldopentose | Ketopentose | It has six carbons and an aldehyde group.
+Fructose is a: | Ketohexose | Aldohexose | Aldopentose | Disaccharide | It is the sweetest natural sugar.
+Glucose with HI gives: | n-Hexane | Gluconic acid | Sorbitol | Saccharic acid | This shows a straight chain of six carbons.
+Glucose with bromine water gives: | Gluconic acid | Saccharic acid | n-Hexane | Glucose pentaacetate | It shows an aldehyde group.
+Alpha and beta glucose are: | Anomers | Enantiomers | Chain isomers | Functional isomers | They differ at C1.
+Sucrose on hydrolysis gives: | Glucose and fructose | Two glucose | Glucose and galactose | Two fructose | This mixture is invert sugar.
+Maltose is made of: | Two alpha-D-glucose units | Glucose and fructose | Glucose and galactose | Two fructose units | It is a reducing sugar.
+Amylose is: | Water-soluble and unbranched | Branched | A protein | Insoluble | Amylopectin is branched.
+Amino acids that the body cannot make are: | Essential amino acids | Non-essential | Acidic amino acids | Basic amino acids | They must come from the diet.
+In aqueous solution, amino acids exist as: | Zwitterions | Neutral molecules only | Cations only | Anions only | They carry both charges.
+Loss of biological activity of a protein on heating is: | Denaturation | Hydrolysis | Polymerisation | Fermentation | Coagulation of egg white is an example.
+Vitamin C deficiency causes: | Scurvy | Rickets | Beriberi | Night blindness | Vitamin C is water soluble.
+Vitamin D deficiency causes: | Rickets | Scurvy | Pellagra | Beriberi | It is fat soluble.
+Vitamin B1 deficiency causes: | Beriberi | Scurvy | Rickets | Anaemia | B1 is thiamine.
+Vitamin K is needed for: | Blood clotting | Vision | Bone formation | Fertility | It is fat soluble.
+Fat-soluble vitamins are: | A, D, E and K | B and C | Only C | Only B12 | They are stored in the liver and adipose tissue.
+DNA contains the sugar: | 2-Deoxyribose | Ribose | Glucose | Fructose | RNA contains ribose.
+# The p-Block Elements
+Nitrogen exists as a diatomic molecule with a: | Triple bond | Single bond | Double bond | Ionic bond | It is very stable.
+Ammonia is manufactured by the: | Haber process | Ostwald process | Contact process | Solvay process | Iron oxide with K2O and Al2O3 is used.
+Nitric acid is manufactured by the: | Ostwald process | Haber process | Contact process | Deacon process | Ammonia is oxidised over Pt/Rh gauze.
+White phosphorus is: | More reactive than red phosphorus | Less reactive | Stable in air | Insoluble in CS2 | It glows in the dark and is stored under water.
+Sulphuric acid is manufactured by the: | Contact process | Haber process | Ostwald process | Lead chamber only | V2O5 is the catalyst.
+Ozone layer protects us from: | UV radiation | Infrared | Radio waves | Visible light | It absorbs harmful UV rays.
+Oleum is: | H2S2O7 | H2SO4 | H2SO3 | SO3 | It is formed by absorbing SO3 in H2SO4.
+The most reactive halogen is: | Fluorine | Chlorine | Bromine | Iodine | It has small size and low F-F bond energy.
+Bleaching powder is: | Ca(OCl)2.CaCl2.Ca(OH)2.2H2O | CaCl2 | NaOCl | CaCO3 | It is used for disinfecting water.
+The strongest hydrogen halide acid in water is: | HI | HF | HCl | HBr | H-I bond is the weakest.
+Xenon fluorides like XeF2, XeF4 and XeF6 were made after: | Bartlett made XePtF6 | Ramsay discovered helium | Mendeleev's table | Haber's process | Bartlett's work began noble gas chemistry.
+Helium is used in balloons for weather observation because it is: | Light and non-inflammable | Heavy | Reactive | Coloured | It is also used in diving gas mixtures.
+Argon is used to provide an inert atmosphere in: | Welding and electric bulbs | Refrigerators | Fertilisers | Medicines | It is the most abundant noble gas in air.
+Interhalogen compounds like ClF3 are more reactive than halogens (except F2) because: | The X-X' bond is weaker | They are ionic | They are larger | They have no bonds | Polar X-X' bonds break easily.

@@ -1,0 +1,137 @@
+# Some Basic Concepts of Chemistry
+Number of moles in 36 g of water is: | 2 | 1 | 0.5 | 18 | Molar mass of water is 18 g/mol.
+Mass of 0.5 mol of NaCl is: | 29.25 g | 58.5 g | 117 g | 11.7 g | Molar mass of NaCl is 58.5 g/mol.
+Volume of 1 mol of an ideal gas at STP (273 K, 1 bar) is about: | 22.7 L | 22.4 mL | 11.2 L | 1 L | Older texts use 22.4 L at 1 atm.
+Number of atoms in 1 mol of O2 molecules is: | 1.204 x 10^24 | 6.022 x 10^23 | 3.011 x 10^23 | 2 | Each molecule has two atoms.
+The law of conservation of mass was given by: | Antoine Lavoisier | Proust | Dalton | Gay Lussac | Mass is neither created nor destroyed in reactions.
+The law of definite proportions was given by: | Joseph Proust | Lavoisier | Dalton | Avogadro | A compound always has the same proportion of elements by mass.
+H2O and H2O2 illustrate the law of: | Multiple proportions | Definite proportions | Conservation of mass | Gaseous volumes | Masses of O combining with fixed H are in simple ratio.
+Molarity is defined as moles of solute per: | Litre of solution | Kg of solvent | Litre of solvent | Mole of solution | It depends on temperature.
+Molality is moles of solute per: | Kilogram of solvent | Litre of solution | Gram of solution | Litre of solvent | It does not change with temperature.
+Molarity of a solution with 4 g NaOH in 250 mL solution is: | 0.4 M | 0.1 M | 1 M | 4 M | 4 g is 0.1 mol, in 0.25 L.
+The reactant that is fully used first in a reaction is the: | Limiting reagent | Excess reagent | Catalyst | Product | It decides the amount of product.
+The empirical formula of glucose (C6H12O6) is: | CH2O | C6H12O6 | C2H4O2 | CHO | Divide all subscripts by 6.
+Number of significant figures in 0.0052 is: | Two | Four | Five | Three | Leading zeros are not significant.
+Number of significant figures in 2.500 is: | Four | Two | Three | One | Trailing zeros after a decimal are significant.
+One atomic mass unit is defined as: | 1/12 of the mass of a carbon-12 atom | Mass of one hydrogen atom | Mass of one proton | 1/16 of oxygen-16 | It is about 1.66 x 10^-24 g.
+Mole fraction of a component is: | Moles of component divided by total moles | Mass divided by volume | Moles per litre | Moles per kg | Sum of all mole fractions is 1.
+How many grams of CO2 form from burning 12 g of carbon completely? | 44 g | 12 g | 32 g | 22 g | C + O2 gives CO2; 1 mol C gives 1 mol CO2.
+Mass percent of hydrogen in water is about: | 11.1 percent | 88.9 percent | 2 percent | 5.5 percent | 2/18 x 100.
+# Structure of Atom
+The electron was discovered by: | J.J. Thomson | Rutherford | Chadwick | Goldstein | He used cathode ray tubes.
+The neutron was discovered by: | James Chadwick | Rutherford | Thomson | Bohr | He bombarded beryllium with alpha particles in 1932.
+The charge on an electron was measured by: | R.A. Millikan | Thomson | Rutherford | Bohr | He used the oil drop experiment.
+In Rutherford's experiment, most alpha particles: | Passed straight through | Bounced back | Were absorbed | Stopped | Most of the atom is empty space.
+Isotopes have the same: | Atomic number | Mass number | Number of neutrons | Physical properties | They differ in neutrons.
+Isobars have the same: | Mass number | Atomic number | Number of neutrons | Chemical properties | 14C and 14N are isobars.
+The energy of the first Bohr orbit of hydrogen is: | -13.6 eV | 13.6 eV | -3.4 eV | 0 eV | The energy is -13.6/n squared eV.
+The radius of the first Bohr orbit of hydrogen is: | 52.9 pm | 529 pm | 5.29 pm | 0.529 pm | The radius increases as n squared.
+The Balmer series lies in the: | Visible region | UV region | Infrared region | Microwave region | Lyman is UV; Paschen is infrared.
+The uncertainty principle was given by: | Werner Heisenberg | de Broglie | Schrodinger | Bohr | Position and momentum cannot both be known exactly.
+The maximum number of electrons in a p subshell is: | 6 | 2 | 10 | 14 | Three orbitals hold two electrons each.
+The number of orbitals in the d subshell is: | 5 | 3 | 7 | 1 | They hold up to 10 electrons.
+For n = 3, the possible values of l are: | 0, 1, 2 | 0, 1, 2, 3 | 1, 2, 3 | 0 only | l goes from 0 to n-1.
+The number of radial nodes in a 3s orbital is: | 2 | 1 | 0 | 3 | Radial nodes equal n - l - 1.
+The electronic configuration of chromium (Z = 24) is: | [Ar] 3d5 4s1 | [Ar] 3d4 4s2 | [Ar] 3d6 | [Ar] 4s2 4p4 | Half-filled d subshell is extra stable.
+The electronic configuration of copper (Z = 29) is: | [Ar] 3d10 4s1 | [Ar] 3d9 4s2 | [Ar] 3d8 4s2 4p1 | [Ar] 4s2 3d9 | Fully filled d subshell is extra stable.
+Which orbital is filled first according to the n + l rule? | 4s before 3d | 3d before 4s | 4p before 3d | 5s before 4p | 4s has n + l = 4; 3d has n + l = 5.
+Hund's rule says electrons in orbitals of equal energy: | Remain unpaired as far as possible | Pair up first | Go to higher shells | Have opposite spins always | Pairing starts only after each orbital has one electron.
+# Classification of Elements and Periodicity in Properties
+Mendeleev arranged elements by: | Increasing atomic mass | Increasing atomic number | Electronegativity | Valency only | He left gaps for undiscovered elements.
+The modern periodic law is based on: | Atomic number | Atomic mass | Neutron number | Density | It was based on Moseley's work.
+Eka-aluminium predicted by Mendeleev is now called: | Gallium | Germanium | Scandium | Aluminium | Eka-silicon is germanium.
+The modern periodic table has: | 18 groups and 7 periods | 8 groups and 7 periods | 18 groups and 9 periods | 16 groups | Lanthanoids and actinoids are placed separately.
+Elements of group 1 are called: | Alkali metals | Alkaline earth metals | Halogens | Noble gases | They have ns1 configuration.
+Elements of group 17 are called: | Halogens | Chalcogens | Pnictogens | Noble gases | They have ns2 np5 configuration.
+The f-block elements are also called: | Inner transition elements | Transition elements | Representative elements | Noble gases | They include lanthanoids and actinoids.
+The IUPAC name of element 104 under temporary nomenclature is: | Unnilquadium | Unnilunium | Ununbium | Unnilpentium | 1 = un, 0 = nil, 4 = quad.
+Atomic radius decreases across a period because: | Effective nuclear charge increases | Shells increase | Electrons are removed | Neutrons increase | Electrons are added to the same shell.
+Which has the largest atomic radius? | Cs | Li | Na | K | Size increases down a group.
+The element with the highest electronegativity is: | Fluorine | Oxygen | Chlorine | Neon | Pauling value about 4.0.
+First ionisation enthalpy of N is higher than O because: | N has a half-filled stable p subshell | O is smaller | N has more protons | O has fewer electrons | Removing an electron from O gives a half-filled p subshell.
+Noble gases have large positive electron gain enthalpy because: | They have stable full shells | They are small | They are metals | They have low ionisation enthalpy | Adding an electron requires a new shell.
+Which ion is the smallest? | Mg2+ | Na+ | F- | O2- | All are isoelectronic; Mg2+ has the most protons.
+The most metallic element in period 3 is: | Sodium | Magnesium | Aluminium | Silicon | Metallic character decreases across a period.
+The oxide of sodium is: | Basic | Acidic | Amphoteric | Neutral | Na2O forms NaOH in water.
+Al2O3 is: | Amphoteric | Basic | Acidic | Neutral | It reacts with both acids and bases.
+Elements in the same group have similar chemical properties because they have the same: | Valence shell configuration | Atomic mass | Number of shells | Atomic radius | Group members share outer electron arrangement.
+# Chemical Bonding and Molecular Structure
+The Kossel-Lewis approach explains bonding using the: | Octet rule | Hybridisation | MO theory | VSEPR only | Atoms gain, lose or share electrons to complete octets.
+Formal charge on oxygen in O3 at the central atom is: | +1 | -1 | 0 | +2 | The central O has three bonds and one lone pair.
+BF3 is an example of: | Incomplete octet | Expanded octet | Odd electron molecule | Ionic compound | Boron has only six electrons.
+NO and NO2 are examples of: | Odd electron molecules | Expanded octets | Incomplete octets | Ionic compounds | They have unpaired electrons.
+PCl5 and SF6 show: | Expanded octets | Incomplete octets | Odd electrons | No covalent bonds | Central atoms use d orbitals in older models.
+Lattice enthalpy is the energy needed to: | Separate one mole of an ionic solid into gaseous ions | Melt a solid | Break a covalent bond | Ionise a gas | Higher lattice enthalpy means a more stable solid.
+Bond order of N2 is: | 3 | 2 | 1 | 2.5 | N2 has a triple bond.
+Bond order of O2 is: | 2 | 3 | 1 | 1.5 | O2 has a double bond and two unpaired electrons.
+O2 is paramagnetic because it has: | Two unpaired electrons in antibonding orbitals | No unpaired electrons | A triple bond | Ionic bonds | MO theory explains this.
+He2 does not exist because its bond order is: | 0 | 1 | 2 | 0.5 | Bonding and antibonding electrons cancel.
+The shape of SF6 is: | Octahedral | Tetrahedral | Square planar | Trigonal bipyramidal | Six bond pairs, no lone pairs.
+The shape of XeF4 is: | Square planar | Tetrahedral | Octahedral | See-saw | Four bond pairs and two lone pairs.
+The shape of SF4 is: | See-saw | Tetrahedral | Square planar | Octahedral | Four bond pairs and one lone pair.
+The shape of ClF3 is: | T-shaped | Trigonal planar | Pyramidal | Linear | Three bond pairs and two lone pairs.
+The shape of H2O is: | Bent | Linear | Tetrahedral | Pyramidal | Two lone pairs push the bonds closer.
+The hybridisation of carbon in ethene is: | sp2 | sp3 | sp | dsp2 | Each carbon forms three sigma bonds.
+Which molecule has zero dipole moment? | CO2 | H2O | NH3 | HCl | Bond dipoles cancel in the linear molecule.
+NH3 has a higher dipole moment than NF3 because: | Lone pair and bond dipoles add in NH3 but oppose in NF3 | N-F bonds are non-polar | NF3 is ionic | NH3 is planar | Both are pyramidal.
+Intramolecular hydrogen bonding is found in: | o-Nitrophenol | p-Nitrophenol | Water | HF | It lowers boiling point and water solubility.
+Ice is less dense than water because of: | Open hydrogen-bonded structure | Ionic bonds | Covalent bonds | Van der Waals forces only | Each water molecule bonds to four others in ice.
+According to Fajans' rules, covalent character increases when: | The cation is small and highly charged | The cation is large | The anion is small | Charges are low | Small cations polarise large anions more.
+A sigma bond is formed by: | Head-on overlap of orbitals | Sideways overlap | Transfer of electrons | Hydrogen bonding | It is stronger than a pi bond.
+# Thermodynamics
+A system that can exchange energy but not matter is: | Closed | Open | Isolated | Adiabatic | A sealed flask is a closed system.
+A thermos flask approximates an: | Isolated system | Open system | Closed system | Living system | No exchange of matter or energy.
+Which is an extensive property? | Volume | Temperature | Density | Pressure | Extensive properties depend on amount.
+Which is an intensive property? | Molar heat capacity | Mass | Volume | Internal energy | It does not depend on amount.
+Which is a state function? | Enthalpy | Work | Heat | Path length | State functions depend only on initial and final states.
+For an isolated system, change in internal energy is: | Zero | Positive | Negative | Infinite | No heat or work crosses its boundary.
+The first law of thermodynamics is: | Delta U = q + w | Delta U = q - T | Delta H = q only | Delta S = q/T | IUPAC sign convention for work done on the system.
+For an ideal gas undergoing isothermal reversible expansion, Delta U is: | Zero | Positive | Negative | Equal to q only if q is zero | Internal energy of an ideal gas depends only on temperature.
+Free expansion of an ideal gas into vacuum involves work: | Equal to zero | Positive | Negative | Infinite | There is no external pressure.
+Delta H - Delta U equals: | Delta n_g RT | nRT | Delta n_g / RT | Zero always | For reactions involving gases.
+Standard enthalpy of formation of an element in its reference state is: | Zero | Positive | Negative | One | For example, O2 gas or graphite.
+Hess's law is a consequence of enthalpy being a: | State function | Path function | Extensive property only | Intensive property | Total enthalpy change does not depend on the path.
+Combustion reactions are: | Exothermic | Endothermic | Neither | Always non-spontaneous | Heat is released.
+Entropy is a measure of: | Disorder or randomness | Heat content | Work done | Pressure | Gases have higher entropy than liquids.
+Entropy increases when: | A solid melts | A gas condenses | A liquid freezes | Temperature drops | Particles become more disordered.
+Delta G = Delta H - T Delta S. A reaction is spontaneous when Delta G is: | Negative | Positive | Zero | Infinite | At constant T and P.
+A reaction with Delta H positive and Delta S positive is spontaneous at: | High temperature | Low temperature | All temperatures | No temperature | T Delta S must exceed Delta H.
+At equilibrium, Delta G is: | Zero | Negative | Positive | Equal to Delta H | The forward and backward tendencies balance.
+Relation between Delta G standard and K is: | Delta G standard = -RT ln K | Delta G = RT ln K | Delta G = K/RT | Delta G = -K | A large K means a negative standard Delta G.
+Enthalpy of neutralisation of a strong acid by a strong base is about: | -57.1 kJ/mol | -13.6 kJ/mol | -100 kJ/mol | +57.1 kJ/mol | It is the formation of water from H+ and OH-.
+# Equilibrium
+At equilibrium, rates of forward and backward reactions are: | Equal | Zero | Unequal | Infinite | Concentrations stay constant.
+Kp = Kc (RT)^Delta n. When Delta n = 0: | Kp = Kc | Kp > Kc | Kp < Kc | Kp = 0 | For H2 + I2 giving 2HI, Delta n = 0.
+A catalyst affects equilibrium by: | Helping reach it faster without changing K | Increasing K | Decreasing K | Shifting it to products | It speeds both forward and backward reactions.
+Increasing pressure in N2 + 3H2 giving 2NH3 shifts equilibrium to the: | Right | Left | No shift | Stops reaction | Fewer gas moles on the right.
+For an exothermic reaction, raising temperature: | Decreases K | Increases K | Does not change K | Makes K zero | Equilibrium shifts towards reactants.
+If Qc < Kc, the reaction proceeds in the: | Forward direction | Backward direction | Neither direction | Both equally | More products will form.
+A Lewis acid is an: | Electron pair acceptor | Electron pair donor | Proton donor only | Hydroxide donor | BF3 and AlCl3 are Lewis acids.
+A Bronsted base is a: | Proton acceptor | Proton donor | Electron acceptor | Hydroxide only | NH3 is a Bronsted base.
+The conjugate base of H2SO4 is: | HSO4- | SO4 2- | H3SO4+ | H2O | Remove one proton.
+The ionic product of water at 298 K is: | 1.0 x 10^-14 | 1.0 x 10^-7 | 1.0 x 10^-12 | 14 | Kw = [H+][OH-].
+The pH of a 10^-8 M HCl solution is: | Slightly less than 7 | 8 | 6 | Exactly 7 | Water's own H+ must be included.
+pH + pOH at 298 K equals: | 14 | 7 | 1 | 0 | From Kw.
+A buffer of acetic acid and sodium acetate resists change in: | pH | Temperature | Pressure | Volume | It neutralises small additions of acid or base.
+The pH of a buffer is given by the: | Henderson-Hasselbalch equation | Nernst equation | Arrhenius equation | Raoult's law | pH = pKa + log [salt]/[acid].
+The solubility product of AgCl is 1.8 x 10^-10. Adding NaCl to its solution: | Decreases AgCl solubility | Increases solubility | Has no effect | Dissolves all AgCl | This is the common ion effect.
+A salt of a weak acid and strong base gives a solution that is: | Basic | Acidic | Neutral | Insoluble | Sodium acetate solution is basic.
+A salt of a strong acid and weak base gives a solution that is: | Acidic | Basic | Neutral | Insoluble | NH4Cl solution is acidic.
+Ksp of a sparingly soluble salt AB2 with solubility s is: | 4s^3 | s^2 | 2s^3 | 27s^4 | [A] = s and [B] = 2s.
+# Redox Reactions
+Oxidation is: | Loss of electrons | Gain of electrons | Gain of hydrogen | Loss of oxygen | Reduction is gain of electrons.
+The oxidation number of oxygen in H2O2 is: | -1 | -2 | 0 | +1 | Peroxides have O at -1.
+The oxidation number of oxygen in OF2 is: | +2 | -2 | -1 | 0 | Fluorine is more electronegative.
+The oxidation number of S in H2SO4 is: | +6 | +4 | -2 | +2 | 2(+1) + S + 4(-2) = 0.
+The oxidation number of C in CO is: | +2 | +4 | 0 | -2 | Oxygen is -2.
+The oxidation number of Fe in Fe3O4 is: | +8/3 | +2 | +3 | +4 | It is an average of +2 and +3.
+In the reaction Zn + Cu2+ gives Zn2+ + Cu, the oxidising agent is: | Cu2+ | Zn | Zn2+ | Cu | Cu2+ gains electrons.
+A reaction where the same element is both oxidised and reduced is: | Disproportionation | Combination | Displacement | Decomposition | 2H2O2 gives 2H2O + O2.
+In acidic medium, MnO4- is reduced to: | Mn2+ | MnO2 | MnO4 2- | Mn | It gains 5 electrons.
+In neutral or weakly basic medium, MnO4- is reduced to: | MnO2 | Mn2+ | Mn | MnO4 2- | It gains 3 electrons.
+The oxidation number of Cr in CrO5 is: | +6 | +10 | +5 | +3 | CrO5 has peroxide linkages.
+The oxidation state of P in H3PO4 is: | +5 | +3 | +1 | -3 | 3(+1) + P + 4(-2) = 0.
+Fluorine always shows an oxidation number of: | -1 in compounds | +1 | 0 in compounds | -2 | It is the most electronegative element.
+In KO2, the oxidation number of oxygen is: | -1/2 | -1 | -2 | +1/2 | It is a superoxide.
+The equivalent mass of KMnO4 in acidic medium is: | Molar mass / 5 | Molar mass / 3 | Molar mass | Molar mass / 1 | n-factor is 5.
+A reaction where a more reactive metal pushes out a less reactive one is: | Displacement | Disproportionation | Combination | Decomposition | Zinc displaces copper from CuSO4.

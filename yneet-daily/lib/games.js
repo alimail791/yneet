@@ -20,7 +20,7 @@ function publicView(p) {
   return {
     date: p.date, no: p.no,
     bioword: { hint: p.bioword.hint, length: p.bioword.answer.length },
-    pinpoint: { firstClue: p.pinpoint.clues[0], totalClues: p.pinpoint.clues.length, options: p.pinpoint.options },
+    pinpoint: { subject: p.pinpoint.subject || 'Bio', firstClue: p.pinpoint.clues[0], totalClues: p.pinpoint.clues.length, options: p.pinpoint.options },
     zip: { title: p.zip.title, labels: p.zip.labels, size: p.zip.size, nodes: p.zip.nodes },
     queens: { size: p.queens.size, regions: p.queens.regions, names: p.queens.names },
     daily5: p.daily5.map(q => ({ s: q.s, q: q.q, o: q.o })),

@@ -3,14 +3,17 @@ const fs = require('fs'); const P = require('./puzzles.json');
 const esc = s => String(s).replace(/[&<>"]/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '"': '&quot;' }[c]));
 const col = { A: 'var(--r1)', B: 'var(--r2)', C: 'var(--r3)', D: 'var(--r4)', E: 'var(--r5)', F: 'var(--r6)', G: 'var(--r7)', H: 'var(--r8)' };
 const dl = d => new Date(d + 'T00:00:00Z').toLocaleDateString('en-IN', { weekday: 'short', day: 'numeric', month: 'short', timeZone: 'UTC' });
+let lastMonth = '';
 const days = Object.values(P).map((p, i) => {
+  const month = new Date(p.date + 'T00:00:00Z').toLocaleDateString('en-IN', { month: 'long', year: 'numeric', timeZone: 'UTC' });
+  const head = month !== lastMonth ? `<h2 class="month">${month}</h2>` : ''; lastMonth = month;
   const q = p.queens, N = q.size;
   const board = `<div class="qb" style="grid-template-columns:repeat(${N},1fr)">${q.regions.map((row, r) => [...row].map((k, c) => `<i style="background:${col[k]}">${q.solution[r] === c ? '⚛' : ''}</i>`).join('')).join('')}</div>`;
-  return `<details ${i === 0 ? 'open' : ''} id="d${p.no}"><summary><span class="no">#${p.no}</span><span class="dt">${dl(p.date)}</span><span class="peek">${esc(p.bioword.answer)} · ${esc(p.zip.title)}</span></summary>
+  return head + `<details ${i === 0 ? 'open' : ''} id="d${p.no}"><summary><span class="no">#${p.no}</span><span class="dt">${dl(p.date)}</span><span class="peek">${esc(p.bioword.answer)} · ${esc(p.pinpoint.answer)}</span></summary>
   <div class="grid">
     <section><h3>BioWord</h3><p class="big">${esc(p.bioword.answer)}</p><p><b>Hint:</b> ${esc(p.bioword.hint)}</p><p class="muted">${esc(p.bioword.fact)}</p></section>
-    <section><h3>Pinpoint NEET</h3><p class="ans">${esc(p.pinpoint.answer)}</p><ol>${p.pinpoint.clues.map(c => `<li>${esc(c)}</li>`).join('')}</ol><p class="muted">Other options: ${p.pinpoint.options.filter(o => o !== p.pinpoint.answer).map(esc).join(' · ')}</p></section>
-    <section><h3>Pathway Zip · ${N === 7 ? '' : ''}${p.zip.size}×${p.zip.size}</h3><p class="ans">${esc(p.zip.title)}</p><ol>${p.zip.labels.map(c => `<li>${esc(c)}</li>`).join('')}</ol></section>
+    <section><h3>Pinpoint NEET · ${p.pinpoint.subject || 'Bio'}</h3><p class="ans">${esc(p.pinpoint.answer)}</p><ol>${p.pinpoint.clues.map(c => `<li>${esc(c)}</li>`).join('')}</ol><p class="muted">Other options: ${p.pinpoint.options.filter(o => o !== p.pinpoint.answer).map(esc).join(' · ')}</p></section>
+    <section><h3>Pathway Zip · ${p.zip.size}×${p.zip.size}</h3><p class="ans">${esc(p.zip.title)}</p><ol>${p.zip.labels.map(c => `<li>${esc(c)}</li>`).join('')}</ol></section>
     <section><h3>Element Queens · ${N}×${N}</h3>${board}<p class="muted">One solution, shown with ⚛</p></section>
     <section class="wide"><h3>Daily 5</h3>${p.daily5.map((m, k) => `<div class="mcq"><p><span class="tag">${m.s}</span> ${esc(m.q)}</p><ul>${m.o.map((o, j) => `<li class="${j === m.a ? 'ok' : ''}">${'ABCD'[j]}. ${esc(o)}</li>`).join('')}</ul><p class="muted">${esc(m.e)}</p></div>`).join('')}</section>
   </div></details>`;
@@ -33,6 +36,7 @@ padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(
 .wrap{max-width:960px;margin:0 auto;display:flex;flex-direction:column;gap:10px}
 h1{font-family:var(--display);font-weight:800;font-size:30px;margin:0;text-wrap:balance}h1 span{background:var(--hi);color:#2b2200;padding:0 6px;border-radius:4px}
 .lede{color:var(--muted);margin:0 0 8px;max-width:65ch}
+.month{font-family:var(--display);font-size:20px;margin:18px 0 2px}
 details{background:var(--surface);border:1px solid var(--line);border-radius:12px}
 summary{display:flex;gap:12px;align-items:baseline;padding:12px 16px;cursor:pointer;list-style:none}summary::-webkit-details-marker{display:none}
 summary:focus-visible{outline:3px solid var(--hi);border-radius:12px}
@@ -50,7 +54,7 @@ ol{margin:4px 0;padding-left:22px}
 </style>
 <div class="wrap">
 <h1>YNeet <span>Daily</span> puzzle review</h1>
-<p class="lede">${Object.keys(P).length} days, ${dl(first.date)} to ${dl(last.date)} (#${first.no}–#${last.no}). Correct answers are highlighted. Tap a day to open it. Send me any fixes and I'll update the set.</p>
+<p class="lede">${Object.keys(P).length} days, ${dl(first.date)} to ${dl(last.date)} (#${first.no}–#${last.no}). One new set of five puzzles every day for a year, then the cycle repeats. Correct answers are highlighted. Tap a day to open it. Board sizes grow through the week: small on Monday and Tuesday, largest at the weekend.</p>
 ${days}
 </div>`;
 fs.writeFileSync(process.argv[2] || 'review.html', html);

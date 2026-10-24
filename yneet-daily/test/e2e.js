@@ -26,7 +26,7 @@ let n = 0; const ok = m => console.log(`✓ ${++n}. ${m}`);
   assert.ok(!('a' in t.body.daily5[0]), 'MCQ answer not leaked');
   ok(`today = ${date} (#${t.body.no}), answers hidden`);
 
-  let r = await call('/api/check/bioword', { date, guess: 'ZZZZZ', attempt: 1 });
+  let r = await call('/api/check/bioword', { date, guess: 'Z'.repeat(p.bioword.answer.length), attempt: 1 });
   assert.deepEqual(r.body.solved, false); assert.ok(!r.body.answer);
   r = await call('/api/check/bioword', { date, guess: p.bioword.answer, attempt: 2 });
   assert.equal(r.body.solved, true); assert.ok(r.body.fact);
@@ -43,7 +43,7 @@ let n = 0; const ok = m => console.log(`✓ ${++n}. ${m}`);
   // submit all five games for A
   const zipLast = Math.max(...Object.values(p.zip.nodes));
   const att = {
-    bioword: { guesses: ['ZZZZZ', p.bioword.answer], seconds: 40 },
+    bioword: { guesses: ['Z'.repeat(p.bioword.answer.length), p.bioword.answer], seconds: 40 },
     pinpoint: { guesses: [p.pinpoint.answer], seconds: 15 },
     zip: { path: p.zip.solution[0] === +Object.keys(p.zip.nodes).find(k => p.zip.nodes[k] === 1) ? p.zip.solution : p.zip.solution.slice().reverse(), seconds: 50 },
     queens: { cells: p.queens.solution.map((c, row) => [row, c]), seconds: 70 },
@@ -67,7 +67,7 @@ let n = 0; const ok = m => console.log(`✓ ${++n}. ${m}`);
   assert.equal(r.status, 400);
   r = await call('/api/results', { date, game: 'zip', attempt: { path: [0, 1, 2] } }, B0.token);
   assert.equal(r.status, 400);
-  r = await call('/api/results', { date, game: 'bioword', attempt: { guesses: ['AAAAA'] } }, B0.token);
+  r = await call('/api/results', { date, game: 'bioword', attempt: { guesses: ['A'.repeat(p.bioword.answer.length)] } }, B0.token);
   assert.equal(r.status, 400, 'unfinished bioword rejected');
   r = await call('/api/results', { date, game: 'pinpoint', attempt: { guesses: [p.pinpoint.answer] } });
   assert.equal(r.status, 401);

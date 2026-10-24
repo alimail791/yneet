@@ -1,0 +1,362 @@
+# Pinpoint NEET. Format: Subject | NCERT chapter | five clues from hardest to easiest, separated by ;
+Bio | The Living World | ICBN; Systema Naturae; Binomial nomenclature; Taxonomic hierarchy; Carolus Linnaeus
+Bio | The Living World | Consciousness; Metabolism; Growth and reproduction; Diversity of life; What is living?
+Bio | The Living World | Specific epithet; Panthera leo; Genus and species; Taxonomic categories; Classification
+Bio | The Living World | Ernst Mayr; Identification; Nomenclature; Taxonomy; Systematics
+Bio | The Living World | Mangifera indica; Italicised scientific names; Order Primata; Family Felidae; Taxon
+Bio | The Living World | Obligate categories; Kingdom to species; Rank; Hierarchy; Taxonomic studies
+Bio | Biological Classification | Methanogens; Heterocysts; Archaebacteria; Eubacteria; Kingdom Monera
+Bio | Biological Classification | Diatomaceous earth; Red tides; Dinoflagellates; Euglenoids; Kingdom Protista
+Bio | Biological Classification | Ascocarp; Basidiocarp; Deuteromycetes; Mycelium; Kingdom Fungi
+Bio | Biological Classification | Dikaryon; Puccinia; Albugo; Penicillium; Classes of fungi
+Bio | Biological Classification | TMV; Bacteriophage; Capsid; Prions; Viruses
+Bio | Biological Classification | Slime moulds; Mycoplasma; Two kingdom system; Lichens; Five kingdom classification
+Bio | Plant Kingdom | Agar; Carrageen; Rhodophyceae; Phaeophyceae; Algae
+Bio | Plant Kingdom | Gemmae; Protonema; Sphagnum; Liverworts and mosses; Bryophytes
+Bio | Plant Kingdom | Strobili; Selaginella; Heterospory; Prothallus; Pteridophytes
+Bio | Plant Kingdom | Coralloid roots; Megastrobili; Cycas; Naked seeds; Gymnosperms
+Bio | Plant Kingdom | Haplontic; Diplontic; Haplo-diplontic; Alternation of generations; Plant life cycles
+Bio | Plant Kingdom | Isogamy; Anisogamy; Oogamy; Chlamydomonas; Green algae
+Bio | Animal Kingdom | Choanocytes; Ostia; Spicules; Osculum; Porifera
+Bio | Animal Kingdom | Cnidoblasts; Polyp and medusa; Metagenesis; Coral; Cnidaria
+Bio | Animal Kingdom | Comb plates; Bioluminescence; Ctenophora; Flame cells; Platyhelminthes
+Bio | Animal Kingdom | Pseudocoelom; Nephridia; Parapodia; Metamerism; Annelida
+Bio | Animal Kingdom | Water vascular system; Tube feet; Radula; Jointed appendages; Echinodermata
+Bio | Animal Kingdom | Hemichordata; Cyclostomata; Placoid scales; Pneumatic bones; Chordata
+Bio | Morphology of Flowering Plants | Pneumatophores; Prop roots; Stilt roots; Tap root; Root modifications
+Bio | Morphology of Flowering Plants | Phyllode; Leaf tendrils; Phyllotaxy; Venation; The leaf
+Bio | Morphology of Flowering Plants | Hypogynous; Perigynous; Epigynous; Zygomorphic; The flower
+Bio | Morphology of Flowering Plants | Twisted; Imbricate; Valvate; Vexillary; Aestivation
+Bio | Morphology of Flowering Plants | Marginal; Axile; Parietal; Basal; Placentation
+Bio | Morphology of Flowering Plants | Fabaceae; Solanaceae; Liliaceae; Floral diagram; Description of a flowering plant
+Bio | Anatomy of Flowering Plants | Bulliform cells; Isobilateral leaf; Dorsiventral leaf; Mesophyll; Leaf anatomy
+Bio | Anatomy of Flowering Plants | Phellogen; Lenticels; Bark; Periderm; Secondary growth
+Bio | Anatomy of Flowering Plants | Polyarch; Radial vascular bundles; Pericycle; Casparian strip; Root anatomy
+Bio | Anatomy of Flowering Plants | Scattered vascular bundles; Bundle sheath; Conjoint closed; Monocot stem; Stem anatomy
+Bio | Anatomy of Flowering Plants | Companion cells; Sieve tubes; Tracheids; Vessels; Complex tissues
+Bio | Anatomy of Flowering Plants | Intercalary meristem; Collenchyma; Sclerenchyma; Parenchyma; Plant tissues
+Bio | Structural Organisation in Animals | Squamous; Cuboidal; Columnar; Ciliated; Epithelial tissue
+Bio | Structural Organisation in Animals | Tight junctions; Gap junctions; Adhering junctions; Cell junctions; Epithelium
+Bio | Structural Organisation in Animals | Areolar; Adipose; Tendons and ligaments; Cartilage; Connective tissue
+Bio | Structural Organisation in Animals | Intercalated discs; Striated; Smooth muscle; Cardiac muscle; Muscle tissue
+Bio | Structural Organisation in Animals | Neuroglia; Neurons; Nervous tissue; Organ systems; Animal tissues
+Bio | Structural Organisation in Animals | Nictitating membrane; Tympanum; Cloaca; Rana tigrina; Frog
+Bio | Cell: The Unit of Life | Polysomes; 70S; 80S; Svedberg unit; Ribosomes
+Bio | Cell: The Unit of Life | Tonoplast; Glyoxysomes; Lysosomes; Vacuoles; Endomembrane system
+Bio | Cell: The Unit of Life | Kinetochore; Satellite; Metacentric; Acrocentric; Chromosomes
+Bio | Cell: The Unit of Life | Basal body; 9+2 array; Centrioles; Cilia and flagella; Cell organelles
+Bio | Cell: The Unit of Life | Mesosome; Glycocalyx; Plasmids; Nucleoid; Prokaryotic cell
+Bio | Cell: The Unit of Life | Singer and Nicolson; Lipid bilayer; Facilitated diffusion; Active transport; Cell membrane
+Bio | Biomolecules | Ash; Acid-soluble pool; Macromolecules; Chemical analysis of tissue; Lipids, proteins, sugars
+Bio | Biomolecules | Activation energy; Competitive inhibition; Active site; Cofactors; Enzymes
+Bio | Biomolecules | Oxidoreductases; Transferases; Hydrolases; Ligases; Enzyme classes
+Bio | Biomolecules | Alpha helix; Primary structure; Quaternary structure; Haemoglobin; Protein structure
+Bio | Biomolecules | Phosphodiester bond; Nucleoside; Nucleotide; Polysaccharides; Polymers in cells
+Bio | Biomolecules | Abrin and ricin; Vinblastin; Anthocyanins; Morphine and codeine; Secondary metabolites
+Bio | Cell Cycle and Cell Division | G0 phase; S phase; G1 phase; Interphase; Phases of the cell cycle
+Bio | Cell Cycle and Cell Division | Cell plate; Karyokinesis; Cytokinesis; Prophase; Mitosis
+Bio | Cell Cycle and Cell Division | Terminalisation; Diakinesis; Pachytene; Bivalent; Meiosis I
+Bio | Cell Cycle and Cell Division | Recombination nodules; Zygotene; Synapsis; Leptotene; Prophase I
+Bio | Cell Cycle and Cell Division | Metaphase plate; Anaphase; Telophase; Sister chromatids; M phase
+Bio | Cell Cycle and Cell Division | Reduction division; Meiosis II; Four haploid cells; Variation; Significance of meiosis
+Bio | Photosynthesis in Higher Plants | Engelmann; Priestley; Ingenhousz; Sachs; Early experiments
+Bio | Photosynthesis in Higher Plants | P680; P700; Z-scheme; Non-cyclic photophosphorylation; Light reaction
+Bio | Photosynthesis in Higher Plants | Chemiosmotic hypothesis; Proton gradient; ATP synthase; Thylakoid lumen; Photophosphorylation
+Bio | Photosynthesis in Higher Plants | Phosphoglycolate; RuBP oxygenase; Photorespiration; C3 plants; RuBisCO
+Bio | Photosynthesis in Higher Plants | Blackman; Law of limiting factors; CO2 concentration; Light intensity; Factors affecting photosynthesis
+Bio | Photosynthesis in Higher Plants | Hatch and Slack; Malic acid; PEP case; Bundle sheath; C4 pathway
+Bio | Respiration in Plants | EMP pathway; Hexokinase; PGAL; Pyruvate; Glycolysis
+Bio | Respiration in Plants | Oxidative decarboxylation; Pyruvate dehydrogenase; Link reaction; Acetyl CoA; Aerobic respiration
+Bio | Respiration in Plants | Cytochrome c; Complex IV; Ubiquinone; NADH dehydrogenase; Electron transport system
+Bio | Respiration in Plants | Tripalmitin; RQ of fats; RQ of carbohydrates; RQ above 1; Respiratory quotient
+Bio | Respiration in Plants | Alcoholic fermentation; Yeast; Ethanol; Lactic acid; Anaerobic respiration
+Bio | Respiration in Plants | Amphibolic pathway; Deamination; Fatty acids to acetyl CoA; Respiratory substrates; Glycolysis, Krebs cycle and ETS
+Bio | Plant Growth and Development | Arithmetic growth; Geometric growth; Sigmoid curve; Growth rate; Plant growth
+Bio | Plant Growth and Development | Heterophylly; Plasticity; Dedifferentiation; Redifferentiation; Development
+Bio | Plant Growth and Development | Herring sperm DNA; Zeatin; Kinetin; Cytokinins; Plant growth regulators
+Bio | Plant Growth and Development | Gibberella fujikuroi; Bakanae disease; GA3; Malting; Gibberellins
+Bio | Plant Growth and Development | Climacteric; Ethephon; Abscission; Fruit ripening; Ethylene
+Bio | Plant Growth and Development | 2,4-D; IAA; Rooting of stem cuttings; Apical dominance; Auxins
+Bio | Breathing and Exchange of Gases | Inspiratory reserve volume; Expiratory reserve volume; Vital capacity; Tidal volume; Pulmonary volumes
+Bio | Breathing and Exchange of Gases | Carbamino-haemoglobin; Bicarbonate; Carbonic anhydrase; CO2 transport; Transport of gases
+Bio | Breathing and Exchange of Gases | Pneumotaxic centre; Chemosensitive area; Respiratory rhythm centre; Medulla; Regulation of respiration
+Bio | Breathing and Exchange of Gases | Occupational lung disorders; Silicosis; Emphysema; Asthma; Respiratory disorders
+Bio | Breathing and Exchange of Gases | External intercostal muscles; Intra-pulmonary pressure; Inspiration; Expiration; Mechanism of breathing
+Bio | Breathing and Exchange of Gases | Cutaneous respiration; Tracheal tubes; Gills; Lungs; Respiratory organs
+Bio | Body Fluids and Circulation | Rh factor; Agglutinogens; ABO; Universal recipient; Blood groups
+Bio | Body Fluids and Circulation | Neutrophils; Eosinophils; Basophils; Lymphocytes; White blood cells
+Bio | Body Fluids and Circulation | Thrombokinase; Prothrombin; Fibrinogen; Platelets; Coagulation of blood
+Bio | Body Fluids and Circulation | Stroke volume; Lub and dub; Cardiac output; Cardiac cycle; Heartbeat
+Bio | Body Fluids and Circulation | P wave; QRS complex; T wave; Electrocardiograph; ECG
+Bio | Body Fluids and Circulation | Hepatic portal system; Coronary artery disease; Hypertension; Double circulation; Circulatory pathways
+Bio | Excretory Products and their Elimination | Ammonotelic; Ureotelic; Uricotelic; Nitrogenous wastes; Excretion
+Bio | Excretory Products and their Elimination | Vasa recta; Juxtamedullary nephron; Cortical nephron; Renal tubule; Nephron
+Bio | Excretory Products and their Elimination | Glomerular filtration rate; Ultrafiltration; Reabsorption; Tubular secretion; Urine formation
+Bio | Excretory Products and their Elimination | ANF; Renin-angiotensin; Aldosterone; ADH; Regulation of kidney function
+Bio | Excretory Products and their Elimination | Uremia; Haemodialysis; Renal calculi; Glomerulonephritis; Kidney disorders
+Bio | Excretory Products and their Elimination | Micturition reflex; Sebaceous glands; Urinary bladder; Lungs and liver; Other excretory organs
+Bio | Locomotion and Movement | Amoeboid movement; Ciliary movement; Muscular movement; Pseudopodia; Types of movement
+Bio | Locomotion and Movement | Troponin; Cross bridge; Actin; Myosin; Muscle contraction
+Bio | Locomotion and Movement | Fibrous joints; Cartilaginous joints; Ball and socket; Hinge joint; Joints
+Bio | Locomotion and Movement | Myasthenia gravis; Muscular dystrophy; Osteoporosis; Gout; Disorders of muscles and bones
+Bio | Locomotion and Movement | Glenoid cavity; Acetabulum; Pectoral girdle; Pelvic girdle; Appendicular skeleton
+Bio | Locomotion and Movement | Floating ribs; Vertebral column; 206 bones; Axial skeleton; Skeletal system
+Bio | Neural Control and Coordination | Depolarisation; Repolarisation; Sodium-potassium pump; Action potential; Nerve impulse
+Bio | Neural Control and Coordination | Electrical synapse; Chemical synapse; Synaptic cleft; Acetylcholine; Synapse
+Bio | Neural Control and Coordination | Corpus callosum; Cerebral cortex; Thalamus; Hypothalamus; Forebrain
+Bio | Neural Control and Coordination | Corpora quadrigemina; Cerebral aqueduct; Midbrain; Cerebellum; Brain stem
+Bio | Neural Control and Coordination | Unmyelinated fibres; Myelin sheath; Schwann cells; Dendrites; Structure of a neuron
+Bio | Neural Control and Coordination | Visceral nervous system; Autonomic neural system; Somatic neural system; Peripheral neural system; Central neural system
+Bio | Chemical Coordination and Integration | Hypothalamic hormones; Neurohypophysis; Adenohypophysis; Growth hormone; Pituitary
+Bio | Chemical Coordination and Integration | Graves' disease; Exophthalmic goitre; Thyrocalcitonin; Thyroxine; Thyroid
+Bio | Chemical Coordination and Integration | Catecholamines; Fight or flight; Cortisol; Aldosterone; Adrenal gland
+Bio | Chemical Coordination and Integration | Hyperglycemia; Glucagon; Islets of Langerhans; Insulin; Pancreas
+Bio | Chemical Coordination and Integration | Cyclic AMP; Second messenger; Intracellular receptors; Steroid hormones; Mechanism of hormone action
+Bio | Chemical Coordination and Integration | ANF; Erythropoietin; GIP; Secretin; Hormones of heart, kidney and gut
+Bio | Sexual Reproduction in Flowering Plants | Tapetum; Microsporangium; Sporogenous tissue; Pollen grain; Stamen
+Bio | Sexual Reproduction in Flowering Plants | Polygonum type; Egg apparatus; Synergids; Antipodals; Embryo sac
+Bio | Sexual Reproduction in Flowering Plants | Cleistogamy; Geitonogamy; Xenogamy; Autogamy; Pollination
+Bio | Sexual Reproduction in Flowering Plants | Self-incompatibility; Emasculation; Bagging; Artificial hybridisation; Outbreeding devices
+Bio | Sexual Reproduction in Flowering Plants | Coleorhiza; Scutellum; Coleoptile; Monocot embryo; Seed
+Bio | Sexual Reproduction in Flowering Plants | Polyembryony; Parthenocarpy; Perisperm; Albuminous seed; Fruits and seeds
+Bio | Human Reproduction | Spermiogenesis; Spermatids; Spermatogonia; Sertoli cells; Spermatogenesis
+Bio | Human Reproduction | Polar body; Secondary oocyte; Oogonia; Primary follicle; Oogenesis
+Bio | Human Reproduction | Follicular phase; Luteal phase; LH surge; Menarche; Menstrual cycle
+Bio | Human Reproduction | Zona pellucida; Acrosome; Cleavage; Morula; Fertilisation
+Bio | Human Reproduction | Inner cell mass; Trophoblast; Blastocyst; Implantation; Pregnancy
+Bio | Human Reproduction | Foetal ejection reflex; Oxytocin; Parturition; Colostrum; Lactation
+Bio | Reproductive Health | Coitus interruptus; Periodic abstinence; Lactational amenorrhea; Natural methods; Contraception
+Bio | Reproductive Health | Multiload 375; LNG-20; Copper-T; Lippes loop; IUDs
+Bio | Reproductive Health | Vasectomy; Tubectomy; Sterilisation; Terminal method; Surgical contraception
+Bio | Reproductive Health | Gonorrhoea; Syphilis; Genital herpes; Chlamydiasis; STIs
+Bio | Reproductive Health | GIFT; ICSI; IUI; Test tube baby; Assisted reproductive technologies
+Bio | Reproductive Health | RCH programme; Amniocentesis ban; MTP Act; Population explosion; Reproductive health
+Bio | Principles of Inheritance and Variation | Monohybrid cross; 3:1; Law of dominance; Punnett square; Mendel
+Bio | Principles of Inheritance and Variation | 9:3:3:1; Independent assortment; Dihybrid cross; Recombination; Mendel's second law
+Bio | Principles of Inheritance and Variation | Snapdragon; Codominance; Multiple alleles; ABO blood group; Deviations from Mendelism
+Bio | Principles of Inheritance and Variation | Sutton and Boveri; Morgan; Drosophila; Linkage; Chromosomal theory of inheritance
+Bio | Principles of Inheritance and Variation | XO type; ZW type; XY type; Grasshopper; Sex determination
+Bio | Principles of Inheritance and Variation | Thalassemia; Phenylketonuria; Colour blindness; Haemophilia; Mendelian disorders
+Bio | Principles of Inheritance and Variation | Aneuploidy; Klinefelter's syndrome; Turner's syndrome; Down's syndrome; Chromosomal disorders
+Bio | Molecular Basis of Inheritance | Transforming principle; Griffith; Avery, MacLeod and McCarty; Hershey and Chase; DNA as genetic material
+Bio | Molecular Basis of Inheritance | Meselson and Stahl; 15N; Semiconservative; Replication fork; DNA replication
+Bio | Molecular Basis of Inheritance | Template strand; Coding strand; Capping and tailing; RNA polymerase; Transcription
+Bio | Molecular Basis of Inheritance | George Gamow; Degenerate code; Start codon; Stop codons; Genetic code
+Bio | Molecular Basis of Inheritance | Aminoacylation; Peptidyl transferase; tRNA; Ribosome; Translation
+Bio | Molecular Basis of Inheritance | VNTR; Single nucleotide polymorphism; HGP; DNA fingerprinting; Human genome
+Bio | Evolution | Oparin and Haldane; Miller's experiment; Abiogenesis; Big Bang; Origin of life
+Bio | Evolution | Industrial melanism; Darwin's finches; Adaptive radiation; Survival of the fittest; Natural selection
+Bio | Evolution | Oenothera; Hugo de Vries; Saltation; Mutation theory; Mechanism of evolution
+Bio | Evolution | Founder effect; Gene flow; Genetic drift; Hardy-Weinberg principle; Population genetics
+Bio | Evolution | Homo habilis; Homo erectus; Neanderthal man; Australopithecus; Human evolution
+Bio | Evolution | Stabilising selection; Directional selection; Disruptive selection; Fitness; Types of natural selection
+Bio | Human Health and Disease | Ascariasis; Filariasis; Amoebiasis; Ringworm; Common human diseases
+Bio | Human Health and Disease | Innate immunity; Acquired immunity; Primary response; Memory cells; Immunity
+Bio | Human Health and Disease | IgA, IgE and IgG; H2L2; Humoral immunity; Cell-mediated immunity; Antibodies
+Bio | Human Health and Disease | Autoimmunity; Rheumatoid arthritis; Bone marrow; Thymus; Lymphoid organs
+Bio | Human Health and Disease | Retrovirus; Reverse transcriptase; ELISA; Helper T cells; AIDS
+Bio | Human Health and Disease | Oncogenes; Metastasis; Contact inhibition; Chemotherapy; Cancer
+Bio | Human Health and Disease | Cannabinoids; Opioids; Withdrawal syndrome; Addiction; Drug and alcohol abuse
+Bio | Microbes in Human Welfare | Swiss cheese; Propionibacterium; Lactobacillus; Dough; Microbes in household products
+Bio | Microbes in Human Welfare | Clostridium butylicum; Aspergillus niger; Streptokinase; Cyclosporin A; Industrial products
+Bio | Microbes in Human Welfare | Flocs; BOD; Primary sludge; Activated sludge; Sewage treatment
+Bio | Microbes in Human Welfare | Methanobacterium; Rumen; Gobar gas; Methanogens; Biogas plant
+Bio | Microbes in Human Welfare | Baculoviruses; Bacillus thuringiensis; Ladybird; Dragonfly; Biocontrol agents
+Bio | Microbes in Human Welfare | Glomus; Mycorrhiza; Rhizobium; Cyanobacteria; Biofertilisers
+Bio | Biotechnology: Principles and Processes | Palindrome; Sticky ends; EcoRI; Restriction endonuclease; Molecular scissors
+Bio | Biotechnology: Principles and Processes | Insertional inactivation; Blue-white screening; Selectable marker; Ori; Cloning vectors
+Bio | Biotechnology: Principles and Processes | Ti plasmid; Gene gun; Microinjection; Agrobacterium; Competent host
+Bio | Biotechnology: Principles and Processes | Elution; Ethidium bromide; Agarose gel; Gel electrophoresis; Separating DNA fragments
+Bio | Biotechnology: Principles and Processes | Taq polymerase; Denaturation; Annealing; Extension; PCR
+Bio | Biotechnology: Principles and Processes | Sparging; Stirred-tank; Downstream processing; Bioreactor; Large-scale culture
+Bio | Biotechnology and its Applications | cry IAc; cry IIAb; Bt toxin; Bacillus thuringiensis; Bt cotton
+Bio | Biotechnology and its Applications | Meloidogyne incognita; dsRNA; RNAi; Tobacco; Pest-resistant plants
+Bio | Biotechnology and its Applications | C-peptide; Proinsulin; Eli Lilly; Humulin; Genetically engineered insulin
+Bio | Biotechnology and its Applications | ADA deficiency; Lymphocytes; Gene therapy; Molecular diagnosis; Medical applications
+Bio | Biotechnology and its Applications | Rosie the cow; Alpha-lactalbumin; Vaccine safety testing; Biological products; Transgenic animals
+Bio | Biotechnology and its Applications | GEAC; Biopiracy; Basmati; Patents; Ethical issues
+Bio | Organisms and Populations | Partial regulators; Conformers; Regulators; Suspend; Responses to abiotic factors
+Bio | Organisms and Populations | Immigration; Emigration; Natality; Mortality; Population density
+Bio | Organisms and Populations | Verhulst-Pearl; Carrying capacity; Exponential growth; r and K; Population growth
+Bio | Organisms and Populations | Balanus; Gause's principle; Resource partitioning; Competitive exclusion; Competition
+Bio | Organisms and Populations | Brood parasitism; Ectoparasites; Commensalism; Amensalism; Population interactions
+Bio | Organisms and Populations | Ophrys; Fig and wasp; Pollination mutualism; Lichen; Mutualism
+Bio | Ecosystem | GPP; NPP; Secondary productivity; Standing crop; Productivity
+Bio | Ecosystem | Leaching; Catabolism; Fragmentation; Humification; Decomposition
+Bio | Ecosystem | Grazing food chain; Detritus food chain; Food web; Trophic levels; Food chains
+Bio | Ecosystem | Inverted pyramid; Pyramid of numbers; Pyramid of biomass; Pyramid of energy; Ecological pyramids
+Bio | Ecosystem | Photosynthetically active radiation; Lindeman; 10 percent law; Second law of thermodynamics; Energy flow
+Bio | Ecosystem | Reservoir pool; Gaseous cycle; Sedimentary cycle; Phosphorus cycle; Nutrient cycling
+Bio | Biodiversity and Conservation | Alexander von Humboldt; Species-area relationship; Latitudinal gradient; Tropics; Patterns of biodiversity
+Bio | Biodiversity and Conservation | Rivet popper hypothesis; Paul Ehrlich; Ecosystem services; Stability; Importance of biodiversity
+Bio | Biodiversity and Conservation | Evil quartet; Habitat loss; Overexploitation; Co-extinction; Loss of biodiversity
+Bio | Biodiversity and Conservation | Cryopreservation; Seed banks; Zoological parks; Botanical gardens; Ex situ conservation
+Bio | Biodiversity and Conservation | Biosphere reserves; Wildlife sanctuaries; Sacred groves; National parks; In situ conservation
+Bio | Biodiversity and Conservation | Rauwolfia; Genetic diversity; Species diversity; Ecological diversity; Levels of biodiversity
+Chem | Some Basic Concepts of Chemistry | Gay Lussac's law; Law of definite proportions; Avogadro law; Dalton's atomic theory; Laws of chemical combination
+Chem | Some Basic Concepts of Chemistry | Limiting reagent; Stoichiometry; Mole fraction; Molarity; Mole concept
+Chem | Some Basic Concepts of Chemistry | Empirical formula; Molecular formula; Percentage composition; Molar mass; Atomic mass unit
+Chem | Some Basic Concepts of Chemistry | Significant figures; Precision; Accuracy; SI units; Measurement in chemistry
+Chem | Structure of Atom | Cathode rays; Thomson model; Gold foil experiment; Rutherford; Atomic models
+Chem | Structure of Atom | Rydberg formula; Balmer series; Lyman series; Line spectrum; Hydrogen spectrum
+Chem | Structure of Atom | Heisenberg; de Broglie; Dual nature; Schrodinger equation; Quantum mechanical model
+Chem | Structure of Atom | Hund's rule; Pauli exclusion principle; Aufbau principle; Quantum numbers; Electronic configuration
+Chem | Classification of Elements and Periodicity in Properties | Dobereiner's triads; Newlands' octaves; Moseley; Mendeleev; Periodic law
+Chem | Classification of Elements and Periodicity in Properties | Electron gain enthalpy; Ionisation enthalpy; Electronegativity; Atomic radius; Periodic trends
+Chem | Classification of Elements and Periodicity in Properties | IUPAC names of new elements; Isoelectronic species; s, p, d, f blocks; Group 18; Modern periodic table
+Chem | Classification of Elements and Periodicity in Properties | Diagonal relationship; Valence; Metallic character; Ionic radius; Periodic properties
+Chem | Chemical Bonding and Molecular Structure | Formal charge; Kossel-Lewis approach; Lewis dot structures; Octet rule; Ionic and covalent bonds
+Chem | Chemical Bonding and Molecular Structure | Lone pairs; VSEPR; Trigonal bipyramidal; Bond angles; Molecular shapes
+Chem | Chemical Bonding and Molecular Structure | sp3d2; sp3d; Hybrid orbitals; sp3; Hybridisation
+Chem | Chemical Bonding and Molecular Structure | LCAO; Bond order; Paramagnetic O2; Bonding and antibonding orbitals; Molecular orbital theory
+Chem | Chemical Bonding and Molecular Structure | Fajans' rules; Dipole moment; Resonance; Hydrogen bonding; Bond parameters
+Chem | Thermodynamics | Born-Haber cycle; Hess's law; Enthalpy of formation; Enthalpy of combustion; Thermochemistry
+Chem | Thermodynamics | Entropy; Gibbs energy; Spontaneity; Second law; Free energy change
+Chem | Thermodynamics | Isothermal; Adiabatic; State functions; Internal energy; First law
+Chem | Thermodynamics | Bomb calorimeter; Heat capacity; Cp minus Cv equals R; Extensive properties; Calorimetry
+Chem | Equilibrium | Kp and Kc; Law of mass action; Le Chatelier's principle; Dynamic equilibrium; Chemical equilibrium
+Chem | Equilibrium | Lewis acids; Bronsted-Lowry; Ionic product of water; Buffer solutions; pH
+Chem | Equilibrium | Precipitation; Ksp; Common ion effect; Solubility product; Ionic equilibrium
+Chem | Equilibrium | Henderson equation; Hydrolysis of salts; Ka and Kb; Conjugate pairs; Weak acids and bases
+Chem | Redox Reactions | Electron transfer; Oxidising agent; Reducing agent; Oxidation number; Redox
+Chem | Redox Reactions | Disproportionation; Combination; Decomposition; Displacement; Types of redox reactions
+Chem | Redox Reactions | Ion-electron method; Half-reaction method; KMnO4 titration; Balancing equations; Redox balancing
+Chem | Redox Reactions | Stock notation; Fractional oxidation number; Peroxides; Mn in KMnO4 is +7; Oxidation number rules
+Chem | Organic Chemistry: Some Basic Principles and Techniques | Hyperconjugation; Electromeric effect; Inductive effect; Resonance effect; Electronic effects
+Chem | Organic Chemistry: Some Basic Principles and Techniques | Homolytic cleavage; Free radicals; Carbanions; Carbocations; Reaction intermediates
+Chem | Organic Chemistry: Some Basic Principles and Techniques | Carius method; Dumas method; Kjeldahl's method; Lassaigne's test; Analysis of organic compounds
+Chem | Organic Chemistry: Some Basic Principles and Techniques | Sublimation; Crystallisation; Distillation; Chromatography; Purification of organic compounds
+Chem | Organic Chemistry: Some Basic Principles and Techniques | Metamerism; Tautomerism; Functional isomerism; Structural isomers; IUPAC nomenclature
+Chem | Hydrocarbons | Kolbe's electrolysis; Wurtz reaction; Sawhorse projection; Conformations; Alkanes
+Chem | Hydrocarbons | Ozonolysis; Peroxide effect; Markovnikov's rule; Geometrical isomerism; Alkenes
+Chem | Hydrocarbons | Lindlar's catalyst; Acidic hydrogen; Triple bond; Ethyne; Alkynes
+Chem | Hydrocarbons | Huckel rule; Friedel-Crafts reaction; Electrophilic substitution; Benzene; Aromatic hydrocarbons
+Chem | Solutions | Azeotropes; Positive deviation; Raoult's law; Ideal solutions; Vapour pressure
+Chem | Solutions | Abnormal molar mass; van't Hoff factor; Elevation of boiling point; Osmotic pressure; Colligative properties
+Chem | Solutions | Bends in scuba divers; Henry's law; Solubility of gases; Molality; Concentration terms
+Chem | Solutions | Reverse osmosis; Isotonic; Hypertonic; Semipermeable membrane; Osmosis
+Chem | Electrochemistry | Nernst equation; Salt bridge; EMF; Electrode potential; Galvanic cells
+Chem | Electrochemistry | Kohlrausch's law; Limiting molar conductivity; Conductivity cell; Molar conductivity; Conductance
+Chem | Electrochemistry | Faraday's laws; Products of electrolysis; Coulomb; Electrolytic cell; Electrolysis
+Chem | Electrochemistry | Rusting; Fuel cells; Lead storage battery; Dry cell; Batteries and corrosion
+Chem | Chemical Kinetics | Pseudo first order; Integrated rate law; Half-life; Rate constant; Order of reaction
+Chem | Chemical Kinetics | Rate determining step; Elementary reactions; Molecularity; Complex reactions; Reaction mechanism
+Chem | Chemical Kinetics | Arrhenius equation; Activation energy; Collision theory; Effective collisions; Temperature and rate
+Chem | Chemical Kinetics | Instantaneous rate; Average rate; Rate law; Factors affecting rate; Rate of reaction
+Chem | The d- and f-Block Elements | Misch metal; Lanthanoid contraction; 4f series; Actinoids; Inner transition elements
+Chem | The d- and f-Block Elements | Interstitial compounds; Catalytic properties; Coloured ions; Variable oxidation states; Transition metals
+Chem | The d- and f-Block Elements | Chromyl chloride; Oxoanions; Potassium dichromate; Potassium permanganate; Compounds of transition metals
+Chem | The d- and f-Block Elements | Spin-only magnetic moment; Unpaired electrons; Paramagnetism; Alloy formation; 3d series
+Chem | Coordination Compounds | Primary valence; Secondary valence; Werner's theory; Ligands; Coordination entity
+Chem | Coordination Compounds | Spectrochemical series; t2g and eg; High spin and low spin; Crystal field splitting; Crystal field theory
+Chem | Coordination Compounds | Linkage isomerism; Ionisation isomerism; Optical isomerism; Geometrical isomerism; Isomerism in complexes
+Chem | Coordination Compounds | Ambidentate ligand; Denticity; EDTA; Chelate; Types of ligands
+Chem | Haloalkanes and Haloarenes | Walden inversion; Racemisation; SN1; SN2; Nucleophilic substitution
+Chem | Haloalkanes and Haloarenes | Saytzeff rule; Beta elimination; Wurtz-Fittig; Grignard reagent; Reactions of alkyl halides
+Chem | Haloalkanes and Haloarenes | Freons; DDT; Iodoform; Chloroform; Polyhalogen compounds
+Chem | Haloalkanes and Haloarenes | Swarts reaction; Finkelstein reaction; Sandmeyer reaction; Halogen exchange; Preparation of alkyl halides
+Chem | Alcohols, Phenols and Ethers | Hydroboration-oxidation; Lucas test; Primary, secondary, tertiary; Fermentation; Alcohols
+Chem | Alcohols, Phenols and Ethers | Reimer-Tiemann; Kolbe's reaction; Picric acid; Acidity of phenol; Phenols
+Chem | Alcohols, Phenols and Ethers | Williamson synthesis; Anisole; Cleavage by HI; Diethyl ether; Ethers
+Chem | Alcohols, Phenols and Ethers | Denatured alcohol; Wood spirit; Methanol poisoning; Ethanol; Important alcohols
+Chem | Aldehydes, Ketones and Carboxylic Acids | Wolff-Kishner; Clemmensen reduction; Cannizzaro reaction; Aldol condensation; Carbonyl compounds
+Chem | Aldehydes, Ketones and Carboxylic Acids | Stephen reaction; Rosenmund reduction; Fehling's solution; Tollens' reagent; Aldehydes
+Chem | Aldehydes, Ketones and Carboxylic Acids | HVZ reaction; Decarboxylation; Esterification; Acid chlorides; Carboxylic acids
+Chem | Aldehydes, Ketones and Carboxylic Acids | Oxime; Acetal; Cyanohydrin; Nucleophilic addition; The carbonyl group
+Chem | Amines | Hofmann bromamide; Gabriel phthalimide; Ammonolysis; Reduction of nitro compounds; Preparation of amines
+Chem | Amines | Hinsberg reagent; Carbylamine test; pKb; Basicity; Amine reactions
+Chem | Amines | Coupling reaction; Azo dyes; Diazotisation; Benzenediazonium chloride; Diazonium salts
+Chem | Amines | Methylamine; Aniline; Amino group; Primary, secondary, tertiary; Organic nitrogen compounds
+Chem | Biomolecules | Haworth projection; Anomers; Pyranose; Glucose; Carbohydrates
+Chem | Biomolecules | Zwitterion; Essential amino acids; Peptide linkage; Denaturation; Proteins
+Chem | Biomolecules | Beriberi; Vitamin B12; Fat-soluble vitamins; Water-soluble vitamins; Vitamins
+Chem | Biomolecules | Nucleosides; Phosphodiester; Nucleotides; DNA and RNA; Nucleic acids
+Chem | The p-Block Elements | Haber process; Phosphine; Nitric acid; Ammonia; Group 15
+Chem | The p-Block Elements | Allotropes of sulphur; Contact process; Ozone; Sulphuric acid; Group 16
+Chem | The p-Block Elements | Interhalogen compounds; Bleaching powder; HCl; Chlorine; Group 17
+Chem | The p-Block Elements | Bartlett; Xenon fluorides; Helium; Noble gases; Group 18
+Phy | Units and Measurements | Parallax method; Light year; Astronomical unit; SI base units; Measuring length
+Phy | Units and Measurements | Homogeneity principle; Dimensions; Dimensional formula; Units of Planck's constant; Dimensional analysis
+Phy | Units and Measurements | Relative error; Absolute error; Least count; Significant figures; Errors in measurement
+Phy | Motion in a Straight Line | Area under v-t graph; Velocity-time graph; Instantaneous velocity; Uniform acceleration; One-dimensional motion
+Phy | Motion in a Straight Line | Reaction time; Stopping distance; Free fall; Relative velocity; Motion along a line
+Phy | Motion in a Straight Line | v squared equals u squared plus 2as; s equals ut plus half at squared; Displacement; Speed and velocity; Equations of motion
+Phy | Motion in a Plane | Time of flight; Maximum height; Range; Trajectory; Projectile motion
+Phy | Motion in a Plane | Radius vector; Angular speed; Centripetal acceleration; Uniform circular motion; Circular motion
+Phy | Motion in a Plane | Triangle law; Parallelogram law; Resolution of vectors; Unit vectors; Vector addition
+Phy | Laws of Motion | Galileo's inclined plane; Inertia; Impulse; Momentum; Newton's first law
+Phy | Laws of Motion | Rolling friction; Static friction; Kinetic friction; Coefficient of friction; Friction
+Phy | Laws of Motion | Banking of roads; Recoil of a gun; Action and reaction; Third law; Conservation of momentum
+Phy | Work, Energy and Power | Scalar product; Work-energy theorem; Kinetic energy; Work done by a force; Energy
+Phy | Work, Energy and Power | Conservative force; Spring constant; Hooke's law; Energy stored in a spring; Potential energy
+Phy | Work, Energy and Power | Coefficient of restitution; Elastic collision; Inelastic collision; Watt; Power and collisions
+Phy | System of Particles and Rotational Motion | Couple; Centre of mass; Torque; Angular momentum; Rotational dynamics
+Phy | System of Particles and Rotational Motion | Radius of gyration; Parallel axes theorem; Perpendicular axes theorem; Moment of inertia; Rotational inertia
+Phy | System of Particles and Rotational Motion | Ice skater spinning; Rolling without slipping; Conservation of angular momentum; Rigid body; Rotation
+Phy | Gravitation | Law of periods; Law of areas; Elliptical orbits; Kepler's laws; Planetary motion
+Phy | Gravitation | Geostationary satellite; Escape speed; Orbital speed; Earth satellites; Gravitational potential energy
+Phy | Gravitation | Cavendish; Inverse square law; G equals 6.67 x 10^-11; Acceleration due to gravity; Universal law of gravitation
+Phy | Mechanical Properties of Solids | Shear modulus; Bulk modulus; Young's modulus; Stress and strain; Elasticity
+Phy | Mechanical Properties of Solids | Ultimate tensile strength; Yield point; Elastic limit; Stress-strain curve; Plastic deformation
+Phy | Mechanical Properties of Solids | Poisson's ratio; Compressibility; Elastic energy per unit volume; Hooke's law for solids; Moduli of elasticity
+Phy | Mechanical Properties of Fluids | Gauge pressure; Hydraulic lift; Pascal's law; Hydrostatic pressure; Pressure in fluids
+Phy | Mechanical Properties of Fluids | Venturimeter; Equation of continuity; Streamline flow; Bernoulli's principle; Fluid flow
+Phy | Mechanical Properties of Fluids | Reynolds number; Stokes' law; Terminal velocity; Surface tension; Viscosity
+Phy | Thermal Properties of Matter | Thermal stress; Bimetallic strip; Anomalous expansion of water; Coefficient of linear expansion; Thermal expansion
+Phy | Thermal Properties of Matter | Latent heat; Specific heat capacity; Calorimetry; Melting and boiling; Change of state
+Phy | Thermal Properties of Matter | Wien's displacement law; Stefan-Boltzmann law; Newton's law of cooling; Convection; Heat transfer
+Phy | Thermodynamics | Coefficient of performance; Refrigerator; Carnot engine; Efficiency; Heat engines
+Phy | Thermodynamics | Quasi-static; Isobaric; Isochoric; Adiabatic process; Thermodynamic processes
+Phy | Thermodynamics | Zeroth law; Thermal equilibrium; Internal energy; Heat and work; First law
+Phy | Kinetic Theory | Mean free path; RMS speed; Average kinetic energy; Kinetic meaning of temperature; Molecules of an ideal gas
+Phy | Kinetic Theory | Gamma equals 5/3; Cv of monatomic gas; Degrees of freedom; Equipartition of energy; Specific heats of gases
+Phy | Kinetic Theory | Avogadro number; Charles' law; Boyle's law; PV equals nRT; Gas laws
+Phy | Oscillations | Phase; Restoring force; Time period; Simple pendulum; Simple harmonic motion
+Phy | Oscillations | Angular frequency; Energy in SHM; Spring-mass system; x equals A cos wt; Oscillating systems
+Phy | Oscillations | Hertz; Amplitude; Frequency; Periodic motion; Oscillatory motion
+Phy | Waves | Harmonics; Nodes and antinodes; Standing waves; Beats; Superposition of waves
+Phy | Waves | Wave speed; Wavelength; Longitudinal waves; Transverse waves; Wave motion
+Phy | Waves | Laplace correction; Newton's formula; Organ pipes; Speed of sound; Sound waves
+Phy | Electric Charges and Fields | Quantisation of charge; Permittivity; Coulomb's law; Electrostatic force; Electric charge
+Phy | Electric Charges and Fields | Gaussian surface; Infinite plane sheet; Electric flux; Gauss's law; Electric field
+Phy | Electric Charges and Fields | Torque on a dipole; Dipole moment; Field lines; Electric dipole; Charge distributions
+Phy | Electrostatic Potential and Capacitance | Equipotential surfaces; Potential due to a point charge; Volt; Potential energy of charges; Electric potential
+Phy | Electrostatic Potential and Capacitance | Dielectric; Parallel plate; Series and parallel combination; Farad; Capacitors
+Phy | Electrostatic Potential and Capacitance | Electrostatic shielding; Polarisation; Energy stored in a capacitor; Conductors; Capacitance
+Phy | Current Electricity | Mobility; Drift velocity; Resistivity; Ohm's law; Electric current
+Phy | Current Electricity | Balanced bridge; Junction rule; Wheatstone bridge; Kirchhoff's rules; Circuit networks
+Phy | Current Electricity | Internal resistance; Cells in series; Cells in parallel; EMF; Electric cells
+Phy | Moving Charges and Magnetism | Velocity selector; Cyclotron; Lorentz force; Magnetic force on a current; Charged particle in a field
+Phy | Moving Charges and Magnetism | Toroid; Solenoid; Biot-Savart law; Ampere's circuital law; Magnetic field of a current
+Phy | Moving Charges and Magnetism | Torque on a current loop; Ammeter; Voltmeter; Moving coil galvanometer; Galvanometer
+Phy | Magnetism and Matter | Gauss's law for magnetism; Magnetic dipole; Magnetic field lines; Bar magnet; Magnets
+Phy | Magnetism and Matter | Curie temperature; Diamagnetism; Paramagnetism; Ferromagnetism; Magnetic materials
+Phy | Magnetism and Matter | Magnetic intensity; Susceptibility; Permeability; Magnetisation; Magnetic properties of matter
+Phy | Electromagnetic Induction | Faraday's experiments; Magnetic flux; Lenz's law; Induced EMF; Faraday's law
+Phy | Electromagnetic Induction | Eddy currents; Motional EMF; AC generator; Moving conductor; Induced current
+Phy | Electromagnetic Induction | Henry; Mutual inductance; Self-inductance; Coils; Inductance
+Phy | Alternating Current | Phasors; Peak value; RMS value; Sinusoidal voltage; AC voltage
+Phy | Alternating Current | Quality factor; Impedance; Resonance; LCR circuit; Series resonant circuit
+Phy | Alternating Current | Wattless current; Power factor; Step-up transformer; Step-down transformer; Transformers
+Phy | Electromagnetic Waves | Displacement current; Maxwell; Hertz; Speed of light; Maxwell's equations
+Phy | Electromagnetic Waves | Gamma rays; X-rays; Ultraviolet; Microwaves; EM spectrum
+Phy | Electromagnetic Waves | Radiation pressure; Energy transport; E and B perpendicular; Transverse nature; Properties of EM waves
+Phy | Ray Optics and Optical Instruments | Magnification; Mirror formula; Concave mirror; Convex mirror; Spherical mirrors
+Phy | Ray Optics and Optical Instruments | Critical angle; Total internal reflection; Optical fibres; Snell's law; Refraction
+Phy | Ray Optics and Optical Instruments | Lens maker's formula; Power of a lens; Dispersion; Prism; Lenses and prisms
+Phy | Ray Optics and Optical Instruments | Magnifying power; Compound microscope; Telescope; Simple microscope; Optical instruments
+Phy | Wave Optics | Secondary wavelets; Wavefront; Huygens' principle; Reflection using wavefronts; Wave theory of light
+Phy | Wave Optics | Coherent sources; Fringe width; Young's double slit; Constructive interference; Interference
+Phy | Wave Optics | Brewster's angle; Malus' law; Polaroids; Single slit diffraction; Polarisation and diffraction
+Phy | Dual Nature of Radiation and Matter | Threshold frequency; Stopping potential; Work function; Einstein's equation; Photoelectric effect
+Phy | Dual Nature of Radiation and Matter | Davisson-Germer; Electron diffraction; Matter waves; de Broglie wavelength; Wave nature of matter
+Phy | Dual Nature of Radiation and Matter | Hallwachs; Lenard; Photocell; Photon; Electron emission
+Phy | Atoms | Impact parameter; Distance of closest approach; Alpha scattering; Discovery of the nucleus; Rutherford's model
+Phy | Atoms | Stationary orbits; Energy levels; Bohr's postulates; Hydrogen atom; Bohr model
+Phy | Atoms | Brackett series; Paschen series; Lyman series; Balmer series; Spectral series
+Phy | Nuclei | Mass defect; Binding energy; Nuclear force; Mass number; The nucleus
+Phy | Nuclei | Moderator; Chain reaction; Fission; Fusion; Nuclear energy
+Phy | Nuclei | Isotones; Isobars; Isotopes; Atomic mass unit; Nuclear composition
+Phy | Semiconductor Electronics | Intrinsic; Extrinsic; n-type; p-type; Semiconductors
+Phy | Semiconductor Electronics | Barrier potential; Depletion region; Forward bias; Reverse bias; p-n junction
+Phy | Semiconductor Electronics | Half-wave rectifier; Full-wave rectifier; Diode; Rectifier; Junction diode uses

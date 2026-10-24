@@ -146,3 +146,6 @@ h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;letter-spacing:-.
 .rankline{font-weight:700;font-size:16px}
 .loading{padding:40px 0;text-align:center;color:var(--muted)}
 .fact{background:var(--bg);border:1px solid var(--line);border-radius:10px;padding:10px 12px;font-size:14px}
+
+.wgrid.long .tile{font-size:20px}
+.qgrid .qc{min-width:0}

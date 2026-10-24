@@ -1,0 +1,147 @@
+# Format: question | correct answer | wrong 1 | wrong 2 | wrong 3 | explanation
+# The Living World
+The scientific name of mango is written as: | Mangifera indica | Mangifera Indica | mangifera indica | MANGIFERA INDICA | Genus starts with a capital letter, species epithet with a small letter.
+Binomial nomenclature was given by: | Carolus Linnaeus | Charles Darwin | Ernst Mayr | R.H. Whittaker | Linnaeus used it in Species Plantarum and Systema Naturae.
+The basic unit of classification is: | Species | Genus | Family | Order | Species is the lowest and most basic taxonomic category.
+Which property is the defining feature of living organisms? | Cellular organisation and metabolism | Growth | Increase in mass | Movement | Growth and movement also occur in non-living things; metabolism does not.
+In unicellular organisms, growth and reproduction are: | Synonymous | Unrelated | Opposite processes | Absent | For a single cell, division increases both cell number and population.
+Which taxonomic category comes between order and genus? | Family | Class | Phylum | Species | The sequence is kingdom, phylum, class, order, family, genus, species.
+Panthera, Felis and Canis belong to which category? | Genus | Species | Family | Order | Each is a genus; lions are Panthera leo.
+The 'Father of Taxonomy' is: | Linnaeus | Aristotle | Darwin | Mendel | Linnaeus established the modern system of naming.
+Which is the highest category in the taxonomic hierarchy? | Kingdom | Phylum | Class | Division | Kingdom is the top rank in the classic hierarchy.
+In plants, the category equivalent to phylum is: | Division | Class | Order | Family | Botanists use division instead of phylum.
+Mammalia is a: | Class | Order | Phylum | Family | Mammalia is the class that includes humans.
+Primata is an: | Order | Class | Family | Genus | Humans belong to order Primata.
+Which feature is NOT a defining property of life? | Increase in mass from outside | Metabolism | Consciousness | Cellular organisation | Mountains and sand mounds also grow by accumulating material from outside.
+Ernst Mayr is known as the: | Darwin of the 20th century | Father of Botany | Father of Genetics | Father of Zoology | Mayr worked on evolution and the species concept.
+Which code governs plant names? | ICBN | ICZN | ICNB | ICVN | ICBN is the International Code for Botanical Nomenclature.
+Which code governs animal names? | ICZN | ICBN | ICNB | ICNCP | ICZN is the International Code of Zoological Nomenclature.
+In Homo sapiens, 'sapiens' is the: | Specific epithet | Genus | Family | Order | The second word is the species name or specific epithet.
+Scientific names are taken from which language? | Latin | Greek | English | Sanskrit | Names are Latin or Latinised, whatever their origin.
+When handwritten, scientific names are: | Underlined separately | Written in capitals | Put in quotes | Written in bold | Underlining shows they are Latin names; in print they are italicised.
+Taxonomy includes all EXCEPT: | Physiology of an organism | Characterisation | Identification | Nomenclature | Taxonomy deals with naming, identifying and classifying.
+As we go up from species to kingdom, the number of common characters: | Decreases | Increases | Stays the same | First rises then falls | Higher categories are broader with fewer shared features.
+Which organisms show self-consciousness? | Humans | Bacteria | Plants | Fungi | NCERT notes that humans alone have self-consciousness.
+Reproduction is not a defining property of life because: | Some living things do not reproduce | All living things reproduce | Non-living things reproduce | It is a chemical process | Mules, worker bees and infertile couples are alive but do not reproduce.
+Which is a non-living example of increase in body mass? | A mountain | A fungus | A tree | A bacterium | Non-living things can grow by accumulating material on the surface.
+The term 'systematics' comes from a word meaning: | Systematic arrangement | Naming | Evolution | Description | Systema means systematic arrangement of organisms.
+Which category contains the most closely related organisms? | Species | Genus | Family | Order | Members of a species share the most features.
+Musca domestica is the scientific name of the: | Housefly | Mosquito | Honey bee | Cockroach | Musca is the genus of the housefly.
+Triticum aestivum is: | Wheat | Rice | Maize | Barley | Wheat belongs to family Poaceae.
+Wheat belongs to the family: | Poaceae | Solanaceae | Fabaceae | Liliaceae | Poaceae is the grass family.
+Mango belongs to the family: | Anacardiaceae | Poaceae | Solanaceae | Malvaceae | Mango's order is Sapindales.
+Felidae includes: | Cats | Dogs | Bears | Rats | Felidae is the cat family; dogs are in Canidae.
+Which of these is NOT an obligate category? | Subspecies | Class | Order | Family | Obligate categories are kingdom, phylum, class, order, family, genus and species.
+# Biological Classification
+The five kingdom system was proposed by: | R.H. Whittaker | Linnaeus | Aristotle | Haeckel | Whittaker proposed it in 1969.
+Which kingdom contains only prokaryotes? | Monera | Protista | Fungi | Plantae | Bacteria and cyanobacteria are in Monera.
+Methanogens are found in: | The gut of ruminants | Hot springs only | Salty lakes only | Human blood | Methanogens in cattle make methane used in biogas.
+Archaebacteria differ from other bacteria in their: | Cell wall structure | Shape | Ribosome number | Flagella | Their distinctive cell wall helps them survive extreme conditions.
+Halophiles live in: | Extremely salty areas | Hot springs | Marshy areas | Animal guts | Halophiles are archaebacteria of salty habitats.
+Thermoacidophiles live in: | Hot springs | Salty lakes | Cattle gut | Deep soil only | They tolerate high temperature and acidity.
+Heterocysts are found in: | Nostoc and Anabaena | Mucor | Euglena | Yeast | Heterocysts are specialised cells that fix nitrogen.
+Cyanobacteria are also called: | Blue-green algae | Red algae | Brown algae | Slime moulds | They are photosynthetic prokaryotes.
+Mycoplasma lacks a: | Cell wall | Plasma membrane | Ribosome | DNA | Mycoplasma has no cell wall and can live without oxygen.
+The smallest living cells known are: | Mycoplasma | Viruses | Bacteria | Yeast | Viruses are not cells; Mycoplasma is the smallest cell.
+Bacteria mainly reproduce by: | Fission | Budding | Spores only | Fragmentation | Most bacteria reproduce by binary fission.
+Diatoms have cell walls made of: | Silica | Cellulose | Chitin | Peptidoglycan | Their silica walls form diatomaceous earth.
+Diatomaceous earth is used in: | Polishing and filtration | Making bread | Making cheese | Antibiotics | Diatom walls are hard and do not decay easily.
+Red tides are caused by: | Dinoflagellates like Gonyaulax | Diatoms | Euglena | Slime moulds | Their rapid growth colours the sea red.
+Euglenoids have a pellicle made of: | Protein | Cellulose | Chitin | Silica | The protein-rich pellicle makes their body flexible.
+Slime moulds are: | Saprophytic protists | Fungi | Bacteria | Algae | Under bad conditions they form fruiting bodies with spores.
+Plasmodium of slime moulds is an aggregation of: | Many cells | One cell | Spores | Hyphae | The plasmodium can spread over several feet.
+Trypanosoma causes: | Sleeping sickness | Malaria | Amoebiasis | Typhoid | Trypanosoma is a flagellated protozoan.
+Paramecium belongs to: | Ciliated protozoans | Flagellated protozoans | Amoeboid protozoans | Sporozoans | Its cilia move water and food into the gullet.
+The malarial parasite belongs to: | Sporozoans | Ciliates | Flagellates | Amoeboids | Plasmodium has an infectious spore-like stage.
+Fungal cell walls are made of: | Chitin and polysaccharides | Cellulose | Peptidoglycan | Silica | Chitin is also found in insect exoskeletons.
+Puccinia causes: | Wheat rust | Bread mould | White rust | Smut | Puccinia is a basidiomycete.
+Albugo causes white rust in: | Mustard | Wheat | Rice | Maize | Albugo is a phycomycete parasite of mustard.
+Hyphae with many nuclei and no cross walls are called: | Coenocytic | Septate | Dikaryotic | Haploid | Coenocytic hyphae have continuous cytoplasm.
+Penicillium belongs to: | Ascomycetes | Phycomycetes | Basidiomycetes | Deuteromycetes | Penicillium produces the antibiotic penicillin.
+Neurospora is used widely in: | Biochemical and genetic work | Bread making | Biogas | Biofertilisers | Neurospora is an ascomycete used in genetics.
+Mushrooms belong to: | Basidiomycetes | Ascomycetes | Phycomycetes | Deuteromycetes | Agaricus is a basidiomycete.
+Fungi imperfecti are so called because: | Only the asexual stage is known | They lack hyphae | They are parasites | They have no nuclei | Deuteromycetes are classed so when their sexual stage is unknown.
+Morels and truffles are: | Edible ascomycetes | Basidiomycetes | Phycomycetes | Lichens | They are delicacies.
+The dikaryon stage occurs in: | Ascomycetes and basidiomycetes | Phycomycetes only | All algae | Bacteria | Two nuclei per cell exist before nuclear fusion.
+Lichens are a partnership between: | Algae and fungi | Bacteria and fungi | Algae and bacteria | Fungi and plants | The alga makes food, the fungus gives shelter and absorbs nutrients.
+Lichens do not grow in: | Polluted areas | Rocks | Tree bark | Cold regions | They are good indicators of air pollution.
+The genetic material of TMV is: | RNA | DNA | Protein | Both DNA and RNA | Plant viruses usually have single-stranded RNA.
+Bacteriophages usually contain: | Double-stranded DNA | Single-stranded RNA | Protein only | Lipids | Most bacterial viruses have dsDNA.
+The protein coat of a virus is called: | Capsid | Capsomere | Envelope | Pellicle | Capsid is made of small subunits called capsomeres.
+Viroids lack a: | Protein coat | RNA | Nucleotides | Host | Viroids are free RNA molecules.
+Viruses were discovered in diseased: | Tobacco plants | Rice plants | Wheat plants | Potato plants | Ivanowsky found them in tobacco mosaic disease.
+'Contagium vivum fluidum' was coined by: | M.W. Beijerinck | Ivanowsky | Stanley | Pasteur | Beijerinck described the infectious fluid.
+W.M. Stanley showed that viruses can be: | Crystallised | Grown on agar | Seen with a light microscope | Killed by antibiotics | Crystals were made mostly of protein.
+Which disease is caused by a prion? | Mad cow disease | AIDS | Mumps | Polio | Prions are infectious misfolded proteins.
+In the five kingdom system, Chlamydomonas and Chlorella are placed in: | Protista | Plantae | Monera | Fungi | Single-celled eukaryotes go to Protista.
+Chemosynthetic autotrophic bacteria oxidise: | Inorganic substances | Sunlight | Organic food | Proteins only | They use energy from oxidising nitrates, nitrites or ammonia.
+Which disease is caused by bacteria? | Cholera | Mumps | Smallpox | Influenza | Cholera, typhoid, tetanus and citrus canker are bacterial.
+# Plant Kingdom
+Agar is obtained from: | Gelidium and Gracilaria | Laminaria | Chlorella | Spirogyra | These red algae yield agar used in culture media.
+The food reserve of red algae is: | Floridean starch | Laminarin | Mannitol | Starch only | Floridean starch is similar to amylopectin and glycogen.
+Brown algae store food as: | Laminarin and mannitol | Starch | Floridean starch | Glycogen | Laminarin is a complex carbohydrate.
+The main pigment that gives red algae their colour is: | r-phycoerythrin | Fucoxanthin | Chlorophyll b | Carotene | It lets red algae live at great depths.
+Fucoxanthin is found in: | Brown algae | Red algae | Green algae | Blue-green algae | It gives brown algae their colour.
+Chlorella is used as a food supplement by: | Space travellers | Fishermen | Farmers | Doctors | It is rich in protein.
+Which algae can grow at great depths in the sea? | Red algae | Green algae | Brown algae | Blue-green algae | Their pigments absorb the light that reaches deep water.
+Fusion of a large non-motile female gamete with a small motile male gamete is: | Oogamy | Isogamy | Anisogamy | Autogamy | Volvox and Fucus show oogamy.
+Bryophytes are called amphibians of the plant kingdom because they: | Need water for fertilisation | Live only in water | Live only on land | Have gills | They live on land but need water for sexual reproduction.
+In bryophytes, the main plant body is: | Haploid gametophyte | Diploid sporophyte | Triploid | Tetraploid | The sporophyte depends on the gametophyte.
+Sphagnum is used as: | Packing material and fuel | Food | A medicine | Fodder | Sphagnum (peat moss) holds water well.
+Gemmae are found in: | Marchantia | Funaria | Selaginella | Pinus | Gemmae are asexual buds in gemma cups.
+In mosses, the first stage of the gametophyte is: | Protonema | Prothallus | Leafy stage | Capsule | The protonema develops from a spore.
+Which plants first had xylem and phloem? | Pteridophytes | Bryophytes | Algae | Gymnosperms | Pteridophytes are the first land plants with vascular tissue.
+The gametophyte of pteridophytes is called a: | Prothallus | Protonema | Thallus | Embryo sac | It is small, multicellular and photosynthetic.
+Heterospory is seen in: | Selaginella and Salvinia | Dryopteris | Funaria | Marchantia | They make large and small spores.
+Heterospory is considered a step towards: | The seed habit | Leaves | Flowers | Fruits | Retaining the megaspore led to seeds.
+Strobili or cones are found in: | Selaginella and Equisetum | Funaria | Marchantia | Spirogyra | Sporophylls are packed into strobili.
+Gymnosperms have: | Naked ovules | Ovules inside an ovary | No ovules | Fruits | Gymno means naked.
+Coralloid roots of Cycas have: | Nitrogen-fixing cyanobacteria | Mycorrhiza | Rhizobium | No microbes | They form a symbiotic association.
+The tallest gymnosperm is: | Sequoia | Cycas | Pinus | Ginkgo | Giant redwood (Sequoia) is among the tallest trees.
+In gymnosperms, the male cones are called: | Microsporangiate strobili | Megastrobili | Fruits | Sori | They bear microsporophylls.
+The endosperm of gymnosperms is: | Haploid | Diploid | Triploid | Tetraploid | It is formed before fertilisation from the female gametophyte.
+The life cycle of most algae is: | Haplontic | Diplontic | Haplo-diplontic | Triploid | The zygote is the only diploid stage.
+Gymnosperms and angiosperms have a life cycle that is: | Diplontic | Haplontic | Haplo-diplontic | Monoploid | The diploid sporophyte is dominant.
+Bryophytes and pteridophytes show a life cycle that is: | Haplo-diplontic | Haplontic | Diplontic | Triploid | Both stages are multicellular.
+Volvox is a: | Colonial green alga | Brown alga | Red alga | Moss | Volvox colonies are spherical.
+Ectocarpus is a: | Brown alga | Red alga | Green alga | Moss | Ectocarpus is a simple brown alga.
+Porphyra and Polysiphonia are: | Red algae | Brown algae | Green algae | Fungi | Both are in class Rhodophyceae.
+Equisetum is commonly known as: | Horsetail | Club moss | Peat moss | Liverwort | It has jointed stems with whorled leaves.
+Liverworts reproduce asexually by: | Gemmae | Spores only | Budding | Seeds | Gemmae detach and grow into new plants.
+Which group is called vascular cryptogams? | Pteridophytes | Bryophytes | Gymnosperms | Algae | They have vascular tissue but no seeds.
+# Animal Kingdom
+Sponges belong to phylum: | Porifera | Cnidaria | Ctenophora | Annelida | They have pores all over the body.
+In sponges, water leaves through the: | Osculum | Ostia | Spongocoel | Mouth | Water enters through ostia and leaves via osculum.
+Choanocytes or collar cells are found in: | Sponges | Hydra | Earthworm | Starfish | They line the spongocoel and canals.
+Cnidoblasts are used for: | Anchoring, defence and catching prey | Breathing | Excretion | Reproduction | Cnidaria are named after these stinging cells.
+The two body forms of cnidarians are: | Polyp and medusa | Larva and adult | Male and female | Sporophyte and gametophyte | Obelia shows both forms.
+Alternation of generation between polyp and medusa is called: | Metagenesis | Metamorphosis | Metamerism | Parthenogenesis | Seen in Obelia.
+Comb jellies belong to: | Ctenophora | Cnidaria | Porifera | Mollusca | They have eight rows of ciliated comb plates.
+Bioluminescence is well marked in: | Ctenophores | Sponges | Flatworms | Roundworms | Ctenophores emit light.
+Flame cells help flatworms in: | Osmoregulation and excretion | Digestion | Locomotion | Reproduction | Flame cells are found in Platyhelminthes.
+Planaria shows high power of: | Regeneration | Bioluminescence | Metamerism | Metagenesis | Planaria can regrow lost parts.
+Roundworms have a body cavity that is a: | Pseudocoelom | True coelom | No cavity | Haemocoel | Mesoderm lines the cavity only in patches.
+Wuchereria causes: | Filariasis | Malaria | Ringworm | Typhoid | It is a filarial roundworm.
+Metameric segmentation is first seen in: | Annelida | Platyhelminthes | Aschelminthes | Arthropoda | Annelida bodies are divided into segments.
+Nephridia are excretory organs of: | Annelids | Arthropods | Molluscs | Flatworms | Earthworms excrete through nephridia.
+The largest phylum of the animal kingdom is: | Arthropoda | Mollusca | Chordata | Annelida | Over two-thirds of named species are arthropods.
+Malpighian tubules are excretory organs of: | Insects | Earthworms | Snails | Starfish | They remove nitrogenous waste in insects.
+Locusta is a: | Gregarious pest | Vector | Living fossil | Useful insect | Locusts swarm and destroy crops.
+Anopheles, Culex and Aedes are: | Vectors | Gregarious pests | Living fossils | Useful insects | They spread diseases.
+The second largest animal phylum is: | Mollusca | Arthropoda | Annelida | Chordata | Molluscs include snails, octopus and Pila.
+A calcareous shell covering the body is typical of: | Molluscs | Arthropods | Annelids | Cnidarians | The mantle secretes the shell.
+Adult echinoderms show: | Radial symmetry | Bilateral symmetry | No symmetry | Biradial symmetry | Larvae are bilateral but adults are radial.
+The water vascular system is found in: | Echinoderms | Molluscs | Arthropods | Sponges | It helps in locomotion, feeding and respiration.
+Balanoglossus belongs to: | Hemichordata | Chordata | Echinodermata | Annelida | It is a worm-like marine animal.
+Which three features are common to all chordates? | Notochord, dorsal hollow nerve cord, pharyngeal gill slits | Scales, fins, gills | Feathers, beak, wings | Hair, mammary glands, pinna | These appear at some stage of life.
+In urochordates, the notochord is present only in the: | Larval tail | Adult head | Whole adult body | It is absent | Hence the name Urochordata.
+Cyclostomes have: | A circular mouth without jaws | Paired fins | Bony scales | A swim bladder | Petromyzon (lamprey) is an example.
+Cartilaginous fishes have: | Placoid scales | Cycloid scales | No scales | Feathers | Their skin is tough with minute placoid scales.
+The air bladder helps bony fishes in: | Buoyancy | Excretion | Digestion | Reproduction | Osteichthyes have an air bladder.
+Torpedo can produce: | Electric shocks | Poison | Light | Ink | It has electric organs.
+Amphibians have a heart with: | Three chambers | Two chambers | Four chambers | One chamber | Two atria and one ventricle.
+Crocodiles have a heart with: | Four chambers | Three chambers | Two chambers | One chamber | Crocodiles are the reptile exception.
+Birds have hollow bones called: | Pneumatic bones | Compact bones | Cartilage | Spongy bones | Air-filled bones are light for flight.
+Which mammal lays eggs? | Platypus | Kangaroo | Bat | Whale | Ornithorhynchus (platypus) is oviparous.
+The external ear (pinna) is a feature of: | Mammals | Birds | Reptiles | Fishes | Mammals have hair, pinna and mammary glands.
+Pteropus is a: | Flying fox (bat) | Kangaroo | Whale | Dolphin | Bats are flying mammals.

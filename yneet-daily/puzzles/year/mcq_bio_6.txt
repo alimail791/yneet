@@ -1,0 +1,160 @@
+# Principles of Inheritance and Variation
+Mendel conducted his hybridisation experiments on garden pea for about: | Seven years (1856 to 1863) | One year | Twenty years | Two months | He published his results in 1865.
+The number of contrasting trait pairs Mendel studied in pea was: | Seven | Five | Ten | Two | Examples include height and seed colour.
+A true-breeding line shows: | Stable trait inheritance over generations | Variation every generation | Only hybrids | No offspring | Mendel used 14 true-breeding varieties.
+The F2 genotypic ratio of a monohybrid cross is: | 1:2:1 | 3:1 | 9:3:3:1 | 1:1 | The phenotypic ratio is 3:1.
+A cross between an F1 and the recessive parent is a: | Test cross | Back cross with dominant parent | Dihybrid cross | Reciprocal cross | It reveals the genotype of the F1.
+The test cross ratio for a monohybrid is: | 1:1 | 3:1 | 1:2:1 | 9:3:3:1 | Half dominant, half recessive phenotype.
+The Punnett square was developed by: | Reginald C. Punnett | Mendel | Morgan | Bateson | It shows all possible gamete combinations.
+In snapdragon, a cross of red and white flowers gives pink F1. This is: | Incomplete dominance | Codominance | Complete dominance | Epistasis | F2 shows 1:2:1 for both phenotype and genotype.
+The AB blood group is an example of: | Codominance | Incomplete dominance | Pleiotropy | Polygenic inheritance | Both A and B antigens are expressed.
+The ABO blood group gene has: | Three alleles | Two alleles | Four alleles | One allele | IA, IB and i.
+How many genotypes are possible for ABO blood groups? | Six | Four | Three | Nine | There are four phenotypes.
+Starch grain size in pea seeds is an example of: | Incomplete dominance at the level of grain size | Codominance | Pleiotropy | Polygenic trait | Bb seeds have intermediate grains.
+The dihybrid F2 phenotypic ratio is: | 9:3:3:1 | 3:1 | 1:2:1 | 1:1:1:1 | It shows independent assortment.
+Mendel's work was rediscovered in 1900 by de Vries, Correns and: | von Tschermak | Morgan | Sutton | Bateson | They worked independently.
+The chromosomal theory of inheritance was given by: | Sutton and Boveri | Mendel | Morgan | Watson and Crick | Genes are carried on chromosomes.
+Morgan worked on the fruit fly: | Drosophila melanogaster | Musca domestica | Anopheles | Apis | It has a short life cycle and many offspring.
+The term linkage was coined by: | T.H. Morgan | Mendel | Bateson | Sutton | Linked genes are inherited together.
+Alfred Sturtevant used recombination frequency to: | Map gene positions | Discover DNA | Explain mutation | Describe evolution | Higher frequency means genes are farther apart.
+Human skin colour is an example of: | Polygenic inheritance | Monogenic inheritance | Codominance only | Multiple alleles | Several genes add their effects.
+A single gene affecting many traits shows: | Pleiotropy | Polygeny | Linkage | Codominance | Phenylketonuria is an example.
+Henking observed the X body in: | Insects | Birds | Humans | Plants | He did not explain its meaning.
+In grasshoppers, males have: | One X chromosome (XO) | XY | ZW | XX | Females are XX.
+In birds, females are: | ZW | ZZ | XX | XO | Males are ZZ.
+In humans, the sex of the child is decided by the: | Sperm | Ovum | Mother's age | Diet | Sperm carry either X or Y.
+A change in a single base pair of DNA is a: | Point mutation | Chromosomal aberration | Aneuploidy | Polyploidy | Sickle-cell anaemia results from one.
+A pedigree analysis helps to: | Trace a trait in a family | Find gene sequences | Measure enzyme activity | Count chromosomes | It uses standard symbols.
+Haemophilia is: | Sex-linked recessive | Autosomal dominant | Autosomal recessive | Y-linked | Queen Victoria was a carrier.
+Sickle-cell anaemia is caused by substitution of: | Glutamic acid by valine at position 6 of the beta chain | Valine by glutamic acid | Lysine by glycine | Alanine by serine | GAG changes to GUG.
+Phenylketonuria is due to lack of an enzyme that converts: | Phenylalanine to tyrosine | Tyrosine to phenylalanine | Glucose to glycogen | Urea to ammonia | Phenylalanine builds up and harms the brain.
+Thalassemia is due to: | Reduced synthesis of globin chains | Abnormal shape of RBC | Lack of clotting factor | Extra chromosome | Alpha and beta types exist.
+Colour blindness is more common in males because it is: | X-linked recessive | Autosomal | Y-linked | Dominant | Males have only one X chromosome.
+Down's syndrome is caused by: | Trisomy of chromosome 21 | Monosomy X | XXY | Trisomy 18 | It was described by Langdon Down in 1866.
+Klinefelter's syndrome has karyotype: | 47, XXY | 45, XO | 47, XXX | 47, trisomy 21 | Males have overall masculine development but feminine traits like gynaecomastia.
+Turner's syndrome has karyotype: | 45, XO | 47, XXY | 46, XX | 47, trisomy 21 | Females are sterile with rudimentary ovaries.
+Failure of chromatids to separate at cell division causes: | Aneuploidy | Point mutation | Polyploidy only | Crossing over | It gives an extra or missing chromosome.
+Polyploidy is common in: | Plants | Humans | Birds | Insects | An increase in whole chromosome sets.
+# Molecular Basis of Inheritance
+DNA was first identified as an acidic substance in the nucleus by: | Friedrich Meischer | Watson | Griffith | Chargaff | He called it nuclein in 1869.
+The length of DNA in a human diploid cell is about: | 2.2 metres | 2.2 cm | 22 metres | 2.2 mm | It is packed into a tiny nucleus.
+Bacteriophage lambda has about how many base pairs? | 48,502 | 5386 | 4.6 million | 3.3 billion | phi X 174 has 5386 nucleotides.
+E. coli has about how many base pairs? | 4.6 million | 48,502 | 3.3 billion | 5386 | Its DNA is circular.
+The haploid human genome has about: | 3.3 billion base pairs | 4.6 million | 48,502 | 6.6 million | Diploid cells have twice that.
+Chargaff's rule says that: | A equals T and G equals C | A equals G | A + T equals G + C always | DNA has no thymine | Purines equal pyrimidines in dsDNA.
+X-ray diffraction data on DNA was produced by: | Maurice Wilkins and Rosalind Franklin | Watson and Crick | Meselson and Stahl | Hershey and Chase | Watson and Crick used it for their model.
+DNA strands in a double helix run: | Antiparallel | Parallel | Perpendicular | In the same direction | One runs 5' to 3', the other 3' to 5'.
+In eukaryotes, DNA wraps around a histone octamer to form a: | Nucleosome | Polysome | Chromosome directly | Plasmid | A nucleosome has about 200 bp of DNA.
+Loosely packed, transcriptionally active chromatin is: | Euchromatin | Heterochromatin | Nucleosome | Telomere | Heterochromatin is densely packed and inactive.
+Non-histone chromosomal proteins are needed for: | Higher-level packaging of chromatin | Making DNA | Splicing | Translation | They help form chromosomes at metaphase.
+Griffith's experiment used: | Streptococcus pneumoniae and mice | E. coli and phage | Drosophila | Neurospora | Heat-killed S strain transformed R strain.
+Avery, MacLeod and McCarty showed that the transforming principle is: | DNA | Protein | RNA | Lipid | DNase destroyed transformation.
+In Hershey and Chase's experiment, radioactive sulphur labelled: | Protein coats | DNA | RNA | Bacterial wall | Sulphur is present in proteins, not DNA.
+RNA is less stable than DNA because of the: | 2'-OH group on ribose | Absence of uracil | Double-strandedness | Absence of phosphate | It makes RNA labile and more reactive.
+The first genetic material is believed to be: | RNA | DNA | Protein | Lipid | RNA can act as a catalyst too.
+Replication of DNA proceeds: | 5' to 3' on the new strand | 3' to 5' on the new strand | In both directions on one strand | Without a template | DNA polymerase adds to the 3' end.
+In E. coli, DNA replication takes about: | 18 minutes | 2 hours | 24 hours | 2 minutes | Replication is very fast at about 2000 bp per second.
+DNA replication in eukaryotes occurs in the: | S phase | G1 phase | M phase | G2 phase | Replication and division are coordinated.
+The enzyme that makes RNA on a DNA template is: | RNA polymerase | DNA polymerase | Ligase | Reverse transcriptase | It needs no primer.
+In bacteria, the sigma factor helps RNA polymerase in: | Initiation | Termination | Elongation only | Splicing | Rho factor helps in termination.
+The promoter is located towards the: | 5' end of the coding strand | 3' end of the coding strand | Middle of the gene | Inside introns | The terminator is at the 3' end.
+In eukaryotes, mRNA is made by: | RNA polymerase II | RNA polymerase I | RNA polymerase III | DNA polymerase | Polymerase I makes rRNAs and III makes tRNA and 5S rRNA.
+The primary transcript of eukaryotes is called: | hnRNA | tRNA | rRNA | snRNA | It is processed by splicing, capping and tailing.
+A methyl guanosine triphosphate is added at the 5' end of hnRNA. This is: | Capping | Tailing | Splicing | Editing | Tailing adds adenylate residues at the 3' end.
+The genetic code is read as: | Triplets without commas | Doublets | Overlapping triplets | Single bases | Codons are read continuously.
+The number of codons for amino acids is: | 61 | 64 | 20 | 3 | Three of the 64 are stop codons.
+The stop codons are: | UAA, UAG and UGA | AUG, UAA, UGA | UUU, UAG, UGA | AUG, GUG, UAA | They do not code for amino acids.
+AUG codes for methionine and also acts as: | The initiator codon | A stop codon | A promoter | An intron | Translation starts at AUG.
+The genetic code is called degenerate because: | Some amino acids are coded by more than one codon | One codon codes for many amino acids | It overlaps | It is not universal | For example, leucine has six codons.
+The tRNA is also called an: | Adapter molecule | Enzyme | Template | Primer | It reads the code and carries amino acids.
+The secondary structure of tRNA looks like a: | Clover leaf | Helix | Sheet | Ring | Its 3D shape is an inverted L.
+Peptide bond formation in a ribosome is catalysed by: | 23S rRNA | 16S rRNA | A protein enzyme | tRNA | The ribozyme activity is in 23S rRNA in bacteria.
+The untranslated regions of mRNA are found: | Before the start codon and after the stop codon | Only in the middle | Only before the start codon | Nowhere | They help efficient translation.
+In the lac operon, the i gene codes for the: | Repressor | Beta-galactosidase | Permease | Transacetylase | It is constitutively expressed.
+The lac operon genes z, y and a code for: | Beta-galactosidase, permease and transacetylase | Repressor only | RNA polymerase | Ligase | z codes for beta-galactosidase.
+Regulation of the lac operon by a repressor is: | Negative regulation | Positive regulation | No regulation | Post-translational | Lactose acts as the inducer.
+The Human Genome Project was launched in: | 1990 | 1953 | 2003 | 1980 | It was completed in 2003.
+The total number of genes in humans is estimated at about: | 30,000 | 80,000 | 3,000 | 3 million | Earlier guesses were much higher.
+Less than how much of the human genome codes for proteins? | 2 percent | 20 percent | 50 percent | 90 percent | Most of the genome is non-coding.
+The human chromosome with the most genes is: | Chromosome 1 | Y chromosome | Chromosome 21 | X chromosome | Chromosome 1 has 2968 genes.
+The human chromosome with the fewest genes is: | Y chromosome | Chromosome 1 | X chromosome | Chromosome 13 | The Y has 231 genes.
+Bacterial artificial chromosomes and yeast artificial chromosomes were used in HGP as: | Vectors for cloning | Enzymes | Probes | Primers | DNA fragments were cloned in them.
+DNA fingerprinting was developed by: | Alec Jeffreys | Watson | Mullis | Kornberg | It uses VNTRs as probes.
+DNA fingerprinting relies on differences in: | Repetitive DNA | Coding genes | Ribosomes | Proteins | Satellite DNA shows high polymorphism.
+Satellite DNA separates as a small peak during: | Density gradient centrifugation | Electrophoresis | PCR | Transcription | The bulk DNA forms a major peak.
+# Evolution
+The universe is believed to be about how old? | 20 billion years | 4.5 billion years | 1 billion years | 10,000 years | Earth formed about 4.5 billion years ago.
+Life appeared on Earth about: | 4 billion years ago | 4.5 billion years ago | 1 million years ago | 500 million years ago | About 500 million years after Earth formed.
+Louis Pasteur showed that life comes only from: | Pre-existing life | Non-living matter | Spores from space | Rotting meat | He used swan-neck flasks.
+In Miller's experiment, he made: | Amino acids | Proteins | DNA | Cells | He used CH4, H2, NH3 and water vapour with electric discharge.
+Miller's experiment was conducted at: | 800 C | 100 C | 25 C | 2000 C | He mimicked conditions on early Earth.
+The theory of chemical evolution was proposed by: | Oparin and Haldane | Darwin and Wallace | Miller and Urey | Lamarck | Life arose from simple organic molecules.
+Darwin's book on natural selection was published in: | 1859 | 1809 | 1900 | 1953 | On the Origin of Species.
+Darwin travelled on the ship: | H.M.S. Beagle | Titanic | Endeavour | Victoria | He visited the Galapagos Islands.
+Darwin's finches show: | Adaptive radiation | Convergent evolution | Co-extinction | Analogy | Different beaks evolved from one ancestor.
+Australian marsupials are an example of: | Adaptive radiation | Convergent evolution only | Mutation | Genetic drift | Many forms evolved from one ancestral stock.
+Placental mammals and similar-looking marsupials show: | Convergent evolution | Divergent evolution | Homology | Founder effect | Different lineages evolved similar forms.
+Forelimbs of whales, bats, cheetahs and humans are: | Homologous organs | Analogous organs | Vestigial organs | Atavistic organs | Same structure, different functions.
+Wings of butterflies and birds are: | Analogous organs | Homologous organs | Vestigial organs | Identical genes | Similar function, different structure.
+Eyes of octopus and mammals are: | Analogous | Homologous | Vestigial | Identical | They result from convergent evolution.
+Thorns of Bougainvillea and tendrils of Cucurbita are: | Homologous | Analogous | Vestigial | Fossils | Both are modified axillary structures.
+In England, after industrialisation, dark moths increased because: | They were camouflaged on dark tree trunks | They were stronger | Light moths moved away | Birds preferred dark moths | Lichens died due to pollution.
+Use of herbicides and pesticides selecting resistant varieties is an example of: | Evolution by anthropogenic action | Genetic drift | Founder effect | Convergent evolution | It happens in short time spans.
+Lamarck proposed evolution by: | Use and disuse of organs | Natural selection | Mutation | Genetic drift | He used the giraffe neck example.
+Hugo de Vries worked on: | Evening primrose (Oenothera) | Pea | Drosophila | Maize | He proposed mutation theory.
+de Vries called sudden large mutations: | Saltation | Variation | Drift | Selection | He believed mutations cause speciation.
+Hardy-Weinberg equilibrium is disturbed by gene flow, genetic drift, mutation, recombination and: | Natural selection | Random mating | Large population size | No migration | These are the five factors.
+In Hardy-Weinberg, p squared + 2pq + q squared equals: | 1 | 0 | 2 | p + q | p + q also equals 1.
+When a small group founds a new population with different allele frequency, it is the: | Founder effect | Bottleneck only | Gene flow | Natural selection | It is a type of genetic drift.
+Natural selection that favours one extreme is: | Directional selection | Stabilising selection | Disruptive selection | Random selection | The mean shifts.
+Selection that favours both extremes is: | Disruptive selection | Stabilising selection | Directional selection | Artificial selection | Two peaks form.
+About 2000 million years ago, the first: | Cellular forms of life appeared | Mammals appeared | Fishes appeared | Humans appeared | Life was single-celled for a long time.
+Jawless fish probably evolved around: | 350 million years ago | 50 million years ago | 2000 million years ago | 10 million years ago | Lobefins came later.
+The coelacanth was thought extinct until it was caught in: | 1938 in South Africa | 1859 in England | 1953 in Japan | 2000 in India | It is a lobefin fish.
+Dinosaurs suddenly disappeared about: | 65 million years ago | 500 million years ago | 1 million years ago | 2000 years ago | The cause is not fully known.
+Homo habilis probably did not eat: | Meat | Plants | Fruit | Roots | Its brain was 650 to 800 cc.
+Homo erectus had a brain of about: | 900 cc | 650 cc | 1400 cc | 400 cc | It probably ate meat.
+Neanderthal man had a brain of about: | 1400 cc | 900 cc | 650 cc | 2000 cc | They lived in Europe and Asia.
+Homo sapiens arose in: | Africa | Australia | South America | Antarctica | They moved across continents.
+Cave paintings by pre-historic humans in India are at: | Bhimbetka in Madhya Pradesh | Ajanta | Ellora | Hampi | They are about 18,000 years old.
+Agriculture began about: | 10,000 years ago | 1 million years ago | 500 years ago | 100,000 years ago | Human settlements started around then.
+# Human Health and Disease
+Health is defined as a state of complete: | Physical, mental and social well-being | Absence of disease only | Physical fitness only | Mental peace only | Balanced diet and exercise help.
+Diseases that spread from one person to another are: | Infectious diseases | Non-infectious diseases | Genetic diseases | Deficiency diseases | Cancer is non-infectious.
+Typhoid is confirmed by the: | Widal test | ELISA | Mantoux test | Biopsy | It detects antibodies to Salmonella typhi.
+Streptococcus pneumoniae and Haemophilus influenzae cause: | Pneumonia | Typhoid | Malaria | Ringworm | They infect the alveoli.
+Common cold is caused by: | Rhinoviruses | Bacteria | Fungi | Protozoa | It affects the nose and respiratory passage but not lungs.
+Entamoeba histolytica causes: | Amoebic dysentery | Malaria | Typhoid | Filariasis | Houseflies are mechanical carriers.
+Plasmodium falciparum causes: | Malignant malaria | Benign malaria | Dengue | Sleeping sickness | It is the most serious type.
+The toxin that causes chill and high fever in malaria is: | Haemozoin | Histamine | Heparin | Hirudin | It is released when RBCs rupture.
+In Plasmodium, sexual reproduction occurs in the: | Mosquito | Human liver | Human RBCs | Human brain | Gametocytes fuse in the mosquito gut.
+Ascaris infection spreads through: | Contaminated water and vegetables | Mosquito bites | Air | Touch | Eggs pass out with faeces.
+Elephantiasis is caused by: | Wuchereria | Ascaris | Taenia | Plasmodium | It causes chronic swelling of lower limbs.
+Ringworm fungi grow well in: | Warm, moist skin folds | Dry skin | Blood | Bones | Infection spreads from soil or shared towels.
+Interferons are released by: | Virus-infected cells | Bacteria | Fungi | RBCs | They protect uninfected cells.
+Saliva in the mouth and HCl in the stomach are: | Physiological barriers | Physical barriers | Cellular barriers | Cytokine barriers | They are part of innate immunity.
+Mucus coating the respiratory and gut linings is a: | Physical barrier | Cellular barrier | Cytokine barrier | Acquired immunity | It traps microbes.
+Acquired immunity is characterised by: | Memory | Being present from birth | No specificity | Only physical barriers | It produces a faster secondary response.
+B-lymphocytes produce: | Antibodies | Interferons | Histamine | T cells | This is the humoral immune response.
+Graft rejection is due to: | T-lymphocytes | B-lymphocytes | RBCs | Platelets | It is a cell-mediated immune response.
+Before organ transplantation, tissue and blood group matching are done to: | Prevent rejection | Increase blood flow | Reduce cost | Prevent infection | Patients take immunosuppressants for life.
+Giving preformed antibodies gives: | Passive immunity | Active immunity | No immunity | Autoimmunity | It acts quickly, as in snakebite treatment.
+Hepatitis B vaccine is made using: | Yeast | E. coli | Bacillus | Viruses | It is a recombinant DNA vaccine.
+The body's immune system attacking its own cells is: | Autoimmunity | Allergy | Passive immunity | Vaccination | Rheumatoid arthritis is an example.
+The primary lymphoid organs are: | Bone marrow and thymus | Spleen and lymph nodes | Tonsils and appendix | Liver and kidney | Lymphocytes mature here.
+MALT makes up about what share of lymphoid tissue? | 50 percent | 10 percent | 90 percent | 25 percent | It lines the respiratory, digestive and urogenital tracts.
+AIDS was first reported in: | 1981 | 1953 | 2000 | 1990 | It has killed over 25 million people.
+HIV is a: | Retrovirus | DNA virus | Bacterium | Fungus | It has an RNA genome.
+In the body, HIV first enters: | Macrophages | RBCs | Platelets | Neurons | Macrophages act as an HIV factory.
+The diagnostic test for AIDS is: | ELISA | Widal | Mantoux | Pap smear | It detects HIV antibodies.
+NACO stands for: | National AIDS Control Organisation | National Agency for Cancer Operations | National Anti-Corruption Office | National Agriculture Control Organisation | It promotes awareness and safe blood.
+Malignant tumours spread to distant sites by: | Metastasis | Contact inhibition | Apoptosis | Mitosis only | This makes them dangerous.
+Cancer-causing genes formed from normal cellular genes are: | Oncogenes | Introns | Operons | Promoters | Proto-oncogenes can become oncogenes.
+Cancer detection by X-rays, CT and MRI is: | Imaging | Biopsy | Chemotherapy | Immunotherapy | MRI uses strong magnetic fields.
+Alpha-interferon in cancer therapy: | Activates the immune system | Kills all cells | Prevents metastasis directly | Is a vitamin | It is a biological response modifier.
+Opioids like heroin bind to receptors in the: | Central nervous system and gut | Liver | Kidney | Skin | Heroin is a depressant.
+Cannabinoids are obtained from the inflorescences of: | Cannabis sativa | Papaver somniferum | Erythroxylum coca | Atropa belladonna | Marijuana, hashish and ganja are cannabinoids.
+Morphine is extracted from the latex of: | Poppy | Cannabis | Coca | Datura | It is a strong sedative and painkiller.
+Cocaine is obtained from: | Erythroxylum coca | Poppy | Cannabis | Tobacco | It interferes with dopamine transport.
+Drugs like barbiturates and benzodiazepines are used to treat: | Depression and insomnia | Malaria | Typhoid | Diabetes | Misuse can cause addiction.
+Using anabolic steroids in women can cause: | Masculinisation | Growth of breasts | Increased fertility | Lighter voice | Side effects include deepening of the voice.

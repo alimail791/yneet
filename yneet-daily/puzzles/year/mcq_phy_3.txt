@@ -1,0 +1,26 @@
+# Mixed physics, extra questions
+The SI unit of thermal conductivity is: | W m^-1 K^-1 | W m K | J K | W/K | Heat flow rate per unit area per unit temperature gradient.
+A body of mass 5 kg is acted on by a force of 20 N. Its acceleration is: | 4 m/s^2 | 100 m/s^2 | 0.25 m/s^2 | 25 m/s^2 | a = F/m.
+Momentum of a 2 kg body moving at 5 m/s is: | 10 kg m/s | 2.5 kg m/s | 25 kg m/s | 7 kg m/s | p = mv.
+Weight of a 10 kg body on Earth (g = 9.8) is: | 98 N | 10 N | 9.8 N | 980 N | W = mg.
+A 60 W bulb used for 10 hours consumes: | 0.6 kWh | 6 kWh | 60 kWh | 600 kWh | 60 x 10 = 600 Wh.
+Three 6 ohm resistors in parallel give: | 2 ohm | 18 ohm | 6 ohm | 3 ohm | 1/R = 3/6.
+Current through a 10 ohm resistor across 5 V is: | 0.5 A | 2 A | 50 A | 5 A | I = V/R.
+Wavelength of a 500 Hz sound wave moving at 340 m/s is: | 0.68 m | 1.47 m | 170 m | 840 m | lambda = v/f.
+The focal length of a lens of power -2 D is: | -50 cm | 50 cm | -2 m | 2 cm | f = 1/P metres.
+A concave lens always forms an image that is: | Virtual, erect and diminished | Real and inverted | Magnified | Real and erect | Used to correct myopia.
+The energy of a photon of wavelength 1240 nm is about: | 1 eV | 12.4 eV | 0.1 eV | 124 eV | E (eV) = 1240 / lambda (nm).
+Half-life of a radioactive sample is 2 days. Fraction left after 6 days is: | 1/8 | 1/3 | 1/6 | 1/4 | Three half-lives pass.
+Alpha decay reduces mass number by: | 4 | 2 | 1 | 0 | It also reduces atomic number by 2.
+Beta-minus decay increases atomic number by: | 1 | 2 | 0 | 4 | A neutron becomes a proton.
+Gamma decay changes: | Neither mass number nor atomic number | Mass number by 4 | Atomic number by 1 | Atomic number by 2 | Only energy is released.
+A transformer has 100 primary and 500 secondary turns. With 20 V input, output is: | 100 V | 4 V | 20 V | 500 V | Vs/Vp = Ns/Np.
+Escape speed does not depend on the: | Mass of the escaping body | Mass of the planet | Radius of the planet | Value of G | v_e = square root of 2GM/R.
+Sound cannot travel in vacuum because it needs a: | Material medium | Magnetic field | Electric field | Light source | It is a mechanical wave.
+Ultrasound used in medical scans has frequency: | Above 20 kHz | Below 20 Hz | Between 20 Hz and 20 kHz | Exactly 1 Hz | Humans cannot hear it.
+Hydraulic brakes work on: | Pascal's law | Archimedes' principle | Bernoulli's principle | Hooke's law | Pressure is transmitted through brake fluid.
+A body floats when its density is: | Less than the liquid's density | More than the liquid's | Equal to air's | Zero | Buoyant force balances weight.
+The upthrust on a body in a fluid equals the: | Weight of fluid displaced | Body's weight | Fluid's total weight | Pressure at the bottom | This is Archimedes' principle.
+Specific heat of a substance is the heat needed to raise the temperature of: | 1 kg by 1 K | 1 mole by 1 K | 1 g by 100 K | Any mass by 1 K | Its SI unit is J/kg K.
+Electric power consumed by a 220 V, 1100 W heater draws a current of: | 5 A | 0.2 A | 50 A | 1320 A | I = P/V.
+A magnet suspended freely comes to rest in the: | North-south direction | East-west direction | Vertical direction | Any direction | It aligns with Earth's magnetic field.

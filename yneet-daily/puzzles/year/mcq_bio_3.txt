@@ -1,0 +1,165 @@
+# Biomolecules
+The acid-insoluble fraction of living tissue contains: | Polymers like proteins, nucleic acids and polysaccharides | Amino acids only | Sugars only | Minerals | Lipids appear here because they form membranes and vesicles.
+Lipids are found in the acid-insoluble fraction because: | They form membrane vesicles when tissue is ground | They are polymers | They are proteins | They dissolve in acid | Lipids are not strictly macromolecules.
+The ash of a tissue contains: | Inorganic elements | Proteins | Lipids | Nucleic acids | Organic compounds burn away.
+The simplest amino acid is: | Glycine | Alanine | Serine | Valine | Glycine has hydrogen as its R group.
+In alanine, the R group is a: | Methyl group | Hydrogen | Hydroxymethyl | Phenyl | In serine it is hydroxymethyl.
+Which is an acidic amino acid? | Glutamic acid | Lysine | Valine | Glycine | Glutamic and aspartic acids are acidic.
+Which is a basic amino acid? | Lysine | Glutamic acid | Valine | Alanine | Lysine and arginine are basic.
+Which is an aromatic amino acid? | Tryptophan | Glycine | Valine | Alanine | Tyrosine, phenylalanine and tryptophan are aromatic.
+Lecithin is a: | Phospholipid | Simple fat | Steroid | Wax | Lecithin is found in cell membranes.
+Palmitic acid has: | 16 carbons | 18 carbons | 20 carbons | 12 carbons | Arachidonic acid has 20 carbons.
+Fatty acids with one or more C=C double bonds are: | Unsaturated | Saturated | Polymers | Proteins | Oils are rich in unsaturated fatty acids.
+Ribose is a: | Pentose sugar | Hexose sugar | Triose | Disaccharide | Ribose has five carbons.
+Adenylic acid is a: | Nucleotide | Nucleoside | Base | Sugar | It is base + sugar + phosphate.
+Uridine is a: | Nucleoside | Nucleotide | Base | Amino acid | It is uracil + ribose.
+Which is a secondary metabolite? | Morphine | Glucose | Amino acids | Nucleotides | Alkaloids like morphine and codeine are secondary metabolites.
+Anthocyanins are: | Pigments | Toxins | Drugs | Essential oils | They are secondary metabolites.
+Abrin and ricin are: | Toxins | Pigments | Drugs | Polymers | Ricin comes from castor seeds.
+Vinblastin and curcumin are: | Drugs | Toxins | Pigments | Rubber | They are used as medicines.
+Rubber and gums are examples of: | Polymeric substances | Lectins | Pigments | Alkaloids | They are secondary metabolites.
+Macromolecules generally have molecular weights of: | 10,000 daltons and above | Below 100 daltons | Below 1000 daltons | About 18 daltons | Compounds below 1000 Da are called micromolecules.
+The most abundant protein in animals is: | Collagen | Haemoglobin | Insulin | Keratin | RuBisCO is the most abundant in the whole biosphere.
+GLUT-4 enables: | Glucose transport into cells | Oxygen transport | Hormone binding | Antibody formation | It is a membrane transporter protein.
+Insulin is made of: | Two polypeptide chains | One chain | Three chains | Four chains | Chains A and B are joined by disulphide bridges.
+The left end of a polypeptide is the: | N-terminal amino acid | C-terminal amino acid | Middle residue | Side chain | The right end is the C-terminal.
+The alpha helix is a: | Secondary structure | Primary structure | Tertiary structure | Quaternary structure | Protein chains fold into a right-handed helix.
+Haemoglobin shows quaternary structure with: | Two alpha and two beta chains | Four alpha chains | One chain | Two chains | Four subunits make up adult haemoglobin.
+Cellulose is a polymer of: | Glucose | Fructose | Galactose | Amino acids | It is a homopolymer.
+Inulin is a polymer of: | Fructose | Glucose | Galactose | Ribose | It is stored in dahlia roots.
+Starch gives a blue colour with iodine because: | It forms helices that hold iodine | It is a protein | It is unbranched | It is a lipid | Cellulose cannot hold iodine and gives no colour.
+In polysaccharides, the right end is the: | Reducing end | Non-reducing end | Amino end | Carboxyl end | The left end is non-reducing.
+Chitin is a: | Complex homopolymer | Simple sugar | Protein | Lipid | It is made of N-acetylglucosamine.
+In nucleic acids, nucleotides are joined by: | 3'-5' phosphodiester bonds | Peptide bonds | Glycosidic bonds only | Hydrogen bonds only | Sugar and phosphate form the backbone.
+In DNA, the pitch of the helix is about: | 3.4 nm | 0.34 nm | 2 nm | 34 nm | There are about 10 base pairs per turn.
+The distance between two base pairs in DNA is: | 0.34 nm | 3.4 nm | 2 nm | 20 nm | B-DNA has 10 bp per turn of 3.4 nm.
+The number of hydrogen bonds between A and T is: | Two | Three | One | Four | G and C have three hydrogen bonds.
+Enzymes lower the: | Activation energy | Free energy change | Temperature | Equilibrium constant | This speeds up reactions.
+The enzyme that converts CO2 and water to carbonic acid is: | Carbonic anhydrase | Catalase | Amylase | Lipase | It makes the reaction about 10 million times faster.
+The rate of an enzyme reaction increases with substrate concentration until: | Vmax is reached | pH changes | Temperature falls | The enzyme denatures | Then all active sites are full.
+An inhibitor that resembles the substrate is: | Competitive | Non-competitive | Allosteric only | Irreversible only | Malonate inhibits succinic dehydrogenase this way.
+Malonate competitively inhibits: | Succinic dehydrogenase | Amylase | Lipase | Pepsin | Malonate resembles succinate.
+Enzymes that catalyse hydrolysis belong to: | Hydrolases | Lyases | Ligases | Transferases | They break ester, ether, peptide and glycosidic bonds.
+Enzymes that join two compounds are: | Ligases | Lyases | Hydrolases | Isomerases | They form C-O, C-S, C-N and P-O bonds.
+Enzymes that interconvert optical or geometric isomers are: | Isomerases | Ligases | Lyases | Transferases | They rearrange molecules.
+Dehydrogenases belong to: | Oxidoreductases | Transferases | Hydrolases | Ligases | They transfer hydrogen between molecules.
+The protein part of an enzyme is the: | Apoenzyme | Coenzyme | Prosthetic group | Cofactor | The full active enzyme is the holoenzyme.
+Haem is the prosthetic group of: | Peroxidase and catalase | Amylase | Pepsin | Trypsin | It is tightly bound to the enzyme.
+NAD and NADP contain the vitamin: | Niacin | Riboflavin | Thiamine | Vitamin C | Many coenzymes contain vitamins.
+Zinc is a cofactor for: | Carboxypeptidase | Catalase | Amylase | Pepsin | Metal ions form bonds at the active site.
+Most enzymes are destroyed at high temperature because: | Proteins denature | They dissolve | They freeze | They oxidise | Thermophilic enzymes are exceptions.
+Ribozymes are: | RNA molecules that act as enzymes | Protein enzymes | DNA enzymes | Lipids | Ribozymes catalyse reactions.
+The living state is a: | Non-equilibrium steady state | Equilibrium state | Static state | Frozen state | Metabolism keeps it away from equilibrium.
+# Cell Cycle and Cell Division
+A typical human cell in culture divides about once every: | 24 hours | 90 minutes | 12 hours | 1 week | Yeast takes about 90 minutes.
+Interphase lasts for about what share of the cell cycle? | More than 95 percent | 50 percent | 10 percent | 25 percent | M phase is short.
+DNA content doubles during: | S phase | G1 phase | G2 phase | M phase | The chromosome number stays the same.
+In animal cells, centriole duplication occurs in: | S phase, in the cytoplasm | G1 phase | M phase | G0 | DNA replication is in the nucleus.
+Cells that do not divide further enter: | G0 phase | G1 phase | S phase | G2 phase | Heart cells mostly stay in G0.
+Proteins for mitosis are made in: | G2 phase | G1 phase | S phase | M phase | Cell growth continues in G2.
+If a cell has 2C DNA in G1, after S phase it has: | 4C DNA | 2C DNA | 1C DNA | 8C DNA | DNA doubles but chromosome number does not.
+Chromosomes are most condensed and easiest to study at: | Metaphase | Prophase | Anaphase | Telophase | Karyotypes are made from metaphase cells.
+Splitting of the centromere happens in: | Anaphase | Metaphase | Prophase | Telophase | Sister chromatids move to opposite poles.
+Nuclear envelope and nucleolus reappear in: | Telophase | Prophase | Metaphase | Anaphase | Chromosomes decondense too.
+The nucleolus and nuclear envelope disappear by the end of: | Prophase | Metaphase | Anaphase | Telophase | Spindle formation begins.
+In plant cells, cytokinesis occurs by: | Cell plate formation | Furrow formation | Budding | Fragmentation | The cell plate becomes the middle lamella.
+Animal cell cytokinesis occurs by: | Furrow in the plasma membrane | Cell plate | Phragmoplast | Spore formation | The furrow deepens and splits the cell.
+A multinucleate condition without cytokinesis is seen in the: | Liquid endosperm of coconut | Root tip | Onion peel | Human skin | This forms a syncytium.
+Mitosis can occur in: | Both haploid and diploid cells | Only diploid cells | Only haploid cells | Only germ cells | Mitosis also occurs in haploid cells of some plants.
+Meiosis occurs in: | Diploid cells forming gametes or spores | Haploid cells only | All body cells | Only plant cells | It reduces chromosome number by half.
+Pairing of homologous chromosomes is called: | Synapsis | Crossing over | Chiasma | Terminalisation | It happens in zygotene.
+The synaptonemal complex forms in: | Zygotene | Leptotene | Pachytene | Diplotene | It holds homologues together.
+Crossing over occurs in: | Pachytene | Zygotene | Leptotene | Diakinesis | Recombination nodules appear.
+The enzyme involved in crossing over is: | Recombinase | Ligase | Helicase | Primase | It mediates exchange between non-sister chromatids.
+The synaptonemal complex dissolves in: | Diplotene | Zygotene | Pachytene | Leptotene | Chiasmata become visible.
+Diplotene can last months or years in the oocytes of: | Some vertebrates | Bacteria | Plants | Fungi | It is a very long phase in some animals.
+Terminalisation of chiasmata occurs in: | Diakinesis | Pachytene | Zygotene | Leptotene | It marks the end of prophase I.
+In anaphase I: | Homologous chromosomes separate | Sister chromatids separate | DNA replicates | Crossing over occurs | Sister chromatids stay together at centromeres.
+The stage between two meiotic divisions is: | Interkinesis | Interphase with DNA replication | Prophase II | Diakinesis | There is no DNA replication in interkinesis.
+Meiosis II resembles: | Mitosis | Meiosis I | Binary fission | Amitosis | Sister chromatids separate.
+At the end of meiosis, how many haploid cells form? | Four | Two | One | Eight | Each has half the chromosome number.
+Meiosis is important because it: | Keeps chromosome number constant across generations and creates variation | Repairs tissues | Increases cell number | Makes identical cells | Variation is key for evolution.
+Mitosis is important for: | Growth and repair | Making gametes in animals | Creating variation | Halving chromosome number | Cells keep the same genetic content.
+The cell cycle was first studied in detail in: | Yeast and other model cells | Bacteria only | Viruses | Plants only | Yeast completes a cycle in about 90 minutes.
+A cell with 16 chromosomes in G1 will have how many chromosomes after mitosis in each daughter cell? | 16 | 8 | 32 | 4 | Mitosis keeps the number the same.
+How many chromatids does a bivalent have? | Four | Two | One | Eight | A bivalent is a pair of homologous chromosomes.
+In onion root tip cells, the chromosome number in anaphase is: | 32 | 16 | 8 | 64 | Onion has 16 chromosomes; anaphase temporarily has 32.
+Mitosis in plants occurs mainly in: | Meristems | Leaves | Xylem | Phloem | Apical and lateral meristems divide actively.
+The term 'karyokinesis' refers to: | Division of the nucleus | Division of cytoplasm | DNA replication | Cell growth | Cytokinesis is division of cytoplasm.
+# Photosynthesis in Higher Plants
+Joseph Priestley showed that plants: | Restore air that a candle or mouse has spoiled | Need light only | Need soil | Release CO2 | He did his bell jar experiments in 1770.
+Jan Ingenhousz showed that plants need: | Sunlight to purify air | Soil | Darkness | Water only | Only green parts in sunlight release oxygen.
+Starch formation in green parts in light was shown by: | Julius von Sachs | Priestley | Engelmann | Calvin | Sachs worked in 1854.
+Engelmann used Cladophora and aerobic bacteria to make the first: | Action spectrum | Absorption spectrum | Z-scheme | Calvin cycle | Bacteria gathered in blue and red light.
+That oxygen in photosynthesis comes from water was shown by: | Cornelius van Niel | Calvin | Priestley | Sachs | He worked with purple and green bacteria.
+The chief pigment of photosynthesis is: | Chlorophyll a | Chlorophyll b | Xanthophyll | Carotene | Chlorophyll a is bright or blue-green.
+Accessory pigments: | Absorb more wavelengths and protect chlorophyll a | Release oxygen | Fix CO2 | Make ATP directly | They also prevent photo-oxidation.
+Xanthophylls are: | Yellow | Blue-green | Red | Purple | Carotenoids are yellow to yellow-orange.
+The reaction centre of PS I is: | P700 | P680 | P600 | P720 | It absorbs best at 700 nm.
+The reaction centre of PS II is: | P680 | P700 | P750 | P650 | It absorbs best at 680 nm.
+Water splitting is linked to: | PS II | PS I | Calvin cycle | Stroma | Electrons from water replace those lost by PS II.
+Splitting of water releases: | Oxygen, protons and electrons | CO2 | Glucose | ATP | Oxygen is a by-product.
+Cyclic photophosphorylation involves: | Only PS I | Only PS II | Both PS I and PS II | No photosystem | It makes ATP but not NADPH.
+Cyclic photophosphorylation occurs in: | Stroma lamellae | Grana only | Mitochondria | Cytoplasm | Stroma lamellae lack PS II and NADP reductase.
+Non-cyclic photophosphorylation produces: | ATP and NADPH | Only ATP | Only NADPH | Glucose | Electrons flow from water to NADP+.
+According to chemiosmosis, ATP is made when protons move: | From lumen to stroma through ATP synthase | From stroma to lumen | Into the mitochondria | Out of the cell | The proton gradient drives ATP synthesis.
+Protons accumulate in the: | Thylakoid lumen | Stroma | Cytoplasm | Mitochondrial matrix | Water splitting and the electron carrier both add protons.
+The first CO2 acceptor in the Calvin cycle is: | RuBP | PEP | OAA | 3-PGA | Ribulose bisphosphate is a 5-carbon sugar.
+The Calvin cycle needs, per CO2 fixed: | 3 ATP and 2 NADPH | 2 ATP and 3 NADPH | 1 ATP and 1 NADPH | 6 ATP only | Six turns make one glucose.
+To make one glucose, the Calvin cycle needs: | 18 ATP and 12 NADPH | 12 ATP and 18 NADPH | 6 ATP and 6 NADPH | 30 ATP | Six CO2 are fixed.
+Melvin Calvin used which radioactive isotope? | 14C | 18O | 32P | 15N | He traced carbon in algae.
+The first stable product of the C4 pathway is: | Oxaloacetic acid | 3-PGA | Malic acid | Pyruvic acid | OAA is a 4-carbon acid.
+In C4 plants, the primary CO2 acceptor is: | Phosphoenolpyruvate | RuBP | OAA | Malic acid | PEP is a 3-carbon molecule.
+The enzyme PEP carboxylase is found in C4 plants in the: | Mesophyll cells | Bundle sheath cells | Guard cells | Xylem | Bundle sheath cells carry out the Calvin cycle.
+Bundle sheath cells of C4 plants lack: | PEP carboxylase | RuBisCO | Chloroplasts | Calvin cycle | They are rich in RuBisCO and run the Calvin cycle.
+Photorespiration happens because RuBisCO can bind: | Oxygen | Nitrogen | Water | Glucose | It acts as an oxygenase.
+Photorespiration produces: | No ATP or NADPH | Extra ATP | Extra glucose | Extra NADPH | It is wasteful.
+C4 plants avoid photorespiration because: | CO2 concentration is high in bundle sheath cells | They lack RuBisCO | They live in shade | They have no oxygen | RuBisCO then acts mainly as a carboxylase.
+Maize and sugarcane are: | C4 plants | C3 plants | CAM plants | Parasites | They show Kranz anatomy.
+The optimum temperature for C4 plants is: | Higher than for C3 plants | Lower than for C3 | The same | Below 10 C | They are adapted to hot, dry climates.
+Blackman's law of limiting factors says the rate is set by: | The factor nearest its minimum | The factor in excess | Temperature only | Light only | Increasing that factor raises the rate.
+CO2 is a major limiting factor for: | C3 plants | C4 plants | Algae only | All plants equally | C3 plants benefit from more CO2.
+Tomatoes and bell peppers in greenhouses give higher yields when: | CO2 is increased | Light is reduced | Oxygen is increased | Water is reduced | Higher CO2 boosts C3 photosynthesis.
+Light saturation occurs at about what percentage of full sunlight? | 10 percent | 50 percent | 90 percent | 100 percent | Except for shaded plants, light is rarely limiting.
+Water stress reduces photosynthesis mainly by: | Closing stomata | Breaking chlorophyll | Stopping light | Increasing CO2 | Less CO2 enters the leaf.
+In the Calvin cycle, carboxylation is followed by: | Reduction | Regeneration | Photolysis | Phosphorylation of water | The three stages are carboxylation, reduction and regeneration.
+Photosynthesis is a: | Physico-chemical process | Purely physical process | Purely chemical process | Respiratory process | Light is captured and used to make food.
+PAR stands for light of wavelength: | 400 to 700 nm | 100 to 400 nm | 700 to 1000 nm | 200 to 300 nm | Photosynthetically active radiation.
+The light harvesting complexes are made of: | Pigments bound to proteins | Lipids only | Starch | DNA | They form antennae around the reaction centre.
+In the Z-scheme, electrons from PS II are passed to PS I through: | Cytochrome b6f complex | ATP synthase | RuBisCO | NADP reductase | Electrons move downhill in redox potential.
+NADP reductase is located on the: | Stroma side of the membrane | Lumen side | Outer membrane | Inner mitochondrial membrane | NADPH is formed in the stroma.
+# Respiration in Plants
+Glycolysis is also called the: | EMP pathway | Krebs cycle | Calvin cycle | HMP shunt | Named after Embden, Meyerhof and Parnas.
+Glycolysis occurs in: | All living organisms | Only aerobes | Only plants | Only animals | It is the only respiratory pathway in anaerobes.
+In glycolysis, one glucose gives: | Two pyruvic acid | One pyruvic acid | Three pyruvic acid | Six CO2 | Each pyruvate has three carbons.
+The first enzyme of glycolysis is: | Hexokinase | Pyruvate kinase | Phosphofructokinase | Aldolase | It phosphorylates glucose.
+ATP is used in glycolysis at the steps forming: | Glucose-6-P and fructose-1,6-bisP | PEP | Pyruvate | 3-PGA | Two ATP are spent per glucose.
+Net NADH from glycolysis per glucose is: | 2 | 1 | 4 | 0 | NAD+ is reduced when PGAL is oxidised.
+Pyruvic acid is converted to acetyl CoA in the: | Mitochondrial matrix | Cytoplasm | Chloroplast | Nucleus | The pyruvate dehydrogenase complex does this.
+Pyruvate dehydrogenase needs: | Mg2+ | Fe2+ | Cu2+ | Zn2+ | It catalyses oxidative decarboxylation.
+The Krebs cycle was described by: | Hans Krebs | Melvin Calvin | Embden | Mitchell | It is also called the TCA cycle.
+The first product of the Krebs cycle is: | Citric acid | Oxaloacetic acid | Alpha-ketoglutaric acid | Malic acid | Acetyl CoA joins OAA.
+In the Krebs cycle, substrate-level phosphorylation forms GTP during conversion of: | Succinyl CoA to succinic acid | Citrate to isocitrate | Fumarate to malate | Malate to OAA | GTP is then used to make ATP.
+FADH2 is formed in the Krebs cycle when: | Succinic acid becomes fumaric acid | Citrate becomes isocitrate | Malate becomes OAA | Pyruvate becomes acetyl CoA | Succinate dehydrogenase uses FAD.
+Per acetyl CoA, the Krebs cycle gives: | 3 NADH, 1 FADH2 and 1 GTP | 2 NADH and 2 FADH2 | 1 NADH only | 4 NADH | Two CO2 are also released.
+The electron transport system is located in the: | Inner mitochondrial membrane | Outer membrane | Matrix | Cytoplasm | Complexes I to IV are embedded there.
+NADH dehydrogenase is: | Complex I | Complex II | Complex III | Complex IV | It passes electrons to ubiquinone.
+Ubiquinone receives electrons from: | Complex I and complex II | Complex IV | Cytochrome c | Oxygen | FADH2 feeds in through complex II.
+Cytochrome c is a: | Small mobile protein on the outer surface of the inner membrane | Fixed complex | Lipid | DNA | It carries electrons from complex III to IV.
+Complex IV contains cytochromes a and a3 and: | Two copper centres | Iron only | Zinc | Magnesium | It is cytochrome c oxidase.
+ATP synthase is: | Complex V | Complex I | Complex III | Complex IV | Its F0 part forms the proton channel.
+Oxidation of one NADH gives about: | 3 ATP | 2 ATP | 1 ATP | 4 ATP | One FADH2 gives about 2 ATP.
+In fermentation by yeast, pyruvic acid forms: | Ethanol and CO2 | Lactic acid | Acetic acid | Citric acid | Pyruvate decarboxylase and alcohol dehydrogenase act.
+In muscles during heavy exercise, pyruvic acid forms: | Lactic acid | Ethanol | Acetyl CoA | Citric acid | Lactate dehydrogenase uses NADH.
+Fermentation gives a net gain of: | 2 ATP per glucose | 38 ATP | 8 ATP | 0 ATP | Only glycolysis makes ATP.
+The respiratory pathway is called amphibolic because it: | Is used for both breakdown and synthesis | Uses only fats | Uses only proteins | Needs no oxygen | Intermediates are used to make other molecules.
+Fatty acids enter respiration after conversion to: | Acetyl CoA | Pyruvic acid | Glucose | OAA | Glycerol enters as PGAL.
+Proteins enter respiration after: | Deamination | Phosphorylation | Hydrolysis to glucose | Carboxylation | The amino group is removed first.
+The RQ of anaerobic respiration is: | Infinite | Zero | 1 | 0.7 | CO2 is released but no O2 is used.
+The RQ of tripalmitin is about: | 0.7 | 1 | 1.3 | 4 | 145 CO2 for 102 O2 gives 0.7.
+The RQ of organic acids like malic acid is: | More than 1 | Less than 1 | 1 | 0 | They are rich in oxygen.
+Plants do not have special organs for gas exchange because: | Each part handles its own gas needs | They do not respire | They respire only at night | Leaves do not need gases | Plants respire slowly and have short diffusion distances.
+Stomata and lenticels help plants in: | Gas exchange | Water storage | Food storage | Support | Gases diffuse through them.
+The number of ATP made per glucose in aerobic respiration (NCERT) is: | 38 | 36 | 2 | 30 | This is a theoretical value.
+In the ETS, the final electron acceptor oxygen forms: | Water | CO2 | Hydrogen peroxide | Ozone | Oxygen accepts electrons and protons.
+The F1 headpiece of ATP synthase is the site of: | ATP synthesis | Proton entry | Electron transfer | NAD reduction | F0 is the proton channel.

@@ -1,0 +1,212 @@
+# Thermodynamics
+Two systems in thermal equilibrium with a third are in equilibrium with each other. This is the: | Zeroth law | First law | Second law | Third law | It defines temperature.
+In an isothermal process, the quantity that stays constant is: | Temperature | Pressure | Volume | Heat | For an ideal gas, Delta U = 0.
+In an adiabatic process: | No heat is exchanged | Temperature is constant | Pressure is constant | Volume is constant | PV^gamma = constant.
+In an isochoric process, work done by the gas is: | Zero | Maximum | Negative | Equal to heat | Volume does not change.
+Work done by a gas in an isobaric process is: | P Delta V | Zero | nRT | V Delta P | Pressure is constant.
+The efficiency of a Carnot engine is: | 1 - T2/T1 | T2/T1 | 1 + T2/T1 | T1 - T2 | Temperatures are in kelvin.
+A Carnot engine working between 500 K and 300 K has efficiency: | 40 percent | 60 percent | 20 percent | 100 percent | 1 - 300/500 = 0.4.
+No engine can convert all heat into work. This is the: | Kelvin-Planck statement of the second law | First law | Zeroth law | Third law | Some heat must be rejected to a sink.
+Heat cannot flow by itself from a colder body to a hotter body. This is the: | Clausius statement | Kelvin-Planck statement | First law | Zeroth law | A refrigerator needs external work.
+The coefficient of performance of a refrigerator is: | Q2 / W | W / Q2 | Q1 / Q2 | 1 - T2/T1 | It can be greater than 1.
+For a cyclic process, change in internal energy is: | Zero | Positive | Negative | Equal to work | The system returns to its initial state.
+# Kinetic Theory
+The average kinetic energy of a gas molecule is proportional to: | Absolute temperature | Pressure | Volume | Molar mass | KE = (3/2) kT.
+The rms speed of gas molecules is proportional to: | Square root of T | T | T^2 | 1/T | v_rms = square root of 3RT/M.
+At the same temperature, lighter gas molecules move: | Faster | Slower | At the same speed | Not at all | v_rms is inversely related to square root of M.
+Boltzmann constant is: | 1.38 x 10^-23 J/K | 8.314 J/mol K | 6.022 x 10^23 | 6.63 x 10^-34 | k = R / N_A.
+A monatomic gas has how many degrees of freedom? | Three | Five | Six | Seven | All translational.
+A rigid diatomic gas has how many degrees of freedom? | Five | Three | Seven | Six | Three translational and two rotational.
+Gamma (Cp/Cv) for a monatomic gas is: | 5/3 | 7/5 | 4/3 | 1 | Cv = (3/2)R and Cp = (5/2)R.
+Gamma for a rigid diatomic gas is: | 7/5 | 5/3 | 4/3 | 9/7 | Cv = (5/2)R.
+Equipartition of energy assigns each degree of freedom an average energy of: | (1/2) kT | kT | (3/2) kT | 2kT | Per molecule.
+Mean free path increases when the: | Gas density decreases | Pressure increases | Molecule size increases | Temperature drops at constant volume | Fewer collisions occur.
+# Oscillations
+In SHM, acceleration is proportional to: | Displacement and opposite in direction | Velocity | Time | Square of displacement | a = -omega^2 x.
+In SHM, velocity is maximum at the: | Mean position | Extreme position | Midway point | Everywhere equally | KE is maximum at the mean position.
+In SHM, acceleration is maximum at the: | Extreme positions | Mean position | Midway | Never | Restoring force is greatest there.
+The time period of a spring-mass system is: | 2 pi square root of m/k | 2 pi square root of k/m | 2 pi m k | m / k | A stiffer spring gives a shorter period.
+The time period of a simple pendulum is: | 2 pi square root of l/g | 2 pi square root of g/l | 2 pi l g | l / g | It does not depend on mass.
+If the length of a pendulum is made four times, its period: | Doubles | Quadruples | Halves | Stays the same | T is proportional to square root of l.
+A seconds pendulum has a time period of: | 2 s | 1 s | 0.5 s | 4 s | Each swing takes one second.
+The total energy of a body in SHM is proportional to: | Square of amplitude | Amplitude | Frequency only | Time | E = (1/2) k A^2.
+The phase difference between displacement and velocity in SHM is: | pi/2 | pi | Zero | 2 pi | Velocity leads displacement by 90 degrees.
+Frequency is the reciprocal of: | Time period | Amplitude | Angular frequency | Phase | f = 1/T.
+# Waves
+Sound waves in air are: | Longitudinal | Transverse | Electromagnetic | Stationary only | Air particles vibrate along the direction of travel.
+Waves on a stretched string are: | Transverse | Longitudinal | Electromagnetic | Not waves | Particles vibrate perpendicular to the wave direction.
+Wave speed equals: | Frequency x wavelength | Frequency / wavelength | Amplitude x frequency | Wavelength / amplitude | v = f lambda.
+Speed of a wave on a string is: | Square root of T/mu | T mu | mu / T | Square root of mu/T | T is tension and mu is mass per unit length.
+Newton's formula for the speed of sound assumed the process to be: | Isothermal | Adiabatic | Isobaric | Isochoric | Laplace corrected it to adiabatic.
+Speed of sound in air increases with: | Temperature | Pressure at constant temperature | Density at constant temperature | Loudness | v is proportional to square root of T.
+The distance between two consecutive nodes is: | lambda / 2 | lambda | lambda / 4 | 2 lambda | Antinodes lie midway.
+In a pipe closed at one end, the harmonics present are: | Only odd harmonics | All harmonics | Only even harmonics | None | The closed end is a node.
+In an open pipe, the fundamental frequency is: | v / 2L | v / 4L | v / L | 2v / L | Both ends are antinodes.
+Beats are heard when two sounds have: | Slightly different frequencies | Same frequency | Very different frequencies | Same amplitude only | Beat frequency equals their difference.
+Two tuning forks of 256 Hz and 260 Hz produce beats per second of: | 4 | 516 | 2 | 260 | f1 - f2.
+# Electric Charges and Fields
+Charge is quantised, meaning it exists in multiples of: | e = 1.6 x 10^-19 C | 1 C | 9 x 10^9 C | Any value | Q = ne.
+The value of 1/(4 pi epsilon_0) is about: | 9 x 10^9 N m^2 C^-2 | 8.85 x 10^-12 | 6.67 x 10^-11 | 1.6 x 10^-19 | It appears in Coulomb's law.
+Doubling the distance between two charges makes the force: | One-fourth | Half | Double | Four times | F is proportional to 1/r^2.
+Electric field lines start from: | Positive charges and end on negative charges | Negative charges | Both | Nowhere | They never cross each other.
+The electric field inside a charged conductor is: | Zero | Maximum | Equal to surface field | Infinite | Charges reside on the outer surface.
+Gauss's law relates electric flux through a closed surface to the: | Enclosed charge | Surface area only | Outside charges | Volume | Flux = q / epsilon_0.
+The electric field due to an infinite plane sheet of charge is: | sigma / 2 epsilon_0 | sigma / epsilon_0 | Zero | Proportional to 1/r | It does not depend on distance.
+The SI unit of electric dipole moment is: | C m | C/m | N/C | V/m | p = q x 2a.
+A dipole in a uniform electric field experiences: | Torque but no net force | Net force only | Both net force and torque | Neither | The forces on the two charges cancel.
+Field due to a dipole at a far point on its axis varies as: | 1/r^3 | 1/r^2 | 1/r | r | Fields of point charges vary as 1/r^2.
+Charging by rubbing a glass rod with silk leaves the rod: | Positively charged | Negatively charged | Neutral | Magnetised | Electrons move from glass to silk.
+# Electrostatic Potential and Capacitance
+The SI unit of electric potential is: | Volt | Coulomb | Farad | Ohm | 1 V = 1 J/C.
+Potential due to a point charge varies as: | 1/r | 1/r^2 | r | r^2 | V = kq/r.
+Work done in moving a charge on an equipotential surface is: | Zero | Maximum | Negative | Infinite | Potential difference is zero.
+Electric field is related to potential by: | E = -dV/dr | E = dV/dr | E = V r | E = V/r^2 | Field points towards decreasing potential.
+The capacitance of a parallel plate capacitor is: | epsilon_0 A / d | epsilon_0 d / A | A d | d / A | Inserting a dielectric increases it by K.
+Capacitors in series have an equivalent capacitance that is: | Less than the smallest | More than the largest | The sum | The average | 1/C = 1/C1 + 1/C2.
+Capacitors in parallel have an equivalent capacitance equal to: | The sum | The reciprocal sum | The smallest | The product | C = C1 + C2.
+Energy stored in a capacitor is: | (1/2) C V^2 | C V | C V^2 | (1/2) Q V^2 | It is stored in the electric field.
+A dielectric slab placed between plates of a charged isolated capacitor: | Decreases the potential difference | Increases charge | Increases voltage | Has no effect | Capacitance increases while charge stays fixed.
+Sensitive instruments are kept inside metal cases for: | Electrostatic shielding | Decoration | Heat | Magnetism | The field inside a conducting cavity is zero.
+# Current Electricity
+Electric current is the rate of flow of: | Charge | Energy | Voltage | Resistance | I = dq/dt.
+Drift velocity of electrons in a conductor is of the order of: | 10^-4 m/s | 3 x 10^8 m/s | 1 m/s | 10^3 m/s | It is very small.
+Ohm's law states V is proportional to I at constant: | Temperature | Current | Resistance | Length | V = IR.
+Resistivity of a material depends on: | Material and temperature | Length | Area | Shape | Resistance depends on dimensions.
+Resistance of a metallic conductor with rise in temperature: | Increases | Decreases | Stays constant | Becomes zero | More collisions occur.
+Resistivity of semiconductors with rise in temperature: | Decreases | Increases | Stays constant | Doubles | More charge carriers are produced.
+Kirchhoff's junction rule is based on conservation of: | Charge | Energy | Momentum | Mass | Current in equals current out.
+Kirchhoff's loop rule is based on conservation of: | Energy | Charge | Momentum | Mass | Sum of potential changes around a loop is zero.
+A Wheatstone bridge is balanced when: | P/Q = R/S | P + Q = R + S | P x Q = R x S | P = Q | No current flows through the galvanometer.
+Terminal voltage of a cell delivering current is: | Less than its EMF | More than its EMF | Equal to EMF | Zero | V = E - Ir.
+Power dissipated in a resistor is: | I^2 R | I R | V I^2 | R / I | Also V^2/R.
+Resistors in parallel have an equivalent resistance: | Less than the smallest | More than the largest | Equal to the sum | Equal to the largest | Household appliances are connected in parallel.
+# Moving Charges and Magnetism
+The magnetic force on a charge moving parallel to the field is: | Zero | Maximum | qvB | Infinite | F = qvB sin theta.
+A charged particle moving perpendicular to a uniform magnetic field moves in a: | Circle | Straight line | Parabola | Helix always | The magnetic force is centripetal.
+The magnetic force does no work on a moving charge because it is: | Perpendicular to velocity | Parallel to velocity | Zero | Very small | Speed stays constant.
+The cyclotron frequency is independent of the particle's: | Speed | Charge | Mass | Field strength | f = qB / 2 pi m.
+Magnetic field at the centre of a circular loop is: | mu_0 I / 2R | mu_0 I / 2 pi R | mu_0 I R | Zero | It is perpendicular to the loop plane.
+Field due to a long straight wire varies as: | 1/r | 1/r^2 | r | Constant | B = mu_0 I / 2 pi r.
+Field inside a long solenoid is: | mu_0 n I | Zero | mu_0 I / 2R | mu_0 I / 2 pi r | It is nearly uniform.
+Two parallel wires carrying currents in the same direction: | Attract | Repel | Do not interact | Rotate | Opposite currents repel.
+A galvanometer is converted into an ammeter by connecting a: | Low resistance in parallel | High resistance in series | Low resistance in series | High resistance in parallel | This shunt carries most current.
+A galvanometer is converted into a voltmeter by connecting a: | High resistance in series | Low resistance in parallel | Low resistance in series | Capacitor | It then draws very little current.
+mu_0 equals: | 4 pi x 10^-7 T m/A | 9 x 10^9 | 8.85 x 10^-12 | 1.6 x 10^-19 | It is the permeability of free space.
+# Magnetism and Matter
+Magnetic field lines of a bar magnet: | Form closed loops | Start and end at poles only | Cross each other | Are straight | Inside the magnet they go from S to N.
+Isolated magnetic poles: | Do not exist | Are common | Exist in iron | Exist in the Earth | Gauss's law for magnetism says net flux is zero.
+Diamagnetic substances are: | Weakly repelled by magnets | Strongly attracted | Weakly attracted | Not affected | Bismuth, copper and water are diamagnetic.
+Paramagnetic substances are: | Weakly attracted by magnets | Strongly attracted | Repelled | Unaffected | Aluminium and oxygen are paramagnetic.
+Ferromagnetic substances are: | Strongly attracted by magnets | Weakly attracted | Repelled | Unaffected | Iron, cobalt and nickel are ferromagnetic.
+Superconductors are perfect: | Diamagnets | Paramagnets | Ferromagnets | Conductors of heat only | They expel magnetic fields (Meissner effect).
+Above the Curie temperature, a ferromagnet becomes: | Paramagnetic | Diamagnetic | Superconducting | More ferromagnetic | Domains are disordered.
+Magnetic susceptibility of a diamagnetic material is: | Small and negative | Small and positive | Large and positive | Zero | Paramagnets have small positive values.
+Permanent magnets are made of materials with: | High retentivity and high coercivity | Low retentivity | Low coercivity | No magnetism | Steel is better than soft iron for them.
+Electromagnets use soft iron because of its: | High permeability and low retentivity | High retentivity | Low permeability | High coercivity | It magnetises and demagnetises easily.
+# Electromagnetic Induction
+Faraday's law says induced EMF equals the rate of change of: | Magnetic flux | Current | Charge | Resistance | e = -d phi / dt.
+Lenz's law is a consequence of conservation of: | Energy | Charge | Momentum | Mass | The induced current opposes the change.
+The SI unit of magnetic flux is: | Weber | Tesla | Henry | Gauss | 1 Wb = 1 T m^2.
+Motional EMF in a rod of length l moving at v in field B is: | B l v | B l / v | B v / l | l v / B | The rod moves perpendicular to B.
+Eddy currents are reduced in transformer cores by using: | Laminated cores | Solid cores | Copper cores | Air cores | Thin insulated sheets break the current loops.
+The SI unit of inductance is: | Henry | Weber | Tesla | Farad | 1 H = 1 Wb/A.
+Energy stored in an inductor is: | (1/2) L I^2 | L I | L I^2 | (1/2) L I | It is stored in the magnetic field.
+Self-inductance of a solenoid increases with: | Number of turns squared | Current | Voltage | Resistance | L = mu_0 n^2 A l.
+An AC generator converts: | Mechanical energy to electrical energy | Electrical to mechanical | Heat to electrical | Light to electrical | A coil rotates in a magnetic field.
+Electromagnetic damping is used in: | Galvanometers and some brakes | Batteries | Bulbs | Mirrors | Eddy currents oppose motion.
+# Alternating Current
+The rms value of an AC current is: | I0 / square root of 2 | I0 / 2 | I0 x square root of 2 | I0 | It gives the same heating as DC.
+Household AC in India has a frequency of: | 50 Hz | 60 Hz | 100 Hz | 220 Hz | The rms voltage is about 220 V.
+In a purely inductive AC circuit, current: | Lags voltage by pi/2 | Leads voltage by pi/2 | Is in phase | Lags by pi | Average power is zero.
+In a purely capacitive AC circuit, current: | Leads voltage by pi/2 | Lags voltage by pi/2 | Is in phase | Leads by pi | Average power is zero.
+Inductive reactance is: | omega L | 1 / omega L | omega / L | L / omega | It increases with frequency.
+Capacitive reactance is: | 1 / omega C | omega C | C / omega | omega / C | It decreases with frequency.
+At resonance in a series LCR circuit: | XL = XC and impedance is minimum | XL > XC | Current is minimum | Impedance is maximum | Resonant frequency is 1 / 2 pi square root of LC.
+Power factor in a purely resistive circuit is: | 1 | 0 | 0.5 | Infinite | Voltage and current are in phase.
+Wattless current flows in a circuit that is: | Purely inductive or capacitive | Purely resistive | Open | Short-circuited | Average power is zero.
+A step-up transformer increases: | Voltage and decreases current | Current and voltage | Power | Frequency | Ns > Np.
+Power is transmitted at high voltage to: | Reduce I^2 R losses | Increase current | Increase losses | Make it safer at home | Lower current means less heat loss.
+# Electromagnetic Waves
+Displacement current was introduced by: | Maxwell | Faraday | Hertz | Ampere | It made Ampere's law consistent.
+EM waves were first produced and detected by: | Heinrich Hertz | Maxwell | Marconi | J.C. Bose | He did this in 1887.
+In an EM wave, E and B are: | Perpendicular to each other and to the direction of travel | Parallel | In the direction of travel | Opposite | EM waves are transverse.
+The speed of EM waves in vacuum is: | 1 / square root of mu_0 epsilon_0 | mu_0 epsilon_0 | Square root of mu_0 / epsilon_0 | Infinity | It equals about 3 x 10^8 m/s.
+EM waves do not need a: | Medium | Source | Field | Charge | They travel through vacuum.
+Accelerated charges produce: | EM waves | Only static fields | Sound | No fields | Oscillating charges radiate.
+Microwaves are used in: | Radar and ovens | Medical imaging of bones | Cancer treatment | Night vision | Water molecules absorb them in ovens.
+X-rays are used to: | Image bones | Cook food | Communicate by radio | See at night | They penetrate soft tissue.
+Infrared rays are also called: | Heat waves | Cosmic rays | Radio waves | Gamma rays | They are used in TV remotes.
+The ozone layer absorbs mostly: | Ultraviolet rays | Infrared rays | Radio waves | Microwaves | UV can harm living cells.
+Gamma rays are produced in: | Nuclear reactions | TV remotes | Mobile phones | Light bulbs | They have the shortest wavelength.
+# Ray Optics and Optical Instruments
+Focal length of a spherical mirror equals: | Half the radius of curvature | Radius of curvature | Twice the radius | One-fourth radius | f = R/2.
+A convex mirror always forms an image that is: | Virtual, erect and diminished | Real and inverted | Virtual and magnified | Real and erect | Used as rear-view mirrors.
+Refractive index of a medium is: | c / v | v / c | c x v | c - v | It is the ratio of speeds.
+Total internal reflection occurs when light goes from: | Denser to rarer medium beyond the critical angle | Rarer to denser | Vacuum to glass | Any medium at any angle | Diamonds sparkle because of it.
+Critical angle for glass of refractive index 1.5 is about: | 42 degrees | 30 degrees | 60 degrees | 90 degrees | sin C = 1/n.
+Mirages are caused by: | Total internal reflection | Dispersion | Diffraction | Polarisation | Hot air near the ground is rarer.
+Power of a lens is measured in: | Dioptres | Watts | Metres | Joules | P = 1/f with f in metres.
+Lenses of power +2 D and -1 D in contact give a total power of: | +1 D | +3 D | -1 D | -3 D | Powers add.
+White light splits into colours in a prism due to: | Dispersion | Reflection | Diffraction | Polarisation | Violet bends the most.
+The sky appears blue due to: | Scattering of light | Reflection | Refraction | Dispersion only | Shorter wavelengths scatter more.
+The Sun appears red at sunrise and sunset because: | Blue light is scattered away over a longer path | Red light scatters more | The Sun cools down | Clouds are red | Mostly red light reaches us.
+Magnifying power of a simple microscope for image at near point is: | 1 + D/f | D/f | f/D | 1 - D/f | D is 25 cm.
+An astronomical telescope in normal adjustment has length: | f_o + f_e | f_o - f_e | f_o x f_e | f_o / f_e | Magnifying power is f_o / f_e.
+# Wave Optics
+Huygens' principle says each point on a wavefront acts as a source of: | Secondary wavelets | Primary waves | Photons | Electrons | Their envelope gives the new wavefront.
+Light from a distant star reaches Earth as a: | Plane wavefront | Spherical wavefront | Cylindrical wavefront | Point | The wavefront is nearly flat at large distances.
+Two sources are coherent if they have: | Constant phase difference | Different frequencies | Random phase | Different colours | Only coherent sources give a steady interference pattern.
+Fringe width in Young's double slit experiment is: | lambda D / d | d / lambda D | lambda d / D | D / lambda | D is screen distance, d is slit separation.
+In YDSE, if the slit separation is doubled, fringe width becomes: | Half | Double | Four times | Same | beta is proportional to 1/d.
+Diffraction is noticeable when the obstacle size is comparable to the: | Wavelength | Amplitude | Frequency | Speed | Sound diffracts around doors easily.
+In single slit diffraction, the central maximum is: | Twice as wide as other maxima | Same width | Half as wide | Absent | It is also the brightest.
+Polarisation proves that light waves are: | Transverse | Longitudinal | Sound waves | Matter waves | Longitudinal waves cannot be polarised.
+Malus' law states I equals: | I0 cos^2 theta | I0 cos theta | I0 sin theta | I0 tan theta | theta is the angle between polaroid axes.
+At Brewster's angle, reflected light is: | Completely polarised | Unpolarised | Absent | Coloured | tan i_B = n.
+# Dual Nature of Radiation and Matter
+The minimum energy needed to remove an electron from a metal is the: | Work function | Threshold frequency | Stopping potential | Ionisation energy | It is measured in eV.
+Photoelectric emission does not occur below the: | Threshold frequency | Threshold intensity | Stopping potential | Work function voltage | Intensity alone cannot cause emission.
+Increasing light intensity above threshold increases: | Photocurrent | Maximum kinetic energy | Stopping potential | Threshold frequency | More photons release more electrons.
+Maximum kinetic energy of photoelectrons depends on: | Frequency of light | Intensity of light | Time of exposure | Area of metal | K_max = h nu - phi.
+Photoelectric emission is: | Instantaneous | Delayed by seconds | Delayed by minutes | Gradual | There is no time lag.
+Energy of a photon of frequency nu is: | h nu | h / nu | nu / h | h nu^2 | h is Planck's constant.
+1 eV equals: | 1.6 x 10^-19 J | 1 J | 9.1 x 10^-31 J | 6.63 x 10^-34 J | It is the energy gained by an electron through 1 V.
+The de Broglie wavelength of a particle is inversely proportional to its: | Momentum | Charge | Size | Colour | lambda = h/p.
+The wave nature of electrons was confirmed by the: | Davisson-Germer experiment | Millikan oil drop | Rutherford scattering | Photoelectric effect | Electrons diffracted from a nickel crystal.
+Photons have zero: | Rest mass | Energy | Momentum | Speed | They always move at the speed of light.
+# Atoms
+In Rutherford's experiment, alpha particles were scattered by: | Gold foil | Aluminium foil | Silver plate | Mica sheet | A few bounced back.
+The size of a nucleus is of the order of: | 10^-15 m | 10^-10 m | 10^-5 m | 10^-20 m | An atom is about 10^-10 m.
+Bohr's model says angular momentum of an electron is: | An integral multiple of h / 2 pi | Zero | Continuous | Infinite | This is quantisation of angular momentum.
+Energy of the electron in the nth orbit of hydrogen is proportional to: | -1/n^2 | n^2 | 1/n | n | E_n = -13.6/n^2 eV.
+Ionisation energy of a hydrogen atom in ground state is: | 13.6 eV | 3.4 eV | 10.2 eV | 1.5 eV | It is needed to remove the electron completely.
+Energy needed to excite hydrogen from n = 1 to n = 2 is: | 10.2 eV | 13.6 eV | 3.4 eV | 1.9 eV | -3.4 - (-13.6).
+The Lyman series lines end on: | n = 1 | n = 2 | n = 3 | n = 4 | They lie in the ultraviolet.
+The Balmer series lines end on: | n = 2 | n = 1 | n = 3 | n = 5 | Some lie in visible light.
+Radius of the nth Bohr orbit is proportional to: | n^2 | n | 1/n | 1/n^2 | r_n = 0.53 n^2 angstrom.
+Bohr's model fails for: | Atoms with more than one electron | Hydrogen | He+ ion | Li2+ ion | It works for hydrogen-like atoms only.
+# Nuclei
+The nucleus contains: | Protons and neutrons | Electrons and protons | Only protons | Electrons and neutrons | Together called nucleons.
+The radius of a nucleus is proportional to: | A^(1/3) | A | A^2 | A^(1/2) | R = R0 A^(1/3).
+Nuclear density is: | Nearly the same for all nuclei | Proportional to A | Proportional to Z | Zero | It is about 2.3 x 10^17 kg/m^3.
+The mass of a nucleus is less than the sum of masses of its nucleons. The difference is the: | Mass defect | Binding energy | Atomic mass | Packing fraction | It equals binding energy / c^2.
+1 amu is equivalent to about: | 931.5 MeV | 1 MeV | 13.6 eV | 9.1 MeV | E = mc^2.
+Nuclear forces are: | Strong, short-range and charge-independent | Long range | Weak | Only between protons | They act within a few femtometres.
+Binding energy per nucleon is maximum for nuclei near: | Iron (A about 56) | Hydrogen | Uranium | Helium-3 | These nuclei are most stable.
+Fission of a heavy nucleus releases energy because: | Products have higher binding energy per nucleon | Mass increases | Neutrons are absorbed | Protons are created | Mass is converted to energy.
+The energy of the Sun comes from: | Nuclear fusion | Nuclear fission | Chemical burning | Radioactive decay only | Hydrogen fuses into helium.
+In a nuclear reactor, the moderator is used to: | Slow down neutrons | Absorb all neutrons | Speed up neutrons | Cool the reactor | Heavy water and graphite are moderators.
+Control rods in a reactor are made of: | Cadmium or boron | Uranium | Graphite | Lead | They absorb neutrons.
+# Semiconductor Electronics
+At absolute zero, a pure semiconductor behaves as an: | Insulator | Conductor | Superconductor | Metal | No electrons are in the conduction band.
+Silicon and germanium are: | Elemental semiconductors | Compound semiconductors | Metals | Insulators | GaAs is a compound semiconductor.
+In an intrinsic semiconductor, the number of electrons is: | Equal to the number of holes | More than holes | Less than holes | Zero | n_e = n_h = n_i.
+Doping silicon with phosphorus makes it: | n-type | p-type | Intrinsic | An insulator | Phosphorus is pentavalent.
+Doping silicon with boron makes it: | p-type | n-type | Intrinsic | A metal | Boron is trivalent.
+Minority carriers in an n-type semiconductor are: | Holes | Electrons | Protons | Ions | Electrons are majority carriers.
+The depletion region of a p-n junction contains: | Immobile ions | Free electrons | Free holes | No charges | Mobile carriers have diffused away.
+In forward bias, the depletion layer: | Becomes thinner | Becomes wider | Disappears permanently | Stays the same | Current flows easily.
+The barrier potential of a silicon diode is about: | 0.7 V | 0.3 V | 7 V | 0.07 V | For germanium it is about 0.3 V.
+A diode is used as a: | Rectifier | Amplifier only | Transformer | Capacitor | It allows current in one direction.
+The output frequency of a full-wave rectifier for 50 Hz input is: | 100 Hz | 50 Hz | 25 Hz | 200 Hz | Both halves of the AC cycle are used.
+The output frequency of a half-wave rectifier for 50 Hz input is: | 50 Hz | 100 Hz | 25 Hz | 0 Hz | Only one half cycle passes.

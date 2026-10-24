@@ -53,19 +53,31 @@ BASE=http://localhost:3000 ADMIN_KEY=... npm test
 
 Authentication messages are charged per message by Meta (a few paise each in India).
 
-## Daily puzzles
+## Daily puzzles (a full year)
 
-`puzzles/content.js` holds all words, clues, pathways and MCQs (review this before going live).
-`puzzles/generate.js` builds `puzzles/puzzles.json`: Zip paths and Queens boards are generated with a fixed seed,
-and every Queens board is checked to have exactly one solution.
+There is one new set of five puzzles every day for 365 days (24 Oct 2026 to 23 Oct 2027, #2 to #366).
+Nothing repeats within the year: 365 BioWords, 365 Pinpoint sets (Bio, Chem and Phy chapters), 365 Zip pathways,
+365 Queens boards and 1,825 Daily 5 MCQs (3 Bio, 1 Chem, 1 Phy each day). After the year the cycle starts again,
+and the puzzle number keeps counting up.
+
+- `puzzles/content.js`: the first 30 days (already live, kept unchanged).
+- `puzzles/year/*.txt`: content for days 31 to 365, one item per line, easy to edit:
+  - `bioword.txt`: `WORD | hint | fact`
+  - `pinpoint.txt`: `Subject | NCERT chapter | clue1; clue2; clue3; clue4; clue5` (hardest clue first)
+  - `zip.txt`: `Title | step 1 > step 2 > ...`
+  - `mcq_*.txt`: `question | correct answer | wrong 1 | wrong 2 | wrong 3 | explanation` (options are shuffled automatically)
+- `puzzles/generate.js` builds `puzzles/puzzles.json`. Zip paths and Queens boards are generated with a fixed seed;
+  every Queens board has exactly one solution. Boards grow through the week: Zip 5x5 (Mon, Tue), 6x6 (Wed to Fri), 7x7 (weekend);
+  Queens 6x6, 7x7 and 8x8 on the same pattern. MCQs and Pinpoint sets rotate across chapters so neighbouring days differ.
+- `puzzles/review.js` writes a review page with every puzzle and its answer.
 
 ```bash
-node puzzles/generate.js 2026-10-24 30   # start date, number of days
+node puzzles/generate.js          # rebuild the year after editing content
+node puzzles/review.js review.html
 ```
 
-Current set: 24 Oct – 22 Nov 2026 (#2–#31). If the set runs out the server recycles old days and logs a warning.
-To add more days, add content to `content.js` and run the generator with a new start date (it overwrites `puzzles.json`,
-so include all days you still need).
+To fix a wrong answer, edit the line in the `year/` file and regenerate. Avoid editing a day that is already live or past:
+players' saved results are checked against that day's puzzle.
 
 ## Admin
 

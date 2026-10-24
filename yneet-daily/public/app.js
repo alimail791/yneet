@@ -60,7 +60,7 @@ function home() {
   GAMES.forEach(g => {
     const d = resultOf(g.id);
     const c = $(`<div class="gamecard"><div class="gicon" style="background:${g.color}">${g.icon}</div>
-      <div class="ginfo"><h2>${g.name}<small>#${P.no}</small></h2><p>${d ? 'Done · ' + esc(d.line) : g.sub}</p></div>
+      <div class="ginfo"><h2>${g.name}<small>#${P.no}</small></h2><p>${d ? 'Done · ' + esc(d.line) : (g.id === 'bioword' ? `Guess the ${P.bioword.length}-letter biology term` : g.sub)}</p></div>
       <button class="solve ${d ? 'done' : ''}" style="background:${g.color}">${d ? 'Share' : 'Solve'}</button></div>`);
     c.querySelector('button').onclick = () => d ? openSheet(g.id) : openGame(g.id);
     list.append(c);
@@ -115,8 +115,8 @@ async function submitAll() { for (const g of GAMES) { try { await submit(g.id); 
 /* ---------- BIOWORD ---------- */
 function bioword(st) {
   const L = P.bioword.length;
-  st.append($(`<p class="how">Hint: ${esc(P.bioword.hint)}. 6 tries. 🟩 right place · 🟨 wrong place.</p>`));
-  const grid = $(`<div class="wgrid"></div>`);
+  st.append($(`<p class="how">${L} letters. Hint: ${esc(P.bioword.hint)}. 6 tries. 🟩 right place · 🟨 wrong place.</p>`));
+  const grid = $(`<div class="wgrid ${L >= 7 ? 'long' : ''}" style="width:min(100%, ${L * 60}px)"></div>`);
   for (let r = 0; r < 6; r++) { const row = $(`<div class="wrow" style="grid-template-columns:repeat(${L},1fr)"></div>`); for (let c = 0; c < L; c++) row.append($(`<div class="tile"></div>`)); grid.append(row); }
   const toast = $(`<div class="toast"></div>`);
   st.append(grid, toast);
@@ -175,7 +175,8 @@ function bioword(st) {
 /* ---------- PINPOINT ---------- */
 function pinpoint(st) {
   const T = P.pinpoint.totalClues;
-  st.append($(`<p class="how">Which NCERT chapter links these clues? A wrong guess reveals the next clue. ${T} guesses.</p>`));
+  const SUBJ = { Bio: 'Biology', Chem: 'Chemistry', Phy: 'Physics' }[P.pinpoint.subject] || 'Biology';
+  st.append($(`<p class="how">Today's subject: <b>${SUBJ}</b>. Which NCERT chapter links these clues? A wrong guess reveals the next clue. ${T} guesses.</p>`));
   const cl = $(`<div class="clues"></div>`);
   for (let i = 0; i < T; i++) cl.append($(`<div class="clue ${i === 0 ? 'on' : ''}"><b>${i + 1}</b>${i === 0 ? esc(P.pinpoint.firstClue) : 'Locked'}</div>`));
   const op = $(`<div class="opts"></div>`), toast = $(`<div class="toast"></div>`);

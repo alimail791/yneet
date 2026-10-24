@@ -1,0 +1,378 @@
+# BioWord answers for the full year. Format: WORD | hint | fact. 4 to 7 letters, letters only.
+XYLEM | A plant tissue that carries water | Xylem carries water and minerals upward from the roots.
+GENE | Unit of heredity | The term gene was coined by Johannsen in 1909.
+CELL | Basic structural unit of life | Rudolf Virchow said all cells arise from pre-existing cells.
+AXON | Neuron process carrying impulses away from the cell body | Myelinated axons conduct faster by saltatory conduction.
+LENS | Focuses light on the retina | The lens is held by suspensory ligaments attached to the ciliary body.
+IRIS | Coloured part of the eye | The iris controls the size of the pupil.
+BILE | Fluid that emulsifies fats | Bile is made in the liver and stored in the gall bladder.
+PITH | Central parenchyma of a dicot stem | Monocot stems have no distinct pith.
+LOBE | The right lung has three of these | The left lung has two lobes, leaving room for the heart.
+DUCT | Tube that carries a gland's secretion | Exocrine glands have ducts; endocrine glands do not.
+NODE | Point on a stem where leaves arise | The part of a stem between two nodes is the internode.
+CORK | Dead, suberised outer bark tissue | Cork is also called phellem and is made by the cork cambium.
+BARK | All tissues outside the vascular cambium | Bark includes the periderm and secondary phloem.
+CONE | Photoreceptor for colour vision | The human eye has three types of cones.
+RODS | Photoreceptors for dim-light vision | Rods contain the purple pigment rhodopsin.
+OVUM | The female gamete | The human ovum is released at the secondary oocyte stage.
+YOLK | Food reserve inside an egg | Human eggs have almost no yolk.
+MOSS | Bryophyte such as Funaria | In mosses the dominant stage is the haploid gametophyte.
+FERN | Pteridophyte such as Dryopteris | Pteridophytes were the first land plants with vascular tissue.
+KELP | Large brown seaweed | Laminaria is a kelp; brown algae store laminarin and mannitol.
+UREA | Main nitrogenous waste in humans | Urea is made in the liver through the ornithine cycle.
+VEIN | Vessel that carries blood to the heart | Veins have valves that stop blood flowing backwards.
+GOUT | Joint inflammation due to uric acid crystals | Gout is caused by uric acid crystals building up in joints.
+ULNA | Forearm bone on the little finger side | The radius and ulna form the forearm.
+AXIS | Second cervical vertebra | The atlas rotates on the axis when you shake your head.
+PONS | Hindbrain part linking the medulla and midbrain | The pons has a pneumotaxic centre that helps regulate breathing.
+ZINC | Micronutrient needed to make auxin | Zinc activates carboxylases and is needed for auxin synthesis.
+IRON | Element at the centre of haem | Iron is needed by plants for chlorophyll formation, though it is not part of chlorophyll.
+SERE | A sequence of communities in succession | Each stage in a sere is called a seral stage.
+DODO | Extinct flightless bird of Mauritius | The dodo is a famous example of recent extinction.
+CORM | Underground stem of Colocasia | A corm is a swollen, vertical underground stem.
+BULB | Underground stem of onion | In onion, the fleshy leaves of the bulb store food.
+POME | False fruit of apple | In apple the fleshy edible part develops from the thalamus.
+PEPO | Fruit type of cucumber | Pepo is a berry with a hard rind, found in the gourd family.
+PILI | Short hair-like bacterial surface structures | Pili help bacteria attach to surfaces and to each other.
+APIS | Genus of the honey bee | Honey bees are insects in phylum Arthropoda.
+PILA | Genus of the apple snail | Pila is a mollusc with a radula for feeding.
+FROG | Amphibian Rana tigrina | Frogs show external fertilisation and indirect development.
+TOAD | Amphibian Bufo | Toads, like frogs, are anurans.
+HYLA | Genus of the tree frog | Hyla is an amphibian listed in NCERT examples.
+TUBER | Swollen stem tip of potato | Potato eyes are nodes that bear buds.
+CALYX | All the sepals of a flower | The calyx protects the flower in the bud stage.
+PETAL | Usually coloured part of the corolla | Bright petals attract insects for pollination.
+TEPAL | Sepal and petal that look alike | Tepals are seen in lily, where the perianth is not split into calyx and corolla.
+BRACT | Reduced leaf at the base of a flower stalk | Flowers with bracts are called bracteate.
+SPIKE | Racemose inflorescence with sessile flowers | Spike is seen in Achyranthes.
+UMBEL | Inflorescence in coriander | In an umbel all flower stalks arise from one point.
+BERRY | Fleshy fruit of tomato | Tomato has axile placentation and a berry fruit.
+DRUPE | Fruit of mango and coconut | A drupe has a hard stony endocarp.
+HILUM | Scar on a seed coat | The hilum marks where the seed was attached to the fruit.
+STYLE | Stalk connecting the stigma to the ovary | The pollen tube grows down through the style.
+CUTIN | Waxy material in the cuticle | Cuticle on the leaf surface reduces water loss.
+HUMUS | Dark organic matter in soil | Humus is formed by humification and breaks down very slowly.
+GRANA | Stacks of thylakoids in a chloroplast | The light reaction occurs on thylakoid membranes.
+GONAD | Organ that makes gametes | Testes and ovaries are the gonads.
+HEART | Muscular pump of the circulatory system | The human heart is four-chambered.
+AORTA | Largest artery in the body | The aorta carries oxygenated blood from the left ventricle.
+VALVE | Flap that keeps blood flowing one way | The tricuspid valve lies between the right atrium and right ventricle.
+LYMPH | Tissue fluid in lymphatic vessels | Lymph carries absorbed fats from the intestine.
+PULSE | Throb of an artery with each heartbeat | Pulse rate equals the heart rate.
+SKULL | Bony case of the brain | The human skull has 22 bones: 8 cranial and 14 facial.
+TIBIA | Shin bone | The tibia and fibula form the lower leg.
+ATLAS | First cervical vertebra | The atlas lets you nod your head.
+PUPIL | Opening in the centre of the iris | The pupil gets smaller in bright light.
+INCUS | Anvil-shaped ear ossicle | The incus lies between the malleus and stapes.
+PINNA | Visible outer ear | The pinna collects sound waves.
+VILLI | Finger-like folds of the small intestine | Villi greatly increase the surface for absorption.
+COLON | Major part of the large intestine | The colon absorbs water and some minerals.
+MOLAR | Grinding tooth at the back | Adult humans have 12 molars, including wisdom teeth.
+LIVER | Largest gland of the body | The liver makes bile and stores glycogen.
+LOCUS | Position of a gene on a chromosome | Alleles occupy the same locus on homologous chromosomes.
+TRAIT | Characteristic controlled by genes | Mendel studied seven pairs of contrasting traits in pea.
+ORDER | Taxonomic rank between class and family | Primata is the order that includes humans.
+CLASS | Taxonomic rank between phylum and order | Mammalia is the class of humans.
+PRION | Infectious misfolded protein | Prions cause mad cow disease (BSE) in cattle.
+YEAST | Unicellular fungus used in baking | Yeast reproduces by budding and ferments sugar to ethanol.
+MUCOR | Pin mould, a phycomycete | Mucor makes non-motile asexual spores in sporangia.
+CHARA | Green alga with whorled branches | Chara is often called a stonewort.
+FUCUS | Brown alga with air bladders | Fucus is a common example of Phaeophyceae.
+CYCAS | Gymnosperm with coralloid roots | Coralloid roots of Cycas have nitrogen-fixing cyanobacteria.
+PINUS | Gymnosperm whose roots have mycorrhiza | Pinus roots form a fungal partnership called mycorrhiza.
+HYDRA | Freshwater cnidarian with tentacles | Hydra reproduces asexually by budding.
+LEECH | Blood-sucking annelid Hirudinaria | Leeches secrete hirudin, an anticoagulant.
+SEPIA | Cuttlefish, a mollusc | Despite its common name, the cuttlefish is not a fish.
+SHARK | Cartilaginous fish such as Scoliodon | Cartilaginous fish have a notochord that persists throughout life.
+CATLA | Common Indian freshwater bony fish | Catla is a carp widely farmed in India.
+COBRA | Poisonous snake Naja | Snakes are reptiles with dry, scaly skin.
+VIPER | Poisonous snake Vipera | Vipers are reptiles in class Reptilia.
+WHALE | Largest aquatic mammal, Balaenoptera | Whales breathe air through lungs.
+SETAE | Bristles that help earthworms move | Earthworms have setae in each segment except the first, last and clitellar ones.
+GILLS | Respiratory organs of fish | Gills take up oxygen dissolved in water.
+BORON | Micronutrient for pollen germination | Boron deficiency causes death of stem and root tips.
+SIEVE | Phloem tube elements | Sieve tubes have no nucleus at maturity.
+FIBRE | Long, thick-walled sclerenchyma cell | Jute and hemp fibres are sclerenchyma.
+GOLGI | Organelle that packages proteins | The Golgi apparatus was first described by Camillo Golgi in 1898.
+CULEX | Mosquito that spreads filariasis | Culex transmits Wuchereria worms.
+AEDES | Mosquito that spreads dengue and chikungunya | Aedes mosquitoes bite mainly in the daytime.
+SEMEN | Fluid with sperm and seminal plasma | Seminal plasma comes from the seminal vesicles, prostate and bulbourethral glands.
+TODDY | Traditional drink from fermented palm sap | Toddy is made by fermentation by microbes.
+THORN | Modified axillary bud in Bougainvillea | Thorns protect plants from grazing animals.
+SPINE | Modified leaf in cactus | Leaf spines reduce water loss in desert plants.
+CHEESE | Dairy product ripened by microbes | Roquefort cheese is ripened by a fungus.
+GENUS | Rank that groups closely related species | Homo is the genus of humans.
+CODON | Three bases on mRNA | AUG is the start codon and codes for methionine.
+MATRIX | Inner space of the mitochondrion | The Krebs cycle runs in the mitochondrial matrix.
+STROMA | Fluid inside a chloroplast | The Calvin cycle runs in the stroma.
+TETRAD | Four chromatids of a bivalent | Tetrads form during prophase I of meiosis.
+GAMETE | Haploid reproductive cell | Gametes fuse to form a diploid zygote.
+ZYGOTE | Cell formed by fusion of gametes | The zygote divides by mitosis to form an embryo.
+MORULA | Embryo stage with 8 to 16 cells | The morula develops into the blastocyst.
+AMNION | Fluid-filled membrane around the embryo | Amniotic fluid cushions the foetus.
+UTERUS | Organ where the foetus develops | The uterus has three layers: perimetrium, myometrium and endometrium.
+CERVIX | Narrow lower end of the uterus | The cervical canal opens into the vagina.
+TESTIS | Male gonad | Each testis has about 250 compartments called testicular lobules.
+OOCYTE | Immature egg cell | A primary oocyte stays in prophase I until puberty.
+THYMUS | Lymphoid organ that shrinks with age | T-lymphocytes mature in the thymus.
+PINEAL | Gland that secretes melatonin | The pineal gland helps control the day-night rhythm.
+KIDNEY | Bean-shaped excretory organ | Each kidney has about one million nephrons.
+URETER | Tube from kidney to bladder | Urine moves down the ureters by peristalsis.
+ARTERY | Vessel that carries blood away from the heart | Arteries have thick, elastic walls.
+SEPTUM | Wall dividing the heart chambers | The interventricular septum separates the two ventricles.
+PLASMA | Fluid part of blood | Plasma is about 90 to 92 percent water.
+FIBRIN | Threads that form a blood clot | Thrombin converts fibrinogen into fibrin.
+ANGINA | Chest pain from too little oxygen to heart muscle | Angina is common in middle-aged and elderly people.
+LARYNX | Voice box | The larynx is a cartilaginous box that produces sound.
+PLEURA | Double membrane around the lungs | Pleural fluid reduces friction on the lung surface.
+ASTHMA | Wheezing due to inflamed bronchi | Asthma causes difficulty in breathing.
+GOITRE | Swelling of the thyroid gland | Goitre is caused by a lack of iodine in the diet.
+SCURVY | Disease due to lack of vitamin C | Scurvy causes bleeding gums.
+TETANY | Muscle spasms due to low blood calcium | Tetany results from hyposecretion of parathyroid hormone.
+CANCER | Uncontrolled cell division | Cancer cells lose contact inhibition.
+TUMOUR | Mass of abnormally growing cells | Malignant tumours can spread by metastasis.
+PELVIS | Hip girdle | The pelvic girdle is formed by two coxal bones.
+RADIUS | Forearm bone on the thumb side | The radius and ulna join the humerus at the elbow.
+FIBULA | Thin bone of the lower leg | The fibula lies beside the tibia.
+MYOSIN | Protein of thick filaments in muscle | Myosin heads have ATPase activity.
+TENDON | Connects muscle to bone | Tendons are made of dense regular connective tissue.
+NEURON | Nerve cell | Neurons cannot usually divide after maturity.
+RETINA | Light-sensitive inner layer of the eye | The retina has rods, cones and ganglion cells.
+CORNEA | Transparent front of the eye | The cornea has no blood vessels.
+SCLERA | White of the eye | The sclera is made of dense connective tissue.
+STAPES | Smallest bone in the body | The stapes is attached to the oval window of the cochlea.
+SALIVA | Secretion that starts starch digestion | Saliva contains salivary amylase and lysozyme.
+PEPSIN | Protein-digesting enzyme of the stomach | Pepsin works best in acidic conditions.
+LIPASE | Fat-digesting enzyme | Pancreatic lipase breaks fats into fatty acids and glycerol.
+RENNIN | Milk-curdling enzyme in infants | Rennin acts on casein, the milk protein.
+CAECUM | Blind pouch where the vermiform appendix arises | In humans the caecum hosts some symbiotic microbes.
+RECTUM | Last part of the large intestine | The rectum stores faeces before egestion.
+TONGUE | Muscular organ with taste buds | The tongue is attached to the floor of the mouth by the frenulum.
+CANINE | Pointed tooth for tearing | Adult humans have four canines.
+ENAMEL | Hardest substance in the human body | Enamel covers the crown of a tooth.
+SPLEEN | Graveyard of red blood cells | The spleen is the largest lymphoid organ.
+STARCH | Storage polysaccharide of plants | Starch gives a blue-black colour with iodine.
+INULIN | Fructose polymer used to test kidney function | Inulin is a storage polysaccharide in dahlia roots.
+CHITIN | Polysaccharide in insect exoskeletons | Fungal cell walls are also made of chitin.
+ENZYME | Biological catalyst | Most enzymes are proteins.
+PURINE | Adenine and guanine belong to this group | Purines have a double-ring structure.
+URACIL | Pyrimidine base found only in RNA | Uracil pairs with adenine.
+INTRON | Non-coding sequence removed by splicing | Introns are found in eukaryotic genes.
+OPERON | Cluster of genes under one promoter | The lac operon was described by Jacob and Monod.
+LIGASE | Molecular glue of DNA | DNA ligase joins DNA fragments.
+VECTOR | DNA carrier used in cloning | pBR322 is a commonly used cloning vector.
+ALLELE | Alternative form of a gene | A diploid cell has two alleles for each gene.
+HYBRID | Offspring of genetically different parents | F1 hybrids show dominant traits in Mendel's crosses.
+FOSSIL | Remains of ancient organisms in rocks | The age of fossils is found by radioactive dating.
+PHYLUM | Rank above class in animals | Chordata is the phylum of humans.
+FAMILY | Rank between order and genus | Felidae is the cat family.
+MONERA | Kingdom of bacteria | Monera are the only prokaryotic kingdom.
+VIROID | Free RNA that infects plants | Viroids were discovered by T.O. Diener; they cause potato spindle tuber disease.
+LICHEN | Partnership of alga and fungus | Lichens are good indicators of air pollution.
+VOLVOX | Colonial green alga | Volvox forms hollow spherical colonies.
+CEDRUS | Deodar, a gymnosperm | Cedrus deodara is a tall Himalayan conifer.
+GINKGO | Maidenhair tree, a living fossil | Ginkgo biloba is a gymnosperm.
+AZOLLA | Water fern used as biofertiliser | Azolla hosts the cyanobacterium Anabaena.
+NOSTOC | Cyanobacterium that fixes nitrogen | Nostoc fixes nitrogen in specialised heterocysts.
+AMOEBA | Protozoan that moves by pseudopodia | Amoeba reproduces by binary fission.
+OBELIA | Cnidarian showing alternation of generations | Obelia has polyp and medusa forms.
+TAENIA | Tapeworm | Tapeworms are endoparasites of the intestine.
+NEREIS | Marine annelid with parapodia | Nereis is dioecious, with separate sexes.
+BOMBYX | Silkworm | Silk comes from the cocoon of Bombyx mori.
+TURTLE | Reptile Chelone | Turtles are reptiles with a bony shell.
+LIZARD | Reptile Calotes | Calotes is the garden lizard.
+PIGEON | Bird Columba | Birds have pneumatic, air-filled bones.
+MANTLE | Soft skin fold in molluscs | The mantle secretes the shell.
+RADULA | Rasping tongue of molluscs | The radula is used to scrape food.
+COELOM | Body cavity lined by mesoderm | Annelids, arthropods and chordates are coelomates.
+SCALES | Body covering of fish and reptiles | Reptiles shed their scales as skin casts.
+TURGOR | Pressure of cell contents on the wall | Turgor keeps herbaceous plants upright.
+NODULE | Root swelling of legumes | Root nodules contain Rhizobium bacteria.
+COPPER | Micronutrient in plastocyanin | Copper is needed for many redox enzymes.
+CARBON | Main element of all organic molecules | Carbon makes up about half of a plant's dry weight.
+OXYGEN | Gas released when water splits in photosynthesis | The oxygen released in photosynthesis comes from water.
+CLIMAX | Final stable community of succession | The climax community is in balance with its environment.
+DETRITUS | Dead plant and animal remains | Decomposers break down detritus.
+QUAGGA | Extinct zebra relative from Africa | The quagga is an example of recent extinction.
+BIOGAS | Fuel gas made mostly of methane | Biogas plants use cattle dung.
+SEWAGE | Municipal waste water | Secondary sewage treatment uses microbes.
+SLUDGE | Settled mass in sewage treatment | Activated sludge is pumped into anaerobic digesters.
+STATIN | Cholesterol-lowering drug from Monascus | Statins inhibit the enzyme that makes cholesterol.
+GLOBIN | Protein part of haemoglobin | Haemoglobin has four globin chains.
+FILARIA | Disease caused by Wuchereria | Filariasis causes swelling of the limbs (elephantiasis).
+BENIGN | Tumour that stays in one place | Benign tumours do not spread to other organs.
+BIOPSY | Removing tissue to test for cancer | Biopsy helps confirm a cancer diagnosis.
+FOETUS | Unborn baby after organs form | By the end of the first trimester, most major organ systems are formed.
+MENSES | Monthly flow of the endometrium | Menses lasts about 3 to 5 days.
+ANTRUM | Fluid-filled cavity of a tertiary follicle | The antrum forms in tertiary follicles of the ovary.
+TENDRIL | Thin coiling structure for climbing | Tendrils of cucumber come from axillary buds.
+RUNNER | Creeping stem of grass | Runners root at the nodes.
+STOLON | Arching branch in mint and jasmine | Stolons touch the ground and form new plants.
+OFFSET | Short runner in Pistia and Eichhornia | Offsets are found in aquatic plants.
+SUCKER | Basal underground branch in banana and pineapple | Suckers grow obliquely up to form new plants; chrysanthemum also has them.
+RHIZOME | Underground stem of ginger | Rhizomes have nodes, internodes and scale leaves.
+STIPULE | Leaf-like outgrowth at the leaf base | Pea has large leafy stipules.
+PETIOLE | Leaf stalk | The petiole holds the lamina towards light.
+LAMINA | Flat green blade of a leaf | The lamina has veins and veinlets.
+MIDRIB | Main vein of a leaf | The midrib runs along the middle of the lamina.
+RACEME | Inflorescence where the main axis keeps growing | Raceme shows acropetal arrangement of flowers.
+SPADIX | Spike with a fleshy axis inside a spathe | Spadix is seen in banana and maize.
+CATKIN | Hanging spike of unisexual flowers | Catkin is seen in mulberry.
+PANICLE | Branched raceme as in rice | A panicle is a compound raceme.
+COROLLA | All the petals of a flower | The corolla attracts pollinators.
+LOCULE | Chamber inside an ovary | Tomato ovary has many locules.
+POLLEN | Male gametophyte of seed plants | Pollen grains are made in the anther.
+NECTAR | Sweet fluid that attracts pollinators | Nectar is made by nectaries in the flower.
+LEGUME | Pod fruit of pea | A legume splits along two sides.
+SILIQUA | Fruit of mustard | A siliqua has a false septum called the replum.
+CAPSULE | Dry fruit of cotton | Capsules split open to release seeds.
+ACHENE | Single-seeded dry fruit | Each tiny seed on a strawberry is actually an achene.
+SOROSIS | Composite fruit of jackfruit | Pineapple and mulberry are also sorosis.
+SYCONUS | Composite fruit of fig | A syconus forms from a hollow receptacle.
+SAPWOOD | Light outer secondary xylem | Sapwood conducts water and minerals.
+DURAMEN | Heartwood | Duramen is dark and resistant to microbes and insects.
+HISTONE | Basic proteins that DNA wraps around | Histones are rich in lysine and arginine.
+CYTOSOL | Fluid part of the cytoplasm | Glycolysis happens in the cytosol.
+VESICLE | Small membrane sac | Vesicles carry proteins from the ER to the Golgi.
+ANTHER | Pollen-bearing part of a stamen | A typical anther is bilobed and tetrasporangiate.
+STAMEN | Male reproductive part of a flower | A stamen has a filament and an anther.
+PISTIL | Female reproductive part of a flower | A pistil has stigma, style and ovary.
+STIGMA | Landing platform for pollen | The stigma recognises compatible pollen.
+CARPEL | Unit of the gynoecium | Many fused carpels form a syncarpous pistil.
+EMBRYO | Young organism developing from the zygote | A dicot embryo has two cotyledons.
+RADICLE | Embryonic root | The radicle is the first part to come out of a germinating seed.
+PLUMULE | Embryonic shoot | In grasses the plumule is covered by the coleoptile.
+CAMBIUM | Lateral meristem making secondary tissues | The vascular cambium makes secondary xylem inwards.
+CORTEX | Layer between epidermis and stele | The root cortex stores food.
+TRACHEA | Windpipe | The trachea is held open by C-shaped cartilage rings.
+VESSEL | Long tube of xylem in angiosperms | Gymnosperms usually lack vessels.
+LIGNIN | Polymer that hardens wood | Lignin is laid down in secondary walls.
+PECTIN | Main component of the middle lamella | Calcium pectate cements neighbouring plant cells together.
+SUBERIN | Waxy substance in cork and Casparian strips | Suberin makes cell walls waterproof.
+PLASTID | Organelle such as a chloroplast | Leucoplasts are colourless plastids that store food.
+VACUOLE | Membrane-bound sac in the cytoplasm | The vacuole membrane is called the tonoplast.
+NUCLEUS | Control centre of the cell | Robert Brown discovered the nucleus in 1831.
+CRISTAE | Folds of the inner mitochondrial membrane | Cristae increase the surface area for ATP synthesis.
+SPINDLE | Fibres that move chromosomes | Spindle fibres attach to kinetochores.
+CHIASMA | Point where crossing over is seen | Chiasmata are visible in diplotene.
+MEIOSIS | Reduction division | Meiosis produces four haploid cells.
+MITOSIS | Equational division | Mitosis keeps the chromosome number the same.
+CHORION | Outer membrane that forms the placenta | Chorionic villi help in exchange with maternal blood.
+SCROTUM | Pouch that keeps testes cooler | Testes are kept about 2 to 2.5 degrees C below body temperature.
+RELAXIN | Hormone of late pregnancy | Relaxin is secreted by the ovary in late pregnancy.
+INSULIN | Hormone that lowers blood glucose | Eli Lilly made human insulin by recombinant DNA technology in 1983.
+THYROID | Butterfly-shaped gland in the neck | The thyroid makes thyroxine and thyrocalcitonin.
+ADRENAL | Glands on top of the kidneys | The adrenal medulla secretes adrenaline.
+URETHRA | Tube that carries urine out of the body | In males the urethra also carries semen.
+NEPHRON | Functional unit of the kidney | A nephron has a glomerulus and a renal tubule.
+AMMONIA | Most toxic nitrogenous waste | Most bony fishes excrete ammonia.
+BLADDER | Organ that stores urine | Micturition is the reflex emptying of the bladder.
+SYSTOLE | Contraction phase of the heart | Ventricular systole pushes blood into the arteries.
+BRONCHI | Branches of the trachea | Bronchi divide into smaller bronchioles.
+ALVEOLI | Air sacs of the lungs | Alveoli are the main sites of gas exchange.
+PHARYNX | Common passage for food and air | The epiglottis stops food from entering the windpipe.
+RICKETS | Childhood bone disease from lack of vitamin D | Rickets causes soft, bent bones.
+ANAEMIA | Shortage of haemoglobin or RBCs | Iron deficiency is a common cause of anaemia.
+MALARIA | Disease caused by Plasmodium | Plasmodium falciparum causes the most serious malaria.
+TYPHOID | Disease caused by Salmonella typhi | Typhoid can cause intestinal perforation.
+CHOLERA | Disease that causes severe watery diarrhoea | Cholera is caused by Vibrio cholerae.
+TETANUS | Disease causing muscle rigidity | Anti-tetanus serum contains preformed antibodies.
+VACCINE | Preparation that gives active immunity | Edward Jenner developed the first smallpox vaccine.
+ANTIGEN | Substance that triggers antibody production | Antibodies bind antigens very specifically.
+ALLERGY | Exaggerated immune response | IgE antibodies are made in allergic reactions.
+COCAINE | Drug from Erythroxylum coca | Cocaine interferes with dopamine transport.
+ALCOHOL | Drink that damages the liver over time | Heavy drinking can cause cirrhosis.
+TOBACCO | Plant whose leaves contain nicotine | Nicotine stimulates release of adrenaline.
+STERNUM | Breast bone | True ribs join the sternum directly.
+PATELLA | Kneecap | The patella is a sesamoid bone.
+SCAPULA | Shoulder blade | The scapula has a depression called the glenoid cavity.
+HUMERUS | Upper arm bone | The humerus forms the shoulder joint with the scapula.
+CARPALS | Wrist bones | There are 8 carpals in each wrist.
+TARSALS | Ankle bones | There are 7 tarsals in each ankle.
+SYNAPSE | Junction between two neurons | Neurotransmitters cross the synaptic cleft.
+MEDULLA | Brain part controlling breathing | The medulla oblongata also controls heartbeat.
+CHOROID | Vascular middle layer of the eye | The choroid is bluish and rich in blood vessels.
+COCHLEA | Coiled part of the inner ear | The organ of Corti in the cochlea is for hearing.
+MALLEUS | Hammer-shaped ear ossicle | The malleus is attached to the tympanic membrane.
+AMYLASE | Enzyme that digests starch | Salivary amylase digests about 30 percent of starch in the mouth.
+TRYPSIN | Pancreatic protease | Enterokinase activates trypsinogen into trypsin.
+MALTASE | Enzyme that splits maltose | Maltose is broken into two glucose units.
+SUCRASE | Enzyme that splits sucrose | Sucrose gives glucose and fructose.
+LACTASE | Enzyme that splits milk sugar | Lactose gives glucose and galactose.
+INCISOR | Cutting tooth at the front | Adults have eight incisors.
+DENTINE | Main hard tissue of a tooth | Dentine lies under the enamel.
+GASTRIN | Hormone that stimulates gastric juice | Gastrin acts on the gastric glands.
+GLUCOSE | Main blood sugar | Glucose is an aldohexose.
+SUCROSE | Table sugar | Sucrose is a non-reducing sugar.
+MALTOSE | Malt sugar | Maltose has two glucose units joined.
+LACTOSE | Milk sugar | Lactose is made of glucose and galactose.
+PROTEIN | Polymer of amino acids | RuBisCO is said to be the most abundant protein in the biosphere.
+STEROID | Lipid class that includes cholesterol | Steroid hormones pass through cell membranes.
+ADENINE | Purine that pairs with thymine | Adenine is also part of ATP.
+GUANINE | Purine that pairs with cytosine | G-C pairs have three hydrogen bonds.
+THYMINE | Pyrimidine found only in DNA | Thymine is 5-methyl uracil.
+PRIMASE | Enzyme that makes RNA primers | Primers are needed for DNA polymerase to start.
+PLASMID | Small circular extra DNA in bacteria | Plasmids are used as cloning vectors.
+CLONING | Making identical copies | Dolly was cloned by Ian Wilmut in 1996.
+PRIMATE | Order of monkeys, apes and humans | Primates have forward-facing eyes.
+HOMINID | Human-like ancestor | Australopithecines lived in East Africa.
+SPECIES | Basic unit of classification | Members of a species can interbreed to give fertile offspring.
+KINGDOM | Highest rank in the five kingdom system | Whittaker proposed five kingdoms in 1969.
+PROTIST | Single-celled eukaryote | Protista includes diatoms, dinoflagellates and protozoans.
+PLANTAE | Kingdom of chlorophyll-bearing eukaryotes | Plantae includes algae, bryophytes, pteridophytes and seed plants.
+FUNARIA | Common moss | Funaria has a protonema stage.
+EUGLENA | Protist with both plant and animal features | Euglena makes food by photosynthesis in light.
+ASCARIS | Roundworm | Ascaris shows separate sexes; males are smaller.
+LIMULUS | King crab, a living fossil | Limulus is an arthropod.
+OCTOPUS | Devil fish, a mollusc | Octopus is a cephalopod.
+OSTRICH | Largest flightless bird | The ostrich belongs to genus Struthio.
+PENGUIN | Flightless sea bird | Penguins belong to class Aves.
+OSCULUM | Water outlet of sponges | Water leaves the sponge through the osculum.
+SPICULE | Skeletal element of sponges | Spicules are made of calcium carbonate or silica.
+MAMMARY | Milk-producing glands | Mammary glands are a key feature of mammals.
+HORMONE | Chemical messenger | Hormones act in very small amounts.
+KINETIN | Cytokinin from autoclaved herring sperm DNA | Kinetin promotes cell division.
+TROPISM | Growth response to a stimulus | Phototropism is caused by auxin.
+OSMOSIS | Movement of water across a membrane | Water moves from high to low water potential.
+NITRATE | Form of nitrogen plants absorb most | Nitrate is reduced to ammonia in plants.
+NITRITE | Product of ammonia oxidation by Nitrosomonas | Nitrobacter oxidises nitrite to nitrate.
+CALCIUM | Element in the middle lamella | Calcium is needed for spindle formation.
+SULPHUR | Element in cysteine and methionine | Sulphur is also part of coenzyme A.
+RUBISCO | Enzyme that fixes CO2 in the Calvin cycle | RuBisCO also has oxygenase activity.
+PIGMENT | Coloured molecule that absorbs light | Chlorophyll a is the main pigment of photosynthesis.
+QUANTUM | Discrete packet of light energy | One photon carries one quantum of energy.
+CITRATE | First product of the Krebs cycle | Citrate forms from acetyl CoA and oxaloacetate.
+ETHANOL | Product of yeast fermentation | Yeast tolerates only up to about 13 percent ethanol.
+LACTATE | Product of anaerobic respiration in muscle | Lactic acid builds up during intense exercise.
+OXIDASE | Enzyme that removes electrons | Cytochrome oxidase is complex IV of the ETS.
+MIMICRY | Resemblance used for protection | The Monarch butterfly is avoided by predators because it tastes bad.
+TROPHIC | Relating to feeding levels | Producers are at the first trophic level.
+BIOMASS | Mass of living matter | Biomass is usually measured as dry weight.
+PIONEER | First species to colonise bare land | Lichens are pioneers on bare rock.
+HOTSPOT | Biodiversity-rich, threatened region | India has the Western Ghats, Himalaya and Indo-Burma hotspots.
+ENDEMIC | Found only in one place | Hotspots have high levels of endemic species.
+EXTINCT | Species no longer alive | The Steller's sea cow is extinct.
+CHEETAH | Big cat declared extinct in India in 1952 | African cheetahs were brought to Kuno National Park in 2022.
+FOLLICLE | Ovary structure containing an oocyte | The Graafian follicle releases the ovum.
+TRICHOME | Epidermal hair on the shoot | Multicellular trichomes reduce water loss.
+LENTICEL | Pore in bark for gas exchange | Lenticels are found in woody trees.
+PERIDERM | Phellem, phellogen and phelloderm | Periderm replaces the epidermis in old stems.
+MERISTEM | Tissue of actively dividing cells | Apical meristems cause growth in length.
+TELOMERE | Protective end of a chromosome | Telomeres shorten with each cell division.
+FIMBRIAE | Finger-like ends of the fallopian tube | Fimbriae help collect the ovum.
+MESOSOME | Infolding of the bacterial cell membrane | Mesosomes help in DNA replication and respiration.
+TRACHEID | Elongated xylem cell with tapering ends | Tracheids are the main water conductors in gymnosperms.
+SCLEREID | Short, stony sclerenchyma cell | Sclereids give pears their gritty texture.
+PERIANTH | Calyx and corolla look alike | The perianth of lily is made of tepals.
+ALEURONE | Protein-rich layer of a maize grain | The aleurone layer surrounds the endosperm.
+PERICARP | Wall of a fruit | The pericarp has epicarp, mesocarp and endocarp.
+EPICARP | Outer skin of a fruit | In mango, the epicarp is the thin skin.
+MESOCARP | Fleshy middle wall of a fruit | We eat the mesocarp of mango.
+NATALITY | Birth rate in a population | Natality adds individuals to a population.
+PARASITE | Organism that lives at the expense of its host | Cuscuta is a parasitic plant.
+PREDATOR | Animal that hunts other animals | Predators help keep prey populations in check.
+PRODUCER | Organism that makes its own food | Green plants are producers.
+ANTIBODY | Y-shaped defence protein | Each antibody has two heavy and two light chains.
+MONOCYTE | Largest white blood cell | Monocytes become macrophages in tissues.
+BASOPHIL | WBC that releases histamine | Basophils are the rarest WBCs.
+DIATOM | Protist with silica shells | Diatoms are called the chief producers in the oceans.

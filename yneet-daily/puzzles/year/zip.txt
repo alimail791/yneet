@@ -1,0 +1,357 @@
+# Pathway Zip. Format: Title | step 1 > step 2 > ... (4 to 8 steps, in the correct order)
+Systemic circulation | Left atrium > Left ventricle > Aorta > Arteries > Capillaries > Veins > Vena cava
+Right side of the heart | Vena cava > Right atrium > Tricuspid valve > Right ventricle > Pulmonary valve > Pulmonary artery
+Left side of the heart | Pulmonary veins > Left atrium > Bicuspid valve > Left ventricle > Aortic valve > Aorta
+Spermatogenesis | Spermatogonium > Primary spermatocyte > Secondary spermatocyte > Spermatid > Spermatozoon
+Oogenesis | Oogonium > Primary oocyte > Secondary oocyte > Ovum
+Follicle development | Primary follicle > Secondary follicle > Tertiary follicle > Graafian follicle > Corpus luteum
+Menstrual cycle phases | Menstrual phase > Follicular phase > Ovulation > Luteal phase
+Embryo sac formation | Megaspore mother cell > Megaspore tetrad > Functional megaspore > 2-nucleate stage > 4-nucleate stage > 8-nucleate embryo sac
+Pollen formation | Sporogenous tissue > Microspore mother cell > Microspore tetrad > Pollen grain
+Path of the pollen tube | Stigma > Style > Ovary > Micropyle > Synergid
+Embryo development | Zygote > Proembryo > Globular embryo > Heart-shaped embryo > Mature embryo
+Meiosis I | Prophase I > Metaphase I > Anaphase I > Telophase I > Interkinesis
+Meiosis II | Prophase II > Metaphase II > Anaphase II > Telophase II
+Cell cycle | G1 phase > S phase > G2 phase > Karyokinesis > Cytokinesis
+DNA replication | Helicase unwinds > RNA primer laid > Leading strand made > Okazaki fragments made > Ligase joins
+Eukaryotic transcription | Initiation > Elongation > Termination > Capping and tailing > Splicing
+Translation | tRNA charging > Initiation at AUG > Elongation > Peptide bonds form > Termination at stop codon
+Lac operon switched on | Lactose enters > Repressor inactivated > Operator freed > RNA polymerase transcribes > Enzymes made
+Recombinant DNA steps | Isolate DNA > Cut with restriction enzyme > Ligate into vector > Transform host > Select recombinants > Culture host > Downstream processing
+One PCR cycle | Template DNA > Denaturation > Primer annealing > Extension by Taq polymerase > DNA copies doubled
+Isolating DNA | Lyse cells > Ribonuclease removes RNA > Protease removes protein > Add chilled ethanol > DNA precipitates
+Gel electrophoresis | Load DNA in wells > Apply current > Fragments move to anode > Stain with ethidium bromide > View under UV > Elution
+Making human insulin | Make DNA for A and B chains > Insert into E. coli plasmids > Chains produced > Extract chains > Join by disulphide bonds
+HIV infection | Virus enters macrophage > Reverse transcription > Viral DNA joins host DNA > New viruses made > Helper T cells attacked
+Plasmodium in humans | Sporozoites enter blood > Liver cells > Red blood cells > RBCs burst > Gametocytes form
+Plasmodium in mosquito | Female Anopheles bites > Gametocytes taken up > Fertilisation in gut > Sporozoites form > Stored in salivary glands
+Antibody response | Antigen enters > Lymphocytes recognise it > B cells activated > Plasma cells form > Antibodies released
+Vaccination | Weakened pathogen injected > B cells activated > Antibodies made > Memory cells formed > Faster secondary response
+Allergic reaction | Allergen enters > IgE made > Mast cells sensitised > Histamine released > Symptoms appear
+Sewage treatment | Filtration > Sedimentation > Primary sludge removed > Aeration tank > Flocs digest organic matter > Activated sludge > Anaerobic digester
+Biogas production | Cattle dung > Slurry in digester > Anaerobic breakdown > Methanogens act > Biogas collected
+Making curd | Warm milk > Add starter curd > Lactobacillus multiplies > Lactic acid forms > Milk proteins coagulate
+Making bread | Flour and yeast > Fermentation > CO2 released > Dough rises > Baking
+Decomposition | Fragmentation > Leaching > Catabolism > Humification > Mineralisation
+Xerarch succession | Lichens > Mosses > Herbs > Shrubs > Forest
+Phosphorus cycle | Phosphate rocks > Weathering > Soil phosphate > Plants > Animals > Decomposers
+Carbon cycle | Atmospheric CO2 > Photosynthesis > Plants > Animals > Respiration
+Pond food chain | Phytoplankton > Zooplankton > Small fish > Large fish > Kingfisher
+Detritus food chain | Dead leaves > Fungi and bacteria > Earthworm > Bird
+Trophic levels | Producer > Primary consumer > Secondary consumer > Tertiary consumer > Top carnivore
+DDT biomagnification | Water > Zooplankton > Small fish > Large fish > Fish-eating birds
+Logistic growth curve | Lag phase > Log phase > Deceleration phase > Carrying capacity reached
+Human evolution | Dryopithecus > Ramapithecus > Australopithecus > Homo habilis > Homo erectus > Neanderthal man > Homo sapiens
+Origin of life | Early atmosphere gases > Energy from lightning > Amino acids form > Self-replicating molecules > First cells
+Plant evolution | Algae > Bryophytes > Pteridophytes > Gymnosperms > Angiosperms
+Vertebrate evolution | Jawless fish > Lobefins > Amphibians > Reptiles > Therapsids > Mammals
+Classifying humans | Animalia > Chordata > Mammalia > Primata > Hominidae > Homo > sapiens
+Classifying mango | Plantae > Angiospermae > Dicotyledonae > Sapindales > Anacardiaceae > Mangifera > indica
+Classifying the housefly | Animalia > Arthropoda > Insecta > Diptera > Muscidae > Musca > domestica
+Classifying wheat | Plantae > Angiospermae > Monocotyledonae > Poales > Poaceae > Triticum > aestivum
+Levels of organisation | Cellular level > Tissue level > Organ level > Organ system level
+Non-chordate phyla in NCERT order | Porifera > Cnidaria > Ctenophora > Platyhelminthes > Aschelminthes > Annelida > Arthropoda
+Chordate classes in NCERT order | Cyclostomata > Chondrichthyes > Osteichthyes > Amphibia > Reptilia > Aves > Mammalia
+Root tip zones | Root cap > Meristematic zone > Elongation zone > Maturation zone
+Dicot root, outside in | Epiblema > Cortex > Endodermis > Pericycle > Vascular bundles > Pith
+Dicot stem, outside in | Epidermis > Hypodermis > Cortex > Endodermis > Pericycle > Vascular bundles > Pith
+Dicot leaf, top to bottom | Cuticle > Upper epidermis > Palisade parenchyma > Spongy parenchyma > Lower epidermis
+Woody stem, inside out | Secondary xylem > Vascular cambium > Secondary phloem > Phelloderm > Phellogen > Phellem
+Flower whorls, outside in | Calyx > Corolla > Androecium > Gynoecium
+Fruit wall, outside in | Epicarp > Mesocarp > Endocarp > Seed
+Anther wall, outside in | Epidermis > Endothecium > Middle layers > Tapetum > Sporogenous tissue
+Ovule, outside in | Outer integument > Inner integument > Nucellus > Embryo sac > Egg cell
+Gut wall, inside out | Mucosa > Submucosa > Muscularis > Serosa
+Intestine in order | Duodenum > Jejunum > Ileum > Caecum > Colon > Rectum
+Parts of the colon | Ascending colon > Transverse colon > Descending colon > Sigmoid colon > Rectum
+Protein digestion | Proteins > Proteoses and peptones > Dipeptides > Amino acids > Absorbed into blood
+Fat digestion | Fats > Emulsified by bile > Acted on by lipase > Fatty acids and glycerol > Micelles > Chylomicrons > Lacteals
+Starch digestion | Starch > Maltose > Glucose > Absorbed by villi > Blood
+Nucleic acid digestion | Nucleic acids > Nucleotides > Nucleosides > Sugars and bases
+Inspiration | Diaphragm contracts > Thoracic volume increases > Lung pressure falls > Air rushes in
+Expiration | Diaphragm relaxes > Thoracic volume decreases > Lung pressure rises > Air expelled
+Oxygen from air to tissues | Alveolar air > Alveolar wall > Capillary blood > Haemoglobin > Body tissues
+Cardiac cycle | Joint diastole > Atrial systole > Ventricular systole > Semilunar valves open > Ventricular diastole
+Lymph flow | Tissue fluid > Lymph capillaries > Lymph vessels > Lymph nodes > Thoracic duct > Veins
+Hepatic portal system | Intestine > Hepatic portal vein > Liver > Hepatic vein > Vena cava
+Blood through the kidney | Renal artery > Afferent arteriole > Glomerulus > Efferent arteriole > Peritubular capillaries > Renal vein
+Urine leaving the body | Collecting duct > Renal pelvis > Ureter > Urinary bladder > Urethra
+Renin-angiotensin mechanism | Fall in GFR > JG cells release renin > Angiotensin I > Angiotensin II > Aldosterone > Na+ reabsorbed
+Muscle contraction | Nerve impulse > Acetylcholine released > Action potential in sarcolemma > Ca2+ released > Troponin binds Ca2+ > Cross bridges form > Filaments slide
+Muscle structure | Muscle > Fascicle > Muscle fibre > Myofibril > Myofilaments
+Vertebral column, top down | Cervical > Thoracic > Lumbar > Sacral > Coccygeal
+Arm bones, shoulder to fingers | Humerus > Radius and ulna > Carpals > Metacarpals > Phalanges
+Leg bones, hip to toes | Femur > Tibia and fibula > Tarsals > Metatarsals > Phalanges
+Nerve impulse | Resting potential > Stimulus > Na+ influx > Depolarisation > K+ efflux > Repolarisation
+Thyroid control | Hypothalamus > TRH > Anterior pituitary > TSH > Thyroid > Thyroxine
+Cortisol control | Hypothalamus > CRH > Anterior pituitary > ACTH > Adrenal cortex > Cortisol
+Peptide hormone action | Hormone binds receptor > cAMP made > Protein kinases activated > Cell response
+Fight or flight | Stress > Adrenal medulla > Adrenaline released > Heart rate rises > Glucose released
+High blood sugar | Blood glucose rises > Beta cells > Insulin released > Cells take up glucose > Glycogen stored
+Low blood sugar | Blood glucose falls > Alpha cells > Glucagon released > Glycogenolysis > Blood glucose rises
+Parturition | Fully developed foetus > Foetal ejection reflex > Oxytocin released > Uterine contractions > Childbirth
+From fertilisation to implantation | Fertilisation in ampulla > Cleavage > Morula > Blastocyst > Implantation
+Foetal development | Heart forms > Limbs and digits form > Major organs formed > First movements > Eyelids separate > Ready for delivery
+Sperm in the female tract | Vagina > Cervix > Uterus > Isthmus > Ampulla
+Hormones of the ovarian cycle | FSH rises > Follicle grows > Estrogen rises > LH surge > Ovulation > Corpus luteum > Progesterone
+Lytic cycle of a phage | Attachment > DNA injected > Replication > Assembly > Lysis
+Hershey and Chase | Label phage with 32P or 35S > Infect E. coli > Blend > Centrifuge > 32P found in bacteria
+Meselson and Stahl | E. coli in 15N > Moved to 14N > Hybrid DNA after 20 min > Hybrid and light after 40 min > Semiconservative proven
+Mendel's method | Select pure lines > Cross parents > F1 all tall > Self F1 > F2 shows 3:1
+Protein structure | Primary > Secondary > Tertiary > Quaternary
+Building nucleic acids | Nitrogenous base > Nucleoside > Nucleotide > Polynucleotide > Double helix
+DNA packaging | DNA double helix > Nucleosome > Beads on string > Chromatin fibre > Metaphase chromosome
+Smallest to largest | Virus > Mycoplasma > Bacterium > Human RBC > Amoeba > Ostrich egg
+Light reaction | PS II absorbs light > Water split > Electrons via cytochromes > PS I > NADPH formed
+Calvin cycle | CO2 + RuBP > 3-PGA > ATP and NADPH used > Glyceraldehyde-3-P > RuBP regenerated
+C4 pathway | CO2 enters mesophyll > Fixed by PEP case > OAA formed > Malic acid to bundle sheath > CO2 released > Calvin cycle
+Photorespiration | RuBisCO binds O2 > Phosphoglycolate > Peroxisome > Mitochondrion > CO2 released
+Electron transport | NADH > Complex I > Ubiquinone > Complex III > Cytochrome c > Complex IV > Oxygen
+Aerobic respiration | Glucose > Glycolysis > Pyruvate > Link reaction > Krebs cycle > ETS > ATP
+Alcoholic fermentation | Glucose > Glycolysis > Pyruvic acid > Acetaldehyde > Ethanol
+Krebs cycle, second half | Succinyl CoA > Succinic acid > Fumaric acid > Malic acid > Oxaloacetic acid
+Glycolysis, second half | Glyceraldehyde-3-P > 1,3-bisphosphoglycerate > 3-phosphoglycerate > 2-phosphoglycerate > PEP > Pyruvic acid
+Root nodule formation | Rhizobium near root > Infection thread > Nodule forms > Nitrogenase acts > Ammonia made
+Nitrification | Ammonia > Nitrosomonas > Nitrite > Nitrobacter > Nitrate
+Artificial hybridisation | Emasculation > Bagging > Dust pollen > Rebag > Collect seeds
+Plant tissue culture | Explant > Nutrient medium > Callus > Shoots and roots > Plantlet
+Phloem transport | Sugar made in leaf > Loaded into sieve tubes > Water enters by osmosis > Pressure builds > Flows to sink > Unloaded
+Stomatal opening | K+ enters guard cells > Water potential falls > Water enters > Guard cells turgid > Stoma opens
+Discovering plant hormones | Charles Darwin > E. Kurosawa > F.W. Went > Skoog and Miller > Abscisic acid identified
+Moss life cycle | Spore > Protonema > Leafy gametophyte > Gametes > Zygote > Capsule
+Fern life cycle | Spore > Prothallus > Antheridia and archegonia > Zygote > Fern plant
+Frog life cycle | Eggs > Tadpole > Metamorphosis > Young frog > Adult frog
+Complete metamorphosis | Egg > Larva > Pupa > Adult
+DNA fingerprinting | Isolate DNA > Digest with restriction enzymes > Electrophoresis > Southern blotting > Hybridise with VNTR probe > Autoradiography
+Gene therapy for ADA | Collect lymphocytes > Culture them > Insert ADA cDNA by retrovirus > Return to patient > Repeat infusions
+Bt toxin action | Inactive protoxin > Eaten by insect > Alkaline gut > Toxin activated > Binds midgut cells > Cells lyse > Insect dies
+RNA interference | Nematode genes introduced > dsRNA formed > Binds target mRNA > mRNA silenced > Nematode dies
+Reflex arc | Receptor > Afferent neuron > Spinal cord > Efferent neuron > Effector
+Levels of body organisation | Cell > Tissue > Organ > Organ system > Organism
+Ecological levels | Organism > Population > Community > Ecosystem > Biome > Biosphere
+Levels of chemical organisation | Atom > Molecule > Macromolecule > Organelle > Cell
+Secretory pathway | Ribosome on RER > ER lumen > Golgi cis face > Golgi trans face > Secretory vesicle > Plasma membrane
+Cell theory history | Robert Hooke > Leeuwenhoek > Robert Brown > Schleiden and Schwann > Rudolf Virchow
+Cancer progression | Normal cell > Oncogene mutation > Loss of contact inhibition > Tumour > Metastasis
+Penicillin story | Fleming sees mould > Bacteria fail to grow > Penicillium identified > Chain and Florey purify it > Used in World War II
+Bioreactor to product | Inoculum > Bioreactor > Product formed > Separation > Purification > Formulation
+Bacterium, outside in | Glycocalyx > Cell wall > Plasma membrane > Cytoplasm > Nucleoid
+Plant cell, outside in | Cell wall > Plasma membrane > Cytoplasm > Tonoplast > Vacuole
+Chloroplast, outside in | Outer membrane > Inner membrane > Stroma > Thylakoid membrane > Thylakoid lumen
+Mitochondrion, outside in | Outer membrane > Intermembrane space > Inner membrane > Matrix
+Seed germination in bean | Water absorbed > Radicle emerges > Hypocotyl elongates > Cotyledons above soil > First leaves open
+Fruit formation | Pollination > Fertilisation > Ovary enlarges > Ovules become seeds > Fruit ripens
+Pollen grain, outside in | Exine > Intine > Vegetative cell > Generative cell
+Embryo sac, micropyle to chalaza | Micropyle > Egg apparatus > Central cell > Antipodal cells > Chalaza
+Kidney, outside in | Renal capsule > Cortex > Medulla > Renal pelvis > Ureter
+Parts of a sperm | Head > Neck > Middle piece > Tail
+Ovum coverings, outside in | Corona radiata > Zona pellucida > Plasma membrane > Cytoplasm > Nucleus
+Milk flow | Mammary alveoli > Mammary tubules > Mammary duct > Mammary ampulla > Lactiferous duct
+Signal through a neuron | Dendrite > Cell body > Axon > Axon terminal > Synaptic knob
+Teeth, front to back | Incisors > Canines > Premolars > Molars
+Fewest to most WBCs | Basophils > Eosinophils > Monocytes > Lymphocytes > Neutrophils
+Lung volumes, smallest first | Tidal volume > Expiratory reserve volume > Residual volume > Inspiratory reserve volume > Vital capacity > Total lung capacity
+Falling pO2 | Atmospheric air > Alveoli > Oxygenated blood > Tissues
+Chromosome number, lowest first | Fruit fly > House fly > Onion > Maize > Rice > Cat > Human
+Genetics timeline | Mendel's laws > Rediscovery of Mendel > Sutton and Boveri > Morgan's linkage > Griffith's experiment > Avery, MacLeod, McCarty > Watson and Crick
+Biotech timeline | Watson and Crick model > Meselson and Stahl > Lac operon > First recombinant DNA > PCR invented > Human Genome Project begins > HGP completed
+Evolution thinkers | Lamarck > Darwin's Origin of Species > Hugo de Vries > Hardy and Weinberg > Stanley Miller
+Photosynthesis discoveries | Joseph Priestley > Jan Ingenhousz > Julius von Sachs > T.W. Engelmann > Melvin Calvin
+Physics timeline | Newton's Principia > Faraday's induction > Maxwell's equations > Hertz's radio waves > Thomson's electron > Einstein's photoelectric effect > Bohr's atom
+Gas laws timeline | Boyle's law > Charles' law > Gay Lussac's law > Avogadro's law
+Atomic models | Dalton > Thomson > Rutherford > Bohr > Quantum mechanical model
+Periodic table history | Dobereiner's triads > Newlands' octaves > Mendeleev's table > Moseley's atomic number
+Group 2, top to bottom | Beryllium > Magnesium > Calcium > Strontium > Barium > Radium
+Group 13, top to bottom | Boron > Aluminium > Gallium > Indium > Thallium
+Group 14, top to bottom | Carbon > Silicon > Germanium > Tin > Lead
+Group 15, top to bottom | Nitrogen > Phosphorus > Arsenic > Antimony > Bismuth
+Group 16, top to bottom | Oxygen > Sulphur > Selenium > Tellurium > Polonium
+Noble gases, top to bottom | Helium > Neon > Argon > Krypton > Xenon > Radon
+Period 2, left to right | Lithium > Beryllium > Boron > Carbon > Nitrogen > Oxygen > Fluorine
+Period 3, left to right | Sodium > Magnesium > Aluminium > Silicon > Phosphorus > Sulphur > Chlorine
+First transition series | Scandium > Titanium > Vanadium > Chromium > Manganese > Iron > Cobalt
+First lanthanoids | Lanthanum > Cerium > Praseodymium > Neodymium > Promethium > Samarium > Europium
+Rising first ionisation enthalpy | Li > B > Be > C > O > N > F > Ne
+Rising electronegativity | Caesium > Sodium > Hydrogen > Carbon > Nitrogen > Oxygen > Fluorine
+Most negative electron gain enthalpy first | Chlorine > Fluorine > Bromine > Iodine
+Falling bond angle | BeCl2 > BF3 > CH4 > NH3 > H2O
+Rising acid strength | HF > HCl > HBr > HI
+Rising boiling point of hydrogen halides | HCl > HBr > HI > HF
+Rising boiling point of group 16 hydrides | H2S > H2Se > H2Te > H2O
+Rising basicity in water | Ammonia > Trimethylamine > Methylamine > Dimethylamine
+Rising acidity | Ethanol > Water > Phenol > Ethanoic acid > Methanoic acid
+Rising acidity of chloroacetic acids | Acetic acid > Chloroacetic acid > Dichloroacetic acid > Trichloroacetic acid
+Rising carbocation stability | Methyl > Primary > Secondary > Tertiary
+SN2 reactivity, highest first | Methyl halide > Primary halide > Secondary halide > Tertiary halide
+Haloalkane reactivity, highest first | R-I > R-Br > R-Cl > R-F
+Rising boiling point (similar mass) | n-Butane > Methoxyethane > Propanal > Propanone > Propan-1-ol
+Rising oxidation state of Mn | MnO > Mn2O3 > MnO2 > K2MnO4 > KMnO4
+Rising oxidation state of N | NH3 > N2H4 > N2 > N2O > NO > NO2 > HNO3
+Rising oxidation state of S | H2S > S8 > SO2 > H2SO4
+Rising strength of chlorine oxoacids | HOCl > HClO2 > HClO3 > HClO4
+Rising standard reduction potential | Lithium > Potassium > Sodium > Magnesium > Zinc > Hydrogen > Copper
+Rising ionic radius (isoelectronic) | Al3+ > Mg2+ > Na+ > F- > O2- > N3-
+Rising spin-only magnetic moment | Sc3+ > Ti3+ > V3+ > Cr3+ > Mn2+
+Spectrochemical series, weak to strong | Iodide > Chloride > Fluoride > Water > Ammonia > Cyanide > Carbon monoxide
+Hydrogen spectrum, shortest wavelength first | Lyman > Balmer > Paschen > Brackett > Pfund
+Rising boiling point of noble gases | He > Ne > Ar > Kr > Xe
+Falling thermal stability of group 15 hydrides | NH3 > PH3 > AsH3 > SbH3 > BiH3
+Falling bond dissociation enthalpy | Cl2 > Br2 > F2 > I2
+Rising boiling point elevation (0.1 m) | Glucose > Sodium chloride > Calcium chloride > Aluminium chloride
+Rising pH | Gastric juice > Lemon juice > Black coffee > Milk > Pure water > Blood > Milk of magnesia
+Most basic to most acidic oxide | Na2O > MgO > Al2O3 > SiO2 > P4O10 > SO3 > Cl2O7
+Rising strength of attractive forces | London forces > Dipole-dipole > Hydrogen bond > Covalent bond
+Rising bond order | Peroxide ion > Superoxide ion > Oxygen molecule > Dioxygenyl ion
+Rising molar mass of amino acids | Glycine > Alanine > Valine > Leucine
+Benzene to phenol | Benzene > Nitrobenzene > Aniline > Benzenediazonium chloride > Phenol
+Ethene to ethanoyl chloride | Ethene > Ethanol > Ethanal > Ethanoic acid > Ethanoyl chloride
+Chlorinating methane | Methane > Chloromethane > Dichloromethane > Chloroform > Carbon tetrachloride
+Grignard route to alcohol | Alkyl halide > Mg in dry ether > Grignard reagent > Add carbonyl compound > Hydrolysis > Alcohol
+Hofmann bromamide | Amide > Br2 and NaOH > Isocyanate > Primary amine with one carbon less
+Gabriel synthesis | Phthalimide > Potassium phthalimide > N-alkylphthalimide > Hydrolysis > Primary amine
+Kolbe to aspirin | Phenol > Sodium phenoxide > CO2 under pressure > Salicylic acid > Aspirin
+Reimer-Tiemann | Phenol > CHCl3 and NaOH > Dichloromethyl intermediate > Salicylaldehyde
+Ethanol from molasses | Sucrose > Invertase > Glucose and fructose > Zymase > Ethanol
+Fuel cell | H2 at anode > Electrons through circuit > O2 at cathode > Water formed
+Hybrid orbitals, fewest first | BeCl2 > BF3 > CH4 > PCl5 > SF6
+Lone pairs on central atom, fewest first | CH4 > NH3 > H2O > XeF2
+VSEPR shapes by electron pairs | Linear > Trigonal planar > Tetrahedral > Trigonal bipyramidal > Octahedral
+Lassaigne's test for nitrogen | Fuse with sodium > Extract with water > Boil with FeSO4 > Acidify > Prussian blue
+Kjeldahl's method | Heat with conc. H2SO4 > Ammonium sulphate > Add NaOH > Ammonia released > Absorbed in acid > Back titration
+Contact process | Burn sulphur > SO2 > Oxidise over V2O5 > SO3 > Absorb in H2SO4 > Oleum > Dilute to H2SO4
+Haber process | N2 and H2 > Compress to 200 atm > Iron catalyst at 700 K > Ammonia forms > Cooled and liquefied
+Ostwald process | Ammonia > Oxidised on Pt/Rh gauze > Nitric oxide > Nitrogen dioxide > Absorbed in water > Nitric acid
+Daniell cell | Zn oxidised at anode > Electrons through wire > Cu2+ reduced at cathode > Ions move via salt bridge
+Rusting of iron | Fe oxidised to Fe2+ > Electrons move > O2 reduced with H+ > Fe2+ oxidised to Fe3+ > Hydrated ferric oxide
+Mass to particles | Mass > Divide by molar mass > Moles > Multiply by Avogadro number > Number of particles
+Finding an empirical formula | Mass percent > Convert to moles > Divide by smallest > Simplest ratio > Empirical formula
+SN1 mechanism | C-X bond breaks > Carbocation forms > Nucleophile attacks > Racemic mixture
+SN2 mechanism | Nucleophile attacks from back > Transition state > Halide leaves > Inverted product
+Electrophilic substitution | Electrophile generated > Arenium ion forms > Proton lost > Substituted benzene
+Aldol condensation | Base removes alpha H > Carbanion forms > Attacks carbonyl carbon > Aldol forms > Dehydration > Enal
+Esterification | Acid and alcohol > Carbonyl protonated > Alcohol attacks > Water lost > Ester
+Making an azo dye | Aniline > NaNO2 and HCl at 273 K > Benzenediazonium chloride > Couple with phenol > Azo dye
+Carbohydrate sizes | Monosaccharide > Disaccharide > Oligosaccharide > Polysaccharide
+Building a protein | Amino acids > Peptide bonds > Polypeptide > Folding > Functional protein
+Naming by IUPAC | Find longest chain > Number from nearest substituent > Name substituents > Alphabetical order > Full name
+Rising atomic radius in group 2 | Be > Mg > Ca > Sr > Ba
+SI prefixes, smallest first | milli > centi > deci > deca > hecto > kilo > mega
+Tiny prefixes, smallest first | femto > pico > nano > micro > milli
+Length scales, smallest first | Nucleus > Atom > Wavelength of light > Human hair > Human height > Mount Everest > Earth's radius
+Masses, lightest first | Electron > Proton > Alpha particle > Uranium nucleus
+Speed of sound, slowest first | Rubber > Air > Helium > Hydrogen > Water > Copper > Steel
+Refractive index, lowest first | Air > Ice > Water > Crown glass > Diamond
+Young's modulus, lowest first | Polystyrene > Bone > Glass > Aluminium > Copper > Steel
+Specific heat, lowest first | Lead > Copper > Aluminium > Ice > Water
+Thermal conductivity, lowest first | Air > Wood > Glass > Iron > Aluminium > Copper > Silver
+Resistivity, lowest first | Silver > Copper > Aluminium > Tungsten > Iron > Nichrome > Glass
+Energy units, smallest first | Electron volt > Erg > Joule > Calorie > Kilowatt hour
+Fundamental forces, weakest first | Gravitational > Weak nuclear > Electromagnetic > Strong nuclear
+Planets from the Sun | Mercury > Venus > Earth > Mars > Jupiter > Saturn > Uranus
+Carnot cycle | Isothermal expansion > Adiabatic expansion > Isothermal compression > Adiabatic compression
+Compound microscope | Object > Objective lens > Intermediate image > Eyepiece > Final image
+Astronomical telescope | Distant object > Objective > Image at focus > Eyepiece > Magnified image
+Photoelectric emission | Photon hits metal > Electron absorbs energy > Work function overcome > Electron emitted > Photocurrent flows
+Nuclear fission | Neutron hits U-235 > U-236 unstable > Splits into Ba and Kr > Neutrons and energy released > Chain reaction
+Nuclear reactor | Fuel rods > Moderator slows neutrons > Control rods absorb neutrons > Coolant carries heat > Turbine > Electricity
+Fusion in the Sun | Hydrogen nuclei fuse > Deuterium > Helium-3 > Helium-4 > Energy released
+Half-wave rectifier | AC input > Diode conducts positive half > Negative half blocked > Pulsating DC > Filter smooths it
+Making n-type silicon | Pure silicon > Add pentavalent impurity > Extra free electrons > n-type semiconductor
+AC generator | Coil rotates in field > Flux changes > EMF induced > Slip rings > Alternating current
+Step-up transformer | AC in primary > Changing flux in core > EMF in secondary > More secondary turns > Higher voltage
+Projectile | Launched > Vertical speed decreases > Maximum height > Falls back > Lands at range
+Temperatures, coldest first | Absolute zero > Liquid nitrogen boils > Ice melts > Human body > Water boils > Iron melts > Sun's surface
+Viscosity, lowest first | Air > Water > Blood > Machine oil > Glycerine
+Density, lowest first | Air > Water > Aluminium > Iron > Mercury > Gold
+Moment of inertia (same M and R), lowest first | Solid sphere > Disc > Hollow sphere > Ring
+Surface gravity, lowest first | Moon > Mars > Earth > Jupiter
+Orbit height, lowest first | International Space Station > GPS satellites > Geostationary orbit > Moon
+Length units, smallest first | Fermi > Angstrom > Micron > Millimetre > Metre > Kilometre > Light year
+Time units, smallest first | Nanosecond > Microsecond > Millisecond > Second > Minute > Hour > Day
+Dielectric constant, lowest first | Vacuum > Air > Paper > Glass > Water
+Pressure units, smallest first | Pascal > Torr > Kilopascal > Bar > Atmosphere
+Power units, smallest first | Watt > Horsepower > Kilowatt > Megawatt
+Band gap, smallest first | Metals > Germanium > Silicon > Diamond
+Binding energy per nucleon, lowest first | Deuterium > Helium-4 > Carbon-12 > Iron-56
+U-238 decay chain | U-238 > Th-234 > Pa-234 > U-234 > Th-230 > Ra-226 > Rn-222
+Electromagnetic induction | Magnet moves towards coil > Flux increases > EMF induced > Opposing current flows > Galvanometer deflects
+Charging a capacitor | Battery connected > Charge flows > Potential difference builds > Equals battery EMF > Current stops
+Conductor in a field | Field applied > Free electrons drift > Surface charges build up > Internal field cancels > Zero field inside
+Young's double slit | Monochromatic source > Single slit > Double slit > Coherent waves overlap > Fringes on screen
+Heat engine cycle | Absorb heat from source > Do work > Reject heat to sink > Return to initial state
+Refrigerator cycle | Compressor > Condenser > Expansion valve > Evaporator
+Concave mirror, object moving in | Beyond C > At C > Between C and F > At F > Between F and P
+Convex lens, object moving in | Beyond 2F > At 2F > Between F and 2F > At F > Between F and lens
+Visual signal | Light hits rods > Rhodopsin breaks down > Membrane potential changes > Optic nerve impulse > Visual cortex
+Hearing, eardrum to brain | Tympanic membrane > Ear ossicles > Oval window > Cochlear fluid > Hair cells > Auditory nerve > Auditory cortex
+Innate barriers in NCERT order | Physical barriers > Physiological barriers > Cellular barriers > Cytokine barriers
+Fertilisation | Sperm reaches ovum > Acrosome reaction > Penetrates zona pellucida > Membranes fuse > Meiosis II completed > Zygote
+Male gametophyte | Microspore > Vegetative and generative cells > Pollen shed > Pollen tube grows > Two male gametes
+Double fertilisation | Pollen tube enters synergid > Two male gametes released > One fuses with egg > Other fuses with polar nuclei > Zygote and PEN formed
+Seed development | Ovule > Integuments become seed coat > Embryo develops > Seed dries > Dormancy
+Transforming E. coli | Treat with CaCl2 > Add recombinant DNA > Keep on ice > Heat shock at 42 C > Back on ice > Plate on antibiotic
+Agrobacterium transformation | Gene put into Ti plasmid > Agrobacterium infects plant cells > T-DNA integrates > Transformed cells grow > Transgenic plant
+Blue-white screening | Gene inserted in lacZ > beta-galactosidase lost > Plate with chromogenic substrate > Recombinants white > Non-recombinants blue
+ELISA | Coat plate with antigen > Add patient serum > Add enzyme-linked antibody > Add substrate > Colour change
+Sequencing the human genome | Isolate total DNA > Break into fragments > Clone in BAC or YAC > Sequence fragments > Align overlaps > Annotate genes
+Industrial melanism | White moths common > Pollution darkens bark > White moths eaten more > Dark moths survive > Dark moths increase
+Enzyme action | Substrate binds active site > ES complex > Transition state > Product formed > Enzyme released
+Classification systems | Aristotle > Linnaeus' two kingdoms > Whittaker's five kingdoms > Woese's three domains
+Gastric digestion | Food enters stomach > Gastrin released > HCl and pepsinogen secreted > Pepsin forms > Proteins digested
+Activating pancreatic enzymes | Enterokinase released > Trypsinogen becomes trypsin > Trypsin activates other enzymes > Proteins digested
+Water balance | Body loses water > Osmoreceptors in hypothalamus > ADH released > Water reabsorbed > Concentrated urine
+Calcium balance | Blood Ca2+ falls > Parathyroid gland > PTH released > Ca2+ released from bone > Blood Ca2+ rises
+Male puberty | GnRH > LH > Leydig cells > Androgens > Spermatogenesis
+Lactation | Suckling > Pituitary stimulated > Prolactin and oxytocin > Milk made and ejected
+IVF | Collect ova > Collect sperm > Fertilise in lab > Embryo grows > Transfer to mother
+Falling blood pressure along circulation | Aorta > Arteries > Arterioles > Capillaries > Venules > Veins > Vena cava
+Kolbe's electrolysis | Sodium acetate solution > Electrolysis > Acetate radical at anode > Loses CO2 > Methyl radicals > Ethane
+Ozonolysis | Alkene > Ozone added > Ozonide > Zn and water > Aldehydes or ketones
+Friedel-Crafts acylation | Benzene > Acyl chloride with AlCl3 > Acylium ion > Electrophilic attack > Aromatic ketone
+Carbylamine test | Primary amine > Chloroform > Alcoholic KOH > Heat > Foul-smelling isocyanide
+Sandmeyer reaction | Aniline > Diazotisation > Benzenediazonium chloride > CuCl with HCl > Chlorobenzene
+Williamson synthesis | Alcohol > Sodium alkoxide > Add alkyl halide > SN2 attack > Ether
+Hydroboration-oxidation | Propene > Diborane > Trialkylborane > H2O2 and NaOH > Propan-1-ol
+Wolff-Kishner reduction | Ketone > Hydrazine > Hydrazone > KOH in ethylene glycol > Alkane
+Reaction pathway | Reactants > Effective collision > Activated complex > Products
+Electrolysis of brine | NaCl solution > Electrolysis > Cl2 at anode > H2 at cathode > NaOH left
+KMnO4 titration | Fill burette with KMnO4 > Acidify oxalic acid > Warm to 60 C > Titrate > Pale pink end point
+Making a standard solution | Weigh solute > Dissolve in a little water > Transfer to volumetric flask > Make up to mark > Shake well
+Rising pH of 0.1 M solutions | HCl > CH3COOH > NH4Cl > NaCl > CH3COONa > NH3 > NaOH
+Rising carbon-carbon bond length | Ethyne > Ethene > Benzene > Ethane
+Cyclotron | Ion released at centre > Accelerated across gap > Circles inside dee > Field reverses > Larger radius > Exits at edge
+Moving coil galvanometer | Current through coil > Torque on coil > Coil rotates > Spring torque balances > Pointer deflects
+Making an EM wave | Accelerated charge > Oscillating electric field > Oscillating magnetic field > Wave travels at c
+Rainbow | Sunlight enters drop > Refraction and dispersion > Internal reflection > Refraction out > Colours seen
+Optical fibre | Light enters core > Hits boundary above critical angle > Total internal reflection > Repeated reflections > Exits far end
+Polarisation | Unpolarised light > Polaroid P1 > Plane polarised light > Rotate polaroid P2 > Intensity varies
+Photocell | Light on cathode > Electrons emitted > Collected at anode > Current flows
+Bohr transition | Electron excited > Unstable higher orbit > Jumps down > Photon emitted > Spectral line
+Alpha scattering experiment | Alpha source > Lead collimator > Gold foil > Scattered alphas > ZnS screen
+Full-wave rectifier | AC input > Centre-tap transformer > D1 conducts one half > D2 conducts other half > Full-wave DC
+LCR resonance | Vary frequency > XL equals XC > Impedance minimum > Current maximum
+Heating ice to steam | Ice warms > Melts at 0 C > Water warms > Boils at 100 C > Steam
+Closed pipe harmonics in order | 1st harmonic > 3rd harmonic > 5th harmonic > 7th harmonic
+Falling through a fluid | Released > Speeds up > Drag increases > Drag balances weight > Terminal velocity
+Hydraulic lift | Small force on small piston > Pressure transmitted > Same pressure on large piston > Large force > Car lifted
+Dimensional method | Write the quantity > Express in M, L, T > Equate powers > Solve > Get the relation
+Errors in measurement | Take readings > Find mean > Absolute errors > Mean absolute error > Relative error > Percentage error
+Launching a satellite | Rocket launch > Reaches height > Horizontal velocity given > Orbital speed reached > Satellite orbits
+Speeds, slowest first | Walking person > Cheetah > Jet airliner > Sound in air > Rifle bullet > Earth's escape speed > Light
+Clotting factors to clot | Injured tissue > Thromboplastin > Prothrombin to thrombin > Fibrinogen to fibrin > Clot traps cells
+Population growth equation terms | Births > Immigration > Deaths > Emigration
+Lichen to forest on rock | Bare rock > Lichens secrete acids > Thin soil forms > Mosses > Grasses > Shrubs > Trees
+Ecological pyramid of energy | Producers > Herbivores > Carnivores > Top carnivores
+Seed to seedling in maize | Grain absorbs water > Coleorhiza emerges > Radicle grows > Coleoptile pushes up > First leaf
+Bacterial growth phases | Lag phase > Log phase > Stationary phase > Death phase
+Sound in the ear canal | Sound waves > Pinna > External auditory canal > Tympanic membrane
+Nerve to muscle | Motor neuron fires > Neuromuscular junction > Acetylcholine released > Muscle fibre contracts
+Hormone through blood | Endocrine gland > Hormone secreted > Carried by blood > Binds target receptor > Response
+Sperm path in testis | Seminiferous tubules > Rete testis > Vasa efferentia > Epididymis
+Pollination to seed | Pollination > Pollen germinates > Pollen tube reaches ovule > Double fertilisation > Seed forms
+Nutrient cycling of nitrogen | Atmospheric N2 > Biological fixation > Ammonia > Nitrates > Plant proteins > Animal proteins > Ammonification
+Glucose to glycogen | Glucose > Glucose-6-phosphate > Glucose-1-phosphate > UDP-glucose > Glycogen
+Rising atomic radius in group 17 | Fluorine > Chlorine > Bromine > Iodine
+Alcohols in the homologous series | Methanol > Ethanol > Propanol > Butanol > Pentanol
+Carboxylic acids by common name | Formic acid > Acetic acid > Propionic acid > Butyric acid > Valeric acid
+Alkenes in the homologous series | Ethene > Propene > Butene > Pentene > Hexene

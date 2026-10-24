@@ -1,0 +1,139 @@
+# Units and Measurements
+The number of SI base units is: | Seven | Five | Six | Nine | They include metre, kilogram and second.
+The SI unit of luminous intensity is: | Candela | Lumen | Lux | Watt | It is one of the seven base units.
+The SI unit of amount of substance is: | Mole | Kilogram | Gram | Number | One mole has 6.022 x 10^23 entities.
+One light year is the distance light travels in: | One year | One day | One second | One hour | It is about 9.46 x 10^15 m.
+One astronomical unit is the mean distance between: | Earth and Sun | Earth and Moon | Sun and Pluto | Two stars | It is about 1.496 x 10^11 m.
+One parsec is about: | 3.08 x 10^16 m | 9.46 x 10^15 m | 1.5 x 10^11 m | 3 x 10^8 m | It is about 3.26 light years.
+The dimensional formula of force is: | [MLT^-2] | [ML^2T^-2] | [MLT^-1] | [ML^-1T^-2] | Force = mass x acceleration.
+The dimensional formula of pressure is: | [ML^-1T^-2] | [MLT^-2] | [ML^2T^-2] | [M^0L^0T^0] | Pressure = force / area.
+Planck's constant has the same dimensions as: | Angular momentum | Energy | Force | Power | Both have dimensions [ML^2T^-1].
+The dimensional formula of strain is: | Dimensionless [M^0L^0T^0] | [MLT^-2] | [L] | [T^-1] | It is a ratio of lengths.
+The dimensional formula of the gravitational constant G is: | [M^-1L^3T^-2] | [MLT^-2] | [ML^3T^-2] | [M^-1L^2T^-2] | From F = Gm1m2/r^2.
+Dimensional analysis cannot find: | Dimensionless constants | The form of a relation | Unit conversions | Consistency of equations | Constants like 2 pi cannot be found.
+The number of significant figures in 6.320 is: | Four | Three | Two | Five | The trailing zero after the decimal counts.
+If the length of a rod is 2.0 cm with error 0.1 cm, the percentage error is: | 5 percent | 0.5 percent | 10 percent | 2 percent | 0.1/2.0 x 100.
+In multiplication, the relative errors of quantities: | Add | Subtract | Multiply | Cancel | Z = AB gives dZ/Z = dA/A + dB/B.
+The least count of a vernier calliper is usually: | 0.01 cm | 0.1 cm | 0.001 cm | 1 cm | A screw gauge has 0.001 cm.
+# Motion in a Straight Line
+A body moving with constant velocity has acceleration: | Zero | Constant non-zero | Increasing | Negative | Velocity does not change.
+The slope of a position-time graph gives: | Velocity | Acceleration | Displacement | Force | A steeper slope means higher speed.
+The slope of a velocity-time graph gives: | Acceleration | Displacement | Speed | Jerk | Area under it gives displacement.
+A ball thrown up has velocity zero at the top. Its acceleration there is: | g downward | Zero | g upward | Infinite | Gravity still acts.
+A car starting from rest with acceleration 2 m/s^2 covers in 5 s: | 25 m | 10 m | 50 m | 5 m | s = (1/2)at^2.
+A body falls freely from rest. Distances in successive seconds are in the ratio: | 1:3:5:7 | 1:2:3:4 | 1:4:9:16 | 1:1:1:1 | This is Galileo's law of odd numbers.
+Stopping distance of a vehicle is proportional to: | Square of initial velocity | Initial velocity | Mass | Time | v^2 = 2as gives s proportional to v^2.
+Two trains move towards each other at 20 m/s and 30 m/s. Their relative speed is: | 50 m/s | 10 m/s | 25 m/s | 600 m/s | Speeds add when moving towards each other.
+Average speed is always: | Greater than or equal to the magnitude of average velocity | Less than average velocity | Equal to average velocity | Zero | Path length is at least the displacement.
+A stone dropped from a 20 m high tower reaches the ground in about (g = 10 m/s^2): | 2 s | 4 s | 1 s | 20 s | t = square root of 2h/g.
+Velocity of a ball hitting the ground after falling 45 m from rest (g = 10) is: | 30 m/s | 45 m/s | 15 m/s | 450 m/s | v = square root of 2gh.
+Reaction time is the time taken to: | Observe, think and act | Accelerate | Stop a car fully | Fall freely | It is typically about 0.2 s.
+# Motion in a Plane
+A vector has: | Magnitude and direction | Only magnitude | Only direction | No units | Displacement and velocity are vectors.
+The angle between two vectors of equal magnitude whose resultant equals each of them is: | 120 degrees | 60 degrees | 90 degrees | 0 degrees | R^2 = A^2 + A^2 + 2A^2 cos theta.
+The range of a projectile is maximum at an angle of: | 45 degrees | 30 degrees | 60 degrees | 90 degrees | R = u^2 sin 2 theta / g.
+Projectiles thrown at 30 and 60 degrees with the same speed have: | Equal ranges | Equal heights | Equal times of flight | Equal velocities at the top | sin 60 = sin 120.
+At the highest point of a projectile, the velocity is: | Horizontal | Zero | Vertical | Maximum | Only the vertical component becomes zero.
+The path of a projectile is a: | Parabola | Circle | Straight line | Hyperbola | Ignoring air resistance.
+Time of flight of a projectile is: | 2u sin theta / g | u sin theta / g | u^2 / g | 2u / g | It doubles the time to reach the top.
+In uniform circular motion, the acceleration is directed: | Towards the centre | Along the tangent | Away from the centre | Zero | It is centripetal acceleration.
+Centripetal acceleration equals: | v^2 / r | v / r | v r | r / v^2 | It is also omega^2 r.
+In uniform circular motion, speed is: | Constant but velocity changes | Changing | Zero | Increasing | Direction keeps changing.
+A body moves in a circle of radius 2 m at 4 m/s. Its centripetal acceleration is: | 8 m/s^2 | 2 m/s^2 | 16 m/s^2 | 4 m/s^2 | a = v^2/r = 16/2.
+The dot product of two perpendicular vectors is: | Zero | Maximum | One | Negative | cos 90 = 0.
+# Laws of Motion
+Newton's first law is also called the law of: | Inertia | Momentum | Action-reaction | Gravitation | A body stays at rest or uniform motion unless acted on.
+Inertia of a body depends on its: | Mass | Velocity | Shape | Colour | Larger mass means more inertia.
+Force equals the rate of change of: | Momentum | Velocity | Displacement | Energy | This is Newton's second law.
+Impulse equals: | Change in momentum | Force times distance | Mass times velocity squared | Energy | It is force times time.
+A cricketer moves hands backwards while catching to: | Increase time and reduce force | Increase force | Increase momentum | Stop the ball faster | Same impulse spread over longer time.
+Action and reaction forces: | Act on different bodies | Act on the same body | Cancel each other | Are unequal | They are equal and opposite.
+A gun recoils when fired because of conservation of: | Momentum | Energy | Mass | Charge | The total momentum stays zero.
+The coefficient of static friction is generally: | Greater than kinetic friction | Less than kinetic friction | Equal to kinetic | Zero | It is harder to start motion.
+Rolling friction is usually: | Much less than sliding friction | More than sliding friction | Equal to static friction | Zero | That is why wheels are used.
+The maximum safe speed on a level circular road depends on: | Friction and radius | Mass only | Colour of road | Engine power | v max = square root of mu r g.
+Roads are banked on curves to: | Provide centripetal force without relying only on friction | Look nice | Slow cars | Increase friction | The normal force has a horizontal component.
+A person in a lift accelerating upward feels: | Heavier | Lighter | Weightless | No change | Apparent weight = m(g + a).
+A person in a freely falling lift feels: | Weightless | Heavier | Lighter but not weightless | No change | Apparent weight = m(g - g) = 0.
+# Work, Energy and Power
+Work done is zero when force and displacement are: | Perpendicular | Parallel | Antiparallel | Equal | cos 90 = 0.
+The SI unit of work is: | Joule | Watt | Newton | Pascal | 1 J = 1 N m.
+Kinetic energy of a 2 kg body moving at 3 m/s is: | 9 J | 6 J | 18 J | 3 J | KE = (1/2) m v^2.
+The work-energy theorem says work done by the net force equals the change in: | Kinetic energy | Potential energy | Momentum | Power | W = Delta K.
+Work done by a conservative force over a closed path is: | Zero | Positive | Negative | Infinite | Gravity is a conservative force.
+Friction is a: | Non-conservative force | Conservative force | Central force | Restoring force | Work done depends on the path.
+Potential energy stored in a spring stretched by x is: | (1/2) k x^2 | k x | k x^2 | (1/2) k x | k is the spring constant.
+Power is the rate of doing: | Work | Force | Momentum | Displacement | Its SI unit is the watt.
+One horsepower is about: | 746 W | 1000 W | 100 W | 500 W | It is an older unit of power.
+In a perfectly elastic collision, which is conserved? | Both momentum and kinetic energy | Only momentum | Only kinetic energy | Neither | Total KE before equals total KE after.
+In a perfectly inelastic collision, bodies: | Stick together after collision | Bounce apart | Lose all momentum | Gain energy | Some kinetic energy is lost.
+When two equal masses collide elastically head-on with one at rest: | They exchange velocities | Both stop | Both move together | Nothing happens | The moving body stops.
+One kilowatt hour equals: | 3.6 x 10^6 J | 1000 J | 3600 J | 3.6 x 10^3 J | It is the commercial unit of energy.
+# System of Particles and Rotational Motion
+The centre of mass of a uniform rod lies at its: | Midpoint | One end | Quarter length | Anywhere | For uniform bodies it is at the geometric centre.
+Torque is the rotational equivalent of: | Force | Mass | Velocity | Energy | It equals r x F.
+Moment of inertia is the rotational equivalent of: | Mass | Force | Velocity | Momentum | It depends on mass distribution.
+Moment of inertia of a ring about its axis is: | MR^2 | (1/2)MR^2 | (2/5)MR^2 | (2/3)MR^2 | All mass is at distance R.
+Moment of inertia of a solid sphere about its diameter is: | (2/5)MR^2 | (2/3)MR^2 | MR^2 | (1/2)MR^2 | A hollow sphere has (2/3)MR^2.
+Moment of inertia of a disc about its axis is: | (1/2)MR^2 | MR^2 | (2/5)MR^2 | (1/4)MR^2 | About a diameter it is (1/4)MR^2.
+The parallel axes theorem states I = I_cm + : | Md^2 | Md | M/d^2 | 2Md | d is the distance between axes.
+Angular momentum is conserved when the net external: | Torque is zero | Force is zero | Energy is zero | Velocity is zero | An ice skater spins faster by pulling arms in.
+For a body rolling without slipping, v equals: | R omega | omega / R | R / omega | R omega^2 | The contact point is momentarily at rest.
+Kinetic energy of rolling is the sum of: | Translational and rotational KE | Only rotational KE | Only translational KE | Potential and kinetic | KE = (1/2)mv^2 + (1/2)I omega^2.
+When a diver pulls in her limbs, her angular speed: | Increases | Decreases | Stays constant | Becomes zero | Moment of inertia decreases.
+A couple produces: | Only rotation | Only translation | Both rotation and translation | No motion | Net force of a couple is zero.
+# Gravitation
+Kepler's second law is a consequence of conservation of: | Angular momentum | Energy | Linear momentum | Mass | The radius vector sweeps equal areas in equal times.
+According to Kepler's third law, T^2 is proportional to: | a^3 | a^2 | a | a^4 | a is the semi-major axis.
+The value of G is: | 6.67 x 10^-11 N m^2 kg^-2 | 9.8 m/s^2 | 6.67 x 10^11 | 3 x 10^8 | G is a universal constant.
+G was first measured experimentally by: | Henry Cavendish | Newton | Kepler | Galileo | He used a torsion balance in 1798.
+Acceleration due to gravity at a height h (small) is: | g(1 - 2h/R) | g(1 + 2h/R) | g(1 - h/R) | g | It decreases with height.
+At the centre of the Earth, g is: | Zero | Maximum | 9.8 m/s^2 | Infinite | Mass above pulls in all directions.
+Orbital speed close to Earth's surface is about: | 7.9 km/s | 11.2 km/s | 1 km/s | 3 x 10^8 m/s | v_o = square root of gR.
+A geostationary satellite has a time period of: | 24 hours | 12 hours | 1 hour | 365 days | It stays above one point on the equator.
+The height of a geostationary satellite is about: | 36,000 km | 360 km | 3,600 km | 360,000 km | It orbits in the equatorial plane.
+Astronauts in an orbiting satellite feel weightless because: | They and the satellite are in free fall | There is no gravity | They are too far from Earth | They are moving slowly | Gravity provides the centripetal force.
+The gravitational potential energy of two masses at infinite separation is taken as: | Zero | Infinite | Negative | One | It is negative at finite distances.
+# Mechanical Properties of Solids
+Stress is defined as: | Restoring force per unit area | Change in length per unit length | Force times area | Energy per unit volume | Its SI unit is N/m^2.
+Strain is: | Change in dimension / original dimension | Force / area | Force x length | Energy | It has no units.
+Hooke's law holds within the: | Elastic limit | Plastic region | Fracture point | Yield region | Stress is proportional to strain.
+Young's modulus is the ratio of: | Tensile stress to tensile strain | Shear stress to shear strain | Volume stress to volume strain | Force to area | Its unit is N/m^2.
+The modulus related to change in volume is the: | Bulk modulus | Young's modulus | Shear modulus | Poisson's ratio | Compressibility is its reciprocal.
+Steel is more elastic than rubber because it: | Has a higher Young's modulus | Stretches more easily | Has lower stress | Is lighter | It returns to shape against larger stress.
+Liquids have only: | Bulk modulus | Young's modulus | Shear modulus | All three moduli | They cannot sustain shear or tensile stress.
+The point beyond which a material does not return to its original shape is the: | Elastic limit or yield point | Fracture point | Proportional limit only | Breaking stress | Beyond it deformation is plastic.
+Materials that stretch a lot before breaking are: | Ductile | Brittle | Elastic only | Rigid | Brittle materials break soon after the elastic limit.
+Elastic potential energy per unit volume of a stretched wire is: | (1/2) x stress x strain | Stress x strain | Stress / strain | 2 x stress x strain | It is energy density.
+The ratio of lateral strain to longitudinal strain is: | Poisson's ratio | Young's modulus | Bulk modulus | Compressibility | It has no units.
+Cranes use ropes made of many thin wires instead of one thick wire for: | Flexibility and strength | Lower cost only | More weight | Better looks | Thin wires are easier to handle.
+# Mechanical Properties of Fluids
+Pressure at depth h in a liquid of density rho is: | P_a + rho g h | rho g | P_a - rho g h | rho h | P_a is atmospheric pressure.
+Pascal's law says pressure applied to an enclosed fluid is: | Transmitted equally in all directions | Lost | Doubled | Transmitted only downward | Hydraulic lifts work on it.
+Atmospheric pressure at sea level is about: | 1.013 x 10^5 Pa | 1 Pa | 10^3 Pa | 10^7 Pa | It supports 76 cm of mercury.
+The equation of continuity Av = constant is based on conservation of: | Mass | Energy | Momentum | Charge | Fluid speeds up in narrow sections.
+Bernoulli's principle is based on conservation of: | Energy | Mass | Momentum | Charge | Pressure is low where speed is high.
+Aeroplane wings get lift because air moves: | Faster above the wing | Slower above the wing | Equally on both sides | Only below | Pressure above becomes lower.
+The SI unit of viscosity is: | Pa s | N m | N/m | Pa | The cgs unit is poise.
+Stokes' law gives the viscous force on a sphere as: | 6 pi eta r v | 4 pi r^2 | eta v / r | 6 eta r | It applies to slow motion in a fluid.
+Terminal velocity of a sphere is proportional to: | r^2 | r | 1/r | r^3 | Larger raindrops fall faster.
+Viscosity of liquids with rise in temperature: | Decreases | Increases | Stays the same | Doubles | Viscosity of gases increases with temperature.
+Surface tension is force per unit: | Length | Area | Volume | Mass | Its unit is N/m.
+Water rises in a capillary tube because: | Adhesion is greater than cohesion | Cohesion is greater | Gravity pulls it up | Air pushes it | Mercury falls in a capillary.
+Detergents help washing by: | Lowering surface tension of water | Raising surface tension | Making water heavier | Removing air | Water then wets fabric better.
+Flow is streamline when the Reynolds number is below about: | 1000 | 10 | 100,000 | 1 | Above about 2000 flow becomes turbulent.
+# Thermal Properties of Matter
+The temperature that reads the same on Celsius and Fahrenheit scales is: | -40 | 0 | 100 | 40 | F = 9C/5 + 32.
+Absolute zero is: | 0 K or -273.15 C | 0 C | -100 C | 273 K | Kinetic energy is minimum.
+Water has maximum density at: | 4 C | 0 C | 100 C | -4 C | This is the anomalous expansion of water.
+Because of anomalous expansion, lakes freeze: | From the top downward | From the bottom upward | All at once | Never | Aquatic life survives below.
+The coefficient of volume expansion is about how many times the linear coefficient? | Three times | Two times | Same | Nine times | gamma = 3 alpha.
+The specific heat capacity of water is about: | 4186 J/kg K | 418 J/kg K | 1000 J/kg K | 100 J/kg K | It is very high.
+Latent heat of fusion of ice is about: | 3.33 x 10^5 J/kg | 2.26 x 10^6 J/kg | 4186 J/kg | 100 J/kg | Latent heat of vaporisation of water is 2.26 x 10^6 J/kg.
+Steam at 100 C causes more severe burns than water at 100 C because: | Steam has extra latent heat | Steam is hotter | Water is denser | Steam is lighter | It gives up latent heat on condensing.
+Heat transfer without a medium is: | Radiation | Conduction | Convection | Diffusion | Heat from the Sun reaches us this way.
+Sea breeze during the day is caused by: | Convection | Radiation only | Conduction only | Evaporation | Land heats faster than water.
+Stefan-Boltzmann law says energy radiated is proportional to: | T^4 | T | T^2 | 1/T | T is absolute temperature.
+Wien's displacement law says lambda_max T equals: | A constant | Zero | Temperature squared | Infinity | Hotter bodies peak at shorter wavelengths.
+Newton's law of cooling says the rate of cooling is proportional to the: | Temperature difference with surroundings | Absolute temperature | Mass | Time | It holds for small differences.
+Good absorbers of heat are also good: | Emitters | Reflectors | Insulators | Conductors | This is Kirchhoff's law of radiation.
