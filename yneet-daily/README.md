@@ -84,8 +84,13 @@ players' saved results are checked against that day's puzzle.
 - `GET /api/admin/stats?key=ADMIN_KEY` — players, new today, sign-ups by source, plays per game, rewards, top referrers
 - `GET /api/admin/players.csv?key=ADMIN_KEY` — name, phone, code, referrer, source, referrals, games played, last played, reward code. Import into Senda for follow-ups.
 
-Activating a reward: the player sends their `FREE-` code to Raise Academy on WhatsApp; check it in the CSV and add a month to their YNeet plan.
-Set `YNEET_REWARD_WEBHOOK` later to automate this.
+Rewards are automatic: when a player's 3rd friend registers, the server calls the YNeet backend
+(`POST /api/v1/games/bonus-month`, key `GAMES_SERVICE_KEY`) and adds 30 days to the YNeet account with the same
+WhatsApp number. If they have no YNeet account yet, it retries every 30 minutes for 60 days, so the month lands
+once they sign up at www.yneet.in with that number. The `reward_note` column in the CSV shows the status.
+
+The YNeet panel under each result links to www.yneet.in/register with the player's name and number pre-filled.
+Taps are counted in `/api/admin/stats` (`yneetClicks`) and per player in the CSV (`yneet_clicks`).
 
 ## API
 
