@@ -20,7 +20,8 @@ const ls = {
 (function () {
   const u = new URLSearchParams(location.search);
   const r = (u.get('r') || '').toUpperCase().replace(/[^A-Z0-9]/g, '');
-  if (r && !ls.get('yd-ref')) ls.set('yd-ref', { r, s: u.get('s') || 'share' });
+  const s = (u.get('s') || '').toLowerCase().replace(/[^a-z0-9_-]/g, '').slice(0, 20);
+  if ((r || s) && !ls.get('yd-ref')) ls.set('yd-ref', { r, s: s || 'share' });
   if (u.get('r') || u.get('s')) history.replaceState(null, '', location.pathname);
 })();
 
