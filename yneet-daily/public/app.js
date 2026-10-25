@@ -128,8 +128,9 @@ function yneetPanel(gameId, d) {
     return p;
   }
   let title = track() === 'foundation' ? 'NEET Foundation for Class 9–10' : 'Prepare for NEET on YNeet',
-    text = track() === 'foundation' ? 'Science MCQs, mock tests and concept Shorts for Class 9–10, so NEET in Class 11 feels easy.' : 'Full NEET mock tests, chapter-wise practice and PYQs with instant analysis of your weak areas.';
-  if (gameId === 'pinpoint' && d && d.topic) { title = `Revise “${d.topic}”`; text = 'Practise this chapter with NEET-level questions and PYQs on YNeet, with explanations for every answer.'; }
+    text = track() === 'foundation' ? 'Concept Shorts, a daily quiz and WhatsApp doubt support for Class 9–10, so NEET in Class 11 feels easy. 30 days free.' : 'Full NEET mock tests, chapter-wise practice and PYQs with instant analysis of your weak areas.';
+  if (track() === 'foundation') { if (gameId) title = 'Turn your daily streak into marks'; }
+  else if (gameId === 'pinpoint' && d && d.topic) { title = `Revise “${d.topic}”`; text = 'Practise this chapter with NEET-level questions and PYQs on YNeet, with explanations for every answer.'; }
   else if (gameId === 'daily5' && d && d.weak && d.weak.length) { title = `Missed ${d.weak.map(s => SUBJ[s] || s).join(' and ')} today?`; text = 'Practise those chapters on YNeet with full mock tests, PYQs and instant analysis of your weak areas.'; }
   else if (gameId === 'daily5' && d && d.line === '5/5') { title = 'Perfect score! Try a full NEET mock'; text = 'Test yourself on a full 720-mark NEET mock test on YNeet, with All-India analysis.'; }
   else if (gameId) { title = 'Turn your daily streak into marks'; }
