@@ -111,9 +111,9 @@ export default function App() {
 
       <Route path="/" element={<Guard><RequireSubscription><Layout /></RequireSubscription></Guard>}>
         <Route index                 element={<Home />} />
-        <Route path="mock"           element={<Paid><MockPage /></Paid>} />
-        <Route path="mock/:attemptId/start"    element={<Paid><MockTestPage /></Paid>} />
-        <Route path="mock/:attemptId/analysis" element={<Paid><AnalysisPage /></Paid>} />
+        <Route path="mock"           element={<MockPage />} />
+        <Route path="mock/:attemptId/start"    element={<MockTestPage />} />
+        <Route path="mock/:attemptId/analysis" element={<AnalysisPage />} />
         <Route path="shorts"         element={<ShortsPage />} />
         <Route path="quiz"           element={<QuizPage />} />
         <Route path="practice"       element={<Paid><PracticePage /></Paid>} />

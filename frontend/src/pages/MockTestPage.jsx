@@ -98,7 +98,7 @@ export default function MockTestPage() {
       {/* Header */}
       <div className="test-header mb-0" style={{ borderRadius: "var(--r) var(--r) 0 0", marginBottom: 0 }}>
         <div>
-          <div style={{ fontSize: 12, opacity: .8 }}>{test?.title || "NEET Mock Test"}</div>
+          <div style={{ fontSize: 12, opacity: .8 }}>{test?.title || "Mock Test"}</div>
           <div style={{ fontSize: 14, fontWeight: 600 }}>Q.{current + 1}/{questions.length} · <span style={{ color: subjectColor[q.subject] || "#fff" }}>{q.subject}</span></div>
         </div>
         <div className="test-timer" style={{ color: secsLeft < 600 ? "#fca5a5" : "#fff" }}>{fmt(secsLeft)}</div>

@@ -63,12 +63,18 @@ async function createRotatingPool(prisma, subject, poolClassLevels) {
     take(n) {
       const out = [];
       if (pool.length === 0) return out;
+      const used = new Set();
       while (out.length < n) {
         if (cursor >= sequence.length) {
           sequence = buildInterleavedSequence(pool); // reshuffle for the next lap
           cursor = 0;
         }
-        out.push(sequence[cursor++]);
+        const q = sequence[cursor++];
+        // Never put the same question twice in one test (can happen at a lap
+        // boundary); only when the pool is smaller than n is repetition allowed.
+        if (used.has(q.id) && used.size < pool.length) continue;
+        used.add(q.id);
+        out.push(q);
       }
       return out;
     },

@@ -68,7 +68,7 @@ export default function MockPage() {
         <div>
           <div className="section-title">📝 Mock Tests</div>
           <p style={{ fontSize: 13, color: "var(--text2)", marginTop: 2 }}>
-            {fullTests.length} Full · {halfTests.length} Half · {subjectTests.length} Subject · {dailyTests.length} Daily · {completedFull} full tests completed
+            {fullTests.length} Full · {halfTests.length ? `${halfTests.length} Half · ` : ""}{subjectTests.length} Subject · {dailyTests.length} Daily · {completedFull} full tests completed
           </p>
         </div>
       </div>
@@ -76,7 +76,7 @@ export default function MockPage() {
       {/* Stats */}
       <div className="grid4 mb-5">
         <div className="card"><div className="card-title">Total Tests</div><div className="card-value" style={{ color: "var(--blue)" }}>{tests.length}</div><div className="card-sub">{chapterTests.length} chapter tests incl.</div></div>
-        <div className="card"><div className="card-title">Full Length</div><div className="card-value" style={{ color: "var(--purple)" }}>{fullTests.length}</div><div className="card-sub">720 marks each</div></div>
+        <div className="card"><div className="card-title">Full Length</div><div className="card-value" style={{ color: "var(--purple)" }}>{fullTests.length}</div><div className="card-sub">{fullTests[0] ? `${fullTests[0].totalMarks} marks each` : "Full syllabus"}</div></div>
         <div className="card"><div className="card-title">Subject Tests</div><div className="card-value" style={{ color: "var(--green)" }}>{subjectTests.length}</div><div className="card-sub">Bio+Phy+Chem</div></div>
         <div className="card"><div className="card-title">Completed</div><div className="card-value" style={{ color: "var(--amber)" }}>{tests.filter(t => t.lastAttempt?.status === "submitted").length}</div><div className="card-sub">attempts done</div></div>
       </div>
@@ -87,7 +87,7 @@ export default function MockPage() {
           ["all", `All Tests (${tests.length - chapterTests.length})`],
           ...(chapterTests.length ? [["chapter", `Chapter Tests (${chapterTests.length})`]] : []),
           ["full", `Full Length (${fullTests.length})`],
-          ["half", `Half Length (${halfTests.length})`],
+          ...(halfTests.length ? [["half", `Half Length (${halfTests.length})`]] : []),
           ["phy", `Physics (${subjectTests.filter(t => t.subject === "Physics").length})`],
           ["chem", `Chemistry (${subjectTests.filter(t => t.subject === "Chemistry").length})`],
           ["bio", `Biology (${subjectTests.filter(t => t.subject === "Biology").length})`],

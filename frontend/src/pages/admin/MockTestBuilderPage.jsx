@@ -20,6 +20,16 @@ const BULK_BATCH_TABLE = [
 const bulkRowTotal = (r) => r.full + r.half + r.subjPhysics + r.subjChemistry + r.subjBiology + r.daily;
 const BULK_BATCH_TOTAL = BULK_BATCH_TABLE.reduce((sum, r) => sum + bulkRowTotal(r), 0);
 
+// Class 6–10 batch — mirrors SCHOOL_BATCH / SCHOOL_SIZES in backend mockBuilderController.js.
+const SCHOOL_TABLE = [
+  { classLevel: "6th", full: 10, subj: 5, daily: 30, fullQs: 30, subjQs: 15, dailyQs: 10 },
+  { classLevel: "7th", full: 10, subj: 5, daily: 30, fullQs: 30, subjQs: 15, dailyQs: 10 },
+  { classLevel: "8th", full: 10, subj: 5, daily: 30, fullQs: 30, subjQs: 15, dailyQs: 10 },
+  { classLevel: "9th", full: 10, subj: 5, daily: 30, fullQs: 60, subjQs: 20, dailyQs: 15 },
+  { classLevel: "10th", full: 10, subj: 5, daily: 30, fullQs: 60, subjQs: 20, dailyQs: 15 },
+];
+const schoolRowTotal = (r) => r.full + r.subj * 3 + r.daily;
+
 // Presets covering the common paper shapes you'd actually want to generate.
 const PRESETS = [
   { label: "Full NEET Mock (180Q)", duration: 180, counts: { Physics: 45, Chemistry: 45, Biology: 90 } },
@@ -47,6 +57,9 @@ export default function MockTestBuilderPage() {
 
   const [bulkJob, setBulkJob] = useState(null);
   const [bulkError, setBulkError] = useState(null);
+  const [errGroup, setErrGroup] = useState("neet");
+  const [schoolClasses, setSchoolClasses] = useState(SCHOOL_TABLE.map((r) => r.classLevel));
+  const [schoolPool, setSchoolPool] = useState({}); // classLevel -> {Physics, Chemistry, Biology}
   const pollRef = useRef(null);
 
   const pollBulkStatus = () => {
@@ -71,10 +84,16 @@ export default function MockTestBuilderPage() {
     return () => clearInterval(pollRef.current);
   }, []);
 
-  const startBulkBuild = async () => {
+  const startBulkBuild = async (group = "neet") => {
     setBulkError(null);
+    setErrGroup(group);
+    if (group === "school") {
+      const n = SCHOOL_TABLE.filter((r) => schoolClasses.includes(r.classLevel)).reduce((a, r) => a + schoolRowTotal(r), 0);
+      if (!n) { setBulkError("Tick at least one class."); return; }
+      if (!window.confirm(`Build ${n} tests for ${schoolClasses.join(", ")}?\n\nIf you ran this before, delete the previous Class 6–10 batch first, or you will get two sets.`)) return;
+    }
     try {
-      const { data } = await api.post(BULK_BUILD_URL, {});
+      const { data } = await api.post(BULK_BUILD_URL, group === "school" ? { group, classLevels: schoolClasses } : {});
       setBulkJob(data.job);
       if (!pollRef.current) pollRef.current = setInterval(pollBulkStatus, 2000);
     } catch (err) {
@@ -82,17 +101,23 @@ export default function MockTestBuilderPage() {
     }
   };
 
-  const deleteOldBatch = async () => {
+  const deleteOldBatch = async (group = "neet") => {
     try {
-      const { data: d } = await api.get("/admin/mock-builder/old-batch");
+      const { data: d } = await api.get(`/admin/mock-builder/old-batch?group=${group}`);
       if (!d.tests) { alert("No previously generated bulk tests found."); return; }
       const cls = Object.entries(d.byClass).map(([c, n]) => `${c}: ${n}`).join(", ");
       const warn = d.attempts ? `\n\n⚠️ ${d.attempts} student attempt(s) on ${d.testsWithAttempts} of these tests will be deleted too.` : "\n\nNo student has attempted any of them.";
       if (!window.confirm(`Delete ${d.tests} previously generated tests (${cls})?${warn}\n\nYour original tests (the ones not made by the bulk generator) are not touched. Questions are not deleted.`)) return;
-      const { data: r } = await api.post("/admin/mock-builder/old-batch/delete");
+      const { data: r } = await api.post("/admin/mock-builder/old-batch/delete", { group });
       alert(`Deleted ${r.deleted} tests${r.attemptsDeleted ? ` and ${r.attemptsDeleted} attempts` : ""}. You can now run the new batch.`);
     } catch (err) { alert(err?.response?.data?.message || "Delete failed"); }
   };
+
+  const loadSchoolPool = () => {
+    Promise.all(SCHOOL_TABLE.map((r) => api.get(`${POOL_STATS_URL}?classLevels=${r.classLevel}`).then((x) => [r.classLevel, x.data.stats]).catch(() => [r.classLevel, null])))
+      .then((pairs) => setSchoolPool(Object.fromEntries(pairs)));
+  };
+  useEffect(loadSchoolPool, []);
 
   const togglePoolClass = (cl) => {
     setPoolClassLevels((prev) => (prev.includes(cl) ? prev.filter((x) => x !== cl) : [...prev, cl]));
@@ -136,6 +161,39 @@ export default function MockTestBuilderPage() {
     }
     setBuilding(false);
   };
+
+  const jobCard = (
+    <>
+        {bulkJob && (
+          <div className="card" style={{ background: "var(--gray2)", padding: 14, marginBottom: 14 }}>
+            <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 6 }}>
+              {bulkJob.running
+                ? `Building… ${bulkJob.done}/${bulkJob.total} tests (${bulkJob.failed} failed)`
+                : `Finished — ${bulkJob.done}/${bulkJob.total} tests created${bulkJob.failed ? `, ${bulkJob.failed} failed` : ""}`}
+            </div>
+            <div style={{ height: 6, borderRadius: 3, background: "var(--gray3,#e2e2e2)", overflow: "hidden", marginBottom: 10 }}>
+              <div style={{ height: "100%", width: `${bulkJob.total ? Math.round((bulkJob.done / bulkJob.total) * 100) : 0}%`, background: "var(--blue-mid)" }} />
+            </div>
+            {bulkJob.log?.length > 0 && (
+              <div style={{ maxHeight: 160, overflowY: "auto", fontSize: 11.5, color: "var(--text2)", lineHeight: 1.6 }}>
+                {bulkJob.log.map((l, i) => <div key={i}>{l}</div>)}
+              </div>
+            )}
+            {!bulkJob.running && bulkJob.shortfalls?.length > 0 && (
+              <div style={{ marginTop: 10, fontSize: 11.5, color: "var(--amber)" }}>
+                <div style={{ fontWeight: 700, marginBottom: 4 }}>Pool was smaller than total demand (questions got reused):</div>
+                {bulkJob.shortfalls.map((s, i) => (
+                  <div key={i}>
+                    ⚠️ {s.subject} ({s.poolClassLevels.join("+")}): {s.poolSize} questions in pool, {s.totalSlotsRequested} question-slots requested
+                    {s.avgReusePerQuestion ? ` — each question reused ~${s.avgReusePerQuestion}× on average` : ""}
+                  </div>
+                ))}
+              </div>
+            )}
+          </div>
+        )}
+    </>
+  );
 
   return (
     <div>
@@ -286,42 +344,72 @@ export default function MockTestBuilderPage() {
           </table>
         </div>
 
-        {bulkError && <div style={{ background: "var(--red-light,#fee)", color: "var(--red)", padding: 10, borderRadius: 8, fontSize: 13, marginBottom: 12 }}>{bulkError}</div>}
+        {bulkError && errGroup === "neet" && <div style={{ background: "var(--red-light,#fee)", color: "var(--red)", padding: 10, borderRadius: 8, fontSize: 13, marginBottom: 12 }}>{bulkError}</div>}
 
-        {bulkJob && (
-          <div className="card" style={{ background: "var(--gray2)", padding: 14, marginBottom: 14 }}>
-            <div style={{ fontSize: 13, fontWeight: 700, marginBottom: 6 }}>
-              {bulkJob.running
-                ? `Building… ${bulkJob.done}/${bulkJob.total} tests (${bulkJob.failed} failed)`
-                : `Finished — ${bulkJob.done}/${bulkJob.total} tests created${bulkJob.failed ? `, ${bulkJob.failed} failed` : ""}`}
-            </div>
-            <div style={{ height: 6, borderRadius: 3, background: "var(--gray3,#e2e2e2)", overflow: "hidden", marginBottom: 10 }}>
-              <div style={{ height: "100%", width: `${bulkJob.total ? Math.round((bulkJob.done / bulkJob.total) * 100) : 0}%`, background: "var(--blue-mid)" }} />
-            </div>
-            {bulkJob.log?.length > 0 && (
-              <div style={{ maxHeight: 160, overflowY: "auto", fontSize: 11.5, color: "var(--text2)", lineHeight: 1.6 }}>
-                {bulkJob.log.map((l, i) => <div key={i}>{l}</div>)}
-              </div>
-            )}
-            {!bulkJob.running && bulkJob.shortfalls?.length > 0 && (
-              <div style={{ marginTop: 10, fontSize: 11.5, color: "var(--amber)" }}>
-                <div style={{ fontWeight: 700, marginBottom: 4 }}>Pool was smaller than total demand (questions got reused):</div>
-                {bulkJob.shortfalls.map((s, i) => (
-                  <div key={i}>
-                    ⚠️ {s.subject} ({s.poolClassLevels.join("+")}): {s.poolSize} questions in pool, {s.totalSlotsRequested} question-slots requested
-                    {s.avgReusePerQuestion ? ` — each question reused ~${s.avgReusePerQuestion}× on average` : ""}
-                  </div>
-                ))}
-              </div>
-            )}
-          </div>
-        )}
+        {(bulkJob?.group || "neet") === "neet" && jobCard}
 
-        <button className="btn btn-outline" style={{ marginRight: 10 }} onClick={deleteOldBatch} disabled={bulkJob?.running}>
+        <button className="btn btn-outline" style={{ marginRight: 10 }} onClick={() => deleteOldBatch("neet")} disabled={bulkJob?.running}>
           🗑 Delete previous batch
         </button>
-        <button className="btn btn-purple" onClick={startBulkBuild} disabled={bulkJob?.running}>
+        <button className="btn btn-purple" onClick={() => startBulkBuild("neet")} disabled={bulkJob?.running}>
           {bulkJob?.running ? `Building… (${bulkJob.done}/${bulkJob.total})` : `📦 Run the Oct 2026 batch (${BULK_BATCH_TOTAL} tests)`}
+        </button>
+      </div>
+
+      <div className="card" style={{ padding: 20, marginTop: 24, maxWidth: 640 }}>
+        <div style={{ fontWeight: 800, fontSize: 15, marginBottom: 4 }}>📚 Class 6–10 tests</div>
+        <p style={{ fontSize: 12.5, color: "var(--text2)", marginBottom: 12 }}>
+          School-level tests for Class 6 to 10. Each class uses only its own questions (upload them first in
+          Questions → Bulk upload). Class 6–8: Full Test 30 Qs (40 min), subject tests 15 Qs, daily practice
+          10 Qs. Class 9–10: Full Test 60 Qs (75 min), subject tests 20 Qs, daily practice 15 Qs. Picks are
+          chapter-balanced and no question repeats inside a test.
+        </p>
+        <div style={{ overflowX: "auto", marginBottom: 14 }}>
+          <table style={{ width: "100%", fontSize: 12, borderCollapse: "collapse" }}>
+            <thead>
+              <tr style={{ color: "var(--text3)", textAlign: "left" }}>
+                <th style={{ padding: "4px 8px" }}>Build</th>
+                <th style={{ padding: "4px 8px" }}>Class</th>
+                <th style={{ padding: "4px 8px" }}>Questions (P / C / B)</th>
+                <th style={{ padding: "4px 8px" }}>Full</th>
+                <th style={{ padding: "4px 8px" }}>Subject ×3</th>
+                <th style={{ padding: "4px 8px" }}>Daily</th>
+                <th style={{ padding: "4px 8px" }}>Total</th>
+              </tr>
+            </thead>
+            <tbody>
+              {SCHOOL_TABLE.map((r) => {
+                const st = schoolPool[r.classLevel];
+                const empty = st && !(st.Physics + st.Chemistry + st.Biology);
+                return (
+                  <tr key={r.classLevel} style={{ borderTop: "1px solid var(--gray2)" }}>
+                    <td style={{ padding: "6px 8px" }}>
+                      <input type="checkbox" checked={schoolClasses.includes(r.classLevel)}
+                        onChange={() => setSchoolClasses((p) => (p.includes(r.classLevel) ? p.filter((x) => x !== r.classLevel) : [...p, r.classLevel]))} />
+                    </td>
+                    <td style={{ padding: "6px 8px", fontWeight: 700 }}>{r.classLevel}</td>
+                    <td style={{ padding: "6px 8px", color: empty ? "var(--red)" : undefined }}>
+                      {st ? `${st.Physics} / ${st.Chemistry} / ${st.Biology}${empty ? " — upload first" : ""}` : "…"}
+                    </td>
+                    <td style={{ padding: "6px 8px" }}>{r.full} × {r.fullQs}Q</td>
+                    <td style={{ padding: "6px 8px" }}>{r.subj} × {r.subjQs}Q</td>
+                    <td style={{ padding: "6px 8px" }}>{r.daily} × {r.dailyQs}Q</td>
+                    <td style={{ padding: "6px 8px", fontWeight: 700 }}>{schoolRowTotal(r)}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+
+        {bulkError && errGroup === "school" && <div style={{ background: "var(--red-light,#fee)", color: "var(--red)", padding: 10, borderRadius: 8, fontSize: 13, marginBottom: 12 }}>{bulkError}</div>}
+        {bulkJob?.group === "school" && jobCard}
+
+        <button className="btn btn-outline" style={{ marginRight: 10 }} onClick={() => deleteOldBatch("school")} disabled={bulkJob?.running}>
+          🗑 Delete previous Class 6–10 batch
+        </button>
+        <button className="btn btn-purple" onClick={() => startBulkBuild("school")} disabled={bulkJob?.running}>
+          {bulkJob?.running && bulkJob.group === "school" ? `Building… (${bulkJob.done}/${bulkJob.total})` : `📚 Build Class 6–10 tests (${SCHOOL_TABLE.filter((r) => schoolClasses.includes(r.classLevel)).reduce((a, r) => a + schoolRowTotal(r), 0)})`}
         </button>
       </div>
       <ChapterTestsPanel />

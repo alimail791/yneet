@@ -11,7 +11,7 @@ export default function Layout() {
   const [expiryNotice, setExpiryNotice] = useState(null); // null | { hoursLeft, endDate }
   const initials = user?.name?.split(" ").map(n => n[0]).join("").slice(0, 2).toUpperCase() || "??";
   const streak = user?.streak?.current || 0;
-  // Free Class 6–8 students only see the free pages (Home, Shorts, Quiz, Puzzles).
+  // Free Class 6–8 students only see the free pages (Home, Shorts, Quiz, Tests, Puzzles).
   const junior = isJuniorFree(user);
 
   // Show a one-time-per-login popup if the subscription is in its final day.
@@ -65,6 +65,7 @@ export default function Layout() {
     { to: "/",       label: "Home", end: true },
     { to: "/shorts", label: "Shorts" },
     { to: "/quiz",   label: "Daily Quiz" },
+    { to: "/mock",   label: "Tests" },
     { href: PUZZLES_URL, label: "Daily Puzzles" },
     { to: "/help",   label: "Help & FAQ" },
   ];
@@ -82,6 +83,7 @@ export default function Layout() {
     { to: "/",       label: "Home",    icon: "🏠", end: true },
     { to: "/shorts", label: "Shorts",  icon: "🎬" },
     { to: "/quiz",   label: "Quiz",    icon: "⚡" },
+    { to: "/mock",   label: "Tests",   icon: "📝" },
     { href: PUZZLES_URL, label: "Puzzles", icon: "🧩" },
   ];
   const mobileTabs = junior ? juniorMobileTabs : allMobileTabs;
