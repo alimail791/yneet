@@ -20,6 +20,8 @@ import MistakesPage         from "./pages/MistakesPage";
 import ProfilePage          from "./pages/ProfilePage";
 import ReferralPage         from "./pages/ReferralPage";
 import ShortsPage           from "./pages/ShortsPage";
+import JuniorHomePage       from "./pages/JuniorHomePage";
+import { hasActivePlan, isJuniorFree } from "./utils/plan";
 import AdminLayout          from "./components/admin/AdminLayout";
 import AdminSummaryPage     from "./pages/admin/AdminSummaryPage";
 import AdminUsersPage       from "./pages/admin/AdminUsersPage";
@@ -52,12 +54,23 @@ function Guard({ children }) {
 // Paid content is further gated behind an active subscription (the backend
 // also enforces this on every API call — this is just for a clean redirect).
 // Admins skip this — they don't need a paid plan to manage content.
+// Class 6–8 students without a plan get in too, but only to the free pages
+// (see <Paid> below and utils/plan.js).
 function RequireSubscription({ children }) {
   const { user } = useAuth();
   if (user?.role === "admin") return children;
-  const sub = user?.subscription;
-  const active = sub?.status === "active" && sub?.endDate && new Date(sub.endDate) > new Date();
-  return active ? children : <Navigate to="/pricing" replace />;
+  return hasActivePlan(user) || isJuniorFree(user) ? children : <Navigate to="/pricing" replace />;
+}
+
+// Pages that are not part of the free Class 6–8 tier send those students home.
+function Paid({ children }) {
+  const { user } = useAuth();
+  return isJuniorFree(user) ? <Navigate to="/" replace /> : children;
+}
+
+function Home() {
+  const { user } = useAuth();
+  return isJuniorFree(user) ? <JuniorHomePage /> : <DashboardPage />;
 }
 
 // The /admin panel (content management + enrolled users) — role is synced
@@ -87,23 +100,23 @@ export default function App() {
       </Route>
 
       <Route path="/" element={<Guard><RequireSubscription><Layout /></RequireSubscription></Guard>}>
-        <Route index                 element={<DashboardPage />} />
-        <Route path="mock"           element={<MockPage />} />
-        <Route path="mock/:attemptId/start"    element={<MockTestPage />} />
-        <Route path="mock/:attemptId/analysis" element={<AnalysisPage />} />
+        <Route index                 element={<Home />} />
+        <Route path="mock"           element={<Paid><MockPage /></Paid>} />
+        <Route path="mock/:attemptId/start"    element={<Paid><MockTestPage /></Paid>} />
+        <Route path="mock/:attemptId/analysis" element={<Paid><AnalysisPage /></Paid>} />
         <Route path="shorts"         element={<ShortsPage />} />
         <Route path="quiz"           element={<QuizPage />} />
-        <Route path="practice"       element={<PracticePage />} />
-        <Route path="pyq"            element={<PYQPage />} />
-        <Route path="pyq/:year"      element={<PYQPage />} />
-        <Route path="planner"        element={<PlannerPage />} />
-        <Route path="leaderboard"    element={<LeaderboardPage />} />
-        <Route path="biology"        element={<BiologyPage />} />
-        <Route path="physics"        element={<PhysicsPage />} />
-        <Route path="chemistry"      element={<ChemistryPage />} />
-        <Route path="mistakes"       element={<MistakesPage />} />
+        <Route path="practice"       element={<Paid><PracticePage /></Paid>} />
+        <Route path="pyq"            element={<Paid><PYQPage /></Paid>} />
+        <Route path="pyq/:year"      element={<Paid><PYQPage /></Paid>} />
+        <Route path="planner"        element={<Paid><PlannerPage /></Paid>} />
+        <Route path="leaderboard"    element={<Paid><LeaderboardPage /></Paid>} />
+        <Route path="biology"        element={<Paid><BiologyPage /></Paid>} />
+        <Route path="physics"        element={<Paid><PhysicsPage /></Paid>} />
+        <Route path="chemistry"      element={<Paid><ChemistryPage /></Paid>} />
+        <Route path="mistakes"       element={<Paid><MistakesPage /></Paid>} />
         <Route path="profile"        element={<ProfilePage />} />
-        <Route path="referral"       element={<ReferralPage />} />
+        <Route path="referral"       element={<Paid><ReferralPage /></Paid>} />
       </Route>
     </Routes>
   );

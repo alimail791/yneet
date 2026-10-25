@@ -91,6 +91,15 @@ const requireActiveSubscription = (req, res, next) => {
   next();
 };
 
+// Class 6–8 is a free tier (Daily Quiz, Shorts and daily puzzles), so the routes
+// behind it let those students through without a plan. Everything else keeps
+// using requireActiveSubscription. Juniors with a paid plan still get everything.
+const { isJuniorClass } = require("../utils/pricing");
+const requireActiveSubscriptionOrJunior = (req, res, next) => {
+  if (isJuniorClass(req.user?.profile?.class)) return next();
+  return requireActiveSubscription(req, res, next);
+};
+
 // Gates the /admin content-management panel — role is synced from Raise Academy
 // on every login, so promoting/demoting an admin happens over there, not here.
 const requireAdmin = (req, res, next) => {
@@ -100,4 +109,4 @@ const requireAdmin = (req, res, next) => {
   next();
 };
 
-module.exports = { protect, optionalAuth, requirePlan, requireActiveSubscription, requireAdmin };
+module.exports = { protect, optionalAuth, requirePlan, requireActiveSubscription, requireActiveSubscriptionOrJunior, requireAdmin };

@@ -16,7 +16,8 @@ const loadRazorpayScript = () =>
 export default function PricingPage() {
   const [plans, setPlans] = useState([]);
   const [trial, setTrial] = useState(null);
-  const [months, setMonths] = useState(1);
+  const [tier, setTier] = useState(null); // { key, label, free }
+  const [months, setMonths] = useState(12);
   const [startingTrial, setStartingTrial] = useState(false);
   const [payingPlan, setPayingPlan] = useState(null);
   const [error, setError] = useState(null);
@@ -24,7 +25,7 @@ export default function PricingPage() {
   const navigate = useNavigate();
 
   useEffect(() => {
-    api.get("/subscription/plans").then((r) => { setPlans(r.data.plans); setTrial(r.data.trial || null); }).catch(() => {});
+    api.get("/subscription/plans").then((r) => { setPlans(r.data.plans); setTrial(r.data.trial || null); setTier(r.data.tier || null); }).catch(() => {});
   }, []);
 
   const startTrial = async () => {
@@ -100,14 +101,38 @@ export default function PricingPage() {
     }
   };
 
+  const FEATURES = [
+    "Full NEET mock tests with rank analysis",
+    "Shorts — 3–5 min concept videos",
+    "Daily quiz, practice questions and PYQs",
+    "Daily NEET puzzle games",
+    "Doubt support on WhatsApp",
+    "Mistake notebook, flashcards and formula sheets",
+  ];
+  const fallbackPlan = { key: "MONTHLY", label: "Monthly Full Access", amountRupees: 399, maxMonths: 12, prices: [] };
+  const plan = plans[0] || fallbackPlan;
+  const priceOf = (n) => plan.prices?.find((r) => r.months === n) || { months: n, price: plan.amountRupees * n, saving: 0 };
+  const selected = priceOf(months);
+  const yearPrice = priceOf(12).price;
+  const OPTIONS = [
+    { months: 12, title: "Full year", note: "Best value" },
+    { months: 6, title: "6 months" },
+    { months: 1, title: "1 month" },
+  ];
+  const isOption = OPTIONS.some((o) => o.months === months);
+  const inr = (n) => `₹${Number(n).toLocaleString("en-IN")}`;
+  const blueBtn = { width: "100%", justifyContent: "center", textAlign: "center", background: "var(--blue-mid)", color: "#fff", padding: "12px 0", borderRadius: "var(--r)", fontWeight: 700, border: "none", cursor: "pointer" };
+
   return (
-    <div style={{ minHeight: "100vh", background: "var(--gray)", padding: "48px 20px" }}>
+    <div style={{ minHeight: "100vh", background: "var(--gray)", padding: "40px 16px" }}>
       <div style={{ maxWidth: 760, margin: "0 auto", textAlign: "center" }}>
-        <h1 style={{ fontSize: 30, fontWeight: 800, color: "var(--text)", marginBottom: 8 }}>
-          Unlock YNeet
+        <h1 style={{ fontSize: 28, fontWeight: 800, color: "var(--text)", marginBottom: 6 }}>
+          {tier?.free ? "YNeet is free for you" : "Choose your plan"}
         </h1>
-        <p style={{ color: "var(--text2)", marginBottom: 36 }}>
-          Mock tests, daily quizzes, practice questions, flashcards & formula sheets — all scoped to your class syllabus.
+        <p style={{ color: "var(--text2)", marginBottom: 28 }}>
+          {tier?.free
+            ? "Daily quiz, Shorts and daily puzzles — free for Class 6–8."
+            : `${tier?.label || "NEET Full"} · priced for your class · one-time payment, no auto-charge`}
         </p>
 
         {error && (
@@ -116,65 +141,90 @@ export default function PricingPage() {
           </div>
         )}
 
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 20 }}>
-          {(!trial || trial.eligible) && (
-            <div className="card" style={{ padding: 28, textAlign: "left", border: "2px solid var(--blue-mid)" }}>
-              <p style={{ fontSize: 13, fontWeight: 700, color: "var(--blue-mid)", textTransform: "uppercase", letterSpacing: 0.4 }}>Free Trial</p>
-              <p style={{ fontSize: 26, fontWeight: 800, color: "var(--text)", marginTop: 6 }}>₹0</p>
-              <p style={{ fontSize: 13, color: "var(--text3)", marginBottom: 18 }}>{trial?.days || 30} days full access · no payment needed</p>
-              <ul style={{ listStyle: "none", padding: 0, margin: "0 0 24px", fontSize: 14, color: "var(--text2)", lineHeight: 2 }}>
-                <li>✓ Every mock test &amp; daily quiz</li>
-                <li>✓ Practice questions &amp; PYQs</li>
-                <li>✓ Mistake notebook &amp; flashcards</li>
-                <li>✓ Formula sheets</li>
-                <li>✓ No card, no auto-charge</li>
-              </ul>
-              <button className="btn" style={{ width: "100%", justifyContent: "center", textAlign: "center", background: "var(--blue-mid)", color: "#fff", padding: "12px 0", borderRadius: "var(--r)", fontWeight: 700, border: "none", cursor: "pointer" }}
-                disabled={startingTrial} onClick={startTrial}>
-                {startingTrial ? "Starting..." : `Start ${trial?.days || 30}-day free trial`}
-              </button>
-            </div>
-          )}
-          {(plans.length ? plans : [{ key: "MONTHLY", label: "Monthly Full Access", amountRupees: 500, maxMonths: 12 }]).map((p) => (
-            <div key={p.key} className="card" style={{ padding: 28, textAlign: "left" }}>
-              <p style={{ fontSize: 13, fontWeight: 700, color: "var(--blue-mid)", textTransform: "uppercase", letterSpacing: 0.4 }}>Choose your months</p>
-              <p style={{ fontSize: 26, fontWeight: 800, color: "var(--text)", marginTop: 6 }}>
-                ₹{(p.amountRupees * months).toLocaleString("en-IN")}
-              </p>
-              <p style={{ fontSize: 13, color: "var(--text3)", marginBottom: 14 }}>
-                ₹{p.amountRupees}/month × {monthsLabel} · priced for your class
-              </p>
-              <div style={{ display: "flex", alignItems: "center", gap: 10, marginBottom: 10 }}>
-                <button type="button" aria-label="Fewer months" onClick={() => setMonths((m) => Math.max(1, m - 1))}
-                  style={{ width: 36, height: 36, borderRadius: "50%", border: "1px solid var(--border, #cbd5e1)", background: "transparent", fontSize: 18, fontWeight: 700, cursor: "pointer", color: "var(--text)" }}>−</button>
-                <span style={{ minWidth: 90, textAlign: "center", fontWeight: 700, color: "var(--text)" }}>{monthsLabel}</span>
-                <button type="button" aria-label="More months" onClick={() => setMonths((m) => Math.min(p.maxMonths || 12, m + 1))}
-                  style={{ width: 36, height: 36, borderRadius: "50%", border: "1px solid var(--border, #cbd5e1)", background: "transparent", fontSize: 18, fontWeight: 700, cursor: "pointer", color: "var(--text)" }}>+</button>
+        {tier?.free ? (
+          <div className="card" style={{ padding: 28, maxWidth: 420, margin: "0 auto", textAlign: "left" }}>
+            <p style={{ fontSize: 26, fontWeight: 800 }}>₹0</p>
+            <ul style={{ listStyle: "none", padding: 0, margin: "8px 0 20px", fontSize: 14, color: "var(--text2)", lineHeight: 2 }}>
+              <li>✓ Daily puzzles from your syllabus</li>
+              <li>✓ Daily quiz</li>
+              <li>✓ Shorts — learn a concept in minutes</li>
+            </ul>
+            <button className="btn" style={blueBtn} onClick={() => navigate("/", { replace: true })}>Go to YNeet</button>
+          </div>
+        ) : (
+          <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: 20, alignItems: "start" }}>
+            {(!trial || trial.eligible) && (
+              <div className="card" style={{ padding: 24, textAlign: "left", border: "2px solid var(--green)" }}>
+                <p style={{ fontSize: 13, fontWeight: 700, color: "var(--green)", textTransform: "uppercase", letterSpacing: 0.4 }}>Start free</p>
+                <p style={{ fontSize: 26, fontWeight: 800, color: "var(--text)", marginTop: 6 }}>₹0</p>
+                <p style={{ fontSize: 13, color: "var(--text3)", marginBottom: 16 }}>{trial?.days || 30} days full access · no payment needed</p>
+                <button className="btn" style={{ ...blueBtn, background: "var(--green)" }} disabled={startingTrial} onClick={startTrial}>
+                  {startingTrial ? "Starting..." : `Start ${trial?.days || 30}-day free trial`}
+                </button>
               </div>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 12 }}>
-                {[1, 3, 6, 12].map((m) => (
-                  <button type="button" key={m} onClick={() => setMonths(m)}
-                    style={{ fontSize: 12, padding: "4px 12px", borderRadius: 999, cursor: "pointer", border: months === m ? "1px solid var(--blue-mid)" : "1px solid var(--border, #cbd5e1)", background: months === m ? "var(--blue-mid)" : "transparent", color: months === m ? "#fff" : "var(--text2)" }}>
-                    {m === 1 ? "1 month" : `${m} months`}
+            )}
+
+            <div className="card" style={{ padding: 24, textAlign: "left" }}>
+              <p style={{ fontSize: 13, fontWeight: 700, color: "var(--blue-mid)", textTransform: "uppercase", letterSpacing: 0.4, marginBottom: 12 }}>Buy a plan</p>
+              {OPTIONS.map((o) => {
+                const pr = priceOf(o.months);
+                const on = months === o.months;
+                return (
+                  <button type="button" key={o.months} onClick={() => setMonths(o.months)}
+                    style={{ width: "100%", textAlign: "left", display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, padding: "12px 14px", marginBottom: 8, borderRadius: 12, cursor: "pointer", background: on ? "var(--blue-light)" : "#fff", border: on ? "2px solid var(--blue-mid)" : "1.5px solid var(--gray3)" }}>
+                    <span>
+                      <span style={{ display: "block", fontWeight: 800, fontSize: 15, color: "var(--text)" }}>
+                        {o.title} {o.note && <span className="chip chip-green" style={{ marginLeft: 4, fontSize: 11 }}>{o.note}</span>}
+                      </span>
+                      <span style={{ fontSize: 12.5, color: "var(--text3)" }}>
+                        {o.months > 1 ? `${inr(Math.round(pr.price / o.months))}/month` : "Pay as you go"}
+                        {pr.saving > 0 && <span style={{ color: "var(--green)", fontWeight: 700 }}> · save {inr(pr.saving)}</span>}
+                      </span>
+                    </span>
+                    <span style={{ fontWeight: 800, fontSize: 18, color: "var(--text)", whiteSpace: "nowrap" }}>{inr(pr.price)}</span>
                   </button>
-                ))}
+                );
+              })}
+
+              <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", gap: 10, margin: "4px 0 12px", fontSize: 13, color: "var(--text2)" }}>
+                <span>Other length</span>
+                <span style={{ display: "flex", alignItems: "center", gap: 8 }}>
+                  <button type="button" aria-label="Fewer months" onClick={() => setMonths((m) => Math.max(1, m - 1))}
+                    style={{ width: 30, height: 30, borderRadius: "50%", border: "1px solid var(--gray3)", background: "#fff", fontSize: 16, fontWeight: 700, cursor: "pointer" }}>−</button>
+                  <span style={{ minWidth: 76, textAlign: "center", fontWeight: 700, color: isOption ? "var(--text3)" : "var(--text)" }}>{monthsLabel}</span>
+                  <button type="button" aria-label="More months" onClick={() => setMonths((m) => Math.min(plan.maxMonths || 12, m + 1))}
+                    style={{ width: 30, height: 30, borderRadius: "50%", border: "1px solid var(--gray3)", background: "#fff", fontSize: 16, fontWeight: 700, cursor: "pointer" }}>+</button>
+                </span>
               </div>
-              <p style={{ fontSize: 13, color: "var(--text2)", marginBottom: 18 }}>
+              {months < 12 && selected.price >= yearPrice && (
+                <p style={{ fontSize: 12.5, color: "var(--amber)", marginBottom: 10 }}>
+                  A full year costs the same. <button type="button" onClick={() => setMonths(12)} style={{ border: "none", background: "none", color: "var(--blue-mid)", fontWeight: 700, cursor: "pointer", padding: 0 }}>Switch to 12 months</button>
+                </p>
+              )}
+
+              <p style={{ fontSize: 13, color: "var(--text2)", marginBottom: 14 }}>
                 Valid till <strong>{validTill}</strong>{activeEnd ? " (added after your current plan)" : ""}
               </p>
-              <button
-                className="btn"
-                style={{ width: "100%", justifyContent: "center", textAlign: "center", background: "var(--blue-mid)", color: "#fff", padding: "12px 0", borderRadius: "var(--r)", fontWeight: 700, border: "none", cursor: "pointer" }}
-                disabled={payingPlan === p.key}
-                onClick={() => pay(p.key)}
-              >
-                {payingPlan === p.key ? "Opening checkout..." : `Pay ₹${(p.amountRupees * months).toLocaleString("en-IN")} for ${monthsLabel}`}
+              <button className="btn" style={blueBtn} disabled={payingPlan === plan.key} onClick={() => pay(plan.key)}>
+                {payingPlan === plan.key ? "Opening checkout..." : `Pay ${inr(selected.price)} for ${monthsLabel}`}
               </button>
             </div>
-          ))}
-        </div>
+          </div>
+        )}
 
-        <p style={{ marginTop: 28, fontSize: 12, color: "var(--text3)" }}>
+        {!tier?.free && (
+          <div className="card" style={{ marginTop: 20, textAlign: "left", padding: 22 }}>
+            <p style={{ fontWeight: 800, marginBottom: 6 }}>Every plan and the free trial include</p>
+            <ul style={{ listStyle: "none", padding: 0, margin: 0, fontSize: 14, color: "var(--text2)", lineHeight: 2, columns: "2 260px" }}>
+              {FEATURES.map((f) => <li key={f}>✓ {f}</li>)}
+            </ul>
+            <p style={{ marginTop: 12, fontSize: 13, background: "var(--amber-light)", color: "var(--amber)", padding: "8px 12px", borderRadius: 8 }}>
+              A full year of YNeet costs less than {inr(Math.ceil(yearPrice / 365))} a day.
+            </p>
+          </div>
+        )}
+
+        <p style={{ marginTop: 24, fontSize: 12, color: "var(--text3)" }}>
           Each month runs to the end of a calendar month — e.g. 3 months bought on Aug 20 cover you through Oct 31. Buying while a plan is active adds the months after it ends.
           Secure payments via Razorpay.
         </p>

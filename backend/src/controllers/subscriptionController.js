@@ -12,7 +12,7 @@ const razorpay = new Razorpay({
 // Plan catalogue — the single source of truth for pricing on both frontend and backend.
 // Amounts are in paise (Razorpay's unit). Keep these in sync with the pricing page copy.
 const PLANS = {
-  MONTHLY: { label: "Monthly Full Access" }, // amount varies by class — see MONTHLY_AMOUNT_BY_CLASS below; always ends at month-end
+  MONTHLY: { label: "Monthly Full Access" }, // amount varies by class tier and months bought — see utils/pricing.js; always ends at month-end
 };
 
 // Free trial: 30 days of full access, no payment, once per student. Replaces the
@@ -20,7 +20,7 @@ const PLANS = {
 const TRIAL_DAYS = 30;
 const TRIAL_PLAN = "TRIAL_30D";
 // A student can buy 1..MAX_MONTHS months of the MONTHLY plan in one payment.
-const MAX_MONTHS = 12;
+const { MAX_MONTHS, tierFor, priceRupees, priceTable } = require("../utils/pricing");
 const monthsOf = (v) => Math.min(MAX_MONTHS, Math.max(1, parseInt(v, 10) || 1));
 
 // Eligible for the free trial = never had any plan activated (no paid, trial,
@@ -32,21 +32,9 @@ const trialWindow = (from = new Date()) => {
   return { startDate: new Date(from), endDate: end };
 };
 
-// MONTHLY plan price depends on the student's class tier. Amounts are in paise.
-// Dropper ₹600, 11th/12th ₹500, 9th/10th ₹400, 6th/7th/8th ₹300.
-const MONTHLY_AMOUNT_BY_CLASS = {
-  Dropper: 60000,
-  "12th": 50000,
-  "11th": 50000,
-  "10th": 40000,
-  "9th": 40000,
-  "8th": 30000,
-  "7th": 30000,
-  "6th": 30000,
-};
-const DEFAULT_MONTHLY_AMOUNT = MONTHLY_AMOUNT_BY_CLASS["12th"]; // fallback when class is unknown (e.g. logged-out visitor)
-
-const getMonthlyAmount = (classLevel) => MONTHLY_AMOUNT_BY_CLASS[classLevel] ?? DEFAULT_MONTHLY_AMOUNT;
+// MONTHLY plan price depends on the student's class tier and how many months
+// they buy (6 and 12 months are discounted) — see utils/pricing.js. Paise here.
+const getAmountPaise = (classLevel, months) => priceRupees(tierFor(classLevel), months) * 100;
 
 // "Enrolled on Aug 20 → active till 23:59:59 on Aug 31" — i.e. always the last
 // instant of the calendar month the subscription started in, never a rolling 30 days.
@@ -92,14 +80,18 @@ const checkReferralReward = async (userId) => {
 // Route uses optionalAuth, so req.user (and their class) is available whenever a
 // valid session token is present, letting the MONTHLY price reflect their class tier.
 exports.getPlans = async (req, res) => {
-  const classLevel = req.user?.profile?.class;
-  const monthlyAmount = getMonthlyAmount(classLevel);
+  const tier = tierFor(req.user?.profile?.class);
   res.json({
     success: true,
-    plans: [
-      { key: "MONTHLY", label: PLANS.MONTHLY.label, amountRupees: monthlyAmount / 100, duration: "Till end of current calendar month", maxMonths: MAX_MONTHS },
+    tier: { key: tier.key, label: tier.label, free: !!tier.free },
+    plans: tier.free ? [] : [
+      {
+        key: "MONTHLY", label: PLANS.MONTHLY.label, amountRupees: tier.monthly,
+        duration: "Till end of current calendar month", maxMonths: MAX_MONTHS,
+        prices: priceTable(tier), // [{ months, price, saving }] for 1..12
+      },
     ],
-    trial: { days: TRIAL_DAYS, eligible: req.user ? trialEligible(req.user.subscription) : true },
+    trial: { days: TRIAL_DAYS, eligible: !tier.free && (req.user ? trialEligible(req.user.subscription) : true) },
   });
 };
 
@@ -113,6 +105,8 @@ exports.getMySubscription = async (req, res) => {
 // POST /api/v1/subscription/start-trial — activates the free 30-day trial (once per student).
 exports.startTrial = async (req, res) => {
   try {
+    // Class 6–8 is already free; keep the trial for when they move to Class 9.
+    if (tierFor(req.user.profile?.class).free) return res.status(400).json({ success: false, message: "YNeet is already free for Class 6–8." });
     const sub = await prisma.subscription.findUnique({ where: { userId: req.user.id } });
     if (!trialEligible(sub)) return res.status(400).json({ success: false, message: "Your free trial has already been used." });
     const subscription = await prisma.subscription.upsert({
@@ -134,9 +128,13 @@ exports.createCheckout = async (req, res) => {
     const { plan } = req.body;
     if (!PLANS[plan]) return res.status(400).json({ success: false, message: "Invalid plan" });
 
-    // Price = the student's class-tier monthly price × number of months.
+    // Price = the student's class tier for that many months (6 and 12 are discounted).
+    // Class 6–8 is free, so there is nothing to buy.
     const months = monthsOf(req.body.months);
-    const amount = getMonthlyAmount(req.user.profile?.class) * months;
+    if (tierFor(req.user.profile?.class).free) {
+      return res.status(400).json({ success: false, message: "YNeet is free for Class 6–8 — no payment needed." });
+    }
+    const amount = getAmountPaise(req.user.profile?.class, months);
     const order = await razorpay.orders.create({
       amount,
       currency: "INR",

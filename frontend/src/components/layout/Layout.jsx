@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { Outlet, NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import InstallPrompt from "../InstallPrompt";
+import { isJuniorFree, PUZZLES_URL } from "../../utils/plan";
 
 export default function Layout() {
   const { user, logout } = useAuth();
@@ -10,6 +11,8 @@ export default function Layout() {
   const [expiryNotice, setExpiryNotice] = useState(null); // null | { hoursLeft, endDate }
   const initials = user?.name?.split(" ").map(n => n[0]).join("").slice(0, 2).toUpperCase() || "??";
   const streak = user?.streak?.current || 0;
+  // Free Class 6–8 students only see the free pages (Home, Shorts, Quiz, Puzzles).
+  const junior = isJuniorFree(user);
 
   // Show a one-time-per-login popup if the subscription is in its final day.
   // sessionStorage means it won't nag on every page navigation within the same
@@ -30,6 +33,7 @@ export default function Layout() {
   // every access is guarded and the popup simply doesn't show in that case.
   const [referralPopup, setReferralPopup] = useState(false);
   useEffect(() => {
+    if (junior) return; // Refer & Earn is a paid-plan reward
     try {
       const today = new Date().toISOString().slice(0, 10);
       if (localStorage.getItem("yneet_referral_popup_day") !== today) {
@@ -38,9 +42,9 @@ export default function Layout() {
         return () => clearTimeout(t);
       }
     } catch { /* storage unavailable — skip the popup */ }
-  }, []);
+  }, [junior]);
 
-  const tabs = [
+  const allTabs = [
     { to: "/",         label: "Dashboard", end: true },
     { to: "/mock",     label: "Mock Tests" },
     { to: "/shorts",   label: "Shorts" },
@@ -57,7 +61,16 @@ export default function Layout() {
     { to: "/help", label: "Help & FAQ", icon: "❓" },
   ];
 
-  const mobileTabs = [
+  const juniorTabs = [
+    { to: "/",       label: "Home", end: true },
+    { to: "/shorts", label: "Shorts" },
+    { to: "/quiz",   label: "Daily Quiz" },
+    { href: PUZZLES_URL, label: "Daily Puzzles" },
+    { to: "/help",   label: "Help & FAQ" },
+  ];
+  const tabs = junior ? juniorTabs : allTabs;
+
+  const allMobileTabs = [
     { to: "/",         label: "Home",      icon: "🏠", end: true },
     { to: "/mock",     label: "Tests",     icon: "📝" },
     { to: "/shorts",   label: "Shorts",    icon: "🎬" },
@@ -65,8 +78,19 @@ export default function Layout() {
     { to: "/practice", label: "Practice",  icon: "📖" },
   ];
 
+  const juniorMobileTabs = [
+    { to: "/",       label: "Home",    icon: "🏠", end: true },
+    { to: "/shorts", label: "Shorts",  icon: "🎬" },
+    { to: "/quiz",   label: "Quiz",    icon: "⚡" },
+    { href: PUZZLES_URL, label: "Puzzles", icon: "🧩" },
+  ];
+  const mobileTabs = junior ? juniorMobileTabs : allMobileTabs;
+
   // Everything that doesn't fit in the 5-slot bottom bar lives behind "More".
-  const moreLinks = [
+  const moreLinks = junior ? [
+    { to: "/profile", label: "Profile",    icon: "👤" },
+    { to: "/help",    label: "Help & FAQ", icon: "❓" },
+  ] : [
     { to: "/pyq",        label: "Previous Year Qs",   icon: "📅" },
     { to: "/biology",   label: "Biology Flashcards", icon: "🧬" },
     { to: "/physics",   label: "Physics Formulas",   icon: "⚛️" },
@@ -85,7 +109,9 @@ export default function Layout() {
       <nav className="app-nav">
         <div className="nav-logo">YNeet 🎯</div>
         <div className="nav-tabs">
-          {tabs.map(t => (
+          {tabs.map(t => t.href ? (
+            <a key={t.href} href={t.href} target="_blank" rel="noreferrer"><button className="nav-tab">{t.label} ↗</button></a>
+          ) : (
             <NavLink key={t.to} to={t.to} end={t.end}>
               {({ isActive }) => (
                 <button className={`nav-tab${isActive ? " active" : ""}`}>{t.label}</button>
@@ -168,7 +194,11 @@ export default function Layout() {
       )}
 
       <nav className="mobile-bottom-nav">
-        {mobileTabs.map(t => (
+        {mobileTabs.map(t => t.href ? (
+          <a key={t.href} href={t.href} target="_blank" rel="noreferrer" style={{ textDecoration: "none" }}>
+            <button className="mob-tab"><span>{t.icon}</span><span>{t.label}</span></button>
+          </a>
+        ) : (
           <NavLink key={t.to} to={t.to} end={t.end}>
             {({ isActive }) => (
               <button className={`mob-tab${isActive ? " active" : ""}`}>
