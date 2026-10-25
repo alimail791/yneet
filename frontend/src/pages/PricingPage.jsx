@@ -101,14 +101,23 @@ export default function PricingPage() {
     }
   };
 
-  const FEATURES = [
-    "Full NEET mock tests with rank analysis",
-    "Shorts — 3–5 min concept videos",
-    "Daily quiz, practice questions and PYQs",
-    "Daily NEET puzzle games",
-    "Doubt support on WhatsApp",
-    "Mistake notebook, flashcards and formula sheets",
-  ];
+  // What each paid tier really includes today (keep in sync with www.yneet.in/courses).
+  const FEATURES = tier?.key === "foundation"
+    ? [
+        "Shorts — 3–5 min concept videos",
+        "Daily quiz and mistake notebook",
+        "Daily puzzles from the Class 9–10 syllabus",
+        "Doubt support on WhatsApp",
+        "Foundation mock tests — coming soon",
+      ]
+    : [
+        "Full NEET mock tests with rank analysis",
+        "Shorts — 3–5 min concept videos",
+        "Daily quiz, practice questions and PYQs",
+        "Daily NEET puzzle games",
+        "Doubt support on WhatsApp",
+        "Mistake notebook, flashcards and formula sheets",
+      ];
   const fallbackPlan = { key: "MONTHLY", label: "Monthly Full Access", amountRupees: 399, maxMonths: 12, prices: [] };
   const plan = plans[0] || fallbackPlan;
   const priceOf = (n) => plan.prices?.find((r) => r.months === n) || { months: n, price: plan.amountRupees * n, saving: 0 };
