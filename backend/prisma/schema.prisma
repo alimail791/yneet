@@ -23,6 +23,10 @@ model User {
   role          String    @default("student")
   // A short unique code this user can share — see Referral model below.
   referralCode  String?   @unique
+  // Legacy: UPI ID from the old cash referral reward. No longer used, but the
+  // column still holds data in production, so it stays in the schema to stop
+  // `prisma db push` from dropping it.
+  upiId         String?
   referralsMade Referral[] @relation("ReferralsMade")
   referredBy    Referral?  @relation("ReferredUser")
   // Copy of the JWT's `sid` claim from the last time this device's token was used
