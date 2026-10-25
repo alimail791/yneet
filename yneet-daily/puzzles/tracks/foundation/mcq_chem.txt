@@ -1,0 +1,49 @@
+# Format: question | correct answer | wrong 1 | wrong 2 | wrong 3 | explanation
+# Matter in Our Surroundings
+Change of a solid directly into gas is: | Sublimation | Evaporation | Melting | Condensation | Camphor and naphthalene sublime.
+Evaporation causes: | Cooling | Heating | No change | Freezing | Particles take energy from the surroundings.
+The SI unit of temperature is: | Kelvin | Celsius | Fahrenheit | Joule | 0 °C is about 273 K.
+Boiling point of water at sea level is: | 100 °C | 0 °C | 37 °C | 273 °C | Water boils at 373 K.
+Spreading of a smell through a room is due to: | Diffusion | Evaporation | Condensation | Sublimation | Gas particles move and mix.
+# Is Matter Around Us Pure
+Milk is an example of a: | Colloid | True solution | Suspension | Pure substance | Milk scatters light (Tyndall effect).
+Scattering of light by colloid particles is the: | Tyndall effect | Raman effect | Photoelectric effect | Doppler effect | Sunlight through a dense forest shows it.
+Colours in ink can be separated by: | Chromatography | Filtration | Distillation | Sublimation | Different dyes travel at different speeds.
+Which is a compound? | Water | Air | Brass | Sea water | Water has hydrogen and oxygen in a fixed ratio.
+Cream is separated from milk by: | Centrifugation | Filtration | Evaporation | Magnet | Spinning separates heavier and lighter parts.
+# Atoms and Molecules
+Avogadro's number is about: | 6.022 × 10^23 | 6.022 × 10^20 | 3 × 10^8 | 1.6 × 10^-19 | It is the number of particles in one mole.
+The chemical symbol of sodium is: | Na | So | S | Sd | It comes from the Latin name natrium.
+The molecular mass of water (H2O) is: | 18 u | 16 u | 10 u | 20 u | 2 × 1 + 16 = 18 u.
+The atomicity of oxygen gas is: | 2 | 1 | 3 | 4 | An oxygen molecule is O2.
+The formula of calcium oxide is: | CaO | CaO2 | Ca2O | C2O | Calcium (2+) and oxide (2–) combine 1:1.
+# Structure of the Atom
+The electron was discovered by: | J.J. Thomson | Rutherford | Chadwick | Bohr | Thomson studied cathode rays.
+Rutherford's gold foil experiment showed that an atom has a: | Small dense nucleus | Uniform positive charge | No empty space | Neutrons outside | Most alpha particles passed straight through.
+The maximum number of electrons in the L shell is: | 8 | 2 | 18 | 32 | The formula is 2n², with n = 2.
+Atoms with the same atomic number but different mass numbers are: | Isotopes | Isobars | Ions | Molecules | Example: carbon-12 and carbon-14.
+The atomic number of an element equals its number of: | Protons | Neutrons | Nucleons | Shells | It is written as Z.
+# Chemical Reactions and Equations
+Rancidity of food is slowed by adding: | Antioxidants | Water | Salt water only | Acids | Chips packets are flushed with nitrogen too.
+Iron + copper sulphate → iron sulphate + copper is a: | Displacement reaction | Combination reaction | Decomposition reaction | Double displacement | Iron is more reactive than copper.
+Heating calcium carbonate to give lime and CO2 is a: | Decomposition reaction | Combination reaction | Displacement reaction | Neutralisation | One substance breaks into two.
+Burning of magnesium ribbon gives: | Magnesium oxide | Magnesium hydroxide | Magnesium chloride | Magnesium carbonate | It burns with a dazzling white flame.
+The reaction that gives a white precipitate of barium sulphate is a: | Double displacement reaction | Decomposition reaction | Combination reaction | Redox only | Ions are exchanged between two compounds.
+# Acids, Bases and Salts
+pH of pure water is: | 7 | 0 | 14 | 1 | Below 7 is acidic; above 7 is basic.
+The chemical formula of baking soda is: | NaHCO3 | Na2CO3 | NaCl | NaOH | Sodium hydrogencarbonate.
+Plaster of Paris is made by heating: | Gypsum | Limestone | Baking soda | Common salt | It sets into a hard mass with water.
+Bleaching powder is: | CaOCl2 | CaCO3 | NaCl | CaSO4 | It is made by passing chlorine over slaked lime.
+Tooth decay starts when mouth pH falls below: | 5.5 | 7 | 9 | 12 | Toothpaste is basic to neutralise the acid.
+# Metals and Non-metals
+The most reactive metal among these is: | Potassium | Iron | Copper | Gold | Potassium is at the top of the reactivity series.
+Brass is an alloy of: | Copper and zinc | Copper and tin | Iron and carbon | Lead and tin | Bronze is copper and tin.
+Corrosion of silver makes it turn: | Black | Green | Red | White | Silver sulphide forms on it.
+Ionic compounds usually: | Have high melting points | Are gases | Do not conduct when molten | Are soft liquids | Strong forces hold their ions together.
+Which non-metal is a liquid at room temperature? | Bromine | Iodine | Sulphur | Carbon | Mercury is the liquid metal.
+# Carbon and Its Compounds
+Carbon forms bonds mainly by: | Sharing electrons | Losing electrons | Gaining electrons | Nuclear fusion | These are covalent bonds.
+The functional group of alcohols is: | –OH | –COOH | –CHO | –Cl | Ethanol is CH3CH2OH.
+Vinegar is a dilute solution of: | Ethanoic acid | Ethanol | Methane | Ethene | Ethanoic acid is also called acetic acid.
+Soap is made by heating fat with sodium hydroxide. This is: | Saponification | Esterification | Hydrogenation | Combustion | Soap is a sodium salt of a fatty acid.
+The first member of the alkane series is: | Methane | Ethane | Propane | Butane | Methane is CH4.

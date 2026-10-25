@@ -2,6 +2,9 @@
 // Zip paths and Queens boards are generated here with a fixed seed, so the output is repeatable.
 // Usage: node puzzles/generate.js [startDate YYYY-MM-DD] [days]   (defaults: 2026-10-24, 365 days)
 // Days 1-30 come from content.js; days 31+ come from the files in puzzles/year/.
+// Also builds the class tracks from puzzles/tracks/<track>/ (same file formats):
+//   junior (Class 6–8) → puzzles-junior.json, foundation (Class 9–10) → puzzles-foundation.json.
+// Their content simply cycles when it runs out.
 const fs = require('fs');
 const path = require('path');
 const C = require('./content');
@@ -95,7 +98,7 @@ function makeQueens(N, r) {
 const REGION_NAMES = { A: 's-block', B: 'p-block', C: 'd-block', D: 'f-block', E: 'Noble gases', F: 'Halogens', G: 'Metalloids', H: 'Lanthanoids' };
 
 // ---------- Year content (days 31 onward) ----------
-const YEAR = path.join(__dirname, 'year');
+let YEAR = path.join(__dirname, 'year');
 const lines = f => fs.readFileSync(path.join(YEAR, f), 'utf8').split('\n').map(l => l.trim()).filter(l => l && !l.startsWith('#'));
 const linesWithHeaders = f => fs.readFileSync(path.join(YEAR, f), 'utf8').split('\n').map(l => l.trim()).filter(Boolean);
 // Round-robin across groups so neighbouring days come from different chapters.
@@ -103,8 +106,9 @@ const interleave = groups => { const out = [], g = groups.map(x => x.slice()); w
 // Merge several lists so each is spread evenly through the result.
 const spread = lists => lists.flatMap(l => l.map((v, i) => ({ v, k: (i + 0.5) / l.length }))).sort((a, b) => a.k - b.k).map(x => x.v);
 
-function yearPools() {
-  const usedWords = new Set(C.bioword.map(b => b[0]));
+function yearPools(dir = YEAR, excludeFirst30 = true) {
+  YEAR = dir;
+  const usedWords = new Set(excludeFirst30 ? C.bioword.map(b => b[0]) : []);
   const words = lines('bioword.txt').map(l => l.split(' | ')).filter(w => !usedWords.has(w[0]));
   const pinBySubject = {};
   for (const l of lines('pinpoint.txt')) {
@@ -113,7 +117,7 @@ function yearPools() {
   }
   const pinLists = Object.values(pinBySubject).map(byChap => interleave(Object.values(byChap)));
   const pins = spread(pinLists);
-  const chaptersOf = subj => [...new Set([...Object.keys(pinBySubject[subj] || {}), ...(subj === 'Bio' ? C.pinpoint.map(p => p[0]) : [])])];
+  const chaptersOf = subj => [...new Set([...Object.keys(pinBySubject[subj] || {}), ...(excludeFirst30 && subj === 'Bio' ? C.pinpoint.map(p => p[0]) : [])])];
   const zips = lines('zip.txt').map(l => { const [t, s] = l.split(' | '); return [t, s.split(' > ')]; });
   const mcqs = { Bio: [], Chem: [], Phy: [] };
   for (const f of fs.readdirSync(YEAR).filter(f => f.startsWith('mcq_')).sort()) {
@@ -186,3 +190,41 @@ const short = Object.entries(used).filter(([, n]) => FIRST + n < DAYS).map(([k, 
 if (short.length) console.warn('Warning: content repeats before the end for: ' + short.join(', '));
 fs.writeFileSync(path.join(__dirname, 'puzzles.json'), JSON.stringify(out, null, 1));
 console.log(`Wrote ${Object.keys(out).length} days: ${START} to ${addDays(START, DAYS - 1)}`);
+
+// ---------- Class tracks ----------
+// Same five games, content from puzzles/tracks/<track>/. Easier boards than the NEET track.
+const TRACKS = {
+  junior: { seed: 6081, sizes: { zip: [6, 5, 5, 5, 5, 5, 6], queens: [6, 5, 5, 6, 6, 6, 6] },
+    regions: { A: 'Mercury', B: 'Venus', C: 'Earth', D: 'Mars', E: 'Jupiter', F: 'Saturn', G: 'Uranus', H: 'Neptune' } },
+  foundation: { seed: 9101, sizes: { zip: [6, 5, 5, 6, 6, 6, 6], queens: [7, 6, 6, 6, 7, 7, 7] }, regions: REGION_NAMES },
+};
+for (const [track, cfg] of Object.entries(TRACKS)) {
+  const T = yearPools(path.join(__dirname, 'tracks', track), false);
+  const tout = {};
+  for (let d = 0; d < DAYS; d++) {
+    const date = addDays(START, d);
+    const r = rng(cfg.seed * 1000003 + d * 7919);
+    const dow = new Date(date + 'T00:00:00Z').getUTCDay();
+    const mcq = (src, i, subject) => {
+      const [q, o, a, e] = src[i % src.length];
+      const order = shuffle([0, 1, 2, 3], r);
+      return { s: subject, q, o: order.map(k => o[k]), a: order.indexOf(a), e };
+    };
+    const bw = T.words[d % T.words.length];
+    const pp = T.pins[d % T.pins.length];
+    const zp = T.zips[d % T.zips.length];
+    const opts = shuffle([pp.chap, ...shuffle(T.chaptersOf(pp.subj).filter(c => c !== pp.chap), r).slice(0, 5)], r);
+    const qb = makeQueens(cfg.sizes.queens[dow], r);
+    tout[date] = {
+      no: d + 2, date, track,
+      bioword: { answer: bw[0], hint: bw[1], fact: bw[2] },
+      pinpoint: { answer: pp.chap, subject: pp.subj, clues: pp.clues, options: opts },
+      zip: { title: zp[0], labels: zp[1], ...makeZip(zp[1], cfg.sizes.zip[dow], r) },
+      queens: { ...qb, names: Object.fromEntries([...new Set(qb.regions.join(''))].sort().map(k => [k, cfg.regions[k]])) },
+      daily5: [mcq(T.mcqs.Bio, d * 3, 'Bio'), mcq(T.mcqs.Bio, d * 3 + 1, 'Bio'), mcq(T.mcqs.Chem, d, 'Chem'), mcq(T.mcqs.Bio, d * 3 + 2, 'Bio'), mcq(T.mcqs.Phy, d, 'Phy')]
+    };
+  }
+  fs.writeFileSync(path.join(__dirname, `puzzles-${track}.json`), JSON.stringify(tout, null, 1));
+  const days = { words: T.words.length, pinpoint: T.pins.length, zip: T.zips.length, bioMcqDays: Math.floor(T.mcqs.Bio.length / 3), chem: T.mcqs.Chem.length, phy: T.mcqs.Phy.length };
+  console.log(`Wrote ${track}: ${DAYS} days (unique content for ${Math.min(...Object.values(days))} days, then it cycles) ${JSON.stringify(days)}`);
+}

@@ -1,0 +1,33 @@
+# Pinpoint for Class 9–10. Format: Subject | NCERT chapter | five clues from hardest to easiest, separated by ;
+Bio | The Fundamental Unit of Life | Plasmolysis; Lysosomes as suicide bags; Endocytosis; Mitochondria; Cell organelles
+Bio | The Fundamental Unit of Life | Rough and smooth ER; Golgi apparatus; Prokaryotes and eukaryotes; Osmosis; Structure of a cell
+Bio | Tissues | Sclerenchyma; Collenchyma; Meristematic tissue; Xylem and phloem; Plant tissues
+Bio | Tissues | Squamous epithelium; Tendons and ligaments; Striated muscle; Neurons; Animal tissues
+Bio | Diversity in Living Organisms | Five kingdom classification; Gymnosperms; Chordata; Thallophyta; Classifying organisms
+Bio | Diversity in Living Organisms | Whittaker; Porifera; Amphibia; Mammalia; Groups of plants and animals
+Bio | Why Do We Fall Ill | Antibodies; Vectors; Infectious and non-infectious diseases; Immunisation; Health and disease
+Bio | Life Processes | Villi; Nephron; Double circulation; Stomata and guard cells; Nutrition, respiration and excretion
+Bio | Life Processes | Pyruvate; Translocation; Alveoli; Haemoglobin; Life processes
+Bio | Control and Coordination | Auxin; Cerebellum; Reflex arc; Insulin; Nervous and hormonal control
+Bio | Control and Coordination | Phototropism; Synapse; Adrenaline; Medulla; Brain and hormones
+Bio | How do Organisms Reproduce? | Regeneration in Planaria; Fragmentation; Fission in Amoeba; Pollination; Ways of reproduction
+Bio | How do Organisms Reproduce? | Placenta; Contraception; Ovary and testis; Vegetative propagation; Reproduction
+Bio | Heredity and Evolution | Mendel's pea plants; Dominant and recessive; XX and XY; Variation; Inheritance of traits
+Bio | Our Environment | Trophic levels; Biological magnification; Ozone depletion; Decomposers; Food chains and ecosystems
+Chem | Matter in Our Surroundings | Latent heat; Sublimation; Diffusion; Evaporation causes cooling; States of matter
+Chem | Is Matter Around Us Pure | Tyndall effect; Colloids; Chromatography; Solutions and suspensions; Mixtures
+Chem | Atoms and Molecules | Avogadro number; Law of constant proportions; Atomic mass unit; Mole concept; Atoms
+Chem | Structure of the Atom | Rutherford's gold foil; Isotopes and isobars; Electron shells; Valency; Atomic structure
+Chem | Chemical Reactions and Equations | Rancidity; Decomposition; Displacement; Balancing equations; Chemical reactions
+Chem | Acids, Bases and Salts | Plaster of Paris; Bleaching powder; pH scale; Baking soda; Acids and bases
+Chem | Metals and Non-metals | Ionic compounds; Reactivity series; Corrosion; Alloys; Metals and non-metals
+Chem | Carbon and Its Compounds | Homologous series; Saponification; Covalent bonds; Ethanol and ethanoic acid; Carbon compounds
+Phy | Motion | Uniform circular motion; Acceleration; Velocity-time graph; Distance and displacement; Motion
+Phy | Force and Laws of Motion | Conservation of momentum; Inertia; F = ma; Action and reaction; Newton's laws
+Phy | Gravitation | Universal gravitational constant; Free fall; Buoyancy; Weight and mass; Gravity
+Phy | Work and Energy | Commercial unit kWh; Power; Potential energy; Kinetic energy; Work and energy
+Phy | Sound | Ultrasound; SONAR; Echo; Frequency and pitch; Sound waves
+Phy | Light — Reflection and Refraction | Refractive index; Mirror formula; Concave and convex mirrors; Lenses; Reflection and refraction
+Phy | The Human Eye and the Colourful World | Power of accommodation; Myopia and hypermetropia; Dispersion; Scattering of light; The human eye
+Phy | Electricity | Resistivity; Ohm's law; Series and parallel; Heating effect; Electric current
+Phy | Magnetic Effects of Electric Current | Fleming's left-hand rule; Solenoid; Electric motor; Magnetic field lines; Electromagnetism

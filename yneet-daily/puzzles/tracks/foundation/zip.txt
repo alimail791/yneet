@@ -1,0 +1,33 @@
+# Pathway Zip for Class 9–10. Format: Title | step 1 > step 2 > ... (4 to 7 steps, in the correct order)
+Levels of organisation | Cell > Tissue > Organ > Organ system > Organism
+Classification ranks | Kingdom > Phylum > Class > Order > Family > Genus > Species
+Path of air | Nostrils > Pharynx > Larynx > Trachea > Bronchi > Bronchioles > Alveoli
+Digestion | Mouth > Oesophagus > Stomach > Small intestine > Large intestine
+Making urine | Renal artery > Glomerulus > Bowman's capsule > Tubule > Collecting duct > Ureter > Bladder
+Blood through the heart | Vena cava > Right atrium > Right ventricle > Lungs > Left atrium > Left ventricle > Aorta
+Reflex arc | Receptor > Sensory neuron > Spinal cord > Motor neuron > Effector muscle
+Nerve impulse | Dendrite > Cell body > Axon > Nerve ending > Synapse
+Light into the eye | Cornea > Pupil > Lens > Retina > Optic nerve > Brain
+Sound into the ear | Pinna > Ear canal > Eardrum > Ear bones > Cochlea > Auditory nerve
+Pollen to seed | Pollen lands on stigma > Pollen tube grows > Reaches ovule > Fertilisation > Seed
+Human development | Fertilisation > Zygote > Embryo > Foetus > Baby
+Energy flow | Sun > Producers > Herbivores > Carnivores > Top carnivores
+Aerobic respiration | Glucose > Pyruvate > In mitochondria > Carbon dioxide and water > Energy released
+Water cycle | Evaporation > Condensation > Clouds > Rain > Rivers and oceans
+Changes of state on heating | Solid > Melting > Liquid > Boiling > Gas
+Models of the atom | Dalton's model > Thomson's plum pudding > Rutherford's nuclear model > Bohr's orbits
+Electron shells | K shell > L shell > M shell > N shell
+Mole calculation | Mass of substance > Divide by molar mass > Number of moles > Multiply by Avogadro number > Number of particles
+Reactivity series (top to bottom) | Potassium > Sodium > Calcium > Magnesium > Aluminium > Zinc > Iron
+Extraction of iron | Iron ore > Roasting > Reduction with carbon > Molten iron > Steel making
+Making soap | Oil or fat > Add sodium hydroxide > Heat > Saponification > Soap
+Alkanes in order | Methane > Ethane > Propane > Butane > Pentane
+pH from acidic to basic | Gastric juice > Lemon juice > Pure water > Baking soda solution > Sodium hydroxide
+Using SONAR | Ship sends ultrasound > Waves travel down > Reflect from seabed > Echo received > Depth calculated
+Rocket launch (third law) | Fuel burns > Hot gases pushed down > Gases push the rocket up > Rocket rises
+Energy in a pendulum | Highest point: potential energy > Swinging down > Lowest point: kinetic energy > Swinging up
+Electricity at home | Power station > Transmission lines > Electric meter > Fuse > Wiring to appliances
+Electric motor | Current flows in coil > Force on coil in field > Coil rotates > Split ring reverses current > Keeps rotating
+Rainbow formation | Sunlight enters raindrop > Refraction > Dispersion > Internal reflection > Rainbow seen
+Colours of the spectrum | Violet > Indigo > Blue > Green > Yellow > Orange > Red
+Hydroelectric power | Water stored in dam > Falls through pipes > Turns turbine > Generator > Electricity

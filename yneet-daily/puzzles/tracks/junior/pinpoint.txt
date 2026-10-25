@@ -1,0 +1,41 @@
+# Pinpoint for Class 6–8. Format: Subject | NCERT chapter | five clues from hardest to easiest, separated by ;
+Bio | Getting to Know Plants | Reticulate venation; Tap root and fibrous root; Herbs, shrubs and trees; Stem, leaf and root; Parts of a plant
+Bio | Getting to Know Plants | Pistil and stamen; Sepals and petals; Lamina and petiole; Transpiration; Parts of a flower
+Bio | Body Movements | Ball and socket joint; Pivotal joint; Cartilage; Ribcage and backbone; Skeleton and joints
+Bio | Body Movements | Gait of a snail; Setae of earthworm; Hinge joint; Muscles contract and relax; How animals move
+Bio | Nutrition in Plants | Chlorophyll; Stomata; Cuscuta; Pitcher plant; Photosynthesis
+Bio | Nutrition in Plants | Rhizobium; Saprotrophs; Symbiosis in lichens; Autotrophs and heterotrophs; How plants make food
+Bio | Nutrition in Animals | Villi; Ruminants; Bile from the liver; Amoeba and food vacuole; Digestion in humans
+Bio | Nutrition in Animals | Salivary glands; Oesophagus; Small intestine; Teeth and tongue; From mouth to stomach
+Bio | Respiration in Organisms | Anaerobic respiration; Lactic acid and muscle cramps; Spiracles and tracheae; Breathing rate; Inhaling and exhaling
+Bio | Respiration in Organisms | Diaphragm; Gills of fish; Lime water turns milky; Yeast makes alcohol; Breathing and respiration
+Bio | Microorganisms: Friend and Foe | Pasteurisation; Vaccines; Rhizobium in pulses; Lactobacillus in curd; Microbes
+Bio | Microorganisms: Friend and Foe | Anopheles mosquito; Antibiotics; Fermentation; Bacteria, fungi and protozoa; Good and bad microbes
+Bio | Cell — Structure and Functions | Plastids; Cell wall in plants; Chromosomes; Amoeba changes shape; Unit of life
+Bio | Cell — Structure and Functions | Robert Hooke and cork; Cytoplasm; Nucleus; Cell membrane; Cells and their parts
+Bio | Crop Production and Management | Winnowing; Kharif and rabi; Manure and fertilisers; Sowing and irrigation; Growing crops
+Bio | Crop Production and Management | Weedicides; Seed drill; Granaries and silos; Harvesting; Agricultural practices
+Bio | Reproduction in Plants | Vegetative propagation; Budding in yeast; Spore formation; Pollination; How plants reproduce
+Bio | Reproduction in Plants | Zygote and embryo; Self and cross-pollination; Seed dispersal by wind; Ovule and ovary; Flowers to seeds
+Bio | Transportation in Animals and Plants | Haemoglobin; Arteries and veins; Stethoscope; Xylem and phloem; Blood and the heart
+Bio | Transportation in Animals and Plants | Dialysis; Urea in urine; Transpiration pull; Platelets help clotting; Circulation and excretion
+Chem | Components of Food | Iodine test for starch; Beriberi and scurvy; Roughage; Carbohydrates and fats; Balanced diet
+Chem | Components of Food | Copper sulphate test for protein; Rickets; Deficiency diseases; Vitamins and minerals; Nutrients in food
+Chem | Separation of Substances | Sedimentation and decantation; Winnowing; Saturated solution; Filtration; Separating mixtures
+Chem | Separation of Substances | Threshing; Sieving flour; Evaporation of sea water; Handpicking stones; Separating mixtures
+Chem | Acids, Bases and Salts | Phenolphthalein; China rose indicator; Neutralisation; Litmus paper; Sour and bitter substances
+Chem | Acids, Bases and Salts | Ant sting and baking soda; Acidic soil and quicklime; Milk of magnesia; Turmeric turns red; Indicators
+Chem | Metals and Non-Metals | Sonorous; Ductility; Malleability; Copper and sulphur; Metals and non-metals
+Chem | Metals and Non-Metals | Displacement reaction; Phosphorus kept in water; Sodium kept in kerosene; Rusting and oxides; Properties of elements
+Chem | Combustion and Flame | Ignition temperature; Calorific value; Inflammable substances; Fire extinguisher; Burning
+Chem | Combustion and Flame | Luminous zone; Rapid and spontaneous combustion; Carbon dioxide on a fire; Candle flame zones; Combustion
+Phy | Fun with Magnets | Magnetite; Compass needle; Like poles repel; North and south poles; Magnets
+Phy | Fun with Magnets | Keepers for magnets; Magnetic and non-magnetic materials; Iron filings; Bar magnet; Attraction
+Phy | Light, Shadows and Reflections | Pinhole camera; Luminous objects; Opaque, translucent and transparent; Shadows; Light and reflection
+Phy | Light, Shadows and Reflections | Lateral inversion; Rectilinear propagation; Plane mirror; Image in a mirror; Light travels straight
+Phy | Electricity and Circuits | Filament; Conductors and insulators; Electric cell; Switch; Circuits
+Phy | Electricity and Circuits | Terminals of a cell; Closed circuit; Bulb glows; Torch; Electricity
+Phy | Heat | Thermal equilibrium; Sea breeze and land breeze; Conduction, convection, radiation; Clinical thermometer; Hot and cold
+Phy | Heat | Dark clothes in winter; Celsius scale; Insulators of heat; Laboratory thermometer; Temperature
+Phy | Sound | Larynx and vocal cords; Frequency in hertz; Noise pollution; Vibration; Sound
+Phy | Sound | Amplitude and loudness; Eardrum; Sound needs a medium; Musical instruments; Hearing

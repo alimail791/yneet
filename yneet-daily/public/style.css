@@ -162,3 +162,14 @@ h1,h2,h3{font-family:var(--display);margin:0;text-wrap:balance;letter-spacing:-.
 .gicon.sm{width:32px;height:32px;font-size:15px;border-width:2px;border-radius:8px}
 .board div.me{background:color-mix(in srgb,var(--hi) 35%,var(--surface));font-weight:700}
 .lbplay{align-self:flex-start}
+
+/* Class picker and class chip */
+.classchip{display:flex;align-items:center;justify-content:space-between;gap:10px;flex-wrap:wrap;background:var(--surface);border:1px solid var(--line);border-radius:14px;padding:10px 12px;font-size:14px}
+.classchip .ghost{padding:6px 12px;font-size:13px}
+.picker{display:flex;flex-direction:column;gap:14px}
+.picker h3{margin:0}
+.pgroup{display:flex;flex-direction:column;gap:8px}
+.pgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px}
+.pbtn{border:1.5px solid var(--line);background:var(--surface);border-radius:12px;padding:12px 6px;font-weight:700;font-size:15px;color:inherit;cursor:pointer}
+.pbtn:hover{border-color:var(--g1)}
+.pbtn.on{background:var(--g1);border-color:var(--g1);color:#fff}

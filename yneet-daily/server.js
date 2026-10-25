@@ -66,26 +66,29 @@ async function streakOf(playerId) {
   for (const { d } of rows) { if (d !== expect) break; n++; const t = new Date(expect + 'T00:00:00Z'); t.setUTCDate(t.getUTCDate() - 1); expect = t.toISOString().slice(0, 10); }
   return n;
 }
-async function rankOf(day, game, score, seconds) {
+async function rankOf(day, game, score, seconds, track) {
   const { rows } = await q(`SELECT
       COUNT(*) FILTER (WHERE score > $3 OR (score = $3 AND seconds < $4))::int + 1 AS rank,
       COUNT(*)::int AS total
-    FROM results WHERE day=$1 AND game=$2 AND solved`, [day, game, score, seconds]);
+    FROM results WHERE day=$1 AND game=$2 AND solved AND track=$5`, [day, game, score, seconds, G.normTrack(track)]);
   return rows[0];
 }
+const trackOf = req => G.normTrack(String((req.body && req.body.track) || req.query.track || ''));
+const classOf = v => (G.CLASSES.includes(String(v)) ? String(v) : null);
 async function playerSummary(id) {
-  const { rows: [p] } = await q('SELECT id,name,phone,code,reward_code,reward_applied_at FROM players WHERE id=$1', [id]);
+  const { rows: [p] } = await q('SELECT id,name,phone,code,reward_code,reward_applied_at,class FROM players WHERE id=$1', [id]);
   if (!p) return null;
+  const track = p.class ? G.trackForClass(p.class) : 'neet';
   const { rows: [r] } = await q('SELECT COUNT(*)::int AS n FROM players WHERE referred_by=$1', [p.code]);
-  const { rows: done } = await q('SELECT game,line,emoji,score,seconds,solved FROM results WHERE player_id=$1 AND day=$2', [id, G.today()]);
-  return { name: p.name, phone: p.phone, code: p.code, referrals: r.n, needed: REFERRALS_NEEDED, rewardCode: p.reward_code,
+  const { rows: done } = await q('SELECT game,line,emoji,score,seconds,solved FROM results WHERE player_id=$1 AND day=$2 AND track=$3', [id, G.today(), track]);
+  return { name: p.name, phone: p.phone, code: p.code, class: p.class, track, referrals: r.n, needed: REFERRALS_NEEDED, rewardCode: p.reward_code,
     rewardApplied: !!p.reward_applied_at,
     streak: await streakOf(id), today: Object.fromEntries(done.map(d => [d.game, d])) };
 }
 
 // ---------- puzzles ----------
 app.get('/api/today', (req, res) => {
-  const p = G.puzzleFor(G.today());
+  const p = G.puzzleFor(G.today(), trackOf(req));
   if (p.recycled) console.warn(`⚠ No new puzzle for ${p.date}; recycling. Run: node puzzles/generate.js <start> <days>`);
   res.set('Cache-Control', 'no-store').json(G.publicView(p));
 });
@@ -95,7 +98,7 @@ app.post('/api/check/:game', (req, res) => {
   if (limited('chk:' + req.ip, 300, 6e5)) return err(res, 429, 'Too many tries. Wait a few minutes.');
   const { date } = req.body;
   if (!dayOk(date)) return err(res, 400, "This puzzle has expired. Refresh for today's puzzle.");
-  const p = G.puzzleFor(date);
+  const p = G.puzzleFor(date, trackOf(req));
   let out;
   if (req.params.game === 'bioword') out = G.checkBioword(p, req.body.guess, +req.body.attempt || 1);
   else if (req.params.game === 'pinpoint') out = G.checkPinpoint(p, req.body.option, +req.body.guessNo || 1);
@@ -146,8 +149,8 @@ app.post('/api/otp/verify', wrap(async (req, res) => {
     if (ref && !HOUSE_CODES.includes(ref)) ({ rows: [referrer] } = await q('SELECT id,name,phone,code,reward_code FROM players WHERE code=$1', [ref]));
     const referredBy = referrer ? referrer.code : (HOUSE_CODES.includes(ref) ? ref : null);
     for (let i = 0; i < 5 && !p; i++) {
-      ({ rows: [p] } = await q(`INSERT INTO players(phone,name,code,referred_by,source) VALUES($1,$2,$3,$4,$5)
-        ON CONFLICT DO NOTHING RETURNING id`, [phone, name, newCode(), referredBy, source]));
+      ({ rows: [p] } = await q(`INSERT INTO players(phone,name,code,referred_by,source,class) VALUES($1,$2,$3,$4,$5,$6)
+        ON CONFLICT DO NOTHING RETURNING id`, [phone, name, newCode(), referredBy, source, classOf(req.body.class)]));
       if (!p) ({ rows: [p] } = await q('SELECT id FROM players WHERE phone=$1', [phone])); // raced with another verify
     }
     if (referrer && !referrer.reward_code) {
@@ -160,6 +163,8 @@ app.post('/api/otp/verify', wrap(async (req, res) => {
   } else if (name) {
     await q('UPDATE players SET name=$2 WHERE id=$1', [p.id, name]);
   }
+  // Returning player on a new device: keep their class, or take the one they just picked.
+  if (classOf(req.body.class)) await q('UPDATE players SET class=COALESCE(class,$2) WHERE id=$1', [p.id, classOf(req.body.class)]);
   if (rewardFor) notifyReward(rewardFor);
   res.json({ token: sign({ id: p.id, exp: Date.now() + 180 * 864e5 }), me: await playerSummary(p.id) });
 }));
@@ -215,23 +220,32 @@ app.get('/api/me', auth, wrap(async (req, res) => {
   res.json(me);
 }));
 
+// Change class (and so the puzzle track and leaderboard).
+app.post('/api/me/class', auth, wrap(async (req, res) => {
+  const c = classOf(req.body.class);
+  if (!c) return err(res, 400, 'Choose a class');
+  await q('UPDATE players SET class=$2 WHERE id=$1', [req.playerId, c]);
+  res.json(await playerSummary(req.playerId));
+}));
+
 app.post('/api/results', auth, wrap(async (req, res) => {
   const { date, game, attempt } = req.body;
   if (!dayOk(date)) return err(res, 400, 'This puzzle has expired.');
-  const p = G.puzzleFor(date);
+  const track = trackOf(req);
+  const p = G.puzzleFor(date, track);
   const v = G.verify(p, game, attempt);
   if (v.error) return err(res, 400, v.error);
-  await q(`INSERT INTO results(player_id,day,game,line,emoji,score,seconds,solved) VALUES($1,$2,$3,$4,$5,$6,$7,$8)
-           ON CONFLICT (player_id,day,game) DO NOTHING`, [req.playerId, date, game, v.line, v.emoji, v.score, v.seconds, v.solved]);
-  const { rows: [saved] } = await q('SELECT line,emoji,score,seconds,solved FROM results WHERE player_id=$1 AND day=$2 AND game=$3', [req.playerId, date, game]);
-  const rank = saved.solved ? await rankOf(date, game, saved.score, saved.seconds) : null;
+  await q(`INSERT INTO results(player_id,day,game,line,emoji,score,seconds,solved,track) VALUES($1,$2,$3,$4,$5,$6,$7,$8,$9)
+           ON CONFLICT (player_id,day,game,track) DO NOTHING`, [req.playerId, date, game, v.line, v.emoji, v.score, v.seconds, v.solved, track]);
+  const { rows: [saved] } = await q('SELECT line,emoji,score,seconds,solved FROM results WHERE player_id=$1 AND day=$2 AND game=$3 AND track=$4', [req.playerId, date, game, track]);
+  const rank = saved.solved ? await rankOf(date, game, saved.score, saved.seconds, track) : null;
   res.json({ result: saved, rank, me: await playerSummary(req.playerId) });
 }));
 
 app.get('/api/leaderboard', wrap(async (req, res) => {
   const day = req.query.date || G.today(), game = String(req.query.game || '');
   const { rows } = await q(`SELECT p.name, r.line, r.score, r.seconds FROM results r JOIN players p ON p.id=r.player_id
-    WHERE r.day=$1 AND r.game=$2 AND r.solved ORDER BY r.score DESC, r.seconds ASC, r.created_at ASC LIMIT 10`, [day, game]);
+    WHERE r.day=$1 AND r.game=$2 AND r.solved AND r.track=$3 ORDER BY r.score DESC, r.seconds ASC, r.created_at ASC LIMIT 10`, [day, game, trackOf(req)]);
   res.json(rows.map((r, i) => ({ rank: i + 1, name: shortName(r.name), line: r.line })));
 }));
 
@@ -239,15 +253,16 @@ app.get('/api/leaderboard', wrap(async (req, res) => {
 const GAME_IDS = ['bioword', 'pinpoint', 'zip', 'queens', 'daily5'];
 app.get('/api/boards', wrap(async (req, res) => {
   const day = /^\d{4}-\d{2}-\d{2}$/.test(req.query.date || '') ? req.query.date : G.today();
+  const track = trackOf(req);
   const t = unsign((req.headers.authorization || '').replace(/^Bearer /, ''));
   const { rows } = await q(`SELECT * FROM (
       SELECT r.game, r.player_id, p.name, r.line,
              ROW_NUMBER() OVER (PARTITION BY r.game ORDER BY r.score DESC, r.seconds ASC, r.created_at ASC)::int AS rank,
              COUNT(*) OVER (PARTITION BY r.game)::int AS total
       FROM results r JOIN players p ON p.id = r.player_id
-      WHERE r.day = $1 AND r.solved) x
-    WHERE rank <= 10 OR player_id = $2 ORDER BY game, rank`, [day, t ? t.id : 0]);
-  const { rows: mineAll } = t ? await q('SELECT game, line, solved FROM results WHERE player_id=$1 AND day=$2', [t.id, day]) : { rows: [] };
+      WHERE r.day = $1 AND r.solved AND r.track = $3) x
+    WHERE rank <= 10 OR player_id = $2 ORDER BY game, rank`, [day, t ? t.id : 0, track]);
+  const { rows: mineAll } = t ? await q('SELECT game, line, solved FROM results WHERE player_id=$1 AND day=$2 AND track=$3', [t.id, day, track]) : { rows: [] };
   const out = {};
   for (const g of GAME_IDS) {
     const list = rows.filter(r => r.game === g);
@@ -259,7 +274,7 @@ app.get('/api/boards', wrap(async (req, res) => {
       mine: meRow ? { rank: meRow.rank, total: meRow.total, line: meRow.line } : played ? { rank: null, line: played.line } : null,
     };
   }
-  res.set('Cache-Control', 'no-store').json({ date: day, boards: out });
+  res.set('Cache-Control', 'no-store').json({ date: day, track, boards: out });
 }));
 
 // ---------- admin (header: x-admin-key) ----------
@@ -274,25 +289,26 @@ app.get('/api/admin/stats', admin, wrap(async (req, res) => {
     q('SELECT COUNT(*)::int n FROM players'),
     q(`SELECT COUNT(*)::int n FROM players WHERE (created_at AT TIME ZONE 'Asia/Kolkata')::date = $1`, [day]),
     q('SELECT COALESCE(source,\'direct\') source, COUNT(*)::int n FROM players GROUP BY 1 ORDER BY 2 DESC'),
-    q('SELECT game, COUNT(*)::int plays, COUNT(*) FILTER (WHERE solved)::int solved FROM results WHERE day=$1 GROUP BY 1', [day]),
+    q('SELECT track, game, COUNT(*)::int plays, COUNT(*) FILTER (WHERE solved)::int solved FROM results WHERE day=$1 GROUP BY 1,2 ORDER BY 1,2', [day]),
     q('SELECT COUNT(*)::int n FROM players WHERE reward_code IS NOT NULL'),
     q(`SELECT r.code, r.name, COUNT(p.id)::int referrals FROM players r JOIN players p ON p.referred_by=r.code GROUP BY r.id ORDER BY 3 DESC LIMIT 10`),
     q(`SELECT kind, detail, COUNT(*)::int total, COUNT(*) FILTER (WHERE (created_at AT TIME ZONE 'Asia/Kolkata')::date = $1)::int today
        FROM events GROUP BY 1,2 ORDER BY 3 DESC`, [day]),
     q('SELECT COUNT(*)::int n FROM players WHERE reward_applied_at IS NOT NULL')
   ]);
-  res.json({ day, players: tot.rows[0].n, newToday: newToday.rows[0].n, bySource: bySource.rows, playsToday: plays.rows,
+  const byClass = (await q("SELECT COALESCE(class,'not set') AS class, COUNT(*)::int n FROM players GROUP BY 1 ORDER BY 2 DESC")).rows;
+  res.json({ day, players: tot.rows[0].n, byClass, newToday: newToday.rows[0].n, bySource: bySource.rows, playsToday: plays.rows,
     rewardsUnlocked: rewards.rows[0].n, rewardsAddedInYneet: applied.rows[0].n, yneetClicks: clicks.rows, topReferrers: topRef.rows });
 }));
 app.get('/api/admin/players.csv', admin, wrap(async (req, res) => {
-  const { rows } = await q(`SELECT p.name, p.phone, p.code, p.referred_by, p.source, p.reward_code, p.reward_note,
+  const { rows } = await q(`SELECT p.name, p.phone, p.class, p.code, p.referred_by, p.source, p.reward_code, p.reward_note,
       (SELECT COUNT(*) FROM events e WHERE e.player_id=p.id AND e.kind='yneet_signup') yneet_clicks,
       (SELECT COUNT(*) FROM players x WHERE x.referred_by=p.code) referrals,
       (SELECT COUNT(*) FROM results r WHERE r.player_id=p.id) games_played,
       (SELECT MAX(day)::text FROM results r WHERE r.player_id=p.id) last_played,
       to_char(p.created_at AT TIME ZONE 'Asia/Kolkata','YYYY-MM-DD HH24:MI') joined
     FROM players p ORDER BY p.created_at DESC`);
-  const cols = ['name', 'phone', 'code', 'referred_by', 'source', 'referrals', 'games_played', 'last_played', 'yneet_clicks', 'reward_code', 'reward_note', 'joined'];
+  const cols = ['name', 'phone', 'code', 'referred_by', 'source', 'referrals', 'games_played', 'last_played', 'yneet_clicks', 'reward_code', 'reward_note', 'joined', 'class'];
   const esc = v => v == null ? '' : /[",\n]/.test(String(v)) ? `"${String(v).replace(/"/g, '""')}"` : String(v);
   res.set('Content-Type', 'text/csv').set('Content-Disposition', 'attachment; filename="yneet-daily-players.csv"');
   res.send([cols.join(','), ...rows.map(r => cols.map(c => esc(r[c])).join(','))].join('\n'));

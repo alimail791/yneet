@@ -1,0 +1,105 @@
+# Format: question | correct answer | wrong 1 | wrong 2 | wrong 3 | explanation
+# Getting to Know Plants
+Which part of a plant absorbs water from the soil? | Root | Leaf | Flower | Fruit | Roots absorb water and minerals and hold the plant in the soil.
+Plants with a tap root usually have leaves with: | Reticulate venation | Parallel venation | No veins | Needle shape | Tap roots go with a net-like (reticulate) pattern of veins.
+The flat green part of a leaf is called the: | Lamina | Petiole | Vein | Midrib | The lamina is the broad blade; the petiole joins it to the stem.
+Which of these is a creeper? | Pumpkin | Mango | Rose | Neem | Creepers like pumpkin spread on the ground because their stems are weak.
+The female part of a flower is the: | Pistil | Stamen | Sepal | Petal | The pistil has the stigma, style and ovary.
+Water comes out of leaves as vapour by: | Transpiration | Photosynthesis | Respiration | Germination | Transpiration releases water vapour through stomata.
+Grass has which kind of roots? | Fibrous roots | Tap root | Prop roots | Stilt roots | Grass has many thin roots of similar size — fibrous roots.
+# Body Movements
+The bones that protect the heart and lungs form the: | Ribcage | Skull | Pelvis | Backbone | The ribcage is made of 12 pairs of ribs.
+The joint at the shoulder is a: | Ball and socket joint | Hinge joint | Pivotal joint | Fixed joint | A ball and socket joint allows movement in all directions.
+Our neck can turn because of a: | Pivotal joint | Hinge joint | Fixed joint | Gliding joint | The pivotal joint between the skull and backbone lets the head turn.
+The ear and nose tip are soft because they have: | Cartilage | Bone | Muscle | Fat | Cartilage is softer than bone and bends a little.
+An earthworm moves with the help of tiny bristles called: | Setae | Fins | Cilia | Hooks | Setae grip the ground while muscles push the body forward.
+Which joint does not allow any movement? | Joints of the skull | Knee | Elbow | Shoulder | The bones of the skull are fixed together.
+How many bones are there in an adult human body? | 206 | 106 | 306 | 186 | An adult skeleton has 206 bones.
+# Nutrition in Plants
+Plants make their own food by: | Photosynthesis | Respiration | Digestion | Transpiration | Leaves use sunlight, water and carbon dioxide to make food.
+The green pigment in leaves is: | Chlorophyll | Haemoglobin | Melanin | Carotene | Chlorophyll traps sunlight for photosynthesis.
+Which gas do plants take in for photosynthesis? | Carbon dioxide | Oxygen | Nitrogen | Hydrogen | Carbon dioxide enters through stomata.
+Cuscuta (amarbel) is a: | Parasite | Insectivorous plant | Saprotroph | Autotroph | Cuscuta takes food from the host plant it grows on.
+The pitcher plant traps insects because it gets too little: | Nitrogen | Oxygen | Water | Sunlight | Insectivorous plants grow in nitrogen-poor soil.
+Mushrooms get food from dead and decaying matter. They are: | Saprotrophs | Parasites | Autotrophs | Insectivores | Saprotrophs absorb nutrients from decaying matter.
+A lichen is an association of: | Alga and fungus | Bacteria and virus | Moss and fern | Root and stem | The alga makes food; the fungus gives shelter and water.
+Rhizobium bacteria live in the roots of: | Pulses | Wheat | Rice | Maize | Rhizobium fixes nitrogen in root nodules of legumes.
+# Nutrition in Animals
+Digestion of food begins in the: | Mouth | Stomach | Small intestine | Oesophagus | Saliva starts breaking down starch in the mouth.
+Bile is made by the: | Liver | Stomach | Pancreas | Gall bladder | Bile is made in the liver and stored in the gall bladder.
+Finger-like projections in the small intestine are: | Villi | Cilia | Setae | Alveoli | Villi increase the surface to absorb digested food.
+Cows chew the cud. Such animals are called: | Ruminants | Carnivores | Omnivores | Parasites | Ruminants swallow grass, then bring it back to chew again.
+Amoeba captures food using: | Pseudopodia | Teeth | Cilia | Tentacles | False feet surround the food to form a food vacuole.
+Most digested food is absorbed in the: | Small intestine | Large intestine | Stomach | Mouth | The small intestine is about 7.5 m long.
+The large intestine mainly absorbs: | Water and salts | Proteins | Fats | Vitamins only | Undigested matter loses water in the large intestine.
+Teeth used for cutting and biting are: | Incisors | Molars | Premolars | Canines | Incisors are the flat front teeth.
+# Respiration in Organisms
+During heavy exercise, muscles get cramps due to: | Lactic acid | Alcohol | Oxygen | Glucose | Anaerobic respiration in muscles makes lactic acid.
+Yeast respiring without oxygen produces: | Alcohol | Lactic acid | Oxygen | Starch | Yeast makes alcohol and carbon dioxide.
+Fish breathe through: | Gills | Lungs | Skin only | Spiracles | Gills take oxygen dissolved in water.
+Insects breathe through small openings called: | Spiracles | Stomata | Gills | Nostrils | Spiracles lead into air tubes called tracheae.
+Lime water turns milky because of: | Carbon dioxide | Oxygen | Nitrogen | Water vapour | We breathe out carbon dioxide, which turns lime water milky.
+When we breathe in, the diaphragm: | Moves down | Moves up | Does not move | Breaks | The chest cavity gets bigger and air rushes in.
+An earthworm breathes through its: | Skin | Gills | Lungs | Spiracles | Earthworm skin is moist and slimy, so gases pass through it.
+# Microorganisms: Friend and Foe
+Curd is made from milk by: | Lactobacillus | Yeast | Rhizobium | Virus | Lactobacillus bacteria turn milk into curd.
+Malaria is spread by the female: | Anopheles mosquito | Housefly | Aedes mosquito | Cockroach | Malaria is caused by a protozoan carried by Anopheles.
+Heating milk to kill microbes is called: | Pasteurisation | Fermentation | Vaccination | Sterilisation | Louis Pasteur discovered this method.
+Penicillin is an: | Antibiotic | Vaccine | Virus | Antiseptic | Penicillin was discovered by Alexander Fleming.
+Which disease is caused by a virus? | Polio | Typhoid | Cholera | Tuberculosis | Polio is caused by a virus; the others by bacteria.
+Making alcohol from sugar using yeast is: | Fermentation | Pasteurisation | Decomposition | Respiration in plants | Louis Pasteur discovered fermentation in 1857.
+The first vaccine (for smallpox) was made by: | Edward Jenner | Louis Pasteur | Alexander Fleming | Robert Hooke | Jenner made it in 1798.
+Salt and sugar are used to preserve pickles and jams because they: | Stop the growth of microbes | Add vitamins | Make food sour | Add colour | They draw water out, so microbes cannot grow.
+# Cell — Structure and Functions
+Cells were first seen by: | Robert Hooke | Louis Pasteur | Charles Darwin | Isaac Newton | Hooke saw cells in a slice of cork in 1665.
+The control centre of the cell is the: | Nucleus | Cell wall | Cytoplasm | Vacuole | The nucleus controls all cell activities.
+Which is found only in plant cells? | Cell wall | Cell membrane | Nucleus | Cytoplasm | Plant cells have a cell wall outside the membrane.
+Green plastids that help in photosynthesis are: | Chloroplasts | Mitochondria | Nuclei | Vacuoles | Chloroplasts contain chlorophyll.
+Which single-celled organism keeps changing its shape? | Amoeba | Paramecium | Bacteria | Yeast | Amoeba forms pseudopodia, so its shape changes.
+The jelly-like substance between the nucleus and membrane is: | Cytoplasm | Protoplasm | Chromosome | Plastid | Cell organelles float in the cytoplasm.
+The longest cell in the human body is the: | Nerve cell | Red blood cell | Muscle cell | Skin cell | Nerve cells can be very long to carry messages.
+Chromosomes carry: | Genes | Food | Water | Oxygen | Genes pass characters from parents to offspring.
+# Crop Production and Management
+Paddy is a: | Kharif crop | Rabi crop | Zaid crop | Weed | Kharif crops are sown in the rainy season.
+Wheat is a: | Rabi crop | Kharif crop | Weed | Fibre crop | Rabi crops are sown in winter.
+Separating grain from chaff by wind is called: | Winnowing | Threshing | Sieving | Harvesting | Wind blows away the lighter chaff.
+Unwanted plants growing with crops are: | Weeds | Weedicides | Manure | Seedlings | Weeds compete with crops for water and nutrients.
+Which tool is used for sowing seeds at the right depth? | Seed drill | Plough | Sickle | Harvester | A seed drill sows seeds evenly.
+Manure is made from: | Plant and animal wastes | Chemicals in factories | Pesticides | Plastic | Manure is organic and improves soil texture.
+Grains are stored in large quantities in: | Silos and granaries | Open fields | Rivers | Weedicides | Silos protect grains from pests and moisture.
+Supplying water to crops is called: | Irrigation | Sowing | Harvesting | Tilling | Drip and sprinkler systems save water.
+# Reproduction in Plants
+Potato plants grow from the eyes on the: | Stem tuber | Root | Leaf | Flower | A potato is an underground stem.
+Yeast reproduces by: | Budding | Seeds | Spores only | Cutting | A small bud grows on the parent cell and separates.
+Transfer of pollen from anther to stigma is: | Pollination | Fertilisation | Germination | Dispersal | Wind, water and insects help pollination.
+After fertilisation, the ovary becomes the: | Fruit | Seed | Flower | Leaf | The ovules become seeds.
+Seeds of drumstick and maple are spread by: | Wind | Water | Animals | Explosion | Winged seeds are carried far by wind.
+Bread mould reproduces through: | Spores | Seeds | Budding | Cuttings | Spores float in air and grow on moist food.
+The fusion of male and female gametes is: | Fertilisation | Pollination | Budding | Germination | It forms a zygote, which becomes the embryo.
+Bryophyllum can grow new plants from its: | Leaves | Roots only | Seeds only | Flowers | Buds on the leaf margin grow into new plants.
+# Transportation in Animals and Plants
+The red pigment in blood is: | Haemoglobin | Chlorophyll | Melanin | Plasma | Haemoglobin carries oxygen.
+Blood vessels that carry blood away from the heart are: | Arteries | Veins | Capillaries | Nerves | Arteries carry blood from the heart to all parts.
+A doctor listens to heartbeats with a: | Stethoscope | Thermometer | Microscope | Telescope | The stethoscope amplifies the sound of the heart.
+Water moves up a plant through the: | Xylem | Phloem | Stomata | Root hair only | Xylem carries water; phloem carries food.
+Cells that help blood clot are: | Platelets | Red blood cells | White blood cells | Plasma | Platelets form a clot at a cut.
+Blood is filtered by the: | Kidneys | Lungs | Liver | Heart | Kidneys remove waste and make urine.
+White blood cells: | Fight germs | Carry oxygen | Clot blood | Make urine | WBCs protect the body from infection.
+The human heart has how many chambers? | Four | Two | Three | Six | Two atria and two ventricles.
+# Reaching the Age of Adolescence
+Adolescence is the period roughly between ages: | 11 and 19 | 2 and 5 | 25 and 30 | 6 and 9 | Teenage years bring many changes in the body.
+The Adam's apple is the growing: | Voice box | Thyroid | Heart | Lungs | The larynx grows bigger in boys during puberty.
+Hormones are released by: | Endocrine glands | Muscles | Bones | Skin | Endocrine glands release hormones into the blood.
+Lack of iodine in food can cause: | Goitre | Scurvy | Rickets | Anaemia | Iodine is needed to make thyroxine.
+# Conservation of Plants and Animals
+An animal found only in a particular area is: | Endemic | Extinct | Migratory | Domestic | Endemic species are found nowhere else.
+The Red Data Book lists: | Endangered species | Medicines | National parks | Crops | It records species at risk of dying out.
+Cutting down forests on a large scale is: | Deforestation | Afforestation | Reforestation | Irrigation | It causes soil erosion and floods.
+Project Tiger was started in India in: | 1973 | 1947 | 1990 | 2005 | It protects tigers and their habitats.
+Birds that fly to warmer places in winter are: | Migratory birds | Endemic birds | Extinct birds | Flightless birds | Siberian cranes visit India in winter.
+Satpura National Park is in: | Madhya Pradesh | Kerala | Punjab | Assam | It is part of the Pachmarhi Biosphere Reserve.
+# The Living Organisms and Their Surroundings
+A camel's long legs help it to: | Keep its body away from hot sand | Swim | Climb trees | Dig burrows | Long legs keep the body away from the hot ground.
+Fish have streamlined bodies to: | Move easily in water | Store food | Breathe in air | Walk on land | A streamlined shape reduces water resistance.
+Cactus leaves are reduced to spines to: | Reduce water loss | Make food | Attract insects | Store seeds | Less surface means less transpiration.
+Living things respond to changes around them called: | Stimuli | Habitat | Adaptation | Excretion | Touching a mimosa plant makes its leaves fold.

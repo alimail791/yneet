@@ -1,0 +1,52 @@
+# Format: question | correct answer | wrong 1 | wrong 2 | wrong 3 | explanation
+# Fun with Magnets
+Like poles of two magnets: | Repel each other | Attract each other | Do nothing | Stick forever | North repels north; south repels south.
+A freely hanging magnet points: | North–south | East–west | Up–down | Any direction | This is how a compass works.
+Which material is attracted by a magnet? | Iron | Wood | Plastic | Glass | Iron, nickel and cobalt are magnetic.
+A natural magnet found in rocks is: | Magnetite | Granite | Marble | Coal | Magnetite was found in ancient Greece.
+Magnets lose their magnetism if they are: | Hammered or heated | Kept with keepers | Stored in pairs | Kept dry | Keepers help magnets stay strong.
+# Light, Shadows and Reflections
+Objects that give out their own light are: | Luminous | Opaque | Transparent | Translucent | The Sun and a lit bulb are luminous.
+Light passes completely through: | Transparent objects | Opaque objects | Translucent objects | Shadows | Clear glass is transparent.
+A shadow is formed by an: | Opaque object | Transparent object | Mirror only | Empty space | Opaque objects block light completely.
+A pinhole camera forms an image that is: | Upside down | Upright | Very bright | Coloured only | Light travels in straight lines through the hole.
+In a plane mirror your left hand appears as the: | Right hand | Left hand | Upside-down hand | Same hand | This is lateral inversion.
+# Electricity and Circuits
+Which is a good conductor of electricity? | Copper | Rubber | Wood | Plastic | Copper wires carry current easily.
+The thin wire in a bulb that glows is the: | Filament | Fuse | Terminal | Switch | It glows because it gets very hot.
+A device that opens or closes a circuit is a: | Switch | Cell | Bulb | Wire | When the switch is on, the circuit is closed.
+Which is an insulator? | Rubber | Iron | Aluminium | Silver | Electricians wear rubber gloves for safety.
+An electric cell has: | Two terminals | One terminal | Three terminals | No terminals | A positive and a negative terminal.
+# Motion and Time
+The SI unit of speed is: | Metre per second | Kilometre | Second | Newton | Speed = distance ÷ time.
+Motion of a swing is: | Periodic motion | Straight-line motion | Circular motion only | No motion | It repeats after a fixed time.
+A simple pendulum is used to measure: | Time | Mass | Length | Temperature | Its period stays nearly the same.
+The SI unit of time is: | Second | Minute | Hour | Day | One minute has 60 seconds.
+A car covers 100 km in 2 hours. Its speed is: | 50 km/h | 200 km/h | 100 km/h | 25 km/h | Speed = 100 ÷ 2 = 50 km/h.
+# Heat
+Normal human body temperature is about: | 37 °C | 100 °C | 0 °C | 50 °C | It is about 98.6 °F.
+Heat moves through a metal spoon by: | Conduction | Convection | Radiation | Evaporation | Heat passes from particle to particle.
+We feel the Sun's heat by: | Radiation | Conduction | Convection | Friction | Radiation does not need a medium.
+In winter we prefer: | Dark woollen clothes | White cotton clothes | Wet clothes | Thin plastic | Dark colours absorb more heat and wool traps air.
+A sea breeze blows during the: | Day | Night | Winter only | Monsoon only | Land heats faster in the day, so cool air flows from the sea.
+# Force and Pressure
+A push or pull on an object is called: | Force | Pressure | Speed | Energy | Force can change shape, speed or direction.
+Pressure is force acting on unit: | Area | Volume | Time | Mass | A sharp knife cuts better because the area is small.
+Force is measured in: | Newtons | Metres | Kilograms | Seconds | Named after Isaac Newton.
+The force that pulls things towards the Earth is: | Gravity | Friction | Magnetic force | Muscular force | Gravity makes things fall down.
+# Friction
+Friction always acts: | Opposite to motion | Along the motion | Upwards | Downwards only | It slows moving objects down.
+Ball bearings reduce friction because: | Rolling friction is less than sliding friction | They add weight | They are hot | They are magnetic | Rolling is easier than sliding.
+Tyres have treads to: | Increase friction | Reduce friction | Look nice | Make noise | Treads give a better grip on the road.
+# Sound
+Sound is produced by: | Vibration | Light | Heat | Gravity | All sounds come from vibrating objects.
+Sound cannot travel through a: | Vacuum | Solid | Liquid | Gas | Sound needs a medium; space is silent.
+Humans can hear sounds of frequency: | 20 Hz to 20,000 Hz | 1 Hz to 10 Hz | Above 50,000 Hz only | 0 Hz | Sounds outside this range cannot be heard.
+Loudness of sound depends on its: | Amplitude | Frequency | Speed | Colour | Bigger vibrations make louder sounds.
+Our voice is produced by the: | Larynx | Ear | Nose | Lungs only | Vocal cords in the larynx vibrate.
+# Stars and the Solar System
+The planet closest to the Sun is: | Mercury | Venus | Earth | Mars | Mercury is also the smallest planet.
+The Earth's natural satellite is the: | Moon | Sun | Mars | Venus | The Moon takes about 27 days to orbit Earth.
+The largest planet in our solar system is: | Jupiter | Saturn | Earth | Neptune | Jupiter is more than 1,300 times Earth's volume.
+The Pole Star is seen in the: | North | South | East | West | It stays almost fixed in the northern sky.
+Which planet is called the red planet? | Mars | Jupiter | Venus | Mercury | Iron oxide on its surface makes it look red.

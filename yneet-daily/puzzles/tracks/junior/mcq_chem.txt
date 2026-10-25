@@ -1,0 +1,53 @@
+# Format: question | correct answer | wrong 1 | wrong 2 | wrong 3 | explanation
+# Components of Food
+Iodine solution turns starch: | Blue-black | Red | Yellow | Green | This is the test for starch.
+Scurvy is caused by lack of: | Vitamin C | Vitamin A | Vitamin D | Iron | Citrus fruits are rich in vitamin C.
+Rickets is caused by lack of: | Vitamin D | Vitamin C | Iodine | Protein | Vitamin D helps bones absorb calcium.
+Night blindness is caused by lack of: | Vitamin A | Vitamin B1 | Vitamin C | Calcium | Carrots and green vegetables give vitamin A.
+Which nutrient gives the most energy per gram? | Fats | Proteins | Carbohydrates | Vitamins | Fats give more than twice the energy of carbohydrates.
+A diet with all nutrients in the right amount is a: | Balanced diet | Junk diet | Fat diet | Liquid diet | It also includes roughage and water.
+Lack of iron in food causes: | Anaemia | Goitre | Beriberi | Rickets | Iron is needed to make haemoglobin.
+# Separation of Substances
+Separating husk from grain using wind is: | Winnowing | Sieving | Filtration | Evaporation | Heavier grains fall; light husk blows away.
+Salt is obtained from sea water by: | Evaporation | Filtration | Sedimentation | Handpicking | The water evaporates and salt is left behind.
+Pouring off clear water after mud settles is: | Decantation | Filtration | Evaporation | Threshing | The settled mud is the sediment.
+Tea leaves are separated from tea using a: | Strainer | Magnet | Sieve for flour | Winnowing fan | Straining is a simple kind of filtration.
+A solution that cannot dissolve any more of a substance is: | Saturated | Dilute | Pure | Insoluble | Heating can let it dissolve a little more.
+Separating stalks from grain by beating is: | Threshing | Winnowing | Sieving | Churning | Threshing can be done by hand, animals or machines.
+# Acids, Bases and Salts
+Lemon tastes sour because it contains: | Citric acid | Acetic acid | Lactic acid | Formic acid | Citrus fruits contain citric acid.
+Vinegar contains: | Acetic acid | Citric acid | Tartaric acid | Oxalic acid | Vinegar is dilute acetic acid.
+A base turns red litmus: | Blue | Red | Green | Yellow | Acids turn blue litmus red; bases turn red litmus blue.
+Turmeric turns red with: | A base like soap | An acid like lemon | Water | Salt solution | Turmeric is a natural indicator.
+An ant's sting contains: | Formic acid | Acetic acid | Citric acid | Lactic acid | Rubbing baking soda neutralises it.
+Acid + base gives salt + water. This is: | Neutralisation | Rusting | Combustion | Evaporation | Heat is also given out.
+Milk of magnesia is used for acidity because it is a: | Base | Acid | Salt | Neutral liquid | It neutralises excess stomach acid.
+# Physical and Chemical Changes
+Melting of ice is a: | Physical change | Chemical change | Irreversible change | Combustion | No new substance is formed.
+Rusting of iron needs: | Oxygen and water | Only sunlight | Only heat | Carbon dioxide | Painting iron keeps air and water away.
+Coating iron with zinc to stop rusting is: | Galvanisation | Crystallisation | Neutralisation | Pasteurisation | Zinc protects the iron underneath.
+Burning of paper is a: | Chemical change | Physical change | Reversible change | Change of state | New substances like ash and smoke are formed.
+Large crystals of salt from its solution are made by: | Crystallisation | Evaporation only | Filtration | Galvanisation | Crystals form as the solution cools slowly.
+# Metals and Non-Metals
+Metals can be drawn into wires. This property is: | Ductility | Malleability | Sonority | Brittleness | Copper and aluminium are used for wires.
+Metals can be beaten into sheets. This property is: | Malleability | Ductility | Sonority | Conductivity | Aluminium foil is made this way.
+Which non-metal is kept in water? | Phosphorus | Sulphur | Carbon | Iodine | Phosphorus catches fire in air.
+Sodium is stored in: | Kerosene | Water | Air | Alcohol | Sodium reacts strongly with air and water.
+Which is a non-metal? | Sulphur | Iron | Copper | Aluminium | Sulphur is a yellow, brittle non-metal.
+Metals make a ringing sound when hit. They are: | Sonorous | Ductile | Malleable | Brittle | That is why bells are made of metal.
+# Coal and Petroleum
+Coal, petroleum and natural gas are: | Fossil fuels | Renewable fuels | Biofuels | Nuclear fuels | They formed from dead organisms over millions of years.
+CNG stands for: | Compressed natural gas | Carbon natural gas | Cooking natural gas | Clean nitrogen gas | CNG is a cleaner fuel for vehicles.
+Petroleum is refined in a: | Refinery | Coal mine | Power plant | Dam | A refinery separates petroleum into useful parts.
+Which is a fossil fuel? | Coal | Wood | Cow dung | Solar energy | Coal formed from buried plants long ago.
+# Combustion and Flame
+The lowest temperature at which a substance catches fire is its: | Ignition temperature | Boiling point | Melting point | Calorific value | Kerosene has a lower ignition temperature than wood.
+Water is not used on an electrical fire because: | Water conducts electricity | Water is costly | Water is heavy | Water burns | It can give an electric shock.
+The hottest zone of a candle flame is the: | Outer zone | Middle zone | Inner zone | Wick | The outer non-luminous zone burns completely.
+Which gas helps burning? | Oxygen | Nitrogen | Carbon dioxide | Helium | Fire needs fuel, heat and oxygen.
+Carbon dioxide puts out fire because it: | Cuts off oxygen | Is very cold only | Burns quickly | Adds fuel | It forms a blanket over the fire.
+# Synthetic Fibres and Plastics
+Which is a synthetic fibre? | Nylon | Cotton | Wool | Silk | Nylon is made from chemicals.
+Plastic that can be reshaped on heating is: | Thermoplastic | Thermosetting plastic | Bakelite | Melamine | Polythene and PVC are thermoplastics.
+Frying-pan handles are made of: | Bakelite | Polythene | Nylon | PVC | Bakelite does not soften on heating.
+Waste that breaks down naturally is: | Biodegradable | Non-biodegradable | Synthetic | Plastic | Peels and leaves are biodegradable.
