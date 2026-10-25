@@ -3,11 +3,14 @@ import { useParams, useNavigate } from "react-router-dom";
 import { Bar } from "react-chartjs-2";
 import { Chart as ChartJS, BarElement, LinearScale, CategoryScale, Tooltip } from "chart.js";
 import api from "../lib/api";
+import { useAuth } from "../context/AuthContext";
+import { isJuniorFree } from "../utils/plan";
 ChartJS.register(BarElement, LinearScale, CategoryScale, Tooltip);
 
 export default function AnalysisPage() {
   const { attemptId } = useParams();
   const navigate = useNavigate();
+  const { user } = useAuth();
   const [data, setData] = useState(null);
   const [loading, setLoading] = useState(true);
 
@@ -88,7 +91,7 @@ export default function AnalysisPage() {
 
       <div style={{ display: "flex", gap: 12 }}>
         <button className="btn btn-blue" onClick={() => navigate("/mock")}>← Back to Tests</button>
-        <button className="btn btn-outline" onClick={() => navigate("/mistakes?source=mock")}>View Mistakes →</button>
+        {!isJuniorFree(user) && <button className="btn btn-outline" onClick={() => navigate("/mistakes?source=mock")}>View Mistakes →</button>}
       </div>
     </div>
   );

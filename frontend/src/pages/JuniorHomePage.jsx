@@ -2,7 +2,7 @@ import { Link } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { PUZZLES_URL } from "../utils/plan";
 
-// Home for the free Class 6–8 tier: today's puzzles, the daily quiz and Shorts,
+// Home for the free Class 6–8 tier: today's puzzles, class tests, the daily quiz and Shorts,
 // plus a heads-up about NEET Foundation for when they reach Class 9.
 export default function JuniorHomePage() {
   const { user } = useAuth();
@@ -13,6 +13,7 @@ export default function JuniorHomePage() {
   const cards = [
     { href: PUZZLES_URL, icon: "🧩", title: "Today's puzzles", desc: "5 quick science puzzles. A new set every day.", cta: "Play now ↗", color: "var(--purple)" },
     { to: "/quiz", icon: "⚡", title: "Daily quiz", desc: `20 questions from your Class ${cls?.replace("th", "") || ""} syllabus.`, cta: "Start quiz", color: "var(--blue-mid)" },
+    { to: "/mock", icon: "📝", title: "Class tests", desc: `Full and subject tests from your Class ${cls?.replace("th", "") || ""} science syllabus, with your score and answers.`, cta: "Take a test", color: "var(--amber)" },
     { to: "/shorts", icon: "🎬", title: "Shorts", desc: "Learn one concept in 3–5 minutes, then a quick check.", cta: "Watch", color: "var(--green)" },
   ];
 
@@ -45,8 +46,8 @@ export default function JuniorHomePage() {
       <div className="card" style={{ background: "var(--amber-light)", borderColor: "var(--amber-light)" }}>
         <h2 style={{ fontSize: 16, fontWeight: 800, color: "var(--amber)" }}>🎯 Dreaming of becoming a doctor?</h2>
         <p style={{ fontSize: 13.5, color: "var(--text2)", marginTop: 4 }}>
-          From Class 9, <strong>NEET Foundation</strong> adds the full daily quiz, mistake notebook and WhatsApp doubt support,
-          with Foundation mock tests coming soon — 30 days free, then ₹299/month. When you move to Class 9, update your class in your <Link to="/profile">profile</Link> to start.
+          From Class 9, <strong>NEET Foundation</strong> adds Foundation tests, the mistake notebook and WhatsApp doubt support —
+          30 days free, then ₹299/month. When you move to Class 9, update your class in your <Link to="/profile">profile</Link> to start.
         </p>
       </div>
     </div>

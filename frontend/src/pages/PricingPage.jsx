@@ -104,11 +104,11 @@ export default function PricingPage() {
   // What each paid tier really includes today (keep in sync with www.yneet.in/courses).
   const FEATURES = tier?.key === "foundation"
     ? [
+        "Foundation tests: full and subject-wise, from your class syllabus",
         "Shorts — 3–5 min concept videos",
         "Daily quiz and mistake notebook",
         "Daily puzzles from the Class 9–10 syllabus",
         "Doubt support on WhatsApp",
-        "Foundation mock tests — coming soon",
       ]
     : [
         "Full NEET mock tests with rank analysis",
@@ -140,7 +140,7 @@ export default function PricingPage() {
         </h1>
         <p style={{ color: "var(--text2)", marginBottom: 28 }}>
           {tier?.free
-            ? "Daily quiz, Shorts and daily puzzles — free for Class 6–8."
+            ? "Class tests, daily quiz, Shorts and daily puzzles — free for Class 6–8."
             : `${tier?.label || "NEET Full"} · priced for your class · one-time payment, no auto-charge`}
         </p>
 
@@ -154,6 +154,7 @@ export default function PricingPage() {
           <div className="card" style={{ padding: 28, maxWidth: 420, margin: "0 auto", textAlign: "left" }}>
             <p style={{ fontSize: 26, fontWeight: 800 }}>₹0</p>
             <ul style={{ listStyle: "none", padding: 0, margin: "8px 0 20px", fontSize: 14, color: "var(--text2)", lineHeight: 2 }}>
+              <li>✓ Class tests from your syllabus</li>
               <li>✓ Daily puzzles from your syllabus</li>
               <li>✓ Daily quiz</li>
               <li>✓ Shorts — learn a concept in minutes</li>

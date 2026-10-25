@@ -293,13 +293,55 @@ async function runBulkJob(jobs) {
 // 12th/11th full+half+subject+daily counts). Starts the job and returns
 // immediately; poll bulk-status for progress. Refuses to start a second job
 // while one is already running.
+// Class 6–10 batch: shorter, school-level tests. Each class draws only from
+// its own question pool. Sizes are per test:
+//   6th–8th : Full Test 30 Qs (P8 C8 B14, 40 min), subject tests 15 Qs (20 min), Daily Practice 10 Qs
+//   9th–10th: Full Test 60 Qs (P15 C15 B30, 75 min), subject tests 20 Qs (30 min), Daily Practice 15 Qs
+const SCHOOL_BATCH = [
+  { classLevel: "10th", full: 10, subj: 5, daily: 30, size: "foundation" },
+  { classLevel: "9th", full: 10, subj: 5, daily: 30, size: "foundation" },
+  { classLevel: "8th", full: 10, subj: 5, daily: 30, size: "junior" },
+  { classLevel: "7th", full: 10, subj: 5, daily: 30, size: "junior" },
+  { classLevel: "6th", full: 10, subj: 5, daily: 30, size: "junior" },
+];
+const SCHOOL_SIZES = {
+  junior: { full: { Physics: 8, Chemistry: 8, Biology: 14 }, fullMin: 40, subj: 15, subjMin: 20, daily: { Physics: 3, Chemistry: 3, Biology: 4 }, dailyMin: 10 },
+  foundation: { full: { Physics: 15, Chemistry: 15, Biology: 30 }, fullMin: 75, subj: 20, subjMin: 30, daily: { Physics: 4, Chemistry: 4, Biology: 7 }, dailyMin: 15 },
+};
+
+function buildSchoolSpec(only) {
+  const jobs = [];
+  for (const c of SCHOOL_BATCH) {
+    if (only && only.length && !only.includes(c.classLevel)) continue;
+    const z = SCHOOL_SIZES[c.size];
+    const pool = [c.classLevel];
+    jobs.push({ classLevel: c.classLevel, poolClassLevels: pool, type: "full", subject: null,
+      label: `${c.classLevel} Full Test`, title: (i) => `${c.classLevel} Full Test ${String(i).padStart(2, "0")}`,
+      durationMin: z.fullMin, count: c.full, subjectCounts: () => ({ ...z.full }) });
+    for (const subject of ["Physics", "Chemistry", "Biology"]) {
+      jobs.push({ classLevel: c.classLevel, poolClassLevels: pool, type: "subject", subject,
+        label: `${c.classLevel} ${subject} Test`, title: (i) => `${c.classLevel} ${subject} Test ${String(i).padStart(2, "0")}`,
+        durationMin: z.subjMin, count: c.subj, subjectCounts: () => ({ [subject]: z.subj }) });
+    }
+    jobs.push({ classLevel: c.classLevel, poolClassLevels: pool, type: "daily", subject: null,
+      label: `${c.classLevel} Daily Practice`, title: (i) => `${c.classLevel} Daily Practice ${String(i).padStart(3, "0")}`,
+      durationMin: z.dailyMin, count: c.daily, subjectCounts: () => ({ ...z.daily }) });
+  }
+  return jobs;
+}
+exports._internal = { buildSchoolSpec, SCHOOL_BATCH, SCHOOL_SIZES };
+
+// body: { group: "neet" (default) | "school", classLevels?: ["6th", ...] (school only) }
 exports.startBulkBuild = async (req, res) => {
   if (bulkJob && bulkJob.running) {
     return res.status(409).json({ success: false, message: "A bulk build is already running.", job: bulkJob });
   }
 
-  const jobs = buildDefaultSpec();
+  const group = req.body?.group === "school" ? "school" : "neet";
+  const jobs = group === "school" ? buildSchoolSpec(req.body?.classLevels) : buildDefaultSpec();
+  if (!jobs.length) return res.status(400).json({ success: false, message: "No classes selected." });
   bulkJob = {
+    group,
     running: true,
     startedAt: new Date().toISOString(),
     finishedAt: null,
@@ -326,17 +368,21 @@ exports.startBulkBuild = async (req, res) => {
 const BULK_TITLE_RE = /^(Dropper|11th|12th) (Full Mock Test|Half Mock Test|Physics Subject Test|Chemistry Subject Test|Biology Subject Test|Daily Practice) \d+$/;
 const BULK_SINCE = new Date("2026-10-04T16:00:00.000Z");
 
-async function findOldBulkTests() {
+// Class 6–10 batch titles (see buildSchoolSpec).
+const SCHOOL_TITLE_RE = /^(6th|7th|8th|9th|10th) (Full Test|Physics Test|Chemistry Test|Biology Test|Daily Practice) \d+$/;
+
+async function findOldBulkTests(group = "neet") {
+  const school = group === "school";
   const tests = await prisma.mockTest.findMany({
-    where: { createdAt: { gte: BULK_SINCE } },
+    where: school ? { classLevel: { in: ["6th", "7th", "8th", "9th", "10th"] } } : { createdAt: { gte: BULK_SINCE } },
     select: { id: true, title: true, classLevel: true, _count: { select: { attempts: true } } },
   });
-  return tests.filter((t) => BULK_TITLE_RE.test(t.title));
+  return tests.filter((t) => (school ? SCHOOL_TITLE_RE : BULK_TITLE_RE).test(t.title));
 }
 
 exports.getOldBulkBatch = async (req, res) => {
   try {
-    const tests = await findOldBulkTests();
+    const tests = await findOldBulkTests(req.query.group);
     const byClass = {};
     tests.forEach((t) => { byClass[t.classLevel] = (byClass[t.classLevel] || 0) + 1; });
     res.json({
@@ -350,7 +396,7 @@ exports.getOldBulkBatch = async (req, res) => {
 exports.deleteOldBulkBatch = async (req, res) => {
   try {
     if (bulkJob && bulkJob.running) return res.status(409).json({ success: false, message: "A bulk build is running — wait for it to finish." });
-    const tests = await findOldBulkTests();
+    const tests = await findOldBulkTests(req.body?.group);
     const ids = tests.map((t) => t.id);
     let deleted = 0, attemptsDeleted = 0;
     for (let i = 0; i < ids.length; i += 50) {
