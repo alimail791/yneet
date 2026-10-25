@@ -43,6 +43,7 @@ export default function Layout() {
   const tabs = [
     { to: "/",         label: "Dashboard", end: true },
     { to: "/mock",     label: "Mock Tests" },
+    { to: "/shorts",   label: "Shorts" },
     { to: "/quiz",     label: "Daily Quiz" },
     { to: "/practice", label: "Practice" },
     { to: "/pyq",      label: "PYQs" },
@@ -59,6 +60,7 @@ export default function Layout() {
   const mobileTabs = [
     { to: "/",         label: "Home",      icon: "🏠", end: true },
     { to: "/mock",     label: "Tests",     icon: "📝" },
+    { to: "/shorts",   label: "Shorts",    icon: "🎬" },
     { to: "/quiz",     label: "Quiz",      icon: "⚡" },
     { to: "/practice", label: "Practice",  icon: "📖" },
   ];

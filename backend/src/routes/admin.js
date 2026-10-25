@@ -4,6 +4,7 @@ const c = require("../controllers/adminController");
 const { generateContent, extractQuestionsFromImage } = require("../controllers/aiController");
 const { getContentCoverage } = require("../controllers/contentCoverageController");
 const ct = require("../controllers/chapterTestController");
+const sh = require("../controllers/shortsController");
 const { getPoolStats, buildMockTest, startBulkBuild, getBulkStatus, getOldBulkBatch, deleteOldBulkBatch } = require("../controllers/mockBuilderController");
 
 router.use(protect);
@@ -58,6 +59,14 @@ router.get("/flashcards", c.listFlashcards);
 router.post("/flashcards", c.createFlashcard);
 router.put("/flashcards/:id", c.updateFlashcard);
 router.delete("/flashcards/:id", c.deleteFlashcard);
+
+// Shorts — fixed paths before "/shorts/:id"
+router.get("/shorts/suggest-questions", sh.suggestQuestions);
+router.get("/shorts/creators", sh.creatorReport);
+router.get("/shorts", sh.adminList);
+router.post("/shorts", sh.adminCreate);
+router.put("/shorts/:id", sh.adminUpdate);
+router.delete("/shorts/:id", sh.adminDelete);
 
 router.get("/formulas", c.listFormulas);
 router.post("/formulas", c.createFormula);
