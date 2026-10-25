@@ -45,8 +45,8 @@ export default function JuniorHomePage() {
       <div className="card" style={{ background: "var(--amber-light)", borderColor: "var(--amber-light)" }}>
         <h2 style={{ fontSize: 16, fontWeight: 800, color: "var(--amber)" }}>🎯 Dreaming of becoming a doctor?</h2>
         <p style={{ fontSize: 13.5, color: "var(--text2)", marginTop: 4 }}>
-          From Class 9, <strong>NEET Foundation</strong> adds mock tests, practice questions, PYQs and WhatsApp doubt support —
-          30 days free, then ₹299/month. When you move to Class 9, update your class in your <Link to="/profile">profile</Link> to start.
+          From Class 9, <strong>NEET Foundation</strong> adds the full daily quiz, mistake notebook and WhatsApp doubt support,
+          with Foundation mock tests coming soon — 30 days free, then ₹299/month. When you move to Class 9, update your class in your <Link to="/profile">profile</Link> to start.
         </p>
       </div>
     </div>
