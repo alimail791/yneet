@@ -8,6 +8,22 @@ const GAMES = [
   { id: 'queens', name: 'Element Queens', color: 'var(--g4)', icon: 'Q', sub: 'One atom per row, column and block' },
   { id: 'daily5', name: 'Daily 5', color: 'var(--g5)', icon: '5', sub: '5 NEET MCQs in 2 minutes' }
 ];
+// Class tracks: each has its own puzzles and leaderboard (see lib/games.js on the server).
+const CLASSES = ['6', '7', '8', '9', '10', '11', '12', 'Dropper'];
+const trackForClass = c => (['6', '7', '8'].includes(c) ? 'junior' : ['9', '10'].includes(c) ? 'foundation' : 'neet');
+const TRACK = {
+  junior: { label: 'Class 6–8', short: 'Junior', kind: 'science', names: { bioword: 'Science Word', pinpoint: 'Pinpoint' },
+    subs: { bioword: 'Guess the science word', daily5: '5 science MCQs in 2 minutes', queens: 'One planet per row, column and block' } },
+  foundation: { label: 'Class 9–10', short: 'Foundation', kind: 'science', names: { bioword: 'Science Word', pinpoint: 'Pinpoint' },
+    subs: { bioword: 'Guess the science word', daily5: '5 science MCQs in 2 minutes' } },
+  neet: { label: 'Class 11–12 & Droppers', short: 'NEET', kind: 'NEET', names: {}, subs: {} },
+};
+let cls = null; // chosen class; the track follows from it
+const track = () => trackForClass(cls || '12');
+const T = () => TRACK[track()];
+const gname = g => T().names[g.id] || g.name;
+const gsub = g => T().subs[g.id] || g.sub;
+const rankLabel = () => (track() === 'neet' ? 'All-India' : T().label);
 const REG_COLORS = { A: 'var(--r1)', B: 'var(--r2)', C: 'var(--r3)', D: 'var(--r4)', E: 'var(--r5)', F: 'var(--r6)', G: 'var(--r7)', H: 'var(--r8)' };
 
 const ls = {
@@ -45,7 +61,9 @@ async function api(path, body) {
   if (!r.ok) throw new Error(j.error || 'Network problem. Check your internet and try again.');
   return j;
 }
-const saveDay = () => ls.set('yd-day-' + P.date, day);
+// NEET keeps the original key so existing players keep today's progress.
+const dayKey = () => 'yd-day-' + (track() === 'neet' ? '' : track() + '-') + P.date;
+const saveDay = () => ls.set(dayKey(), day);
 const dateLabel = d => new Date(d + 'T00:00:00').toLocaleDateString('en-IN', { weekday: 'short', day: 'numeric', month: 'short' });
 const resultOf = id => (me && me.today && me.today[id]) || (day.done[id] && (day.done[id].server || day.done[id].preview));
 
@@ -56,19 +74,22 @@ function home() {
   app.innerHTML = '';
   app.append($(`<div class="top"><div><div class="eyebrow">Raise Academy presents</div><div class="brand"><h1>YNeet <span>Daily</span></h1></div></div><div class="streak">🔥 ${me ? me.streak : 0} day</div></div>`));
   app.append(refPanel());
+  const chip = $(`<div class="classchip"><span>Playing as <b>${esc(T().label)}</b>${cls && cls !== 'Dropper' ? ` · Class ${esc(cls)}` : cls === 'Dropper' ? ' · Dropper' : ''}</span><button class="ghost" type="button">Change class</button></div>`);
+  chip.querySelector('button').onclick = () => classPicker(true);
+  app.append(chip);
   app.append($(`<div class="eyebrow">#${P.no} · ${dateLabel(P.date)} · ${n}/5 solved</div>`));
   const list = $(`<div class="list"></div>`);
   GAMES.forEach(g => {
     const d = resultOf(g.id);
     const c = $(`<div class="gamecard"><div class="gicon" style="background:${g.color}">${g.icon}</div>
-      <div class="ginfo"><h2>${g.name}<small>#${P.no}</small></h2><p>${d ? 'Done · ' + esc(d.line) : (g.id === 'bioword' ? `Guess the ${P.bioword.length}-letter biology term` : g.sub)}</p></div>
+      <div class="ginfo"><h2>${gname(g)}<small>#${P.no}</small></h2><p>${d ? 'Done · ' + esc(d.line) : (g.id === 'bioword' ? `Guess the ${P.bioword.length}-letter ${track() === 'neet' ? 'biology term' : 'science word'}` : gsub(g))}</p></div>
       <button class="solve ${d ? 'done' : ''}" style="background:${g.color}">${d ? 'Share' : 'Solve'}</button></div>`);
     c.querySelector('button').onclick = () => d ? openSheet(g.id) : openGame(g.id);
     list.append(c);
   });
   app.append(list);
   app.append(yneetPanel(null, null));
-  const lb = $(`<button class="primary lbbtn">🏆 Leaderboard · your All-India rank</button>`);
+  const lb = $(`<button class="primary lbbtn">🏆 ${track() === 'neet' ? 'Leaderboard · your All-India rank' : esc(T().label) + ' leaderboard · your rank'}</button>`);
   lb.onclick = leaderboard; app.insertBefore(lb, list);
   const st = $(`<button class="ghost" style="align-self:center">📲 Make today's WhatsApp Status card</button>`);
   st.onclick = statusCard; app.append(st);
@@ -87,12 +108,27 @@ function yneetLink(path, campaign) {
   if (path === '/register' && me) { u.set('name', me.name); if (me.phone) u.set('phone', me.phone); }
   return `${YNEET_SITE}${path}?${u}`;
 }
-function track(kind, detail) {
+function track_(kind, detail) {
   try { fetch('/api/track', { method: 'POST', keepalive: true, headers: { 'Content-Type': 'application/json', ...(token ? { Authorization: 'Bearer ' + token } : {}) }, body: JSON.stringify({ kind, detail }) }); } catch (e) {}
 }
 function yneetPanel(gameId, d) {
   const SUBJ = { Bio: 'Biology', Chem: 'Chemistry', Phy: 'Physics' };
-  let title = 'Prepare for NEET on YNeet', text = 'Full NEET mock tests, chapter-wise practice and PYQs with instant analysis of your weak areas.';
+  if (track() === 'junior') {
+    const p = $(`<div class="panel yneet">
+      <div class="eyebrow">YNeet · free for Class 6–8</div>
+      <strong class="yn-title">Daily quiz and Shorts — free on YNeet</strong>
+      <p class="how" style="margin:0">A daily quiz from your syllabus and 3-minute concept videos. No payment, ever. Parents get a weekly report on WhatsApp.</p>
+      <a class="primary" target="_blank" rel="noopener">Register free</a>
+      <a class="yn-login" target="_blank" rel="noopener">Already on YNeet? Log in</a>
+    </div>`);
+    const [go, login] = p.querySelectorAll('a');
+    go.href = yneetLink('/register', gameId).replace('/register?', '/register?junior=1&'); login.href = yneetLink('/login', gameId);
+    go.onclick = () => track_('yneet_signup', 'junior_' + (gameId || 'home'));
+    login.onclick = () => track_('yneet_login', 'junior_' + (gameId || 'home'));
+    return p;
+  }
+  let title = track() === 'foundation' ? 'NEET Foundation for Class 9–10' : 'Prepare for NEET on YNeet',
+    text = track() === 'foundation' ? 'Science MCQs, mock tests and concept Shorts for Class 9–10, so NEET in Class 11 feels easy.' : 'Full NEET mock tests, chapter-wise practice and PYQs with instant analysis of your weak areas.';
   if (gameId === 'pinpoint' && d && d.topic) { title = `Revise “${d.topic}”`; text = 'Practise this chapter with NEET-level questions and PYQs on YNeet, with explanations for every answer.'; }
   else if (gameId === 'daily5' && d && d.weak && d.weak.length) { title = `Missed ${d.weak.map(s => SUBJ[s] || s).join(' and ')} today?`; text = 'Practise those chapters on YNeet with full mock tests, PYQs and instant analysis of your weak areas.'; }
   else if (gameId === 'daily5' && d && d.line === '5/5') { title = 'Perfect score! Try a full NEET mock'; text = 'Test yourself on a full 720-mark NEET mock test on YNeet, with All-India analysis.'; }
@@ -108,8 +144,8 @@ function yneetPanel(gameId, d) {
   p.querySelector('.how').textContent = text;
   const [go, login] = p.querySelectorAll('a');
   go.href = yneetLink('/register', gameId); login.href = yneetLink('/login', gameId);
-  go.onclick = () => track('yneet_signup', gameId || 'home');
-  login.onclick = () => track('yneet_login', gameId || 'home');
+  go.onclick = () => track_('yneet_signup', (track() === 'neet' ? '' : track() + '_') + (gameId || 'home'));
+  login.onclick = () => track_('yneet_login', (track() === 'neet' ? '' : track() + '_') + (gameId || 'home'));
   return p;
 }
 
@@ -127,7 +163,7 @@ function openGame(id) {
   stopTick();
   const g = GAMES.find(x => x.id === id);
   app.innerHTML = '';
-  const head = $(`<div class="stagehead"><button class="back">← Games</button><h2>${g.name} <small class="eyebrow">#${P.no}</small></h2><span class="timer" id="tm"></span></div>`);
+  const head = $(`<div class="stagehead"><button class="back">← Games</button><h2>${gname(g)} <small class="eyebrow">#${P.no}</small></h2><span class="timer" id="tm"></span></div>`);
   head.querySelector('.back').onclick = home;
   app.append(head);
   const stage = $(`<div style="display:flex;flex-direction:column;gap:14px"></div>`);
@@ -150,7 +186,7 @@ async function finish(id, attempt, preview) {
 async function submit(id) {
   const d = day.done[id];
   if (!d || d.submitted) return;
-  const j = await api('/api/results', { date: P.date, game: id, attempt: d.attempt });
+  const j = await api('/api/results', { date: P.date, game: id, attempt: d.attempt, track: track() });
   d.submitted = true; d.server = j.result; d.rank = j.rank; me = j.me; saveDay();
 }
 async function submitAll() { for (const g of GAMES) { try { await submit(g.id); } catch (e) { console.warn(g.id, e.message); } } }
@@ -185,7 +221,7 @@ function bioword(st) {
       if (cur.length < L) { toast.textContent = `Need ${L} letters`; return; }
       busy = true; toast.textContent = '';
       let j;
-      try { j = await api('/api/check/bioword', { date: P.date, guess: cur, attempt: row + 1 }); }
+      try { j = await api('/api/check/bioword', { date: P.date, guess: cur, attempt: row + 1, track: track() }); }
       catch (e) { toast.textContent = e.message; busy = false; return; }
       busy = false;
       const t = grid.children[row].children, rank = { a: 1, p: 2, c: 3 };
@@ -232,7 +268,7 @@ function pinpoint(st) {
       if (over || busy || b.disabled) return;
       busy = true; toast.textContent = '';
       let j;
-      try { j = await api('/api/check/pinpoint', { date: P.date, option: o, guessNo: guesses.length + 1 }); }
+      try { j = await api('/api/check/pinpoint', { date: P.date, option: o, guessNo: guesses.length + 1, track: track() }); }
       catch (e) { toast.textContent = e.message; busy = false; return; }
       busy = false; guesses.push(o);
       if (j.correct) { b.classList.add('right'); marks.push('✅'); }
@@ -348,7 +384,7 @@ function daily5(st) {
       b.onclick = async () => {
         if (over || m.dataset.locked) return; m.dataset.locked = 1;
         let j;
-        try { j = await api('/api/check/daily5', { date: P.date, q: i, option: k }); }
+        try { j = await api('/api/check/daily5', { date: P.date, q: i, option: k, track: track() }); }
         catch (e) { delete m.dataset.locked; box.append($(`<div class="toast">${esc(e.message)}</div>`)); return; }
         if (over) return;
         answers[i] = k; if (j.correct) score++; else if (!weak.includes(Q[i].s)) weak.push(Q[i].s); marks.push(j.correct ? '✅' : '❌');
@@ -382,8 +418,8 @@ function openSheet(id) {
 function registerView(sh, g) {
   const d = resultOf(g.id);
   sh.innerHTML = '';
-  sh.append($(`<div class="eyebrow">${g.name} #${P.no} · ${esc(d.line)}</div>`), $(`<h3>Nice! Save your score</h3>`),
-    $(`<p class="how" style="font-size:15px">Enter your WhatsApp number to keep your 🔥 streak, see your All-India rank and get your own invite link.</p>`));
+  sh.append($(`<div class="eyebrow">${gname(g)} #${P.no} · ${esc(d.line)}</div>`), $(`<h3>Nice! Save your score</h3>`),
+    $(`<p class="how" style="font-size:15px">Enter your WhatsApp number${track() === 'junior' ? ' (or a parent\'s)' : ''} to keep your 🔥 streak, see your ${esc(rankLabel())} rank and get your own invite link.</p>`));
   const f = $(`<form style="display:flex;flex-direction:column;gap:10px" novalidate>
     <div class="field"><label for="rname">Your name</label><input id="rname" autocomplete="name" maxlength="60" placeholder="e.g. Fathima"></div>
     <div class="field"><label for="rphone">WhatsApp number</label><input id="rphone" type="tel" inputmode="numeric" maxlength="10" autocomplete="tel-national" placeholder="10-digit mobile number"></div>
@@ -408,7 +444,7 @@ function registerView(sh, g) {
         f.querySelector('#rotp').focus();
       } else {
         const ref = ls.get('yd-ref', {}) || {};
-        const j = await api('/api/otp/verify', { phone, name, otp: f.querySelector('#rotp').value, ref: ref.r, source: ref.s });
+        const j = await api('/api/otp/verify', { phone, name, otp: f.querySelector('#rotp').value, ref: ref.r, source: ref.s, class: cls });
         token = j.token; me = j.me; ls.set('yd-token', token);
         await submitAll();
         shareView(sh, g);
@@ -418,20 +454,20 @@ function registerView(sh, g) {
   };
 }
 function shareText(g, d) {
-  return `🧬 YNeet Daily #${P.no} · ${dateLabel(P.date)}\n${g.name}: ${d.line}\n${d.emoji}\n🔥 Streak: ${me.streak} day${me.streak === 1 ? '' : 's'}\n\nCan you beat me? Play free 👇\n${playUrl()}?r=${me.code}`;
+  return `🧬 YNeet Daily${track() === 'neet' ? '' : ' ' + T().short + ' (' + T().label + ')'} #${P.no} · ${dateLabel(P.date)}\n${gname(g)}: ${d.line}\n${d.emoji}\n🔥 Streak: ${me.streak} day${me.streak === 1 ? '' : 's'}\n\nCan you beat me? Play free 👇\n${playUrl()}?r=${me.code}`;
 }
 /* ---------- LEADERBOARD: all five games ---------- */
 async function leaderboard() {
   stopTick(); sheetRoot.innerHTML = '';
   app.innerHTML = '';
-  const head = $(`<div class="stagehead"><button class="back">← Games</button><h2>Leaderboard <small class="eyebrow">#${P.no}</small></h2></div>`);
+  const head = $(`<div class="stagehead"><button class="back">← Games</button><h2>${track() === 'neet' ? 'Leaderboard' : esc(T().label) + ' leaderboard'} <small class="eyebrow">#${P.no}</small></h2></div>`);
   head.querySelector('.back').onclick = home;
-  app.append(head, $(`<p class="how">Today's All-India top 10 for each game. Ranks go by score, then by time. Boards reset at midnight.</p>`));
+  app.append(head, $(`<p class="how">Today's ${track() === 'neet' ? 'All-India' : esc(T().label)} top 10 for each game. Ranks go by score, then by time. Boards reset at midnight.</p>`));
   const box = $(`<div style="display:flex;flex-direction:column;gap:12px"><div class="loading">Loading boards…</div></div>`);
   app.append(box);
   window.scrollTo(0, 0);
   let data;
-  try { data = await api('/api/boards?date=' + P.date); } catch (e) { box.innerHTML = `<div class="loading">${esc(e.message)}</div>`; return; }
+  try { data = await api('/api/boards?date=' + P.date + '&track=' + track()); } catch (e) { box.innerHTML = `<div class="loading">${esc(e.message)}</div>`; return; }
   box.innerHTML = '';
   if (!me) {
     const join = $(`<div class="panel" style="display:flex;flex-direction:column;gap:8px"><strong>See your own rank</strong><span class="how">Finish any game today and save your score with your WhatsApp number. Your rank then shows here on any phone.</span></div>`);
@@ -439,12 +475,12 @@ async function leaderboard() {
   }
   for (const g of GAMES) {
     const b = data.boards[g.id];
-    const p = $(`<div class="panel lbpanel"><div class="lbhead"><span class="gicon sm" style="background:${g.color}">${g.icon}</span><strong>${g.name}</strong><span class="lbcount">${b.total} solved</span></div></div>`);
+    const p = $(`<div class="panel lbpanel"><div class="lbhead"><span class="gicon sm" style="background:${g.color}">${g.icon}</span><strong>${gname(g)}</strong><span class="lbcount">${b.total} solved</span></div></div>`);
     if (me) {
       let mine;
       if (b.mine && b.mine.rank) mine = `<div class="rankline">🏆 Your rank: #${b.mine.rank} of ${b.mine.total} · ${esc(b.mine.line)}</div>`;
       else if (b.mine) mine = `<div class="how">You played (${esc(b.mine.line)}) but didn't solve it today.</div>`;
-      else mine = `<button class="ghost lbplay">Play ${g.name} to get ranked</button>`;
+      else mine = `<button class="ghost lbplay">Play ${gname(g)} to get ranked</button>`;
       const m = $(`<div>${mine}</div>`); const btn = m.querySelector('.lbplay'); if (btn) btn.onclick = () => openGame(g.id);
       p.append(m);
     }
@@ -460,8 +496,8 @@ async function shareView(sh, g) {
   const rank = local && local.rank;
   sh.append($(`<div class="eyebrow">Saved for ${esc(me.name)}</div>`), $(`<h3>Share your result</h3>`));
   const rankEl = $(`<div class="rankline"></div>`); sh.append(rankEl);
-  if (rank) rankEl.textContent = `🏆 All-India rank #${rank.rank} of ${rank.total} today`;
-  else { rankEl.hidden = true; api('/api/boards?date=' + P.date).then(j => { const m = j.boards[g.id] && j.boards[g.id].mine; if (m && m.rank) { rankEl.textContent = `🏆 All-India rank #${m.rank} of ${m.total} today`; rankEl.hidden = false; } }).catch(() => {}); }
+  if (rank) rankEl.textContent = `🏆 ${rankLabel()} rank #${rank.rank} of ${rank.total} today`;
+  else { rankEl.hidden = true; api('/api/boards?date=' + P.date + '&track=' + track()).then(j => { const m = j.boards[g.id] && j.boards[g.id].mine; if (m && m.rank) { rankEl.textContent = `🏆 ${rankLabel()} rank #${m.rank} of ${m.total} today`; rankEl.hidden = false; } }).catch(() => {}); }
   const res = $(`<div class="result"></div>`); res.textContent = txt; sh.append(res);
   sh.append($(`<a class="primary wa" target="_blank" rel="noopener" href="https://wa.me/?text=${encodeURIComponent(txt)}">Share on WhatsApp</a>`));
   const row = $(`<div class="row2"><button class="ghost" id="cp">Copy message</button><button class="ghost" id="sc">Status card</button></div>`);
@@ -477,11 +513,11 @@ async function shareView(sh, g) {
     <div class="reftext"><span>${r}/${need} registered with your link</span><span>Code ${me.code}</span></div>
     ${me.rewardCode ? rewardBox() : '<span class="how">A friend counts when they register using your link.</span>'}</div>`));
   sh.append(yneetPanel(g.id, (local && local.preview) || d));
-  const board = $(`<div class="panel" style="display:flex;flex-direction:column;gap:8px"><strong>Today's top 10 · ${g.name}</strong><div class="board"><div>Loading…</div></div></div>`);
+  const board = $(`<div class="panel" style="display:flex;flex-direction:column;gap:8px"><strong>Today's top 10 · ${gname(g)}${track() === 'neet' ? '' : ' · ' + esc(T().label)}</strong><div class="board"><div>Loading…</div></div></div>`);
   sh.append(board);
   const done = $(`<button class="ghost">Back to games</button>`); done.onclick = home; sh.append(done);
   try {
-    const rows = await fetch(`/api/leaderboard?date=${P.date}&game=${g.id}`).then(x => x.json());
+    const rows = await fetch(`/api/leaderboard?date=${P.date}&game=${g.id}&track=${track()}`).then(x => x.json());
     board.querySelector('.board').innerHTML = rows.length ? rows.map(x => `<div><b>#${x.rank}</b><span>${esc(x.name)}</span><span>${esc(x.line)}</span></div>`).join('') : '<div>Be the first on the board today!</div>';
   } catch (e) { board.remove(); }
 }
@@ -489,9 +525,9 @@ function statusCard() {
   const link = (playUrl() + (me ? `?r=${me.code}&s=status` : '?s=status')).replace(/^https?:\/\//, '');
   const scrim = $(`<div class="scrim" style="align-items:center"><div style="display:flex;flex-direction:column;gap:12px;align-items:center;padding:16px">
     <div class="status">
-      <div><div class="s1">YNeet <span>Daily</span></div><div style="font-family:var(--mono);font-size:12px;margin-top:6px;opacity:.85">#${P.no} · ${dateLabel(P.date).toUpperCase()} · 5 FREE NEET GAMES</div></div>
-      <div class="s2">Today's BioWord: ${P.bioword.length} letters, ${esc(P.bioword.hint.toLowerCase())} 🌿<br>Can you crack it?</div>
-      <div class="games">🟩 BioWord<br>🔵 Pinpoint NEET<br>🔴 Pathway Zip<br>⚛ Element Queens<br>🟠 Daily 5 MCQs</div>
+      <div><div class="s1">YNeet <span>Daily</span></div><div style="font-family:var(--mono);font-size:12px;margin-top:6px;opacity:.85">#${P.no} · ${dateLabel(P.date).toUpperCase()} · ${track() === 'neet' ? '5 FREE NEET GAMES' : '5 FREE SCIENCE GAMES · ' + esc(T().label.toUpperCase())}</div></div>
+      <div class="s2">Today's ${esc(gname(GAMES[0]))}: ${P.bioword.length} letters, ${esc(P.bioword.hint.toLowerCase())} 🌿<br>Can you crack it?</div>
+      <div class="games">🟩 ${esc(gname(GAMES[0]))}<br>🔵 ${esc(gname(GAMES[1]))}<br>🔴 Pathway Zip<br>⚛ Element Queens<br>🟠 Daily 5 MCQs</div>
       <div class="link">${esc(link)}</div>
     </div>
     <p style="color:#fff;margin:0;text-align:center;font-size:13px">Take a screenshot and post it to your WhatsApp Status</p>
@@ -501,11 +537,58 @@ function statusCard() {
 }
 
 /* ---------- boot ---------- */
+async function loadTrack() {
+  P = await api('/api/today?track=' + track());
+  day = ls.get(dayKey(), null) || { done: {} };
+}
+
+/* ---------- CLASS PICKER ---------- */
+function classPicker(changing) {
+  stopTick(); sheetRoot.innerHTML = '';
+  app.innerHTML = '';
+  app.append($(`<div class="top"><div><div class="eyebrow">Raise Academy presents</div><div class="brand"><h1>YNeet <span>Daily</span></h1></div></div></div>`));
+  const p = $(`<div class="panel picker">
+    <h3>${changing ? 'Change your class' : 'Which class are you in?'}</h3>
+    <p class="how" style="margin:0">You get puzzles from your own syllabus and your own leaderboard.</p>
+    <div class="pgroup"><div class="eyebrow">Class 6–8 · science puzzles</div><div class="pgrid" data-g="j"></div></div>
+    <div class="pgroup"><div class="eyebrow">Class 9–10 · NEET Foundation</div><div class="pgrid" data-g="f"></div></div>
+    <div class="pgroup"><div class="eyebrow">Class 11–12 & droppers · NEET</div><div class="pgrid" data-g="n"></div></div>
+  </div>`);
+  const groups = { j: ['6', '7', '8'], f: ['9', '10'], n: ['11', '12', 'Dropper'] };
+  for (const [k, list] of Object.entries(groups)) {
+    const grid = p.querySelector(`[data-g="${k}"]`);
+    list.forEach(c => {
+      const b = $(`<button class="pbtn ${cls === c ? 'on' : ''}" type="button">${c === 'Dropper' ? 'Dropper' : 'Class ' + c}</button>`);
+      b.onclick = () => chooseClass(c);
+      grid.append(b);
+    });
+  }
+  app.append(p);
+  if (changing) { const back = $(`<button class="ghost" style="align-self:center">Cancel</button>`); back.onclick = home; app.append(back); }
+  window.scrollTo(0, 0);
+}
+async function chooseClass(c) {
+  cls = c; ls.set('yd-class', c);
+  app.innerHTML = `<div class="loading">Loading ${esc(T().label)} puzzles…</div>`;
+  try {
+    if (me) { try { me = await api('/api/me/class', { class: c }); } catch (e) { console.warn(e.message); } }
+    await loadTrack();
+    if (me) await submitAll();
+    home();
+  } catch (e) {
+    app.innerHTML = `<div class="loading">Couldn't load the puzzles. ${esc(e.message)}<br><br><button class="ghost" onclick="location.reload()">Try again</button></div>`;
+  }
+}
+
+/* ---------- boot ---------- */
 (async function boot() {
   try {
-    P = await api('/api/today');
-    day = ls.get('yd-day-' + P.date, null) || { done: {} };
-    if (token) { try { me = await api('/api/me'); await submitAll(); } catch (e) { console.warn(e.message); } }
+    cls = ls.get('yd-class', null);
+    if (token) { try { me = await api('/api/me'); if (me && me.class) { cls = me.class; ls.set('yd-class', cls); } } catch (e) { console.warn(e.message); } }
+    if (!cls) { classPicker(false); return; }
+    if (me && !me.class) { try { me = await api('/api/me/class', { class: cls }); } catch (e) { console.warn(e.message); } }
+    await loadTrack();
+    if (me) await submitAll();
     home();
   } catch (e) {
     app.innerHTML = `<div class="loading">Couldn't load today's puzzles. ${esc(e.message)}<br><br><button class="ghost" onclick="location.reload()">Try again</button></div>`;

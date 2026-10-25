@@ -3,22 +3,36 @@ const path = require('path');
 const ALL = require(path.join(__dirname, '..', 'puzzles', 'puzzles.json'));
 const DATES = Object.keys(ALL).sort();
 
+// Class tracks: each has its own puzzles and its own leaderboard.
+//   neet = Class 11, 12 and droppers (the original puzzles), foundation = Class 9–10, junior = Class 6–8
+const TRACK_SETS = { neet: ALL };
+for (const t of ['junior', 'foundation']) {
+  try { TRACK_SETS[t] = require(path.join(__dirname, '..', 'puzzles', `puzzles-${t}.json`)); }
+  catch (e) { console.warn(`⚠ puzzles-${t}.json missing; ${t} players get NEET puzzles. Run: node puzzles/generate.js`); TRACK_SETS[t] = ALL; }
+}
+const TRACKS = Object.keys(TRACK_SETS);
+const normTrack = t => (TRACKS.includes(t) ? t : 'neet');
+const CLASSES = ['6', '7', '8', '9', '10', '11', '12', 'Dropper'];
+const trackForClass = c => (['6', '7', '8'].includes(c) ? 'junior' : ['9', '10'].includes(c) ? 'foundation' : 'neet');
+
 const istToday = () => new Date(Date.now() + 5.5 * 3600e3).toISOString().slice(0, 10);
 const dayDiff = (a, b) => Math.round((new Date(a + 'T00:00:00Z') - new Date(b + 'T00:00:00Z')) / 86400e3);
 
 // The puzzle for a calendar date. If the set has run out, it cycles so the page is never empty
 // (the server logs a warning so you know to generate more).
-function puzzleFor(date) {
-  if (ALL[date]) return ALL[date];
-  const n = dayDiff(date, DATES[0]);
-  const src = ALL[DATES[((n % DATES.length) + DATES.length) % DATES.length]];
+function puzzleFor(date, track) {
+  const set = TRACK_SETS[normTrack(track)];
+  if (set[date]) return set[date];
+  const dates = set === ALL ? DATES : Object.keys(set).sort();
+  const n = dayDiff(date, dates[0]);
+  const src = set[dates[((n % dates.length) + dates.length) % dates.length]];
   return { ...src, date, no: n + 2, recycled: true };
 }
 function today() { return process.env.PUZZLE_DATE || istToday(); }
 
 function publicView(p) {
   return {
-    date: p.date, no: p.no,
+    date: p.date, no: p.no, track: p.track || 'neet',
     bioword: { hint: p.bioword.hint, length: p.bioword.answer.length },
     pinpoint: { subject: p.pinpoint.subject || 'Bio', firstClue: p.pinpoint.clues[0], totalClues: p.pinpoint.clues.length, options: p.pinpoint.options },
     zip: { title: p.zip.title, labels: p.zip.labels, size: p.zip.size, nodes: p.zip.nodes },
@@ -135,4 +149,4 @@ function verify(p, game, at) {
   return { error: 'Unknown game' };
 }
 
-module.exports = { ALL, DATES, today, istToday, puzzleFor, publicView, checkBioword, checkPinpoint, checkDaily5, verify, dayDiff };
+module.exports = { ALL, DATES, TRACKS, CLASSES, normTrack, trackForClass, today, istToday, puzzleFor, publicView, checkBioword, checkPinpoint, checkDaily5, verify, dayDiff };

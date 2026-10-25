@@ -46,3 +46,16 @@ CREATE TABLE IF NOT EXISTS events (
   created_at TIMESTAMPTZ NOT NULL DEFAULT now()
 );
 CREATE INDEX IF NOT EXISTS events_kind ON events(kind, created_at);
+
+-- Added: class tracks. Each player picks a class; results and leaderboards are per track
+-- (neet = Class 11, 12, droppers; foundation = Class 9–10; junior = Class 6–8).
+ALTER TABLE players ADD COLUMN IF NOT EXISTS class TEXT;
+ALTER TABLE results ADD COLUMN IF NOT EXISTS track TEXT NOT NULL DEFAULT 'neet';
+CREATE INDEX IF NOT EXISTS results_board_track ON results(day, track, game, score DESC, seconds ASC);
+-- One result per player, day, game AND track (a player who changes class can play the new track the same day).
+DO $$ BEGIN
+  IF EXISTS (SELECT 1 FROM pg_constraint WHERE conname = 'results_player_id_day_game_key') THEN
+    ALTER TABLE results DROP CONSTRAINT results_player_id_day_game_key;
+  END IF;
+END $$;
+CREATE UNIQUE INDEX IF NOT EXISTS results_player_day_game_track ON results(player_id, day, game, track);

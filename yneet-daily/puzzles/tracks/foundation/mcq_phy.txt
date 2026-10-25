@@ -1,0 +1,54 @@
+# Format: question | correct answer | wrong 1 | wrong 2 | wrong 3 | explanation
+# Motion
+The SI unit of acceleration is: | m/s² | m/s | km/h | N | Acceleration is change in velocity per second.
+The slope of a distance–time graph gives: | Speed | Acceleration | Distance | Force | A steeper line means faster motion.
+An object moving in a circle at constant speed has: | Changing velocity | Constant velocity | Zero acceleration | No motion | Its direction keeps changing.
+The area under a velocity–time graph gives: | Displacement | Acceleration | Force | Mass | Area = velocity × time.
+A car goes from 0 to 20 m/s in 5 s. Its acceleration is: | 4 m/s² | 100 m/s² | 25 m/s² | 0.25 m/s² | a = 20 ÷ 5 = 4 m/s².
+# Force and Laws of Motion
+Newton's first law is also called the law of: | Inertia | Momentum | Gravitation | Action | Objects keep doing what they are doing unless a force acts.
+Force = mass ×: | Acceleration | Velocity | Distance | Time | This is Newton's second law.
+The SI unit of momentum is: | kg m/s | N | J | W | Momentum = mass × velocity.
+A gun recoils when fired. This is explained by Newton's: | Third law | First law | Law of gravitation | Second law only | Action and reaction are equal and opposite.
+A force of 10 N acts on a 2 kg mass. Its acceleration is: | 5 m/s² | 20 m/s² | 12 m/s² | 0.2 m/s² | a = F ÷ m = 10 ÷ 2.
+# Gravitation
+The value of g on Earth is about: | 9.8 m/s² | 6.67 m/s² | 1.6 m/s² | 3 × 10^8 m/s² | g is the acceleration due to gravity.
+On the Moon, your weight becomes about: | One-sixth | Six times | Same | Zero | The Moon's gravity is weaker.
+The upward force by a liquid on an object is: | Buoyant force | Gravity | Friction | Tension | Archimedes' principle explains it.
+Mass is measured in: | Kilograms | Newtons | Joules | Watts | Mass stays the same everywhere.
+An object sinks in water if its density is: | More than water | Less than water | Equal to air | Zero | Iron sinks; cork floats.
+# Work and Energy
+Work done = force ×: | Displacement | Time | Mass | Speed | No displacement means no work.
+Energy of a moving object is: | Kinetic energy | Potential energy | Heat only | Sound energy | KE = ½mv².
+1 kWh equals: | 3.6 × 10^6 J | 1000 J | 3600 J | 100 J | It is the unit on electricity bills.
+The energy stored in a stretched rubber band is: | Potential energy | Kinetic energy | Light energy | Sound energy | It is due to change in shape.
+Power is the rate of doing: | Work | Force | Motion | Mass | Power = work ÷ time.
+# Sound
+Sound waves in air are: | Longitudinal | Transverse | Electromagnetic | Light waves | Particles move back and forth.
+Sound travels fastest in: | Solids | Liquids | Gases | Vacuum | Particles are closest in solids.
+Sounds above 20,000 Hz are: | Ultrasound | Infrasound | Audible | Echoes | Bats and dolphins use ultrasound.
+SONAR is used to find: | The depth of the sea | The speed of light | Temperature | Mass of a ship | It uses ultrasonic echoes.
+The pitch of a sound depends on its: | Frequency | Amplitude | Speed | Wavelength only | Higher frequency means higher pitch.
+# Light — Reflection and Refraction
+A concave mirror is used as a: | Shaving mirror | Rear-view mirror | Window glass | Prism | It forms an enlarged, upright image when close.
+Rear-view mirrors in cars are: | Convex | Concave | Plane only | Cylindrical | They give a wider view.
+The SI unit of the power of a lens is: | Dioptre | Metre | Watt | Newton | Power = 1 ÷ focal length in metres.
+Light bends when it goes from air to glass. This is: | Refraction | Reflection | Dispersion | Scattering | Light slows down in glass.
+A convex lens is also called a: | Converging lens | Diverging lens | Plane lens | Mirror | It brings parallel rays to a focus.
+# The Human Eye and the Colourful World
+Short-sightedness is corrected using a: | Concave lens | Convex lens | Plane mirror | Prism | Myopia means distant objects look blurred.
+The sky looks blue because of: | Scattering of light | Reflection from the sea | Dispersion by clouds | Refraction only | Blue light scatters more than red.
+Splitting of white light into colours is: | Dispersion | Reflection | Scattering | Absorption | A prism disperses white light.
+The ability of the eye to change focal length is: | Power of accommodation | Myopia | Persistence | Astigmatism | Ciliary muscles change the lens shape.
+Danger signals are red because red light: | Scatters the least | Scatters the most | Is the cheapest | Is brightest only | Red can be seen from far away.
+# Electricity
+The SI unit of electric current is: | Ampere | Volt | Ohm | Watt | Current is measured with an ammeter.
+Ohm's law is: | V = IR | P = VI | F = ma | E = mc² | Voltage = current × resistance.
+In a parallel circuit, the voltage across each branch is: | The same | Different | Zero | Halved | Home wiring is in parallel.
+The heating element of an iron is made of: | Nichrome | Copper | Silver | Aluminium | Nichrome has high resistance.
+An ammeter is connected in: | Series | Parallel | Either way | Across the battery | It measures the current flowing through.
+# Magnetic Effects of Electric Current
+The direction of force on a current in a magnetic field is given by: | Fleming's left-hand rule | Fleming's right-hand rule | Ohm's law | Newton's law | It is used in electric motors.
+A coil of many turns of wire is a: | Solenoid | Fuse | Resistor | Battery | It acts like a bar magnet when current flows.
+An electric motor converts: | Electrical energy to mechanical energy | Mechanical to electrical | Heat to light | Sound to electricity | Fans and pumps use motors.
+Magnetic field lines never: | Cross each other | Form loops | Leave north poles | Exist outside magnets | Two field directions at one point is impossible.

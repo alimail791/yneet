@@ -1,0 +1,93 @@
+# Format: question | correct answer | wrong 1 | wrong 2 | wrong 3 | explanation
+# The Fundamental Unit of Life
+The powerhouse of the cell is the: | Mitochondria | Ribosome | Golgi apparatus | Lysosome | Mitochondria release energy as ATP.
+Lysosomes are called suicide bags because they: | Contain digestive enzymes | Store water | Make proteins | Make food | If the cell is damaged, lysosome enzymes can digest it.
+Proteins are made on: | Ribosomes | Lysosomes | Vacuoles | Plastids | Ribosomes are found on rough ER and in the cytoplasm.
+Shrinking of a plant cell's contents in a strong salt solution is: | Plasmolysis | Endocytosis | Diffusion only | Turgidity | Water leaves the cell by osmosis.
+Organisms without a well-defined nucleus are: | Prokaryotes | Eukaryotes | Fungi | Protozoa | Bacteria are prokaryotes.
+The cell wall of plants is mainly made of: | Cellulose | Protein | Fat | Chitin | Cellulose gives strength to the plant cell.
+Which organelle packages and sends materials out of the cell? | Golgi apparatus | Nucleus | Mitochondria | Ribosome | It was described by Camillo Golgi.
+Movement of water through a selectively permeable membrane is: | Osmosis | Diffusion of gases | Plasmolysis | Transpiration | Water moves to the more concentrated side.
+# Tissues
+Tissue that helps a plant grow in length is: | Apical meristem | Xylem | Phloem | Cork | It is found at the tips of roots and stems.
+Tissue that carries water in plants is: | Xylem | Phloem | Parenchyma | Epidermis | Xylem vessels and tracheids carry water.
+Tendons join: | Muscle to bone | Bone to bone | Skin to muscle | Nerve to muscle | Ligaments join bone to bone.
+Heart muscle is: | Cardiac muscle | Smooth muscle | Skeletal muscle | Voluntary muscle | Cardiac muscle never tires.
+The husk of coconut is made of: | Sclerenchyma | Parenchyma | Collenchyma | Meristem | Sclerenchyma cells are thick and dead.
+Blood is a: | Connective tissue | Muscular tissue | Nervous tissue | Epithelial tissue | Blood has a fluid matrix called plasma.
+The functional unit of nervous tissue is the: | Neuron | Nephron | Alveolus | Villus | Neurons carry messages as impulses.
+Flexibility in leaf stalks is due to: | Collenchyma | Sclerenchyma | Xylem | Cork | Collenchyma lets parts bend without breaking.
+# Diversity in Living Organisms
+The five-kingdom classification was proposed by: | R.H. Whittaker | Carolus Linnaeus | Charles Darwin | Ernst Haeckel | Whittaker proposed it in 1969.
+Plants with naked seeds are: | Gymnosperms | Angiosperms | Bryophytes | Pteridophytes | Pine and cycas are gymnosperms.
+Sponges belong to phylum: | Porifera | Cnidaria | Annelida | Mollusca | Porifera means organisms with pores.
+Frogs belong to class: | Amphibia | Reptilia | Pisces | Aves | Amphibians live on land and in water.
+Bats are: | Mammals | Birds | Reptiles | Amphibians | Bats feed their young with milk.
+Bacteria are placed in kingdom: | Monera | Protista | Fungi | Plantae | Monera are prokaryotes.
+The amphibians of the plant kingdom are: | Bryophytes | Algae | Gymnosperms | Angiosperms | Mosses need water for reproduction.
+Earthworms belong to phylum: | Annelida | Arthropoda | Nematoda | Mollusca | They have ring-like segments.
+# Why Do We Fall Ill
+Diseases that spread from one person to another are: | Infectious diseases | Genetic diseases | Deficiency diseases | Non-infectious diseases | Common cold and TB are infectious.
+Mosquitoes that carry disease germs are called: | Vectors | Hosts | Pathogens | Antibodies | Vectors carry pathogens to new hosts.
+Antibiotics work against: | Bacteria | Viruses | All germs equally | Allergies | They block processes that bacteria need.
+Tuberculosis is caused by a: | Bacterium | Virus | Fungus | Worm | TB is caused by Mycobacterium tuberculosis.
+AIDS is caused by: | HIV | A bacterium | A fungus | A protozoan | HIV damages the immune system.
+Giving a vaccine to protect against disease is: | Immunisation | Infection | Inflammation | Mutation | Vaccines make the body ready to fight a germ.
+# Life Processes
+Breakdown of glucose without oxygen in muscles gives: | Lactic acid | Ethanol | Pyruvate only | Water | This causes muscle cramps.
+Opening and closing of stomata is controlled by: | Guard cells | Root hairs | Xylem | Phloem | Guard cells swell to open the pore.
+The functional unit of the kidney is the: | Nephron | Neuron | Alveolus | Villus | Each kidney has many nephrons.
+Food moves through phloem by: | Translocation | Transpiration | Osmosis only | Diffusion of gases | Translocation uses energy from ATP.
+The human heart has double circulation because blood passes through the heart: | Twice in one cycle | Once in one cycle | Three times | Never | Once for the lungs and once for the body.
+Pepsin acts on: | Proteins | Fats | Starch | Vitamins | Pepsin works in the acidic stomach.
+Bile helps digest fats by: | Emulsification | Oxidation | Absorption | Fermentation | Bile breaks fat into small droplets.
+Haemoglobin carries: | Oxygen | Carbon dioxide only | Glucose | Urea | It is found in red blood cells.
+Valves in the heart: | Prevent backflow of blood | Pump blood | Make blood | Clot blood | Blood flows in one direction.
+# Control and Coordination
+Balance of the body is controlled by the: | Cerebellum | Cerebrum | Medulla | Hypothalamus | The cerebellum coordinates posture and balance.
+A sudden automatic response is a: | Reflex action | Voluntary action | Hormone | Tropism | The spinal cord controls reflexes.
+The gap between two neurons is a: | Synapse | Axon | Dendrite | Nerve | Chemicals carry the signal across.
+The hormone that prepares the body for an emergency is: | Adrenaline | Insulin | Thyroxine | Oestrogen | It is made by the adrenal glands.
+Plant growth towards light is: | Phototropism | Geotropism | Hydrotropism | Chemotropism | Auxin makes the shaded side grow faster.
+Lack of insulin causes: | Diabetes | Goitre | Dwarfism | Scurvy | Insulin controls blood sugar.
+Iodine is needed to make: | Thyroxine | Insulin | Adrenaline | Growth hormone | Lack of iodine causes goitre.
+Involuntary actions like heartbeat are controlled by the: | Medulla | Cerebrum | Cerebellum | Spinal cord only | The medulla is in the hindbrain.
+# How do Organisms Reproduce?
+Amoeba reproduces by: | Binary fission | Budding | Spore formation | Fragmentation | One cell splits into two.
+Hydra reproduces asexually by: | Budding | Binary fission | Seeds | Fragmentation only | A bud grows and separates.
+Planaria can grow a whole body from a piece by: | Regeneration | Pollination | Budding | Spore formation | Specialised cells rebuild the body.
+The male reproductive part of a flower is the: | Stamen | Pistil | Sepal | Petal | The anther makes pollen.
+The baby gets nutrition from the mother through the: | Placenta | Ovary | Uterus wall only | Fallopian tube | The placenta links mother and foetus.
+Spirogyra reproduces by: | Fragmentation | Budding | Binary fission | Seeds | The filament breaks into pieces.
+Fertilisation in humans usually takes place in the: | Fallopian tube | Uterus | Ovary | Vagina | The zygote then moves to the uterus.
+Rose and sugarcane are grown by: | Vegetative propagation | Seeds only | Spores | Fission | Stem cuttings grow into new plants.
+# Heredity and Evolution
+Mendel did his experiments on: | Garden pea | Fruit fly | Maize | Bacteria | Pea plants have clear contrasting traits.
+In humans, sex of the child is decided by the: | Father | Mother | Both equally | Environment | The father gives either X or Y.
+A trait that shows in the F1 generation is: | Dominant | Recessive | Hidden | Acquired | Tallness was dominant in Mendel's peas.
+Wings of a bat and a bird are: | Analogous organs | Homologous organs | Vestigial organs | Fossils | They do the same job but have different structure.
+Arm of a human and flipper of a whale are: | Homologous organs | Analogous organs | Vestigial organs | Unrelated | They have the same basic structure.
+Ratio in Mendel's F2 for one trait was: | 3:1 | 1:1 | 9:3:3:1 | 2:1 | Three tall to one dwarf.
+The sex chromosomes of a human female are: | XX | XY | YY | XO | Males are XY.
+# Our Environment
+Organisms that break down dead matter are: | Decomposers | Producers | Herbivores | Carnivores | Bacteria and fungi recycle nutrients.
+Only about what percent of energy passes to the next trophic level? | 10 percent | 50 percent | 90 percent | 1 percent | This is the 10 percent law.
+Increase of harmful chemicals at higher trophic levels is: | Biological magnification | Eutrophication | Decomposition | Photosynthesis | DDT builds up in top predators.
+The ozone layer is damaged by: | CFCs | Oxygen | Nitrogen | Water vapour | CFCs were used in fridges and sprays.
+Green plants in a food chain are: | Producers | Consumers | Decomposers | Parasites | They make food from sunlight.
+Which is biodegradable? | Vegetable peels | Plastic bags | Glass | Aluminium cans | Microbes can break down peels.
+# Management of Natural Resources
+The Chipko movement was about saving: | Trees | Rivers | Tigers | Soil only | People hugged trees to stop felling.
+Ganga Action Plan was started to: | Clean the Ganga | Build dams | Increase fishing | Make canals | It began in 1985.
+Rain-water harvesting helps to: | Recharge groundwater | Cause floods | Waste water | Increase pollution | Khadins and ponds store rain water.
+The 3 Rs to save the environment are: | Reduce, reuse, recycle | Read, run, rest | Repair, rent, refill | Return, remove, rebuild | Reduce is the most effective.
+# Improvement in Food Resources
+Rearing of honeybees is: | Apiculture | Pisciculture | Sericulture | Horticulture | Honey and wax come from bees.
+Rearing of fish is: | Pisciculture | Apiculture | Poultry | Sericulture | Composite fish culture grows several species together.
+Growing two or more crops on the same field at the same time is: | Intercropping | Crop rotation | Mixed farming only | Monoculture | Soybean and maize are often intercropped.
+Cattle reared for milk are called: | Milch animals | Draught animals | Broilers | Layers | Draught animals are used for farm work.
+# Natural Resources
+Nitrogen-fixing bacteria are found in roots of: | Legumes | Wheat | Rice | Grass | Rhizobium lives in root nodules.
+Which gas causes the greenhouse effect most? | Carbon dioxide | Oxygen | Nitrogen | Argon | It traps heat in the atmosphere.
+Acid rain is caused by oxides of: | Sulphur and nitrogen | Oxygen | Hydrogen | Helium | They dissolve in rain water.
+Soil is formed by: | Weathering of rocks | Rain alone | Plants only | Wind only | Sun, water, wind and living things break rocks.

@@ -1,0 +1,35 @@
+# Science Word answers for Class 9–10. Format: WORD | hint | fact. 4 to 7 letters, letters only.
+TISSUE | Group of cells with a similar job | Xylem and phloem are plant tissues; blood is an animal tissue.
+OSMOSIS | Movement of water across a membrane | Water moves from a dilute to a concentrated solution.
+VACUOLE | Large storage sac in plant cells | The vacuole keeps the plant cell firm (turgid).
+PLASTID | Organelle such as the chloroplast | Plastids are found only in plant cells.
+NEURON | Nerve cell | The neuron is the structural and functional unit of the nervous system.
+SYNAPSE | Gap between two neurons | Chemical messengers carry the signal across the synapse.
+INSULIN | Hormone that lowers blood sugar | Insulin is made by the pancreas; its lack causes diabetes.
+NEPHRON | Filtering unit of the kidney | Each kidney has about a million nephrons.
+ENZYME | Biological catalyst | Pepsin digests proteins in the stomach.
+ALVEOLI | Tiny air sacs in the lungs | Gas exchange happens through the thin walls of the alveoli.
+PHLOEM | Tissue that carries food in plants | Food moves from leaves to other parts by translocation.
+GAMETE | Reproductive cell | Gametes have half the number of chromosomes.
+ALLELE | One form of a gene | Mendel's tall and dwarf traits are controlled by alleles.
+FOSSIL | Preserved remains of an ancient organism | Archaeopteryx links reptiles and birds.
+OZONE | Gas that absorbs harmful UV rays | CFCs damage the ozone layer.
+VACCINE | Gives immunity without causing the disease | Vaccines train the immune system to fight germs.
+ATOM | Smallest particle of an element | Dalton proposed his atomic theory in 1808.
+PROTON | Positively charged particle in the nucleus | The number of protons is the atomic number.
+NEUTRON | Neutral particle in the nucleus | Neutrons were discovered by James Chadwick in 1932.
+ISOTOPE | Atoms of one element with different masses | Carbon-12 and carbon-14 are isotopes.
+VALENCY | Combining capacity of an atom | Carbon has a valency of 4.
+ALKALI | Base that dissolves in water | Sodium hydroxide is an alkali.
+ESTER | Sweet-smelling compound from acid and alcohol | Esters are used in perfumes and flavours.
+ALLOY | Mixture of a metal with other elements | Brass is an alloy of copper and zinc.
+OXIDE | Compound of an element with oxygen | Metal oxides are usually basic.
+WEIGHT | Force with which Earth pulls an object | Weight is measured in newtons and is less on the Moon.
+INERTIA | Resistance to change in motion | Heavier objects have more inertia.
+JOULE | SI unit of work and energy | One joule is the work done by 1 N over 1 m.
+WATT | SI unit of power | One watt is one joule per second.
+PRISM | Glass block that splits white light | Newton used a prism to show the spectrum.
+RETINA | Light-sensitive screen in the eye | The image formed on the retina is upside down.
+VOLT | SI unit of potential difference | The volt is named after Alessandro Volta, who made the first battery.
+FUSE | Safety device in a circuit | A fuse wire melts if too much current flows.
+MAGNET | Has a north and a south pole | Magnetic field lines go from north to south outside the magnet.
