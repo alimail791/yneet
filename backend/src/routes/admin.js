@@ -63,10 +63,20 @@ router.delete("/flashcards/:id", c.deleteFlashcard);
 // Shorts — fixed paths before "/shorts/:id"
 router.get("/shorts/suggest-questions", sh.suggestQuestions);
 router.get("/shorts/creators", sh.creatorReport);
+router.post("/shorts/:id/review", sh.adminReview);
 router.get("/shorts", sh.adminList);
 router.post("/shorts", sh.adminCreate);
 router.put("/shorts/:id", sh.adminUpdate);
 router.delete("/shorts/:id", sh.adminDelete);
+
+// Creators and their weekly payouts
+const ac = require("../controllers/adminCreatorController");
+router.get("/creators", ac.listCreators);
+router.put("/creators/:id", ac.updateCreator);
+router.post("/creators/:id/reset-password", ac.resetCreatorPassword);
+router.get("/payouts", ac.listPayouts);
+router.post("/payouts/generate", ac.generatePayoutsNow);
+router.put("/payouts/:id", ac.updatePayout);
 
 router.get("/formulas", c.listFormulas);
 router.post("/formulas", c.createFormula);

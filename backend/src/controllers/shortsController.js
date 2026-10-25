@@ -26,7 +26,7 @@ exports.getFeed = async (req, res) => {
   try {
     const { subject, language, chapter } = req.query;
     const cls = req.user.profile?.class || "12th";
-    const where = { isPublished: true, classLevel: { in: visibleClassLevels(cls) } };
+    const where = { isPublished: true, reviewStatus: "approved", classLevel: { in: visibleClassLevels(cls) } };
     if (subject) where.subject = subject;
     if (language) where.language = language;
     if (chapter) where.chapter = chapter;
@@ -36,7 +36,7 @@ exports.getFeed = async (req, res) => {
         where,
         orderBy: { createdAt: "desc" },
         take: 200,
-        include: { questions: { select: QUESTION_PUBLIC } },
+        include: { questions: { select: QUESTION_PUBLIC }, creator: { select: { youtubeUrl: true, instagramUrl: true } } },
       }),
       prisma.shortView.findMany({
         where: { userId: req.user.id },
@@ -52,6 +52,7 @@ exports.getFeed = async (req, res) => {
         classLevel: s.classLevel, chapter: s.chapter, language: s.language,
         provider: s.provider, videoRef: s.videoRef, durationSec: s.durationSec,
         creatorName: s.creatorName, createdAt: s.createdAt,
+        creatorLinks: s.creator ? { youtube: s.creator.youtubeUrl, instagram: s.creator.instagramUrl } : null,
         questions: s.questions,
         watched: !!v,
         quiz: v ? { correct: v.quizCorrect, total: v.quizTotal, answeredIds: v.answeredIds } : null,
@@ -63,7 +64,7 @@ exports.getFeed = async (req, res) => {
     // Filter chips: what actually exists for this class (ignoring the active filters).
     const facets = await prisma.short.groupBy({
       by: ["subject", "language"],
-      where: { isPublished: true, classLevel: { in: visibleClassLevels(cls) } },
+      where: { isPublished: true, reviewStatus: "approved", classLevel: { in: visibleClassLevels(cls) } },
       _count: { _all: true },
     });
     res.json({
@@ -174,6 +175,7 @@ function buildShortData(body, { partial = false } = {}) {
   if (body.language !== undefined || !partial) data.language = str(body.language) || "English";
   if (body.creatorName !== undefined || !partial) data.creatorName = str(body.creatorName) || "YNeet";
   if (body.isPublished !== undefined) data.isPublished = !!body.isPublished;
+  if (body.isFeatured !== undefined) data.isFeatured = !!body.isFeatured;
   if (body.durationSec !== undefined) {
     const d = body.durationSec === "" || body.durationSec === null ? null : Number(body.durationSec);
     if (d !== null && (!Number.isInteger(d) || d < 0)) errors.push("Duration must be whole seconds");
@@ -194,14 +196,16 @@ function buildShortData(body, { partial = false } = {}) {
 
 const ADMIN_INCLUDE = {
   questions: { select: { id: true, questionText: true, chapter: true, subject: true } },
+  creator: { select: { id: true, name: true, email: true, phone: true } },
   _count: { select: { views: true } },
 };
 
 // GET /api/v1/admin/shorts?subject=&classLevel=&creator=&search=
 exports.adminList = async (req, res) => {
   try {
-    const { subject, classLevel, creator, search } = req.query;
+    const { subject, classLevel, creator, search, review } = req.query;
     const where = {};
+    if (review) where.reviewStatus = review; // pending | approved | rejected
     if (subject) where.subject = subject;
     if (classLevel) where.classLevel = classLevel;
     if (creator) where.creatorName = creator;
@@ -231,6 +235,8 @@ exports.adminCreate = async (req, res) => {
     const { data, errors } = buildShortData(req.body);
     if (errors.length) return res.status(400).json({ success: false, message: errors.join(". ") });
     if (data.questions) data.questions = { connect: data.questions.set };
+    data.reviewStatus = "approved";
+    data.approvedAt = new Date();
     const short = await prisma.short.create({ data, include: ADMIN_INCLUDE });
     res.status(201).json({ success: true, short });
   } catch (err) { res.status(400).json({ success: false, message: err.message }); }
@@ -254,6 +260,58 @@ exports.adminDelete = async (req, res) => {
   } catch (err) { res.status(400).json({ success: false, message: err.message }); }
 };
 
+// Up to `count` quick-check MCQs for a chapter: PYQs first, shuffled.
+async function pickQuestions({ subject, classLevel, chapter, count = 3, exclude = [] }) {
+  const where = { chapter: { equals: chapter, mode: "insensitive" }, id: { notIn: exclude } };
+  if (subject) where.subject = subject;
+  if (classLevel && classLevel !== "All") where.classLevel = classLevel;
+  const pool = await prisma.question.findMany({
+    where, take: 300,
+    select: { id: true, questionText: true, chapter: true, subject: true, isPYQ: true, pyqYear: true },
+  });
+  const shuffle = (arr) => { for (let i = arr.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [arr[i], arr[j]] = [arr[j], arr[i]]; } return arr; };
+  return { picked: [...shuffle(pool.filter(q => q.isPYQ)), ...shuffle(pool.filter(q => !q.isPYQ))].slice(0, count), poolSize: pool.length };
+}
+
+// POST /api/v1/admin/shorts/:id/review  { action: "approve" | "reject", note? }
+// Approving puts a creator's Short live, fixes what they're owed for it (their
+// current rate) and, if no MCQs were linked yet, auto-picks 3 from the chapter.
+exports.adminReview = async (req, res) => {
+  try {
+    const { action, note } = req.body;
+    if (!["approve", "reject"].includes(action)) return res.status(400).json({ success: false, message: "action must be approve or reject" });
+    const short = await prisma.short.findUnique({
+      where: { id: req.params.id },
+      include: { creator: true, questions: { select: { id: true } } },
+    });
+    if (!short) return res.status(404).json({ success: false, message: "Short not found" });
+
+    if (action === "reject") {
+      if (short.payoutId) return res.status(400).json({ success: false, message: "This Short is already in a payout" });
+      const updated = await prisma.short.update({
+        where: { id: short.id },
+        data: { reviewStatus: "rejected", isPublished: false, reviewNote: String(note || "").trim() || null, payAmount: 0, approvedAt: null },
+        include: ADMIN_INCLUDE,
+      });
+      return res.json({ success: true, short: updated });
+    }
+
+    const data = {
+      reviewStatus: "approved", isPublished: true, reviewNote: null,
+      approvedAt: short.approvedAt || new Date(),
+    };
+    // Keep the amount if it was approved before (e.g. re-approving after an edit).
+    if (short.creator && !short.payAmount) data.payAmount = short.creator.ratePerVideo;
+    if (short.creator) data.creatorName = short.creator.name;
+    if (!short.questions.length) {
+      const { picked } = await pickQuestions({ subject: short.subject, classLevel: short.classLevel, chapter: short.chapter });
+      if (picked.length) data.questions = { connect: picked.map(q => ({ id: q.id })) };
+    }
+    const updated = await prisma.short.update({ where: { id: short.id }, data, include: ADMIN_INCLUDE });
+    res.json({ success: true, short: updated });
+  } catch (err) { res.status(500).json({ success: false, message: err.message }); }
+};
+
 // GET /api/v1/admin/shorts/suggest-questions?subject=&classLevel=&chapter=&count=3&exclude=id1,id2
 // Picks quick-check MCQs from the existing bank for the Short's chapter —
 // PYQs first, then the rest, shuffled so different Shorts don't all get the same ones.
@@ -263,18 +321,8 @@ exports.suggestQuestions = async (req, res) => {
     const count = Math.min(Math.max(Number(req.query.count) || 3, 1), 5);
     const exclude = String(req.query.exclude || "").split(",").filter(Boolean);
     if (!chapter) return res.status(400).json({ success: false, message: "Chapter is required" });
-
-    const where = { chapter: { equals: chapter, mode: "insensitive" }, id: { notIn: exclude } };
-    if (subject) where.subject = subject;
-    if (classLevel && classLevel !== "All") where.classLevel = classLevel;
-
-    const pool = await prisma.question.findMany({
-      where, take: 300,
-      select: { id: true, questionText: true, chapter: true, subject: true, isPYQ: true, pyqYear: true },
-    });
-    const shuffle = (arr) => { for (let i = arr.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [arr[i], arr[j]] = [arr[j], arr[i]]; } return arr; };
-    const picked = [...shuffle(pool.filter(q => q.isPYQ)), ...shuffle(pool.filter(q => !q.isPYQ))].slice(0, count);
-    res.json({ success: true, questions: picked, poolSize: pool.length });
+    const { picked, poolSize } = await pickQuestions({ subject, classLevel, chapter, count, exclude });
+    res.json({ success: true, questions: picked, poolSize });
   } catch (err) { res.status(500).json({ success: false, message: err.message }); }
 };
 
@@ -305,3 +353,35 @@ exports.creatorReport = async (req, res) => {
     res.json({ success: true, days, creators });
   } catch (err) { res.status(500).json({ success: false, message: err.message }); }
 };
+
+// ───────────────────────── Public (no login) ─────────────────────────
+
+const PUBLIC_SELECT = {
+  id: true, title: true, description: true, subject: true, classLevel: true, chapter: true, language: true,
+  provider: true, videoRef: true, durationSec: true, creatorName: true,
+  creator: { select: { id: true, name: true, youtubeUrl: true, instagramUrl: true } },
+};
+const FEATURED = { isFeatured: true, isPublished: true, reviewStatus: "approved" };
+
+// GET /api/v1/public/shorts/featured?limit=8 — for the yneet.in landing page.
+exports.publicFeatured = async (req, res) => {
+  try {
+    const limit = Math.min(Math.max(Number(req.query.limit) || 8, 1), 24);
+    const shorts = await prisma.short.findMany({ where: FEATURED, orderBy: { approvedAt: "desc" }, take: limit, select: PUBLIC_SELECT });
+    res.set("Cache-Control", "public, max-age=300").json({ success: true, shorts });
+  } catch (err) { res.status(500).json({ success: false, message: err.message }); }
+};
+
+// GET /api/v1/public/shorts/:id — one featured Short for its share page (/s/:id).
+exports.publicShort = async (req, res) => {
+  try {
+    const short = await prisma.short.findFirst({ where: { id: req.params.id, ...FEATURED }, select: PUBLIC_SELECT });
+    if (!short) return res.status(404).json({ success: false, message: "This Short isn't available to share." });
+    const more = await prisma.short.findMany({
+      where: { ...FEATURED, id: { not: short.id } }, orderBy: { approvedAt: "desc" }, take: 6, select: PUBLIC_SELECT,
+    });
+    res.set("Cache-Control", "public, max-age=300").json({ success: true, short, more });
+  } catch (err) { res.status(500).json({ success: false, message: err.message }); }
+};
+
+exports._internal = { buildShortData, pickQuestions };

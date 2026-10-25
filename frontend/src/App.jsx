@@ -21,6 +21,10 @@ import ProfilePage          from "./pages/ProfilePage";
 import ReferralPage         from "./pages/ReferralPage";
 import ShortsPage           from "./pages/ShortsPage";
 import JuniorHomePage       from "./pages/JuniorHomePage";
+import ShareShortPage       from "./pages/ShareShortPage";
+import CreatorAuthPage      from "./pages/creator/CreatorAuthPage";
+import CreatorDashboard     from "./pages/creator/CreatorDashboard";
+import AdminCreatorsPage    from "./pages/admin/AdminCreatorsPage";
 import { hasActivePlan, isJuniorFree } from "./utils/plan";
 import AdminLayout          from "./components/admin/AdminLayout";
 import AdminSummaryPage     from "./pages/admin/AdminSummaryPage";
@@ -85,6 +89,11 @@ export default function App() {
     <Routes>
       <Route path="help" element={<HelpPage />} />
       <Route path="/bridge" element={<BridgePage />} />
+      {/* Public share page for featured Shorts, and the creator area (own login). */}
+      <Route path="/s/:id" element={<ShareShortPage />} />
+      <Route path="/creator/apply" element={<CreatorAuthPage mode="apply" />} />
+      <Route path="/creator/login" element={<CreatorAuthPage mode="login" />} />
+      <Route path="/creator" element={<CreatorDashboard />} />
       <Route path="/pricing" element={<Guard><PricingPage /></Guard>} />
 
       <Route path="/admin" element={<Guard><RequireAdmin><AdminLayout /></RequireAdmin></Guard>}>
@@ -95,6 +104,7 @@ export default function App() {
         <Route path="flashcards"    element={<AdminFlashcardsPage />} />
         <Route path="formulas"      element={<AdminFormulasPage />} />
         <Route path="shorts"        element={<AdminShortsPage />} />
+        <Route path="creators"      element={<AdminCreatorsPage />} />
         <Route path="bulk-generator" element={<BulkGeneratorPage />} />
         <Route path="mock-builder"  element={<MockTestBuilderPage />} />
       </Route>

@@ -12,7 +12,7 @@ function formatDuration(sec) {
 // One video. Nothing heavy loads until the student taps play — this keeps the
 // feed fast on mobile data — and the player unmounts when its slide scrolls away,
 // which also stops the audio.
-function ShortPlayer({ short, active, onPlay }) {
+export function ShortPlayer({ short, active, onPlay }) {
   const [playing, setPlaying] = useState(false);
   useEffect(() => { if (!active) setPlaying(false); }, [active]);
 
@@ -264,7 +264,11 @@ export default function ShortsPage() {
                     {s.watched && <span className="chip chip-green">✓ Watched</span>}
                   </div>
                   <h3 style={{ fontSize: 16, fontWeight: 800, lineHeight: 1.35 }}>{s.title}</h3>
-                  <p style={{ fontSize: 12, color: "var(--text3)", marginTop: 2 }}>by {s.creatorName}</p>
+                  <p style={{ fontSize: 12, color: "var(--text3)", marginTop: 2 }}>
+                    by {s.creatorName}
+                    {s.creatorLinks?.youtube && <> · <a href={s.creatorLinks.youtube} target="_blank" rel="noreferrer" style={{ color: "var(--red)", fontWeight: 700 }}>YouTube ↗</a></>}
+                    {s.creatorLinks?.instagram && <> · <a href={s.creatorLinks.instagram} target="_blank" rel="noreferrer" style={{ color: "var(--purple)", fontWeight: 700 }}>Instagram ↗</a></>}
+                  </p>
                   {s.description && <p className="short-desc">{s.description}</p>}
                   {s.questions.length > 0 && (
                     <button className="btn btn-purple btn-full" style={{ marginTop: 10 }} onClick={() => setQuizFor(s.id)}>
