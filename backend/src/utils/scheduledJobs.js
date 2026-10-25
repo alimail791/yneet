@@ -79,6 +79,15 @@ async function sendInactivityEmails() {
 }
 
 async function runDailyJobs() {
+  // Mondays: settle last week's approved creator Shorts into pending payouts.
+  // Doesn't depend on email, so it runs before the RESEND check below.
+  const istDay = new Date(Date.now() + 5.5 * 60 * 60 * 1000).getUTCDay();
+  if (istDay === 1) {
+    try {
+      const created = await require("./creatorPayouts").generatePayouts();
+      if (created.length) console.log(`Creator payouts: ${created.length} created for last week.`);
+    } catch (e) { console.warn("Creator payouts failed:", e.message); }
+  }
   if (!process.env.RESEND_API_KEY) {
     console.log("Skipping scheduled emails — RESEND_API_KEY not configured.");
     return;

@@ -26,6 +26,8 @@ export default function AdminShortsPage() {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [subjectFilter, setSubjectFilter] = useState("");
+  const [reviewFilter, setReviewFilter] = useState(""); // "" | pending | rejected
+  const [pendingCount, setPendingCount] = useState(0);
   const [creatorFilter, setCreatorFilter] = useState("");
   const [creators, setCreators] = useState([]);
   const [reportDays, setReportDays] = useState(7);
@@ -39,11 +41,12 @@ export default function AdminShortsPage() {
 
   const load = () => {
     setLoading(true);
-    api.get("/admin/shorts", { params: { subject: subjectFilter || undefined, creator: creatorFilter || undefined } })
+    api.get("/admin/shorts", { params: { review: "pending" } }).then(r => setPendingCount(r.data.shorts.length)).catch(() => {});
+    api.get("/admin/shorts", { params: { subject: subjectFilter || undefined, creator: creatorFilter || undefined, review: reviewFilter || undefined } })
       .then(r => setItems(r.data.shorts)).finally(() => setLoading(false));
   };
   const loadCreators = () => api.get("/admin/shorts/creators", { params: { days: reportDays } }).then(r => setCreators(r.data.creators)).catch(() => {});
-  useEffect(load, [subjectFilter, creatorFilter]);
+  useEffect(load, [subjectFilter, creatorFilter, reviewFilter]);
   useEffect(() => { loadCreators(); }, [reportDays]);
 
   const openNew = () => { setForm({ ...empty, creatorName: form.creatorName || "" }); setPickNote(""); setSearchResults(null); setSearch(""); setModal("new"); };
@@ -94,6 +97,23 @@ export default function AdminShortsPage() {
       close(); load(); loadCreators();
     } catch (err) { alert(err?.response?.data?.message || "Save failed"); }
     setSaving(false);
+  };
+
+  // Creator submissions: approve puts it live (and auto-adds MCQs if none), reject sends feedback.
+  const review = async (s, action) => {
+    let note;
+    if (action === "reject") {
+      note = window.prompt(`What should ${s.creator?.name || s.creatorName} change? (they'll see this)`, "");
+      if (note === null) return;
+    }
+    try {
+      await api.post(`/admin/shorts/${s.id}/review`, { action, note });
+      load(); loadCreators();
+    } catch (err) { alert(err?.response?.data?.message || "Failed"); }
+  };
+  const toggleFeatured = async (s) => {
+    await api.put(`/admin/shorts/${s.id}`, { isFeatured: !s.isFeatured });
+    load();
   };
 
   const togglePublish = async (s) => {
@@ -150,6 +170,10 @@ export default function AdminShortsPage() {
         <select className="form-select" style={{ width: 150 }} value={subjectFilter} onChange={e => setSubjectFilter(e.target.value)}>
           <option value="">All Subjects</option>{SUBJECTS.map(s => <option key={s}>{s}</option>)}
         </select>
+        {[["", "All"], ["pending", `To review${pendingCount ? ` (${pendingCount})` : ""}`], ["rejected", "Rejected"]].map(([v, l]) => (
+          <button key={v} className="btn btn-sm" onClick={() => setReviewFilter(v)}
+            style={{ background: reviewFilter === v ? "var(--blue-light)" : "#fff", color: reviewFilter === v ? "var(--blue)" : "var(--text2)", border: "1.5px solid var(--gray3)" }}>{l}</button>
+        ))}
         {creatorFilter && <button className="btn btn-outline btn-sm" onClick={() => setCreatorFilter("")}>Creator: {creatorFilter} ✕</button>}
       </div>
 
@@ -168,16 +192,27 @@ export default function AdminShortsPage() {
                 <td>{s.subject}<div style={{ fontSize: 12, color: "var(--text3)" }}>{s.chapter}</div></td>
                 <td>{s.classLevel}</td>
                 <td>{s.language}</td>
-                <td>{s.creatorName}</td>
+                <td>{s.creatorName}{s.creator && <div style={{ fontSize: 11, color: "var(--text3)" }}>creator</div>}</td>
                 <td>{s.questions.length}</td>
                 <td>{s.viewCount}</td>
                 <td>{s.quizAccuracy === null ? "—" : `${s.quizAccuracy}%`}</td>
                 <td>
-                  <span className={`chip ${s.isPublished ? "chip-green" : "chip-amber"}`} style={{ cursor: "pointer" }} onClick={() => togglePublish(s)} title="Click to toggle">
-                    {s.isPublished ? "Live" : "Hidden"}
-                  </span>
+                  {s.reviewStatus === "pending" ? <span className="chip chip-amber">To review</span>
+                    : s.reviewStatus === "rejected" ? <span className="chip chip-red" title={s.reviewNote || ""}>Rejected</span>
+                    : (
+                      <span className={`chip ${s.isPublished ? "chip-green" : "chip-amber"}`} style={{ cursor: "pointer" }} onClick={() => togglePublish(s)} title="Click to toggle">
+                        {s.isPublished ? "Live" : "Hidden"}
+                      </span>
+                    )}
+                  {s.reviewStatus === "approved" && (
+                    <div><span className={`chip ${s.isFeatured ? "chip-purple" : ""}`} style={{ cursor: "pointer", marginTop: 4, ...(s.isFeatured ? {} : { background: "var(--gray2)", color: "var(--text3)" }) }}
+                      onClick={() => toggleFeatured(s)} title="Featured Shorts show on the yneet.in homepage and can be shared publicly">
+                      {s.isFeatured ? "🌟 Featured" : "☆ Feature"}
+                    </span></div>
+                  )}
                 </td>
                 <td style={{ whiteSpace: "nowrap" }}>
+                  {s.reviewStatus === "pending" && <><button className="btn btn-green btn-sm" onClick={() => review(s, "approve")}>Approve</button>{" "}<button className="btn btn-sm" style={{ background: "var(--amber-light)", color: "var(--amber)" }} onClick={() => review(s, "reject")}>Reject</button>{" "}</>}
                   <button className="btn btn-outline btn-sm" onClick={() => openEdit(s)}>Edit</button>{" "}
                   <button className="btn btn-sm" style={{ background: "var(--red-light)", color: "var(--red)" }} onClick={() => remove(s.id)}>Delete</button>
                 </td>

@@ -9,6 +9,7 @@ const tabs = [
   { to: "/admin/flashcards", label: "Flashcards" },
   { to: "/admin/formulas",   label: "Formulas" },
   { to: "/admin/shorts",     label: "Shorts" },
+  { to: "/admin/creators",   label: "Creators" },
   { to: "/admin/bulk-generator", label: "🏗️ Bulk Generator" },
   { to: "/admin/mock-builder",   label: "🧪 Mock Builder" },
 ];

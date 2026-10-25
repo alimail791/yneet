@@ -319,8 +319,24 @@ model Short {
   // youtube: the 11-char video id; bunny: "<libraryId>/<videoId>"; mp4: full URL
   videoRef     String
   durationSec  Int?
-  // Free-text creator name, used for credit on screen and weekly payouts.
+  // Credit shown on screen. For creator-submitted Shorts this is copied from
+  // the Creator's name; admin-added Shorts can use any name.
   creatorName  String      @default("YNeet")
+  creatorId    String?
+  creator      Creator?    @relation(fields: [creatorId], references: [id], onDelete: SetNull)
+  // Creator submissions start "pending" and only go live once an admin approves
+  // them. Shorts the admin adds directly are "approved" straight away.
+  reviewStatus String      @default("approved") // pending | approved | rejected
+  reviewNote   String?     @db.Text
+  submittedAt  DateTime    @default(now())
+  approvedAt   DateTime?
+  // Rupees owed to the creator for this Short, fixed at approval from their rate.
+  payAmount    Int         @default(0)
+  payoutId     String?
+  payout       CreatorPayout? @relation(fields: [payoutId], references: [id], onDelete: SetNull)
+  // Featured Shorts are public: shown on the yneet.in landing page and playable
+  // on their share page (/s/:id) without logging in.
+  isFeatured   Boolean     @default(false)
   isPublished  Boolean     @default(true)
   // Denormalised counter for the admin creator report (first watch per student).
   viewCount    Int         @default(0)
@@ -329,6 +345,7 @@ model Short {
   createdAt    DateTime    @default(now())
   updatedAt    DateTime    @updatedAt
   @@index([isPublished, subject, classLevel])
+  @@index([creatorId, reviewStatus])
   @@map("shorts")
 }
 
@@ -347,4 +364,51 @@ model ShortView {
   updatedAt   DateTime @updatedAt
   @@unique([userId, shortId])
   @@map("short_views")
+}
+
+// A teacher who makes YNeet Shorts. Applies on /creator/apply, logs in with
+// email + password (separate from student SSO), and is approved by an admin
+// before they can submit. Paid per approved Short, settled weekly.
+model Creator {
+  id           String          @id @default(cuid())
+  name         String
+  email        String          @unique
+  phone        String
+  passwordHash String
+  bio          String?         @db.Text
+  youtubeUrl   String?
+  instagramUrl String?
+  subjects     String[]
+  languages    String[]
+  upiId        String?
+  // Rupees paid per approved Short. Set by the admin; copied onto each Short
+  // when it's approved so later rate changes don't alter past earnings.
+  ratePerVideo Int             @default(300)
+  status       String          @default("pending") // pending | approved | suspended
+  shorts       Short[]
+  payouts      CreatorPayout[]
+  createdAt    DateTime        @default(now())
+  updatedAt    DateTime        @updatedAt
+  @@map("creators")
+}
+
+// One weekly settlement: every approved, not-yet-paid Short of a creator up to
+// periodEnd. Created automatically each Monday (or by the admin); the admin
+// marks it paid after sending the money.
+model CreatorPayout {
+  id          String    @id @default(cuid())
+  creatorId   String
+  creator     Creator   @relation(fields: [creatorId], references: [id], onDelete: Cascade)
+  periodStart DateTime
+  periodEnd   DateTime
+  videoCount  Int
+  amount      Int       // rupees for the Shorts
+  bonus       Int       @default(0) // optional extra, e.g. for a top-performing Short
+  status      String    @default("pending") // pending | paid
+  paidAt      DateTime?
+  reference   String?   // UPI/bank reference entered when paid
+  shorts      Short[]
+  createdAt   DateTime  @default(now())
+  @@index([creatorId, status])
+  @@map("creator_payouts")
 }
