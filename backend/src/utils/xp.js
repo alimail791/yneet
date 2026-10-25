@@ -1,6 +1,6 @@
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
-const XP_REWARDS = { daily_login:5, quiz_complete:10, quiz_perfect:25, mock_complete:50, practice_10:15, streak_7:100, streak_14:200, streak_30:500 };
+const XP_REWARDS = { daily_login:5, quiz_complete:10, quiz_perfect:25, mock_complete:50, practice_10:15, short_watch:3, streak_7:100, streak_14:200, streak_30:500 };
 const LEVELS = [0,100,300,600,1000,1500,2200,3000,4000,5500,7500];
 const getLevel = (total) => { for (let i = LEVELS.length-1; i >= 0; i--) if (total >= LEVELS[i]) return i+1; return 1; };
 const awardXP = async (userId, action) => {

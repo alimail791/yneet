@@ -19,6 +19,7 @@ import ChemistryPage        from "./pages/ChemistryPage";
 import MistakesPage         from "./pages/MistakesPage";
 import ProfilePage          from "./pages/ProfilePage";
 import ReferralPage         from "./pages/ReferralPage";
+import ShortsPage           from "./pages/ShortsPage";
 import AdminLayout          from "./components/admin/AdminLayout";
 import AdminSummaryPage     from "./pages/admin/AdminSummaryPage";
 import AdminUsersPage       from "./pages/admin/AdminUsersPage";
@@ -26,6 +27,7 @@ import AdminQuestionsPage   from "./pages/admin/AdminQuestionsPage";
 import AdminMockTestsPage   from "./pages/admin/AdminMockTestsPage";
 import AdminFlashcardsPage  from "./pages/admin/AdminFlashcardsPage";
 import AdminFormulasPage    from "./pages/admin/AdminFormulasPage";
+import AdminShortsPage      from "./pages/admin/AdminShortsPage";
 import BulkGeneratorPage    from "./pages/admin/BulkGeneratorPage";
 import MockTestBuilderPage  from "./pages/admin/MockTestBuilderPage";
 
@@ -79,6 +81,7 @@ export default function App() {
         <Route path="mocktests"     element={<AdminMockTestsPage />} />
         <Route path="flashcards"    element={<AdminFlashcardsPage />} />
         <Route path="formulas"      element={<AdminFormulasPage />} />
+        <Route path="shorts"        element={<AdminShortsPage />} />
         <Route path="bulk-generator" element={<BulkGeneratorPage />} />
         <Route path="mock-builder"  element={<MockTestBuilderPage />} />
       </Route>
@@ -88,6 +91,7 @@ export default function App() {
         <Route path="mock"           element={<MockPage />} />
         <Route path="mock/:attemptId/start"    element={<MockTestPage />} />
         <Route path="mock/:attemptId/analysis" element={<AnalysisPage />} />
+        <Route path="shorts"         element={<ShortsPage />} />
         <Route path="quiz"           element={<QuizPage />} />
         <Route path="practice"       element={<PracticePage />} />
         <Route path="pyq"            element={<PYQPage />} />

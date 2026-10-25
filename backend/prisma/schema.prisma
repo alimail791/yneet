@@ -42,6 +42,7 @@ model User {
   quizResults   QuizResult[]
   quizItems     QuizItem[]
   studyPlan     StudyPlan?
+  shortViews    ShortView[]
   @@map("users")
 }
 model Profile {
@@ -110,6 +111,8 @@ model Question {
   mistakes      Mistake[]
   practiceStats PracticeStat[]
   quizItems     QuizItem[]
+  // Quick-check MCQs shown after a YNeet Short (see Short model).
+  shorts        Short[]
   @@map("questions")
 }
 model Attempt {
@@ -294,4 +297,54 @@ model UserBadge {
   earnedAt DateTime @default(now())
   @@unique([userId, badgeId])
   @@map("user_badges")
+}
+
+// YNeet Shorts — 3–5 minute concept videos made by a small set of paid
+// creators (Seekho-style "showrunner" model). The video itself lives on an
+// external host (YouTube / Bunny Stream / a direct MP4 URL); we only store
+// which host and the id/URL needed to embed it. After watching, the student
+// gets the linked MCQs from the existing question bank as a quick check.
+model Short {
+  id           String      @id @default(cuid())
+  title        String
+  description  String?     @db.Text
+  subject      String      // Physics | Chemistry | Biology
+  // "6th".."12th" | "Dropper" | "All". See shortsController.visibleClassLevels
+  // for which classes see which Shorts (e.g. 12th also sees 11th revision).
+  classLevel   String      @default("12th")
+  chapter      String
+  language     String      @default("English") // English | Tamil | Hindi | ...
+  // youtube | bunny | mp4 — parsed from the link the admin pastes
+  provider     String
+  // youtube: the 11-char video id; bunny: "<libraryId>/<videoId>"; mp4: full URL
+  videoRef     String
+  durationSec  Int?
+  // Free-text creator name, used for credit on screen and weekly payouts.
+  creatorName  String      @default("YNeet")
+  isPublished  Boolean     @default(true)
+  // Denormalised counter for the admin creator report (first watch per student).
+  viewCount    Int         @default(0)
+  questions    Question[]
+  views        ShortView[]
+  createdAt    DateTime    @default(now())
+  updatedAt    DateTime    @updatedAt
+  @@index([isPublished, subject, classLevel])
+  @@map("shorts")
+}
+
+// One row per student per Short: first watch + quick-check results.
+model ShortView {
+  id          String   @id @default(cuid())
+  userId      String
+  user        User     @relation(fields: [userId], references: [id], onDelete: Cascade)
+  shortId     String
+  short       Short    @relation(fields: [shortId], references: [id], onDelete: Cascade)
+  quizCorrect Int      @default(0)
+  quizTotal   Int      @default(0)
+  // Question ids already answered here, so re-answering doesn't inflate the score.
+  answeredIds String[]
+  createdAt   DateTime @default(now())
+  updatedAt   DateTime @updatedAt
+  @@unique([userId, shortId])
+  @@map("short_views")
 }

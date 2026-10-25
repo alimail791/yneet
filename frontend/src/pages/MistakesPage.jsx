@@ -44,8 +44,8 @@ export default function MistakesPage() {
     fetchMistakes(f);
   };
 
-  const sourceLabel = { mock: "Mock Test", quiz: "Daily Quiz", practice: "Practice" };
-  const sourceColor = { mock: "red", quiz: "amber", practice: "purple" };
+  const sourceLabel = { mock: "Mock Test", quiz: "Daily Quiz", practice: "Practice", shorts: "Shorts" };
+  const sourceColor = { mock: "red", quiz: "amber", practice: "purple", shorts: "blue" };
 
   return (
     <div>
@@ -66,7 +66,7 @@ export default function MistakesPage() {
 
       {/* Source Tabs */}
       <div className="chip-row mb-4">
-        {[["all", "All Sources"], ["mock", "Mock Tests"], ["quiz", "Daily Quiz"], ["practice", "Practice"]].map(([val, label]) => (
+        {[["all", "All Sources"], ["mock", "Mock Tests"], ["quiz", "Daily Quiz"], ["practice", "Practice"], ["shorts", "Shorts"]].map(([val, label]) => (
           <span key={val} onClick={() => setFilter("source", val === "all" ? "" : val)}
             className="chip" style={{ cursor: "pointer", background: (filters.source || "all") === val ? "var(--blue-light)" : "var(--gray2)", color: (filters.source || "all") === val ? "var(--blue)" : "var(--text2)" }}>
             {label}

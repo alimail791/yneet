@@ -37,6 +37,7 @@ app.use("/api/v1/planner",   require("./routes/planner"));
 app.use("/api/v1/leaderboard", require("./routes/leaderboard"));
 app.use("/api/v1/subscription", require("./routes/subscription"));
 app.use("/api/v1/content",   require("./routes/content"));
+app.use("/api/v1/shorts",    require("./routes/shorts"));
 app.use("/api/v1/ai",        require("./routes/ai"));
 app.use("/api/v1/admin",     require("./routes/admin"));
 
