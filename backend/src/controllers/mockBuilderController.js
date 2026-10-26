@@ -331,7 +331,7 @@ function buildSchoolSpec(only) {
 }
 exports._internal = { buildSchoolSpec, SCHOOL_BATCH, SCHOOL_SIZES };
 
-// Built-in starter questions for Class 6–10 (790, NCERT chapters from
+// Built-in starter questions for Class 6–10 (977, NCERT chapters from
 // utils/curriculum). Safe to press twice: a question already in the bank
 // (same class + same question text) is skipped.
 // POST /api/v1/admin/mock-builder/school-questions/import
