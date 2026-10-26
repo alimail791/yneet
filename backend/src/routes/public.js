@@ -10,4 +10,9 @@ const { publicFeatured, publicShort } = require("../controllers/shortsController
 router.get("/shorts/featured", publicFeatured);
 router.get("/shorts/:id", publicShort);
 
+// Free chapter practice pages on www.yneet.in (no login; SEO).
+const { listChapters, getChapter } = require("../controllers/practicePagesController");
+router.get("/practice", listChapters);
+router.get("/practice/:subject/:chapter", getChapter);
+
 module.exports = router;

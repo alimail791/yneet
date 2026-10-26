@@ -1,0 +1,108 @@
+// Public, no-login chapter practice pages for www.yneet.in (SEO).
+// Each NEET chapter gets up to FREE_PER_CHAPTER questions — previous-year (PYQ)
+// questions first, newest year first — with answers and explanations, so Google
+// can index real content. The full chapter (timed test, score, weak topics)
+// stays inside YNeet behind the free 30-day trial.
+const { PrismaClient } = require("@prisma/client");
+const prisma = new PrismaClient();
+
+const FREE_PER_CHAPTER = 10;
+const MIN_QUESTIONS = 5; // skip chapters too thin to make a useful page
+const NEET_CLASSES = ["11th", "12th", "Dropper"]; // foundation (6th–10th) excluded
+const SUBJECT_ORDER = ["Physics", "Chemistry", "Biology"];
+const CACHE_MS = 6 * 60 * 60 * 1000;
+
+const slugify = (s) =>
+  String(s).toLowerCase().replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 80);
+const norm = (s) => String(s || "").replace(/\s+/g, " ").trim().toLowerCase();
+
+let cache = null;
+
+async function build() {
+  const rows = await prisma.question.findMany({
+    where: { classLevel: { in: NEET_CLASSES }, subject: { in: SUBJECT_ORDER } },
+    select: {
+      id: true, subject: true, chapter: true, topic: true, questionText: true,
+      optionA: true, optionB: true, optionC: true, optionD: true, correctOpt: true,
+      explanation: true, isPYQ: true, pyqYear: true, classLevel: true,
+    },
+  });
+
+  // Group by subject + chapter; the same question can exist for several class
+  // levels, so de-duplicate on the question text.
+  const groups = new Map();
+  for (const q of rows) {
+    if (!q.chapter || !q.questionText) continue;
+    const key = `${q.subject}|${q.chapter.trim()}`;
+    if (!groups.has(key)) groups.set(key, { subject: q.subject, chapter: q.chapter.trim(), seen: new Set(), qs: [], classes: new Set() });
+    const g = groups.get(key);
+    g.classes.add(q.classLevel);
+    const k = norm(q.questionText);
+    if (g.seen.has(k)) continue;
+    g.seen.add(k);
+    g.qs.push(q);
+  }
+
+  const chapters = [];
+  const usedSlugs = new Set();
+  for (const g of groups.values()) {
+    if (g.qs.length < MIN_QUESTIONS) continue;
+    const pyqs = g.qs.filter((q) => q.isPYQ);
+    // Stable order so pages don't change on every build: PYQs newest year first, then id.
+    const order = (a, b) => (b.isPYQ - a.isPYQ) || ((b.pyqYear || 0) - (a.pyqYear || 0)) || (a.id < b.id ? -1 : 1);
+    const free = [...g.qs].sort(order).slice(0, FREE_PER_CHAPTER).map((q) => ({
+      id: q.id, topic: q.topic, question: q.questionText,
+      options: [q.optionA, q.optionB, q.optionC, q.optionD], answer: q.correctOpt,
+      explanation: q.explanation, pyqYear: q.isPYQ ? q.pyqYear || null : null,
+    }));
+    let slug = `${slugify(g.subject)}/${slugify(g.chapter)}`;
+    while (usedSlugs.has(slug)) slug += "-2";
+    usedSlugs.add(slug);
+    const years = [...new Set(pyqs.map((q) => q.pyqYear).filter(Boolean))].sort((a, b) => a - b);
+    chapters.push({
+      slug, subject: g.subject, chapter: g.chapter, total: g.qs.length, pyqCount: pyqs.length,
+      pyqYears: years.length ? [years[0], years[years.length - 1]] : null,
+      classes: NEET_CLASSES.filter((c) => g.classes.has(c)),
+      topics: [...new Set(g.qs.map((q) => q.topic).filter(Boolean))].slice(0, 12),
+      questions: free,
+    });
+  }
+  chapters.sort((a, b) => SUBJECT_ORDER.indexOf(a.subject) - SUBJECT_ORDER.indexOf(b.subject) || a.chapter.localeCompare(b.chapter));
+  return { at: Date.now(), chapters };
+}
+
+async function data() {
+  if (!cache || Date.now() - cache.at > CACHE_MS) cache = await build();
+  return cache;
+}
+
+// GET /api/v1/public/practice            → chapter list (no questions)
+// GET /api/v1/public/practice?full=1     → every chapter with its free questions (used at website build time)
+exports.listChapters = async (req, res) => {
+  try {
+    const { chapters } = await data();
+    res.set("Cache-Control", "public, max-age=3600");
+    if (req.query.full === "1") return res.json({ success: true, freePerChapter: FREE_PER_CHAPTER, chapters });
+    res.json({ success: true, freePerChapter: FREE_PER_CHAPTER, chapters: chapters.map(({ questions, ...c }) => c) });
+  } catch (err) {
+    console.error("practice list error:", err);
+    res.status(500).json({ success: false, message: "Could not load chapters" });
+  }
+};
+
+// GET /api/v1/public/practice/:subject/:chapter
+exports.getChapter = async (req, res) => {
+  try {
+    const { chapters } = await data();
+    const slug = `${req.params.subject}/${req.params.chapter}`.toLowerCase();
+    const c = chapters.find((x) => x.slug === slug);
+    if (!c) return res.status(404).json({ success: false, message: "Chapter not found" });
+    res.set("Cache-Control", "public, max-age=3600");
+    res.json({ success: true, chapter: c });
+  } catch (err) {
+    console.error("practice chapter error:", err);
+    res.status(500).json({ success: false, message: "Could not load chapter" });
+  }
+};
+
+exports._internal = { build, slugify };
