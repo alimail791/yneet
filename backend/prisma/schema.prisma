@@ -389,6 +389,13 @@ model Creator {
   // when it's approved so later rate changes don't alter past earnings.
   ratePerVideo Int             @default(500)
   status       String          @default("pending") // pending | approved | suspended
+  // Email check + password reset by a 6-digit code (stored hashed, 15 min, 5 tries).
+  // Creators who joined before email verification existed count as verified.
+  emailVerifiedAt DateTime?
+  codeHash        String?
+  codePurpose     String?   // verify | reset
+  codeExpires     DateTime?
+  codeTries       Int       @default(0)
   shorts       Short[]
   payouts      CreatorPayout[]
   createdAt    DateTime        @default(now())

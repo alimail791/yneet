@@ -88,4 +88,43 @@ const sendParentDigest = async (parentEmail, stats) => {
   });
 };
 
-module.exports = { sendExpiryReminder, sendParentDigest, sendInactivityReminder };
+// ───── Creators ─────
+const escHtml = (s) => String(s ?? "").replace(/[&<>"']/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]));
+
+// 6-digit code for checking a creator's email, or for resetting their password.
+const sendCreatorCode = async (creator, code, purpose) => {
+  const verify = purpose === "verify";
+  await send({
+    to: creator.email,
+    subject: verify ? `Your YNeet creator code: ${code}` : `Reset your YNeet creator password: ${code}`,
+    html: `<div style="${baseStyle}">${header}
+      <h2 style="color:#0f172a">Hi ${escHtml(creator.name)},</h2>
+      <p style="color:#475569;font-size:15px;line-height:1.6">${verify ? "Enter this code to confirm your email for your YNeet creator account:" : "Enter this code to set a new password for your YNeet creator account:"}</p>
+      <p style="font-size:34px;font-weight:800;letter-spacing:8px;color:#1e3a8a;margin:18px 0">${code}</p>
+      <p style="color:#94a3b8;font-size:12px">The code works for 15 minutes. If you didn't ask for it, you can ignore this email.</p>
+    </div>`,
+  });
+};
+
+// Tells the YNeet admin that a new creator applied.
+const ADMIN_ALERT_EMAIL = () => process.env.ADMIN_ALERT_EMAIL || "alimail791@gmail.com";
+const sendCreatorSignupAlert = async (creator) => {
+  const url = `${process.env.FRONTEND_URL || "https://app.yneet.in"}/admin/creators`;
+  const row = (k, v) => (v ? `<tr><td style="color:#64748b;padding:4px 12px 4px 0">${k}</td><td style="color:#0f172a">${escHtml(v)}</td></tr>` : "");
+  await send({
+    to: ADMIN_ALERT_EMAIL(),
+    subject: `New YNeet creator: ${creator.name}`,
+    html: `<div style="${baseStyle}">${header}
+      <h2 style="color:#0f172a">A new creator applied</h2>
+      <table style="font-size:14px;line-height:1.5">
+        ${row("Name", creator.name)}${row("Email", creator.email)}${row("WhatsApp", creator.phone)}
+        ${row("Subjects", (creator.subjects || []).join(", "))}${row("Languages", (creator.languages || []).join(", "))}
+        ${row("YouTube", creator.youtubeUrl)}${row("Instagram", creator.instagramUrl)}${row("About", creator.bio)}
+      </table>
+      <p style="color:#475569;font-size:14px">Their email is not verified yet; they have been sent a code.</p>
+      <a href="${url}" style="${btnStyle}background:#2563eb;color:white;">Review in Admin → Creators</a>
+    </div>`,
+  });
+};
+
+module.exports = { sendExpiryReminder, sendParentDigest, sendInactivityReminder, sendCreatorCode, sendCreatorSignupAlert };
