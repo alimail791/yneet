@@ -462,7 +462,7 @@ export default function AdminQuestionsPage() {
               open each one afterwards to assign it to a mock test, or leave it for Practice/Daily Quiz only.
             </p>
 
-            <input type="file" accept=".csv" onChange={handleCsvFile} style={{ marginBottom: 14 }} />
+            <input type="file" accept=".csv,text/csv,text/comma-separated-values,application/vnd.ms-excel,text/plain" onChange={handleCsvFile} style={{ marginBottom: 14 }} />
 
             {bulkFileName && !bulkResult && (
               <p style={{ fontSize: 13, color: "var(--text2)", marginBottom: 14 }}>
