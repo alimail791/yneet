@@ -387,7 +387,7 @@ model Creator {
   upiId        String?
   // Rupees paid per approved Short. Set by the admin; copied onto each Short
   // when it's approved so later rate changes don't alter past earnings.
-  ratePerVideo Int             @default(300)
+  ratePerVideo Int             @default(500)
   status       String          @default("pending") // pending | approved | suspended
   shorts       Short[]
   payouts      CreatorPayout[]

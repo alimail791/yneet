@@ -52,13 +52,13 @@ export default function CreatorAuthPage({ mode }) {
         <div className="auth-logo">YNeet Creators</div>
         <p style={{ color: "var(--text2)", fontSize: 14, marginBottom: 18 }}>
           {isApply
-            ? "Make 3–5 minute NEET concept Shorts. Get paid for every approved video, every week — and get your channel in front of thousands of NEET students."
+            ? "Make 3–5 minute science concept Shorts for Class 6 to NEET. Earn ₹500 for every approved Short, paid every week — and get your channel credited in front of YNeet students."
             : "Log in to submit Shorts and see your earnings."}
         </p>
 
         {isApply && (
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 8, marginBottom: 18 }}>
-            {[["💰", "Paid weekly", "per approved Short"], ["📣", "Your channel", "credited on every video"], ["🌟", "Get featured", "on the yneet.in homepage"]].map(([i, t, d]) => (
+            {[["💰", "₹500 per Short", "paid weekly"], ["📣", "Your channel", "credited on every video"], ["🌟", "Get featured", "on the yneet.in homepage"]].map(([i, t, d]) => (
               <div key={t} style={{ background: "var(--gray2)", borderRadius: 10, padding: "10px 8px", textAlign: "center" }}>
                 <div style={{ fontSize: 20 }}>{i}</div>
                 <div style={{ fontSize: 12.5, fontWeight: 800 }}>{t}</div>
