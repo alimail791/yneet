@@ -103,7 +103,7 @@ export default function CreatorAuthPage({ mode }) {
 
         <p style={{ fontSize: 13, color: "var(--text2)", textAlign: "center", marginTop: 16 }}>
           {isApply ? <>Already applied? <Link to="/creator/login" style={{ color: "var(--blue-mid)", fontWeight: 700 }}>Log in</Link></>
-            : <>New here? <Link to="/creator/apply" style={{ color: "var(--blue-mid)", fontWeight: 700 }}>Apply to become a creator</Link><br />Forgot your password? Message YNeet on WhatsApp.</>}
+            : <>New here? <Link to="/creator/apply" style={{ color: "var(--blue-mid)", fontWeight: 700 }}>Apply to become a creator</Link><br /><Link to="/creator/forgot" style={{ color: "var(--blue-mid)", fontWeight: 700 }}>Forgot your password?</Link></>}
         </p>
       </div>
     </div>

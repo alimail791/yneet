@@ -17,9 +17,9 @@ creatorApi.interceptors.response.use(
   (res) => res,
   (err) => {
     const url = err.config?.url || "";
-    if (err.response?.status === 401 && !url.includes("/creator/login") && !url.includes("/creator/apply")) {
+    if (err.response?.status === 401 && !/\/creator\/(login|apply|forgot-password|reset-password)/.test(url)) {
       try { localStorage.removeItem(CREATOR_TOKEN); } catch { /* ignore */ }
-      if (!window.location.pathname.startsWith("/creator/login")) window.location.href = "/creator/login";
+      if (!/^\/creator\/(login|forgot)/.test(window.location.pathname)) window.location.href = "/creator/login";
     }
     return Promise.reject(err);
   }

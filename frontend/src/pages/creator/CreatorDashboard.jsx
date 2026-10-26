@@ -27,6 +27,41 @@ const STATUS = {
   rejected: { label: "Needs changes", cls: "chip-red" },
 };
 
+// Shown until the creator types the 6-digit code we emailed at sign-up.
+function VerifyEmailCard({ email, onVerified }) {
+  const [code, setCode] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [msg, setMsg] = useState("");
+  const [err, setErr] = useState("");
+  const verify = async (e) => {
+    e.preventDefault(); setErr(""); setMsg(""); setBusy(true);
+    try { const { data } = await creatorApi.post("/creator/verify-email", { code }); onVerified(data.creator); }
+    catch (x) { setErr(errMsg(x, "Couldn't check the code")); }
+    setBusy(false);
+  };
+  const resend = async () => {
+    setErr(""); setMsg("");
+    try { const { data } = await creatorApi.post("/creator/verify-email/send"); setMsg(data.message || "Code sent"); }
+    catch (x) { setErr(errMsg(x, "Couldn't send the email")); }
+  };
+  return (
+    <div className="card mb-4" style={{ background: "var(--blue-light)", borderColor: "var(--blue-light)" }}>
+      <strong style={{ color: "var(--blue)" }}>📧 Confirm your email</strong>
+      <p style={{ fontSize: 13.5, color: "var(--text2)", marginTop: 4 }}>
+        We sent a 6-digit code to <strong>{email}</strong>. Enter it to finish signing up. Check your spam folder if you can't see it.
+      </p>
+      <form onSubmit={verify} style={{ display: "flex", gap: 8, flexWrap: "wrap", marginTop: 10, alignItems: "center" }}>
+        <input className="form-input" inputMode="numeric" autoComplete="one-time-code" maxLength={6} placeholder="6-digit code"
+          value={code} onChange={(e) => setCode(e.target.value.replace(/\D/g, ""))} style={{ width: 150, letterSpacing: 4, fontWeight: 700 }} />
+        <button className="btn btn-blue" disabled={busy || code.length !== 6}>{busy ? "Checking…" : "Confirm"}</button>
+        <button type="button" className="btn btn-outline btn-sm" onClick={resend}>Send a new code</button>
+      </form>
+      {msg && <p style={{ fontSize: 13, color: "var(--green)", marginTop: 8 }}>{msg}</p>}
+      {err && <p style={{ fontSize: 13, color: "var(--red)", marginTop: 8 }}>{err}</p>}
+    </div>
+  );
+}
+
 export default function CreatorDashboard() {
   const navigate = useNavigate();
   const [me, setMe] = useState(null);
@@ -127,6 +162,8 @@ export default function CreatorDashboard() {
       </nav>
 
       <div className="page-content" style={{ maxWidth: 960 }}>
+        {me.emailVerified === false && <VerifyEmailCard email={me.email} onVerified={(c) => { setMe(c); flash("Email confirmed ✓"); }} />}
+
         {me.status === "pending" && (
           <div className="card mb-4" style={{ background: "var(--amber-light)", borderColor: "var(--amber-light)" }}>
             <strong style={{ color: "var(--amber)" }}>⏳ Your application is being reviewed</strong>

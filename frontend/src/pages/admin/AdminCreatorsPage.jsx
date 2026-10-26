@@ -97,7 +97,7 @@ export default function AdminCreatorsPage() {
                   )}
                 </td>
                 <td style={{ fontSize: 12.5 }}>{c.subjects.join(", ") || "—"}<div style={{ color: "var(--text3)" }}>{c.languages.join(", ")}</div></td>
-                <td><span className={`chip ${STATUS_CHIP[c.status]}`}>{c.status}</span></td>
+                <td><span className={`chip ${STATUS_CHIP[c.status]}`}>{c.status}</span>{c.emailVerified === false && <div style={{ fontSize: 11.5, color: "var(--amber)", marginTop: 4 }}>email not confirmed</div>}</td>
                 <td><button className="btn btn-outline btn-sm" onClick={() => setRate(c)}>{inr(c.ratePerVideo)}</button></td>
                 <td style={{ fontSize: 12.5 }}>{c.shorts.approved} live{c.shorts.pending ? <div style={{ color: "var(--amber)" }}>{c.shorts.pending} to review</div> : null}</td>
                 <td>{c.viewers}</td>

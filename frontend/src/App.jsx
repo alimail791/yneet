@@ -23,6 +23,7 @@ import ShortsPage           from "./pages/ShortsPage";
 import JuniorHomePage       from "./pages/JuniorHomePage";
 import ShareShortPage       from "./pages/ShareShortPage";
 import CreatorAuthPage      from "./pages/creator/CreatorAuthPage";
+import CreatorForgotPage      from "./pages/creator/CreatorForgotPage";
 import CreatorDashboard     from "./pages/creator/CreatorDashboard";
 import AdminCreatorsPage    from "./pages/admin/AdminCreatorsPage";
 import { hasActivePlan, isJuniorFree } from "./utils/plan";
@@ -93,6 +94,7 @@ export default function App() {
       <Route path="/s/:id" element={<ShareShortPage />} />
       <Route path="/creator/apply" element={<CreatorAuthPage mode="apply" />} />
       <Route path="/creator/login" element={<CreatorAuthPage mode="login" />} />
+      <Route path="/creator/forgot" element={<CreatorForgotPage />} />
       <Route path="/creator" element={<CreatorDashboard />} />
       <Route path="/pricing" element={<Guard><PricingPage /></Guard>} />
 

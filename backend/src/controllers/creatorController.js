@@ -2,7 +2,38 @@ const bcrypt = require("bcryptjs");
 const jwt = require("jsonwebtoken");
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
+const crypto = require("crypto");
 const { _internal: { buildShortData } } = require("./shortsController");
+const { sendCreatorCode, sendCreatorSignupAlert } = require("../utils/mailer");
+
+// ───────── Email codes (verify email / reset password) ─────────
+const VERIFY_CUTOFF = new Date("2026-10-26T09:00:00Z"); // accounts older than this count as verified
+const isVerified = (c) => !!c.emailVerifiedAt || new Date(c.createdAt) < VERIFY_CUTOFF;
+const hashCode = (code) => crypto.createHash("sha256").update(String(code)).digest("hex");
+const CODE_MS = 15 * 60 * 1000;
+const RESEND_GAP_MS = 45 * 1000;
+async function issueCode(creator, purpose) {
+  // Same purpose asked again within 45 s → keep the code already sent.
+  const issuedAt = creator.codeExpires ? new Date(creator.codeExpires).getTime() - CODE_MS : 0;
+  if (creator.codePurpose === purpose && Date.now() - issuedAt < RESEND_GAP_MS) return { throttled: true };
+  const code = String(crypto.randomInt(0, 1000000)).padStart(6, "0");
+  await prisma.creator.update({ where: { id: creator.id }, data: { codeHash: hashCode(code), codePurpose: purpose, codeExpires: new Date(Date.now() + CODE_MS), codeTries: 0 } });
+  await sendCreatorCode(creator, code, purpose);
+  return { sent: true };
+}
+// Checks a code; on success clears it. Returns an error message or null.
+async function useCode(creator, purpose, code) {
+  if (!creator || creator.codePurpose !== purpose || !creator.codeHash) return "Ask for a new code first.";
+  if (new Date(creator.codeExpires) < new Date()) return "This code has expired. Ask for a new one.";
+  if (creator.codeTries >= 5) return "Too many wrong tries. Ask for a new code.";
+  const ok = crypto.timingSafeEqual(Buffer.from(hashCode(String(code || "").trim())), Buffer.from(creator.codeHash));
+  if (!ok) {
+    await prisma.creator.update({ where: { id: creator.id }, data: { codeTries: { increment: 1 } } });
+    return "That code is not right. Check the email and try again.";
+  }
+  await prisma.creator.update({ where: { id: creator.id }, data: { codeHash: null, codePurpose: null, codeExpires: null, codeTries: 0 } });
+  return null;
+}
 
 // Creator sessions use their own signing secret, so a creator token can never
 // pass the student `protect` middleware (and vice versa).
@@ -23,6 +54,7 @@ function creatorView(c) {
     id: c.id, name: c.name, email: c.email, phone: c.phone, bio: c.bio,
     youtubeUrl: c.youtubeUrl, instagramUrl: c.instagramUrl, subjects: c.subjects, languages: c.languages,
     upiId: c.upiId, ratePerVideo: c.ratePerVideo, status: c.status, createdAt: c.createdAt,
+    emailVerified: isVerified(c),
   };
 }
 
@@ -45,6 +77,10 @@ exports.creatorAuth = async (req, res, next) => {
 };
 
 const requireApproved = (req, res) => {
+  if (!isVerified(req.creator)) {
+    res.status(403).json({ success: false, message: "Please confirm your email first — enter the code we sent you." });
+    return false;
+  }
   if (req.creator.status !== "approved") {
     res.status(403).json({ success: false, message: "Your account is waiting for approval. You can submit Shorts once YNeet approves it." });
     return false;
@@ -83,7 +119,62 @@ exports.apply = async (req, res) => {
         upiId: clean(req.body.upiId, 80) || null,
       },
     });
-    res.status(201).json({ success: true, token: signCreator(creator), creator: creatorView(creator) });
+    // Email problems must not lose the sign-up: the creator can ask for the code again.
+    let codeSent = true;
+    try { await issueCode(creator, "verify"); } catch (e) { codeSent = false; console.error("creator verify email failed:", e.message); }
+    sendCreatorSignupAlert(creator).catch((e) => console.error("creator signup alert failed:", e.message));
+    res.status(201).json({ success: true, token: signCreator(creator), creator: creatorView(creator), codeSent });
+  } catch (err) { res.status(500).json({ success: false, message: err.message }); }
+};
+
+// POST /api/v1/creator/verify-email/send  (logged in) — send or resend the code
+exports.sendVerifyCode = async (req, res) => {
+  try {
+    if (isVerified(req.creator)) return res.json({ success: true, alreadyVerified: true });
+    const r = await issueCode(req.creator, "verify");
+    res.json({ success: true, message: r.throttled ? "A code was just sent. Wait a minute before asking again." : `Code sent to ${req.creator.email}` });
+  } catch (err) { res.status(500).json({ success: false, message: "Couldn't send the email. Try again in a minute." }); }
+};
+
+// POST /api/v1/creator/verify-email  (logged in) { code }
+exports.verifyEmail = async (req, res) => {
+  try {
+    if (isVerified(req.creator)) return res.json({ success: true, creator: creatorView(req.creator) });
+    const fresh = await prisma.creator.findUnique({ where: { id: req.creator.id } });
+    const error = await useCode(fresh, "verify", req.body.code);
+    if (error) return res.status(400).json({ success: false, message: error });
+    const creator = await prisma.creator.update({ where: { id: fresh.id }, data: { emailVerifiedAt: new Date() } });
+    res.json({ success: true, creator: creatorView(creator) });
+  } catch (err) { res.status(500).json({ success: false, message: err.message }); }
+};
+
+// POST /api/v1/creator/forgot-password { email } — always answers the same way,
+// so it can't be used to find out which emails have accounts.
+exports.forgotPassword = async (req, res) => {
+  const email = clean(req.body.email, 120).toLowerCase();
+  try {
+    const creator = email && (await prisma.creator.findUnique({ where: { email } }));
+    if (creator && creator.status !== "suspended") await issueCode(creator, "reset");
+  } catch (err) { console.error("creator reset email failed:", err.message); }
+  res.json({ success: true, message: "If that email has a creator account, we've sent a 6-digit code to it." });
+};
+
+// POST /api/v1/creator/reset-password { email, code, password }
+exports.resetPassword = async (req, res) => {
+  try {
+    const email = clean(req.body.email, 120).toLowerCase();
+    const password = String(req.body.password || "");
+    if (password.length < 8) return res.status(400).json({ success: false, message: "Password must be at least 8 characters" });
+    const creator = email && (await prisma.creator.findUnique({ where: { email } }));
+    const error = await useCode(creator, "reset", req.body.code);
+    if (error) return res.status(400).json({ success: false, message: error });
+    // The code arrived by email, so this also proves the email address.
+    const updated = await prisma.creator.update({
+      where: { id: creator.id },
+      data: { passwordHash: await bcrypt.hash(password, 10), emailVerifiedAt: creator.emailVerifiedAt || new Date() },
+    });
+    if (updated.status === "suspended") return res.status(403).json({ success: false, message: "Your creator account is suspended. Contact YNeet." });
+    res.json({ success: true, token: signCreator(updated), creator: creatorView(updated) });
   } catch (err) { res.status(500).json({ success: false, message: err.message }); }
 };
 
