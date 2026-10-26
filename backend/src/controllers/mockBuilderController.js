@@ -331,6 +331,27 @@ function buildSchoolSpec(only) {
 }
 exports._internal = { buildSchoolSpec, SCHOOL_BATCH, SCHOOL_SIZES };
 
+// Built-in starter questions for Class 6–10 (790, NCERT chapters from
+// utils/curriculum). Safe to press twice: a question already in the bank
+// (same class + same question text) is skipped.
+// POST /api/v1/admin/mock-builder/school-questions/import
+exports.importSchoolQuestions = async (req, res) => {
+  try {
+    const all = require("../data/schoolQuestions.json");
+    const classes = [...new Set(all.map((q) => q.classLevel))];
+    const have = await prisma.question.findMany({ where: { classLevel: { in: classes } }, select: { classLevel: true, questionText: true } });
+    const key = (q) => `${q.classLevel}|${String(q.questionText).trim().toLowerCase()}`;
+    const seen = new Set(have.map(key));
+    const fresh = all.filter((q) => { const k = key(q); if (seen.has(k)) return false; seen.add(k); return true; });
+    let created = 0;
+    for (let i = 0; i < fresh.length; i += 200) {
+      const r = await prisma.question.createMany({ data: fresh.slice(i, i + 200) });
+      created += r.count;
+    }
+    res.json({ success: true, created, skipped: all.length - fresh.length, total: all.length });
+  } catch (err) { res.status(500).json({ success: false, message: err.message }); }
+};
+
 // body: { group: "neet" (default) | "school", classLevels?: ["6th", ...] (school only) }
 exports.startBulkBuild = async (req, res) => {
   if (bulkJob && bulkJob.running) {

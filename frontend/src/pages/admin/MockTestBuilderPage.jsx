@@ -119,6 +119,17 @@ export default function MockTestBuilderPage() {
   };
   useEffect(loadSchoolPool, []);
 
+  const [importing, setImporting] = useState(false);
+  const importSchoolQuestions = async () => {
+    setImporting(true);
+    try {
+      const { data } = await api.post("/admin/mock-builder/school-questions/import");
+      alert(`Added ${data.created} questions${data.skipped ? ` (${data.skipped} were already in the bank)` : ""}.`);
+      loadSchoolPool();
+    } catch (err) { alert(err?.response?.data?.message || "Could not add the questions"); }
+    setImporting(false);
+  };
+
   const togglePoolClass = (cl) => {
     setPoolClassLevels((prev) => (prev.includes(cl) ? prev.filter((x) => x !== cl) : [...prev, cl]));
   };
@@ -360,7 +371,7 @@ export default function MockTestBuilderPage() {
         <div style={{ fontWeight: 800, fontSize: 15, marginBottom: 4 }}>📚 Class 6–10 tests</div>
         <p style={{ fontSize: 12.5, color: "var(--text2)", marginBottom: 12 }}>
           School-level tests for Class 6 to 10. Each class uses only its own questions (upload them first in
-          Questions → Bulk upload). Class 6–8: Full Test 30 Qs (40 min), subject tests 15 Qs, daily practice
+          Questions → Bulk upload, or tap “Add starter questions” below). Class 6–8: Full Test 30 Qs (40 min), subject tests 15 Qs, daily practice
           10 Qs. Class 9–10: Full Test 60 Qs (75 min), subject tests 20 Qs, daily practice 15 Qs. Picks are
           chapter-balanced and no question repeats inside a test.
         </p>
@@ -400,6 +411,14 @@ export default function MockTestBuilderPage() {
               })}
             </tbody>
           </table>
+        </div>
+
+        <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap", marginBottom: 14 }}>
+          <button className="btn btn-blue" onClick={importSchoolQuestions} disabled={importing || bulkJob?.running}>
+            {importing ? "Adding…" : "➕ Add 790 starter questions (Class 6–10)"}
+          </button>
+          <button className="btn btn-outline btn-sm" onClick={loadSchoolPool}>↻ Refresh counts</button>
+          <span style={{ fontSize: 12, color: "var(--text3)" }}>Safe to tap twice — questions already added are skipped.</span>
         </div>
 
         {bulkError && errGroup === "school" && <div style={{ background: "var(--red-light,#fee)", color: "var(--red)", padding: 10, borderRadius: 8, fontSize: 13, marginBottom: 12 }}>{bulkError}</div>}

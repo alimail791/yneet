@@ -5,7 +5,7 @@ const { generateContent, extractQuestionsFromImage } = require("../controllers/a
 const { getContentCoverage } = require("../controllers/contentCoverageController");
 const ct = require("../controllers/chapterTestController");
 const sh = require("../controllers/shortsController");
-const { getPoolStats, buildMockTest, startBulkBuild, getBulkStatus, getOldBulkBatch, deleteOldBulkBatch } = require("../controllers/mockBuilderController");
+const { getPoolStats, buildMockTest, startBulkBuild, getBulkStatus, getOldBulkBatch, deleteOldBulkBatch, importSchoolQuestions } = require("../controllers/mockBuilderController");
 
 router.use(protect);
 router.use(requireAdmin);
@@ -20,6 +20,7 @@ router.post("/mock-builder/bulk-build", startBulkBuild);
 router.get("/mock-builder/bulk-status", getBulkStatus);
 router.get("/mock-builder/old-batch", getOldBulkBatch);
 router.post("/mock-builder/old-batch/delete", deleteOldBulkBatch);
+router.post("/mock-builder/school-questions/import", importSchoolQuestions);
 router.get("/mock-builder/chapter-tests/preview", ct.previewChapterTests);
 router.post("/mock-builder/chapter-tests/build", ct.startChapterBuild);
 router.get("/mock-builder/chapter-tests/status", ct.getChapterBuildStatus);
