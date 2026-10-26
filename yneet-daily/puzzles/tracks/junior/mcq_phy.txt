@@ -50,3 +50,136 @@ The Earth's natural satellite is the: | Moon | Sun | Mars | Venus | The Moon tak
 The largest planet in our solar system is: | Jupiter | Saturn | Earth | Neptune | Jupiter is more than 1,300 times Earth's volume.
 The Pole Star is seen in the: | North | South | East | West | It stays almost fixed in the northern sky.
 Which planet is called the red planet? | Mars | Jupiter | Venus | Mercury | Iron oxide on its surface makes it look red.
+# Motion and Measurement of Distances
+The SI unit of length is | metre | centimetre | kilometre | foot | The metre (m) is the standard SI unit of length.
+1 kilometre is equal to | 1000 metres | 100 metres | 10 metres | 10,000 metres | Kilo means one thousand, so 1 km = 1000 m.
+The motion of a car on a straight road is an example of | rectilinear motion | circular motion | periodic motion | rotational motion | Motion along a straight line is called rectilinear motion.
+The motion of the hands of a clock is | circular motion | rectilinear motion | random motion | zig-zag motion | The tip of a clock hand moves along a circle.
+The motion of a swing or a pendulum is | periodic motion | rectilinear motion | random motion | no motion | Motion that repeats itself after a fixed time is periodic motion.
+Which of these is best for measuring the length of a curved line? | A thread and a scale | A metre scale alone | A weighing balance | A thermometer | Lay a thread along the curve, then measure the thread on a scale.
+While measuring with a scale, your eye should be placed | exactly above the point being read | to the left of the point | to the right of the point | anywhere | Looking from an angle gives a wrong reading because of parallax.
+Using a handspan to measure length is not reliable because | handspans differ from person to person | a hand is too small | hands cannot measure | handspan is an SI unit | Body-based units vary, so standard units are needed.
+1 metre is equal to | 100 centimetres | 10 centimetres | 1000 centimetres | 1 centimetre | Centi means one hundredth, so 1 m = 100 cm.
+A wheel of a moving bicycle shows | both rotational and rectilinear motion | only rectilinear motion | only periodic motion | no motion | The wheel spins about its axle while the bicycle moves forward.
+# Light, Shadows and Reflections
+A shadow is formed when | an opaque object blocks light | light passes through glass | light is reflected | an object is transparent | Light travels straight, so an opaque object blocks it and leaves a dark area.
+A pinhole camera gives an image that is | upside down | upright and bigger | coloured differently | blurred always | Light rays cross at the pinhole, so the image is inverted.
+Objects that give out light of their own are called | luminous | opaque | translucent | non-luminous | The Sun and a burning candle are luminous objects.
+The Moon is a non-luminous object because | it only reflects sunlight | it is very far | it is made of rock only | it shines at night | The Moon has no light of its own; it reflects sunlight.
+A plane mirror forms an image by | reflection of light | absorbing light | bending of light inside it | producing new light | Light bouncing back from a shiny surface is reflection.
+# Electricity and Circuits
+A material that allows electric current to pass through it is called | a conductor | an insulator | a switch | a filament | Metals like copper are good conductors.
+Which of these is an insulator? | Rubber | Copper | Iron | Aluminium | Rubber does not let current pass through it.
+In a bulb, the thin wire that glows is called | the filament | the switch | the terminal | the cell | The filament heats up and glows when current flows.
+A switch is used to | open or close a circuit | store electricity | make a bulb brighter | change the cell | A switch completes or breaks the path of current.
+An electric cell has | a positive and a negative terminal | only a positive terminal | only a negative terminal | no terminals | Current flows in a closed path from one terminal to the other.
+# Fun with Magnets
+A freely suspended bar magnet always comes to rest in the | north-south direction | east-west direction | up-down direction | any direction | This property is used in a compass.
+Like poles of two magnets | repel each other | attract each other | do nothing | stick together | North repels north, and south repels south.
+Which of these is attracted by a magnet? | An iron nail | A plastic scale | A wooden pencil | A rubber eraser | Iron, nickel and cobalt are magnetic materials.
+Magnetite is | a natural magnet | an artificial magnet | a non-magnetic rock | a type of compass | Magnetite was the first magnet discovered.
+A magnet can lose its magnetism if it is | heated or hammered | kept in a wooden box | kept with a keeper | kept dry | Heating, hammering or dropping a magnet weakens it.
+# Heat
+The normal temperature of the human body is about | 37 °C | 98 °C | 27 °C | 47 °C | Normal body temperature is about 37 °C (98.6 °F).
+Heat flows from | a hotter object to a colder object | a colder object to a hotter object | a light object to a heavy object | nowhere | Heat always flows from higher to lower temperature.
+The transfer of heat through a solid like an iron rod is | conduction | convection | radiation | evaporation | Heat passes from particle to particle in solids.
+Sea breeze blows during the day from | sea to land | land to sea | mountains to sea | sea to sky | Land heats faster, warm air rises over land and cooler air from the sea moves in.
+Light-coloured clothes are preferred in summer because they | reflect most of the heat | absorb most of the heat | are heavier | conduct heat inside | Dark colours absorb more heat; light colours reflect it.
+# Motion and Time
+The SI unit of speed is | metre per second | kilometre | second | metre | Speed is distance divided by time, so m/s.
+A car covers 100 km in 2 hours. Its average speed is | 50 km/h | 200 km/h | 100 km/h | 25 km/h | Speed = 100 km / 2 h = 50 km/h.
+The time taken by a simple pendulum for one complete oscillation is its | time period | speed | frequency | amplitude | One to-and-fro swing takes one time period.
+A speedometer in a vehicle measures | speed | distance | time | fuel | An odometer measures distance travelled.
+If an object covers equal distances in equal intervals of time, its motion is | uniform | non-uniform | random | circular only | Uniform motion means constant speed in a straight line.
+# Electric Current and Its Effects
+The symbol of an electric cell in a circuit diagram shows | a long line and a short line | a circle with a cross | a zig-zag line | a wavy line | The longer line is the positive terminal.
+Two or more cells joined together form a | battery | bulb | switch | fuse | A battery is a combination of cells.
+A wire gets hot when current passes through it. This is the | heating effect of current | magnetic effect of current | chemical effect only | lighting effect only | Electric heaters and irons use this effect.
+A safety device that melts and breaks the circuit when too much current flows is a | fuse | switch | bulb | cell | The fuse wire melts and stops the current.
+An electromagnet is made by | passing current through a coil wound on an iron core | rubbing a magnet on iron | heating iron | cooling a wire | It is a magnet only while current flows.
+The magnetic effect of current was discovered by | Hans Christian Oersted | Isaac Newton | Albert Einstein | Thomas Edison | A compass needle moved near a current-carrying wire.
+Which of these uses an electromagnet? | Electric bell | Candle | Torch reflector | Plastic toy | The electromagnet pulls the hammer that strikes the gong.
+MCB stands for | miniature circuit breaker | main current box | magnetic coil battery | metal circuit bulb | MCBs switch off automatically when current is too high.
+In a CFL or LED the electricity is converted mainly into | light | sound | heat only | magnetism | They waste less energy as heat than filament bulbs.
+An electric iron heats up because of | the heating effect of electric current | the magnetic effect | chemical reactions | friction | Its element is made of a wire that gets hot.
+# Light
+Light travels in | a straight line | a curved line | zig-zag lines | circles | This is why shadows form.
+The image formed by a plane mirror is | upright and laterally inverted | inverted and smaller | upright and bigger | real | Left looks right in a mirror.
+A concave mirror can form a | real and inverted image | only a virtual image | no image | coloured image only | It forms a real image when the object is far.
+Which mirror is used as a rear-view mirror in vehicles? | Convex mirror | Concave mirror | Plane mirror | No mirror | A convex mirror gives a wide view.
+A lens that is thicker in the middle than at the edges is a | convex lens | concave lens | plane lens | prism | A convex lens converges light.
+A magnifying glass is a | convex lens | concave lens | plane mirror | convex mirror | It makes small things look bigger.
+White light is made of | seven colours | one colour | two colours | three colours only | A prism splits white light into seven colours.
+A rainbow is seen when sunlight passes through | raindrops | clouds only | dust | glass windows | Raindrops split sunlight into colours.
+Newton's disc painted with seven colours appears white when | it is rotated fast | it is kept still | it is wet | it is broken | The colours mix and look white.
+Dentists use concave mirrors because they | give an enlarged image of teeth | give a smaller image | make teeth white | reflect no light | A close object looks bigger in a concave mirror.
+When light falls on a smooth shiny surface and bounces back, it is called | reflection | refraction | absorption | dispersion | Mirrors reflect light well.
+According to the laws of reflection, the angle of incidence is | equal to the angle of reflection | twice the angle of reflection | half the angle of reflection | always 90 degrees | This is the second law of reflection.
+Reflection from a rough surface that sends light in many directions is | diffused reflection | regular reflection | refraction | dispersion | Diffused reflection lets us see objects from all sides.
+The image of an object seen in two mirrors kept at an angle gives | multiple images | no image | one image | a blurred image | A kaleidoscope uses this.
+Splitting of white light into its colours is called | dispersion | reflection | refraction only | absorption | A prism disperses light.
+The opening at the centre of the iris through which light enters the eye is the | pupil | lens | retina | cornea | The pupil becomes smaller in bright light.
+The image in our eye is formed on the | retina | cornea | iris | pupil | The retina has light-sensitive cells.
+The cells in the retina that help us see colour are | cones | rods | neurons only | blood cells | Rods work in dim light.
+The script used by visually impaired people to read is | Braille | Devanagari | Roman | Urdu | Braille has raised dots read by touch.
+The least distance for comfortable reading for a normal eye is about | 25 cm | 2.5 cm | 250 cm | 2.5 m | Closer objects strain the eye.
+# Water: A Precious Resource
+Water stored below the ground is called | groundwater | sea water | rainwater only | surface water | It fills spaces between rocks and soil.
+The upper limit of groundwater is called the | water table | ocean bed | aquifer | river bed | The water table can go down if we pump too much.
+Rain seeping into the ground to fill groundwater is called | infiltration | evaporation | condensation | precipitation | Infiltration recharges groundwater.
+World Water Day is observed on | 22 March | 5 June | 22 April | 1 July | It reminds people to save water.
+Drip irrigation saves water because | water reaches the roots drop by drop | it uses more water | it floods the field | it uses sea water | Little water is wasted.
+Layers of rock that hold groundwater are called | aquifers | water tables | wells | dams | Water can be pumped out from aquifers.
+Which of these lowers the water table? | Pumping too much groundwater | Planting trees | Rainwater harvesting | Building check dams | Using water faster than it is refilled lowers the table.
+Most of the Earth's fresh water is in the form of | ice caps and glaciers | rivers | lakes | clouds | Only a little fresh water is easily usable.
+Water that is fit for drinking is called | potable water | sea water | waste water | hard water | Potable water is safe to drink.
+Which practice helps recharge groundwater? | Rainwater harvesting | Cementing all open ground | Cutting trees | Wasting tap water | Harvested rainwater can soak into the ground.
+# Force and Pressure
+A push or a pull on an object is called | force | pressure | energy | work | Force can change speed, direction or shape.
+Pressure is defined as | force per unit area | force multiplied by area | area per unit force | mass per unit volume | Pressure = force / area.
+Knives are sharpened so that they | exert more pressure with the same force | become heavier | exert less pressure | look shiny | A thin edge has a small area, so pressure is high.
+Liquids exert pressure | on the walls and the bottom of the container | only at the bottom | only at the top | not at all | Water spurts out of holes in the side of a bottle.
+The force exerted by a magnet on iron is an example of | non-contact force | muscular force | friction | contact force only | It acts without touching.
+The force with which the Earth pulls objects towards it is | gravitational force | magnetic force | electrostatic force | muscular force | Gravity makes objects fall.
+# Friction
+Friction always acts | opposite to the direction of motion | in the direction of motion | upwards | sideways | Friction opposes relative motion between surfaces.
+Friction can be reduced by | using lubricants like oil | making surfaces rough | adding sand | pressing surfaces harder | Oil forms a thin layer between surfaces.
+Ball bearings reduce friction because | rolling friction is less than sliding friction | they are heavy | they increase area | they are rough | Rolling is easier than sliding.
+Tyres have treads to | increase friction and grip the road | reduce friction | look attractive | save rubber | Treads give a better grip.
+The frictional force exerted by fluids is called | drag | lift | weight | tension | Air and water resistance are drag forces.
+Aeroplanes and boats have streamlined shapes to | reduce drag | increase drag | increase weight | float higher | A pointed shape cuts through air or water easily.
+Which surface gives the most friction? | A rough brick floor | A polished marble floor | Ice | An oiled glass sheet | Rougher surfaces give more friction.
+# Sound
+Sound needs a medium to travel and cannot travel through | vacuum | air | water | steel | There are no particles in a vacuum.
+The number of vibrations per second is called | frequency | amplitude | time period | loudness | Frequency is measured in hertz (Hz).
+Humans can hear sounds of frequency from about | 20 Hz to 20,000 Hz | 2 Hz to 200 Hz | 200 Hz to 2,000,000 Hz | 0 Hz to 10 Hz | Sounds outside this range are inaudible.
+Loudness of sound depends on its | amplitude | frequency | speed | medium only | Larger amplitude means louder sound.
+Unwanted, unpleasant sound is called | noise | music | echo | frequency | Noise pollution can harm health.
+# Chemical Effects of Electric Current
+Pure distilled water is | a poor conductor of electricity | a good conductor | a magnet | a metal | It has almost no salts in it.
+Tap water conducts electricity because it contains | dissolved salts | oxygen | only hydrogen | sugar | Salts in water let current pass.
+Depositing a layer of one metal on another using electricity is called | electroplating | galvanising by dipping | rusting | magnetising | Chromium plating on taps is an example.
+In electroplating of copper, the object to be plated is connected to the | negative terminal | positive terminal | earth wire | fuse | Copper ions move to the negative electrode and deposit there.
+Passing current through a conducting solution can cause | a chemical reaction | no change at all | the solution to become a magnet | the solution to freeze | Gas bubbles or colour change may be seen.
+A tester with an LED is useful because | it glows even with a weak current | it needs no battery | it makes current stronger | it measures temperature | LEDs glow with small currents.
+Lemon juice conducts electricity because it is | acidic | sweet | yellow | thick | Acids conduct electricity.
+Tin cans for storing food are made by electroplating tin onto | iron | gold | plastic | wood | Tin is less reactive and keeps food safe.
+Bubbles seen at the electrodes when current passes through water are of | oxygen and hydrogen gas | carbon dioxide only | nitrogen | steam | Water breaks down into hydrogen and oxygen.
+Chromium is used to electroplate car parts and taps because it | is shiny and does not corrode easily | is cheap | is magnetic | is soft | Chromium gives a shiny, scratch-resistant finish.
+# Some Natural Phenomena
+Charge produced by rubbing two objects is called | static charge | current | magnetism | friction | It stays on the object and does not flow.
+Like charges | repel each other | attract each other | cancel at once | do nothing | Unlike charges attract.
+A device used to test whether an object is charged is | an electroscope | a thermometer | a barometer | an ammeter | Its metal leaves move apart when charged.
+Transfer of charge from a charged object to the Earth is called | earthing | lightning | conduction of heat | induction of heat | Earthing protects buildings and appliances.
+Lightning is caused by | discharge of electric charges between clouds or between clouds and the Earth | sound of clouds | heat from the Sun | rain alone | Charges build up in clouds.
+A lightning conductor protects buildings by | carrying the charge safely to the ground | stopping the rain | blocking sound | storing charge | It is a metal rod connected to the earth.
+During lightning, a safe place to be is | inside a car or a closed building | under a tall tree | in an open field | near an electric pole | Cars and buildings give protection.
+A sudden shaking of the Earth's surface is called | an earthquake | a cyclone | a tsunami | lightning | It is caused by the movement of plates deep inside the Earth.
+The instrument that records earthquake waves is | a seismograph | a barometer | a thermometer | an electroscope | It records tremors as wavy lines.
+The intensity of earthquakes is measured on the | Richter scale | Celsius scale | decibel scale | Kelvin scale | Each step is about ten times stronger.
+# Stars and the Solar System
+The planet nearest to the Sun is | Mercury | Venus | Earth | Mars | Mercury is the smallest planet too.
+The brightest planet in the night sky is | Venus | Mars | Jupiter | Saturn | Venus is often called the morning or evening star.
+The largest planet of our solar system is | Jupiter | Saturn | Earth | Neptune | Jupiter is more than 1300 times the volume of Earth.
+A light-year is a unit of | distance | time | speed | brightness | It is the distance light travels in one year.
+The constellation that looks like a hunter is | Orion | Ursa Major | Cassiopeia | Leo | Orion is seen in winter.

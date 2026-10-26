@@ -39,3 +39,53 @@ CELL | Basic unit of life | Robert Hooke first saw cells in a thin slice of cork
 NUCLEUS | Control centre of the cell | The nucleus contains chromosomes that carry genes.
 ORBIT | Path of a planet around the Sun | Earth takes about 365 days to complete one orbit.
 COMET | Icy body that grows a bright tail near the Sun | Halley's comet appears about every 76 years.
+PETAL | Colourful part of a flower | Bright petals attract insects for pollination.
+SEPAL | Small green leaf-like part below the petals | Sepals protect the flower bud.
+STAMEN | Male part of a flower | The anther of the stamen makes pollen grains.
+PISTIL | Female part of a flower | The pistil has the stigma, style and ovary.
+OVARY | Part of the flower that becomes the fruit | Ovules inside the ovary become seeds.
+TENDRIL | Thread-like part that helps a climber hold on | Pea plants climb with tendrils.
+SPINE | Sharp leaf of a cactus | Spines reduce water loss in desert plants.
+BONE | Hard part of the skeleton | Bones contain calcium.
+MUSCLE | Contracts and relaxes to move bones | Muscles work in pairs.
+GILLS | Breathing organs of fish | Gills take in oxygen dissolved in water.
+LUNGS | Organs we breathe with | Air reaches tiny sacs in the lungs.
+HEART | Pumps blood around the body | The heart beats about 72 times a minute at rest.
+ARTERY | Carries blood away from the heart | Arteries have thick, elastic walls.
+VEIN | Carries blood back to the heart | Veins have valves to stop blood flowing back.
+BLOOD | Red liquid that carries oxygen | Red blood cells contain haemoglobin.
+SALIVA | Juice in the mouth that starts digestion | Saliva breaks down starch into sugar.
+TONGUE | Helps mix food with saliva | The tongue senses taste.
+LIVER | Largest gland in the body | The liver makes bile.
+FUNGI | Group that includes mushrooms and moulds | Fungi grow on bread and fruits.
+ALGAE | Green plants found in ponds | Algae make their own food.
+LICHEN | Algae and fungus living together | Litmus is made from lichens.
+HUMUS | Dark, rich layer of decayed matter in soil | Humus makes soil fertile.
+MANURE | Natural fertilizer from animal and plant waste | Manure improves soil texture.
+WEED | Unwanted plant growing with a crop | Weeds compete with crops for water and nutrients.
+GRAIN | Seed of crops like wheat and rice | Grains are rich in carbohydrates.
+HONEY | Sweet food made by bees | Bees make honey from flower nectar.
+SILK | Fibre from the cocoon of a moth | India is a big producer of silk.
+WOOL | Fibre from the hair of sheep | Wool keeps us warm by trapping air.
+COTTON | Plant fibre used for summer clothes | Cotton is grown in black soil.
+JUTE | Golden fibre used for sacks | Jute comes from the stem of the jute plant.
+FABRIC | Cloth made by weaving yarn | Weaving and knitting make fabric.
+PLASTIC | Material that does not rot easily | Recycling plastic reduces waste.
+COPPER | Reddish metal used in wires | Copper is a good conductor of electricity.
+IRON | Metal that rusts in moist air | Painting iron stops rusting.
+CARBON | Element found in coal and diamond | Coal is mostly carbon.
+SMOKE | Cloud from burning fuel | Smoke pollutes the air.
+FUEL | Burnt to give heat and energy | Wood, coal and LPG are fuels.
+DAMP | Slightly wet | Iron rusts faster in damp air.
+CRYSTAL | Solid with a regular shape | Salt and sugar form crystals.
+LITMUS | Natural indicator dye | Acids turn blue litmus red.
+SPEED | Distance covered in unit time | Speed is measured in metres per second.
+CIRCUIT | Closed path for electric current | A switch opens or closes a circuit.
+BATTERY | Two or more cells joined together | A battery gives more voltage than one cell.
+PRISM | Glass piece that splits white light | A prism shows seven colours.
+VACUUM | Empty space with no air | Sound cannot travel through a vacuum.
+GRAVITY | Pull of the Earth on objects | Gravity makes things fall.
+PLANET | Body that goes around the Sun | Earth is the third planet from the Sun.
+GALAXY | Huge group of stars | Our galaxy is the Milky Way.
+SATURN | Planet famous for its rings | Saturn is less dense than water.
+CLIMATE | Weather pattern of a place over many years | Kerala has a hot, humid climate.

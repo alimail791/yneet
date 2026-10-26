@@ -33,3 +33,61 @@ RETINA | Light-sensitive screen in the eye | The image formed on the retina is u
 VOLT | SI unit of potential difference | The volt is named after Alessandro Volta, who made the first battery.
 FUSE | Safety device in a circuit | A fuse wire melts if too much current flows.
 MAGNET | Has a north and a south pole | Magnetic field lines go from north to south outside the magnet.
+NUCLEUS | Control centre of the cell | The nucleus contains chromosomes made of DNA.
+GENE | Unit of heredity | Genes are segments of DNA on chromosomes.
+XYLEM | Tissue that carries water in plants | Xylem has tracheids and vessels.
+STOMATA | Pores on leaves for gas exchange | Guard cells open and close stomata.
+CAMBIUM | Lateral meristem that thickens the stem | Cambium adds girth to trees.
+AXON | Long fibre of a neuron | The axon carries impulses away from the cell body.
+CORNEA | Clear front part of the eye | Most refraction of light happens at the cornea.
+PUPIL | Opening in the iris | The pupil gets smaller in bright light.
+IRIS | Coloured part of the eye | The iris controls the size of the pupil.
+AUXIN | Plant hormone for growth towards light | Auxin collects on the shaded side of a shoot.
+ZYGOTE | Fertilised egg | The zygote divides to form an embryo.
+EMBRYO | Early stage of a developing organism | In plants the embryo is inside the seed.
+SPORE | Tiny reproductive body of fungi | Rhizopus spreads by spores.
+HYDRA | Animal that reproduces by budding | Hydra also shows regeneration.
+GENUS | Group of related species | Homo is the genus of humans.
+MONERA | Kingdom of bacteria | Monera have no nucleus.
+FUNGI | Kingdom with chitin cell walls | Yeast and mushrooms are fungi.
+PRAWN | Shellfish grown in aquaculture | Prawns are farmed in coastal ponds.
+HYBRID | Offspring of two different varieties | Hybrid seeds give better yields.
+MANURE | Organic fertilizer | Manure adds humus to the soil.
+BIOGAS | Fuel gas made from dung | Biogas is mostly methane.
+METHANE | Main gas in biogas and CNG | Methane is the simplest alkane, CH4.
+ETHANOL | Alcohol in spirit | Ethanol is C2H5OH.
+BENZENE | Ring compound with six carbon atoms | Benzene is C6H6.
+PROPANE | Alkane with three carbon atoms | Propane is C3H8.
+SOAP | Cleans by forming micelles | Soap does not lather well in hard water.
+GYPSUM | Heated to make plaster of Paris | Gypsum is CaSO4·2H2O.
+BRASS | Alloy of copper and zinc | Brass is used in taps and musical instruments.
+BRONZE | Alloy of copper and tin | Bronze statues last for centuries.
+SOLDER | Alloy of lead and tin | Solder joins electric wires.
+ANODE | Positive electrode | Oxidation happens at the anode.
+CATHODE | Negative electrode | Metals are deposited at the cathode.
+REDOX | Reaction with oxidation and reduction | Rusting is a redox reaction.
+MOLE | Amount with 6.022 × 10^23 particles | The mass of one mole is the molar mass.
+CATION | Positive ion | Na+ is a cation.
+ANION | Negative ion | Cl− is an anion.
+NEON | Noble gas used in glowing signs | Neon has a full outer shell.
+GALLIUM | Mendeleev's eka-aluminium | Gallium melts in your hand.
+PERIOD | Horizontal row of the periodic table | There are seven periods.
+GROUP | Vertical column of the periodic table | There are 18 groups.
+NEWTON | SI unit of force | 1 N = 1 kg m/s².
+PASCAL | SI unit of pressure | 1 Pa = 1 N/m².
+ECHO | Reflected sound | An echo needs at least 17 m distance.
+SONAR | Uses ultrasound to find sea depth | Ships use SONAR.
+HERTZ | Unit of frequency | 1 Hz is one vibration per second.
+AMPERE | SI unit of electric current | 1 A = 1 C/s.
+CHARGE | Property measured in coulombs | Like charges repel.
+MYOPIA | Short-sightedness | Corrected by a concave lens.
+LENS | Transparent piece that refracts light | A convex lens converges light.
+FOCUS | Point where rays meet after a lens | The focal length is the distance to the focus.
+MOTOR | Turns electrical energy into motion | A motor uses Fleming's left-hand rule.
+DYNAMO | Generator of electric current | Turns motion into electricity.
+SOLAR | Energy from the Sun | Solar cells are made of silicon.
+TIDAL | Energy from the rise and fall of the sea | Tidal energy needs dams across narrow seas.
+FISSION | Splitting of a heavy nucleus | Nuclear power plants use fission of uranium.
+PEPSIN | Enzyme in the stomach that digests protein | Pepsin works in acidic conditions.
+ALKANE | Saturated hydrocarbon | Alkanes have only single bonds.
+KIDNEY | Organ that filters blood to make urine | Each kidney has about a million nephrons.
