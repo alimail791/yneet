@@ -31,3 +31,62 @@ Phy | Light — Reflection and Refraction | Refractive index; Mirror formula; Co
 Phy | The Human Eye and the Colourful World | Power of accommodation; Myopia and hypermetropia; Dispersion; Scattering of light; The human eye
 Phy | Electricity | Resistivity; Ohm's law; Series and parallel; Heating effect; Electric current
 Phy | Magnetic Effects of Electric Current | Fleming's left-hand rule; Solenoid; Electric motor; Magnetic field lines; Electromagnetism
+Bio | The Fundamental Unit of Life | Robert Hooke and cork; Plasmolysis; Endoplasmic reticulum; Mitochondria make ATP; Cells and organelles
+Bio | Tissues | Sclerenchyma; Areolar tissue; Striated muscle; Meristem at the tips; Groups of similar cells
+Bio | Diversity in Living Organisms | Binomial nomenclature; Notochord; Pteridophytes; Five kingdoms; Classification of life
+Bio | Why Do We Fall Ill | Acute and chronic diseases; Antibiotics and bacteria; Mosquito spreads malaria; Vaccination; Health and disease
+Bio | Why Do We Fall Ill | HIV and AIDS; Tuberculosis through air; Immunity; Clean water and sanitation; Infectious diseases
+Bio | Natural Resources | Nitrogen fixation; Ozone absorbs UV rays; Greenhouse effect; Soil formation; Air, water and soil
+Bio | Natural Resources | Biogeochemical cycles; Acid rain; Soil erosion; Carbon dioxide in air; Biosphere
+Bio | Improvement in Food Resources | Composite fish culture; Apiculture; Intercropping; Broilers and layers; Better crops and animals
+Bio | Improvement in Food Resources | Green manure; Hybridisation; Crop rotation; Kharif and rabi; Food production
+Bio | Life Processes | Villi absorb food; Nephron filters blood; Stomata exchange gases; Double circulation; Nutrition, respiration and excretion
+Bio | Life Processes | Pepsin and HCl; Translocation in phloem; Anaerobic respiration in muscles; Haemoglobin; Processes of living
+Bio | Control and Coordination | Abscisic acid; Cerebellum controls balance; Synapse; Phototropism; Nervous system and hormones
+Bio | Control and Coordination | Adrenaline; Thyroxine and iodine; Medulla and reflexes; Touch-me-not leaves; Coordination
+Bio | How do Organisms Reproduce? | Fragmentation in Spirogyra; Vegetative propagation; Pollen tube; Binary fission; Reproduction
+Bio | How do Organisms Reproduce? | Seed and fruit formation; Placenta; Ovary and testis; Budding in yeast; Making new organisms
+Bio | Heredity and Evolution | Tall and dwarf pea plants; Dominant and recessive traits; XY chromosomes; Variation; Inheritance
+Bio | Heredity and Evolution | Analogous organs; Homologous organs; Fossils; Mendel; Passing traits on
+Bio | Our Environment | Ten percent law; Biological magnification; Ozone hole; Trophic levels; Food chains and webs
+Bio | Our Environment | Decomposers; CFCs; Biodegradable waste; Ecosystem; Surroundings and waste
+Bio | Management of Natural Resources | Khadins and kulhs; Chipko Andolan; Coliform bacteria; Large dams; Saving resources
+Bio | Management of Natural Resources | Amrita Devi Bishnoi; Ganga Action Plan; Three Rs; Fossil fuels; Sustainable use
+Chem | Matter in Our Surroundings | Latent heat; Sublimation of camphor; Evaporation causes cooling; Kelvin scale; States of matter
+Chem | Matter in Our Surroundings | Dry ice; Diffusion; Boiling point; Solid, liquid and gas; Matter
+Chem | Is Matter Around Us Pure | Tyndall effect; Chromatography; Colloids and suspensions; Saturated solution; Mixtures
+Chem | Is Matter Around Us Pure | Fractional distillation of air; Centrifugation; Elements and compounds; Alloys; Pure substances
+Chem | Atoms and Molecules | Law of constant proportions; Atomicity of ozone; Avogadro number; Molecular mass of water; Atoms
+Chem | Atoms and Molecules | Dalton's atomic theory; Polyatomic ions; Valency and formula; Mole concept; Tiny particles
+Chem | Structure of the Atom | Isobars; Rutherford's gold foil; Neutron by Chadwick; Electron shells; Inside the atom
+Chem | Structure of the Atom | Bohr's orbits; Isotopes of carbon; Atomic number and mass number; Proton and electron; Atomic structure
+Chem | Chemical Reactions and Equations | Rancidity; Redox; Double displacement; Balancing equations; Chemical change
+Chem | Chemical Reactions and Equations | Electrolysis of water; Quick lime and water; Iron nail in copper sulphate; Precipitate; Reactions
+Chem | Acids, Bases and Salts | Plaster of Paris; Bleaching powder; Baking soda; pH scale; Acids and bases
+Chem | Acids, Bases and Salts | Washing soda; Tooth decay at pH 5.5; Neutralisation; Indicators; Salts
+Chem | Metals and Non-metals | Aqua regia; Ionic bonds; Sodium kept in kerosene; Reactivity series; Metals
+Chem | Metals and Non-metals | Galvanisation; Thermite reaction; Roasting and calcination; Alloys; Corrosion
+Chem | Carbon and Its Compounds | Catenation; Homologous series; Saponification; Ethanoic acid; Carbon
+Chem | Carbon and Its Compounds | Micelles; Esters smell sweet; Covalent bonds; Alkanes and alkenes; Organic compounds
+Chem | Periodic Classification of Elements | Döbereiner's triads; Newlands' octaves; Eka-aluminium; Modern periodic table; Arranging elements
+Chem | Periodic Classification of Elements | Atomic size in a period; Metallic character down a group; Noble gases in group 18; Moseley; Groups and periods
+Phy | Motion | Uniform circular motion; Area under velocity-time graph; Displacement; Acceleration; Distance and speed
+Phy | Motion | Equations of motion; Slope of distance-time graph; Retardation; Velocity; Moving objects
+Phy | Force and Laws of Motion | Recoil of a gun; Conservation of momentum; Inertia; F = ma; Newton's laws
+Phy | Force and Laws of Motion | Seat belts; Balanced and unbalanced forces; Momentum; Action and reaction; Force
+Phy | Gravitation | Buoyancy; Archimedes' principle; Relative density; Free fall; Universal law of gravitation
+Phy | Gravitation | Weight on the Moon; Value of g; Thrust and pressure; Kepler's laws; Gravity
+Phy | Work and Energy | Commercial unit kWh; Power in watts; Work done is zero; Kinetic and potential energy; Energy
+Phy | Work and Energy | Law of conservation of energy; mgh; Half mv squared; Joule; Work
+Phy | Sound | SONAR; Ultrasound; Echo; Longitudinal waves; Sound waves
+Phy | Sound | Reverberation; Infrasound; Speed of sound in solids; Pitch and frequency; Hearing sounds
+Phy | Light — Reflection and Refraction | Power of a lens; Refractive index; Mirror formula; Concave and convex mirrors; Light
+Phy | Light — Reflection and Refraction | Snell's law; Magnification; Convex lens images; Bending of light; Mirrors and lenses
+Phy | The Human Eye and the Colourful World | Twinkling of stars; Scattering and blue sky; Dispersion by a prism; Myopia and hypermetropia; Human eye
+Phy | The Human Eye and the Colourful World | Advanced sunrise; Red danger signals; Power of accommodation; Rainbow; Vision and colour
+Phy | Electricity | Resistivity; Resistors in parallel; Joule's law of heating; Ohm's law; Electric current
+Phy | Electricity | Electric power P = VI; Voltmeter and ammeter; Potential difference; Coulomb; Circuits
+Phy | Magnetic Effects of Electric Current | Fleming's left-hand rule; Solenoid; Earth wire; Right-hand thumb rule; Magnetism and current
+Phy | Magnetic Effects of Electric Current | Overloading and short circuit; Electric motor; Field lines around a wire; MCB; Electromagnets
+Phy | Sources of Energy | Nuclear fission; Geothermal energy; Biogas plant; Solar cells; Energy sources
+Phy | Sources of Energy | Tidal energy; Wind farms; Hydroelectric dams; Charcoal and calorific value; Renewable energy

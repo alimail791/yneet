@@ -31,3 +31,61 @@ Electric motor | Current flows in coil > Force on coil in field > Coil rotates >
 Rainbow formation | Sunlight enters raindrop > Refraction > Dispersion > Internal reflection > Rainbow seen
 Colours of the spectrum | Violet > Indigo > Blue > Green > Yellow > Orange > Red
 Hydroelectric power | Water stored in dam > Falls through pipes > Turns turbine > Generator > Electricity
+Photosynthesis steps | Chlorophyll absorbs light > Water splits > Carbon dioxide reduced > Glucose formed
+Anaerobic respiration in yeast | Glucose > Pyruvate > Ethanol + carbon dioxide > Small energy release
+Respiration in muscles (no oxygen) | Glucose > Pyruvate > Lactic acid > Muscle cramps
+Food in the human gut | Mouth > Oesophagus > Stomach > Small intestine > Large intestine > Anus
+Protein digestion | Stomach: pepsin > Small intestine: trypsin > Peptides > Amino acids > Absorbed by villi
+Water in a plant | Root hair > Root xylem > Stem xylem > Leaf > Stomata
+Food transport in a plant | Leaf makes sugar > Phloem loading > Moves in sieve tubes > Reaches roots and fruits
+Path of urine | Kidney > Ureter > Urinary bladder > Urethra
+Double circulation | Right atrium > Right ventricle > Lungs > Left atrium > Left ventricle > Body
+Blood clotting | Injury > Platelets gather > Clot forms > Bleeding stops
+Phototropism | Light from one side > Auxin moves to the shade > Shade side grows faster > Shoot bends to light
+Hormone feedback | Blood sugar rises > Pancreas releases insulin > Cells take up sugar > Sugar level falls
+Pollination to fruit | Pollen on stigma > Pollen tube grows > Fertilisation in ovule > Ovary becomes fruit
+Budding in yeast | Bud forms on the cell > Nucleus divides > Bud grows > Bud separates
+Binary fission in Amoeba | Amoeba grows > Nucleus divides > Cytoplasm divides > Two daughter cells
+Spore reproduction in Rhizopus | Sporangia form > Spores released > Land on moist bread > New hyphae grow
+Mendel's monohybrid cross | Tall × dwarf > F1 all tall > Self-pollinate F1 > F2: 3 tall to 1 dwarf
+Sex determination | Mother gives X > Father gives X or Y > XX: girl > XY: boy
+Fossil formation | Organism dies > Buried in mud > Hard parts remain > Turns to rock > Fossil found
+Food chain energy | Sun > Grass > Grasshopper > Frog > Snake > Eagle
+Biological magnification | Pesticide in water > Plankton > Small fish > Big fish > Fish-eating birds
+Nitrogen cycle | Nitrogen in air > Fixed by Rhizobium > Nitrates in soil > Plants make proteins > Decay returns nitrogen
+Carbon cycle | Carbon dioxide in air > Photosynthesis > Plants and animals > Respiration and burning > Back to air
+Ozone depletion | CFCs released > Rise to stratosphere > Break ozone > More UV reaches Earth
+Classification of humans | Animalia > Chordata > Mammalia > Primates > Hominidae > Homo > sapiens
+Plant kingdom (simple to complex) | Thallophyta > Bryophyta > Pteridophyta > Gymnosperms > Angiosperms
+Vertebrates in order of evolution | Fish > Amphibians > Reptiles > Birds > Mammals
+Cell structure inside out | Nucleus > Cytoplasm > Cell membrane > Cell wall
+Protein making in a cell | DNA in nucleus > Message to ribosome > Ribosome links amino acids > Protein to Golgi
+Disease spread by mosquito | Mosquito bites infected person > Germ multiplies in mosquito > Bites healthy person > Person falls ill
+Vaccination works | Vaccine given > Body makes antibodies > Memory cells form > Real germ is fought quickly
+Separating a dye mixture | Spot ink on paper > Dip in water > Water rises > Dyes separate into bands
+Fractional distillation of air | Filter and cool air > Compress and liquefy > Warm slowly > Nitrogen boils off > Oxygen collected
+Growing crystals | Make a hot saturated solution > Filter > Cool slowly > Crystals form
+Balancing an equation | Write the word equation > Write formulae > Count atoms > Add coefficients > Check both sides
+Electrolysis of water | Water with a little acid > Pass current > Hydrogen at cathode > Oxygen at anode
+Making plaster of Paris | Gypsum > Heat at 373 K > Loses water > Plaster of Paris
+Plaster of Paris setting | Plaster of Paris > Mix with water > Gypsum forms > Hard solid mass
+Making baking soda (Solvay) | Brine > Add ammonia > Pass carbon dioxide > Sodium hydrogencarbonate forms
+Making bleaching powder | Electrolyse brine > Chlorine gas > Pass over dry slaked lime > Bleaching powder
+Extracting a metal low in reactivity | Sulphide ore > Roast in air > Metal oxide > Heat further > Pure metal
+Electrolytic refining of copper | Impure copper as anode > Pure copper as cathode > Copper sulphate solution > Pure copper deposits
+Corrosion of iron | Iron > Oxygen and water > Hydrated iron oxide > Flaky brown rust
+Ethanol to ethanoic acid | Ethanol > Add alkaline KMnO4 > Oxidation > Ethanoic acid
+Making an ester | Ethanoic acid > Add ethanol > Few drops of acid > Warm > Sweet-smelling ester
+How soap cleans | Soap forms micelles > Tail grabs oil > Head faces water > Rinse away dirt
+Periodic table history | Döbereiner triads > Newlands octaves > Mendeleev's table > Modern periodic table
+Group 1 (top to bottom) | Lithium > Sodium > Potassium > Rubidium > Caesium
+Halogens (top to bottom) | Fluorine > Chlorine > Bromine > Iodine
+Period 2 (left to right) | Lithium > Beryllium > Boron > Carbon > Nitrogen > Oxygen > Fluorine
+Free fall | Object released > Gravity pulls down > Speeds up by 9.8 m/s each second > Hits the ground
+Buoyancy test | Put object in water > Compare densities > Less dense: floats > More dense: sinks
+Energy at a dam | Water stored high > Falls down > Spins turbine > Generator > Electricity
+Echo depth finding | Ship sends ultrasound > Wave hits seabed > Echo returns > Time measured > Depth calculated
+Image by a convex lens (object far) | Object beyond 2F > Rays pass through the lens > Meet beyond F > Real, small, inverted image
+Myopia correction | Image forms before retina > Use a concave lens > Rays diverge a little > Image on retina
+Blue sky | Sunlight enters atmosphere > Hits tiny air molecules > Blue light scatters most > Sky looks blue
+Fuse protects a circuit | Too much current > Fuse wire heats up > Wire melts > Circuit breaks

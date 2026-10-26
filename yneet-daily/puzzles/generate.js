@@ -198,8 +198,21 @@ const TRACKS = {
     regions: { A: 'Mercury', B: 'Venus', C: 'Earth', D: 'Mars', E: 'Jupiter', F: 'Saturn', G: 'Uranus', H: 'Neptune' } },
   foundation: { seed: 9101, sizes: { zip: [6, 5, 5, 6, 6, 6, 6], queens: [7, 6, 6, 6, 7, 7, 7] }, regions: REGION_NAMES },
 };
+// Days already published keep their exact puzzles (players may be mid-game and
+// results are checked against them). Only dates from FREEZE_BEFORE on change.
+const FREEZE_BEFORE = process.env.FREEZE_BEFORE || '2026-10-28';
+// Daily 5 for the class tracks: all MCQs merged into one sequence, subjects spread
+// evenly in proportion to how many questions each has; day d takes the next 5.
+function mergedMcqs(mcqs) {
+  const tagged = [];
+  for (const [subj, list] of Object.entries(mcqs)) list.forEach((q, i) => tagged.push({ subj, q, key: (i + 0.5) / list.length }));
+  return tagged.sort((a, b) => a.key - b.key || a.subj.localeCompare(b.subj));
+}
 for (const [track, cfg] of Object.entries(TRACKS)) {
   const T = yearPools(path.join(__dirname, 'tracks', track), false);
+  const SEQ = mergedMcqs(T.mcqs);
+  const outFile = path.join(__dirname, `puzzles-${track}.json`);
+  const prev = fs.existsSync(outFile) ? JSON.parse(fs.readFileSync(outFile, 'utf8')) : {};
   const tout = {};
   for (let d = 0; d < DAYS; d++) {
     const date = addDays(START, d);
@@ -221,10 +234,11 @@ for (const [track, cfg] of Object.entries(TRACKS)) {
       pinpoint: { answer: pp.chap, subject: pp.subj, clues: pp.clues, options: opts },
       zip: { title: zp[0], labels: zp[1], ...makeZip(zp[1], cfg.sizes.zip[dow], r) },
       queens: { ...qb, names: Object.fromEntries([...new Set(qb.regions.join(''))].sort().map(k => [k, cfg.regions[k]])) },
-      daily5: [mcq(T.mcqs.Bio, d * 3, 'Bio'), mcq(T.mcqs.Bio, d * 3 + 1, 'Bio'), mcq(T.mcqs.Chem, d, 'Chem'), mcq(T.mcqs.Bio, d * 3 + 2, 'Bio'), mcq(T.mcqs.Phy, d, 'Phy')]
+      daily5: [0, 1, 2, 3, 4].map(k => { const it = SEQ[(d * 5 + k) % SEQ.length]; return mcq([it.q], 0, it.subj); })
     };
+    if (date < FREEZE_BEFORE && prev[date]) tout[date] = prev[date];
   }
-  fs.writeFileSync(path.join(__dirname, `puzzles-${track}.json`), JSON.stringify(tout, null, 1));
-  const days = { words: T.words.length, pinpoint: T.pins.length, zip: T.zips.length, bioMcqDays: Math.floor(T.mcqs.Bio.length / 3), chem: T.mcqs.Chem.length, phy: T.mcqs.Phy.length };
+  fs.writeFileSync(outFile, JSON.stringify(tout, null, 1));
+  const days = { words: T.words.length, pinpoint: T.pins.length, zip: T.zips.length, daily5: Math.floor(SEQ.length / 5) };
   console.log(`Wrote ${track}: ${DAYS} days (unique content for ${Math.min(...Object.values(days))} days, then it cycles) ${JSON.stringify(days)}`);
 }

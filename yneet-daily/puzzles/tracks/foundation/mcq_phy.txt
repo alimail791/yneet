@@ -52,3 +52,129 @@ The direction of force on a current in a magnetic field is given by: | Fleming's
 A coil of many turns of wire is a: | Solenoid | Fuse | Resistor | Battery | It acts like a bar magnet when current flows.
 An electric motor converts: | Electrical energy to mechanical energy | Mechanical to electrical | Heat to light | Sound to electricity | Fans and pumps use motors.
 Magnetic field lines never: | Cross each other | Form loops | Leave north poles | Exist outside magnets | Two field directions at one point is impossible.
+# Motion
+The total path length covered by an object is its | distance | displacement | velocity | acceleration | Distance has only magnitude.
+An athlete runs one full lap of a circular track of radius r. His displacement is | zero | 2πr | πr | 2r | He returns to the starting point.
+The slope of a distance–time graph gives | speed | acceleration | distance | displacement only | Steeper slope means higher speed.
+A car starts from rest and reaches 20 m/s in 5 s. Its acceleration is | 4 m/s² | 100 m/s² | 0.25 m/s² | 25 m/s² | a = (20 − 0) / 5 = 4 m/s².
+The area under a velocity–time graph gives | displacement | acceleration | speed | force | Area = velocity × time = displacement.
+A body moving in a circle at constant speed has | changing velocity | constant velocity | zero acceleration | no direction | Its direction keeps changing.
+The first equation of motion is | v = u + at | s = ut | v² = u + as | s = vt + a | It links final velocity, initial velocity and time.
+A train moving at 20 m/s stops in 10 s. Its retardation is | 2 m/s² | 200 m/s² | 0.5 m/s² | 10 m/s² | (0 − 20) / 10 = −2 m/s².
+A body starting from rest with acceleration 2 m/s² covers in 5 s | 25 m | 10 m | 50 m | 5 m | s = ½ × 2 × 5² = 25 m.
+The odometer of a car measures | distance travelled | speed | displacement | time | The speedometer shows speed.
+If the velocity–time graph is a horizontal line, the body has | uniform velocity | uniform acceleration | no motion | increasing speed | Acceleration is zero.
+Speed of 72 km/h in m/s is | 20 m/s | 72 m/s | 7.2 m/s | 2 m/s | 72 × 1000 / 3600 = 20 m/s.
+Displacement can be zero even when distance is | not zero | always zero | negative | infinite | A round trip has zero displacement.
+# Force and Laws of Motion
+The tendency of an object to resist a change in its state of rest or motion is | inertia | momentum | force | friction | Inertia depends on mass.
+Momentum is the product of | mass and velocity | mass and acceleration | force and time | mass and distance | p = mv.
+The SI unit of force is | newton | joule | watt | pascal | 1 N = 1 kg m/s².
+When a gun is fired, it recoils. This is explained by Newton's | third law | first law | second law | law of gravitation | Action and reaction are equal and opposite.
+A force of 10 N acts on a 2 kg mass. The acceleration produced is | 5 m/s² | 20 m/s² | 12 m/s² | 0.2 m/s² | a = F/m = 10/2 = 5 m/s².
+Passengers fall forward when a bus stops suddenly because of | inertia of motion | inertia of rest | friction | gravity | The body tends to keep moving.
+The SI unit of momentum is | kg m/s | N/m | kg m/s² | J | Momentum = mass × velocity.
+A 1 kg ball moving at 10 m/s has momentum | 10 kg m/s | 1 kg m/s | 100 kg m/s | 0.1 kg m/s | p = 1 × 10.
+A cricketer pulls his hands back while catching a ball to | increase the time and reduce the force | increase the force | stop the ball faster | increase momentum | Force = change in momentum / time.
+When balanced forces act on a body, its | velocity does not change | velocity changes | shape always changes | mass changes | Net force is zero.
+The total momentum before and after a collision stays the same. This is | conservation of momentum | Newton's first law | Ohm's law | Archimedes' principle | It follows from the third law.
+Rocket propulsion is based on | Newton's third law | Newton's first law | Hooke's law | Pascal's law | Gases pushed down push the rocket up.
+# Gravitation
+The value of g on the surface of the Earth is about | 9.8 m/s² | 6.67 m/s² | 98 m/s² | 1.6 m/s² | g is the acceleration due to gravity.
+The weight of an object on the Moon is about | one-sixth of its weight on Earth | six times its weight on Earth | the same as on Earth | zero | The Moon's gravity is weaker.
+The SI unit of pressure is | pascal | newton | joule | watt | 1 Pa = 1 N/m².
+An object floats in water if its density is | less than that of water | more than that of water | equal to iron | always zero | Less dense objects float.
+The upward force exerted by a liquid on an object immersed in it is | buoyant force | gravity | friction | tension | Archimedes' principle explains buoyancy.
+The universal gravitational constant G is | 6.67 × 10⁻¹¹ N m²/kg² | 9.8 m/s² | 6.02 × 10²³ | 3 × 10⁸ m/s | G is the same everywhere.
+If the distance between two masses is doubled, the gravitational force becomes | one-fourth | half | double | four times | F is proportional to 1/r².
+Mass of a body | stays the same everywhere | changes on the Moon | is zero in space | depends on g | Weight changes with g; mass does not.
+Relative density has | no unit | kg/m³ as unit | N as unit | m/s as unit | It is a ratio of two densities.
+Camels can walk on sand easily because their broad feet | reduce pressure on the sand | increase pressure | are heavy | have claws | Larger area means less pressure.
+A body weighs less in water than in air because of | buoyant force | gravity increasing | friction | air pressure | Water pushes up on it.
+# Work and Energy
+Work done is zero when the displacement is | perpendicular to the force | along the force | opposite to the force | very large | Work = F × s × cos θ, and cos 90° = 0.
+The SI unit of power is | watt | joule | newton | pascal | 1 W = 1 J/s.
+The kinetic energy of an object of mass m moving with velocity v is | ½ mv² | mv | mgh | mv² | KE = ½ mv².
+A 2 kg object is lifted to a height of 5 m. Its potential energy is (g = 10 m/s²) | 100 J | 10 J | 50 J | 7 J | PE = mgh = 2 × 10 × 5 = 100 J.
+1 kilowatt hour is equal to | 3.6 × 10⁶ J | 1000 J | 3600 J | 3.6 × 10³ J | 1 kWh = 1000 W × 3600 s.
+A man carrying a load on his head walking on a level road does | no work against gravity | maximum work | negative work only | infinite work | The force is upward and displacement is horizontal.
+1 joule is the work done when a force of 1 N moves a body | 1 m in the direction of the force | 1 cm | 10 m | 1 km | W = F × s.
+A bulb of 100 W used for 10 hours consumes | 1 kWh | 10 kWh | 100 kWh | 0.1 kWh | 100 × 10 = 1000 Wh = 1 kWh.
+If the speed of a body is doubled, its kinetic energy becomes | four times | double | half | the same | KE is proportional to v².
+A stretched rubber band has | potential energy | kinetic energy | no energy | sound energy | Energy is stored by changing its shape.
+When a ball falls freely, its | potential energy changes to kinetic energy | kinetic energy changes to potential energy | total energy increases | mass decreases | Total mechanical energy stays constant.
+# Sound
+Sound waves in air are | longitudinal waves | transverse waves | electromagnetic waves | light waves | The particles vibrate along the direction of the wave.
+The speed of sound is the highest in | solids | liquids | gases | vacuum | Particles are closest in solids.
+An echo is heard clearly if the reflecting surface is at least about | 17 m away | 1 m away | 170 m away | 2 m away | Sound must return after at least 0.1 s.
+Sound of frequency above 20,000 Hz is called | ultrasound | infrasound | audible sound | noise | Bats and dolphins use ultrasound.
+SONAR is used to | find the depth of the sea and locate underwater objects | measure temperature | study stars | measure rainfall | It sends ultrasound and listens for echoes.
+The frequency of a wave is measured in | hertz | metres | seconds | decibels | 1 Hz = one oscillation per second.
+The persistence of sound due to repeated reflections in a hall is | reverberation | echo | refraction | resonance | Curtains and soft boards reduce it.
+The pitch of a sound depends on its | frequency | amplitude | speed | wavelength only | Higher frequency means higher pitch.
+Speed of sound in air at 22 °C is about | 344 m/s | 3 × 10⁸ m/s | 1500 m/s | 5000 m/s | Sound is faster in water and steel.
+Ultrasound is used in hospitals to | see images of organs | measure temperature | kill all germs | measure weight | This is ultrasonography.
+The part of a wave where particles are crowded together is a | compression | rarefaction | crest only | trough only | Rarefactions are low-pressure regions.
+# Light — Reflection and Refraction
+The focal length of a plane mirror is | infinity | zero | 25 cm | 1 m | Parallel rays stay parallel after reflection.
+A concave mirror of focal length 15 cm has a radius of curvature of | 30 cm | 15 cm | 7.5 cm | 45 cm | R = 2f.
+The power of a lens of focal length 0.5 m is | +2 D | +0.5 D | −2 D | +5 D | P = 1/f (in metres) = 1/0.5 = 2 D for a convex lens.
+The refractive index of a medium is the ratio of | the speed of light in vacuum to the speed of light in the medium | the speed in the medium to the speed in vacuum | angle of reflection to angle of incidence | focal length to radius | n = c/v.
+Light bends towards the normal when it goes from | a rarer to a denser medium | a denser to a rarer medium | air to vacuum | glass to air | It slows down in the denser medium.
+The mirror used by dentists is | concave | convex | plane | cylindrical | It gives an enlarged image of teeth.
+A convex mirror always forms an image that is | virtual, erect and smaller | real and inverted | enlarged | at infinity | It gives a wide field of view.
+The refractive index of glass is about | 1.5 | 1.0 | 2.42 | 1.33 | Diamond is 2.42 and water 1.33.
+A convex lens forms a real image of the same size when the object is at | 2F | F | beyond 2F | between F and the lens | The image also forms at 2F on the other side.
+The unit of power of a lens is | dioptre | metre | watt | joule | 1 D = 1 m⁻¹.
+A pencil in water looks bent because of | refraction | reflection | dispersion | scattering | Light bends at the water-air boundary.
+# The Human Eye and the Colourful World
+The ability of the eye to change its focal length is called | power of accommodation | dispersion | refraction | persistence | Ciliary muscles change the lens shape.
+Myopia (short-sightedness) is corrected using a | concave lens | convex lens | plane glass | prism | A diverging lens moves the image back onto the retina.
+The sky appears blue because | blue light is scattered more by air molecules | blue light is reflected by the oceans | the Sun gives only blue light | air is blue in colour | Shorter wavelengths scatter more.
+Stars twinkle because of | atmospheric refraction of starlight | reflection from clouds | the stars switching on and off | dispersion by the Moon | Changing air layers bend starlight slightly.
+The Sun appears reddish at sunrise and sunset because | light travels a longer path through the atmosphere and blue light is scattered away | the Sun is cooler then | clouds reflect red light | red light is absorbed | Mostly red light reaches our eyes.
+Hypermetropia (far-sightedness) is corrected using a | convex lens | concave lens | plane glass | prism | A converging lens helps focus near objects.
+Presbyopia is | loss of the eye's power of accommodation with age | short-sightedness in children | colour blindness | a disease of the retina | Bifocal lenses are often used.
+The least distance of distinct vision for a normal eye is | 25 cm | 2.5 cm | 1 m | infinity | The far point is at infinity.
+Danger signal lights are red because red light | is scattered the least | is scattered the most | is the brightest colour | travels faster | Red can be seen from far away in fog.
+The colour that bends the most through a prism is | violet | red | yellow | green | Violet has the shortest wavelength.
+# Electricity
+The SI unit of electric current is | ampere | volt | ohm | coulomb | 1 A = 1 C/s.
+The resistance of a conductor depends on its | length, area of cross-section and material | colour only | shape only | weight only | R = ρl/A.
+Three resistors of 2 Ω each are connected in series. The total resistance is | 6 Ω | 2/3 Ω | 2 Ω | 8 Ω | In series, R = R₁ + R₂ + R₃.
+Electric power is given by | P = VI | P = V/I | P = I/V | P = V + I | Power = voltage × current.
+A device used to measure potential difference is | a voltmeter | an ammeter | a galvanometer only | a rheostat | A voltmeter is connected in parallel.
+Resistance of a wire doubles when its length is | doubled | halved | the same | squared | R is proportional to length.
+Two resistors of 6 Ω each in parallel give | 3 Ω | 12 Ω | 6 Ω | 36 Ω | 1/R = 1/6 + 1/6.
+The heating effect of current is used in | electric iron and toaster | electric motor | compass | generator | H = I²Rt.
+1 volt is equal to | 1 joule per coulomb | 1 coulomb per second | 1 ohm per ampere | 1 watt per second | V = W/Q.
+Filament of a bulb is made of tungsten because it | has a very high melting point | is cheap | is a poor conductor | is magnetic | Tungsten melts at about 3380 °C.
+An ammeter is connected in | series | parallel | across the battery | anywhere | It measures current through the circuit.
+# Magnetic Effects of Electric Current
+Magnetic field lines around a straight current-carrying wire are | concentric circles | straight lines | parallel to the wire | absent | Their direction is given by the right-hand thumb rule.
+The direction of force on a current-carrying conductor in a magnetic field is given by | Fleming's left-hand rule | Fleming's right-hand rule | the right-hand thumb rule | Ohm's law | Used in electric motors.
+An electric motor converts | electrical energy into mechanical energy | mechanical energy into electrical energy | heat into light | light into electricity | Motors are used in fans and mixers.
+A solenoid carrying current behaves like a | bar magnet | prism | lens | resistor only | The field inside is uniform.
+In household circuits, the earth wire has insulation of | green colour | red colour | black colour | blue colour | Red is live and black is neutral.
+The potential difference between the live and neutral wire in Indian homes is | 220 V | 110 V | 12 V | 440 V | The frequency is 50 Hz.
+A compass needle is deflected near a current-carrying wire because | current produces a magnetic field | the wire is hot | the wire is charged | of gravity | Oersted showed this.
+The strength of an electromagnet increases with | more turns of wire and more current | fewer turns | less current | a wooden core | A soft iron core also helps.
+Short circuit happens when | the live and neutral wires touch | the fuse is good | the switch is off | current is very low | Current rises suddenly.
+An appliance with a metal body is connected to the earth wire to | protect us from electric shock | save electricity | make it work faster | reduce its weight | Leaked current flows to the ground.
+Magnetic field lines | never cross each other | always cross | form open lines only | exist only inside the magnet | They go from north to south outside a magnet.
+# Sources of Energy
+A good fuel should have | a high calorific value | a low calorific value | lots of smoke | a very low ignition temperature only | It should give lots of heat when burnt.
+Biogas mainly contains | methane | oxygen | hydrogen sulphide only | nitrogen | Up to 75% of biogas is methane.
+Solar cells are made from | silicon | copper | iron | zinc | Silicon converts sunlight into electricity.
+Which of these is a renewable source of energy? | Wind | Coal | Petroleum | Natural gas | Wind will not run out.
+Hydroelectric power plants convert the | potential energy of stored water into electricity | heat of coal into electricity | sunlight into electricity | nuclear energy into heat | Falling water turns turbines.
+Energy from the heat inside the Earth is | geothermal energy | tidal energy | solar energy | wind energy | Hot springs show geothermal energy.
+In nuclear power plants, energy is produced by | nuclear fission | burning coal | photosynthesis | combustion of methane | Heavy atoms like uranium are split.
+A disadvantage of wind energy is that | it needs a large area and steady wind speeds | it pollutes the air | it will run out | it produces smoke | Wind farms need open land and wind above about 15 km/h.
+Tidal energy is obtained from | the rise and fall of sea water | river currents | sunlight | heat inside the Earth | Dams are built across narrow openings to the sea.
+Charcoal is a better fuel than wood because | it burns without flames and gives more heat with less smoke | it is heavier | it is cheaper to make | it has more water | Charcoal has higher calorific value.
+A solar cooker is painted black inside because black | absorbs more heat | reflects heat | looks nice | stops light | A glass cover traps the heat.
+The main part of a wind power plant that turns is the | windmill blades | solar panel | boiler | reactor | Blades turn a generator.
+Nuclear power plants produce waste that is | radioactive and must be stored safely | harmless | biodegradable | a good fertilizer | Safe disposal is a big challenge.
+Ocean thermal energy uses the | temperature difference between surface and deep water | rise and fall of tides | waves only | salt in the sea | The difference should be at least 20 °C.
+Fossil fuels are called non-renewable because | they take millions of years to form | they are cheap | they burn easily | they are found everywhere | Once used, they cannot be replaced soon.

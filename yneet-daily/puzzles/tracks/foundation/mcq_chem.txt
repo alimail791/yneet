@@ -47,3 +47,123 @@ The functional group of alcohols is: | –OH | –COOH | –CHO | –Cl | Ethano
 Vinegar is a dilute solution of: | Ethanoic acid | Ethanol | Methane | Ethene | Ethanoic acid is also called acetic acid.
 Soap is made by heating fat with sodium hydroxide. This is: | Saponification | Esterification | Hydrogenation | Combustion | Soap is a sodium salt of a fatty acid.
 The first member of the alkane series is: | Methane | Ethane | Propane | Butane | Methane is CH4.
+# Matter in Our Surroundings
+The change of a solid directly into a gas without becoming liquid is | sublimation | evaporation | condensation | fusion | Camphor and naphthalene sublime.
+The melting point of ice is | 273 K | 373 K | 0 K | 100 K | 0 °C = 273 K.
+Evaporation causes | cooling | heating | no change in temperature | freezing always | Particles take heat from the surroundings to escape.
+The rate of evaporation increases with | an increase in surface area | an increase in humidity | a decrease in temperature | a decrease in wind speed | A larger surface lets more particles escape.
+Dry ice is solid | carbon dioxide | water | nitrogen | oxygen | It changes directly into gas.
+The SI unit of temperature is | kelvin | degree Celsius | degree Fahrenheit | joule | 0 °C = 273.15 K.
+The boiling point of water at sea level is | 373 K | 273 K | 100 K | 473 K | 100 °C = 373 K.
+The heat needed to change 1 kg of a solid into liquid at its melting point is | latent heat of fusion | latent heat of vaporisation | specific heat | calorific value | The temperature stays the same while melting.
+Steam at 100 °C gives a worse burn than water at 100 °C because | steam has extra latent heat | steam is lighter | water is hotter | steam is wet | Steam releases latent heat on condensing.
+Gases can be compressed easily because | their particles are far apart | their particles are close | they have fixed shape | they are heavy | Gases are used compressed in cylinders.
+Mixing of particles of two substances on their own is | diffusion | evaporation | condensation | sublimation | The smell of perfume spreads by diffusion.
+Wet clothes dry faster on a windy day because | wind removes water vapour and speeds evaporation | wind adds water | wind cools the clothes | wind stops evaporation | Moving air carries vapour away.
+Humidity slows evaporation because | air already holds a lot of water vapour | air is hotter | air is lighter | there is no air | Clothes dry slowly in the monsoon.
+# Is Matter Around Us Pure
+A solution in which no more solute can be dissolved at a given temperature is | saturated | unsaturated | dilute | colloid | Extra solute stays undissolved.
+Milk is an example of a | colloid | true solution | suspension | compound | Colloid particles do not settle down.
+The scattering of a beam of light by colloid particles is called | the Tyndall effect | dispersion | reflection | refraction | Sunlight in a forest shows this effect.
+Pure substances that cannot be broken into simpler substances by chemical means are | elements | compounds | mixtures | solutions | For example, iron and oxygen.
+Different dyes in black ink can be separated by | chromatography | distillation | sublimation | filtration | Dyes move up the paper at different speeds.
+Brass is a | mixture (alloy) | compound | element | colloid only | An alloy cannot be separated by physical methods but has variable composition.
+Cream is separated from milk by | centrifugation | filtration | sublimation | chromatography | Spinning makes the heavier particles settle.
+Two miscible liquids with different boiling points are separated by | fractional distillation | separating funnel | sieving | sublimation | Gases of air are separated this way.
+Oil and water are separated using a | separating funnel | filter paper | magnet | sieve | The immiscible liquids form layers.
+Iron sulphide is a | compound | mixture | element | alloy | Iron and sulphur combine chemically to form it.
+A suspension is a | heterogeneous mixture whose particles settle down | true solution | pure substance | colloid that never settles | Chalk in water is a suspension.
+Fog is a colloid of | liquid dispersed in gas | gas in liquid | solid in gas | liquid in solid | Smoke is solid in gas.
+Concentration of a solution with 20 g salt in 100 g solution is | 20% by mass | 2% by mass | 200% by mass | 0.2% by mass | (20/100) × 100 = 20%.
+# Atoms and Molecules
+The law of conservation of mass states that mass is | neither created nor destroyed in a chemical reaction | always increased | always decreased | lost as heat | Total mass of reactants equals products.
+The molecular mass of water (H₂O) is | 18 u | 16 u | 10 u | 20 u | 2 × 1 + 16 = 18 u.
+One mole of any substance contains | 6.022 × 10²³ particles | 6.022 × 10²² particles | 1000 particles | 10²³ particles | This is the Avogadro number.
+The chemical formula of sodium chloride is | NaCl | NaCl₂ | Na₂Cl | SoCl | Na⁺ and Cl⁻ combine in a 1:1 ratio.
+The atomicity of ozone (O₃) is | 3 | 2 | 1 | 4 | Each ozone molecule has three oxygen atoms.
+The law of constant proportions was given by | Proust | Dalton | Lavoisier | Avogadro | Pure water always has hydrogen and oxygen in 1:8 by mass.
+The law of conservation of mass was given by | Lavoisier | Proust | Dalton | Thomson | Mass is neither created nor destroyed.
+The formula of calcium oxide is | CaO | CaO₂ | Ca₂O | CaOH | Calcium (2+) and oxide (2−) combine 1:1.
+The formula unit mass of sodium chloride is | 58.5 u | 23 u | 35.5 u | 46 u | 23 + 35.5 = 58.5 u.
+The number of moles in 36 g of water is | 2 | 1 | 18 | 36 | 36 / 18 = 2 moles.
+The symbol of sodium, Na, comes from its Latin name | Natrium | Sodium | Nitrum | Neon | Many symbols come from Latin names.
+The formula of aluminium sulphate is | Al₂(SO₄)₃ | AlSO₄ | Al(SO₄)₂ | Al₃SO₄ | Al is +3 and sulphate is −2, so cross valencies.
+The molar mass of carbon dioxide (CO₂) is | 44 g | 28 g | 32 g | 12 g | 12 + 2 × 16 = 44 g.
+# Structure of the Atom
+The electron was discovered by | J.J. Thomson | Rutherford | Chadwick | Bohr | He used cathode ray experiments.
+The neutron was discovered by | James Chadwick | J.J. Thomson | Rutherford | Goldstein | Neutrons have no charge.
+The maximum number of electrons in the second shell (L shell) is | 8 | 2 | 18 | 32 | Formula 2n² gives 2 × 2² = 8.
+Atoms of the same element with different mass numbers are called | isotopes | isobars | ions | molecules | For example, carbon-12 and carbon-14.
+The valency of an element with atomic number 12 (magnesium) is | 2 | 1 | 3 | 4 | Its configuration 2, 8, 2 loses 2 electrons.
+In Rutherford's experiment, most alpha particles | passed straight through the gold foil | bounced back | stuck to the foil | were absorbed | This showed the atom is mostly empty space.
+The atomic number of an element is the number of | protons | neutrons | protons + neutrons | shells | It defines the element.
+Atoms of different elements with the same mass number are | isobars | isotopes | ions | allotropes | Calcium-40 and argon-40 are isobars.
+The electronic configuration of sodium (atomic number 11) is | 2, 8, 1 | 2, 9 | 2, 8, 2 | 2, 1, 8 | Sodium has one valence electron.
+Canal rays (positive rays) were discovered by | E. Goldstein | Chadwick | Thomson | Bohr | They led to the discovery of the proton.
+An isotope used to treat goitre is | iodine-131 | carbon-12 | uranium-235 only | cobalt-59 | Radioactive iodine is used for thyroid problems.
+The mass of an electron is about | 1/2000 of a proton | equal to a proton | twice a proton | the same as a neutron | Electrons are very light.
+Chlorine has a valency of 1 because it | needs one electron to complete its octet | has one shell | has one proton | gives away seven electrons | 2, 8, 7 gains one electron.
+# Chemical Reactions and Equations
+When iron nails are placed in copper sulphate solution, the blue colour fades. This is a | displacement reaction | combination reaction | decomposition reaction | double displacement reaction | Iron displaces copper.
+Rancidity of food can be prevented by | storing in airtight containers or adding antioxidants | keeping it in sunlight | adding water | keeping it open | Oxidation of fats causes rancidity.
+CaO + H₂O → Ca(OH)₂ is a | combination reaction | decomposition reaction | displacement reaction | double displacement reaction | Two substances combine to form one.
+The reaction 2H₂O → 2H₂ + O₂ by passing electricity is | electrolytic decomposition | combination | displacement | neutralisation | Electricity breaks water down.
+In a redox reaction | one substance is oxidised and another is reduced | only oxidation happens | only reduction happens | no electrons move | Oxidation and reduction happen together.
+Silver chloride turns grey in sunlight. This is a | photochemical decomposition | combination reaction | displacement reaction | neutralisation | It is used in black and white photography.
+The reaction of lead nitrate and potassium iodide gives a yellow precipitate of | lead iodide | potassium nitrate | lead oxide | iodine | It is a double displacement reaction.
+Heating limestone gives quick lime and carbon dioxide. This is | thermal decomposition | combination | displacement | redox only | CaCO₃ → CaO + CO₂.
+Respiration is an | exothermic reaction | endothermic reaction | displacement reaction | photochemical reaction | It releases energy.
+Chips packets are filled with nitrogen gas to prevent | rancidity (oxidation) | melting | growth of plants | colour change | Nitrogen keeps oxygen away.
+Copper heated in air turns black because it forms | copper oxide | copper sulphate | copper carbonate | copper chloride | 2Cu + O₂ → 2CuO.
+# Acids, Bases and Salts
+The pH of a neutral solution is | 7 | 0 | 14 | 1 | pH below 7 is acidic and above 7 is basic.
+Bleaching powder is | calcium oxychloride (CaOCl₂) | sodium hydrogencarbonate | calcium sulphate | sodium carbonate | It is made by passing chlorine over dry slaked lime.
+Plaster of Paris is made by heating | gypsum | baking soda | washing soda | lime | Gypsum loses some water to form plaster of Paris.
+Washing soda is | sodium carbonate decahydrate | sodium hydrogencarbonate | sodium chloride | calcium carbonate | Its formula is Na₂CO₃·10H₂O.
+Tooth decay starts when the pH in the mouth falls below | 5.5 | 7 | 9 | 12 | Bacteria make acids from food left in the mouth.
+The gas evolved when zinc reacts with dilute hydrochloric acid is | hydrogen | oxygen | chlorine | carbon dioxide | It burns with a pop sound.
+Bases that dissolve in water are called | alkalis | salts | acids | oxides | NaOH and KOH are alkalis.
+Milk of magnesia is used to | treat acidity | clean teeth | bleach clothes | make glass | It neutralises extra stomach acid.
+The pH of our stomach juice is about | 1–2 | 7 | 10 | 14 | Hydrochloric acid makes it strongly acidic.
+Baking powder is a mixture of baking soda and | tartaric acid | citric acid only | washing soda | common salt | The acid reacts to release carbon dioxide.
+Common salt is used to make | caustic soda by the chlor-alkali process | sugar | glass only | cement | Electrolysis of brine gives NaOH, Cl₂ and H₂.
+Copper sulphate crystals are blue because they contain | water of crystallisation | copper only | sulphur | dye | Heating removes the water and they turn white.
+# Metals and Non-metals
+The most reactive metal among these is | potassium | iron | copper | gold | Potassium is near the top of the reactivity series.
+Ionic compounds have | high melting points | low melting points | no charge | weak forces of attraction | Strong forces hold their ions together.
+Metals like sodium are stored in | kerosene | water | open air | alcohol | They react violently with air and water.
+Aqua regia is a mixture of | concentrated hydrochloric acid and nitric acid in 3:1 | sulphuric and nitric acid in 1:1 | water and nitric acid | hydrochloric acid and water | It can dissolve gold.
+An alloy of copper and zinc is | brass | bronze | steel | solder | Bronze is copper and tin.
+The metal that is liquid at room temperature is | mercury | bromine | sodium | gallium | Bromine is a liquid non-metal.
+Which non-metal is a good conductor of electricity? | Graphite | Sulphur | Phosphorus | Iodine | Graphite has free electrons.
+The thermite reaction is used to | join railway tracks | make soap | refine copper | make glass | Aluminium reduces iron oxide with great heat.
+Metals low in the reactivity series, like gold, are found | in the free state | only as oxides | only as sulphides | only in the sea | Gold does not react easily.
+Calcination means heating an ore | strongly in limited air | in excess air | with water | with acid | Carbonate ores are calcined.
+The formation of a green coating on copper is called | corrosion | galvanisation | electroplating | calcination | Copper forms basic copper carbonate.
+# Carbon and Its Compounds
+Carbon forms a large number of compounds because of | catenation and tetravalency | its high density | its colour | its metallic nature | Carbon atoms link to each other in long chains.
+The functional group in ethanol is | –OH (alcohol) | –COOH | –CHO | –CO– | Ethanol is C₂H₅OH.
+The general formula of alkanes is | CₙH₂ₙ₊₂ | CₙH₂ₙ | CₙH₂ₙ₋₂ | CₙHₙ | Methane is CH₄.
+Ethanoic acid is commonly known as | acetic acid | formic acid | citric acid | lactic acid | Vinegar is a dilute solution of acetic acid.
+Soaps are not effective in hard water because | they form scum with calcium and magnesium ions | hard water is acidic | they dissolve too fast | they become hard | Detergents work in hard water.
+The number of covalent bonds in a methane molecule is | 4 | 1 | 2 | 6 | Carbon forms four single bonds with hydrogen.
+Diamond and graphite are | allotropes of carbon | isotopes of carbon | compounds | alloys | Both are pure carbon with different structures.
+Unsaturated hydrocarbons burn with a | yellow sooty flame | clean blue flame | no flame | green flame | Saturated ones burn with a blue flame.
+Adding hydrogen to vegetable oils using a nickel catalyst is | hydrogenation | saponification | esterification | combustion | It makes vegetable ghee.
+The reaction of an ester with sodium hydroxide to make soap is | saponification | esterification | hydrogenation | substitution | It is used in soap making.
+Detergents work in hard water because | they do not form scum with calcium and magnesium ions | they are acids | they are bases | they are fats | They are sulphonate or ammonium salts.
+# Periodic Classification of Elements
+Döbereiner arranged elements in groups of three called | triads | octaves | periods | groups | The middle element's mass was about the average of the other two.
+Newlands' law of octaves says that every | eighth element has properties similar to the first | second element is a metal | tenth element is a gas | element is different | Like the eighth note in music.
+Mendeleev arranged elements in order of increasing | atomic mass | atomic number | density | valency only | He left gaps for undiscovered elements.
+The modern periodic table is based on | atomic number | atomic mass | number of neutrons | density | Moseley showed atomic number is more basic.
+The modern periodic table has | 18 groups and 7 periods | 8 groups and 7 periods | 7 groups and 18 periods | 10 groups and 10 periods | Groups are vertical columns.
+Elements in the same group have the same number of | valence electrons | protons | neutrons | shells | That is why they have similar properties.
+Atomic size across a period from left to right generally | decreases | increases | stays the same | doubles | Greater nuclear charge pulls electrons closer.
+Eka-aluminium predicted by Mendeleev was later found as | gallium | germanium | scandium | silicon | Its properties matched his prediction.
+Metallic character down a group | increases | decreases | stays the same | disappears | Outer electrons are lost more easily.
+Noble gases are placed in group | 18 | 1 | 2 | 17 | They have completely filled outer shells.
+Mendeleev's periodic table had | 63 elements | 118 elements | 18 elements | 100 elements | He left gaps for undiscovered ones.
+The element with atomic number 17 belongs to group | 17 | 7 | 1 | 2 | It is chlorine, a halogen.
+Elements in the same period have the same number of | shells | valence electrons | protons | neutrons | Period 3 elements have three shells.
+Which is the most metallic element of period 3? | Sodium | Chlorine | Argon | Silicon | Metallic character decreases across a period.
