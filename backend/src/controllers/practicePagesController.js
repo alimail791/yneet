@@ -16,6 +16,50 @@ const slugify = (s) =>
   String(s).toLowerCase().replace(/&/g, " and ").replace(/[^a-z0-9]+/g, "-").replace(/^-+|-+$/g, "").slice(0, 80);
 const norm = (s) => String(s || "").replace(/\s+/g, " ").trim().toLowerCase();
 
+// The bank spells some chapters several ways ("Cell: The Unit of Life" /
+// "Cell — The Unit of Life", "d and f Block Elements" / "The d- and f-Block
+// Elements") and has a few broad buckets ("Genetics", "Periodic Table"). Each
+// page must be one NCERT chapter, so variants merge into a single page.
+const keyOf = (s) =>
+  String(s).toLowerCase().replace(/&/g, " and ").replace(/[—–:\-]/g, " ").replace(/\(.*?\)/g, " ")
+    .replace(/^the\s+/, "").replace(/\s+/g, " ").trim();
+const CANON = {
+  Physics: {
+    "kinetic theory of gases": "Kinetic Theory",
+    "magnetism": "Magnetism and Matter",
+    "ray optics": "Ray Optics and Optical Instruments",
+    "rotational motion": "System of Particles and Rotational Motion",
+    "nuclear physics": "Nuclei",
+    "physical world and measurement": "Units and Measurements",
+  },
+  Chemistry: {
+    "chemical bonding": "Chemical Bonding and Molecular Structure",
+    "classification of elements and periodicity": "Classification of Elements and Periodicity in Properties",
+    "periodic table": "Classification of Elements and Periodicity in Properties",
+    "d and f block elements": "The d- and f-Block Elements",
+    "p block elements": "The p-Block Elements",
+    "organic chemistry": "Organic Chemistry: Some Basic Principles and Techniques",
+    "organic chemistry basics": "Organic Chemistry: Some Basic Principles and Techniques",
+    "organic chemistry some basic principles and techniques": "Organic Chemistry: Some Basic Principles and Techniques",
+    "solid state": "The Solid State",
+    "s block elements": "The s-Block Elements",
+  },
+  Biology: {
+    "biotechnology principles and processes": "Biotechnology: Principles and Processes",
+    "biotechnology and its applications": "Biotechnology and its Applications",
+    "cell the unit of life": "Cell: The Unit of Life",
+    "excretory products and their elimination": "Excretory Products and their Elimination",
+    "genetics": "Principles of Inheritance and Variation",
+  },
+};
+// Too broad to be one chapter page; their questions stay inside YNeet.
+const SKIP = { Physics: ["mechanics"], Biology: ["plant physiology"] };
+const canonical = (subject, chapter) => {
+  const k = keyOf(chapter);
+  if ((SKIP[subject] || []).includes(k)) return null;
+  return { key: keyOf(CANON[subject]?.[k] || chapter), name: CANON[subject]?.[k] || null };
+};
+
 let cache = null;
 
 async function build() {
@@ -33,9 +77,12 @@ async function build() {
   const groups = new Map();
   for (const q of rows) {
     if (!q.chapter || !q.questionText) continue;
-    const key = `${q.subject}|${q.chapter.trim()}`;
-    if (!groups.has(key)) groups.set(key, { subject: q.subject, chapter: q.chapter.trim(), seen: new Set(), qs: [], classes: new Set() });
+    const canon = canonical(q.subject, q.chapter.trim());
+    if (!canon) continue;
+    const key = `${q.subject}|${canon.key}`;
+    if (!groups.has(key)) groups.set(key, { subject: q.subject, chapter: canon.name, names: new Map(), seen: new Set(), qs: [], classes: new Set() });
     const g = groups.get(key);
+    if (!canon.name) g.names.set(q.chapter.trim(), (g.names.get(q.chapter.trim()) || 0) + 1);
     g.classes.add(q.classLevel);
     const k = norm(q.questionText);
     if (g.seen.has(k)) continue;
@@ -47,6 +94,8 @@ async function build() {
   const usedSlugs = new Set();
   for (const g of groups.values()) {
     if (g.qs.length < MIN_QUESTIONS) continue;
+    // Display name: the official one if mapped, else the most-used spelling.
+    if (!g.chapter) g.chapter = [...g.names.entries()].sort((a, b) => b[1] - a[1])[0][0];
     const pyqs = g.qs.filter((q) => q.isPYQ);
     // Stable order so pages don't change on every build: PYQs newest year first, then id.
     const order = (a, b) => (b.isPYQ - a.isPYQ) || ((b.pyqYear || 0) - (a.pyqYear || 0)) || (a.id < b.id ? -1 : 1);
@@ -105,4 +154,4 @@ exports.getChapter = async (req, res) => {
   }
 };
 
-exports._internal = { build, slugify };
+exports._internal = { build, slugify, keyOf, canonical };
