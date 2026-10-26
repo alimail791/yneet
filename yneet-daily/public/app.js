@@ -117,7 +117,7 @@ function yneetPanel(gameId, d) {
     const p = $(`<div class="panel yneet">
       <div class="eyebrow">YNeet · free for Class 6–8</div>
       <strong class="yn-title">Daily quiz and Shorts — free on YNeet</strong>
-      <p class="how" style="margin:0">A daily quiz from your syllabus and 3-minute concept videos. No payment, ever. Parents get a weekly report on WhatsApp.</p>
+      <p class="how" style="margin:0">Class tests, a daily quiz from your syllabus and 3-minute concept videos. No payment, ever. Parents get a weekly report on WhatsApp.</p>
       <a class="primary" target="_blank" rel="noopener">Register free</a>
       <a class="yn-login" target="_blank" rel="noopener">Already on YNeet? Log in</a>
     </div>`);
@@ -128,7 +128,7 @@ function yneetPanel(gameId, d) {
     return p;
   }
   let title = track() === 'foundation' ? 'NEET Foundation for Class 9–10' : 'Prepare for NEET on YNeet',
-    text = track() === 'foundation' ? 'Concept Shorts, a daily quiz and WhatsApp doubt support for Class 9–10, so NEET in Class 11 feels easy. 30 days free.' : 'Full NEET mock tests, chapter-wise practice and PYQs with instant analysis of your weak areas.';
+    text = track() === 'foundation' ? 'Foundation tests, concept Shorts and a daily quiz for Class 9–10, so NEET in Class 11 feels easy. 30 days free.' : 'Full NEET mock tests, chapter-wise practice and PYQs with instant analysis of your weak areas.';
   if (track() === 'foundation') { if (gameId) title = 'Turn your daily streak into marks'; }
   else if (gameId === 'pinpoint' && d && d.topic) { title = `Revise “${d.topic}”`; text = 'Practise this chapter with NEET-level questions and PYQs on YNeet, with explanations for every answer.'; }
   else if (gameId === 'daily5' && d && d.weak && d.weak.length) { title = `Missed ${d.weak.map(s => SUBJ[s] || s).join(' and ')} today?`; text = 'Practise those chapters on YNeet with full mock tests, PYQs and instant analysis of your weak areas.'; }
