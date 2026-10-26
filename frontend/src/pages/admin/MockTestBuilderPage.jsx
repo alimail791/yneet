@@ -415,7 +415,7 @@ export default function MockTestBuilderPage() {
 
         <div style={{ display: "flex", alignItems: "center", gap: 10, flexWrap: "wrap", marginBottom: 14 }}>
           <button className="btn btn-blue" onClick={importSchoolQuestions} disabled={importing || bulkJob?.running}>
-            {importing ? "Adding…" : "➕ Add 790 starter questions (Class 6–10)"}
+            {importing ? "Adding…" : "➕ Add 977 starter questions (Class 6–10)"}
           </button>
           <button className="btn btn-outline btn-sm" onClick={loadSchoolPool}>↻ Refresh counts</button>
           <span style={{ fontSize: 12, color: "var(--text3)" }}>Safe to tap twice — questions already added are skipped.</span>
