@@ -88,6 +88,14 @@ const requireActiveSubscription = (req, res, next) => {
       upgrade: true,
     });
   }
+  const { verificationState } = require("../utils/verification");
+  if (verificationState(req.user).blocked) {
+    return res.status(403).json({
+      success: false,
+      verifyRequired: true,
+      message: "Confirm your WhatsApp number or email to continue your free trial.",
+    });
+  }
   next();
 };
 

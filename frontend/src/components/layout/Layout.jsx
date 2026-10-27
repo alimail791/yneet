@@ -131,6 +131,13 @@ export default function Layout() {
         </div>
       </nav>
 
+      {user?.verification?.required && !user?.verification?.blocked && (
+        <div style={{ background: "#ecfdf5", borderBottom: "1px solid #a7f3d0", padding: "10px 16px", display: "flex", flexWrap: "wrap", gap: 10, alignItems: "center", justifyContent: "center", fontSize: 14 }}>
+          <span>📱 Confirm your WhatsApp number to keep your free trial{user.verification.deadline ? ` — ${Math.max(0, Math.ceil((new Date(user.verification.deadline) - Date.now()) / 864e5))} day(s) left` : ""}.</span>
+          <button className="btn btn-sm" style={{ background: "#25D366", color: "#fff", border: "none", fontWeight: 700 }} onClick={() => navigate("/verify")}>Verify now</button>
+        </div>
+      )}
+
       <div className="page-content">
         <Outlet />
       </div>

@@ -15,4 +15,7 @@ const { listChapters, getChapter } = require("../controllers/practicePagesContro
 router.get("/practice", listChapters);
 router.get("/practice/:subject/:chapter", getChapter);
 
+// Email confirmation link (opened from the inbox, no login needed).
+router.post("/verify-email", require("../controllers/verifyController").confirmEmail);
+
 module.exports = router;

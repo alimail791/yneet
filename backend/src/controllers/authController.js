@@ -72,7 +72,8 @@ const provisionFromRaiseAcademy = async (token) => {
         phone: raiseUser.phone || null,
         gender: raiseUser.gender || null,
         place: raiseUser.place || null,
-        isVerified: true,
+        // Confirmed later inside YNeet (WhatsApp OTP or email link) — see utils/verification.js.
+        isVerified: false,
         role: raiseUser.role || "student",
         sessionId: sid,
         referralCode,
@@ -159,7 +160,8 @@ exports.bridge = async (req, res) => {
     if (!token) return res.status(400).json({ success: false, message: "token is required" });
 
     const user = await provisionFromRaiseAcademy(token);
-    res.json({ success: true, token, user });
+    const { verificationState } = require("../utils/verification");
+    res.json({ success: true, token, user: { ...user, verification: verificationState(user) } });
   } catch (err) {
     console.error("SSO bridge error:", err.response?.data || err.message);
     res.status(401).json({ success: false, message: "Could not verify Raise Academy session" });
@@ -167,7 +169,8 @@ exports.bridge = async (req, res) => {
 };
 
 exports.getMe = async (req, res) => {
-  res.json({ success: true, user: req.user });
+  const { verificationState } = require("../utils/verification");
+  res.json({ success: true, user: { ...req.user, verification: verificationState(req.user) } });
 };
 
 module.exports.provisionFromRaiseAcademy = provisionFromRaiseAcademy;

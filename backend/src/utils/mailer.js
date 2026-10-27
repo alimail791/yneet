@@ -127,4 +127,18 @@ const sendCreatorSignupAlert = async (creator) => {
   });
 };
 
-module.exports = { sendExpiryReminder, sendParentDigest, sendInactivityReminder, sendCreatorCode, sendCreatorSignupAlert };
+// Email confirmation link for a new student (no OTP at sign-up any more).
+const sendVerifyEmail = async (user, link) => {
+  await send({
+    to: user.email,
+    subject: "Confirm your email to keep your free YNeet trial",
+    html: `<div style="${baseStyle}">${header}
+      <h2 style="color:#0f172a">Hi ${user.name}, one tap to confirm</h2>
+      <p style="color:#475569;font-size:15px;line-height:1.6">Confirm your email so your free 30-day YNeet trial keeps running.</p>
+      <a href="${link}" style="${btnStyle}background:#2563eb;color:white;">Confirm my email →</a>
+      <p style="color:#94a3b8;font-size:12px">This link works for 7 days. If you didn't sign up for YNeet, ignore this email.</p>
+    </div>`,
+  });
+};
+
+module.exports = { sendVerifyEmail, sendExpiryReminder, sendParentDigest, sendInactivityReminder, sendCreatorCode, sendCreatorSignupAlert };

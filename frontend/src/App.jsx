@@ -4,6 +4,8 @@ import Layout from "./components/layout/Layout";
 import HelpPage from "./pages/HelpPage"; 
 import BridgePage           from "./pages/BridgePage";
 import PricingPage          from "./pages/PricingPage";
+import VerifyPage           from "./pages/VerifyPage";
+import VerifyEmailPage      from "./pages/VerifyEmailPage";
 import DashboardPage        from "./pages/DashboardPage";
 import MockPage             from "./pages/MockPage";
 import MockTestPage         from "./pages/MockTestPage";
@@ -64,6 +66,8 @@ function Guard({ children }) {
 function RequireSubscription({ children }) {
   const { user } = useAuth();
   if (user?.role === "admin") return children;
+  // Free trial paused after 3 days until WhatsApp/email is confirmed (see backend utils/verification.js).
+  if (user?.verification?.blocked) return <Navigate to="/verify" replace />;
   return hasActivePlan(user) || isJuniorFree(user) ? children : <Navigate to="/pricing" replace />;
 }
 
@@ -97,6 +101,8 @@ export default function App() {
       <Route path="/creator/forgot" element={<CreatorForgotPage />} />
       <Route path="/creator" element={<CreatorDashboard />} />
       <Route path="/pricing" element={<Guard><PricingPage /></Guard>} />
+      <Route path="/verify" element={<Guard><VerifyPage /></Guard>} />
+      <Route path="/verify-email" element={<VerifyEmailPage />} />
 
       <Route path="/admin" element={<Guard><RequireAdmin><AdminLayout /></RequireAdmin></Guard>}>
         <Route index                element={<AdminSummaryPage />} />

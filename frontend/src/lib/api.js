@@ -20,6 +20,9 @@ api.interceptors.response.use(
     } else if (err.response?.status === 402) {
       // Valid session, but no active subscription — send to pricing, not logout.
       if (window.location.pathname !== "/pricing") window.location.href = "/pricing";
+    } else if (err.response?.status === 403 && err.response?.data?.verifyRequired) {
+      // Free trial paused until WhatsApp/email is confirmed.
+      if (window.location.pathname !== "/verify") window.location.href = "/verify";
     }
     return Promise.reject(err);
   }
