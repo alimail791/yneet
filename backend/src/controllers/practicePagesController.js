@@ -40,6 +40,7 @@ const CANON = {
     "p block elements": "The p-Block Elements",
     "organic chemistry": "Organic Chemistry: Some Basic Principles and Techniques",
     "organic chemistry basics": "Organic Chemistry: Some Basic Principles and Techniques",
+    "organic chemistry basic principles": "Organic Chemistry: Some Basic Principles and Techniques",
     "organic chemistry some basic principles and techniques": "Organic Chemistry: Some Basic Principles and Techniques",
     "solid state": "The Solid State",
     "s block elements": "The s-Block Elements",
