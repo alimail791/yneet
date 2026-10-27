@@ -155,4 +155,34 @@ exports.getChapter = async (req, res) => {
   }
 };
 
+// GET /api/v1/public/readiness — the free "NEET Readiness Score" quiz on
+// www.yneet.in/neet-readiness. 15 questions in NEET's subject weighting
+// (Biology is half the paper), each from a different chapter so the result
+// can name weak chapters and link to their free practice pages. Answers are
+// included: it's a no-login marketing quiz, scored in the browser.
+const READINESS_MIX = { Physics: 4, Chemistry: 4, Biology: 7 };
+const shuffle = (a) => { const x = [...a]; for (let i = x.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [x[i], x[j]] = [x[j], x[i]]; } return x; };
+
+exports.readinessQuiz = async (req, res) => {
+  try {
+    const { chapters } = await data();
+    const questions = [];
+    for (const [subject, n] of Object.entries(READINESS_MIX)) {
+      for (const c of shuffle(chapters.filter((x) => x.subject === subject)).slice(0, n)) {
+        const q = shuffle(c.questions)[0];
+        if (!q) continue;
+        questions.push({
+          id: q.id, subject, chapter: c.chapter, slug: c.slug, question: q.question,
+          options: q.options, answer: q.answer, explanation: q.explanation, pyqYear: q.pyqYear,
+        });
+      }
+    }
+    res.set("Cache-Control", "no-store");
+    res.json({ success: true, questions });
+  } catch (err) {
+    console.error("readiness quiz error:", err);
+    res.status(500).json({ success: false, message: "Could not load the quiz" });
+  }
+};
+
 exports._internal = { build, slugify, keyOf, canonical };

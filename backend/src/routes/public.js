@@ -11,9 +11,10 @@ router.get("/shorts/featured", publicFeatured);
 router.get("/shorts/:id", publicShort);
 
 // Free chapter practice pages on www.yneet.in (no login; SEO).
-const { listChapters, getChapter } = require("../controllers/practicePagesController");
+const { listChapters, getChapter, readinessQuiz } = require("../controllers/practicePagesController");
 router.get("/practice", listChapters);
 router.get("/practice/:subject/:chapter", getChapter);
+router.get("/readiness", readinessQuiz);
 
 // Email confirmation link (opened from the inbox, no login needed).
 router.post("/verify-email", require("../controllers/verifyController").confirmEmail);
