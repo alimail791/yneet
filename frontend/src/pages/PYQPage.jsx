@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import api from "../lib/api";
+import ExplainDifferently from "../components/ExplainDifferently";
 
 // A dedicated Previous Year Questions page — separate from the general
 // Practice page's "PYQ Only" filter toggle, so students can browse past
@@ -181,6 +182,7 @@ export default function PYQPage() {
                       <br />{q.explanation}
                     </div>
                   )}
+                  {revealed[q.id] && <ExplainDifferently questionId={q.id} />}
 
                   {!q.userStat?.solved && (
                     <div style={{ display: "flex", gap: 8, marginTop: 8 }}>

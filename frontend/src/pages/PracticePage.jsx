@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react";
 import api from "../lib/api";
+import ExplainDifferently from "../components/ExplainDifferently";
 
 export default function PracticePage() {
   const [questions, setQuestions] = useState([]);
@@ -201,6 +202,7 @@ export default function PracticePage() {
                   <br/>{q.explanation}
                 </div>
               )}
+              {revealed[q.id] && <ExplainDifferently questionId={q.id} />}
 
               {/* Mark solved */}
               {!q.userStat?.solved && (

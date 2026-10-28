@@ -1,6 +1,7 @@
 import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import api from "../lib/api";
+import ExplainDifferently from "../components/ExplainDifferently";
 
 export default function MistakesPage() {
   const [searchParams] = useSearchParams();
@@ -138,6 +139,7 @@ export default function MistakesPage() {
                   {m.question?.explanation}
                 </div>
               )}
+              {revealed[i] && <ExplainDifferently questionId={m.question?.id} />}
             </div>
           ))}
         </div>
