@@ -102,7 +102,8 @@ async function build() {
     const order = (a, b) => (b.isPYQ - a.isPYQ) || ((b.pyqYear || 0) - (a.pyqYear || 0)) || (a.id < b.id ? -1 : 1);
     const free = [...g.qs].sort(order).slice(0, FREE_PER_CHAPTER).map((q) => ({
       id: q.id, topic: q.topic, question: q.questionText,
-      options: [q.optionA, q.optionB, q.optionC, q.optionD], answer: q.correctOpt,
+      // correctOpt is 0-based in the bank (A = 0); the website expects 1-based.
+      options: [q.optionA, q.optionB, q.optionC, q.optionD], answer: q.correctOpt + 1,
       explanation: q.explanation, pyqYear: q.isPYQ ? q.pyqYear || null : null,
     }));
     let slug = `${slugify(g.subject)}/${slugify(g.chapter)}`;

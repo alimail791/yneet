@@ -30,7 +30,7 @@ exports.explainDifferently = async (req, res) => {
         content: `Subject: ${q.subject} | Chapter: ${q.chapter} | Topic: ${q.topic}
 Question: ${q.questionText}
 A) ${q.optionA}  B) ${q.optionB}  C) ${q.optionC}  D) ${q.optionD}
-Correct answer: ${["A", "B", "C", "D"][q.correctOpt]}
+Correct answer: ${["A", "B", "C", "D"][q.correctOpt]} (${[q.optionA, q.optionB, q.optionC, q.optionD][q.correctOpt]})
 Standard explanation already shown to the student: ${q.explanation}
 
 ${styleHint}
