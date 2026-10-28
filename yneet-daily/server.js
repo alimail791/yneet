@@ -207,7 +207,7 @@ async function retryPendingRewards() {
 app.post('/api/track', wrap(async (req, res) => {
   if (limited('trk:' + req.ip, 120, 36e5)) return res.json({ ok: true });
   const kind = String(req.body.kind || '').replace(/[^a-z_]/g, '').slice(0, 30);
-  if (!['yneet_signup', 'yneet_login'].includes(kind)) return err(res, 400, 'Unknown event');
+  if (!['yneet_signup', 'yneet_login', 'yneet_readiness'].includes(kind)) return err(res, 400, 'Unknown event');
   const t = unsign((req.headers.authorization || '').replace(/^Bearer /, ''));
   await q('INSERT INTO events(player_id, kind, detail) VALUES($1,$2,$3)', [t ? t.id : null, kind, String(req.body.detail || '').slice(0, 40)]);
   res.json({ ok: true });

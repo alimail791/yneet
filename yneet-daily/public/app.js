@@ -141,6 +141,15 @@ function yneetPanel(gameId, d) {
     <a class="primary" target="_blank" rel="noopener">Start free 30-day trial</a>
     <a class="yn-login" target="_blank" rel="noopener">Already on YNeet? Log in</a>
   </div>`);
+  if (track() === 'neet') {
+    // Free next step for players not ready to register: the 15-question readiness test.
+    const rd = document.createElement('a');
+    rd.className = 'yn-login'; rd.target = '_blank'; rd.rel = 'noopener';
+    rd.href = yneetLink('/neet-readiness', gameId);
+    rd.textContent = '📊 Check your NEET Readiness Score (free, 5 min)';
+    rd.onclick = () => track_('yneet_readiness', gameId || 'home');
+    p.appendChild(rd);
+  }
   p.querySelector('.yn-title').textContent = title;
   p.querySelector('.how').textContent = text;
   const [go, login] = p.querySelectorAll('a');
