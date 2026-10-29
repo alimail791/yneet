@@ -141,4 +141,33 @@ const sendVerifyEmail = async (user, link) => {
   });
 };
 
-module.exports = { sendVerifyEmail, sendExpiryReminder, sendParentDigest, sendInactivityReminder, sendCreatorCode, sendCreatorSignupAlert };
+
+// Day 27 of the free 30-day trial: tell the parent what the month achieved and how to continue.
+// Sent once (the daily job picks students exactly on day 27).
+const sendParentTrialEnding = async (parentEmail, t) => {
+  const url = `${process.env.FRONTEND_URL || "https://app.yneet.in"}/pricing`;
+  const first = escHtml(String(t.name || "Your child").split(" ")[0]);
+  const mock = t.firstMock != null
+    ? (t.latestMock != null ? `${t.firstMock} → <b>${t.latestMock}</b> out of 720` : `<b>${t.firstMock}</b> out of 720`)
+    : null;
+  const row = (k, v) => `<tr><td style="padding:8px 0;color:#64748b;border-bottom:1px solid #e2e8f0;">${k}</td><td style="padding:8px 0;text-align:right;font-weight:700;color:#1e293b;border-bottom:1px solid #e2e8f0;">${v}</td></tr>`;
+  await send({
+    to: parentEmail,
+    subject: `${first}'s free YNeet month ends in 3 days`,
+    html: `<div style="${baseStyle}">${header}
+      <h2 style="color:#0f172a">${first}'s free month ends in 3 days</h2>
+      <p style="color:#475569;font-size:15px;line-height:1.6">Here is what ${first} did on YNeet in the last 4 weeks:</p>
+      <table style="width:100%;border-collapse:collapse;font-size:14px">
+        ${row("Days studied", t.activeDays)}
+        ${row("Tests taken", t.tests)}
+        ${row("Questions solved", t.solved)}
+        ${mock ? row("Full NEET mock score", mock) : ""}
+      </table>
+      <p style="color:#475569;font-size:15px;line-height:1.6;margin-top:18px">To keep ${first}'s practice and your weekly reports going: <b>₹399 a month</b> for Class 11–12 (₹299 for Class 9–10, ₹499 for droppers), or a full year at a lower price. One-time payment, no auto-debit.</p>
+      <a href="${url}" style="${btnStyle}background:#2563eb;color:white;">See plans →</a>
+      <p style="color:#94a3b8;font-size:12px;margin-top:24px">You're receiving this because ${first} added your email in their YNeet profile.</p>
+    </div>`,
+  });
+};
+
+module.exports = { sendParentTrialEnding, sendVerifyEmail, sendExpiryReminder, sendParentDigest, sendInactivityReminder, sendCreatorCode, sendCreatorSignupAlert };

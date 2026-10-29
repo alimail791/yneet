@@ -18,12 +18,18 @@ exports.explainDifferently = async (req, res) => {
     const q = await prisma.question.findUnique({ where: { id: req.params.questionId } });
     if (!q) return res.status(404).json({ success: false, message: "Question not found" });
 
-    const { style } = req.body; // optional: "simpler" | "analogy" | "stepbystep"
-    const styleHint = { simpler: "Use very simple, plain language, as if for a beginner.", analogy: "Explain using a everyday analogy.", stepbystep: "Break it into clear numbered steps." }[style] || "";
+    const { style, lang } = req.body; // optional: "simpler" | "analogy" | "stepbystep"; lang: en | ta | te | kn | hi
+    const styleHint = { simpler: "Use very simple, plain language, as if for a beginner.", analogy: "Explain using an everyday example from Indian student life.", stepbystep: "Break it into clear numbered steps." }[style] || "";
+    // Regional languages: the explanation in the student's language, but every scientific
+    // term stays in English exactly as it appears in the NEET paper.
+    const LANGS = { ta: "Tamil", te: "Telugu", kn: "Kannada", hi: "Hindi", ml: "Malayalam" };
+    const langHint = LANGS[lang]
+      ? `Write the whole explanation in ${LANGS[lang]}, in ${LANGS[lang]} script, in simple spoken style a Class 11-12 student uses. Keep every scientific term, formula, chemical name, unit and option letter in English (for example: mitochondria, ATP, Newton's second law, mol/L).`
+      : "";
 
     const msg = await anthropic.messages.create({
       model: MODEL,
-      max_tokens: 500,
+      max_tokens: LANGS[lang] ? 900 : 500,
       system: "You are a patient NEET (Physics/Chemistry/Biology) tutor. Explain clearly and concisely for a student who already saw the standard explanation and is still confused. Do not just repeat the given explanation verbatim — genuinely re-explain it. Plain text only, no markdown headers.",
       messages: [{
         role: "user",
@@ -34,6 +40,7 @@ Correct answer: ${["A", "B", "C", "D"][q.correctOpt]} (${[q.optionA, q.optionB, 
 Standard explanation already shown to the student: ${q.explanation}
 
 ${styleHint}
+${langHint}
 Give a fresh, genuinely different explanation of why the correct answer is right.`,
       }],
     });

@@ -3,7 +3,7 @@
 // serverless). Runs once shortly after startup, then every 24 hours.
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
-const { sendExpiryReminder, sendParentDigest, sendInactivityReminder } = require("./mailer");
+const { sendExpiryReminder, sendParentDigest, sendInactivityReminder, sendParentTrialEnding } = require("./mailer");
 
 const DAY_MS = 24 * 60 * 60 * 1000;
 
@@ -78,6 +78,40 @@ async function sendInactivityEmails() {
   }
 }
 
+
+// Free 30-day trial, day 27 (runs once a day, so each student is picked exactly once):
+// email the parent what the month achieved and the plans. Student WhatsApp nudges are sent by WA-bot.
+async function sendTrialEndingToParents() {
+  const now = Date.now();
+  const subs = await prisma.subscription.findMany({
+    where: { plan: "TRIAL_30D", startDate: { lte: new Date(now - 27 * DAY_MS), gt: new Date(now - 28 * DAY_MS) } },
+    select: { userId: true, startDate: true, user: { select: { name: true, profile: { select: { parentEmail: true, class: true } } } } },
+  });
+  for (const s of subs) {
+    const email = s.user?.profile?.parentEmail;
+    if (!email || ["6th", "7th", "8th"].includes(s.user.profile.class)) continue;
+    try {
+      const since = s.startDate;
+      const [practice, attempts] = await Promise.all([
+        prisma.practiceStat.findMany({ where: { userId: s.userId, solvedAt: { gte: since } }, select: { solvedAt: true } }),
+        prisma.attempt.findMany({ where: { userId: s.userId, status: "submitted", submittedAt: { gte: since } }, select: { submittedAt: true, score: true, totalMarks: true, _count: { select: { responses: true } } }, orderBy: { submittedAt: "asc" } }),
+      ]);
+      const ist = (d) => new Date(new Date(d).getTime() + 5.5 * 3600e3).toISOString().slice(0, 10);
+      const days = new Set([...practice.map((p) => ist(p.solvedAt)), ...attempts.map((a) => ist(a.submittedAt))]);
+      const full = attempts.filter((a) => (a.totalMarks || 720) >= 600);
+      await sendParentTrialEnding(email, {
+        name: s.user.name, activeDays: days.size, tests: attempts.length,
+        solved: practice.length + attempts.reduce((n, a) => n + a._count.responses, 0),
+        firstMock: full.length ? full[0].score : null,
+        latestMock: full.length > 1 ? full[full.length - 1].score : null,
+      });
+      console.log(`Trial-ending parent email sent for ${s.userId}`);
+    } catch (err) {
+      console.warn(`Trial-ending parent email failed for ${s.userId}:`, err.message);
+    }
+  }
+}
+
 async function runDailyJobs() {
   // Mondays: settle last week's approved creator Shorts into pending payouts.
   // Doesn't depend on email, so it runs before the RESEND check below.
@@ -95,6 +129,7 @@ async function runDailyJobs() {
   await checkExpiringSubscriptions().catch((e) => console.warn("checkExpiringSubscriptions failed:", e.message));
   await sendInactivityEmails().catch((e) => console.warn("sendInactivityEmails failed:", e.message));
   await sendParentDigests().catch((e) => console.warn("sendParentDigests failed:", e.message));
+  await sendTrialEndingToParents().catch((e) => console.warn("sendTrialEndingToParents failed:", e.message));
 }
 
 // Runs once a day at 10:00 IST (04:30 UTC) — a fixed time, not "2 minutes after
