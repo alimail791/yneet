@@ -34,7 +34,7 @@ async function questionFor(date) {
   const cycle = Math.floor(turn / pool.length);
   const { q, c } = seeded(pool, 7919 * (cycle + 1) + subject.length)[turn % pool.length];
   return {
-    date, number: dayNumber(date) - dayNumber("2026-10-29") + 1, // #1 = launch day subject, chapter: c.chapter, slug: c.slug,
+    date, number: dayNumber(date) - dayNumber("2026-10-29") + 1, subject, chapter: c.chapter, slug: c.slug, // number #1 = launch day
     question: q.question, options: q.options, answer: q.answer, explanation: q.explanation, pyqYear: q.pyqYear,
   };
 }
