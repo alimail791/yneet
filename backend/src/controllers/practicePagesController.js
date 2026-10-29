@@ -187,3 +187,4 @@ exports.readinessQuiz = async (req, res) => {
 };
 
 exports._internal = { build, slugify, keyOf, canonical };
+exports.practiceData = data;

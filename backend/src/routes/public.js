@@ -16,6 +16,12 @@ router.get("/practice", listChapters);
 router.get("/practice/:subject/:chapter", getChapter);
 router.get("/readiness", readinessQuiz);
 
+// Question of the Day + previous-year papers by year (no login).
+const { questionOfTheDay, listPapers, getPaper } = require("../controllers/publicExtrasController");
+router.get("/qotd", questionOfTheDay);
+router.get("/papers", listPapers);
+router.get("/papers/:year", getPaper);
+
 // Email confirmation link (opened from the inbox, no login needed).
 router.post("/verify-email", require("../controllers/verifyController").confirmEmail);
 
