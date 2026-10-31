@@ -14,6 +14,9 @@ export default function AdminUsersPage() {
   const [manageUser, setManageUser] = useState(null); // the row being managed, or null
   const [subForm, setSubForm] = useState({ plan: "NONE", status: "inactive", endDate: "" });
   const [saving, setSaving] = useState(false);
+  const [classForm, setClassForm] = useState("");
+  const [unusedDays, setUnusedDays] = useState(14);
+  const [bulkBusy, setBulkBusy] = useState(false);
 
   const load = () => {
     setLoading(true);
@@ -21,7 +24,11 @@ export default function AdminUsersPage() {
   };
   useEffect(load, []);
 
+  const daysSince = (d) => (Date.now() - new Date(d).getTime()) / 86400000;
+  const isPaid = (u) => u.subscription?.isActive && !["TRIAL_30D", "NONE"].includes(u.subscription?.plan);
+  const isUnused = (u) => u.unused && u.role !== "admin" && !isPaid(u) && daysSince(u.joinedAt) >= unusedDays;
   const filtered = users.filter(u => {
+    if (filter === "unused" && !isUnused(u)) return false;
     if (filter === "active" && !u.subscription?.isActive) return false;
     if (filter === "inactive" && u.subscription?.isActive) return false;
     if (search && !`${u.name} ${u.email} ${u.phone}`.toLowerCase().includes(search.toLowerCase())) return false;
@@ -30,6 +37,7 @@ export default function AdminUsersPage() {
 
   const openManage = (u) => {
     setManageUser(u);
+    setClassForm(u.class || "12th");
     setSubForm({
       plan: u.subscription?.plan || "NONE",
       status: u.subscription?.status || "inactive",
@@ -57,8 +65,38 @@ export default function AdminUsersPage() {
     } catch (err) { alert(err?.response?.data?.message || "Update failed"); }
   };
 
+  const saveClass = async () => {
+    setSaving(true);
+    try {
+      const { data } = await api.put(`/admin/users/${manageUser.id}/class`, { class: classForm });
+      alert(`Class changed: ${data.from} → ${data.to}${data.trialStarted ? ". A fresh 30-day trial was started." : "."}`);
+      closeManage();
+      load();
+    } catch (err) { alert(err?.response?.data?.message || "Update failed"); }
+    setSaving(false);
+  };
+
+  const bulkDeleteUnused = async () => {
+    const list = filtered.filter(isUnused);
+    if (!list.length) return;
+    const typed = window.prompt(`Permanently delete ${list.length} unused account${list.length > 1 ? "s" : ""} (joined ${unusedDays}+ days ago, never took a test, practised or did a quiz)?\n\nTheir login and all YNeet data are removed and can't be recovered.\n\nType DELETE to confirm.`);
+    if (typed !== "DELETE") return;
+    setBulkBusy(true);
+    try {
+      let deleted = 0, skipped = 0, failed = [];
+      for (let i = 0; i < list.length; i += 200) {
+        const { data } = await api.post("/admin/users/bulk-delete", { ids: list.slice(i, i + 200).map(u => u.id) });
+        deleted += data.deleted; skipped += data.skipped; failed = failed.concat(data.failed || []);
+      }
+      alert(`Deleted ${deleted}.${skipped ? ` Skipped ${skipped} (admin or paid).` : ""}${failed.length ? ` ${failed.length} failed: ${failed[0].message}` : ""}`);
+      load();
+    } catch (err) { alert(err?.response?.data?.message || "Delete failed"); }
+    setBulkBusy(false);
+  };
+
   const removeUser = async (u) => {
-    if (!window.confirm(`Delete ${u.name}'s YNeet account permanently? This removes their subscription, attempts, and progress. Their Raise Academy account is unaffected.`)) return;
+    const typed = window.prompt(`Permanently delete ${u.name} (${u.email})?\n\nThis removes their login and all YNeet data: subscription, tests, practice and progress. It can't be undone.\n\nType DELETE to confirm.`);
+    if (typed !== "DELETE") return;
     try {
       await api.delete(`/admin/users/${u.id}`);
       load();
@@ -69,13 +107,28 @@ export default function AdminUsersPage() {
     <div>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 16, flexWrap: "wrap", gap: 10 }}>
         <h1 style={{ fontSize: 22, fontWeight: 800 }}>Enrolled Users ({filtered.length})</h1>
-        <div style={{ display: "flex", gap: 8 }}>
+        <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
           <input className="form-input" style={{ width: 220 }} placeholder="Search name, email, phone..." value={search} onChange={e => setSearch(e.target.value)} />
           <select className="form-select" style={{ width: 140 }} value={filter} onChange={e => setFilter(e.target.value)}>
             <option value="">All</option>
             <option value="active">Active sub only</option>
             <option value="inactive">No active sub</option>
+            <option value="unused">Unused accounts</option>
           </select>
+          {filter === "unused" && (
+            <>
+              <select className="form-select" style={{ width: 150 }} value={unusedDays} onChange={e => setUnusedDays(Number(e.target.value))}>
+                <option value={7}>Joined 7+ days ago</option>
+                <option value={14}>Joined 14+ days ago</option>
+                <option value={30}>Joined 30+ days ago</option>
+                <option value={60}>Joined 60+ days ago</option>
+              </select>
+              <button className="btn btn-sm" disabled={bulkBusy || !filtered.length} onClick={bulkDeleteUnused}
+                style={{ background: "var(--red-light)", color: "var(--red)" }}>
+                {bulkBusy ? "Deleting..." : `Delete all ${filtered.length}`}
+              </button>
+            </>
+          )}
         </div>
       </div>
 
@@ -91,7 +144,7 @@ export default function AdminUsersPage() {
               <th>Start</th>
               <th>End</th>
               <th>Score (cur/target)</th>
-              <th>Mocks</th>
+              <th>Tests · Practice</th>
               <th>Joined</th>
               <th></th>
             </tr>
@@ -113,7 +166,7 @@ export default function AdminUsersPage() {
                 <td>{fmt(u.subscription?.startDate)}</td>
                 <td>{fmt(u.subscription?.endDate)}</td>
                 <td>{u.currentScore ?? "—"} / {u.targetScore ?? "—"}</td>
-                <td>{u.mockAttempts}</td>
+                <td>{u.mockAttempts} · {u.practiceSolved ?? 0}</td>
                 <td>{fmt(u.joinedAt)}</td>
                 <td style={{ whiteSpace: "nowrap" }}>
                   <button className="btn btn-outline btn-sm" onClick={() => openManage(u)}>Manage</button>
@@ -161,6 +214,19 @@ export default function AdminUsersPage() {
               {saving ? "Saving..." : "Save Subscription"}
             </button>
 
+            <h3 style={{ fontSize: 14, fontWeight: 700, marginBottom: 10, borderTop: "1px solid var(--gray3)", paddingTop: 18 }}>Class</h3>
+            <div style={{ display: "flex", gap: 8, alignItems: "center", marginBottom: 6 }}>
+              <select className="form-select" style={{ width: 160 }} value={classForm} onChange={e => setClassForm(e.target.value)}>
+                {["6th", "7th", "8th", "9th", "10th", "11th", "12th", "Dropper"].map(c => (
+                  <option key={c} value={c}>{c === "Dropper" ? "Dropper" : `Class ${c.replace("th", "")}`}</option>
+                ))}
+              </select>
+              <button className="btn btn-blue btn-sm" onClick={saveClass} disabled={saving || classForm === manageUser.class}>Save Class</button>
+            </div>
+            <p style={{ fontSize: 11.5, color: "var(--text3)", marginBottom: 22 }}>
+              Changes it on the Raise Academy login too. Moving from Class 6–8 to Class 9 or above starts a 30-day trial if they have no paid plan.
+            </p>
+
             <h3 style={{ fontSize: 14, fontWeight: 700, marginBottom: 10, borderTop: "1px solid var(--gray3)", paddingTop: 18 }}>Role</h3>
             {manageUser.id === me?.id ? (
               <p style={{ fontSize: 13, color: "var(--text3)" }}>You can't change your own admin access from here.</p>
@@ -175,7 +241,7 @@ export default function AdminUsersPage() {
               <p style={{ fontSize: 13, color: "var(--text3)" }}>You can't delete your own account from here.</p>
             ) : (
               <button className="btn btn-sm" style={{ background: "var(--red-light)", color: "var(--red)" }} onClick={() => { removeUser(manageUser); closeManage(); }}>
-                Delete YNeet Account
+                Delete Account Permanently
               </button>
             )}
 

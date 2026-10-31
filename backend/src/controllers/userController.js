@@ -85,3 +85,17 @@ exports.emailParentReportNow = async (req, res) => {
     res.json({ success: true });
   } catch (err) { res.status(500).json({ success: false, message: err.message }); }
 };
+
+// POST /api/v1/user/next-class — the student moves up one class (7th → 8th,
+// 11th → 12th, 12th → Dropper). Allowed once every ~5 months; see Raise Academy.
+exports.moveToNextClass = async (req, res) => {
+  try {
+    const { nextClass, changeClass } = require("../utils/accountTools");
+    const from = req.user.profile?.class;
+    const to = nextClass(from);
+    if (!to) return res.status(400).json({ success: false, message: "Dropper is the last level." });
+    if (req.body?.to && req.body.to !== to) return res.status(400).json({ success: false, message: `You can move up to ${to} only.` });
+    const r = await changeClass(req.user.id, to);
+    res.json({ success: true, ...r });
+  } catch (err) { res.status(err.status || 400).json({ success: false, message: err.message }); }
+};

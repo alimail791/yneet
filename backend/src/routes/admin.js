@@ -33,6 +33,8 @@ router.get("/users/:id", c.getUserDetail);
 router.put("/users/:id/subscription", c.updateUserSubscription);
 router.put("/users/:id/role", c.updateUserRole);
 router.delete("/users/:id", c.deleteUser);
+router.post("/users/bulk-delete", c.bulkDeleteUsers);
+router.put("/users/:id/class", c.updateUserClass);
 
 router.get("/mocktests", c.listMockTests);
 router.post("/mocktests", c.createMockTest);

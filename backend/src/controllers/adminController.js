@@ -14,7 +14,7 @@ exports.listUsers = async (req, res) => {
       include: {
         profile: true,
         subscription: true,
-        _count: { select: { attempts: true, mistakes: true } },
+        _count: { select: { attempts: true, mistakes: true, practiceStats: true, quizResults: true } },
       },
     });
 
@@ -44,6 +44,10 @@ exports.listUsers = async (req, res) => {
         } : null,
         mockAttempts: u._count.attempts,
         mistakesLogged: u._count.mistakes,
+        practiceSolved: u._count.practiceStats,
+        quizzesTaken: u._count.quizResults,
+        // Never took a test, practised or did a quiz.
+        unused: !u._count.attempts && !u._count.practiceStats && !u._count.quizResults,
       };
     });
 
@@ -102,9 +106,37 @@ exports.deleteUser = async (req, res) => {
     if (req.params.id === req.user.id) {
       return res.status(400).json({ success: false, message: "You can't delete your own account." });
     }
-    await prisma.user.delete({ where: { id: req.params.id } });
+    // Deletes the login (Raise Academy) and all YNeet data. Cannot be undone.
+    await require("../utils/accountTools").deleteAccount(req.params.id);
     res.json({ success: true });
   } catch (err) { res.status(400).json({ success: false, message: err.message }); }
+};
+
+// POST /api/v1/admin/users/bulk-delete { ids: [] } — e.g. the "Unused accounts" list.
+// Skips admins, yourself and anyone with an active paid plan.
+exports.bulkDeleteUsers = async (req, res) => {
+  try {
+    const ids = [...new Set((req.body?.ids || []).map(String))].slice(0, 200);
+    const users = await prisma.user.findMany({ where: { id: { in: ids } }, select: { id: true, role: true, subscription: true } });
+    const now = new Date();
+    let deleted = 0; const skipped = []; const failed = [];
+    for (const u of users) {
+      const s = u.subscription;
+      const paid = s && s.status === "active" && s.endDate && new Date(s.endDate) > now && !["TRIAL_30D", "NONE"].includes(s.plan);
+      if (u.id === req.user.id || u.role === "admin" || paid) { skipped.push(u.id); continue; }
+      try { await require("../utils/accountTools").deleteAccount(u.id); deleted++; }
+      catch (e) { failed.push({ id: u.id, message: e.message }); }
+    }
+    res.json({ success: true, deleted, skipped: skipped.length, failed });
+  } catch (err) { res.status(500).json({ success: false, message: err.message }); }
+};
+
+// PUT /api/v1/admin/users/:id/class { class } — admin can set any class.
+exports.updateUserClass = async (req, res) => {
+  try {
+    const r = await require("../utils/accountTools").changeClass(req.params.id, String(req.body?.class || ""), { force: true });
+    res.json({ success: true, ...r });
+  } catch (err) { res.status(err.status || 400).json({ success: false, message: err.message }); }
 };
 
 // GET /api/v1/admin/users/:id — full detail view: profile, subscription, every

@@ -40,6 +40,16 @@ router.post("/institute-student", async (req, res) => {
   } catch (err) { res.status(500).json({ success: false, message: err.message }); }
 });
 
+// POST /api/v1/internal/delete-user { userId } — Raise Academy admin deleted the student.
+router.post("/delete-user", async (req, res) => {
+  try {
+    const userId = String(req.body?.userId || "");
+    if (!userId) return res.status(400).json({ success: false, message: "userId is required" });
+    const r = await prisma.user.deleteMany({ where: { id: userId, role: { not: "admin" } } });
+    res.json({ success: true, deleted: r.count });
+  } catch (err) { res.status(500).json({ success: false, message: err.message }); }
+});
+
 // POST /api/v1/internal/parent-contact { userId, parentEmail } — set by an institute.
 // A new/changed email gets this week's report straight away, then weekly.
 router.post("/parent-contact", async (req, res) => {
