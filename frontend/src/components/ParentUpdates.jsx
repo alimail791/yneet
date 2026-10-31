@@ -24,12 +24,17 @@ export default function ParentUpdates() {
   const [msg, setMsg] = useState(null);
   const [busy, setBusy] = useState(false);
   const [showPreview, setShowPreview] = useState(false);
+  const [savedWa, setSavedWa] = useState(""); // parent's WhatsApp saved on the server (weekly WhatsApp report)
 
   const load = async () => {
     try {
       const { data } = await api.get("/user/parent-report");
       setEmail(data.parentEmail); setSavedEmail(data.parentEmail); setLastSent(data.lastSent); setText(data.text);
     } catch { setMsg({ err: true, t: "Couldn't load your report. Try again later." }); }
+    try {
+      const { data } = await api.get("/user/parent-phone");
+      if (data.parentPhone) { setSavedWa(data.parentPhone); setWa(data.parentPhone); }
+    } catch { /* number stays local-only */ }
     setLoading(false);
   };
   useEffect(() => {
@@ -47,6 +52,19 @@ export default function ParentUpdates() {
       if (!data.parentEmail) flash("Parent email removed. Weekly emails stopped.");
       else flash(data.sent ? `Saved! This week's report has been sent to ${data.parentEmail}. Next one in 7 days.` : "Saved. Weekly reports will go to this email.");
       load();
+    } catch (err) { flash(err?.response?.data?.message || "Couldn't save. Try again.", true); }
+    setBusy(false);
+  };
+
+  const saveParentWa = async () => {
+    const num = wa.trim() ? waDigits(wa) : "";
+    if (wa.trim() && !num) { flash("Enter a valid 10-digit WhatsApp number.", true); return; }
+    setBusy(true);
+    try {
+      const { data } = await api.put("/user/parent-phone", { parentPhone: num ? num.slice(-10) : "" });
+      setSavedWa(data.parentPhone || "");
+      saveWa(data.parentPhone || "");
+      flash(data.parentPhone ? "Saved. Your parent will get your weekly report on WhatsApp." : "Parent WhatsApp removed. Weekly WhatsApp reports stopped.");
     } catch (err) { flash(err?.response?.data?.message || "Couldn't save. Try again.", true); }
     setBusy(false);
   };
@@ -71,7 +89,10 @@ export default function ParentUpdates() {
     <div className="card mb-5" id="parent-updates">
       <div className="section-header">
         <div className="section-title">👨‍👩‍👧 Parent Updates</div>
-        {savedEmail && <span className="chip chip-green">Weekly email on</span>}
+        <span style={{ display: "flex", gap: 6 }}>
+          {savedEmail && <span className="chip chip-green">Weekly email on</span>}
+          {savedWa && <span className="chip chip-green">Weekly WhatsApp on</span>}
+        </span>
       </div>
       <p style={{ fontSize: 13, color: "var(--text2)", margin: "4px 0 16px" }}>
         Keep your parents in the loop. They get a weekly report of your tests, scores, study days and the chapters to work on.
@@ -92,8 +113,11 @@ export default function ParentUpdates() {
             </div>
             <div className="form-group">
               <label className="form-label">Parent's WhatsApp <span className="optional-tag">(optional)</span></label>
-              <input className="form-input" type="tel" placeholder="10-digit number" value={wa} onChange={(e) => setWa(e.target.value)} />
-              <p style={{ fontSize: 11, color: "var(--text3)", marginTop: 4 }}>Saved on this phone only. Leave empty to pick the contact in WhatsApp.</p>
+              <div style={{ display: "flex", gap: 8 }}>
+                <input className="form-input" type="tel" placeholder="10-digit number" value={wa} onChange={(e) => setWa(e.target.value)} />
+                <button className="btn btn-blue" disabled={busy || wa.replace(/\D/g, "").slice(-10) === savedWa} onClick={saveParentWa}>{savedWa && !wa.trim() ? "Remove" : "Save"}</button>
+              </div>
+              <p style={{ fontSize: 11, color: "var(--text3)", marginTop: 4 }}>{savedWa ? "Weekly report goes to this WhatsApp automatically." : "Save it and your parent gets the weekly report on WhatsApp."}</p>
             </div>
           </div>
 

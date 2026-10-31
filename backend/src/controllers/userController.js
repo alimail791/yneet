@@ -99,3 +99,13 @@ exports.moveToNextClass = async (req, res) => {
     res.json({ success: true, ...r });
   } catch (err) { res.status(err.status || 400).json({ success: false, message: err.message }); }
 };
+
+// GET / PUT /api/v1/user/parent-phone { parentPhone } — parent's WhatsApp for the weekly report.
+exports.getParentPhone = async (req, res) => {
+  try { res.json({ success: true, parentPhone: await require("../utils/accountTools").parentPhone(req.user.id) }); }
+  catch (err) { res.status(err.status || 500).json({ success: false, message: err.message }); }
+};
+exports.setParentPhone = async (req, res) => {
+  try { res.json({ success: true, parentPhone: await require("../utils/accountTools").parentPhone(req.user.id, String(req.body?.parentPhone || "")) }); }
+  catch (err) { res.status(err.status || 500).json({ success: false, message: err.message }); }
+};

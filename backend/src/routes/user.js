@@ -1,6 +1,6 @@
 const router = require("express").Router();
 const { protect } = require("../middleware/auth");
-const { updateProfile, getReferralInfo, getParentReport, setParentEmail, emailParentReportNow, moveToNextClass } = require("../controllers/userController");
+const { updateProfile, getReferralInfo, getParentReport, setParentEmail, emailParentReportNow, moveToNextClass, getParentPhone, setParentPhone } = require("../controllers/userController");
 router.use(protect);
 router.put("/profile", updateProfile);
 router.get("/referral", getReferralInfo);
@@ -8,6 +8,8 @@ router.get("/parent-report", getParentReport);
 router.put("/parent-email", setParentEmail);
 router.post("/parent-report/email", emailParentReportNow);
 router.post("/next-class", moveToNextClass);
+router.get("/parent-phone", getParentPhone);
+router.put("/parent-phone", setParentPhone);
 const verify = require("../controllers/verifyController");
 router.get("/verify", verify.status);
 router.post("/verify/whatsapp/send", verify.sendWhatsApp);

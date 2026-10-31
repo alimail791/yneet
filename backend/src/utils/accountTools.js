@@ -66,4 +66,16 @@ async function changeClass(userId, newClass, { force = false } = {}) {
   return { from, to: newClass, trialStarted };
 }
 
-module.exports = { deleteAccount, changeClass, nextClass, CLASS_LADDER, JUNIOR };
+/** Read, or set when parentPhone is given ("" removes), the parent's WhatsApp number (kept in Raise Academy). */
+async function parentPhone(userId, value) {
+  try {
+    const { data } = await raise("parent", value === undefined ? { id: userId } : { id: userId, parentPhone: value });
+    return data.parentPhone || null;
+  } catch (e) {
+    const err = new Error(e.response?.data?.message || `Couldn't save the number: ${e.message}`);
+    err.status = e.response?.status === 400 ? 400 : 502;
+    throw err;
+  }
+}
+
+module.exports = { deleteAccount, changeClass, nextClass, parentPhone, CLASS_LADDER, JUNIOR };
