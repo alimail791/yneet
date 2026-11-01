@@ -29,6 +29,52 @@ export default function AdminSummaryPage() {
         {!summary && <div className="card">Loading...</div>}
       </div>
 
+      {summary?.byClass && (() => {
+        const rows = summary.byClass;
+        const sum = (k) => rows.reduce((n, r) => n + r[k], 0);
+        const th = { textAlign: "right", padding: "8px 10px", fontSize: 12, color: "var(--text3)", fontWeight: 700, textTransform: "uppercase", letterSpacing: .5, borderBottom: "1px solid var(--border)" };
+        const td = { textAlign: "right", padding: "8px 10px", fontSize: 14, borderBottom: "1px solid var(--border)" };
+        return (
+          <div className="card" style={{ marginTop: 24, overflowX: "auto" }}>
+            <p style={{ fontWeight: 700, marginBottom: 8 }}>Registrations by class</p>
+            <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 480 }}>
+              <thead>
+                <tr>
+                  <th style={{ ...th, textAlign: "left" }}>Class</th>
+                  <th style={th}>Total</th>
+                  <th style={th}>Last 7 days</th>
+                  <th style={th}>Last 30 days</th>
+                  <th style={th}>On trial</th>
+                  <th style={th}>Paid</th>
+                </tr>
+              </thead>
+              <tbody>
+                {rows.map(r => (
+                  <tr key={r.class}>
+                    <td style={{ ...td, textAlign: "left", fontWeight: 700 }}>
+                      <a href={`/admin/users?class=${encodeURIComponent(r.class)}`} style={{ color: "var(--blue-mid)" }}>{r.class}</a>
+                    </td>
+                    <td style={{ ...td, fontWeight: 700 }}>{r.total}</td>
+                    <td style={td}>{r.last7}</td>
+                    <td style={td}>{r.last30}</td>
+                    <td style={td}>{r.trial}</td>
+                    <td style={{ ...td, color: r.paid ? "var(--green)" : undefined, fontWeight: r.paid ? 700 : 400 }}>{r.paid}</td>
+                  </tr>
+                ))}
+                <tr>
+                  <td style={{ ...td, textAlign: "left", fontWeight: 800 }}>All</td>
+                  <td style={{ ...td, fontWeight: 800 }}>{sum("total")}</td>
+                  <td style={{ ...td, fontWeight: 800 }}>{sum("last7")}</td>
+                  <td style={{ ...td, fontWeight: 800 }}>{sum("last30")}</td>
+                  <td style={{ ...td, fontWeight: 800 }}>{sum("trial")}</td>
+                  <td style={{ ...td, fontWeight: 800 }}>{sum("paid")}</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        );
+      })()}
+
       <div className="card" style={{ marginTop: 24 }}>
         <p style={{ fontWeight: 700, marginBottom: 8 }}>Quick links</p>
         <ul style={{ fontSize: 14, color: "var(--text2)", lineHeight: 2 }}>

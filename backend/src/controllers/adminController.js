@@ -726,6 +726,39 @@ exports.deleteFormula = async (req, res) => {
 
 // ───────────────────────── Dashboard summary ─────────────────────────
 
+const CLASS_ORDER = ["6th", "7th", "8th", "9th", "10th", "11th", "12th", "Dropper"];
+
+// Registrations per class: total, joined in the last 7 / 30 days, and how many
+// are on an active trial vs an active paid plan right now. Users with no
+// profile yet are grouped as "Not set".
+async function registrationsByClass() {
+  const users = await prisma.user.findMany({
+    select: {
+      createdAt: true,
+      profile: { select: { class: true } },
+      subscription: { select: { plan: true, status: true, endDate: true } },
+    },
+  });
+  const now = Date.now();
+  const DAY = 86400000;
+  const rows = {};
+  for (const u of users) {
+    const cls = u.profile?.class || "Not set";
+    const r = rows[cls] || (rows[cls] = { class: cls, total: 0, last7: 0, last30: 0, trial: 0, paid: 0 });
+    r.total++;
+    const age = now - new Date(u.createdAt).getTime();
+    if (age <= 7 * DAY) r.last7++;
+    if (age <= 30 * DAY) r.last30++;
+    const s = u.subscription;
+    if (s?.status === "active" && s.endDate && new Date(s.endDate).getTime() > now) {
+      if (s.plan === "TRIAL_30D") r.trial++;
+      else if (s.plan && s.plan !== "NONE") r.paid++;
+    }
+  }
+  const rank = (c) => { const i = CLASS_ORDER.indexOf(c); return i === -1 ? 99 : i; };
+  return Object.values(rows).sort((a, b) => rank(a.class) - rank(b.class) || a.class.localeCompare(b.class));
+}
+
 exports.getSummary = async (req, res) => {
   try {
     const [totalUsers, activeSubs, totalQuestions, totalFlashcards, totalFormulas] = await Promise.all([
@@ -735,7 +768,8 @@ exports.getSummary = async (req, res) => {
       prisma.flashcard.count(),
       prisma.formula.count(),
     ]);
-    res.json({ success: true, summary: { totalUsers, activeSubs, totalQuestions, totalFlashcards, totalFormulas } });
+    const byClass = await registrationsByClass();
+    res.json({ success: true, summary: { totalUsers, activeSubs, totalQuestions, totalFlashcards, totalFormulas, byClass } });
   } catch (err) { res.status(500).json({ success: false, message: err.message }); }
 };
 

@@ -17,6 +17,8 @@ export default function AdminUsersPage() {
   const [classForm, setClassForm] = useState("");
   const [unusedDays, setUnusedDays] = useState(14);
   const [bulkBusy, setBulkBusy] = useState(false);
+  // ?class=11th from the Overview "Registrations by class" table.
+  const [classFilter, setClassFilter] = useState(() => new URLSearchParams(window.location.search).get("class") || "");
 
   const load = () => {
     setLoading(true);
@@ -28,6 +30,7 @@ export default function AdminUsersPage() {
   const isPaid = (u) => u.subscription?.isActive && !["TRIAL_30D", "NONE"].includes(u.subscription?.plan);
   const isUnused = (u) => u.unused && u.role !== "admin" && !isPaid(u) && daysSince(u.joinedAt) >= unusedDays;
   const filtered = users.filter(u => {
+    if (classFilter && (u.class || "Not set") !== classFilter) return false;
     if (filter === "unused" && !isUnused(u)) return false;
     if (filter === "active" && !u.subscription?.isActive) return false;
     if (filter === "inactive" && u.subscription?.isActive) return false;
@@ -109,6 +112,10 @@ export default function AdminUsersPage() {
         <h1 style={{ fontSize: 22, fontWeight: 800 }}>Enrolled Users ({filtered.length})</h1>
         <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
           <input className="form-input" style={{ width: 220 }} placeholder="Search name, email, phone..." value={search} onChange={e => setSearch(e.target.value)} />
+          <select className="form-select" style={{ width: 120 }} value={classFilter} onChange={e => setClassFilter(e.target.value)}>
+            <option value="">All classes</option>
+            {["6th", "7th", "8th", "9th", "10th", "11th", "12th", "Dropper", "Not set"].map(c => <option key={c} value={c}>{c}</option>)}
+          </select>
           <select className="form-select" style={{ width: 140 }} value={filter} onChange={e => setFilter(e.target.value)}>
             <option value="">All</option>
             <option value="active">Active sub only</option>
