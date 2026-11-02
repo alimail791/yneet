@@ -1,4 +1,5 @@
 import { useEffect, useRef, useState } from "react";
+import { raiseEntryUrl } from "../utils/appMode";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 import { isJuniorFree } from "../utils/plan";
@@ -50,7 +51,7 @@ export default function BridgePage() {
           <p style={{ color: "var(--text)", fontWeight: 700, marginBottom: 6 }}>Sign-in failed</p>
           <p style={{ color: "var(--text2)", fontSize: 14 }}>{error}</p>
           <a
-            href={import.meta.env.VITE_RAISE_ACADEMY_URL || "/"}
+            href={raiseEntryUrl()}
             style={{ display: "inline-block", marginTop: 16, color: "var(--blue-mid)", fontWeight: 600 }}
           >
             ← Back to Raise Academy

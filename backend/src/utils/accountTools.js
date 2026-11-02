@@ -28,6 +28,7 @@ async function deleteAccount(userId) {
     throw new Error(e.response?.data?.message || `Couldn't delete the login: ${e.message}`);
   }
   await prisma.user.deleteMany({ where: { id: userId } }); // cascades to tests, practice, mistakes, …
+  await require("./push").removeUserSubscriptions(userId).catch(() => {});
   return true;
 }
 

@@ -1,7 +1,7 @@
 // YNeet service worker — makes the app installable and keeps the shell
 // available offline. It never touches API calls or anything cross-origin, so
 // logins, tests and answers always go straight to the network.
-const VERSION = "yneet-v1";
+const VERSION = "yneet-v2";
 const SHELL = `${VERSION}-shell`;
 const ASSETS = `${VERSION}-assets`;
 const SHELL_URLS = ["/offline.html", "/icons/icon-192.png", "/icons/icon-512.png", "/manifest.webmanifest"];
@@ -44,4 +44,37 @@ self.addEventListener("fetch", (event) => {
       })
     );
   }
+});
+
+// ── Push notifications (Question of the Day, streak and trial reminders) ──
+// Payload from the backend: { title, body, url, tag }. In the Play Store app,
+// Chrome hands these to Android, so they look like normal app notifications.
+self.addEventListener("push", (event) => {
+  let data = {};
+  try { data = event.data ? event.data.json() : {}; } catch { data = { body: event.data && event.data.text() }; }
+  const title = data.title || "YNeet";
+  event.waitUntil(self.registration.showNotification(title, {
+    body: data.body || "",
+    icon: "/icons/icon-192.png",
+    badge: "/icons/icon-192.png",
+    tag: data.tag || undefined,
+    data: { url: data.url || "/" },
+  }));
+});
+
+self.addEventListener("notificationclick", (event) => {
+  event.notification.close();
+  const target = new URL((event.notification.data && event.notification.data.url) || "/", self.location.origin);
+  if (target.origin !== self.location.origin) return;
+  event.waitUntil((async () => {
+    const wins = await self.clients.matchAll({ type: "window", includeUncontrolled: true });
+    for (const w of wins) {
+      if (new URL(w.url).origin === self.location.origin && "focus" in w) {
+        await w.focus();
+        if ("navigate" in w) return w.navigate(target.href);
+        return;
+      }
+    }
+    return self.clients.openWindow(target.href);
+  })());
 });

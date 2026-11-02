@@ -1,4 +1,7 @@
 import { useState, useEffect } from "react";
+import { isAppMode } from "../../utils/appMode";
+import { pushIsOn } from "../../utils/push";
+import api from "../../lib/api";
 import { Outlet, NavLink, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import InstallPrompt from "../InstallPrompt";
@@ -27,6 +30,18 @@ export default function Layout() {
       sessionStorage.setItem("yneet_expiry_notice_shown", "1");
     }
   }, [user?.subscription?.endDate, user?.subscription?.status]);
+
+  // If this device already has reminders on, re-link it to whoever is signed in now
+  // (covers a shared phone, a re-install, or a subscription Chrome renewed).
+  useEffect(() => {
+    if (!user?.id) return;
+    pushIsOn().then(async (on) => {
+      if (!on) return;
+      const reg = await navigator.serviceWorker.getRegistration();
+      const sub = reg && (await reg.pushManager.getSubscription());
+      if (sub) api.post("/push/subscribe", { subscription: sub.toJSON(), inApp: isAppMode }).catch(() => {});
+    }).catch(() => {});
+  }, [user?.id]);
 
   // Refer & Earn nudge: shown at most once per calendar day (per browser) to
   // encourage referrals. localStorage can be unavailable (private mode), so
@@ -149,11 +164,17 @@ export default function Layout() {
             <h2 style={{ fontSize: 18, fontWeight: 800, marginBottom: 8 }}>Your plan ends today!</h2>
             <p style={{ fontSize: 14, color: "var(--text2)", lineHeight: 1.5, marginBottom: 20 }}>
               Your subscription expires at {expiryNotice.endDate.toLocaleTimeString("en-IN", { hour: "2-digit", minute: "2-digit" })} today ({expiryNotice.endDate.toLocaleDateString("en-IN", { day: "2-digit", month: "short" })}).
-              Renew now to keep access to mock tests, quizzes, flashcards and formulas without interruption.
+              {isAppMode ? "After that, mock tests, quizzes, flashcards and formulas will be locked until your plan is active again." : "Renew now to keep access to mock tests, quizzes, flashcards and formulas without interruption."}
             </p>
             <div style={{ display: "flex", gap: 10, justifyContent: "center" }}>
-              <button className="btn btn-outline" onClick={() => setExpiryNotice(null)}>Later</button>
-              <button className="btn btn-blue" onClick={() => { setExpiryNotice(null); navigate("/pricing"); }}>Renew Now</button>
+              {isAppMode ? (
+                <button className="btn btn-blue" onClick={() => setExpiryNotice(null)}>OK</button>
+              ) : (
+                <>
+                  <button className="btn btn-outline" onClick={() => setExpiryNotice(null)}>Later</button>
+                  <button className="btn btn-blue" onClick={() => { setExpiryNotice(null); navigate("/pricing"); }}>Renew Now</button>
+                </>
+              )}
             </div>
           </div>
         </div>

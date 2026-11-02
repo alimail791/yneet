@@ -5,6 +5,7 @@ import { Chart as ChartJS, LineElement, PointElement, LinearScale, CategoryScale
 import api from "../lib/api";
 import { useAuth } from "../context/AuthContext";
 import useCountdown from "../hooks/useCountdown";
+import TodayCards from "../components/home/TodayCards";
 ChartJS.register(LineElement, PointElement, LinearScale, CategoryScale, Filler, Tooltip);
 
 const MOTIVATIONS = [
@@ -73,6 +74,7 @@ export default function DashboardPage() {
 
   return (
     <div>
+      <TodayCards />
       {/* Motivation */}
       <div className="motiv-card">
         <div className="motiv-quote">"{motiv}"</div>

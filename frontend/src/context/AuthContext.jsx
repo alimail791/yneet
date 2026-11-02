@@ -1,4 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
+import { raiseEntryUrl } from "../utils/appMode";
 import api from "../lib/api";
 const AuthContext = createContext(null);
 
@@ -32,8 +33,7 @@ export function AuthProvider({ children }) {
     localStorage.removeItem("yneet_token");
     localStorage.removeItem("yneet_user");
     setUser(null);
-    const raiseUrl = import.meta.env.VITE_RAISE_ACADEMY_URL || "/";
-    window.location.href = raiseUrl;
+    window.location.href = raiseEntryUrl();
   };
 
   const updateUser = (updates) => {

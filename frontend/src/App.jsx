@@ -1,4 +1,6 @@
 import { Routes, Route, Navigate } from "react-router-dom";
+import { raiseEntryUrl } from "./utils/appMode";
+import QotdPage from "./pages/QotdPage";
 import { useAuth } from "./context/AuthContext";
 import Layout from "./components/layout/Layout";
 import HelpPage from "./pages/HelpPage"; 
@@ -51,8 +53,7 @@ function Guard({ children }) {
     </div>
   );
   if (!user) {
-    const raiseUrl = import.meta.env.VITE_RAISE_ACADEMY_URL || "/";
-    window.location.href = raiseUrl;
+    window.location.href = raiseEntryUrl();
     return null;
   }
   return children;
@@ -101,6 +102,7 @@ export default function App() {
       <Route path="/creator/forgot" element={<CreatorForgotPage />} />
       <Route path="/creator" element={<CreatorDashboard />} />
       <Route path="/pricing" element={<Guard><PricingPage /></Guard>} />
+      <Route path="/qotd" element={<Guard><QotdPage /></Guard>} />
       <Route path="/verify" element={<Guard><VerifyPage /></Guard>} />
       <Route path="/verify-email" element={<VerifyEmailPage />} />
 

@@ -1,4 +1,10 @@
 import { useEffect, useState } from "react";
+import { isAppMode } from "../utils/appMode";
+
+// Once the Play Store app is live, set VITE_PLAY_STORE_URL on Railway and Android
+// visitors are sent to the Play Store instead of the browser's "install" prompt.
+const PLAY_URL = import.meta.env.VITE_PLAY_STORE_URL || "";
+const isAndroid = () => /android/i.test(window.navigator.userAgent);
 
 // "Install YNeet" banner. Chrome/Android fire `beforeinstallprompt`; iOS Safari
 // has no such event, so we show a short "Share → Add to Home Screen" hint.
@@ -11,9 +17,10 @@ const isIos = () => /iphone|ipad|ipod/i.test(window.navigator.userAgent) && !win
 export default function InstallPrompt() {
   const [deferred, setDeferred] = useState(null);
   const [showIos, setShowIos] = useState(false);
+  const [showPlay, setShowPlay] = useState(false);
 
   useEffect(() => {
-    if (isStandalone()) return;
+    if (isAppMode || isStandalone()) return;
     try {
       const t = Number(localStorage.getItem(KEY) || 0);
       if (Date.now() - t < 7 * 24 * 3600 * 1000) return;
@@ -24,6 +31,7 @@ export default function InstallPrompt() {
     const onInstalled = () => setDeferred(null);
     window.addEventListener("appinstalled", onInstalled);
     if (isIos()) setShowIos(true);
+    if (PLAY_URL && isAndroid()) setShowPlay(true);
     return () => {
       window.removeEventListener("beforeinstallprompt", onPrompt);
       window.removeEventListener("appinstalled", onInstalled);
@@ -34,6 +42,7 @@ export default function InstallPrompt() {
     try { localStorage.setItem(KEY, String(Date.now())); } catch { /* ignore */ }
     setDeferred(null);
     setShowIos(false);
+    setShowPlay(false);
   };
 
   const install = async () => {
@@ -43,7 +52,7 @@ export default function InstallPrompt() {
     setDeferred(null);
   };
 
-  if (!deferred && !showIos) return null;
+  if (!deferred && !showIos && !showPlay) return null;
 
   return (
     <div style={{
@@ -54,11 +63,15 @@ export default function InstallPrompt() {
       <img src="/icons/icon-192.png" alt="" width="44" height="44" style={{ borderRadius: 10 }} />
       <div style={{ flex: 1, fontSize: 13, lineHeight: 1.4 }}>
         <div style={{ fontWeight: 800, fontSize: 14 }}>Install YNeet app</div>
-        {deferred
+        {showPlay
+          ? <div style={{ color: "#6b7280" }}>Daily NEET question and reminders on your phone.</div>
+          : deferred
           ? <div style={{ color: "#6b7280" }}>Open it from your home screen, like a normal app.</div>
           : <div style={{ color: "#6b7280" }}>Tap <b>Share</b>, then <b>Add to Home Screen</b>.</div>}
       </div>
-      {deferred && <button className="btn btn-blue btn-sm" onClick={install}>Install</button>}
+      {showPlay
+        ? <a className="btn btn-blue btn-sm" href={PLAY_URL} target="_blank" rel="noreferrer" onClick={() => { try { window.gtag?.("event", "play_store_click"); } catch { /* ignore */ } }}>Get app</a>
+        : deferred && <button className="btn btn-blue btn-sm" onClick={install}>Install</button>}
       <button onClick={dismiss} aria-label="Dismiss" style={{ background: "none", border: 0, fontSize: 20, color: "#9ca3af", cursor: "pointer" }}>×</button>
     </div>
   );

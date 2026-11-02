@@ -41,6 +41,7 @@ app.use("/api/v1/shorts",    require("./routes/shorts"));
 app.use("/api/v1/creator",   require("./routes/creator"));
 app.use("/api/v1/ai",        require("./routes/ai"));
 app.use("/api/v1/admin",     require("./routes/admin"));
+app.use("/api/v1/push",      require("./routes/push"));
 
 app.get("/health", (_, res) => res.json({ status: "ok", app: "YNeet" }));
 
@@ -53,6 +54,7 @@ const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`🚀 YNeet API running on port ${PORT}`));
 
 require("./utils/scheduledJobs").startScheduledJobs();
+require("./utils/pushJobs").startPushJobs();
 
 // One line at startup with the live test catalogue (counts per class/type/subject
 // and question counts) — read from the Railway logs for sales material.

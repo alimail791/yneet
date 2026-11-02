@@ -3,10 +3,24 @@ import api from "../../lib/api";
 
 export default function AdminSummaryPage() {
   const [summary, setSummary] = useState(null);
+  const [push, setPush] = useState(null);
+  const [msg, setMsg] = useState({ title: "", body: "", url: "/" });
+  const [sending, setSending] = useState(false);
 
   useEffect(() => {
     api.get("/admin/summary").then(r => setSummary(r.data.summary)).catch(() => {});
+    api.get("/admin/push/stats").then(r => setPush(r.data)).catch(() => {});
   }, []);
+
+  const sendPush = async (testOnly) => {
+    if (!testOnly && !window.confirm(`Send "${msg.title}" to all ${push?.devices || 0} devices now?`)) return;
+    setSending(true);
+    try {
+      const { data } = await api.post("/admin/push/broadcast", { ...msg, testOnly });
+      alert(`Sent to ${data.sent} device(s).${data.removed ? ` ${data.removed} turned off and were removed.` : ""}${data.failed ? ` ${data.failed} failed.` : ""}`);
+    } catch (err) { alert(err?.response?.data?.message || "Send failed"); }
+    setSending(false);
+  };
 
   const cards = summary ? [
     { label: "Total YNeet Users", value: summary.totalUsers, color: "blue" },
@@ -74,6 +88,35 @@ export default function AdminSummaryPage() {
           </div>
         );
       })()}
+
+      <div className="card" style={{ marginTop: 24 }}>
+        <p style={{ fontWeight: 700, marginBottom: 4 }}>Push notifications</p>
+        {push && !push.enabled && <p style={{ fontSize: 13, color: "var(--red)" }}>Off: VAPID keys are not set on the backend.</p>}
+        {push?.enabled && (
+          <>
+            <p style={{ fontSize: 13, color: "var(--text2)", marginBottom: 12 }}>
+              On for <strong>{push.users}</strong> students on <strong>{push.devices}</strong> devices ({push.app_devices} in the Android app).
+              Automatic: Question of the Day 7 AM, trial ending 6 PM, streak reminder 8:30 PM.
+            </p>
+            <div style={{ display: "grid", gap: 8, maxWidth: 520 }}>
+              <input className="form-input" maxLength={80} placeholder="Title, e.g. New full mock test is live" value={msg.title} onChange={e => setMsg({ ...msg, title: e.target.value })} />
+              <textarea className="form-input" maxLength={200} rows={2} placeholder="Message (up to 200 characters)" value={msg.body} onChange={e => setMsg({ ...msg, body: e.target.value })} />
+              <select className="form-select" value={msg.url} onChange={e => setMsg({ ...msg, url: e.target.value })}>
+                <option value="/">Opens: Home</option>
+                <option value="/qotd">Opens: Question of the Day</option>
+                <option value="/mock">Opens: Mock tests</option>
+                <option value="/practice">Opens: Practice</option>
+                <option value="/shorts">Opens: Shorts</option>
+                <option value="/referral">Opens: Invite friends</option>
+              </select>
+              <div style={{ display: "flex", gap: 8 }}>
+                <button className="btn btn-outline" disabled={sending || !msg.title || !msg.body} onClick={() => sendPush(true)}>Send to me only</button>
+                <button className="btn btn-blue" disabled={sending || !msg.title || !msg.body || !push.devices} onClick={() => sendPush(false)}>{sending ? "Sending..." : "Send to everyone"}</button>
+              </div>
+            </div>
+          </>
+        )}
+      </div>
 
       <div className="card" style={{ marginTop: 24 }}>
         <p style={{ fontWeight: 700, marginBottom: 8 }}>Quick links</p>

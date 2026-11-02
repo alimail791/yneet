@@ -28,6 +28,24 @@ router.post("/mock-builder/chapter-tests/delete", ct.deleteChapterTests);
 
 router.get("/summary", c.getSummary);
 
+// Push notifications: how many devices have them on, and a manual broadcast.
+router.get("/push/stats", async (req, res) => {
+  try { res.json({ success: true, enabled: require("../utils/push").enabled, ...(await require("../utils/push").countSubscriptions()) }); }
+  catch (err) { res.status(500).json({ success: false, message: err.message }); }
+});
+router.post("/push/broadcast", async (req, res) => {
+  try {
+    const push = require("../utils/push");
+    const title = String(req.body.title || "").trim().slice(0, 80);
+    const body = String(req.body.body || "").trim().slice(0, 200);
+    let url = String(req.body.url || "/").trim();
+    if (!title || !body) return res.status(400).json({ success: false, message: "Title and message are required" });
+    if (!url.startsWith("/")) url = "/";
+    const rows = req.body.testOnly ? await push.subscriptionsForUser(req.user.id) : await push.allSubscriptions();
+    res.json({ success: true, ...(await push.sendTo(rows, { title, body, url, tag: "broadcast" })) });
+  } catch (err) { res.status(500).json({ success: false, message: err.message }); }
+});
+
 router.get("/users", c.listUsers);
 router.get("/users/:id", c.getUserDetail);
 router.put("/users/:id/subscription", c.updateUserSubscription);

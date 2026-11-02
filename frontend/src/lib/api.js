@@ -1,4 +1,5 @@
 import axios from "axios";
+import { raiseEntryUrl } from "../utils/appMode";
 const api = axios.create({ baseURL: import.meta.env.VITE_API_URL || "/api/v1", withCredentials: true });
 
 api.interceptors.request.use((config) => {
@@ -15,8 +16,7 @@ api.interceptors.response.use(
       // back to Raise Academy to re-authenticate and re-enter via the SSO bridge.
       localStorage.removeItem("yneet_token");
       localStorage.removeItem("yneet_user");
-      const raiseUrl = import.meta.env.VITE_RAISE_ACADEMY_URL || "/";
-      window.location.href = raiseUrl;
+      window.location.href = raiseEntryUrl();
     } else if (err.response?.status === 402) {
       // Valid session, but no active subscription — send to pricing, not logout.
       if (window.location.pathname !== "/pricing") window.location.href = "/pricing";

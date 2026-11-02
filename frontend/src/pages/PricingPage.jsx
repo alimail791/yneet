@@ -2,6 +2,7 @@ import { useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../lib/api";
 import { useAuth } from "../context/AuthContext";
+import { isAppMode } from "../utils/appMode";
 
 const loadRazorpayScript = () =>
   new Promise((resolve) => {
@@ -131,6 +132,43 @@ export default function PricingPage() {
   const isOption = OPTIONS.some((o) => o.months === months);
   const inr = (n) => `₹${Number(n).toLocaleString("en-IN")}`;
   const blueBtn = { width: "100%", justifyContent: "center", textAlign: "center", background: "var(--blue-mid)", color: "#fff", padding: "12px 0", borderRadius: "var(--r)", fontWeight: 700, border: "none", cursor: "pointer" };
+
+  // Inside the Play Store app: no prices and no payment (see utils/appMode.js).
+  // The free trial is still offered, since it costs nothing.
+  if (isAppMode) {
+    const canTrial = !tier?.free && (!trial || trial.eligible);
+    return (
+      <div style={{ minHeight: "100vh", background: "var(--gray)", padding: "40px 16px" }}>
+        <div className="card" style={{ maxWidth: 420, margin: "0 auto", textAlign: "center", padding: 28 }}>
+          {canTrial ? (
+            <>
+              <h1 style={{ fontSize: 22, fontWeight: 800, marginBottom: 8 }}>Start your free trial</h1>
+              <p style={{ color: "var(--text2)", fontSize: 14, marginBottom: 18 }}>
+                {trial?.days || 30} days of full access: NEET questions, mock tests, AI explanations and Shorts. No payment needed.
+              </p>
+              <button style={blueBtn} disabled={startingTrial} onClick={startTrial}>
+                {startingTrial ? "Starting..." : `Start ${trial?.days || 30}-day free trial`}
+              </button>
+            </>
+          ) : (
+            <>
+              <h1 style={{ fontSize: 22, fontWeight: 800, marginBottom: 8 }}>Your plan isn't active</h1>
+              <p style={{ color: "var(--text2)", fontSize: 14, marginBottom: 18 }}>
+                This account doesn't have an active YNeet plan right now. Once your plan is active, everything unlocks here automatically.
+              </p>
+              <a href="https://wa.me/919443424064?text=Hi%2C%20I%20need%20help%20with%20my%20YNeet%20plan" target="_blank" rel="noreferrer" style={{ ...blueBtn, display: "block", textDecoration: "none" }}>
+                Ask for help on WhatsApp
+              </a>
+            </>
+          )}
+          {error && <p style={{ color: "var(--red)", fontSize: 13, marginTop: 12 }}>{error}</p>}
+          <button onClick={async () => { await refreshUser(); navigate("/", { replace: true }); }} style={{ marginTop: 14, background: "none", border: "none", color: "var(--blue-mid)", fontWeight: 600, cursor: "pointer" }}>
+            I already have a plan, refresh
+          </button>
+        </div>
+      </div>
+    );
+  }
 
   return (
     <div style={{ minHeight: "100vh", background: "var(--gray)", padding: "40px 16px" }}>

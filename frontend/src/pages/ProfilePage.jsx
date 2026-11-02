@@ -2,6 +2,7 @@ import { useState } from "react";
 import { useAuth } from "../context/AuthContext";
 import api from "../lib/api";
 import ParentUpdates from "../components/ParentUpdates";
+import PushToggle from "../components/PushToggle";
 import ClassMove from "../components/ClassMove";
 
 const SUBJECTS = ["Physics","Chemistry","Biology","Thermodynamics","Optics","Electrostatics","Magnetism","Modern Physics","Organic Chemistry","Inorganic Chemistry","Physical Chemistry","Coordination Compounds","Electrochemistry","Genetics","Cell Biology","Human Physiology","Plant Physiology","Ecology","Evolution","Biotechnology"];
@@ -165,6 +166,7 @@ export default function ProfilePage() {
       </div>
       <ClassMove />
       <ParentUpdates />
+      <PushToggle />
     </div>
   );
 }

@@ -1,4 +1,6 @@
 import { Link } from "react-router-dom";
+import { isAppMode } from "../utils/appMode";
+import TodayCards from "../components/home/TodayCards";
 import { useAuth } from "../context/AuthContext";
 import { PUZZLES_URL } from "../utils/plan";
 
@@ -19,6 +21,7 @@ export default function JuniorHomePage() {
 
   return (
     <div>
+      <TodayCards />
       <div className="motiv-card">
         <p style={{ fontSize: 13, opacity: 0.85 }}>Free for Class 6–8</p>
         <h1 style={{ fontSize: 22, fontWeight: 800, margin: "2px 0 6px" }}>Hi {first}, ready for today?</h1>
@@ -47,7 +50,7 @@ export default function JuniorHomePage() {
         <h2 style={{ fontSize: 16, fontWeight: 800, color: "var(--amber)" }}>🎯 Dreaming of becoming a doctor?</h2>
         <p style={{ fontSize: 13.5, color: "var(--text2)", marginTop: 4 }}>
           From Class 9, <strong>NEET Foundation</strong> adds Foundation tests, the mistake notebook and WhatsApp doubt support —
-          30 days free, then ₹299/month. When you move to Class 9, update your class in your <Link to="/profile">profile</Link> to start.
+          30 days free{isAppMode ? "" : ", then ₹299/month"}. When you move to Class 9, update your class in your <Link to="/profile">profile</Link> to start.
         </p>
       </div>
     </div>
