@@ -52,13 +52,13 @@ export default function CreatorAuthPage({ mode }) {
         <div className="auth-logo">YNeet Creators</div>
         <p style={{ color: "var(--text2)", fontSize: 14, marginBottom: 18 }}>
           {isApply
-            ? "Make 3–5 minute science concept Shorts for Class 6 to NEET. Earn ₹500 for every approved Short, paid every week — and get your channel credited in front of YNeet students."
+            ? "Make 3–5 minute science concept Shorts for Class 6 to NEET. Get a one-time payment of ₹500 for every approved Short, and your channel credited in front of YNeet students. Payments go out every Monday."
             : "Log in to submit Shorts and see your earnings."}
         </p>
 
         {isApply && (
           <div style={{ display: "grid", gridTemplateColumns: "repeat(3,1fr)", gap: 8, marginBottom: 18 }}>
-            {[["💰", "₹500 per Short", "paid weekly"], ["📣", "Your channel", "credited on every video"], ["🌟", "Get featured", "on the yneet.in homepage"]].map(([i, t, d]) => (
+            {[["💰", "₹500 per Short", "one-time, paid Mondays"], ["📣", "Your channel", "credited on every video"], ["🌟", "Get featured", "on the yneet.in homepage"]].map(([i, t, d]) => (
               <div key={t} style={{ background: "var(--gray2)", borderRadius: 10, padding: "10px 8px", textAlign: "center" }}>
                 <div style={{ fontSize: 20 }}>{i}</div>
                 <div style={{ fontSize: 12.5, fontWeight: 800 }}>{t}</div>
@@ -95,6 +95,12 @@ export default function CreatorAuthPage({ mode }) {
             </>
           )}
 
+          {isApply && (
+            <label style={{ display: "flex", gap: 10, alignItems: "flex-start", fontSize: 13.5, color: "var(--text2)", marginBottom: 14, lineHeight: 1.5 }}>
+              <input type="checkbox" required checked={!!form.acceptTerms} onChange={(e) => setForm(f => ({ ...f, acceptTerms: e.target.checked }))} style={{ marginTop: 3, width: 18, height: 18 }} />
+              <span>I agree to the <Link to="/creator/terms" target="_blank" style={{ color: "var(--blue-mid)", fontWeight: 700 }}>YNeet Creator Terms</Link>: a one-time ₹500 per approved Short, and YNeet can keep showing paid Shorts. I keep my video and can post it on my own channels.</span>
+            </label>
+          )}
           {error && <p style={{ color: "var(--red)", fontSize: 13, marginBottom: 12 }}>{error}</p>}
           <button className="btn btn-blue btn-full" disabled={busy} style={{ padding: "12px 0" }}>
             {busy ? "Please wait…" : isApply ? "Apply to become a creator" : "Log in"}

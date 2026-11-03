@@ -102,6 +102,7 @@ exports.apply = async (req, res) => {
     if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) errors.push("Enter a valid email");
     if (phone.length !== 10) errors.push("Enter a 10-digit WhatsApp number");
     if (password.length < 8) errors.push("Password must be at least 8 characters");
+    if (req.body.acceptTerms !== true) errors.push("Please accept the YNeet Creator Terms");
     if (errors.length) return res.status(400).json({ success: false, message: errors.join(". ") });
 
     const exists = await prisma.creator.findUnique({ where: { email } });
@@ -119,6 +120,7 @@ exports.apply = async (req, res) => {
         upiId: clean(req.body.upiId, 80) || null,
       },
     });
+    await require("../utils/creatorTerms").accept(creator.id, req.ip).catch((e) => console.error("creator terms record failed:", e.message));
     // Email problems must not lose the sign-up: the creator can ask for the code again.
     let codeSent = true;
     try { await issueCode(creator, "verify"); } catch (e) { codeSent = false; console.error("creator verify email failed:", e.message); }
@@ -201,9 +203,11 @@ exports.me = async (req, res) => {
       prisma.creatorPayout.aggregate({ where: { creatorId: c.id, status: "paid" }, _sum: { amount: true, bonus: true } }),
     ]);
     const by = Object.fromEntries(counts.map(x => [x.reviewStatus, x._count._all]));
+    const terms = require("../utils/creatorTerms");
+    const termsAccepted = await terms.hasAccepted(c.id).catch(() => true); // never lock a creator out over a DB hiccup
     res.json({
       success: true,
-      creator: creatorView(c),
+      creator: { ...creatorView(c), termsAccepted, termsVersion: terms.TERMS_VERSION },
       stats: {
         approved: by.approved || 0, pending: by.pending || 0, rejected: by.rejected || 0,
         viewers: viewsAgg._sum.viewCount || 0,
@@ -265,6 +269,9 @@ exports.myShorts = async (req, res) => {
 exports.submitShort = async (req, res) => {
   try {
     if (!requireApproved(req, res)) return;
+    if (!(await require("../utils/creatorTerms").hasAccepted(req.creator.id).catch(() => true))) {
+      return res.status(403).json({ success: false, termsRequired: true, message: "Please accept the updated YNeet Creator Terms on your dashboard first." });
+    }
     const { data, errors } = buildShortData(pick(req.body));
     if (errors.length) return res.status(400).json({ success: false, message: errors.join(". ") });
     const short = await prisma.short.create({
@@ -318,3 +325,11 @@ exports.myPayouts = async (req, res) => {
 };
 
 exports._internal = { creatorView, signCreator, CREATOR_SECRET };
+
+// POST /api/v1/creator/terms/accept — an existing creator accepts the current terms.
+exports.acceptTerms = async (req, res) => {
+  try {
+    await require("../utils/creatorTerms").accept(req.creator.id, req.ip);
+    res.json({ success: true });
+  } catch (err) { res.status(500).json({ success: false, message: err.message }); }
+};

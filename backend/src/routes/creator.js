@@ -14,6 +14,7 @@ router.get("/me", c.me);
 router.post("/verify-email/send", authLimiter, c.sendVerifyCode);
 router.post("/verify-email", authLimiter, c.verifyEmail);
 router.put("/me", c.updateMe);
+router.post("/terms/accept", c.acceptTerms);
 router.get("/shorts", c.myShorts);
 router.post("/shorts", c.submitShort);
 router.put("/shorts/:id", c.updateShort);

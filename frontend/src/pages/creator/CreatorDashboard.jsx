@@ -164,6 +164,23 @@ export default function CreatorDashboard() {
       <div className="page-content" style={{ maxWidth: 960 }}>
         {me.emailVerified === false && <VerifyEmailCard email={me.email} onVerified={(c) => { setMe(c); flash("Email confirmed ✓"); }} />}
 
+        {me.termsAccepted === false && (
+          <div className="card mb-4" style={{ borderColor: "var(--blue-mid)" }}>
+            <strong>Please accept the YNeet Creator Terms</strong>
+            <p style={{ fontSize: 13.5, color: "var(--text2)", marginTop: 4, lineHeight: 1.5 }}>
+              In short: a <strong>one-time payment</strong> of {inr(me.ratePerVideo)} for each approved Short, paid on Mondays. YNeet can keep showing paid Shorts. You keep your video and can post it on your own channels.
+              You need to accept before your next upload.
+            </p>
+            <div style={{ display: "flex", gap: 8, marginTop: 10, flexWrap: "wrap" }}>
+              <a className="btn btn-outline btn-sm" href="/creator/terms" target="_blank" rel="noreferrer">Read the full terms</a>
+              <button className="btn btn-blue btn-sm" onClick={async () => {
+                try { await creatorApi.post("/creator/terms/accept"); setMe({ ...me, termsAccepted: true }); flash("Thanks! Terms accepted ✓"); }
+                catch (e) { flash(errMsg(e, "Couldn't save. Try again.")); }
+              }}>I agree</button>
+            </div>
+          </div>
+        )}
+
         {me.status === "pending" && (
           <div className="card mb-4" style={{ background: "var(--amber-light)", borderColor: "var(--amber-light)" }}>
             <strong style={{ color: "var(--amber)" }}>⏳ Your application is being reviewed</strong>
@@ -176,20 +193,20 @@ export default function CreatorDashboard() {
         <div className="grid4 mb-4">
           <div className="card"><div className="card-title">Live Shorts</div><div className="card-value">{stats.approved}</div><div className="card-sub">{stats.pending} in review</div></div>
           <div className="card"><div className="card-title">Students reached</div><div className="card-value">{stats.viewers.toLocaleString("en-IN")}</div><div className="card-sub">unique viewers</div></div>
-          <div className="card"><div className="card-title">To be paid</div><div className="card-value" style={{ color: "var(--green)" }}>{inr(stats.unpaidAmount)}</div><div className="card-sub">{stats.unpaidShorts} Short{stats.unpaidShorts === 1 ? "" : "s"} · paid weekly</div></div>
-          <div className="card"><div className="card-title">Paid so far</div><div className="card-value">{inr(stats.paidTotal)}</div><div className="card-sub">{inr(me.ratePerVideo)} per approved Short</div></div>
+          <div className="card"><div className="card-title">To be paid</div><div className="card-value" style={{ color: "var(--green)" }}>{inr(stats.unpaidAmount)}</div><div className="card-sub">{stats.unpaidShorts} Short{stats.unpaidShorts === 1 ? "" : "s"} · paid next Monday</div></div>
+          <div className="card"><div className="card-title">Paid so far</div><div className="card-value">{inr(stats.paidTotal)}</div><div className="card-sub">{inr(me.ratePerVideo)} one-time per approved Short</div></div>
         </div>
 
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 10, flexWrap: "wrap", marginBottom: 14 }}>
           <div style={{ display: "flex", gap: 4 }}>{tabBtn("shorts", "My Shorts")}{tabBtn("earnings", "Earnings")}{tabBtn("profile", "Profile")}</div>
-          {tab === "shorts" && <button className="btn btn-blue" onClick={openNew} disabled={!approved} title={approved ? "" : "Available once you're approved"}>+ Submit a Short</button>}
+          {tab === "shorts" && <button className="btn btn-blue" onClick={openNew} disabled={!approved || me.termsAccepted === false} title={!approved ? "Available once you're approved" : me.termsAccepted === false ? "Accept the Creator Terms first" : ""}>+ Submit a Short</button>}
         </div>
 
         {tab === "shorts" && (
           <>
             <div className="card mb-4" style={{ background: "var(--blue-light)", borderColor: "var(--blue-light)", fontSize: 13.5, color: "var(--text2)" }}>
               <strong style={{ color: "var(--blue)" }}>How it works:</strong> upload your video to YouTube as <strong>Unlisted</strong> (or Bunny Stream), then submit the link here.
-              YNeet reviews it, adds quick-check questions and puts it live. You're paid for every approved Short each week.
+              YNeet reviews it, adds quick-check questions and puts it live. Each approved Short earns a one-time payment, paid on the Monday after it's approved.
               The best ones get <strong>featured</strong> on the yneet.in homepage with a link to your channel — and you get a share link to promote them.
             </div>
             {shorts.length === 0 ? (
