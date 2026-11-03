@@ -88,4 +88,29 @@ router.publicTeaser = async (req, res) => {
   } catch (err) { res.status(500).json({ success: false, message: "Could not load the teaser" }); }
 };
 
+// Public (no login) concept maps for www.yneet.in/neet-concept-maps: every
+// approved, published map for every class group. Mounted in routes/public.js.
+router.publicMaps = async (req, res) => {
+  try {
+    await W.ensureTables();
+    const rows = await p.$queryRaw`
+      SELECT id, grp, subject, chapter, data->>'title' AS title, data->'center'->>'heading' AS core, publish_on
+      FROM weekly.concept_maps WHERE status = 'approved' AND publish_on <= ${W.istDay()}
+      ORDER BY publish_on DESC, id DESC LIMIT 200`;
+    res.set("Cache-Control", "public, max-age=600");
+    res.json({ success: true, maps: rows.map((r) => ({ ...r, group: W.GROUPS[r.grp]?.label || r.grp })) });
+  } catch (err) { res.status(500).json({ success: false, message: "Could not load concept maps" }); }
+};
+router.publicMap = async (req, res) => {
+  try {
+    await W.ensureTables();
+    const rows = await p.$queryRaw`
+      SELECT id, grp, subject, chapter, data, publish_on FROM weekly.concept_maps
+      WHERE id = ${Number(req.params.id) || 0} AND status = 'approved' AND publish_on <= ${W.istDay()}`;
+    if (!rows[0]) return res.status(404).json({ success: false, message: "Map not found" });
+    res.set("Cache-Control", "public, max-age=600");
+    res.json({ success: true, map: { ...rows[0], group: W.GROUPS[rows[0].grp]?.label || rows[0].grp } });
+  } catch (err) { res.status(500).json({ success: false, message: "Could not load the map" }); }
+};
+
 module.exports = router;

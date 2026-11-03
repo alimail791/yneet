@@ -24,6 +24,9 @@ router.get("/papers/:year", getPaper);
 
 // Brain Teaser of the week for the public website page (no login; never the answer before the reveal).
 router.get("/teaser", require("./weekly").publicTeaser);
+// Concept maps for www.yneet.in/neet-concept-maps (no login).
+router.get("/maps", require("./weekly").publicMaps);
+router.get("/maps/:id", require("./weekly").publicMap);
 
 // Ask YNeet: featured answered doubts for the website page (no login, no names).
 router.get("/doubts", require("./doubts").publicFeatured);

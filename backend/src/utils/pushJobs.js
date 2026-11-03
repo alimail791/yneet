@@ -163,6 +163,7 @@ async function tick() {
 function startPushJobs() {
   if (!push.enabled) { console.log("[push] off: VAPID keys not set."); return; }
   push.ensureTables().then(() => console.log("[push] ready")).catch((e) => console.warn("[push] table setup failed:", e.message));
+  require("./teaserSeed").seedTeasers().catch((e) => console.warn("[weekly] teaser seed failed:", e.message));
   setInterval(tick, 60 * 1000);
 }
 
