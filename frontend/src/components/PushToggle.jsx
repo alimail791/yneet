@@ -28,7 +28,7 @@ export default function PushToggle() {
       <div style={{ flex: "1 1 220px" }}>
         <p style={{ fontWeight: 700 }}>Daily reminders on this phone</p>
         <p style={{ fontSize: 13, color: "var(--text2)" }}>
-          {note || (pushPermission() === "denied" ? "Blocked in your phone's settings." : "Question of the Day at 7 AM, and a reminder at 8:30 PM if you haven't practised.")}
+          {note || (pushPermission() === "denied" ? "Blocked in your phone's settings." : "Question of the Day at 7 AM, the 60-Second Sprint at 7 PM, and a reminder at 8:30 PM if you haven't practised.")}
         </p>
       </div>
       <button className={on ? "btn btn-outline btn-sm" : "btn btn-blue btn-sm"} disabled={busy} onClick={toggle}>

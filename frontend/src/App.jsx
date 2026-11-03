@@ -1,6 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom";
 import { raiseEntryUrl } from "./utils/appMode";
 import QotdPage from "./pages/QotdPage";
+import SprintPage from "./pages/SprintPage";
 import { useAuth } from "./context/AuthContext";
 import Layout from "./components/layout/Layout";
 import HelpPage from "./pages/HelpPage"; 
@@ -103,6 +104,7 @@ export default function App() {
       <Route path="/creator" element={<CreatorDashboard />} />
       <Route path="/pricing" element={<Guard><PricingPage /></Guard>} />
       <Route path="/qotd" element={<Guard><QotdPage /></Guard>} />
+      <Route path="/sprint" element={<Guard><SprintPage /></Guard>} />
       <Route path="/verify" element={<Guard><VerifyPage /></Guard>} />
       <Route path="/verify-email" element={<VerifyEmailPage />} />
 

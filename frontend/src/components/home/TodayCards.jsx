@@ -1,4 +1,5 @@
-// Two cards for the top of the home screen:
+// Cards for the top of the home screen:
+//  0. 60-Second Sprint (links to /sprint) — today's ranked speed round.
 //  1. Question of the Day (links to /qotd) — a reason to open YNeet every day.
 //  2. "Turn on daily reminders" — asks for notification permission once, with a
 //     clear reason, instead of the browser's cold prompt on first load.
@@ -9,12 +10,14 @@ import { pushSupported, pushPermission, enablePush, pushCardDismissed, dismissPu
 
 export default function TodayCards() {
   const [q, setQ] = useState(null);
+  const [sprint, setSprint] = useState(null);
   const [showPush, setShowPush] = useState(() => pushSupported() && pushPermission() === "default" && !pushCardDismissed());
   const [busy, setBusy] = useState(false);
   const [note, setNote] = useState("");
 
   useEffect(() => {
     api.get("/public/qotd").then((r) => setQ(r.data.today)).catch(() => {});
+    api.get("/sprint/status").then((r) => setSprint(r.data)).catch(() => {});
   }, []);
 
   const turnOn = async () => {
@@ -37,13 +40,29 @@ export default function TodayCards() {
           <div style={{ fontSize: 28 }} aria-hidden="true">🔔</div>
           <div style={{ flex: "1 1 200px" }}>
             <p style={{ fontWeight: 800, fontSize: 15 }}>Get a NEET question every morning</p>
-            <p style={{ fontSize: 13, color: "var(--text2)" }}>{note || "One question at 7 AM and a gentle reminder at night if you haven't practised. Nothing else."}</p>
+            <p style={{ fontSize: 13, color: "var(--text2)" }}>{note || "Question of the Day at 7 AM, the Sprint at 7 PM, and a nudge at night if you haven't practised."}</p>
           </div>
           <div style={{ display: "flex", gap: 8 }}>
             <button className="btn btn-outline btn-sm" onClick={() => { dismissPushCard(); setShowPush(false); }}>Not now</button>
             <button className="btn btn-blue btn-sm" disabled={busy} onClick={turnOn}>{busy ? "Turning on..." : "Turn on"}</button>
           </div>
         </div>
+      )}
+      {sprint && (
+        <Link to="/sprint" className="card" style={{ display: "flex", alignItems: "center", gap: 14, textDecoration: "none", color: "#fff", background: "#3b2fc9", borderColor: "#3b2fc9" }}>
+          <div style={{ width: 52, height: 52, borderRadius: 26, background: "#f5a623", color: "#1e1b4b", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 800, fontSize: 15, flexShrink: 0 }}>
+            {sprint.played ? `${sprint.score}/5` : "60s"}
+          </div>
+          <div style={{ flex: 1 }}>
+            <p style={{ fontWeight: 800, fontSize: 15 }}>{sprint.played ? `Today's Sprint: rank #${sprint.rank} of ${sprint.players}` : "Today's 60-Second Sprint"}</p>
+            <p style={{ fontSize: 13, color: "#c7d2fe" }}>
+              {sprint.played
+                ? (sprint.streak > 1 ? `${sprint.streak}-day streak · see answers and top 10` : "See answers and today's top 10")
+                : `5 questions, 60 seconds${sprint.players ? ` · ${sprint.players} played today` : ""}`}
+            </p>
+          </div>
+          <span style={{ fontWeight: 800, fontSize: 14, color: "#f5a623" }}>{sprint.played ? "View →" : "Play →"}</span>
+        </Link>
       )}
       {q && (
         <Link to="/qotd" className="card" style={{ display: "block", textDecoration: "none", color: "inherit" }}>

@@ -1,6 +1,7 @@
 // Scheduled push notifications (India time):
 //   07:00  Question of the Day                       → everyone with notifications on
 //   18:00  "Your free trial ends in 3 days"          → trial users on day 27
+//   19:00  "Today's 60-Second Sprint is waiting"     → anyone who hasn't played today
 //   20:30  "Keep your streak" / "Your practice waits" → anyone who hasn't opened YNeet today
 // A minute ticker checks the clock; push.job_runs makes each job run once a day,
 // even across redeploys. A job only starts inside its 2-hour window, so a late
@@ -63,9 +64,25 @@ async function trialEndingJob() {
   console.log(`[push] trial ending: ${JSON.stringify(r)}`);
 }
 
+async function sprintJob() {
+  const S = require("./sprint");
+  await S.ensureTables();
+  const day = istDay();
+  const played = new Set((await prisma.$queryRaw`SELECT user_id FROM sprint.plays WHERE day = ${day} AND finished_at IS NOT NULL`).map((r) => r.user_id));
+  const rows = (await push.allSubscriptions()).filter((r) => !played.has(r.user_id));
+  const r = await push.sendTo(rows, {
+    title: "Today's 60-Second Sprint is waiting",
+    body: "5 questions, 60 seconds. See where you rank today.",
+    url: "/sprint",
+    tag: "sprint",
+  });
+  console.log(`[push] sprint: ${JSON.stringify(r)}`);
+}
+
 const JOBS = [
   { name: "qotd", at: 7 * 60, run: qotdJob },
   { name: "trial", at: 18 * 60, run: trialEndingJob },
+  { name: "sprint", at: 19 * 60, run: sprintJob },
   { name: "streak", at: 20 * 60 + 30, run: streakJob },
 ];
 
@@ -93,4 +110,4 @@ function startPushJobs() {
   setInterval(tick, 60 * 1000);
 }
 
-module.exports = { startPushJobs, qotdJob, streakJob, trialEndingJob };
+module.exports = { startPushJobs, qotdJob, streakJob, trialEndingJob, sprintJob };
