@@ -5,6 +5,8 @@ import SprintPage from "./pages/SprintPage";
 import ConceptMapsPage from "./pages/ConceptMapsPage";
 import TeaserPage from "./pages/TeaserPage";
 import AdminWeeklyPage from "./pages/admin/AdminWeeklyPage";
+import AdminDoubtsPage from "./pages/admin/AdminDoubtsPage";
+import AskPage from "./pages/AskPage";
 import { useAuth } from "./context/AuthContext";
 import Layout from "./components/layout/Layout";
 import HelpPage from "./pages/HelpPage"; 
@@ -111,6 +113,7 @@ export default function App() {
       <Route path="/maps" element={<Guard><ConceptMapsPage /></Guard>} />
       <Route path="/maps/:id" element={<Guard><ConceptMapsPage /></Guard>} />
       <Route path="/teaser" element={<Guard><TeaserPage /></Guard>} />
+      <Route path="/ask" element={<Guard><AskPage /></Guard>} />
       <Route path="/verify" element={<Guard><VerifyPage /></Guard>} />
       <Route path="/verify-email" element={<VerifyEmailPage />} />
 
@@ -124,6 +127,7 @@ export default function App() {
         <Route path="shorts"        element={<AdminShortsPage />} />
         <Route path="creators"      element={<AdminCreatorsPage />} />
         <Route path="weekly"        element={<AdminWeeklyPage />} />
+        <Route path="doubts"        element={<AdminDoubtsPage />} />
         <Route path="bulk-generator" element={<BulkGeneratorPage />} />
         <Route path="mock-builder"  element={<MockTestBuilderPage />} />
       </Route>

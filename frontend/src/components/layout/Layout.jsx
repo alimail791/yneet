@@ -71,6 +71,7 @@ export default function Layout() {
     { to: "/sprint",   label: "60-Second Sprint" },
     { to: "/maps",     label: "Concept Maps" },
     { to: "/teaser",   label: "Brain Teaser" },
+    { to: "/ask",      label: "Ask a Doubt" },
     { to: "/biology",  label: "Biology" },
     { to: "/physics",  label: "Physics" },
     { to: "/chemistry",label: "Chemistry" },
@@ -87,6 +88,7 @@ export default function Layout() {
     { href: PUZZLES_URL, label: "Daily Puzzles" },
     { to: "/sprint", label: "60-Second Sprint" },
     { to: "/teaser", label: "Brain Teaser" },
+    { to: "/ask",    label: "Ask a Doubt" },
     { to: "/help",   label: "Help & FAQ" },
   ];
   const tabs = junior ? juniorTabs : allTabs;

@@ -25,6 +25,9 @@ router.get("/papers/:year", getPaper);
 // Brain Teaser of the week for the public website page (no login; never the answer before the reveal).
 router.get("/teaser", require("./weekly").publicTeaser);
 
+// Ask YNeet: featured answered doubts for the website page (no login, no names).
+router.get("/doubts", require("./doubts").publicFeatured);
+
 // Email confirmation link (opened from the inbox, no login needed).
 router.post("/verify-email", require("../controllers/verifyController").confirmEmail);
 

@@ -30,6 +30,8 @@ router.get("/summary", c.getSummary);
 
 // Concept Map Monday + Brain Teaser Wednesday: AI drafts, approve, schedule.
 router.use("/weekly", require("./adminWeekly"));
+// Ask YNeet: the teacher's doubt queue.
+router.use("/doubts", require("./adminDoubts"));
 
 // Push notifications: how many devices have them on, and a manual broadcast.
 router.get("/push/stats", async (req, res) => {

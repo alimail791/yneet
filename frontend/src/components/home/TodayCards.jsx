@@ -13,6 +13,7 @@ export default function TodayCards() {
   const [sprint, setSprint] = useState(null);
   const [maps, setMaps] = useState(null);
   const [teaser, setTeaser] = useState(null);
+  const [unseen, setUnseen] = useState(0);
   const [showPush, setShowPush] = useState(() => pushSupported() && pushPermission() === "default" && !pushCardDismissed());
   const [busy, setBusy] = useState(false);
   const [note, setNote] = useState("");
@@ -22,6 +23,7 @@ export default function TodayCards() {
     api.get("/sprint/status").then((r) => setSprint(r.data)).catch(() => {});
     api.get("/weekly/maps").then((r) => setMaps(r.data)).catch(() => {});
     api.get("/weekly/teaser").then((r) => setTeaser(r.data.current)).catch(() => {});
+    api.get("/ask/unseen").then((r) => setUnseen(r.data.unseen)).catch(() => {});
   }, []);
 
   const turnOn = async () => {
@@ -51,6 +53,15 @@ export default function TodayCards() {
             <button className="btn btn-blue btn-sm" disabled={busy} onClick={turnOn}>{busy ? "Turning on..." : "Turn on"}</button>
           </div>
         </div>
+      )}
+      {unseen > 0 && (
+        <Link to="/ask" className="card" style={{ display: "flex", alignItems: "center", gap: 14, textDecoration: "none", color: "inherit", background: "var(--green-light)", borderColor: "#a7f3d0" }}>
+          <div style={{ flex: 1 }}>
+            <p style={{ fontWeight: 800, fontSize: 15, color: "#065f46" }}>{unseen === 1 ? "Your doubt is answered" : `${unseen} doubts answered`}</p>
+            <p style={{ fontSize: 13, color: "#064e3b" }}>A teacher replied. Tap to read.</p>
+          </div>
+          <span style={{ fontWeight: 800, fontSize: 14, color: "#065f46" }}>Read →</span>
+        </Link>
       )}
       {sprint && (
         <Link to="/sprint" className="card" style={{ display: "flex", alignItems: "center", gap: 14, textDecoration: "none", color: "#fff", background: "#3b2fc9", borderColor: "#3b2fc9" }}>

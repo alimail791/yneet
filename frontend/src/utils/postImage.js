@@ -103,3 +103,38 @@ export function drawTeaserPost(t) {
   footer(ctx, W, H);
   download(c, `brain-teaser-${t.id || "post"}.png`);
 }
+
+// Ask YNeet Friday post: the student's doubt on top, the answer below.
+export function drawDoubtPost(d) {
+  const W = 1080, H = 1350, P = 84;
+  const c = document.createElement("canvas"); c.width = W; c.height = H;
+  const ctx = c.getContext("2d");
+  ctx.fillStyle = "#f8fafc"; ctx.fillRect(0, 0, W, H);
+  text(ctx, "ASK YNEET · FRIDAY", P, 84, { size: 28, weight: 800, color: INK });
+  text(ctx, d.subject || "", W - P, 84, { size: 26, weight: 700, color: GREY, align: "right" });
+  // Question block
+  ctx.font = `800 40px ${FONT}`;
+  const qLines = Math.min(5, wrap(ctx, `"${d.question}"`, W - 2 * P - 88).length);
+  const qH = 110 + qLines * 50;
+  rr(ctx, P, 150, W - 2 * P, qH, 36, INK);
+  text(ctx, d.cls ? `A Class ${String(d.cls).replace(/th$/, "")} student asked` : "A student asked", P + 44, 186, { size: 26, weight: 700, color: "#c7d2fe" });
+  const qText = wrap(ctx, `"${d.question}"`, W - 2 * P - 88).slice(0, 5).join(" ");
+  text(ctx, qText, P + 44, 230, { size: 40, weight: 800, color: "#fff", maxW: W - 2 * P - 88, lh: 1.25 });
+  // Answer block
+  const top = 150 + qH + 40, maxH = H - top - 190;
+  rr(ctx, P, top, W - 2 * P, maxH, 36, "#fff", "#e2e8f0");
+  text(ctx, "The answer", P + 44, top + 36, { size: 30, weight: 800, color: "#047857" });
+  ctx.font = `500 30px ${FONT}`;
+  let y = top + 92; const lh = 30 * 1.4, maxY = top + maxH - 40;
+  for (const para of String(d.answer || "").split(/\n+/)) {
+    for (const line of wrap(ctx, para, W - 2 * P - 88)) {
+      if (y + lh > maxY) { ctx.fillText("…", P + 44, y); y = maxY + 1; break; }
+      ctx.fillStyle = DARK; ctx.textAlign = "left"; ctx.fillText(line, P + 44, y); y += lh;
+    }
+    if (y > maxY) break;
+    y += 10;
+  }
+  text(ctx, "Got a doubt? Ask it in the YNeet app.", P, H - 112, { size: 30, weight: 700, color: "#334155", maxW: W - 2 * P - 280 });
+  footer(ctx, W, H);
+  download(c, `ask-yneet-${d.id || "post"}.png`);
+}

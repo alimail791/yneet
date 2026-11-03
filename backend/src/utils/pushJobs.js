@@ -1,7 +1,7 @@
 // Scheduled push notifications (India time):
 //   07:00  Question of the Day                       → everyone with notifications on
 //   18:00  "Your free trial ends in 3 days"          → trial users on day 27
-//   17:00  Mon: Concept Map Monday · Wed: new Brain Teaser (Class 6–8)
+//   17:00  Mon: Concept Map Monday · Wed: new Brain Teaser (Class 6–8) · Fri: Ask YNeet Friday
 //   19:00  "Today's 60-Second Sprint is waiting"     → anyone who hasn't played today
 //   19:05  Thu: Brain Teaser answer is out           → students who answered
 //   20:30  "Keep your streak" / "Your practice waits" → anyone who hasn't opened YNeet today
@@ -122,10 +122,21 @@ async function teaserRevealJob() {
   console.log(`[push] teaser reveal: ${JSON.stringify(r)}`);
 }
 
+// Friday 5 PM: this week's featured Ask YNeet answer, to everyone with reminders on.
+async function askFridayJob() {
+  const D = require("./doubts");
+  await D.ensureTables();
+  const d = (await prisma.$queryRaw`SELECT subject, question FROM doubts.items WHERE status = 'answered' AND featured_on = ${istDay()} LIMIT 1`)[0];
+  if (!d) return;
+  const rows = await push.allSubscriptions();
+  const r = await push.sendTo(rows, { title: `Ask YNeet Friday · ${d.subject}`, body: short(d.question, 120), url: "/ask", tag: "ask" });
+  console.log(`[push] ask friday: ${JSON.stringify(r)}`);
+}
+
 const JOBS = [
   { name: "qotd", at: 7 * 60, run: qotdJob },
   { name: "trial", at: 18 * 60, run: trialEndingJob },
-  { name: "weekly", at: 17 * 60, run: async () => { await conceptMapJob(); await teaserJob(); } },
+  { name: "weekly", at: 17 * 60, run: async () => { await conceptMapJob(); await teaserJob(); await askFridayJob(); } },
   { name: "sprint", at: 19 * 60, run: sprintJob },
   { name: "reveal", at: 19 * 60 + 5, run: teaserRevealJob },
   { name: "streak", at: 20 * 60 + 30, run: streakJob },
