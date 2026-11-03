@@ -100,4 +100,22 @@ router.get("/leaderboard", async (req, res, next) => {
   } catch (err) { next(err); }
 });
 
+// Public (no login), for www.yneet.in/neet-sprint: YESTERDAY's NEET Sprint with
+// answers, so visitors can play it on the website without exposing today's
+// ranked questions. Mounted in routes/public.js.
+router.publicYesterday = async (req, res) => {
+  try {
+    await S.ensureTables();
+    const day = S.istDay(Date.now() - 24 * 60 * 60 * 1000);
+    const qs = await S.questionsFor(day, "neet");
+    if (qs.length < S.COUNT) return res.status(503).json({ success: false, message: "Not ready" });
+    const stats = (await S.prisma.$queryRaw`
+      SELECT COUNT(*)::int AS players, COALESCE(ROUND(AVG(score)::numeric, 1), 0)::float AS avg,
+             COUNT(*) FILTER (WHERE score = 5)::int AS perfect
+      FROM sprint.plays WHERE day = ${day} AND grp = 'neet' AND finished_at IS NOT NULL`)[0];
+    res.set("Cache-Control", "public, max-age=900");
+    res.json({ success: true, day, stats, questions: qs.map((q) => ({ ...S.publicQ(q), answer: q.answer, explanation: q.explanation })) });
+  } catch (err) { res.status(500).json({ success: false, message: "Could not load the Sprint" }); }
+};
+
 module.exports = router;
