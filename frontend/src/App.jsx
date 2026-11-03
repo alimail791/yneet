@@ -2,6 +2,9 @@ import { Routes, Route, Navigate } from "react-router-dom";
 import { raiseEntryUrl } from "./utils/appMode";
 import QotdPage from "./pages/QotdPage";
 import SprintPage from "./pages/SprintPage";
+import ConceptMapsPage from "./pages/ConceptMapsPage";
+import TeaserPage from "./pages/TeaserPage";
+import AdminWeeklyPage from "./pages/admin/AdminWeeklyPage";
 import { useAuth } from "./context/AuthContext";
 import Layout from "./components/layout/Layout";
 import HelpPage from "./pages/HelpPage"; 
@@ -105,6 +108,9 @@ export default function App() {
       <Route path="/pricing" element={<Guard><PricingPage /></Guard>} />
       <Route path="/qotd" element={<Guard><QotdPage /></Guard>} />
       <Route path="/sprint" element={<Guard><SprintPage /></Guard>} />
+      <Route path="/maps" element={<Guard><ConceptMapsPage /></Guard>} />
+      <Route path="/maps/:id" element={<Guard><ConceptMapsPage /></Guard>} />
+      <Route path="/teaser" element={<Guard><TeaserPage /></Guard>} />
       <Route path="/verify" element={<Guard><VerifyPage /></Guard>} />
       <Route path="/verify-email" element={<VerifyEmailPage />} />
 
@@ -117,6 +123,7 @@ export default function App() {
         <Route path="formulas"      element={<AdminFormulasPage />} />
         <Route path="shorts"        element={<AdminShortsPage />} />
         <Route path="creators"      element={<AdminCreatorsPage />} />
+        <Route path="weekly"        element={<AdminWeeklyPage />} />
         <Route path="bulk-generator" element={<BulkGeneratorPage />} />
         <Route path="mock-builder"  element={<MockTestBuilderPage />} />
       </Route>

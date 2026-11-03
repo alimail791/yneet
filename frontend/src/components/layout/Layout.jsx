@@ -68,6 +68,9 @@ export default function Layout() {
     { to: "/pyq",      label: "PYQs" },
     { to: "/planner",  label: "Planner" },
     { to: "/leaderboard", label: "Leaderboard" }, 
+    { to: "/sprint",   label: "60-Second Sprint" },
+    { to: "/maps",     label: "Concept Maps" },
+    { to: "/teaser",   label: "Brain Teaser" },
     { to: "/biology",  label: "Biology" },
     { to: "/physics",  label: "Physics" },
     { to: "/chemistry",label: "Chemistry" },
@@ -82,6 +85,8 @@ export default function Layout() {
     { to: "/quiz",   label: "Daily Quiz" },
     { to: "/mock",   label: "Tests" },
     { href: PUZZLES_URL, label: "Daily Puzzles" },
+    { to: "/sprint", label: "60-Second Sprint" },
+    { to: "/teaser", label: "Brain Teaser" },
     { to: "/help",   label: "Help & FAQ" },
   ];
   const tabs = junior ? juniorTabs : allTabs;

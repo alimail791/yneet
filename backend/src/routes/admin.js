@@ -28,6 +28,9 @@ router.post("/mock-builder/chapter-tests/delete", ct.deleteChapterTests);
 
 router.get("/summary", c.getSummary);
 
+// Concept Map Monday + Brain Teaser Wednesday: AI drafts, approve, schedule.
+router.use("/weekly", require("./adminWeekly"));
+
 // Push notifications: how many devices have them on, and a manual broadcast.
 router.get("/push/stats", async (req, res) => {
   try { res.json({ success: true, enabled: require("../utils/push").enabled, ...(await require("../utils/push").countSubscriptions()) }); }

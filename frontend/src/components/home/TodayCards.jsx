@@ -11,6 +11,8 @@ import { pushSupported, pushPermission, enablePush, pushCardDismissed, dismissPu
 export default function TodayCards() {
   const [q, setQ] = useState(null);
   const [sprint, setSprint] = useState(null);
+  const [maps, setMaps] = useState(null);
+  const [teaser, setTeaser] = useState(null);
   const [showPush, setShowPush] = useState(() => pushSupported() && pushPermission() === "default" && !pushCardDismissed());
   const [busy, setBusy] = useState(false);
   const [note, setNote] = useState("");
@@ -18,6 +20,8 @@ export default function TodayCards() {
   useEffect(() => {
     api.get("/public/qotd").then((r) => setQ(r.data.today)).catch(() => {});
     api.get("/sprint/status").then((r) => setSprint(r.data)).catch(() => {});
+    api.get("/weekly/maps").then((r) => setMaps(r.data)).catch(() => {});
+    api.get("/weekly/teaser").then((r) => setTeaser(r.data.current)).catch(() => {});
   }, []);
 
   const turnOn = async () => {
@@ -62,6 +66,34 @@ export default function TodayCards() {
             </p>
           </div>
           <span style={{ fontWeight: 800, fontSize: 14, color: "#f5a623" }}>{sprint.played ? "View →" : "Play →"}</span>
+        </Link>
+      )}
+      {teaser && !teaser.revealed && (
+        <Link to="/teaser" className="card" style={{ display: "flex", alignItems: "center", gap: 14, textDecoration: "none", color: "#1e1b4b", background: "#fef3c7", borderColor: "#fde68a" }}>
+          <div style={{ width: 52, height: 52, borderRadius: 26, background: "#f5a623", display: "flex", alignItems: "center", justifyContent: "center", fontWeight: 800, fontSize: 24, flexShrink: 0 }} aria-hidden="true">?</div>
+          <div style={{ flex: 1 }}>
+            <p style={{ fontWeight: 800, fontSize: 15 }}>{teaser.myChoice === null ? `Brain Teaser: ${teaser.title}` : "Answer locked"}</p>
+            <p style={{ fontSize: 13, color: "#78350f" }}>{teaser.myChoice === null ? "3 clues, 4 choices. Can you guess it?" : "The answer comes out Thursday 7 PM"}</p>
+          </div>
+          <span style={{ fontWeight: 800, fontSize: 14 }}>{teaser.myChoice === null ? "Guess →" : "View →"}</span>
+        </Link>
+      )}
+      {teaser && teaser.revealed && teaser.myChoice !== null && (
+        <Link to="/teaser" className="card" style={{ textDecoration: "none", color: "inherit" }}>
+          <p style={{ fontWeight: 800, fontSize: 15 }}>Brain Teaser answer is out: {teaser.myChoice === teaser.answer ? "you got it! 🎉" : "see the answer"}</p>
+        </Link>
+      )}
+      {maps?.maps?.[0] && maps.latestIsNew && (
+        <Link to={`/maps/${maps.maps[0].id}`} className="card" style={{ display: "flex", alignItems: "center", gap: 14, textDecoration: "none", color: "inherit" }}>
+          <div style={{ width: 52, height: 52, borderRadius: 14, background: "var(--blue-light)", display: "flex", alignItems: "center", justifyContent: "center", flexShrink: 0 }} aria-hidden="true">
+            <svg width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="#3b2fc9" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="3" /><circle cx="4" cy="5" r="2" /><circle cx="20" cy="5" r="2" /><circle cx="4" cy="19" r="2" /><circle cx="20" cy="19" r="2" /><path d="M6 6l4 4M18 6l-4 4M6 18l4-4M18 18l-4-4" /></svg>
+          </div>
+          <div style={{ flex: 1 }}>
+            <p style={{ fontSize: 12, fontWeight: 800, color: "#3b2fc9" }}>CONCEPT MAP OF THE WEEK</p>
+            <p style={{ fontWeight: 800, fontSize: 15 }}>{maps.maps[0].title}</p>
+            <p style={{ fontSize: 13, color: "var(--text2)" }}>The whole chapter on one page</p>
+          </div>
+          <span style={{ fontWeight: 800, fontSize: 14, color: "var(--blue-mid)" }}>Open →</span>
         </Link>
       )}
       {q && (

@@ -5,7 +5,11 @@ import ExplainDifferently from "../components/ExplainDifferently";
 export default function PracticePage() {
   const [questions, setQuestions] = useState([]);
   const [chapters, setChapters] = useState([]);
-  const [filters, setFilters] = useState({ subject:"", chapter:"", isPYQ:"", isRepeated:"", page:1 });
+  // ?subject=&chapter= opens the page on one chapter (used by Concept Maps).
+  const [filters, setFilters] = useState(() => {
+    const q = new URLSearchParams(window.location.search);
+    return { subject: q.get("subject") || "", chapter: q.get("chapter") || "", isPYQ:"", isRepeated:"", page:1 };
+  });
   const [total, setTotal] = useState(0);
   const [pages, setPages] = useState(1);
   const [stats, setStats] = useState({ totalSolved:0, totalCorrect:0, accuracy:0 });
@@ -63,7 +67,7 @@ export default function PracticePage() {
     setChapters(res.data.chapters||[]);
   };
 
-  useEffect(() => { fetchQuestions(); }, []);
+  useEffect(() => { fetchQuestions(); if (filters.subject) fetchChapters(filters.subject); }, []);
 
   const setFilter = (k, v) => {
     const newF = { ...filters, [k]: v, page: 1 };

@@ -1,7 +1,9 @@
 // Scheduled push notifications (India time):
 //   07:00  Question of the Day                       → everyone with notifications on
 //   18:00  "Your free trial ends in 3 days"          → trial users on day 27
+//   17:00  Mon: Concept Map Monday · Wed: new Brain Teaser (Class 6–8)
 //   19:00  "Today's 60-Second Sprint is waiting"     → anyone who hasn't played today
+//   19:05  Thu: Brain Teaser answer is out           → students who answered
 //   20:30  "Keep your streak" / "Your practice waits" → anyone who hasn't opened YNeet today
 // A minute ticker checks the clock; push.job_runs makes each job run once a day,
 // even across redeploys. A job only starts inside its 2-hour window, so a late
@@ -79,10 +81,53 @@ async function sprintJob() {
   console.log(`[push] sprint: ${JSON.stringify(r)}`);
 }
 
+// Monday 5 PM: this week's concept map, to students in each group that has one today.
+async function conceptMapJob() {
+  const W = require("./weekly");
+  if (W.dow(istDay()) !== 1) return;
+  await W.ensureTables();
+  const maps = await prisma.$queryRaw`SELECT grp, subject, data->>'title' AS title FROM weekly.concept_maps WHERE status = 'approved' AND publish_on = ${istDay()}`;
+  if (!maps.length) return;
+  const byGrp = new Map(maps.map((m) => [m.grp, m]));
+  const rows = await push.allSubscriptionsWithClass();
+  const r = await push.sendTo(rows, (row) => {
+    const m = byGrp.get(W.groupFor(row.cls || "12th"));
+    return m ? { title: `Concept Map Monday: ${m.title}`, body: `The whole chapter on one page. Revise ${m.subject} in 5 minutes.`, url: "/maps", tag: "map" } : null;
+  });
+  console.log(`[push] concept map: ${JSON.stringify(r)}`);
+}
+
+// Wednesday 5 PM: the new Brain Teaser, to Class 6–8 students.
+async function teaserJob() {
+  const W = require("./weekly");
+  if (W.dow(istDay()) !== 3) return;
+  await W.ensureTables();
+  const t = (await prisma.$queryRaw`SELECT id FROM weekly.teasers WHERE status = 'approved' AND publish_on = ${istDay()}`)[0];
+  if (!t) return;
+  const rows = (await push.allSubscriptionsWithClass()).filter((r) => W.TEASER_CLASSES.includes(r.cls));
+  const r = await push.sendTo(rows, { title: "New Brain Teaser: who am I?", body: "3 clues, 4 choices. Lock your answer before Thursday 7 PM.", url: "/teaser", tag: "teaser" });
+  console.log(`[push] teaser: ${JSON.stringify(r)}`);
+}
+
+// Thursday 7 PM: answer reveal, to everyone who answered yesterday's teaser.
+async function teaserRevealJob() {
+  const W = require("./weekly");
+  const yesterday = W.addDays(istDay(), -1);
+  await W.ensureTables();
+  const t = (await prisma.$queryRaw`SELECT id FROM weekly.teasers WHERE status = 'approved' AND publish_on = ${yesterday}`)[0];
+  if (!t) return;
+  const users = new Set((await prisma.$queryRaw`SELECT user_id FROM weekly.teaser_answers WHERE teaser_id = ${t.id}`).map((x) => x.user_id));
+  const rows = (await push.allSubscriptions()).filter((r) => users.has(r.user_id));
+  const r = await push.sendTo(rows, { title: "Brain Teaser answer is out", body: "Were you right? See the answer and how many got it.", url: "/teaser", tag: "teaser" });
+  console.log(`[push] teaser reveal: ${JSON.stringify(r)}`);
+}
+
 const JOBS = [
   { name: "qotd", at: 7 * 60, run: qotdJob },
   { name: "trial", at: 18 * 60, run: trialEndingJob },
+  { name: "weekly", at: 17 * 60, run: async () => { await conceptMapJob(); await teaserJob(); } },
   { name: "sprint", at: 19 * 60, run: sprintJob },
+  { name: "reveal", at: 19 * 60 + 5, run: teaserRevealJob },
   { name: "streak", at: 20 * 60 + 30, run: streakJob },
 ];
 

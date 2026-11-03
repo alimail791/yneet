@@ -110,6 +110,13 @@ async function allSubscriptions() {
   return prisma.$queryRaw`SELECT endpoint, user_id, p256dh, auth, in_app FROM push.subscriptions`;
 }
 
+// Same rows plus the student's class (null if no profile yet).
+async function allSubscriptionsWithClass() {
+  await ensureTables();
+  return prisma.$queryRaw`SELECT s.endpoint, s.user_id, s.p256dh, s.auth, s.in_app, pr.class AS cls
+    FROM push.subscriptions s LEFT JOIN profiles pr ON pr."userId" = s.user_id`;
+}
+
 async function subscriptionsForUser(userId) {
   await ensureTables();
   return prisma.$queryRaw`SELECT endpoint, user_id, p256dh, auth, in_app FROM push.subscriptions WHERE user_id = ${userId}`;
@@ -133,5 +140,5 @@ async function claimJob(job, day) {
 
 module.exports = {
   enabled, ensureTables, saveSubscription, removeSubscription, removeUserSubscriptions,
-  sendTo, allSubscriptions, subscriptionsForUser, countSubscriptions, claimJob,
+  sendTo, allSubscriptions, allSubscriptionsWithClass, subscriptionsForUser, countSubscriptions, claimJob,
 };

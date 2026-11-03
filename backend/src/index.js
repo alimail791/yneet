@@ -43,6 +43,7 @@ app.use("/api/v1/ai",        require("./routes/ai"));
 app.use("/api/v1/admin",     require("./routes/admin"));
 app.use("/api/v1/push",      require("./routes/push"));
 app.use("/api/v1/sprint",    require("./routes/sprint"));
+app.use("/api/v1/weekly",    require("./routes/weekly"));
 
 app.get("/health", (_, res) => res.json({ status: "ok", app: "YNeet" }));
 
