@@ -40,6 +40,17 @@ router.post("/institute-student", async (req, res) => {
   } catch (err) { res.status(500).json({ success: false, message: err.message }); }
 });
 
+// POST /api/v1/internal/institute-analytics  { userIds: [], days?: 7|30|90, instituteName? }
+// Batch-level learning gaps (chapters, topics, student grid, score bands) + WhatsApp summary text.
+router.post("/institute-analytics", async (req, res) => {
+  try {
+    const { instituteAnalytics, reportText } = require("../utils/instituteAnalytics");
+    const ids = Array.isArray(req.body?.userIds) ? req.body.userIds : [];
+    const report = await instituteAnalytics(ids, req.body?.days);
+    res.json({ success: true, ...report, text: reportText(report, req.body?.instituteName) });
+  } catch (err) { res.status(500).json({ success: false, message: err.message }); }
+});
+
 // POST /api/v1/internal/delete-user { userId } — Raise Academy admin deleted the student.
 router.post("/delete-user", async (req, res) => {
   try {
