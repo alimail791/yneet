@@ -1,5 +1,5 @@
 import { createContext, useContext, useState, useEffect } from "react";
-import { raiseEntryUrl } from "../utils/appMode";
+import { raiseEntryUrl, raiseLogoutUrl } from "../utils/appMode";
 import api from "../lib/api";
 const AuthContext = createContext(null);
 
@@ -33,7 +33,8 @@ export function AuthProvider({ children }) {
     localStorage.removeItem("yneet_token");
     localStorage.removeItem("yneet_user");
     setUser(null);
-    window.location.href = raiseEntryUrl();
+    // replace(), not href: the app page leaves the history, so Back can't return to it.
+    window.location.replace(raiseLogoutUrl());
   };
 
   const updateUser = (updates) => {

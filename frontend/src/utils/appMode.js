@@ -37,3 +37,15 @@ export function raiseEntryUrl(path = "") {
   if (isAppMode) return `${base}${path || "/login"}?app=1`;
   return path ? `${base}${path}` : (import.meta.env.VITE_RAISE_ACADEMY_URL || "/");
 }
+
+// The public website (www.yneet.in): the landing page students come back to.
+export const WEBSITE_URL = (import.meta.env.VITE_RAISE_ACADEMY_URL || "https://www.yneet.in").replace(/\/$/, "") + "/";
+
+// Where logout goes: www.yneet.in/logout signs the student out of the website
+// too (the shared login lives there), then lands on the home page — or on the
+// login page inside the Play Store app.
+export function raiseLogoutUrl() {
+  const base = (import.meta.env.VITE_RAISE_ACADEMY_URL || "").replace(/\/$/, "");
+  if (!base) return "/";
+  return `${base}/logout${isAppMode ? "?app=1" : ""}`;
+}

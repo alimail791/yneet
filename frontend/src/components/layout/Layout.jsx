@@ -1,5 +1,5 @@
 import { useState, useEffect } from "react";
-import { isAppMode } from "../../utils/appMode";
+import { isAppMode, WEBSITE_URL } from "../../utils/appMode";
 import { pushIsOn } from "../../utils/push";
 import api from "../../lib/api";
 import { Outlet, NavLink, useNavigate } from "react-router-dom";
@@ -131,7 +131,9 @@ export default function Layout() {
     <>
       <InstallPrompt />
       <nav className="app-nav">
-        <div className="nav-logo">YNeet 🎯</div>
+        {isAppMode
+          ? <div className="nav-logo">YNeet 🎯</div>
+          : <a href={WEBSITE_URL} className="nav-logo" title="Go to the YNeet website (yneet.in)" style={{ textDecoration: "none" }}>YNeet 🎯</a>}
         <div className="nav-tabs">
           {tabs.map(t => t.href ? (
             <a key={t.href} href={t.href} target="_blank" rel="noreferrer"><button className="nav-tab">{t.label} ↗</button></a>
@@ -148,6 +150,7 @@ export default function Layout() {
           {user?.role === "admin" && (
             <button className="btn btn-outline btn-sm" onClick={() => navigate("/admin")}>⚙️ Admin</button>
           )}
+          {!isAppMode && <a href={WEBSITE_URL} className="btn btn-outline btn-sm nav-website" title="Go to the YNeet website">🌐 yneet.in</a>}
           <button className="avatar" onClick={() => navigate("/profile")} title="Profile">{initials}</button>
           <button className="btn btn-outline btn-sm" onClick={logout}>Logout</button>
         </div>
@@ -213,6 +216,14 @@ export default function Layout() {
             style={{ position: "absolute", bottom: 0, left: 0, right: 0, background: "#fff", borderRadius: "20px 20px 0 0", padding: "10px 8px calc(env(safe-area-inset-bottom, 0px) + 10px)", boxShadow: "0 -8px 24px rgba(0,0,0,.12)" }}
           >
             <div style={{ width: 36, height: 4, background: "var(--gray3)", borderRadius: 2, margin: "6px auto 14px" }} />
+            {!isAppMode && (
+              <a href={WEBSITE_URL} style={{ textDecoration: "none" }}>
+                <div style={{ display: "flex", alignItems: "center", gap: 14, padding: "14px 16px", fontSize: 15, fontWeight: 600, color: "var(--text)" }}>
+                  <span style={{ fontSize: 20 }}>🌐</span>
+                  YNeet website (yneet.in)
+                </div>
+              </a>
+            )}
             {moreLinks.map(l => (
               <NavLink
                 key={l.to}

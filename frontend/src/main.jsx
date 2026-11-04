@@ -20,3 +20,10 @@ if ("serviceWorker" in navigator && import.meta.env.PROD) {
     navigator.serviceWorker.register("/sw.js").catch(() => {});
   });
 }
+
+// Back button after logout: browsers can show a page from memory (back/forward
+// cache) without running any code, so a signed-out student could still see the
+// app. Reload such pages; the sign-in check then sends them to the website.
+window.addEventListener("pageshow", (e) => {
+  if (e.persisted && !localStorage.getItem("yneet_token") && !location.pathname.startsWith("/creator")) location.reload();
+});

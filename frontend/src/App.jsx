@@ -60,7 +60,7 @@ function Guard({ children }) {
     </div>
   );
   if (!user) {
-    window.location.href = raiseEntryUrl();
+    window.location.replace(raiseEntryUrl());
     return null;
   }
   return children;

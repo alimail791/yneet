@@ -255,3 +255,6 @@ button,input,select,textarea{font-family:inherit;}
   .shorts-page{height:calc(100vh - var(--nav-h) - 86px);height:calc(100dvh - var(--nav-h) - 86px);min-height:420px;}
   .short-card{border-radius:16px;}
 }
+
+/* Website link in the top bar: on phones it lives in the More menu instead. */
+@media(max-width:600px){.nav-website{display:none;}}
