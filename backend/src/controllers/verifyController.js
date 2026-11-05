@@ -34,8 +34,15 @@ const deliverWhatsApp = async (phone, code) => {
   });
 };
 
-const markVerified = async (userId, data = {}) =>
-  prisma.user.update({ where: { id: userId }, data: { isVerified: true, ...data } });
+const { grantReferralReward } = require("../utils/referralReward");
+
+// Verifying makes this a real student, so whoever referred them gets their
+// Refer & Earn days now (once).
+const markVerified = async (userId, data = {}) => {
+  const user = await prisma.user.update({ where: { id: userId }, data: { isVerified: true, ...data } });
+  await grantReferralReward(userId).catch((e) => console.warn("Referral reward failed:", e.message));
+  return user;
+};
 
 // GET /api/v1/user/verify — current state (for the banner / verify page)
 exports.status = async (req, res) => {
