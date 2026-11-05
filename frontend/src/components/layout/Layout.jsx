@@ -194,9 +194,9 @@ export default function Layout() {
         <div onClick={() => setReferralPopup(false)} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,.5)", zIndex: 90, display: "flex", alignItems: "center", justifyContent: "center", padding: 20 }}>
           <div onClick={e => e.stopPropagation()} style={{ background: "#fff", borderRadius: 18, padding: 28, maxWidth: 380, width: "100%", textAlign: "center", boxShadow: "0 20px 50px rgba(0,0,0,.3)" }}>
             <div style={{ fontSize: 40, marginBottom: 10 }}>🎁</div>
-            <h2 style={{ fontSize: 18, fontWeight: 800, marginBottom: 8 }}>Get a free month of YNeet!</h2>
+            <h2 style={{ fontSize: 18, fontWeight: 800, marginBottom: 8 }}>Get 15 days of YNeet free!</h2>
             <p style={{ fontSize: 14, color: "var(--text2)", lineHeight: 1.5, marginBottom: 20 }}>
-              Refer a friend — when they join on the Monthly plan, you get one month free. Share your link in just a tap.
+              Every friend who joins with your link and confirms their WhatsApp number gets you 15 days free. 2 friends = 1 month. Share your link in just a tap.
             </p>
             <div style={{ display: "flex", gap: 10, justifyContent: "center" }}>
               <button className="btn btn-outline" onClick={() => setReferralPopup(false)}>Maybe later</button>

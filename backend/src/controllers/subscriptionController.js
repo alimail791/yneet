@@ -52,29 +52,9 @@ const monthlyEndDate = (months, sub, now = new Date()) => {
   return endOfMonth(new Date(from.getFullYear(), from.getMonth() + (months - 1), 1));
 };
 
-// Called after a successful MONTHLY payment. Marks this person's own referral
-// row (if they were referred by someone) as qualified, then immediately gives
-// their referrer a free month. The free trial never counts toward this.
-const checkReferralReward = async (userId) => {
-  const myReferral = await prisma.referral.findUnique({ where: { referredId: userId } });
-  if (!myReferral || myReferral.qualified) return; // not referred, or already counted
-
-  await prisma.referral.update({ where: { id: myReferral.id }, data: { qualified: true } });
-
-  const referrerSub = await prisma.subscription.findUnique({ where: { userId: myReferral.referrerId } });
-  const alreadyActive = referrerSub?.status === "active" && referrerSub?.endDate && new Date(referrerSub.endDate) > new Date();
-  // Stack onto their existing expiry if still active, otherwise start today —
-  // either way they get one genuinely free calendar month added.
-  const rewardStart = alreadyActive ? new Date(referrerSub.endDate) : new Date();
-  const rewardEnd = new Date(rewardStart);
-  rewardEnd.setDate(rewardEnd.getDate() + 30);
-
-  await prisma.subscription.update({
-    where: { userId: myReferral.referrerId },
-    data: { plan: "REFERRAL_FREE", status: "active", startDate: alreadyActive ? referrerSub.startDate : rewardStart, endDate: rewardEnd, amount: 0, expiryReminderSent: false },
-  });
-  await prisma.referral.update({ where: { id: myReferral.id }, data: { rewardGranted: true } });
-};
+// Refer & Earn: a paying friend counts as a referral (if they hadn't already
+// counted by verifying) — see utils/referralReward.js.
+const { grantReferralReward } = require("../utils/referralReward");
 
 // GET /api/v1/subscription/plans — public plan list for the pricing page.
 // Route uses optionalAuth, so req.user (and their class) is available whenever a
@@ -213,10 +193,8 @@ exports.verifyPayment = async (req, res) => {
       },
     });
 
-    // Referral reward check — only the Monthly plan qualifies, not the trial.
-    {
-      await checkReferralReward(req.user.id).catch((e) => console.warn("Referral reward check failed:", e.message));
-    }
+    // Refer & Earn: +15 days to whoever referred this student (once).
+    await grantReferralReward(req.user.id).catch((e) => console.warn("Referral reward failed:", e.message));
 
     // Best-effort: let Raise Academy know this student now has an active YNeet plan,
     // so their Raise Academy dashboard button can say "Continue" instead of "Start".

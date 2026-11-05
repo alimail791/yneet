@@ -23,7 +23,7 @@ const FAQS = [
   },
   {
     q: "How does Refer & Earn work?",
-    a: "Share your referral link (found on the Refer & Earn page) with a friend. Once they register through it and buy the Monthly plan, you automatically get a free month added to your own subscription.",
+    a: "Share your referral link (found on the Refer & Earn page) with a friend. Once they register through it and confirm their WhatsApp number in YNeet, you automatically get 15 free days added to your plan. Every friend counts, so 2 friends = 1 month free.",
   },
   {
     q: "Can I get a refund?",

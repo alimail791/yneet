@@ -199,7 +199,7 @@ export default function AdminUsersPage() {
                   <option value="TRIAL_30D">30-Day Free Trial</option>
                   <option value="TRIAL_5D">5-Day Trial (old ₹99)</option>
                   <option value="MONTHLY">Monthly</option>
-                  <option value="REFERRAL_FREE">Referral Free Month</option>
+                  <option value="REFERRAL_FREE">Referral Free Days</option>
                 </select>
               </div>
               <div>

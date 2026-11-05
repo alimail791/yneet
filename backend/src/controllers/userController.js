@@ -1,5 +1,6 @@
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
+const { REFERRAL_DAYS, grantReferralReward } = require("../utils/referralReward");
 
 exports.updateProfile = async (req, res) => {
   try {
@@ -19,23 +20,31 @@ exports.updateProfile = async (req, res) => {
 };
 
 // GET /api/v1/user/referral — code, shareable link, and status of every friend
-// referred so far (so the student can see who's pending vs. who's qualified).
+// referred so far. Each friend who verified (or paid) = REFERRAL_DAYS free days.
 exports.getReferralInfo = async (req, res) => {
   try {
-    const referrals = await prisma.referral.findMany({
+    const load = () => prisma.referral.findMany({
       where: { referrerId: req.user.id },
-      include: { referred: { select: { name: true } } },
+      include: { referred: { select: { name: true, isVerified: true } } },
       orderBy: { createdAt: "desc" },
     });
-    const qualifiedCount = referrals.filter(r => r.qualified).length;
-    const freeMonthsEarned = referrals.filter(r => r.rewardGranted).length; // 1 qualified referral = 1 free month
+    let referrals = await load();
+    // Friends who verified before this reward existed (or whose reward failed)
+    // get paid out here, the next time the referrer opens the page.
+    const owed = referrals.filter(r => !r.rewardGranted && r.referred.isVerified);
+    if (owed.length) {
+      for (const r of owed) await grantReferralReward(r.referredId).catch(() => {});
+      referrals = await load();
+    }
+    const rewarded = referrals.filter(r => r.rewardGranted).length;
     res.json({
       success: true,
       referralCode: req.user.referralCode,
       registerUrl: `${process.env.RAISE_ACADEMY_FRONTEND_URL || ""}/register?ref=${req.user.referralCode}`,
-      referrals: referrals.map(r => ({ name: r.referred.name, qualified: r.qualified, rewardGranted: r.rewardGranted, joinedAt: r.createdAt })),
-      qualifiedCount,
-      freeMonthsEarned,
+      rewardDays: REFERRAL_DAYS,
+      referrals: referrals.map(r => ({ name: r.referred.name, rewardGranted: r.rewardGranted, joinedAt: r.createdAt })),
+      rewardedCount: rewarded,
+      freeDaysEarned: rewarded * REFERRAL_DAYS,
     });
   } catch (err) { res.status(500).json({ success: false, message: err.message }); }
 };

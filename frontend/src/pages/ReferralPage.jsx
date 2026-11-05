@@ -24,7 +24,7 @@ export default function ReferralPage() {
       <div className="section-header mb-4">
         <div>
           <div className="section-title" style={{ fontSize: 22 }}>🎁 Refer &amp; Earn</div>
-          <p style={{ fontSize: 13, color: "var(--text2)" }}>Get one friend to enroll in the Monthly plan — you get a free month.</p>
+          <p style={{ fontSize: 13, color: "var(--text2)" }}>Every friend who joins with your link and confirms their WhatsApp number gets you <strong>15 days free</strong>. 2 friends = 1 month free.</p>
         </div>
       </div>
 
@@ -37,6 +37,11 @@ export default function ReferralPage() {
           <button className="btn" style={{ background: "#fff", color: "var(--blue-mid)", fontWeight: 700 }} onClick={copyLink}>
             {copied ? "Copied!" : "Copy Link"}
           </button>
+          <a className="btn" style={{ background: "#25D366", color: "#fff", fontWeight: 700 }} target="_blank" rel="noopener noreferrer"
+            href={`https://wa.me/?text=${encodeURIComponent(`I'm preparing for NEET on YNeet — mock tests, PYQs and doubt support. Start your 30-day free trial with my link 👉 ${data.registerUrl}`)}`}
+            onClick={() => { try { window.gtag?.("event", "referral_share", { method: "whatsapp" }); } catch { /* analytics only */ } }}>
+            Share on WhatsApp
+          </a>
         </div>
         <p style={{ fontSize: 12, opacity: 0.85, marginTop: 10 }}>Your code: <strong>{data.referralCode}</strong></p>
       </div>
@@ -47,12 +52,12 @@ export default function ReferralPage() {
           <div className="card-value" style={{ color: "var(--blue)" }}>{data.referrals.length}</div>
         </div>
         <div className="card">
-          <div className="card-title">Qualified (paid Monthly)</div>
-          <div className="card-value" style={{ color: "var(--green)" }}>{data.qualifiedCount}</div>
+          <div className="card-title">Confirmed Friends</div>
+          <div className="card-value" style={{ color: "var(--green)" }}>{data.rewardedCount}</div>
         </div>
         <div className="card">
-          <div className="card-title">Free Months Earned</div>
-          <div className="card-value" style={{ color: "var(--amber)" }}>{data.freeMonthsEarned}</div>
+          <div className="card-title">Free Days Earned</div>
+          <div className="card-value" style={{ color: "var(--amber)" }}>{data.freeDaysEarned}</div>
         </div>
       </div>
 
@@ -70,11 +75,9 @@ export default function ReferralPage() {
                 <div style={{ fontSize: 12, color: "var(--text3)" }}>Joined {new Date(r.joinedAt).toLocaleDateString("en-IN", { day: "2-digit", month: "short", year: "numeric" })}</div>
               </div>
               {r.rewardGranted ? (
-                <span className="chip chip-green">Reward Given — Free Month</span>
-              ) : r.qualified ? (
-                <span className="chip chip-blue">Qualified</span>
+                <span className="chip chip-green">+15 days added</span>
               ) : (
-                <span className="chip" style={{ background: "var(--gray2)", color: "var(--text3)" }}>Pending Monthly plan</span>
+                <span className="chip" style={{ background: "var(--gray2)", color: "var(--text3)" }}>Waiting for WhatsApp confirmation</span>
               )}
             </div>
           ))}
