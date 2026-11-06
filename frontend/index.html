@@ -1,11 +1,28 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <!-- Google tag (gtag.js) -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-5DK417VC2B"></script>
+    <!-- Google tag (gtag.js): website only. Not loaded inside the Play Store app
+         (?source=twa / ?app=1 / android-app referrer), which is in Google Play's
+         Families programme for Class 6-8 students. -->
+    <script>
+      (function () {
+        var app = true;
+        try {
+          var q = new URLSearchParams(location.search);
+          app = q.get("source") === "twa" || q.get("app") === "1" ||
+            (document.referrer || "").indexOf("android-app://") === 0 ||
+            sessionStorage.getItem("yneet_app_mode") === "1";
+          if (app) sessionStorage.setItem("yneet_app_mode", "1");
+        } catch (e) {}
+        if (app) return;
+        var gs = document.createElement("script"); gs.async = true;
+        gs.src = "https://www.googletagmanager.com/gtag/js?id=G-5DK417VC2B";
+        document.head.appendChild(gs);
+      })();
+    </script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag(){dataLayer.push(arguments);}
+      window.gtag = function(){dataLayer.push(arguments);};
       gtag('js', new Date());
 
       gtag('config', 'G-5DK417VC2B');
