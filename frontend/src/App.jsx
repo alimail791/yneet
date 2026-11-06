@@ -48,6 +48,7 @@ import AdminFormulasPage    from "./pages/admin/AdminFormulasPage";
 import AdminShortsPage      from "./pages/admin/AdminShortsPage";
 import BulkGeneratorPage    from "./pages/admin/BulkGeneratorPage";
 import MockTestBuilderPage  from "./pages/admin/MockTestBuilderPage";
+import AccountFramePage from "./pages/AccountFramePage";
 
 // There is no local login here anymore — a session only ever starts via
 // /bridge?token=... coming from the Raise Academy "YNeet" button.
@@ -102,6 +103,7 @@ export default function App() {
     <Routes>
       <Route path="help" element={<HelpPage />} />
       <Route path="/bridge" element={<BridgePage />} />
+      <Route path="/account" element={<AccountFramePage />} />
       {/* Public share page for featured Shorts, and the creator area (own login). */}
       <Route path="/s/:id" element={<ShareShortPage />} />
       <Route path="/creator/apply" element={<CreatorAuthPage mode="apply" />} />

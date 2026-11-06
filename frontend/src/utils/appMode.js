@@ -34,7 +34,9 @@ export const isAppMode = detect();
 // the Raise Academy home page as before.
 export function raiseEntryUrl(path = "") {
   const base = (import.meta.env.VITE_RAISE_ACADEMY_URL || "/").replace(/\/$/, "");
-  if (isAppMode) return `${base}${path || "/login"}?app=1`;
+  // In the app, stay on app.yneet.in (the only site the app opens full screen):
+  // /account shows the www.yneet.in login or sign-up page inside a frame.
+  if (isAppMode) return `/account?page=${(path || "/login").replace(/^\//, "")}`;
   return path ? `${base}${path}` : (import.meta.env.VITE_RAISE_ACADEMY_URL || "/");
 }
 
@@ -46,6 +48,7 @@ export const WEBSITE_URL = (import.meta.env.VITE_RAISE_ACADEMY_URL || "https://w
 // login page inside the Play Store app.
 export function raiseLogoutUrl() {
   const base = (import.meta.env.VITE_RAISE_ACADEMY_URL || "").replace(/\/$/, "");
+  if (isAppMode) return "/account?page=logout";
   if (!base) return "/";
-  return `${base}/logout${isAppMode ? "?app=1" : ""}`;
+  return `${base}/logout`;
 }

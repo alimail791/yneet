@@ -78,7 +78,7 @@ export default function DashboardPage() {
       {/* Motivation */}
       <div className="motiv-card">
         <div className="motiv-quote">"{motiv}"</div>
-        <div style={{fontSize:13,opacity:.8}}>Good morning, {user?.name?.split(" ")[0]}! <strong>{countdown.days}</strong> days left for NEET.</div>
+        <div style={{fontSize:13,opacity:.8}}>{(() => { const h = new Date().getHours(); return h < 12 ? "Good morning" : h < 17 ? "Good afternoon" : "Good evening"; })()}, {user?.name?.split(" ")[0]}! <strong>{countdown.days}</strong> days left for NEET.</div>
       </div>
 
       {/* Countdown */}
