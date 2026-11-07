@@ -19,6 +19,7 @@ const SECTIONS = [
     title: "Practise & test yourself",
     items: [
       { icon: "🎯", title: "NEET Readiness Test", desc: "15 questions, 5 minutes. Get your score and weak chapters.", to: open("/neet-readiness", "NEET Readiness Test") },
+      { icon: "🏥", title: "NEET College Predictor", desc: "See which medical colleges your rank or score can get.", to: open("/neet-college-predictor", "College Predictor") },
       { icon: "⚡", title: "60-Second Sprint", desc: "Today's quick challenge with a leaderboard.", to: open("/neet-sprint", "60-Second Sprint") },
       { icon: "❓", title: "Question of the Day", desc: "One NEET question every day, with the answer explained.", to: open("/neet-question-of-the-day", "Question of the Day") },
       { icon: "📚", title: "Chapter-wise PYQs", desc: "Previous-year NEET questions for every chapter.", to: open("/neet-practice", "Chapter-wise PYQs") },
