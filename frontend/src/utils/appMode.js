@@ -36,7 +36,8 @@ export function raiseEntryUrl(path = "") {
   const base = (import.meta.env.VITE_RAISE_ACADEMY_URL || "/").replace(/\/$/, "");
   // In the app, stay on app.yneet.in (the only site the app opens full screen):
   // /account shows the www.yneet.in login or sign-up page inside a frame.
-  if (isAppMode) return `/account?page=${(path || "/login").replace(/^\//, "")}`;
+  // With no page asked for (e.g. not logged in), open the Explore welcome screen.
+  if (isAppMode) return path ? `/account?page=${path.replace(/^\//, "")}` : "/explore";
   return path ? `${base}${path}` : (import.meta.env.VITE_RAISE_ACADEMY_URL || "/");
 }
 

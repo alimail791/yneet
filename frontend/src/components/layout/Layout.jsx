@@ -111,7 +111,10 @@ export default function Layout() {
   const mobileTabs = junior ? juniorMobileTabs : allMobileTabs;
 
   // Everything that doesn't fit in the 5-slot bottom bar lives behind "More".
+  // In the Play Store app: every free page from the website (Explore screen).
+  const freeLink = isAppMode ? [{ to: "/explore", label: "Free resources", icon: "📚" }] : [];
   const moreLinks = junior ? [
+    ...freeLink,
     { to: "/profile", label: "Profile",    icon: "👤" },
     { to: "/help",    label: "Help & FAQ", icon: "❓" },
   ] : [
@@ -123,6 +126,7 @@ export default function Layout() {
     { to: "/planner",   label: "Study Planner",      icon: "🗓️" },
     { to: "/leaderboard", label: "Leaderboard",      icon: "🏆" },
     { to: "/referral",  label: "Refer & Earn",       icon: "🎁" },
+    ...freeLink,
     { to: "/profile",   label: "Profile",            icon: "👤" },
     ...(user?.role === "admin" ? [{ to: "/admin", label: "Admin Panel", icon: "⚙️" }] : []),
   ];
