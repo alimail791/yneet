@@ -99,7 +99,7 @@ export default function MockPage() {
 
       {filter === "chapter" && (
         <div className="chip-row mb-3" style={{ display: "flex", flexWrap: "wrap", gap: 8 }}>
-          {["all", "Physics", "Chemistry", "Botany", "Zoology"].map(sub => (
+          {["all", ...["Physics", "Chemistry", "Biology", "Botany", "Zoology"].filter(s => chapterTests.some(t => t.subject === s))].map(sub => (
             <span key={sub} onClick={() => setChSubject(sub)} className="chip" style={{ cursor: "pointer", background: chSubject === sub ? "var(--green-light, #dcfce7)" : "var(--gray2)", color: chSubject === sub ? "var(--green)" : "var(--text2)" }}>
               {sub === "all" ? "All subjects" : sub} ({chapterTests.filter(t => sub === "all" || t.subject === sub).length})
             </span>
