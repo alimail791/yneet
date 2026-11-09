@@ -16,10 +16,19 @@ const open = (p, t) => `/explore/open?p=${encodeURIComponent(p)}&t=${encodeURICo
 
 const SECTIONS = [
   {
+    title: "NEET exam tools",
+    items: [
+      { icon: "🧮", title: "NEET Score Calculator", desc: "Match your answers with the answer key. Score, rank and colleges.", to: open("/neet-score-calculator", "Score Calculator") },
+      { icon: "🏥", title: "NEET College Predictor", desc: "See which medical colleges your rank or score can get.", to: open("/neet-college-predictor", "College Predictor") },
+      { icon: "📝", title: "NEET Registration Guide", desc: "Eligibility check, document checklist and form steps.", to: open("/neet-registration", "Registration Guide") },
+      { icon: "📷", title: "Photo & Signature Resizer", desc: "Resize your NEET photo, signature and thumb to the right KB.", to: open("/neet-photo-resizer", "Photo Resizer") },
+      { icon: "📅", title: "NEET 2027 exam date", desc: "Exam date, pattern and marking scheme.", to: open("/neet-2027-exam-date", "NEET 2027 exam date") },
+    ],
+  },
+  {
     title: "Practise & test yourself",
     items: [
       { icon: "🎯", title: "NEET Readiness Test", desc: "15 questions, 5 minutes. Get your score and weak chapters.", to: open("/neet-readiness", "NEET Readiness Test") },
-      { icon: "🏥", title: "NEET College Predictor", desc: "See which medical colleges your rank or score can get.", to: open("/neet-college-predictor", "College Predictor") },
       { icon: "⚡", title: "60-Second Sprint", desc: "Today's quick challenge with a leaderboard.", to: open("/neet-sprint", "60-Second Sprint") },
       { icon: "❓", title: "Question of the Day", desc: "One NEET question every day, with the answer explained.", to: open("/neet-question-of-the-day", "Question of the Day") },
       { icon: "📚", title: "Chapter-wise PYQs", desc: "Previous-year NEET questions for every chapter.", to: open("/neet-practice", "Chapter-wise PYQs") },
@@ -46,7 +55,6 @@ const SECTIONS = [
   {
     title: "About NEET & YNeet",
     items: [
-      { icon: "📅", title: "NEET 2027 exam date", desc: "Exam date, countdown and key dates.", to: open("/neet-2027-exam-date", "NEET 2027 exam date") },
       { icon: "🎁", title: "What you get free", desc: "Everything in your free 30 days.", to: open("/neet-trial", "What you get free") },
       { icon: "👨‍👩‍👧", title: "For parents", desc: "Weekly progress reports and what your child gets.", to: open("/neet-parents", "For parents") },
       { icon: "🏫", title: "About Raise Academy", desc: "Who we are, in Avadi, Chennai.", to: open("/about", "About us") },
@@ -101,6 +109,14 @@ export default function ExplorePage() {
       </div>
 
       <div style={{ maxWidth: 760, margin: "0 auto", padding: "8px 14px 40px" }}>
+        {user && ["11th", "12th", "Dropper"].includes(user.profile?.class) && (
+          <section style={{ marginTop: 18 }}>
+            <h2 style={{ fontSize: 13, fontWeight: 800, letterSpacing: 0.6, textTransform: "uppercase", color: "var(--text3)", margin: "0 2px 10px" }}>Your plan</h2>
+            <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(260px, 1fr))", gap: 10 }}>
+              <Tile item={{ icon: "🎯", title: "Chapter Priority", desc: "Which chapters cost you the most marks, and a day-by-day plan to exam day.", to: "/weightage" }} />
+            </div>
+          </section>
+        )}
         {SECTIONS.map((s) => (
           <section key={s.title} style={{ marginTop: 18 }}>
             <h2 style={{ fontSize: 13, fontWeight: 800, letterSpacing: 0.6, textTransform: "uppercase", color: "var(--text3)", margin: "0 2px 10px" }}>{s.title}</h2>
