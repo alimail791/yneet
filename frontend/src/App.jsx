@@ -22,6 +22,7 @@ import QuizPage             from "./pages/QuizPage";
 import PracticePage         from "./pages/PracticePage";
 import PYQPage               from "./pages/PYQPage";
 import PlannerPage          from "./pages/PlannerPage";
+import WeightagePage        from "./pages/WeightagePage";
 import LeaderboardPage      from "./pages/LeaderboardPage";
 import BiologyPage          from "./pages/BiologyPage";
 import PhysicsPage          from "./pages/PhysicsPage";
@@ -150,6 +151,7 @@ export default function App() {
         <Route path="pyq"            element={<Paid><PYQPage /></Paid>} />
         <Route path="pyq/:year"      element={<Paid><PYQPage /></Paid>} />
         <Route path="planner"        element={<Paid><PlannerPage /></Paid>} />
+        <Route path="weightage"      element={<Paid><WeightagePage /></Paid>} />
         <Route path="leaderboard"    element={<Paid><LeaderboardPage /></Paid>} />
         <Route path="biology"        element={<Paid><BiologyPage /></Paid>} />
         <Route path="physics"        element={<Paid><PhysicsPage /></Paid>} />

@@ -34,6 +34,7 @@ app.use("/api/v1/practice",  require("./routes/practice"));
 app.use("/api/v1/dashboard", require("./routes/dashboard"));
 app.use("/api/v1/mistakes",  require("./routes/mistakes"));
 app.use("/api/v1/planner",   require("./routes/planner"));
+app.use("/api/v1/weightage", require("./routes/weightage"));
 app.use("/api/v1/leaderboard", require("./routes/leaderboard"));
 app.use("/api/v1/subscription", require("./routes/subscription"));
 app.use("/api/v1/content",   require("./routes/content"));

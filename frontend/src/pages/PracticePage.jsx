@@ -5,10 +5,11 @@ import ExplainDifferently from "../components/ExplainDifferently";
 export default function PracticePage() {
   const [questions, setQuestions] = useState([]);
   const [chapters, setChapters] = useState([]);
-  // ?subject=&chapter= opens the page on one chapter (used by Concept Maps).
+  // ?subject=&chapter= opens the page on one chapter (used by Concept Maps and
+  // Chapter Priority); &pyq=1 also limits it to Previous Year Questions.
   const [filters, setFilters] = useState(() => {
     const q = new URLSearchParams(window.location.search);
-    return { subject: q.get("subject") || "", chapter: q.get("chapter") || "", isPYQ:"", isRepeated:"", page:1 };
+    return { subject: q.get("subject") || "", chapter: q.get("chapter") || "", isPYQ: q.get("pyq") === "1" ? "true" : "", isRepeated:"", page:1 };
   });
   const [total, setTotal] = useState(0);
   const [pages, setPages] = useState(1);
