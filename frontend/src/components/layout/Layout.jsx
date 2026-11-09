@@ -7,6 +7,9 @@ import { useAuth } from "../../context/AuthContext";
 import InstallPrompt from "../InstallPrompt";
 import { isJuniorFree, PUZZLES_URL } from "../../utils/plan";
 
+// Free NEET tools from www.yneet.in, opened full screen inside the app (prices hidden).
+const TOOL = (p, t) => `/explore/open?p=${encodeURIComponent(p)}&t=${encodeURIComponent(t)}`;
+
 export default function Layout() {
   const { user, logout } = useAuth();
   const navigate = useNavigate();
@@ -67,6 +70,9 @@ export default function Layout() {
     { to: "/practice", label: "Practice" },
     { to: "/pyq",      label: "PYQs" },
     { to: "/weightage", label: "Chapter Priority" },
+    { to: TOOL("/neet-score-calculator", "Score Calculator"), label: "Score Calculator" },
+    { to: TOOL("/neet-registration", "Registration Guide"), label: "NEET Registration" },
+    { to: TOOL("/neet-photo-resizer", "Photo Resizer"), label: "Photo Resizer" },
     { to: "/planner",  label: "Planner" },
     { to: "/leaderboard", label: "Leaderboard" }, 
     { to: "/sprint",   label: "60-Second Sprint" },
@@ -125,6 +131,9 @@ export default function Layout() {
     { to: "/chemistry", label: "Chemistry Hub",      icon: "🧪" },
     { to: "/mistakes",  label: "Mistake Notebook",   icon: "❌" },
     { to: "/weightage", label: "Chapter Priority",   icon: "🎯" },
+    { to: TOOL("/neet-score-calculator", "Score Calculator"), label: "Score Calculator", icon: "🧮" },
+    { to: TOOL("/neet-registration", "Registration Guide"), label: "NEET Registration", icon: "📝" },
+    { to: TOOL("/neet-photo-resizer", "Photo Resizer"), label: "Photo Resizer", icon: "📷" },
     { to: "/planner",   label: "Study Planner",      icon: "🗓️" },
     { to: "/leaderboard", label: "Leaderboard",      icon: "🏆" },
     { to: "/referral",  label: "Refer & Earn",       icon: "🎁" },
