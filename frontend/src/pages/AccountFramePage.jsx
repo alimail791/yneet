@@ -54,7 +54,8 @@ function FrameShell({ src, title, showJoin }) {
               borderRadius: 999, textDecoration: "none", whiteSpace: "nowrap" }}>Join free</Link>
         )}
       </div>
-      <iframe key={src} title={title} src={src} style={{ flex: 1, width: "100%", border: 0 }} />
+      {/* allow=identity-credentials-get: lets "Continue with Google" (FedCM) work inside this frame. */}
+      <iframe key={src} title={title} src={src} allow="identity-credentials-get" style={{ flex: 1, width: "100%", border: 0 }} />
     </div>
   );
 }
