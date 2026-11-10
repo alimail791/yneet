@@ -128,7 +128,7 @@ async function build() {
     const g = groups.get(`${c.subject}|${keyOf(c.chapter)}`) || [...groups.values()].find((x) => x.chapter === c.chapter && x.subject === c.subject);
     if (!g) continue;
     const order = (a, b) => (b.isPYQ - a.isPYQ) || ((b.pyqYear || 0) - (a.pyqYear || 0)) || (a.id < b.id ? -1 : 1);
-    const list = [...g.qs].filter(pageWorthy).sort(order).map((q) => questionPage(q, c));
+    const list = [...g.qs].filter((q) => pageWorthy(q)).sort(order).map((q) => questionPage(q, c));
     if (list.length) byChapter.push(list);
   }
   // Interleave chapters (round-robin) so a capped build still covers every chapter.
@@ -136,13 +136,62 @@ async function build() {
   for (let i = 0; byChapter.some((l) => i < l.length); i++) for (const l of byChapter) if (i < l.length) questionPages.push(l[i]);
   const questionById = new Map(questionPages.map((q) => [q.id, q]));
   for (const c of chapters) c.questionPageCount = byChapter.find((l) => l[0].chapterSlug === c.slug)?.length || 0;
-  return { at: Date.now(), chapters, questionPages, questionById };
+  return { at: Date.now(), chapters, questionPages, questionById, school: await buildSchool() };
+}
+
+// Class 6–10 one-question pages (/class-<n>-questions/<slug>), grouped by
+// class, then subject, then chapter. Same quality bar as the NEET pages but a
+// shorter minimum explanation (school explanations are one clear sentence).
+const SCHOOL_CLASSES = ["6th", "7th", "8th", "9th", "10th"];
+async function buildSchool() {
+  const rows = await prisma.question.findMany({
+    where: { classLevel: { in: SCHOOL_CLASSES }, subject: { in: SUBJECT_ORDER } },
+    select: {
+      id: true, subject: true, chapter: true, topic: true, questionText: true,
+      optionA: true, optionB: true, optionC: true, optionD: true, correctOpt: true,
+      explanation: true, classLevel: true, createdAt: true,
+    },
+  });
+  const classes = [];
+  const pages = [];
+  for (const cl of SCHOOL_CLASSES) {
+    const classNum = parseInt(cl, 10);
+    const seen = new Set();
+    const chapterMap = new Map();
+    for (const q of rows) {
+      if (q.classLevel !== cl || !q.chapter || !pageWorthy(q, 30)) continue;
+      const k = norm(q.questionText);
+      if (seen.has(k)) continue;
+      seen.add(k);
+      const ck = `${q.subject}|${keyOf(q.chapter)}`;
+      if (!chapterMap.has(ck)) chapterMap.set(ck, { subject: q.subject, chapter: q.chapter.trim(), qs: [] });
+      chapterMap.get(ck).qs.push(q);
+    }
+    const chs = [...chapterMap.values()].sort((a, b) => SUBJECT_ORDER.indexOf(a.subject) - SUBJECT_ORDER.indexOf(b.subject) || a.chapter.localeCompare(b.chapter));
+    if (!chs.length) continue;
+    const used = new Set();
+    const summary = [];
+    for (const ch of chs) {
+      let slug = slugify(ch.chapter) || "chapter";
+      while (used.has(slug)) slug += "-2";
+      used.add(slug);
+      const list = ch.qs.sort((a, b) => (a.createdAt - b.createdAt) || (a.id < b.id ? -1 : 1)).map((q) => ({
+        id: q.id, slug: questionSlug(q), classNum, subject: q.subject, chapter: ch.chapter, chapterSlug: slug,
+        topic: q.topic, question: q.questionText, options: [q.optionA, q.optionB, q.optionC, q.optionD],
+        answer: q.correctOpt + 1, explanation: q.explanation, pyqYear: null,
+      }));
+      pages.push(...list);
+      summary.push({ subject: ch.subject, chapter: ch.chapter, slug, count: list.length });
+    }
+    classes.push({ classNum, total: summary.reduce((s, c) => s + c.count, 0), chapters: summary });
+  }
+  return { classes, pages, byId: new Map(pages.map((q) => [q.id, q])) };
 }
 
 const MIN_EXPLANATION = 60;
-const pageWorthy = (q) =>
-  String(q.questionText).trim().length >= 25 &&
-  String(q.explanation || "").trim().length >= MIN_EXPLANATION &&
+const pageWorthy = (q, minExplanation = MIN_EXPLANATION) =>
+  String(q.questionText).trim().length >= 15 &&
+  String(q.explanation || "").trim().length >= minExplanation &&
   [q.optionA, q.optionB, q.optionC, q.optionD].every((o) => String(o || "").trim()) &&
   q.correctOpt >= 0 && q.correctOpt <= 3 &&
   ![q.questionText, q.optionA, q.optionB, q.optionC, q.optionD].some((t) => /<img|https?:\/\/|\[image|figure shown|diagram (?:given|shown|below)/i.test(String(t)));
@@ -237,6 +286,47 @@ exports.getQuestionPage = async (req, res) => {
     res.status(500).json({ success: false, message: "Could not load question" });
   }
 };
+
+// GET /api/v1/public/school-questions
+//   → classes 6–10 with their chapters, plus every page (website build time).
+// GET /api/v1/public/school-questions?class=9   → one class's chapters + short links (browser).
+exports.listSchoolPages = async (req, res) => {
+  try {
+    const { school } = await data();
+    res.set("Cache-Control", "public, max-age=3600");
+    const n = parseInt(req.query.class, 10);
+    if (n) {
+      const cl = school.classes.find((c) => c.classNum === n);
+      if (!cl) return res.status(404).json({ success: false, message: "Class not found" });
+      const links = school.pages.filter((q) => q.classNum === n).map(({ slug, chapterSlug, question }) => ({ slug, chapterSlug, question: question.slice(0, 140) }));
+      return res.json({ success: true, classes: school.classes.map(({ chapters, ...c }) => c), class: cl, links });
+    }
+    res.json({ success: true, classes: school.classes, pages: school.pages.map((q) => ({ ...q, related: schoolRelated(school, q) })) });
+  } catch (err) {
+    console.error("school pages list error:", err);
+    res.status(500).json({ success: false, message: "Could not load questions" });
+  }
+};
+
+// GET /api/v1/public/school-questions/:slug
+exports.getSchoolPage = async (req, res) => {
+  try {
+    const { school } = await data();
+    const q = school.byId.get(String(req.params.slug).split("-").pop());
+    if (!q) return res.status(404).json({ success: false, message: "Question not found" });
+    res.set("Cache-Control", "public, max-age=3600");
+    res.json({ success: true, question: { ...q, related: schoolRelated(school, q) } });
+  } catch (err) {
+    console.error("school page error:", err);
+    res.status(500).json({ success: false, message: "Could not load question" });
+  }
+};
+
+function schoolRelated(school, q, n = 8) {
+  const same = school.pages.filter((x) => x.classNum === q.classNum && x.chapterSlug === q.chapterSlug);
+  const at = Math.max(0, same.findIndex((x) => x.id === q.id));
+  return [...same.slice(at + 1), ...same.slice(0, at)].slice(0, n).map(({ id, slug, question }) => ({ id, slug, question: question.slice(0, 140), pyqYear: null }));
+}
 
 // GET /api/v1/public/readiness — the free "NEET Readiness Score" quiz on
 // www.yneet.in/neet-readiness. 15 questions in NEET's subject weighting
