@@ -119,6 +119,7 @@ async function build() {
     });
   }
   chapters.sort((a, b) => SUBJECT_ORDER.indexOf(a.subject) - SUBJECT_ORDER.indexOf(b.subject) || a.chapter.localeCompare(b.chapter));
+  await attachWeightage(chapters, groups);
 
   // One-question pages (/neet-question/<text-slug>-<id>). Only questions good
   // enough to stand alone as a page: a real explanation, four options, no
@@ -186,6 +187,42 @@ async function buildSchool() {
     classes.push({ classNum, total: summary.reduce((s, c) => s + c.count, 0), chapters: summary });
   }
   return { classes, pages, byId: new Map(pages.map((q) => [q.id, q])) };
+}
+
+// NEET weightage per chapter page (same numbers as the app's Chapter Priority
+// map) plus the topics asked most often in its PYQs. A page can cover several
+// syllabus entries (p-Block 13–14 + 15–18), so matching sums them.
+const WEIGHT_ALIAS = { unitsandmeasurements: "physicalworldandmeasurement", thesolidstate: "solidstate" };
+async function attachWeightage(chapters, groups) {
+  let all = [];
+  try { all = await require("./weightageController").publicWeightage(); } catch (e) { console.error("weightage for practice pages:", e.message); return; }
+  const wKey = (s) => String(s || "").toLowerCase().replace(/&/g, "and").replace(/[^a-z0-9]+/g, "");
+  for (const c of chapters) {
+    const k = WEIGHT_ALIAS[wKey(c.chapter)] || wKey(c.chapter);
+    const m = all.filter((w) => w.subject === c.subject && (w.key === k || w.key.startsWith(k)));
+    const g = groups.get(`${c.subject}|${keyOf(c.chapter)}`);
+    const topicCount = new Map();
+    for (const q of g?.qs || []) if (q.isPYQ && q.topic && norm(q.topic) !== norm(c.chapter)) topicCount.set(q.topic.trim(), (topicCount.get(q.topic.trim()) || 0) + 1);
+    c.topTopics = [...topicCount.entries()].sort((a, b) => b[1] - a[1]).slice(0, 6).map(([topic, count]) => ({ topic, count }));
+    if (!m.length) { c.weightage = null; continue; }
+    const q = m.reduce((a, w) => a + w.expectedQs, 0);
+    c.weightage = {
+      expectedQs: Math.round(q * 10) / 10,
+      marks: Math.round(q * 4),
+      classLevel: [...new Set(m.map((w) => w.classLevel))].join(" + "),
+      yearsAppeared: Math.max(...m.map((w) => w.yearsAppeared)),
+      yearsUsed: Math.max(...m.map((w) => w.yearsUsed)),
+    };
+  }
+  // Rank within subject and a simple priority label.
+  for (const subject of SUBJECT_ORDER) {
+    const list = chapters.filter((c) => c.subject === subject && c.weightage).sort((a, b) => b.weightage.expectedQs - a.weightage.expectedQs);
+    list.forEach((c, i) => {
+      c.weightage.rank = i + 1;
+      c.weightage.ofChapters = list.length;
+      c.weightage.priority = i < Math.ceil(list.length / 3) ? "High" : i < Math.ceil((2 * list.length) / 3) ? "Medium" : "Low";
+    });
+  }
 }
 
 const MIN_EXPLANATION = 60;

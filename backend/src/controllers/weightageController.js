@@ -370,4 +370,46 @@ exports.toggleTask = async (req, res) => {
   }
 };
 
+// Public, no-login weightage for every NEET chapter (www.yneet.in chapter pages
+// and /neet-chapter-wise-weightage). Same PYQ/baseline blend as buildMap, without
+// any student data. yearsAppeared = usable PYQ years in which the chapter had a question.
+let publicCache = null;
+async function publicWeightage() {
+  if (publicCache && Date.now() - publicCache.at < 6 * 60 * 60 * 1000) return publicCache.value;
+  const base = baselineChapters();
+  const pyqRows = await prisma.question.groupBy({ by: ["pyqYear", "subject", "chapter"], where: { isPYQ: true, pyqYear: { not: null } }, _count: { _all: true } });
+  const yearTotals = {};
+  for (const r of pyqRows) { const k = `${r.subject}|${r.pyqYear}`; yearTotals[k] = (yearTotals[k] || 0) + r._count._all; }
+  const usableYears = {};
+  for (const [k, n] of Object.entries(yearTotals)) {
+    const [subject, year] = k.split("|");
+    if (!SUBJECT_TOTAL[subject] || n < SUBJECT_TOTAL[subject] * MIN_YEAR_SHARE) continue;
+    (usableYears[subject] ||= new Set()).add(year);
+  }
+  const share = {}, appeared = {};
+  for (const r of pyqRows) {
+    if (!usableYears[r.subject]?.has(String(r.pyqYear))) continue;
+    const ck = `${r.subject}|${keyOf(r.chapter)}`;
+    share[ck] = (share[ck] || 0) + (r._count._all / yearTotals[`${r.subject}|${r.pyqYear}`]) * SUBJECT_TOTAL[r.subject];
+    (appeared[ck] ||= new Set()).add(String(r.pyqYear));
+  }
+  const blended = base.map((c) => {
+    const years = usableYears[c.subject]?.size || 0;
+    if (!years) return c.baseline;
+    const w = (Math.min(years, 5) / 5) * 0.7;
+    return w * ((share[`${c.subject}|${c.key}`] || 0) / years) + (1 - w) * c.baseline;
+  });
+  const subjSum = {};
+  base.forEach((c, i) => { subjSum[c.subject] = (subjSum[c.subject] || 0) + blended[i]; });
+  const value = base.map((c, i) => ({
+    subject: c.subject, classLevel: c.classLevel, chapter: c.chapter, key: c.key,
+    expectedQs: (blended[i] / subjSum[c.subject]) * SUBJECT_TOTAL[c.subject],
+    yearsAppeared: appeared[`${c.subject}|${c.key}`]?.size || 0,
+    yearsUsed: usableYears[c.subject]?.size || 0,
+  }));
+  publicCache = { at: Date.now(), value };
+  return value;
+}
+exports.publicWeightage = publicWeightage;
+
 exports._internal ={ buildPlan, defaultExamDate, todayIST, addDays };
