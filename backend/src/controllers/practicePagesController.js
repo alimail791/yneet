@@ -119,7 +119,52 @@ async function build() {
     });
   }
   chapters.sort((a, b) => SUBJECT_ORDER.indexOf(a.subject) - SUBJECT_ORDER.indexOf(b.subject) || a.chapter.localeCompare(b.chapter));
-  return { at: Date.now(), chapters };
+
+  // One-question pages (/neet-question/<text-slug>-<id>). Only questions good
+  // enough to stand alone as a page: a real explanation, four options, no
+  // images or HTML Google would see as broken. Same stable order as above.
+  const byChapter = [];
+  for (const c of chapters) {
+    const g = groups.get(`${c.subject}|${keyOf(c.chapter)}`) || [...groups.values()].find((x) => x.chapter === c.chapter && x.subject === c.subject);
+    if (!g) continue;
+    const order = (a, b) => (b.isPYQ - a.isPYQ) || ((b.pyqYear || 0) - (a.pyqYear || 0)) || (a.id < b.id ? -1 : 1);
+    const list = [...g.qs].filter(pageWorthy).sort(order).map((q) => questionPage(q, c));
+    if (list.length) byChapter.push(list);
+  }
+  // Interleave chapters (round-robin) so a capped build still covers every chapter.
+  const questionPages = [];
+  for (let i = 0; byChapter.some((l) => i < l.length); i++) for (const l of byChapter) if (i < l.length) questionPages.push(l[i]);
+  const questionById = new Map(questionPages.map((q) => [q.id, q]));
+  for (const c of chapters) c.questionPageCount = byChapter.find((l) => l[0].chapterSlug === c.slug)?.length || 0;
+  return { at: Date.now(), chapters, questionPages, questionById };
+}
+
+const MIN_EXPLANATION = 60;
+const pageWorthy = (q) =>
+  String(q.questionText).trim().length >= 25 &&
+  String(q.explanation || "").trim().length >= MIN_EXPLANATION &&
+  [q.optionA, q.optionB, q.optionC, q.optionD].every((o) => String(o || "").trim()) &&
+  q.correctOpt >= 0 && q.correctOpt <= 3 &&
+  ![q.questionText, q.optionA, q.optionB, q.optionC, q.optionD].some((t) => /<img|https?:\/\/|\[image|figure shown|diagram (?:given|shown|below)/i.test(String(t)));
+
+// The URL carries the first words of the question (what students search for)
+// plus the id, which is what the page is looked up by.
+const questionSlug = (q) => {
+  const words = slugify(q.questionText).split("-").filter(Boolean).slice(0, 10).join("-") || "question";
+  return `${words}-${q.id}`;
+};
+const questionPage = (q, c) => ({
+  id: q.id, slug: questionSlug(q), subject: c.subject, chapter: c.chapter, chapterSlug: c.slug,
+  topic: q.topic, question: q.questionText,
+  options: [q.optionA, q.optionB, q.optionC, q.optionD], answer: q.correctOpt + 1, // bank is 0-based, website 1-based
+  explanation: q.explanation, pyqYear: q.isPYQ ? q.pyqYear || null : null,
+});
+
+// Same-chapter neighbours for "More questions" links on a question page.
+function relatedTo(d, q, n = 8) {
+  const same = d.questionPages.filter((x) => x.chapterSlug === q.chapterSlug && x.id !== q.id);
+  const at = Math.max(0, d.questionPages.filter((x) => x.chapterSlug === q.chapterSlug).findIndex((x) => x.id === q.id));
+  return [...same.slice(at), ...same.slice(0, at)].slice(0, n).map(({ id, slug, question, pyqYear }) => ({ id, slug, question: question.slice(0, 140), pyqYear }));
 }
 
 async function data() {
@@ -153,6 +198,43 @@ exports.getChapter = async (req, res) => {
   } catch (err) {
     console.error("practice chapter error:", err);
     res.status(500).json({ success: false, message: "Could not load chapter" });
+  }
+};
+
+// GET /api/v1/public/questions?limit=3000
+//   → the first <limit> one-question pages (chapters interleaved), each with
+//     its related links. Used at website build time to write static pages.
+// GET /api/v1/public/questions?index=1&limit=…
+//   → only {slug, chapterSlug, question} per page (chapter pages' link lists).
+exports.listQuestionPages = async (req, res) => {
+  try {
+    const d = await data();
+    const limit = Math.max(0, Math.min(parseInt(req.query.limit, 10) || 3000, d.questionPages.length));
+    const pages = d.questionPages.slice(0, limit);
+    res.set("Cache-Control", "public, max-age=3600");
+    if (req.query.index === "1") {
+      return res.json({ success: true, total: d.questionPages.length, pages: pages.map(({ slug, chapterSlug, question, pyqYear }) => ({ slug, chapterSlug, question: question.slice(0, 140), pyqYear })) });
+    }
+    res.json({ success: true, total: d.questionPages.length, pages: pages.map((q) => ({ ...q, related: relatedTo(d, q) })) });
+  } catch (err) {
+    console.error("question pages list error:", err);
+    res.status(500).json({ success: false, message: "Could not load questions" });
+  }
+};
+
+// GET /api/v1/public/questions/:slug — one page, looked up by the id at the end
+// of the slug (so an edited question keeps working under its old URL).
+exports.getQuestionPage = async (req, res) => {
+  try {
+    const d = await data();
+    const id = String(req.params.slug).split("-").pop();
+    const q = d.questionById.get(id);
+    if (!q) return res.status(404).json({ success: false, message: "Question not found" });
+    res.set("Cache-Control", "public, max-age=3600");
+    res.json({ success: true, question: { ...q, related: relatedTo(d, q) } });
+  } catch (err) {
+    console.error("question page error:", err);
+    res.status(500).json({ success: false, message: "Could not load question" });
   }
 };
 
