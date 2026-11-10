@@ -11,12 +11,15 @@ router.get("/shorts/featured", publicFeatured);
 router.get("/shorts/:id", publicShort);
 
 // Free chapter practice pages on www.yneet.in (no login; SEO).
-const { listChapters, getChapter, readinessQuiz, listQuestionPages, getQuestionPage } = require("../controllers/practicePagesController");
+const { listChapters, getChapter, readinessQuiz, listQuestionPages, getQuestionPage, listSchoolPages, getSchoolPage } = require("../controllers/practicePagesController");
 router.get("/practice", listChapters);
 router.get("/practice/:subject/:chapter", getChapter);
 // One-question pages on www.yneet.in/neet-question/<slug> (no login; SEO).
 router.get("/questions", listQuestionPages);
 router.get("/questions/:slug", getQuestionPage);
+// Class 6–10 question pages on www.yneet.in/class-<n>-questions (no login; SEO).
+router.get("/school-questions", listSchoolPages);
+router.get("/school-questions/:slug", getSchoolPage);
 router.get("/readiness", readinessQuiz);
 
 // Question of the Day + previous-year papers by year (no login).
