@@ -1,0 +1,66 @@
+# Daily NEET quiz Shorts → Raise Academy's YouTube channel (shorts-bot/).
+# Every morning: picks 3 questions (Physics, Chemistry, Biology) from the YNeet
+# API, renders 1080x1920 videos and uploads them, scheduled to go public at
+# 08:00, 13:00 and 19:00 IST. The videos are also kept as run artifacts for 7
+# days (download them for Instagram Reels).
+#
+# One-time setup (repo Settings → Secrets and variables → Actions):
+#   secrets:   YT_CLIENT_ID, YT_CLIENT_SECRET, YT_REFRESH_TOKEN
+#   variables: YNEET_API (optional, default https://y.yneet.in/api/v1)
+#              PUBLISH_TIMES_IST (optional, default 08:00,13:00,19:00)
+# Without the YT_* secrets it still renders and keeps the videos as artifacts.
+name: Daily NEET Shorts
+
+on:
+  schedule:
+    - cron: "23 0 * * *" # 05:53 IST
+  workflow_dispatch:
+    inputs:
+      date:
+        description: "Date (YYYY-MM-DD, IST). Empty = today"
+        required: false
+      upload:
+        description: "Upload to YouTube"
+        type: boolean
+        default: true
+
+concurrency:
+  group: daily-shorts
+  cancel-in-progress: false
+
+jobs:
+  shorts:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 20
+    defaults:
+      run:
+        working-directory: shorts-bot
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Install ffmpeg and fonts
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq ffmpeg fonts-inter fonts-noto-core >/dev/null
+      - run: npm install --no-audit --no-fund
+      - name: Render and upload
+        env:
+          YNEET_API: ${{ vars.YNEET_API }}
+          PUBLISH_TIMES_IST: ${{ vars.PUBLISH_TIMES_IST }}
+          YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
+          YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
+          YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+          CHROME_PATH: /usr/bin/google-chrome
+        run: |
+          ARGS=""
+          if [ -n "${{ inputs.date }}" ]; then ARGS="$ARGS --date ${{ inputs.date }}"; fi
+          if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.upload }}" != "true" ]; then ARGS="$ARGS --no-upload"; fi
+          node daily.mjs $ARGS
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: neet-shorts-${{ github.run_number }}
+          path: shorts-bot/out/
+          retention-days: 7

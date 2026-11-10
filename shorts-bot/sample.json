@@ -1,0 +1,17 @@
+{
+  "date": "2026-11-11",
+  "questions": [
+    { "id": "s1", "slug": "a-ball-is-thrown-vertically-upward-s1", "subject": "Physics", "chapter": "Kinematics", "chapterSlug": "physics/kinematics", "topic": "Motion in a straight line", "pyqYear": 2023,
+      "question": "A ball is thrown vertically upward with a speed of 20 m/s. Taking g = 10 m/s², the maximum height reached by the ball is:",
+      "options": ["10 m", "20 m", "40 m", "80 m"], "answer": 2,
+      "explanation": "At the highest point the velocity becomes zero. Using v² = u² − 2gh: 0 = 20² − 2 × 10 × h, so h = 400 / 20 = 20 m." },
+    { "id": "s2", "slug": "which-of-the-following-has-the-highest-s2", "subject": "Chemistry", "chapter": "Classification of Elements and Periodicity in Properties", "chapterSlug": "chemistry/classification-of-elements-and-periodicity-in-properties", "topic": "Ionisation enthalpy", "pyqYear": 2021,
+      "question": "Which of the following elements has the highest first ionisation enthalpy?",
+      "options": ["Boron", "Carbon", "Nitrogen", "Oxygen"], "answer": 3,
+      "explanation": "Nitrogen has a stable half-filled 2p³ configuration, so removing an electron needs extra energy. That is why its first ionisation enthalpy is higher than that of oxygen, even though oxygen is to its right in the period." },
+    { "id": "s3", "slug": "the-site-of-photophosphorylation-s3", "subject": "Biology", "chapter": "Photosynthesis in Higher Plants", "chapterSlug": "biology/photosynthesis-in-higher-plants", "topic": "Light reaction", "pyqYear": null,
+      "question": "In chloroplasts, ATP synthesis during the light reaction (photophosphorylation) takes place across the membrane of the:",
+      "options": ["Outer envelope", "Inner envelope", "Thylakoid", "Stroma lamellae only"], "answer": 3,
+      "explanation": "Protons accumulate inside the thylakoid lumen during the light reaction. They flow back to the stroma through ATP synthase (CF0–CF1) embedded in the thylakoid membrane, and this proton gradient drives ATP synthesis — chemiosmosis." }
+  ]
+}
