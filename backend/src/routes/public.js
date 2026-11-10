@@ -16,6 +16,7 @@ router.get("/practice", listChapters);
 router.get("/practice/:subject/:chapter", getChapter);
 // One-question pages on www.yneet.in/neet-question/<slug> (no login; SEO).
 router.get("/questions", listQuestionPages);
+router.get("/questions/daily", require("../controllers/practicePagesController").dailyShorts); // YouTube Shorts bot
 router.get("/questions/:slug", getQuestionPage);
 // Class 6–10 question pages on www.yneet.in/class-<n>-questions (no login; SEO).
 router.get("/school-questions", listSchoolPages);

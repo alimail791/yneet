@@ -1,0 +1,14 @@
+{
+  "name": "yneet-shorts-bot",
+  "private": true,
+  "type": "module",
+  "description": "Daily NEET quiz YouTube Shorts: picks questions from the YNeet API, renders 1080x1920 videos, uploads to YouTube.",
+  "scripts": {
+    "daily": "node daily.mjs",
+    "sample": "node daily.mjs --sample --no-upload"
+  },
+  "dependencies": {
+    "playwright-core": "^1.48.0"
+  },
+  "engines": { "node": ">=20" }
+}

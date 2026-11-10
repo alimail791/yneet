@@ -308,6 +308,34 @@ exports.listQuestionPages = async (req, res) => {
   }
 };
 
+// GET /api/v1/public/questions/daily?date=YYYY-MM-DD
+//   → one question per subject for the daily YouTube Shorts (shorts-bot/).
+// Only questions short enough to read on a phone in a few seconds. Walks each
+// subject's list one step per day (IST), so nothing repeats until the list is done.
+const SHORT_LIMITS = { question: 230, option: 55, explanation: 600 };
+const shortsFriendly = (q) =>
+  q.question.length <= SHORT_LIMITS.question && q.options.every((o) => String(o).length <= SHORT_LIMITS.option) &&
+  !/\n.*\n.*\n/.test(q.question) && !/\b(?:match (?:the )?(?:list|column)|assertion|statement[- ]?i\b)/i.test(q.question);
+exports.dailyShorts = async (req, res) => {
+  try {
+    const d = await data();
+    const ist = new Date(Date.now() + 5.5 * 3600 * 1000).toISOString().slice(0, 10);
+    const date = /^\d{4}-\d{2}-\d{2}$/.test(req.query.date || "") ? req.query.date : ist;
+    const day = Math.floor(Date.parse(`${date}T00:00:00Z`) / 86400000);
+    const picks = SUBJECT_ORDER.map((subject) => {
+      const list = d.questionPages.filter((q) => q.subject === subject && shortsFriendly(q));
+      if (!list.length) return null;
+      const q = list[(day * 7919) % list.length]; // fixed stride: spreads chapters across days
+      return { ...q, explanation: String(q.explanation).slice(0, SHORT_LIMITS.explanation) };
+    }).filter(Boolean);
+    res.set("Cache-Control", "no-store");
+    res.json({ success: true, date, questions: picks });
+  } catch (err) {
+    console.error("daily shorts error:", err);
+    res.status(500).json({ success: false, message: "Could not pick questions" });
+  }
+};
+
 // GET /api/v1/public/questions/:slug — one page, looked up by the id at the end
 // of the slug (so an edited question keeps working under its old URL).
 exports.getQuestionPage = async (req, res) => {
