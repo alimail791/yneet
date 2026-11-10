@@ -6,7 +6,7 @@
 #
 # One-time setup (repo Settings → Secrets and variables → Actions):
 #   secrets:   YT_CLIENT_ID, YT_CLIENT_SECRET, YT_REFRESH_TOKEN
-#   variables: YNEET_API (optional, default https://y.yneet.in/api/v1)
+#   variables: YNEET_API (optional, default https://yneet-production.up.railway.app/api/v1)
 #              PUBLISH_TIMES_IST (optional, default 08:00,13:00,19:00)
 # Without the YT_* secrets it still renders and keeps the videos as artifacts.
 name: Daily NEET Shorts

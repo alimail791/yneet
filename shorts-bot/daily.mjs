@@ -2,7 +2,7 @@
 //   node daily.mjs                 today's 3 questions (IST), render, upload
 //   node daily.mjs --date 2026-11-12 --no-upload
 //   node daily.mjs --sample --no-upload   uses sample.json, no API needed
-// Env: YNEET_API (default https://y.yneet.in/api/v1), CHROME_PATH,
+// Env: YNEET_API (default https://yneet-production.up.railway.app/api/v1), CHROME_PATH,
 //      YT_* (see youtube.mjs), PUBLISH_TIMES_IST (default "08:00,13:00,19:00").
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
@@ -13,7 +13,7 @@ import { uploadShort, youtubeConfigured } from "./youtube.mjs";
 const args = process.argv.slice(2);
 const flag = (f) => args.includes(f);
 const opt = (f) => { const i = args.indexOf(f); return i >= 0 ? args[i + 1] : undefined; };
-const API = (process.env.YNEET_API || "https://y.yneet.in/api/v1").replace(/\/$/, "");
+const API = (process.env.YNEET_API || "https://yneet-production.up.railway.app/api/v1").replace(/\/$/, "");
 const OUT = path.resolve(process.env.OUT_DIR || "out");
 const LETTERS = ["A", "B", "C", "D"];
 
