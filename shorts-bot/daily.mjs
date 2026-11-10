@@ -51,9 +51,20 @@ async function main() {
   if (flag("--sample")) {
     ({ date, questions } = JSON.parse(await readFile(new URL("./sample.json", import.meta.url), "utf8")));
   } else {
-    const res = await fetch(`${API}/public/questions/daily${opt("--date") ? `?date=${opt("--date")}` : ""}`);
-    if (!res.ok) throw new Error(`YNeet API responded ${res.status}`);
-    ({ date, questions } = await res.json());
+    // Retry for a few minutes: the API may be mid-deploy (502) when the job starts.
+    const url = `${API}/public/questions/daily${opt("--date") ? `?date=${opt("--date")}` : ""}`;
+    for (let attempt = 1; ; attempt++) {
+      try {
+        const res = await fetch(url);
+        if (!res.ok) throw new Error(`YNeet API responded ${res.status}`);
+        ({ date, questions } = await res.json());
+        break;
+      } catch (e) {
+        if (attempt >= 6) throw e;
+        console.warn(`${e.message} — retrying in 30 s (${attempt}/5)`);
+        await new Promise((r) => setTimeout(r, 30000));
+      }
+    }
   }
   if (!questions?.length) throw new Error("No questions returned");
   await mkdir(OUT, { recursive: true });
