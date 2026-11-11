@@ -11,6 +11,7 @@
 // StudyPlan as they are.
 
 const { PrismaClient } = require("@prisma/client");
+const { NOT_BOARD } = require("../utils/pyqSource"); // NEET weightage: NEET PYQs only
 const { SUBJECT_TOTAL, baselineChapters, scopeClasses, keyOf } = require("../utils/weightage");
 const prisma = new PrismaClient();
 
@@ -61,7 +62,7 @@ async function buildMap(userId, profile) {
   const subjectKey = (s, k) => `${s}|${k}`;
 
   const [pyqRows, bankRows, practice, responses] = await Promise.all([
-    prisma.question.groupBy({ by: ["pyqYear", "subject", "chapter"], where: { isPYQ: true, pyqYear: { not: null } }, _count: { _all: true } }),
+    prisma.question.groupBy({ by: ["pyqYear", "subject", "chapter"], where: { isPYQ: true, pyqYear: { not: null }, ...NOT_BOARD }, _count: { _all: true } }),
     // Practice questions available in the student's own class (that's what /practice serves).
     prisma.question.groupBy({ by: ["subject", "chapter"], where: { classLevel: studentClass }, _count: { _all: true } }),
     prisma.practiceStat.findMany({ where: { userId }, select: { correct: true, question: { select: { subject: true, chapter: true } } } }),
@@ -377,7 +378,7 @@ let publicCache = null;
 async function publicWeightage() {
   if (publicCache && Date.now() - publicCache.at < 6 * 60 * 60 * 1000) return publicCache.value;
   const base = baselineChapters();
-  const pyqRows = await prisma.question.groupBy({ by: ["pyqYear", "subject", "chapter"], where: { isPYQ: true, pyqYear: { not: null } }, _count: { _all: true } });
+  const pyqRows = await prisma.question.groupBy({ by: ["pyqYear", "subject", "chapter"], where: { isPYQ: true, pyqYear: { not: null }, ...NOT_BOARD }, _count: { _all: true } });
   const yearTotals = {};
   for (const r of pyqRows) { const k = `${r.subject}|${r.pyqYear}`; yearTotals[k] = (yearTotals[k] || 0) + r._count._all; }
   const usableYears = {};

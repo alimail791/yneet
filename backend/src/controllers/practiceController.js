@@ -1,5 +1,6 @@
 const { PrismaClient } = require("@prisma/client");
 const { awardXP } = require("../utils/xp");
+const { NOT_BOARD, labelSource } = require("../utils/pyqSource");
 const prisma = new PrismaClient();
 
 exports.getQuestions = async (req, res) => {
@@ -15,6 +16,8 @@ exports.getQuestions = async (req, res) => {
     if (isPYQ === "true") where.isPYQ = true;
     if (isRepeated === "true") where.isRepeated = true;
     if (pyqYear) where.pyqYear = Number(pyqYear);
+    // "PYQ" here means NEET PYQs only (CBSE board questions are labelled separately).
+    if (isPYQ === "true" || pyqYear) Object.assign(where, NOT_BOARD);
     const [questions, total] = await Promise.all([
       prisma.question.findMany({ where, skip: (parseInt(page)-1)*parseInt(limit), take: parseInt(limit), orderBy: [{ isPYQ: "desc" }, { pyqYear: "desc" }, { subject: "asc" }], select: { id:true,subject:true,chapter:true,topic:true,difficulty:true,questionText:true,optionA:true,optionB:true,optionC:true,optionD:true,correctOpt:true,explanation:true,isPYQ:true,isRepeated:true,pyqYear:true } }),
       prisma.question.count({ where }),
@@ -24,7 +27,7 @@ exports.getQuestions = async (req, res) => {
       const stats = await prisma.practiceStat.findMany({ where: { userId: req.user.id, questionId: { in: questions.map(q => q.id) } } });
       stats.forEach(s => { solvedMap[s.questionId] = s; });
     }
-    res.json({ success: true, questions: questions.map(q => ({ ...q, userStat: solvedMap[q.id] || null })), total, page: parseInt(page), pages: Math.ceil(total/parseInt(limit)) });
+    res.json({ success: true, questions: questions.map(q => ({ ...labelSource(q), userStat: solvedMap[q.id] || null })), total, page: parseInt(page), pages: Math.ceil(total/parseInt(limit)) });
   } catch (err) { res.status(500).json({ success: false, message: err.message }); }
 };
 
@@ -38,7 +41,7 @@ exports.getPyqYears = async (req, res) => {
   try {
     const rows = await prisma.question.groupBy({
       by: ["pyqYear", "subject"],
-      where: { isPYQ: true, pyqYear: { not: null } },
+      where: { isPYQ: true, pyqYear: { not: null }, ...NOT_BOARD },
       _count: { _all: true },
     });
     const byYear = {};
@@ -119,7 +122,7 @@ exports.getRecommended = async (req, res) => {
     // Actual missed questions surface first, then other fresh ones from the same weak chapters.
     filtered.sort((a, b) => (mistakenSet.has(b.id) ? 1 : 0) - (mistakenSet.has(a.id) ? 1 : 0));
 
-    res.json({ success: true, questions: filtered.slice(0, 15), weakChapters: topChapters });
+    res.json({ success: true, questions: filtered.slice(0, 15).map(labelSource), weakChapters: topChapters });
   } catch (err) { res.status(500).json({ success: false, message: err.message }); }
 };
 

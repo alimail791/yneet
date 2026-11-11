@@ -4,6 +4,7 @@
 // can index real content. The full chapter (timed test, score, weak topics)
 // stays inside YNeet behind the free 30-day trial.
 const { PrismaClient } = require("@prisma/client");
+const { labelSource } = require("../utils/pyqSource");
 const prisma = new PrismaClient();
 
 const FREE_PER_CHAPTER = 10;
@@ -72,6 +73,9 @@ async function build() {
       explanation: true, isPYQ: true, pyqYear: true, classLevel: true,
     },
   });
+
+  // CBSE board questions: not NEET PYQs (no "NEET 2023" badge, not in PYQ counts).
+  for (let i = 0; i < rows.length; i++) rows[i] = labelSource(rows[i]);
 
   // Group by subject + chapter; the same question can exist for several class
   // levels, so de-duplicate on the question text.
@@ -285,7 +289,7 @@ const questionPage = (q, c) => ({
   id: q.id, slug: questionSlug(q), subject: c.subject, chapter: c.chapter, chapterSlug: c.slug,
   topic: q.topic, question: q.questionText,
   options: [q.optionA, q.optionB, q.optionC, q.optionD], answer: q.correctOpt + 1, // bank is 0-based, website 1-based
-  explanation: q.explanation, pyqYear: q.isPYQ ? q.pyqYear || null : null,
+  explanation: q.explanation, pyqYear: q.isPYQ ? q.pyqYear || null : null, boardYear: q.boardYear || null,
 });
 
 // Same-chapter neighbours for "More questions" links on a question page.

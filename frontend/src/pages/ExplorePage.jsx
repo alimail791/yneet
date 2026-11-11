@@ -20,6 +20,7 @@ const SECTIONS = [
     items: [
       { icon: "🧮", title: "NEET Score Calculator", desc: "Match your answers with the answer key. Score, rank and colleges.", to: open("/neet-score-calculator", "Score Calculator") },
       { icon: "🏥", title: "NEET College Predictor", desc: "See which medical colleges your rank or score can get.", to: open("/neet-college-predictor", "College Predictor") },
+      { icon: "📊", title: "NEET cutoff by state", desc: "Last year's closing rank for every government MBBS college.", to: open("/neet-cutoff", "NEET cutoff") },
       { icon: "📝", title: "NEET Registration Guide", desc: "Eligibility check, document checklist and form steps.", to: open("/neet-registration", "Registration Guide") },
       { icon: "📷", title: "Photo & Signature Resizer", desc: "Resize your NEET photo, signature and thumb to the right KB.", to: open("/neet-photo-resizer", "Photo Resizer") },
       { icon: "📅", title: "NEET 2027 exam date", desc: "Exam date, pattern and marking scheme.", to: open("/neet-2027-exam-date", "NEET 2027 exam date") },
@@ -33,6 +34,8 @@ const SECTIONS = [
       { icon: "❓", title: "Question of the Day", desc: "One NEET question every day, with the answer explained.", to: open("/neet-question-of-the-day", "Question of the Day") },
       { icon: "📚", title: "Chapter-wise PYQs", desc: "Previous-year NEET questions for every chapter.", to: open("/neet-practice", "Chapter-wise PYQs") },
       { icon: "🗂️", title: "NEET papers by year", desc: "Past NEET question papers, year by year.", to: open("/neet-question-papers", "NEET papers by year") },
+      { icon: "📥", title: "Free PYQ PDFs", desc: "Every NEET PYQ of a chapter with solutions, as a PDF.", to: open("/neet-pyq-books", "NEET PYQ PDFs") },
+      { icon: "⚖️", title: "Chapter-wise weightage", desc: "How many NEET questions each chapter is worth.", to: open("/neet-chapter-wise-weightage", "Chapter-wise weightage") },
       { icon: "🧩", title: "Daily NEET puzzles", desc: "5 quick science puzzles every day.", href: PUZZLES_URL },
     ],
   },

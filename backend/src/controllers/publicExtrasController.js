@@ -3,6 +3,7 @@
 //     WhatsApp channel post, the website page and shares all match.
 //   • NEET previous-year papers by year — every PYQ in the bank for a year, with answers.
 const { PrismaClient } = require("@prisma/client");
+const { NOT_BOARD } = require("../utils/pyqSource");
 const prisma = new PrismaClient();
 const { practiceData, _internal } = require("./practicePagesController");
 
@@ -61,7 +62,7 @@ let papersCache = null;
 
 async function buildPapers() {
   const rows = await prisma.question.findMany({
-    where: { isPYQ: true, pyqYear: { not: null }, classLevel: { in: NEET_CLASSES }, subject: { in: SUBJECTS } },
+    where: { isPYQ: true, pyqYear: { not: null }, classLevel: { in: NEET_CLASSES }, subject: { in: SUBJECTS }, ...NOT_BOARD }, // NEET papers: no CBSE board questions
     select: { id: true, subject: true, chapter: true, questionText: true, optionA: true, optionB: true, optionC: true, optionD: true, correctOpt: true, explanation: true, pyqYear: true },
     orderBy: [{ pyqYear: "desc" }, { id: "asc" }],
   });

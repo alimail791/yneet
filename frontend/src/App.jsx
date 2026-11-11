@@ -21,6 +21,7 @@ import AnalysisPage         from "./pages/AnalysisPage";
 import QuizPage             from "./pages/QuizPage";
 import PracticePage         from "./pages/PracticePage";
 import PYQPage               from "./pages/PYQPage";
+import PYQTestPage           from "./pages/PYQTestPage";
 import PlannerPage          from "./pages/PlannerPage";
 import WeightagePage        from "./pages/WeightagePage";
 import LeaderboardPage      from "./pages/LeaderboardPage";
@@ -150,6 +151,7 @@ export default function App() {
         <Route path="practice"       element={<Paid><PracticePage /></Paid>} />
         <Route path="pyq"            element={<Paid><PYQPage /></Paid>} />
         <Route path="pyq/:year"      element={<Paid><PYQPage /></Paid>} />
+        <Route path="pyq/:year/test" element={<Paid><PYQTestPage /></Paid>} />
         <Route path="planner"        element={<Paid><PlannerPage /></Paid>} />
         <Route path="weightage"      element={<Paid><WeightagePage /></Paid>} />
         <Route path="leaderboard"    element={<Paid><LeaderboardPage /></Paid>} />

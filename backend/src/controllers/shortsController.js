@@ -1,4 +1,5 @@
 const { PrismaClient } = require("@prisma/client");
+const { labelSource } = require("../utils/pyqSource");
 const prisma = new PrismaClient();
 const { awardXP } = require("../utils/xp");
 const { parseVideoLink } = require("../utils/videoLink");
@@ -270,7 +271,8 @@ async function pickQuestions({ subject, classLevel, chapter, count = 3, exclude 
     select: { id: true, questionText: true, chapter: true, subject: true, isPYQ: true, pyqYear: true },
   });
   const shuffle = (arr) => { for (let i = arr.length - 1; i > 0; i--) { const j = Math.floor(Math.random() * (i + 1)); [arr[i], arr[j]] = [arr[j], arr[i]]; } return arr; };
-  return { picked: [...shuffle(pool.filter(q => q.isPYQ)), ...shuffle(pool.filter(q => !q.isPYQ))].slice(0, count), poolSize: pool.length };
+  const labelled = pool.map(labelSource); // CBSE board questions aren't shown as NEET PYQs
+  return { picked: [...shuffle(labelled.filter(q => q.isPYQ)), ...shuffle(labelled.filter(q => !q.isPYQ))].slice(0, count), poolSize: pool.length };
 }
 
 // POST /api/v1/admin/shorts/:id/review  { action: "approve" | "reject", note? }
