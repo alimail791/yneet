@@ -87,6 +87,13 @@ async function main() {
   }
 
   if (flag("--no-upload")) return console.log("Upload skipped (--no-upload).");
+  // Instagram Reels: the site stores the videos and posts each at its time (once Instagram is connected there).
+  const igTimes = (process.env.PUBLISH_TIMES_IST || "08:00,13:00,19:00").split(",").map((s) => s.trim());
+  for (const [i, r] of results.entries()) {
+    try { await sendReel(r, date, igTimes[i] ? publishAtIst(date, igTimes[i]) : null); }
+    catch (e) { console.warn(`Instagram Reel not sent for ${r.q.subject}: ${e.message}`); }
+  }
+
   if (!youtubeConfigured()) return console.log("YouTube not connected yet (YT_CLIENT_ID / YT_CLIENT_SECRET / YT_REFRESH_TOKEN missing) — videos are in the run's artifacts.");
   // Never upload the same day twice (re-runs, manual tests): skip subjects already on the channel.
   const done = flag("--force") ? [] : await alreadyUploaded(date);
@@ -109,6 +116,33 @@ async function main() {
 }
 
 // Tell www.yneet.in about the upload (best-effort; the video is on YouTube either way).
+function reelCaption(q) {
+  const head = q.pyqYear ? `NEET ${q.pyqYear} ${q.subject} PYQ` : `NEET ${q.subject} MCQ`;
+  return [
+    `⏱️ 5-second challenge · ${head} · ${q.chapter}`,
+    "",
+    q.question.replace(/\s+/g, " ").trim(),
+    "",
+    ...q.options.map((o, i) => `(${LETTERS[i]}) ${o}`),
+    "",
+    "Comment your answer 👇 The answer is shown at the end of the reel.",
+    "Full explanation and more free PYQs: yneet.in (link in bio)",
+    "",
+    `#NEET #NEET2027 #NEETPYQ #NEET${q.subject} #NEETPreparation #MBBS #NEETAspirants #YNeet #RaiseAcademy`,
+  ].join("\n").slice(0, 2200);
+}
+
+async function sendReel(r, date, publishAt) {
+  const key = process.env.BOOKS_UPLOAD_KEY;
+  if (!key) return;
+  const base = (process.env.RAISE_API || "https://raiseacademy-production.up.railway.app/api").replace(/\/$/, "");
+  const meta = Buffer.from(JSON.stringify({ date, subject: r.q.subject, chapter: r.q.chapter, caption: reelCaption(r.q), publishAt })).toString("base64");
+  const res = await fetch(`${base}/instagram-reels/upload`, { method: "PUT", headers: { "content-type": "video/mp4", "x-upload-key": key, "x-reel-meta": meta }, body: await readFile(r.file) });
+  const j = await res.json().catch(() => ({}));
+  if (!res.ok) throw new Error(j.message || `site responded ${res.status}`);
+  console.log(`Instagram Reel queued: ${r.q.subject} at ${j.publishAt || "now"}${j.note ? ` (${j.note})` : ""}${j.instagramConnected === false ? " — Instagram not connected yet" : ""}`);
+}
+
 async function alreadyUploaded(date) {
   const base = (process.env.RAISE_API || "https://raiseacademy-production.up.railway.app/api").replace(/\/$/, "");
   for (let attempt = 1; attempt <= 4; attempt++) {
