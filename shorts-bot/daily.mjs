@@ -88,9 +88,13 @@ async function main() {
 
   if (flag("--no-upload")) return console.log("Upload skipped (--no-upload).");
   if (!youtubeConfigured()) return console.log("YouTube not connected yet (YT_CLIENT_ID / YT_CLIENT_SECRET / YT_REFRESH_TOKEN missing) — videos are in the run's artifacts.");
+  // Never upload the same day twice (re-runs, manual tests): skip subjects already on the channel.
+  const done = flag("--force") ? [] : await alreadyUploaded(date);
+  if (done.length) console.log(`Already uploaded for ${date}: ${done.join(", ")} — skipping (use --force to upload again).`);
   const times = (process.env.PUBLISH_TIMES_IST || "08:00,13:00,19:00").split(",").map((s) => s.trim());
   let failed = 0;
   for (const [i, r] of results.entries()) {
+    if (done.includes(r.q.subject)) continue;
     try {
       const publishAt = times[i] ? publishAtIst(date, times[i]) : null;
       const up = await uploadShort(r.file, { ...r.meta, publishAt });
@@ -105,6 +109,20 @@ async function main() {
 }
 
 // Tell www.yneet.in about the upload (best-effort; the video is on YouTube either way).
+async function alreadyUploaded(date) {
+  const base = (process.env.RAISE_API || "https://raiseacademy-production.up.railway.app/api").replace(/\/$/, "");
+  for (let attempt = 1; attempt <= 4; attempt++) {
+    try {
+      const res = await fetch(`${base}/youtube-shorts/reported?date=${date}`);
+      if (res.ok) return (await res.json()).subjects || [];
+      if (res.status === 404) return []; // site not deployed with this check yet
+    } catch { /* retry */ }
+    await new Promise((r) => setTimeout(r, 20000));
+  }
+  // Can't tell: better to skip a day than to post duplicates.
+  throw new Error("Couldn't check which Shorts are already uploaded today; not uploading.");
+}
+
 async function reportToSite(info) {
   const key = process.env.BOOKS_UPLOAD_KEY;
   if (!key || !info.videoId) return;
