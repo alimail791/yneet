@@ -1,0 +1,211 @@
+{
+ "chapters": [
+  {
+   "subject": "Physics",
+   "chapter": "Units and Measurements",
+   "slug": "physics/units-and-measurements",
+   "order": 0,
+   "classLevel": "11th",
+   "weightage": {
+    "expectedQs": 1.4,
+    "marks": 6,
+    "rank": 19,
+    "ofChapters": 27,
+    "priority": "Low",
+    "classLevel": "11th"
+   },
+   "questions": [
+    {
+     "year": 2024,
+     "topic": "",
+     "question": "The dimensional formula of Planck's constant is:",
+     "options": [
+      "[ML²T⁻¹]",
+      "[MLT⁻¹]",
+      "[ML²T⁻²]",
+      "[M⁰L⁰T⁰]"
+     ],
+     "answer": 1,
+     "explanation": "E = hν, so h = E/ν. Energy has dimensions [ML²T⁻²] and frequency [T⁻¹], so h = [ML²T⁻¹]."
+    },
+    {
+     "year": 2023,
+     "topic": "",
+     "question": "The error in the measurement of the radius of a sphere is 2%. The error in the calculation of its volume is:",
+     "options": [
+      "2%",
+      "4%",
+      "6%",
+      "8%"
+     ],
+     "answer": 3,
+     "explanation": "V = (4/3)πr³, so ΔV/V = 3 × Δr/r = 3 × 2% = 6%."
+    },
+    {
+     "year": 2022,
+     "topic": "",
+     "question": "Which of the following pairs of physical quantities has the same dimensions?",
+     "options": [
+      "Work and power",
+      "Torque and energy",
+      "Momentum and impulse... and force",
+      "Pressure and power"
+     ],
+     "answer": 2,
+     "explanation": "Torque = r × F has dimensions [ML²T⁻²], the same as energy (work). They are different quantities with the same dimensions."
+    },
+    {
+     "year": 2021,
+     "topic": "",
+     "question": "If force (F), velocity (V) and time (T) are taken as fundamental units, the dimensions of mass are:",
+     "options": [
+      "[FVT⁻¹]",
+      "[FVT⁻²]",
+      "[FV⁻¹T⁻¹]",
+      "[FV⁻¹T]"
+     ],
+     "answer": 4,
+     "explanation": "F = ma = m·V/T, so m = F·T/V = [FV⁻¹T]."
+    },
+    {
+     "year": 2019,
+     "topic": "",
+     "question": "In an experiment, the percentage errors in the measurement of A, B, C and D are 1%, 2%, 3% and 4% respectively. The maximum percentage error in X = A²B^(1/2) / (C^(1/3) D³) is:",
+     "options": [
+      "10%",
+      "(3/13)%",
+      "16%",
+      "−10%"
+     ],
+     "answer": 3,
+     "explanation": "Max error = 2(1) + ½(2) + ⅓(3) + 3(4) = 2 + 1 + 1 + 12 = 16%."
+    }
+   ]
+  },
+  {
+   "subject": "Physics",
+   "chapter": "Kinematics",
+   "slug": "physics/kinematics",
+   "order": 1,
+   "classLevel": "11th",
+   "weightage": {
+    "expectedQs": 2.3,
+    "marks": 9,
+    "rank": 6,
+    "ofChapters": 27,
+    "priority": "High",
+    "classLevel": "11th"
+   },
+   "questions": [
+    {
+     "year": 2023,
+     "topic": "",
+     "question": "A ball is thrown vertically upward with a speed of 20 m/s. Taking g = 10 m/s², the maximum height reached by the ball is:",
+     "options": [
+      "10 m",
+      "20 m",
+      "40 m",
+      "80 m"
+     ],
+     "answer": 2,
+     "explanation": "At the highest point v = 0. Using v² = u² − 2gh: 0 = 400 − 20h, so h = 20 m."
+    },
+    {
+     "year": 2022,
+     "topic": "",
+     "question": "A projectile is fired at an angle of 45° with the horizontal. The elevation angle of the projectile at its highest point, as seen from the point of projection, is:",
+     "options": [
+      "45°",
+      "60°",
+      "tan⁻¹(1/2)",
+      "tan⁻¹(√3/2)"
+     ],
+     "answer": 3,
+     "explanation": "At the highest point, H = u²sin²θ/2g and horizontal distance R/2 = u²sin2θ/2g. tan α = H/(R/2) = (tan θ)/2 = 1/2, so α = tan⁻¹(1/2)."
+    },
+    {
+     "year": 2020,
+     "topic": "",
+     "question": "The displacement of a particle is given by x = 3t² + 2t + 1 (in metres, t in seconds). Its acceleration at t = 2 s is:",
+     "options": [
+      "6 m/s²",
+      "12 m/s²",
+      "14 m/s²",
+      "3 m/s²"
+     ],
+     "answer": 1,
+     "explanation": "v = dx/dt = 6t + 2 and a = dv/dt = 6 m/s², constant for all t."
+    }
+   ]
+  },
+  {
+   "subject": "Biology",
+   "chapter": "Human Reproduction",
+   "slug": "biology/human-reproduction",
+   "order": 79,
+   "classLevel": "12th",
+   "weightage": {
+    "expectedQs": 4.1,
+    "marks": 16,
+    "rank": 3,
+    "ofChapters": 38,
+    "priority": "High",
+    "classLevel": "12th"
+   },
+   "questions": [
+    {
+     "year": 2024,
+     "topic": "",
+     "question": "Which of the following hormones is secreted by the corpus luteum in large amounts?",
+     "options": [
+      "Estrogen",
+      "Progesterone",
+      "LH",
+      "FSH"
+     ],
+     "answer": 2,
+     "explanation": "After ovulation, the ruptured follicle becomes the corpus luteum, which secretes large amounts of progesterone needed to maintain the endometrium."
+    },
+    {
+     "year": 2023,
+     "topic": "",
+     "question": "The cells that provide nutrition to the developing sperms in the seminiferous tubules are:",
+     "options": [
+      "Leydig cells",
+      "Sertoli cells",
+      "Spermatogonia",
+      "Interstitial cells"
+     ],
+     "answer": 2,
+     "explanation": "Sertoli cells line the seminiferous tubules and nourish the germ cells; Leydig (interstitial) cells secrete androgens."
+    },
+    {
+     "year": 2021,
+     "topic": "",
+     "question": "Fertilisation in humans usually takes place in the:",
+     "options": [
+      "Uterus",
+      "Cervix",
+      "Ampullary region of the fallopian tube",
+      "Isthmus"
+     ],
+     "answer": 3,
+     "explanation": "The ovum and sperm meet in the ampullary region (ampulla-isthmic junction) of the fallopian tube, where fertilisation takes place."
+    },
+    {
+     "year": 2019,
+     "topic": "",
+     "question": "Match the following and choose the correct option:\nA. Trophoblast   i. Embedding of blastocyst\nB. Cleavage   ii. Group of cells that differentiate into the embryo\nC. Inner cell mass   iii. Outer layer of blastocyst\nD. Implantation   iv. Mitotic division of zygote",
+     "options": [
+      "A-ii, B-i, C-iii, D-iv",
+      "A-iii, B-iv, C-ii, D-i",
+      "A-iii, B-i, C-ii, D-iv",
+      "A-ii, B-iv, C-iii, D-i"
+     ],
+     "answer": 2,
+     "explanation": ""
+    }
+   ]
+  }
+ ]
+}
