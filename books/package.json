@@ -1,0 +1,9 @@
+{
+  "name": "yneet-pyq-books",
+  "private": true,
+  "type": "module",
+  "description": "NEET chapter-wise PYQ books and booklets (PDF) from the YNeet question bank.",
+  "scripts": { "build": "node build.mjs" },
+  "dependencies": { "playwright-core": "^1.48.0" },
+  "engines": { "node": ">=20" }
+}

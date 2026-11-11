@@ -1,0 +1,59 @@
+# NEET PYQ books (books/): 3 subject books + one booklet per chapter, as PDFs.
+# Runs on the 1st of every month (fresh edition with new questions) and by hand.
+# Run by hand with an institute name (and logo URL) for a branded edition.
+# Download the PDFs from the run's artifacts (kept 30 days).
+name: NEET PYQ books
+
+on:
+  schedule:
+    - cron: "37 21 1 * *" # 1st of the month, 03:07 IST
+  workflow_dispatch:
+    inputs:
+      only:
+        description: "What to build"
+        type: choice
+        options: [all, books, booklets]
+        default: all
+      institute:
+        description: "Institute name for a branded edition (empty = YNeet edition)"
+        required: false
+      logo:
+        description: "Institute logo image URL (optional, PNG/JPG)"
+        required: false
+
+jobs:
+  books:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 40
+    defaults:
+      run:
+        working-directory: books
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+      - name: Fonts
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -y -qq fonts-noto-core fonts-dejavu-core >/dev/null
+      - run: npm install --no-audit --no-fund
+      - name: Build PDFs
+        env:
+          YNEET_API: ${{ vars.YNEET_API }}
+          CHROME_PATH: /usr/bin/google-chrome
+          ONLY: ${{ inputs.only }}
+          INSTITUTE: ${{ inputs.institute }}
+          LOGO: ${{ inputs.logo }}
+        run: |
+          set -- 
+          if [ -n "$ONLY" ] && [ "$ONLY" != "all" ]; then set -- "$@" --only "$ONLY"; fi
+          if [ -n "$INSTITUTE" ]; then set -- "$@" --institute "$INSTITUTE"; fi
+          if [ -n "$LOGO" ]; then set -- "$@" --logo "$LOGO"; fi
+          node build.mjs "$@"
+          cat out/SUMMARY.txt
+      - uses: actions/upload-artifact@v4
+        with:
+          name: neet-pyq-books-${{ github.run_number }}
+          path: books/out/
+          retention-days: 30

@@ -137,7 +137,7 @@ async function build() {
   for (let i = 0; byChapter.some((l) => i < l.length); i++) for (const l of byChapter) if (i < l.length) questionPages.push(l[i]);
   const questionById = new Map(questionPages.map((q) => [q.id, q]));
   for (const c of chapters) c.questionPageCount = byChapter.find((l) => l[0].chapterSlug === c.slug)?.length || 0;
-  return { at: Date.now(), chapters, questionPages, questionById, school: await buildSchool() };
+  return { at: Date.now(), chapters, questionPages, questionById, school: await buildSchool(), book: bookChapters(chapters, groups) };
 }
 
 // Class 6–10 one-question pages (/class-<n>-questions/<slug>), grouped by
@@ -206,6 +206,7 @@ async function attachWeightage(chapters, groups) {
     c.topTopics = [...topicCount.entries()].sort((a, b) => b[1] - a[1]).slice(0, 6).map(([topic, count]) => ({ topic, count }));
     if (!m.length) { c.weightage = null; continue; }
     const q = m.reduce((a, w) => a + w.expectedQs, 0);
+    c.ncertOrder = Math.min(...m.map((w) => all.indexOf(w))); // baseline list is in NCERT order (11th, then 12th)
     c.weightage = {
       expectedQs: Math.round(q * 10) / 10,
       marks: Math.round(q * 4),
@@ -224,6 +225,47 @@ async function attachWeightage(chapters, groups) {
     });
   }
 }
+
+// NEET PYQ books (books/ in this repo): every real NEET PYQ per chapter, in
+// NCERT order. CBSE board PYQs (imported with ids starting "pyq") are left out,
+// as are questions that need a figure.
+const NEEDS_FIGURE = /<img|https?:\/\/|\[image|figure shown|diagram (?:given|shown|below)|given (?:figure|graph|diagram)|shown in (?:the )?(?:figure|graph|diagram)/i;
+function bookChapters(chapters, groups) {
+  const out = [];
+  for (const c of chapters) {
+    const g = groups.get(`${c.subject}|${keyOf(c.chapter)}`);
+    if (!g) continue;
+    const qs = g.qs
+      .filter((q) => q.isPYQ && q.pyqYear && !String(q.id).startsWith("pyq"))
+      .filter((q) => [q.optionA, q.optionB, q.optionC, q.optionD].every((o) => String(o || "").trim()) && q.correctOpt >= 0 && q.correctOpt <= 3)
+      .filter((q) => ![q.questionText, q.optionA, q.optionB, q.optionC, q.optionD].some((t) => NEEDS_FIGURE.test(String(t))))
+      .sort((a, b) => (b.pyqYear - a.pyqYear) || (a.id < b.id ? -1 : 1))
+      .map((q) => ({
+        year: q.pyqYear, topic: q.topic || "", question: q.questionText,
+        options: [q.optionA, q.optionB, q.optionC, q.optionD], answer: q.correctOpt + 1, explanation: q.explanation || "",
+      }));
+    if (!qs.length) continue;
+    out.push({
+      subject: c.subject, chapter: c.chapter, slug: c.slug, order: c.ncertOrder ?? 999,
+      classLevel: c.weightage?.classLevel || "", weightage: c.weightage || null, questions: qs,
+    });
+  }
+  return out.sort((a, b) => SUBJECT_ORDER.indexOf(a.subject) - SUBJECT_ORDER.indexOf(b.subject) || a.order - b.order || a.chapter.localeCompare(b.chapter));
+}
+
+// GET /api/v1/public/pyq-book?subject=Biology → chapters with all their NEET PYQs.
+exports.pyqBook = async (req, res) => {
+  try {
+    const { book } = await data();
+    const subject = SUBJECT_ORDER.find((s) => s.toLowerCase() === String(req.query.subject || "").toLowerCase());
+    const chapters = subject ? book.filter((c) => c.subject === subject) : book;
+    res.set("Cache-Control", "no-store");
+    res.json({ success: true, generatedAt: new Date().toISOString(), chapters });
+  } catch (err) {
+    console.error("pyq book error:", err);
+    res.status(500).json({ success: false, message: "Could not build PYQ book" });
+  }
+};
 
 const MIN_EXPLANATION = 60;
 const pageWorthy = (q, minExplanation = MIN_EXPLANATION) =>
