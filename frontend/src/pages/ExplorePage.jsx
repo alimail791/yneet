@@ -31,6 +31,7 @@ const SECTIONS = [
     items: [
       { icon: "🎯", title: "NEET Readiness Test", desc: "15 questions, 5 minutes. Get your score and weak chapters.", to: open("/neet-readiness", "NEET Readiness Test") },
       { icon: "⚡", title: "60-Second Sprint", desc: "Today's quick challenge with a leaderboard.", to: open("/neet-sprint", "60-Second Sprint") },
+      { icon: "▶️", title: "Daily NEET quiz Shorts", desc: "3 NEET questions a day as 25-second videos.", to: open("/neet-quiz-shorts", "Daily quiz Shorts") },
       { icon: "❓", title: "Question of the Day", desc: "One NEET question every day, with the answer explained.", to: open("/neet-question-of-the-day", "Question of the Day") },
       { icon: "📚", title: "Chapter-wise PYQs", desc: "Previous-year NEET questions for every chapter.", to: open("/neet-practice", "Chapter-wise PYQs") },
       { icon: "🗂️", title: "NEET papers by year", desc: "Past NEET question papers, year by year.", to: open("/neet-question-papers", "NEET papers by year") },

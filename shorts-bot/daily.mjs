@@ -3,7 +3,9 @@
 //   node daily.mjs --date 2026-11-12 --no-upload
 //   node daily.mjs --sample --no-upload   uses sample.json, no API needed
 // Env: YNEET_API (default https://yneet-production.up.railway.app/api/v1), CHROME_PATH,
-//      YT_* (see youtube.mjs), PUBLISH_TIMES_IST (default "08:00,13:00,19:00").
+//      YT_* (see youtube.mjs), PUBLISH_TIMES_IST (default "08:00,13:00,19:00"),
+//      BOOKS_UPLOAD_KEY + RAISE_API: report each upload so www.yneet.in shows it
+//      (/neet-quiz-shorts and the question's page) once it's public.
 import { mkdir, readFile, writeFile } from "node:fs/promises";
 import path from "node:path";
 import { chromium } from "playwright-core";
@@ -93,12 +95,26 @@ async function main() {
       const publishAt = times[i] ? publishAtIst(date, times[i]) : null;
       const up = await uploadShort(r.file, { ...r.meta, publishAt });
       console.log(`Uploaded ${r.q.subject}: ${up.url} (${up.privacy}${up.publishAt ? `, goes public ${up.publishAt}` : ""})`);
+      await reportToSite({ videoId: up.id, subject: r.q.subject, chapter: r.q.chapter, title: r.meta.title, questionSlug: r.q.slug, date, publishAt });
     } catch (e) {
       failed++;
       console.error(`Upload failed for ${r.q.subject}: ${e.message}`);
     }
   }
   if (failed) process.exitCode = 1;
+}
+
+// Tell www.yneet.in about the upload (best-effort; the video is on YouTube either way).
+async function reportToSite(info) {
+  const key = process.env.BOOKS_UPLOAD_KEY;
+  if (!key || !info.videoId) return;
+  const base = (process.env.RAISE_API || "https://raiseacademy-production.up.railway.app/api").replace(/\/$/, "");
+  try {
+    const res = await fetch(`${base}/youtube-shorts`, { method: "POST", headers: { "content-type": "application/json", "x-upload-key": key }, body: JSON.stringify(info) });
+    if (!res.ok) throw new Error(`${res.status}`);
+  } catch (e) {
+    console.warn(`Couldn't report ${info.videoId} to www.yneet.in: ${e.message}`);
+  }
 }
 
 main().catch((e) => { console.error(e); process.exit(1); });
