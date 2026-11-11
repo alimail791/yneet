@@ -1,7 +1,8 @@
 # NEET PYQ books (books/): 3 subject books + one booklet per chapter, as PDFs.
 # Runs on the 1st of every month (fresh edition with new questions) and by hand.
 # Run by hand with an institute name (and logo URL) for a branded edition.
-# Download the PDFs from the run's artifacts (kept 30 days).
+# Download the PDFs from the run's artifacts (kept 30 days). The YNeet edition is
+# also uploaded to www.yneet.in/neet-pyq-books (needs the BOOKS_UPLOAD_KEY secret).
 name: NEET PYQ books
 
 on:
@@ -52,6 +53,13 @@ jobs:
           if [ -n "$LOGO" ]; then set -- "$@" --logo "$LOGO"; fi
           node build.mjs "$@"
           cat out/SUMMARY.txt
+      # Puts the YNeet edition on www.yneet.in/neet-pyq-books (not institute editions).
+      - name: Upload to www.yneet.in
+        if: ${{ inputs.institute == '' || github.event_name == 'schedule' }}
+        env:
+          BOOKS_UPLOAD_KEY: ${{ secrets.BOOKS_UPLOAD_KEY }}
+          BOOKS_UPLOAD_URL: ${{ vars.BOOKS_UPLOAD_URL }}
+        run: node upload.mjs
       - uses: actions/upload-artifact@v4
         with:
           name: neet-pyq-books-${{ github.run_number }}

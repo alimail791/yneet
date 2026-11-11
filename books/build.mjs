@@ -52,16 +52,20 @@ if (!chapters?.length) throw new Error("No chapters returned");
 await mkdir(path.join(OUT, "booklets"), { recursive: true });
 const browser = await chromium.launch({ executablePath: process.env.CHROME_PATH || "/usr/bin/google-chrome", args: ["--no-sandbox"] });
 const summary = [];
+// What upload.mjs sends to www.yneet.in (YNeet edition only; institute editions aren't sold).
+const manifest = [];
+const edition = new Date().toISOString().slice(0, 7);
 try {
-  const edition = `Edition ${new Date().toISOString().slice(0, 7)}.`;
+  const editionNote = `Edition ${edition}.`;
   const credit = institute ? `${institute.name} · powered by YNeet` : "YNeet · www.yneet.in";
   if (only !== "booklets") {
     for (const subject of ["Physics", "Chemistry", "Biology"]) {
       const chs = chapters.filter((c) => c.subject === subject);
       if (!chs.length) continue;
       const file = path.join(OUT, `NEET-${subject}-PYQs${instTag}.pdf`);
-      await pdf(browser, bookHtml(subject, chs, { institute, edition }), file, `NEET ${subject} PYQs · ${credit}`);
+      await pdf(browser, bookHtml(subject, chs, { institute, edition: editionNote }), file, `NEET ${subject} PYQs · ${credit}`);
       const n = chs.reduce((a, c) => a + c.questions.length, 0);
+      manifest.push({ path: path.relative(OUT, file), name: `neet-${slug(subject)}-pyqs.pdf`, kind: "book", subject, chapters: chs.length, questions: n, edition });
       summary.push(`${path.basename(file)}: ${chs.length} chapters, ${n} questions`);
       console.log(`Book ${subject}: ${chs.length} chapters, ${n} questions`);
     }
@@ -70,6 +74,7 @@ try {
     for (const c of chapters) {
       const file = path.join(OUT, "booklets", `${slug(c.subject)}-${slug(c.chapter)}${instTag}.pdf`);
       await pdf(browser, bookletHtml(c, { institute }), file, `${c.chapter} · NEET PYQs · ${credit}`);
+      manifest.push({ path: path.relative(OUT, file), name: `booklet-${slug(c.subject)}-${slug(c.chapter)}.pdf`.slice(0, 120), kind: "booklet", subject: c.subject, chapter: c.chapter, slug: c.slug, questions: c.questions.length, edition });
     }
     summary.push(`${chapters.length} chapter booklets`);
     console.log(`Booklets: ${chapters.length}`);
@@ -78,3 +83,4 @@ try {
   await browser.close();
 }
 await writeFile(path.join(OUT, "SUMMARY.txt"), summary.join("\n") + "\n");
+if (!institute) await writeFile(path.join(OUT, "manifest.json"), JSON.stringify(manifest, null, 1));
