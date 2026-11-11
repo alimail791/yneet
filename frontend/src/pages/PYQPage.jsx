@@ -75,9 +75,16 @@ export default function PYQPage() {
       <div className="section-header mb-4">
         <div>
           <div className="section-title">📅 Previous Year Questions</div>
-          <p style={{ fontSize: 13, color: "var(--text2)" }}>Actual NEET exam papers, organized by year</p>
+          <p style={{ fontSize: 13, color: "var(--text2)" }}>Actual NEET exam papers, organized by year. Read them, or attempt a year as a timed test.</p>
         </div>
       </div>
+
+      {/* Free chapter-wise PDFs (www.yneet.in/neet-pyq-books, opened inside the app). */}
+      <a href={`/explore/open?p=${encodeURIComponent("/neet-pyq-books")}&t=${encodeURIComponent("NEET PYQ PDFs")}`} className="card" style={{ display: "flex", gap: 12, alignItems: "center", textDecoration: "none", color: "inherit", marginBottom: 16, background: "var(--amber-light, #fff4e0)" }}>
+        <span style={{ fontSize: 26 }}>📥</span>
+        <span style={{ flex: 1 }}><b>Free chapter-wise PYQ PDFs</b><br /><span style={{ fontSize: 13, color: "var(--text2)" }}>Every NEET PYQ of a chapter with answers and solutions, to save or print.</span></span>
+        <span style={{ fontWeight: 800 }}>→</span>
+      </a>
 
       {years.length === 0 ? (
         <div className="card text-center" style={{ padding: 40 }}>
@@ -100,7 +107,10 @@ export default function PYQPage() {
                 <span className="chip chip-amber">Chem {y.Chemistry || 0}</span>
                 <span className="chip chip-green">Bio {y.Biology || 0}</span>
               </div>
-              <button className="btn btn-blue btn-full btn-sm">View {y.year} paper →</button>
+              <div style={{ display: "flex", gap: 6 }}>
+                <button className="btn btn-blue btn-sm" style={{ flex: 1 }}>View paper →</button>
+                <button className="btn btn-outline btn-sm" style={{ flex: 1 }} onClick={(e) => { e.stopPropagation(); navigate(`/pyq/${y.year}/test`); }}>⏱ Attempt as test</button>
+              </div>
             </div>
           ))}
         </div>
@@ -123,6 +133,23 @@ export default function PYQPage() {
               </span>
             ))}
           </div>
+
+          {/* Timed tests for this year */}
+          {(() => {
+            const y = years.find((x) => x.year === selectedYear);
+            if (!y) return null;
+            return (
+              <div className="card mb-3" style={{ padding: 14 }}>
+                <div style={{ fontWeight: 800, marginBottom: 8 }}>⏱ Attempt NEET {y.year} as a timed test</div>
+                <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+                  {["Physics", "Chemistry", "Biology"].filter((s) => y[s]).map((s) => (
+                    <button key={s} className="btn btn-outline btn-sm" onClick={() => navigate(`/pyq/${y.year}/test?subject=${s}`)}>{s} ({y[s]} Qs · {Math.round((y[s] * 200) / 180)} min)</button>
+                  ))}
+                  <button className="btn btn-blue btn-sm" onClick={() => navigate(`/pyq/${y.year}/test`)}>Full paper ({y.total} Qs)</button>
+                </div>
+              </div>
+            );
+          })()}
 
           {/* Subject filter */}
           <div className="chip-row mb-5" style={{ display: "flex", gap: 8 }}>
