@@ -52,6 +52,7 @@ jobs:
           YT_CLIENT_ID: ${{ secrets.YT_CLIENT_ID }}
           YT_CLIENT_SECRET: ${{ secrets.YT_CLIENT_SECRET }}
           YT_REFRESH_TOKEN: ${{ secrets.YT_REFRESH_TOKEN }}
+          BOOKS_UPLOAD_KEY: ${{ secrets.BOOKS_UPLOAD_KEY }} # also lets the bot list its Shorts on www.yneet.in
           CHROME_PATH: /usr/bin/google-chrome
         run: |
           ARGS=""
