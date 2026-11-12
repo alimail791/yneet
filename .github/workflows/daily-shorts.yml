@@ -12,8 +12,13 @@
 name: Daily NEET Shorts
 
 on:
+  # GitHub often starts scheduled jobs hours late, so tomorrow's Shorts are made the
+  # evening before (YouTube publishes them at 08:00/13:00/19:00). The two later runs
+  # are backups; the bot skips anything already uploaded for that day.
   schedule:
-    - cron: "23 0 * * *" # 05:53 IST
+    - cron: "17 14 * * *" # 19:47 IST → tomorrow's Shorts
+    - cron: "37 18 * * *" # 00:07 IST backup
+    - cron: "23 0 * * *" # 05:53 IST backup
   workflow_dispatch:
     inputs:
       date:
@@ -56,7 +61,8 @@ jobs:
           CHROME_PATH: /usr/bin/google-chrome
         run: |
           ARGS=""
-          if [ -n "${{ inputs.date }}" ]; then ARGS="$ARGS --date ${{ inputs.date }}"; fi
+          if [ -n "${{ inputs.date }}" ]; then ARGS="$ARGS --date ${{ inputs.date }}"
+          elif [ "${{ github.event_name }}" = "schedule" ]; then ARGS="$ARGS --date $(TZ=Asia/Kolkata date -d '+6 hours' +%F)"; fi
           if [ "${{ github.event_name }}" = "workflow_dispatch" ] && [ "${{ inputs.upload }}" != "true" ]; then ARGS="$ARGS --no-upload"; fi
           node daily.mjs $ARGS
       - uses: actions/upload-artifact@v4
