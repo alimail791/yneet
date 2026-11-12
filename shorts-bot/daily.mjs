@@ -19,25 +19,54 @@ const API = (process.env.YNEET_API || "https://yneet-production.up.railway.app/a
 const OUT = path.resolve(process.env.OUT_DIR || "out");
 const LETTERS = ["A", "B", "C", "D"];
 
+// YouTube titles lead with the question itself: students search the words of a
+// question ("ball thrown vertically upward 20 m/s maximum height"), and that is
+// what Google and YouTube match a Short to. Generic stems ("Which of the
+// following is correct?") say nothing, so those fall back to the topic.
+const GENERIC = /^(which|what)\s+(one\s+)?of\s+the\s+following|^(match|assertion|statement|consider|read|given below)\b|^(identify|choose|select)\s+the\s+(correct|incorrect|wrong)/i;
+function questionTitle(q, head) {
+  const suffix = ` | ${head} #shorts`;
+  const stem = q.question.replace(/\s+/g, " ").replace(/[<>]/g, "").replace(/[\s:]+$/, "").trim();
+  const room = 100 - suffix.length;
+  if (!GENERIC.test(stem) && stem.length >= 25) {
+    const cut = stem.length <= room ? stem : stem.slice(0, room - 1).replace(/[\s,;:]+\S*$/, "") + "…";
+    if (cut.length >= 25) return cut + suffix;
+  }
+  const t = `${head}: ${q.topic || q.chapter} | 5-second challenge #shorts`;
+  return t.length <= 100 ? t : `${head}: ${q.chapter}`.slice(0, 90).replace(/\s+\S*$/, "") + " #shorts";
+}
+
 function metaFor(q) {
   const link = `https://www.yneet.in/neet-question/${q.slug}?utm_source=youtube&utm_medium=shorts&utm_campaign=daily_quiz`;
   const chapterLink = `https://www.yneet.in/neet-practice/${q.chapterSlug}?utm_source=youtube&utm_medium=shorts&utm_campaign=daily_quiz`;
   const head = q.pyqYear ? `NEET ${q.pyqYear} ${q.subject} PYQ` : `NEET ${q.subject} MCQ`;
-  let title = `${head}: ${q.chapter} | 5-second challenge #shorts`;
-  if (title.length > 100) title = `${head}: ${q.chapter}`.slice(0, 90).replace(/\s+\S*$/, "") + " #shorts";
+  const title = questionTitle(q, head);
+  // The first two lines are what shows above "…more" and in Google's video
+  // results, so they carry the search words and the answer link.
   const description = [
-    `${q.question.replace(/\s+/g, " ").trim()}`,
+    `${head} · ${q.chapter}${q.topic && q.topic !== q.chapter ? ` · ${q.topic}` : ""}. Answer in 5 seconds, then check the explanation:`,
+    link,
+    "",
+    q.question.replace(/\s+/g, " ").trim(),
     "",
     ...q.options.map((o, i) => `(${LETTERS[i]}) ${o}`),
     "",
-    `Answer and full explanation: ${link}`,
-    `More free ${q.chapter} PYQs: ${chapterLink}`,
+    "The answer is revealed at the end of the Short. Comment yours first 👇",
+    "",
+    `More free ${q.chapter} NEET PYQs with answers: ${chapterLink}`,
+    q.pyqYear ? `Full NEET ${q.pyqYear} question paper with answers: https://www.yneet.in/neet-question-papers/${q.pyqYear}?utm_source=youtube&utm_medium=shorts&utm_campaign=daily_quiz` : null,
     "",
     "3 NEET questions every day: Physics, Chemistry and Biology. Free NEET mock tests, PYQs and college predictor at https://www.yneet.in",
     "",
     `#NEET #NEET2027 #NEETPYQ #${q.subject} #NEETPreparation #MBBS`,
-  ].join("\n");
-  const tags = ["NEET", "NEET 2027", "NEET PYQ", `NEET ${q.subject}`, q.chapter, "NEET preparation", "NEET MCQ", "YNeet", "Raise Academy"].filter((t) => t.length <= 30);
+  ].filter((l) => l !== null).join("\n").slice(0, 5000);
+  const tags = [
+    "NEET", "NEET 2027", "NEET PYQ", `NEET ${q.subject}`, q.chapter, q.topic, `${q.chapter} NEET questions`,
+    q.pyqYear ? `NEET ${q.pyqYear}` : null, q.pyqYear ? `NEET ${q.pyqYear} question paper` : null,
+    "NEET preparation", "NEET MCQ", "YNeet", "Raise Academy",
+  ].filter((t, i, a) => t && t.length <= 30 && a.indexOf(t) === i);
+  // YouTube caps all tags together at 500 characters.
+  while (tags.join(",").length > 480) tags.pop();
   return { title, description, tags, link };
 }
 
