@@ -23,6 +23,8 @@ router.get("/questions/:slug", getQuestionPage);
 router.get("/school-questions", listSchoolPages);
 router.get("/school-questions/:slug", getSchoolPage);
 router.get("/readiness", readinessQuiz);
+// Most-missed NEET chapters and questions from YNeet answers (totals only) for www.yneet.in/neet-most-missed-chapters.
+router.get("/missed-stats", require("../controllers/missedStatsController").missedStats);
 
 // Question of the Day + previous-year papers by year (no login).
 const { questionOfTheDay, listPapers, getPaper } = require("../controllers/publicExtrasController");
