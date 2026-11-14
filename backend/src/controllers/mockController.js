@@ -171,6 +171,9 @@ exports.getAnalysis = async (req, res) => {
       include: { responses: { include: { question: true } }, mockTest: { select: { title:true,totalMarks:true,totalQs:true,durationMin:true,subject:true,type:true } } },
     });
     if (!attempt || attempt.userId !== req.user.id) return res.status(404).json({ success: false, message: "Not found" });
+    // Answers and explanations only after submitting (otherwise this would
+    // reveal correct options mid-test).
+    if (attempt.status !== "submitted") return res.status(409).json({ success: false, code: "not_submitted", message: "Submit the test to see its analysis" });
     const chapterMap = {};
     attempt.responses.forEach(r => {
       const key = `${r.question.subject}::${r.question.chapter}`;

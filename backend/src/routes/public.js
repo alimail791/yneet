@@ -5,6 +5,18 @@ const { getSampleQuiz } = require("../controllers/publicController");
 // public, no-login taster quiz linked from Raise Academy's landing page.
 router.get("/sample-quiz", getSampleQuiz);
 
+// Crash reports from students' browsers / the Android app (frontend
+// lib/errorReport.js). Logged only, so they show in Railway's logs; no storage.
+// Sent as text/plain (no CORS preflight for sendBeacon), so parse it here.
+router.post("/client-error", require("express").text({ type: "*/*", limit: "8kb" }), (req, res) => {
+  try {
+    const b = typeof req.body === "string" ? JSON.parse(req.body || "{}") : req.body || {};
+    const clip = (v, n) => String(v ?? "").replace(/[\r\n]+/g, " ⏎ ").slice(0, n);
+    console.warn(`[client-error] ${clip(b.kind, 12)} ${clip(b.url, 200)} app=${b.app ? 1 : 0} :: ${clip(b.message, 300)} :: ${clip(b.stack, 900)} :: ${clip(b.ua, 160)}`);
+  } catch { /* malformed report: ignore */ }
+  res.status(204).end();
+});
+
 // Featured YNeet Shorts — landing page section and the public share page (/s/:id).
 const { publicFeatured, publicShort } = require("../controllers/shortsController");
 router.get("/shorts/featured", publicFeatured);

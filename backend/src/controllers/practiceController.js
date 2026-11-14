@@ -128,7 +128,15 @@ exports.getRecommended = async (req, res) => {
 
 exports.markSolved = async (req, res) => {
   try {
-    const { questionId, correct } = req.body;
+    const { questionId, selected } = req.body;
+    let { correct } = req.body;
+    // Timed tests (PYQ paper) send the option picked: the server marks it.
+    // Self-marked practice ("Got it right / wrong") sends only `correct`.
+    if (selected !== undefined && selected !== null) {
+      const q = await prisma.question.findUnique({ where: { id: questionId }, select: { correctOpt: true } });
+      if (!q) return res.status(404).json({ success: false, message: "Question not found" });
+      correct = Number(selected) === q.correctOpt;
+    }
     const stat = await prisma.practiceStat.upsert({
       where: { userId_questionId: { userId: req.user.id, questionId } },
       update: { solved: true, correct: correct ?? false, solvedAt: new Date() },

@@ -84,7 +84,7 @@ export default function PYQTestPage() {
       const a = state.answers[q.id];
       if (a === undefined || sent[q.id]) continue;
       try {
-        await api.post("/practice/solve", { questionId: q.id, correct: a === q.correctOpt });
+        await api.post("/practice/solve", { questionId: q.id, selected: a, correct: a === q.correctOpt });
         sent[q.id] = true;
       } catch (err) {
         if (err?.response?.status >= 400 && err?.response?.status < 500) { sent[q.id] = true; continue; } // rejected, retrying won't help
