@@ -6,6 +6,7 @@ import api from "../lib/api";
 import { useAuth } from "../context/AuthContext";
 import useCountdown from "../hooks/useCountdown";
 import TodayCards from "../components/home/TodayCards";
+import TodayPlan from "../components/home/TodayPlan";
 ChartJS.register(LineElement, PointElement, LinearScale, CategoryScale, Filler, Tooltip);
 
 const MOTIVATIONS = [
@@ -25,6 +26,7 @@ export default function DashboardPage() {
   const navigate = useNavigate();
   const [stats, setStats] = useState(null);
   const [history, setHistory] = useState([]);
+  const [today, setToday] = useState(null);
   const [loading, setLoading] = useState(true);
   const [loadError, setLoadError] = useState(false);
 
@@ -35,7 +37,7 @@ export default function DashboardPage() {
   const fetchDashboard = () => {
     setLoading(true);
     setLoadError(false);
-    api.get("/dashboard").then(r => { setStats(r.data.stats); setHistory(r.data.scoreHistory||[]); })
+    api.get("/dashboard").then(r => { setStats(r.data.stats); setHistory(r.data.scoreHistory||[]); setToday(r.data.today||null); })
       .catch(()=>setLoadError(true)).finally(()=>setLoading(false));
   };
 
@@ -74,6 +76,7 @@ export default function DashboardPage() {
 
   return (
     <div>
+      <TodayPlan today={today} name={user?.name?.split(" ")[0]} />
       <TodayCards />
       {/* Motivation */}
       <div className="motiv-card">

@@ -1,5 +1,6 @@
 const { PrismaClient } = require("@prisma/client");
 const { awardXP } = require("../utils/xp");
+const { analyseAttempt } = require("../utils/studyPlan");
 const prisma = new PrismaClient();
 
 exports.listTests = async (req, res) => {
@@ -167,7 +168,7 @@ exports.getAnalysis = async (req, res) => {
     const { attemptId } = req.params;
     const attempt = await prisma.attempt.findUnique({
       where: { id: attemptId },
-      include: { responses: { include: { question: true } }, mockTest: { select: { title:true,totalMarks:true,totalQs:true } } },
+      include: { responses: { include: { question: true } }, mockTest: { select: { title:true,totalMarks:true,totalQs:true,durationMin:true,subject:true,type:true } } },
     });
     if (!attempt || attempt.userId !== req.user.id) return res.status(404).json({ success: false, message: "Not found" });
     const chapterMap = {};
@@ -178,6 +179,7 @@ exports.getAnalysis = async (req, res) => {
       if (r.isCorrect) chapterMap[key].correct++;
     });
     const chapterAnalysis = Object.values(chapterMap).map(c => ({ ...c, accuracy: Math.round((c.correct/c.total)*100) })).sort((a,b) => a.accuracy - b.accuracy);
-    res.json({ success: true, attempt, chapterAnalysis });
+    const { time, plan } = analyseAttempt(attempt, attempt.mockTest);
+    res.json({ success: true, attempt, chapterAnalysis, time, plan });
   } catch (err) { res.status(500).json({ success: false, message: err.message }); }
 };

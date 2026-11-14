@@ -6,7 +6,8 @@ const PAGE_SIZE = 24;
 
 export default function MockPage() {
   const [tests, setTests] = useState([]);
-  const [filter, setFilter] = useState("all");
+  // ?filter=phy|chem|bio|full|… opens on that tab (links from the test analysis plan).
+  const [filter, setFilter] = useState(() => new URLSearchParams(window.location.search).get("filter") || "all");
   const [search, setSearch] = useState("");
   const [chSubject, setChSubject] = useState("all"); // Chapter Tests sub-filter
   const [visible, setVisible] = useState(PAGE_SIZE);

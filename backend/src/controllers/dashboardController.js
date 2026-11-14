@@ -1,10 +1,11 @@
 const { PrismaClient } = require("@prisma/client");
 const prisma = new PrismaClient();
+const { todayPlan } = require("../utils/studyPlan");
 
 exports.getDashboard = async (req, res) => {
   try {
     const uid = req.user.id;
-    const [attempts, mistakeCounts, practiceTotal, practiceCorrect, streak, xp, profile, recentQuiz] = await Promise.all([
+    const [attempts, mistakeCounts, practiceTotal, practiceCorrect, streak, xp, profile, recentQuiz, today] = await Promise.all([
       prisma.attempt.findMany({ where: { userId: uid, status: "submitted" }, orderBy: { submittedAt: "asc" }, select: { score:true,accuracy:true,physicsScore:true,chemScore:true,bioScore:true,submittedAt:true,mockTest:{ select:{ title:true } } } }),
       prisma.mistake.groupBy({ by: ["source"], where: { userId: uid }, _count: { id: true } }),
       prisma.practiceStat.count({ where: { userId: uid } }),
@@ -13,6 +14,8 @@ exports.getDashboard = async (req, res) => {
       prisma.xP.findUnique({ where: { userId: uid } }),
       prisma.profile.findUnique({ where: { userId: uid } }),
       prisma.quizResult.findMany({ where: { userId: uid }, orderBy: { createdAt: "desc" }, take: 7 }),
+      // "Today" card; a failure here must not take the whole dashboard down.
+      todayPlan(req.user).catch((e) => { console.error("todayPlan", e.message); return null; }),
     ]);
 
     const scores = attempts.map(a => a.score);
@@ -63,6 +66,7 @@ exports.getDashboard = async (req, res) => {
       },
       scoreHistory: attempts.map((a,i) => ({ attempt:i+1, score:a.score, label:a.mockTest?.title||`Mock ${i+1}`, date:a.submittedAt })),
       recentQuizScores: [...recentQuiz].reverse(),
+      today,
     });
   } catch (err) { res.status(500).json({ success: false, message: err.message }); }
 };
