@@ -2,7 +2,7 @@ import { useState, useEffect } from "react";
 import { isAppMode, WEBSITE_URL } from "../../utils/appMode";
 import { pushIsOn } from "../../utils/push";
 import api from "../../lib/api";
-import { Outlet, NavLink, useNavigate } from "react-router-dom";
+import { Outlet, NavLink, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import InstallPrompt from "../InstallPrompt";
 import { isJuniorFree, PUZZLES_URL } from "../../utils/plan";
@@ -11,6 +11,9 @@ import { isJuniorFree, PUZZLES_URL } from "../../utils/plan";
 const TOOL = (p, t) => `/explore/open?p=${encodeURIComponent(p)}&t=${encodeURIComponent(t)}`;
 
 export default function Layout() {
+  // During a mock test the bottom tab bar is hidden: the test has its own
+  // Prev / Next bar there, and a stray tap shouldn't leave the exam.
+  const inTest = /^\/mock\/[^/]+\/start/.test(useLocation().pathname);
   const { user, logout } = useAuth();
   const navigate = useNavigate();
   const [moreOpen, setMoreOpen] = useState(false);
@@ -144,7 +147,7 @@ export default function Layout() {
 
   return (
     <>
-      <InstallPrompt />
+      {!inTest && <InstallPrompt />}
       <nav className="app-nav">
         {isAppMode
           ? <div className="nav-logo">YNeet 🎯</div>
@@ -256,7 +259,7 @@ export default function Layout() {
         </div>
       )}
 
-      <nav className="mobile-bottom-nav">
+      {!inTest && <nav className="mobile-bottom-nav">
         {mobileTabs.map(t => t.href ? (
           <a key={t.href} href={t.href} target="_blank" rel="noreferrer" style={{ textDecoration: "none" }}>
             <button className="mob-tab"><span>{t.icon}</span><span>{t.label}</span></button>
@@ -275,7 +278,7 @@ export default function Layout() {
           <span>☰</span>
           <span>More</span>
         </button>
-      </nav>
+      </nav>}
     </>
   );
 }
