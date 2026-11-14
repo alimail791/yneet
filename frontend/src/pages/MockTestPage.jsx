@@ -251,7 +251,7 @@ export default function MockTestPage() {
   );
 
   return (
-    <div className="cbt">
+    <div className="cbt cbt-page">
       {/* Header: stays on screen while scrolling */}
       <div className="test-header cbt-header">
         <div style={{ minWidth: 0 }}>

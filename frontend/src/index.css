@@ -304,7 +304,7 @@ button,input,select,textarea{font-family:inherit;}
   .cbt-header .test-timer{font-size:17px;}
   .cbt-bottom{position:fixed;left:0;right:0;bottom:0;border-radius:0;margin:0;padding:10px 12px calc(10px + env(safe-area-inset-bottom));box-shadow:0 -4px 14px rgba(0,0,0,.08);}
   .cbt-bottom .btn{max-width:none;}
-  .cbt{padding-bottom:84px;}
+  .cbt-page{padding-bottom:84px;}
   .cbt-side{position:fixed;left:0;right:0;bottom:0;top:auto;max-height:78vh;z-index:90;background:#fff;border-radius:16px 16px 0 0;padding:14px 16px calc(16px + env(safe-area-inset-bottom));transform:translateY(105%);transition:transform .2s ease-out;box-shadow:0 -8px 30px rgba(0,0,0,.2);}
   .cbt-side.open{transform:translateY(0);}
   .cbt-sheet-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;}

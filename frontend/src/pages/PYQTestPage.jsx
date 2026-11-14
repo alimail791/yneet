@@ -24,7 +24,6 @@ export default function PYQTestPage() {
   const [confirm, setConfirm] = useState(false);
   const [now, setNow] = useState(Date.now());
   const [reviewFilter, setReviewFilter] = useState("wrong");
-  const recorded = useRef(false);
 
   // Load the paper (and any saved progress).
   useEffect(() => {
@@ -47,7 +46,7 @@ export default function PYQTestPage() {
   const durationSec = questions ? Math.round(questions.length * SECONDS_PER_Q) : 0;
   const left = state && !state.submitted ? Math.max(0, (state.endsAt - now) / 1000) : 0;
 
-  const start = () => setState({ ids: questions.map((q) => q.id), answers: {}, marked: {}, i: 0, startedAt: Date.now(), endsAt: Date.now() + durationSec * 1000, submitted: false });
+  const start = () => setState({ ids: questions.map((q) => q.id), answers: {}, marked: {}, visited: { [questions[0].id]: true }, i: 0, startedAt: Date.now(), endsAt: Date.now() + durationSec * 1000, submitted: false });
   const submit = () => setState((s) => (s && !s.submitted ? { ...s, submitted: true, submittedAt: Date.now() } : s));
 
   // Time's up → submit.
@@ -68,19 +67,41 @@ export default function PYQTestPage() {
     return { correct, wrong, skipped: questions.length - correct - wrong, score: correct * 4 - wrong, max: questions.length * 4, chapters, timeUsed: Math.min(durationSec, ((state.submittedAt || Date.now()) - state.startedAt) / 1000) };
   }, [state, questions, durationSec]);
 
-  // Record answers once (feeds stats and Mistakes).
-  useEffect(() => {
-    if (!result || recorded.current || state.recorded) return;
-    recorded.current = true;
-    (async () => {
-      for (const q of questions) {
-        const a = state.answers[q.id];
-        if (a === undefined) continue;
-        try { await api.post("/practice/solve", { questionId: q.id, correct: a === q.correctOpt }); } catch { /* keep going */ }
+  // Record answers (feeds stats and Mistakes). Each answer that reaches the
+  // server is remembered in state.sent, so a weak connection only delays it:
+  // the rest are retried every 10 s, when the phone comes back online, and the
+  // next time this page is opened. "Saved" shows only when every answer is in.
+  const sending = useRef(false);
+  const stateRef = useRef(state);
+  stateRef.current = state;
+  const sendAnswers = async () => {
+    const state = stateRef.current;
+    if (sending.current || !state?.submitted || state.recorded || !questions) return;
+    sending.current = true;
+    const sent = { ...(state.sent || {}) };
+    let failed = false;
+    for (const q of questions) {
+      const a = state.answers[q.id];
+      if (a === undefined || sent[q.id]) continue;
+      try {
+        await api.post("/practice/solve", { questionId: q.id, correct: a === q.correctOpt });
+        sent[q.id] = true;
+      } catch (err) {
+        if (err?.response?.status >= 400 && err?.response?.status < 500) { sent[q.id] = true; continue; } // rejected, retrying won't help
+        failed = true;
+        break;
       }
-      setState((s) => ({ ...s, recorded: true }));
-    })();
-  }, [result]); // eslint-disable-line react-hooks/exhaustive-deps
+    }
+    setState((s) => ({ ...s, sent, recorded: !failed }));
+    sending.current = false;
+  };
+  useEffect(() => {
+    if (!result || state.recorded) return;
+    sendAnswers();
+    const t = setInterval(sendAnswers, 10000);
+    window.addEventListener("online", sendAnswers);
+    return () => { clearInterval(t); window.removeEventListener("online", sendAnswers); };
+  }, [result, state?.recorded]); // eslint-disable-line react-hooks/exhaustive-deps
 
   const title = `NEET ${year}${subject ? ` ${subject}` : " full paper"}`;
   if (questions === null) return <div className="loading-screen" style={{ minHeight: 200 }}><div className="spinner"></div></div>;
@@ -124,7 +145,7 @@ export default function PYQTestPage() {
             <Stat label="Accuracy" value={`${result.correct + result.wrong ? Math.round((result.correct / (result.correct + result.wrong)) * 100) : 0}%`} />
             <Stat label="Time used" value={fmt(result.timeUsed)} />
           </div>
-          <p style={{ fontSize: 12, color: "var(--text3)", marginTop: 10 }}>{state.recorded ? "Saved to your stats and Mistakes." : "Saving your answers…"}</p>
+          <p style={{ fontSize: 12, color: "var(--text3)", marginTop: 10 }}>{state.recorded ? "✓ Saved to your stats and Mistakes." : `Saving your answers… (${Object.keys(state.sent || {}).length}/${Object.keys(state.answers).length}) — no internet? It will finish when you're back online.`}</p>
         </div>
 
         <div className="card" style={{ marginBottom: 16 }}>
@@ -166,7 +187,7 @@ export default function PYQTestPage() {
           {!shown.length && <p style={{ color: "var(--text2)", fontSize: 13 }}>Nothing here.</p>}
         </div>
         <div style={{ display: "flex", gap: 8, marginTop: 20, flexWrap: "wrap" }}>
-          <button className="btn btn-blue" onClick={() => { try { localStorage.removeItem(KEY); } catch { /* ignore */ } recorded.current = false; setState(null); }}>Retake</button>
+          <button className="btn btn-blue" onClick={() => { try { localStorage.removeItem(KEY); } catch { /* ignore */ } setState(null); }}>Retake</button>
           <button className="btn btn-outline" onClick={() => navigate("/pyq")}>All years</button>
         </div>
       </div>
@@ -176,7 +197,7 @@ export default function PYQTestPage() {
   // ── Test in progress ──
   const q = questions[state.i];
   const answered = Object.keys(state.answers).length;
-  const go = (i) => setState((s) => ({ ...s, i: Math.max(0, Math.min(questions.length - 1, i)) }));
+  const go = (i) => setState((s) => { const n = Math.max(0, Math.min(questions.length - 1, i)); window.scrollTo({ top: 0 }); return { ...s, i: n, visited: { ...(s.visited || {}), [questions[n].id]: true } }; });
   const pick = (k) => setState((s) => {
     const answers = { ...s.answers };
     if (answers[q.id] === k) delete answers[q.id]; else answers[q.id] = k; // tap again to clear
@@ -186,7 +207,7 @@ export default function PYQTestPage() {
 
   return (
     <div>
-      <div className="card" style={{ position: "sticky", top: 0, zIndex: 5, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8, padding: "10px 14px", marginBottom: 12 }}>
+      <div className="card" style={{ position: "sticky", top: "var(--nav-h)", zIndex: 5, display: "flex", alignItems: "center", justifyContent: "space-between", gap: 8, padding: "10px 14px", marginBottom: 12 }}>
         <div style={{ fontWeight: 800, fontSize: 14 }}>{title}</div>
         <div style={{ fontWeight: 800, fontVariantNumeric: "tabular-nums", color: left < 300 ? "var(--red)" : "var(--text)" }}>⏱ {fmt(left)}</div>
         <button className="btn btn-red btn-sm" onClick={() => setConfirm(true)}>Submit</button>
@@ -208,23 +229,25 @@ export default function PYQTestPage() {
           );
         })}
         <div style={{ display: "flex", gap: 8, marginTop: 8, flexWrap: "wrap" }}>
-          <button className="btn btn-outline btn-sm" disabled={state.i === 0} onClick={() => go(state.i - 1)}>← Prev</button>
+          <button className="btn btn-outline" disabled={state.i === 0} onClick={() => go(state.i - 1)}>← Prev</button>
           <button className="btn btn-outline btn-sm" onClick={toggleMark}>{state.marked[q.id] ? "★ Marked" : "☆ Mark for review"}</button>
-          <button className="btn btn-blue btn-sm" style={{ marginLeft: "auto" }} disabled={state.i === questions.length - 1} onClick={() => go(state.i + 1)}>Next →</button>
+          <button className="btn btn-blue" style={{ marginLeft: "auto" }} disabled={state.i === questions.length - 1} onClick={() => go(state.i + 1)}>Next →</button>
         </div>
       </div>
 
-      <div className="card" style={{ marginTop: 12 }}>
-        <div style={{ fontSize: 12, color: "var(--text3)", marginBottom: 8 }}>Tap a number to jump · <span style={{ color: "var(--blue)" }}>■</span> answered · <span style={{ color: "var(--amber)" }}>■</span> marked</div>
-        <div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fill, minmax(36px, 1fr))", gap: 6 }}>
+      <div className="card cbt" style={{ marginTop: 12 }}>
+        <div className="cbt-legend" style={{ gridTemplateColumns: "repeat(auto-fit, minmax(150px, 1fr))" }}>
+          {[["", "Not visited"], ["not-answered", "Not answered"], ["answered", "Answered"], ["marked", "Marked for review"], ["answered-marked", "Answered & marked"]].map(([c, l]) => (
+            <span key={l}><i className={`q-num q-legend ${c}`} />{l}</span>
+          ))}
+        </div>
+        <div className="q-nav cbt-qnav">
           {questions.map((x, i) => {
             const ans = state.answers[x.id] !== undefined;
             const mk = state.marked[x.id];
-            return (
-              <button key={x.id} onClick={() => go(i)} style={{ height: 34, borderRadius: 8, fontSize: 12, fontWeight: 700, cursor: "pointer",
-                border: i === state.i ? "2px solid var(--text)" : "1px solid var(--gray3)",
-                background: mk ? "var(--amber-light, #fff4e0)" : ans ? "var(--blue-light)" : "var(--gray2)", color: ans ? "var(--blue)" : "var(--text2)" }}>{i + 1}</button>
-            );
+            const seen = state.visited ? state.visited[x.id] : true;
+            const cls = ans && mk ? "answered-marked" : mk ? "marked" : ans ? "answered" : seen ? "not-answered" : "";
+            return <button key={x.id} type="button" className={`q-num ${cls} ${i === state.i ? "current" : ""}`} onClick={() => go(i)} aria-label={`Question ${i + 1}`}>{i + 1}</button>;
           })}
         </div>
       </div>

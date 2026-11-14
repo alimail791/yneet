@@ -13,7 +13,7 @@ const TOOL = (p, t) => `/explore/open?p=${encodeURIComponent(p)}&t=${encodeURICo
 export default function Layout() {
   // During a mock test the bottom tab bar is hidden: the test has its own
   // Prev / Next bar there, and a stray tap shouldn't leave the exam.
-  const inTest = /^\/mock\/[^/]+\/start/.test(useLocation().pathname);
+  const inTest = /^\/(mock\/[^/]+\/start|pyq\/[^/]+\/test)/.test(useLocation().pathname);
   const { user, logout } = useAuth();
   const navigate = useNavigate();
   const [moreOpen, setMoreOpen] = useState(false);
