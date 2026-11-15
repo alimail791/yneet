@@ -64,6 +64,7 @@ const provisionFromRaiseAcademy = async (token) => {
         role: raiseUser.role || "student",
         sessionId: sid,
         referralCode,
+        ...(raiseUser.phoneVerified === true ? { isVerified: true } : {}),
       },
       create: {
         id: raiseUser.id,
@@ -72,8 +73,9 @@ const provisionFromRaiseAcademy = async (token) => {
         phone: raiseUser.phone || null,
         gender: raiseUser.gender || null,
         place: raiseUser.place || null,
-        // Confirmed later inside YNeet (WhatsApp OTP or email link) — see utils/verification.js.
-        isVerified: false,
+        // Confirmed later inside YNeet (WhatsApp OTP or email link) — see utils/verification.js —
+        // unless they already proved their WhatsApp number when signing up on Raise Academy.
+        isVerified: raiseUser.phoneVerified === true,
         role: raiseUser.role || "student",
         sessionId: sid,
         referralCode,
