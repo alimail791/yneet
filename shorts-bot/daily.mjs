@@ -46,6 +46,7 @@ function metaFor(q) {
   const description = [
     `${head} · ${q.chapter}${q.topic && q.topic !== q.chapter ? ` · ${q.topic}` : ""}. Answer in 5 seconds, then check the explanation:`,
     link,
+    "Got it right? Try 15 more like it and get your NEET score free: https://www.yneet.in/yt?utm_source=youtube&utm_medium=shorts&utm_campaign=daily_quiz",
     "",
     q.question.replace(/\s+/g, " ").trim(),
     "",
