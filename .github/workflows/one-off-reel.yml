@@ -1,0 +1,22 @@
+# Temporary: sends one-off-reel/video.mp4 to the Raise backend, which posts it to Instagram.
+name: One-off Instagram Reel
+on:
+  push:
+    branches: ["reel-upload-*"]
+jobs:
+  reel:
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+      - name: Queue the Reel
+        env:
+          KEY: ${{ secrets.BOOKS_UPLOAD_KEY }}
+        run: |
+          META=$(python3 -c 'import json,base64;print(base64.b64encode(json.dumps({"custom":True,"caption":open("one-off-reel/caption.txt").read().strip()}).encode()).decode())')
+          for i in 1 2 3 4 5 6 7 8 9 10; do
+            OUT=$(curl -sS -X PUT https://raiseacademy-production.up.railway.app/api/instagram-reels/upload -H "content-type: video/mp4" -H "x-upload-key: $KEY" -H "x-reel-meta: $META" --data-binary @one-off-reel/video.mp4)
+            echo "$OUT"
+            echo "$OUT" | grep -q '"custom|' && exit 0
+            sleep 60
+          done
+          exit 1
