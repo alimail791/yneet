@@ -32,6 +32,8 @@ const htmlToText = (html) => html
   .trim();
 
 const send = async ({ to, subject, html }) => {
+  // WhatsApp sign-ups get a placeholder address on Raise Academy (<phone>@wa.yneet.in); never mail it.
+  if (/@wa\.yneet\.in$/i.test(String(to || ""))) return;
   const payload = {
     from: process.env.RESEND_FROM_EMAIL || "YNeet <noreply@yneet.in>",
     to, subject, html,
