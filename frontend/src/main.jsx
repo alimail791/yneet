@@ -23,7 +23,7 @@ ReactDOM.createRoot(document.getElementById("root")).render(
 // Offline shell + installability (production only, so dev hot-reload isn't cached).
 if ("serviceWorker" in navigator && import.meta.env.PROD) {
   window.addEventListener("load", () => {
-    navigator.serviceWorker.register("/sw.js").catch(() => {});
+    navigator.serviceWorker.register("/sw.js", { updateViaCache: "none" }).catch(() => {});
   });
 }
 
