@@ -60,7 +60,12 @@ function metaFor(q) {
     "3 NEET questions every day: Physics, Chemistry and Biology. Free NEET mock tests, PYQs and college predictor at https://www.yneet.in",
     "",
     `#NEET #NEET2027 #NEETPYQ #${q.subject} #NEETPreparation #MBBS`,
-  ].filter((l) => l !== null).join("\n").slice(0, 5000);
+  ].filter((l) => l !== null).join("\n")
+    // YouTube rejects descriptions containing "<" or ">" (400 invalidDescription),
+    // which Chemistry questions often have ("A > B > C"). Use look-alike full-width
+    // signs so the order still reads correctly.
+    .replace(/</g, "＜").replace(/>/g, "＞")
+    .slice(0, 5000);
   const tags = [
     "NEET", "NEET 2027", "NEET PYQ", `NEET ${q.subject}`, q.chapter, q.topic, `${q.chapter} NEET questions`,
     q.pyqYear ? `NEET ${q.pyqYear}` : null, q.pyqYear ? `NEET ${q.pyqYear} question paper` : null,
