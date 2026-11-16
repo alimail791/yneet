@@ -37,6 +37,7 @@ const SECTIONS = [
       { icon: "🗂️", title: "NEET papers by year", desc: "Past NEET question papers, year by year.", to: open("/neet-question-papers", "NEET papers by year") },
       { icon: "📥", title: "Free PYQ PDFs", desc: "Every NEET PYQ of a chapter with solutions, as a PDF.", to: open("/neet-pyq-books", "NEET PYQ PDFs") },
       { icon: "⚖️", title: "Chapter-wise weightage", desc: "How many NEET questions each chapter is worth.", to: open("/neet-chapter-wise-weightage", "Chapter-wise weightage") },
+      { icon: "📉", title: "Most-missed NEET chapters", desc: "The chapters and questions YNeet students get wrong most.", to: open("/neet-most-missed-chapters", "Most-missed chapters") },
       { icon: "🧩", title: "Daily NEET puzzles", desc: "5 quick science puzzles every day.", href: PUZZLES_URL },
     ],
   },
@@ -51,10 +52,23 @@ const SECTIONS = [
     ],
   },
   {
-    title: "Class 6–8",
+    title: "Class 6–10",
     items: [
       { icon: "🧠", title: "Brain Teaser", desc: "A tricky science question every week.", to: open("/brain-teaser", "Brain Teaser") },
+      ...[6, 7, 8, 9, 10].map((n) => ({
+        icon: "🔬", title: `Class ${n} Science questions`, desc: `Free Class ${n} Science MCQs with answers explained.`,
+        to: open(`/class-${n}-questions`, `Class ${n} Science`),
+      })),
     ],
+  },
+  {
+    title: "In your language",
+    items: [
+      ["ta", "தமிழ்", "Tamil"], ["hi", "हिन्दी", "Hindi"], ["te", "తెలుగు", "Telugu"], ["kn", "ಕನ್ನಡ", "Kannada"],
+    ].flatMap(([code, name, en]) => [
+      { icon: "⚖️", title: `Chapter weightage · ${name}`, desc: `NEET chapter-wise weightage in ${en}.`, to: open(`/${code}/neet-chapter-wise-weightage`, `Weightage (${en})`) },
+      { icon: "📊", title: `NEET cutoff · ${name}`, desc: `Government MBBS cutoffs in ${en}.`, to: open(`/${code}/neet-cutoff`, `NEET cutoff (${en})`) },
+    ]),
   },
   {
     title: "About NEET & YNeet",
