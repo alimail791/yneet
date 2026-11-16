@@ -121,8 +121,9 @@ export default function Layout() {
   const mobileTabs = junior ? juniorMobileTabs : allMobileTabs;
 
   // Everything that doesn't fit in the 5-slot bottom bar lives behind "More".
-  // In the Play Store app: every free page from the website (Explore screen).
-  const freeLink = isAppMode ? [{ to: "/explore", label: "Free resources", icon: "📚" }] : [];
+  // Every free page from the website (Explore screen), in the Play Store app and
+  // in the browser alike, so students never have to leave app.yneet.in for them.
+  const freeLink = [{ to: "/explore", label: "Free resources", icon: "📚" }];
   const moreLinks = junior ? [
     ...freeLink,
     { to: "/profile", label: "Profile",    icon: "👤" },
