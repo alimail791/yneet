@@ -26,6 +26,7 @@ router.get("/shorts/:id", publicShort);
 const { listChapters, getChapter, readinessQuiz, listQuestionPages, getQuestionPage, listSchoolPages, getSchoolPage } = require("../controllers/practicePagesController");
 router.get("/practice", listChapters);
 router.get("/practice/:subject/:chapter", getChapter);
+router.get("/practice/:subject/:chapter/daily", require("../controllers/practicePagesController").chapterDaily); // chapter PYQ widget
 // One-question pages on www.yneet.in/neet-question/<slug> (no login; SEO).
 router.get("/questions", listQuestionPages);
 router.get("/pyq-book", require("../controllers/practicePagesController").pyqBook); // books/ PDF generator
@@ -33,6 +34,7 @@ router.get("/questions/daily", require("../controllers/practicePagesController")
 router.get("/questions/:slug", getQuestionPage);
 // Class 6–10 question pages on www.yneet.in/class-<n>-questions (no login; SEO).
 router.get("/school-questions", listSchoolPages);
+router.get("/school-questions/daily", require("../controllers/practicePagesController").schoolChapterDaily); // chapter PYQ widget (before :slug)
 router.get("/school-questions/:slug", getSchoolPage);
 router.get("/readiness", readinessQuiz);
 // Most-missed NEET chapters and questions from YNeet answers (totals only) for www.yneet.in/neet-most-missed-chapters.

@@ -471,3 +471,53 @@ exports.readinessQuiz = async (req, res) => {
 
 exports._internal = { build, slugify, keyOf, canonical };
 exports.practiceData = data;
+
+// Chapter PYQ widget (www.yneet.in/embed/pyq) that schools, institutes and
+// coaching centres put on their own sites. 5 questions a day from one chapter,
+// rotating through the chapter's public question pages (the same questions
+// already public on www.yneet.in), PYQs first.
+//   GET /api/v1/public/practice/:subject/:chapter/daily
+//   GET /api/v1/public/school-questions/daily?class=9&chapter=<chapterSlug>
+const WIDGET_PER_DAY = 5;
+const istDay = () => Math.floor((Date.now() + 5.5 * 3600e3) / 86400e3);
+function widgetSet(list) {
+  const pyqs = list.filter((q) => q.pyqYear);
+  const pool = pyqs.length >= WIDGET_PER_DAY ? pyqs : list;
+  if (pool.length <= WIDGET_PER_DAY) return pool;
+  const start = (istDay() * WIDGET_PER_DAY) % pool.length;
+  return Array.from({ length: WIDGET_PER_DAY }, (_, i) => pool[(start + i) % pool.length]);
+}
+const widgetQ = ({ id, slug, question, options, answer, explanation, pyqYear }) => ({ id, slug, question, options, answer, explanation, pyqYear: pyqYear || null });
+
+exports.chapterDaily = async (req, res) => {
+  try {
+    const d = await data();
+    const slug = `${req.params.subject}/${req.params.chapter}`.toLowerCase();
+    const c = d.chapters.find((x) => x.slug === slug);
+    if (!c) return res.status(404).json({ success: false, message: "Chapter not found" });
+    const list = d.questionPages.filter((q) => q.chapterSlug === slug);
+    const qs = widgetSet(list.length ? list : c.questions);
+    res.set("Cache-Control", "public, max-age=1800");
+    res.json({ success: true, chapter: { slug: c.slug, subject: c.subject, chapter: c.chapter, total: c.total, pyqCount: c.pyqCount }, questions: qs.map(widgetQ) });
+  } catch (err) {
+    console.error("chapter daily error:", err);
+    res.status(500).json({ success: false, message: "Could not load questions" });
+  }
+};
+
+exports.schoolChapterDaily = async (req, res) => {
+  try {
+    const { school } = await data();
+    const n = parseInt(req.query.class, 10);
+    const slug = String(req.query.chapter || "").toLowerCase();
+    const cl = school.classes.find((c) => c.classNum === n);
+    const ch = cl?.chapters.find((c) => c.slug === slug);
+    if (!ch) return res.status(404).json({ success: false, message: "Chapter not found" });
+    const list = school.pages.filter((q) => q.classNum === n && q.chapterSlug === slug);
+    res.set("Cache-Control", "public, max-age=1800");
+    res.json({ success: true, chapter: { slug, classNum: n, subject: ch.subject, chapter: ch.chapter, total: list.length }, questions: widgetSet(list).map(widgetQ) });
+  } catch (err) {
+    console.error("school chapter daily error:", err);
+    res.status(500).json({ success: false, message: "Could not load questions" });
+  }
+};
