@@ -3,8 +3,8 @@
 // 1080x1920; keeps text clear of the bottom ~380px and right ~140px where the
 // YouTube Shorts buttons and caption sit.
 
-export const TIMELINE = { read: 6, countdown: 5, reveal: 3, explain: 7, cta: 2.5 };
-export const DURATION = Object.values(TIMELINE).reduce((a, b) => a + b, 0); // 23.5 s
+export const TIMELINE = { read: 6, countdown: 5, reveal: 3, explain: 7, cta: 3 };
+export const DURATION = Object.values(TIMELINE).reduce((a, b) => a + b, 0); // 24 s
 const T = (() => {
   let t = 0;
   const at = {};
@@ -14,6 +14,13 @@ const T = (() => {
 
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const LETTERS = ["A", "B", "C", "D"];
+
+// End-card promos for YNeet's free tools (q.promo, set in daily.mjs by subject).
+// No promo = the default "5,000 free PYQs + follow" card.
+export const PROMOS = {
+  rank: { line: "Got your NEET marks?<br>See your expected rank, free", pill: "yneet.in/neet-rank-predictor" },
+  compare: { line: "Which college can you get?<br>Compare closing ranks, free", pill: "yneet.in/neet-compare-colleges" },
+};
 
 export function pageHtml(q) {
   const badge = q.pyqYear ? `NEET ${q.pyqYear} PYQ` : "NEET Practice";
@@ -50,6 +57,7 @@ export function pageHtml(q) {
   .cta .big b { color: #F2A93B; }
   .cta p { font-size: 52px; font-weight: 600; margin-top: 30px; line-height: 1.3; }
   .cta .pill { margin-top: 50px; background: #F2A93B; color: #14213D; font-size: 44px; font-weight: 700; padding: 22px 44px; border-radius: 999px; }
+  .cta p.small { font-size: 40px; font-weight: 500; opacity: .8; margin-top: 40px; }
   .hide { display: none !important; }
 </style></head><body>
 <div class="wrap" id="main">
@@ -69,8 +77,12 @@ export function pageHtml(q) {
 </div>
 <div class="cta hide" id="cta">
   <div class="big">Y<b>Neet</b>.in</div>
-  <p>Full solution + 5,000 free NEET PYQs<br>chapter-wise, no login</p>
-  <div class="pill">Follow for 3 NEET questions daily</div>
+  ${PROMOS[q.promo]
+    ? `<p>${PROMOS[q.promo].line}</p>
+  <div class="pill">${esc(PROMOS[q.promo].pill)}</div>
+  <p class="small">Follow for 3 NEET questions daily</p>`
+    : `<p>Full solution + 5,000 free NEET PYQs<br>chapter-wise, no login</p>
+  <div class="pill">Follow for 3 NEET questions daily</div>`}
 </div>
 <script>
   const T = ${JSON.stringify(T)}, D = ${JSON.stringify(TIMELINE)}, ANSWER = ${q.answer - 1};

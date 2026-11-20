@@ -36,6 +36,14 @@ function questionTitle(q, head) {
   return t.length <= 100 ? t : `${head}: ${q.chapter}`.slice(0, 90).replace(/\s+\S*$/, "") + " #shorts";
 }
 
+// Each subject's Short also promotes one free YNeet tool (end card + description).
+const PROMO_BY_SUBJECT = { Physics: "rank", Chemistry: "compare" };
+const UTM = "utm_source=youtube&utm_medium=shorts&utm_campaign=daily_quiz";
+const TOOL_LINES = {
+  rank: `📊 Free NEET Rank Predictor: your marks → expected All India Rank: https://www.yneet.in/neet-rank-predictor?${UTM}`,
+  compare: `🏥 Compare medical colleges: closing ranks, fees, AIQ vs state quota: https://www.yneet.in/neet-compare-colleges?${UTM}`,
+};
+
 function metaFor(q) {
   const link = `https://www.yneet.in/neet-question/${q.slug}?utm_source=youtube&utm_medium=shorts&utm_campaign=daily_quiz`;
   const chapterLink = `https://www.yneet.in/neet-practice/${q.chapterSlug}?utm_source=youtube&utm_medium=shorts&utm_campaign=daily_quiz`;
@@ -47,6 +55,7 @@ function metaFor(q) {
     `${head} · ${q.chapter}${q.topic && q.topic !== q.chapter ? ` · ${q.topic}` : ""}. Answer in 5 seconds, then check the explanation:`,
     link,
     "Got it right? Try 15 more like it and get your NEET score free: https://www.yneet.in/yt?utm_source=youtube&utm_medium=shorts&utm_campaign=daily_quiz",
+    q.promo ? TOOL_LINES[q.promo] : null,
     "",
     q.question.replace(/\s+/g, " ").trim(),
     "",
@@ -58,6 +67,7 @@ function metaFor(q) {
     q.pyqYear ? `Full NEET ${q.pyqYear} question paper with answers: https://www.yneet.in/neet-question-papers/${q.pyqYear}?utm_source=youtube&utm_medium=shorts&utm_campaign=daily_quiz` : null,
     "",
     "3 NEET questions every day: Physics, Chemistry and Biology. Free NEET mock tests, PYQs and college predictor at https://www.yneet.in",
+    ...Object.entries(TOOL_LINES).filter(([k]) => k !== q.promo).map(([, l]) => l),
     "",
     `#NEET #NEET2027 #NEETPYQ #${q.subject} #NEETPreparation #MBBS`,
   ].filter((l) => l !== null).join("\n")
@@ -110,6 +120,7 @@ async function main() {
   const results = [];
   try {
     for (const q of questions) {
+      q.promo = PROMO_BY_SUBJECT[q.subject] || null;
       const file = path.join(OUT, `${date}-${q.subject.toLowerCase()}.mp4`);
       await renderShort(browser, q, file);
       const meta = metaFor(q);
@@ -162,6 +173,7 @@ function reelCaption(q) {
     "",
     "Comment your answer 👇 The answer is shown at the end of the reel.",
     "Full explanation and more free PYQs: yneet.in (link in bio)",
+    "Free NEET Rank Predictor & Compare Colleges: yneet.in (link in bio)",
     "",
     `#NEET #NEET2027 #NEETPYQ #NEET${q.subject} #NEETPreparation #MBBS #NEETAspirants #YNeet #RaiseAcademy`,
   ].join("\n").slice(0, 2200);
