@@ -40,6 +40,23 @@ router.post("/institute-student", async (req, res) => {
   } catch (err) { res.status(500).json({ success: false, message: err.message }); }
 });
 
+// POST /api/v1/internal/trials-ending { days } — free trials (TRIAL_30D, still
+// active) ending within the next `days` days (default 7), soonest first.
+// Used by the Raise Academy admin dashboard's "Trials ending this week" tile.
+router.post("/trials-ending", async (req, res) => {
+  try {
+    const days = Math.min(Math.max(parseInt(req.body?.days, 10) || 7, 1), 60);
+    const now = new Date();
+    const rows = await prisma.subscription.findMany({
+      where: { plan: "TRIAL_30D", status: "active", endDate: { gt: now, lte: new Date(now.getTime() + days * 864e5) } },
+      orderBy: { endDate: "asc" },
+      take: 200,
+      select: { userId: true, endDate: true, user: { select: { name: true, phone: true } } },
+    });
+    res.json({ success: true, days, trials: rows.map((r) => ({ userId: r.userId, endDate: r.endDate, name: r.user?.name || "", phone: r.user?.phone || "" })) });
+  } catch (err) { res.status(500).json({ success: false, message: err.message }); }
+});
+
 // POST /api/v1/internal/delete-user { userId } — Raise Academy admin deleted the student.
 router.post("/delete-user", async (req, res) => {
   try {
