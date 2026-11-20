@@ -20,6 +20,8 @@ const SECTIONS = [
     items: [
       { icon: "🧮", title: "NEET Score Calculator", desc: "Match your answers with the answer key. Score, rank and colleges.", to: open("/neet-score-calculator", "Score Calculator") },
       { icon: "🏥", title: "NEET College Predictor", desc: "See which medical colleges your rank or score can get.", to: open("/neet-college-predictor", "College Predictor") },
+      { icon: "📈", title: "NEET Rank Predictor", desc: "Your marks → expected All India Rank, or marks needed for a target rank.", to: open("/neet-rank-predictor", "Rank Predictor") },
+      { icon: "⚖️", title: "Compare Colleges", desc: "Up to 3 MBBS/BDS colleges side by side: fees and closing ranks.", to: open("/neet-compare-colleges", "Compare Colleges") },
       { icon: "📊", title: "NEET cutoff by state", desc: "Last year's closing rank for every government MBBS college.", to: open("/neet-cutoff", "NEET cutoff") },
       { icon: "📝", title: "NEET Registration Guide", desc: "Eligibility check, document checklist and form steps.", to: open("/neet-registration", "Registration Guide") },
       { icon: "📷", title: "Photo & Signature Resizer", desc: "Resize your NEET photo, signature and thumb to the right KB.", to: open("/neet-photo-resizer", "Photo Resizer") },

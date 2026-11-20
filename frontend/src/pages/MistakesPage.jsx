@@ -2,6 +2,7 @@ import { useState, useEffect } from "react";
 import { useSearchParams } from "react-router-dom";
 import api from "../lib/api";
 import ExplainDifferently from "../components/ExplainDifferently";
+import ReportQuestion from "../components/ReportQuestion";
 
 export default function MistakesPage() {
   const [searchParams] = useSearchParams();
@@ -140,6 +141,7 @@ export default function MistakesPage() {
                 </div>
               )}
               {revealed[i] && <ExplainDifferently questionId={m.question?.id} />}
+              {revealed[i] && <ReportQuestion questionId={m.question?.id} />}
             </div>
           ))}
         </div>
