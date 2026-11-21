@@ -6,6 +6,7 @@ import ConceptMapsPage from "./pages/ConceptMapsPage";
 import TeaserPage from "./pages/TeaserPage";
 import AdminWeeklyPage from "./pages/admin/AdminWeeklyPage";
 import AdminDoubtsPage from "./pages/admin/AdminDoubtsPage";
+import AdminInstituteEmailsPage from "./pages/admin/AdminInstituteEmailsPage";
 import AskPage from "./pages/AskPage";
 import { useAuth } from "./context/AuthContext";
 import Layout from "./components/layout/Layout";
@@ -137,6 +138,7 @@ export default function App() {
         <Route path="creators"      element={<AdminCreatorsPage />} />
         <Route path="weekly"        element={<AdminWeeklyPage />} />
         <Route path="doubts"        element={<AdminDoubtsPage />} />
+        <Route path="institute-emails" element={<AdminInstituteEmailsPage />} />
         <Route path="bulk-generator" element={<BulkGeneratorPage />} />
         <Route path="mock-builder"  element={<MockTestBuilderPage />} />
       </Route>

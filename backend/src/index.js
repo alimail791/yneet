@@ -60,6 +60,7 @@ app.listen(PORT, () => console.log(`🚀 YNeet API running on port ${PORT}`));
 
 require("./utils/scheduledJobs").startScheduledJobs();
 require("./utils/pushJobs").startPushJobs();
+require("./utils/instituteDrip").startInstituteDrip();
 
 // One line at startup with the live test catalogue (counts per class/type/subject
 // and question counts) — read from the Railway logs for sales material.

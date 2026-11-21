@@ -33,6 +33,37 @@ router.use("/weekly", require("./adminWeekly"));
 // Ask YNeet: the teacher's doubt queue.
 router.use("/doubts", require("./adminDoubts"));
 
+// Institute pack follow-up emails to schools / coaching centres (utils/instituteDrip.js).
+{
+  const drip = () => require("../utils/instituteDrip");
+  const wrap = (fn) => async (req, res) => {
+    try { await fn(req, res); } catch (err) { res.status(500).json({ success: false, message: err.message }); }
+  };
+  router.get("/institute-drip", wrap(async (req, res) => {
+    await drip().rememberOrigin(req);
+    const [stats, leads] = await Promise.all([drip().stats(), drip().recentLeads(req.query.q)]);
+    res.json({ success: true, ...stats, recent: leads });
+  }));
+  router.post("/institute-drip/toggle", wrap(async (req, res) => {
+    await drip().setEnabled(!!req.body.on);
+    res.json({ success: true, enabled: !!req.body.on });
+  }));
+  router.post("/institute-drip/test", wrap(async (req, res) => {
+    const to = String(req.body.to || req.user.email || "").trim();
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(to)) return res.status(400).json({ success: false, message: "Enter a valid email" });
+    await drip().sendTest(to);
+    res.json({ success: true, to });
+  }));
+  router.post("/institute-drip/import", wrap(async (req, res) => {
+    res.json({ success: true, ...(await drip().importCsv(req.body.csv, req.body.kind)) });
+  }));
+  router.post("/institute-drip/lead-status", wrap(async (req, res) => {
+    const n = await drip().setLeadStatus(req.body.email, req.body.status, req.body.note);
+    if (!n) return res.status(404).json({ success: false, message: "No such lead (or they unsubscribed)" });
+    res.json({ success: true });
+  }));
+}
+
 // Push notifications: how many devices have them on, and a manual broadcast.
 router.get("/push/stats", async (req, res) => {
   try { res.json({ success: true, enabled: require("../utils/push").enabled, ...(await require("../utils/push").countSubscriptions()) }); }

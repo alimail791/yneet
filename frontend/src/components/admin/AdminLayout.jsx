@@ -12,6 +12,7 @@ const tabs = [
   { to: "/admin/creators",   label: "Creators" },
   { to: "/admin/weekly",     label: "Weekly series" },
   { to: "/admin/doubts",     label: "Doubts" },
+  { to: "/admin/institute-emails", label: "✉ Institute emails" },
   { to: "/admin/bulk-generator", label: "🏗️ Bulk Generator" },
   { to: "/admin/mock-builder",   label: "🧪 Mock Builder" },
 ];

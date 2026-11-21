@@ -17,6 +17,23 @@ router.post("/client-error", require("express").text({ type: "*/*", limit: "8kb"
   res.status(204).end();
 });
 
+// Unsubscribe link in the institute follow-up emails (utils/instituteDrip.js).
+// GET shows a confirmation page; POST is the one-click List-Unsubscribe from mail apps.
+const unsubPage = (ok) => `<!doctype html><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>YNeet</title>
+<div style="font-family:-apple-system,Segoe UI,sans-serif;max-width:460px;margin:60px auto;padding:24px;text-align:center">
+<h2 style="color:#1e3a8a">${ok ? "You're unsubscribed" : "Link not valid"}</h2>
+<p style="color:#475569">${ok ? "You won't get any more emails from us about YNeet for institutes." : "This unsubscribe link looks incomplete. Reply to our email with \"unsubscribe\" and we'll remove you."}</p>
+<p><a href="https://www.yneet.in" style="color:#2563eb">www.yneet.in</a></p></div>`;
+router.get("/unsubscribe", async (req, res) => {
+  let ok = false;
+  try { ok = await require("../utils/instituteDrip").unsubscribe(req.query.e, req.query.t); } catch (e) { console.error("[unsubscribe]", e.message); }
+  res.status(ok ? 200 : 400).type("html").send(unsubPage(ok));
+});
+router.post("/unsubscribe", require("express").urlencoded({ extended: false }), async (req, res) => {
+  try { await require("../utils/instituteDrip").unsubscribe(req.query.e, req.query.t); } catch (e) { console.error("[unsubscribe]", e.message); }
+  res.status(200).end();
+});
+
 // Featured YNeet Shorts — landing page section and the public share page (/s/:id).
 const { publicFeatured, publicShort } = require("../controllers/shortsController");
 router.get("/shorts/featured", publicFeatured);
