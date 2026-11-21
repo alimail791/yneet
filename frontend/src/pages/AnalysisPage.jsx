@@ -4,7 +4,8 @@ import { Bar } from "react-chartjs-2";
 import { Chart as ChartJS, BarElement, LinearScale, CategoryScale, Tooltip } from "chart.js";
 import api from "../lib/api";
 import { useAuth } from "../context/AuthContext";
-import { isJuniorFree } from "../utils/plan";
+import { isJuniorFree, isJunior } from "../utils/plan";
+import ShareScoreCard from "../components/ShareScoreCard";
 ChartJS.register(BarElement, LinearScale, CategoryScale, Tooltip);
 
 export default function AnalysisPage() {
@@ -44,6 +45,9 @@ export default function AnalysisPage() {
         <div className="card"><div className="card-title">Time Taken</div><div className="card-value" style={{ color: "var(--amber)" }}>{Math.floor(attempt.timeTaken / 60)}m</div><div className="card-sub">{attempt.timeTaken}s total</div></div>
         <div className="card"><div className="card-title">Unattempted</div><div className="card-value" style={{ color: "var(--red)" }}>{(attempt.mockTest?.totalQs || 0) - answeredCount}</div><div className="card-sub">questions skipped</div></div>
       </div>
+
+      {/* Not for Class 6–8 students (younger children; Play Store Families policy). */}
+      {!isJunior(user) && <ShareScoreCard attempt={attempt} />}
 
       {plan.length > 0 && (
         <div className="card mb-5" style={{ borderColor: "var(--blue-light)" }}>
