@@ -3,8 +3,8 @@
 // 1080x1920; keeps text clear of the bottom ~380px and right ~140px where the
 // YouTube Shorts buttons and caption sit.
 
-export const TIMELINE = { read: 6, countdown: 5, reveal: 3, explain: 7, cta: 3 };
-export const DURATION = Object.values(TIMELINE).reduce((a, b) => a + b, 0); // 24 s
+export const TIMELINE = { read: 6, countdown: 5, reveal: 3, explain: 7, cta: 4 };
+export const DURATION = Object.values(TIMELINE).reduce((a, b) => a + b, 0); // 25 s
 const T = (() => {
   let t = 0;
   const at = {};
@@ -15,11 +15,14 @@ const T = (() => {
 const esc = (s) => String(s ?? "").replace(/[&<>"]/g, (c) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]));
 const LETTERS = ["A", "B", "C", "D"];
 
-// End-card promos for YNeet's free tools (q.promo, set in daily.mjs by subject).
-// No promo = the default "5,000 free PYQs + follow" card.
+// Links in Shorts descriptions and comments are not tappable, so viewers only
+// reach the site by typing what they see. Every Short shows the short, typeable
+// yneet.in/yt the whole time and on the end card; the end card also names one
+// free tool (q.promo, set in daily.mjs by subject).
+export const SITE_URL = "yneet.in/yt";
 export const PROMOS = {
-  rank: { line: "Got your NEET marks?<br>See your expected rank, free", pill: "yneet.in/neet-rank-predictor" },
-  compare: { line: "Which college can you get?<br>Compare closing ranks, free", pill: "yneet.in/neet-compare-colleges" },
+  rank: "Free NEET Rank Predictor too",
+  compare: "Free college compare tool too",
 };
 
 export function pageHtml(q) {
@@ -58,8 +61,12 @@ export function pageHtml(q) {
   .cta p { font-size: 52px; font-weight: 600; margin-top: 30px; line-height: 1.3; }
   .cta .pill { margin-top: 50px; background: #F2A93B; color: #14213D; font-size: 44px; font-weight: 700; padding: 22px 44px; border-radius: 999px; }
   .cta p.small { font-size: 40px; font-weight: 500; opacity: .8; margin-top: 40px; }
+  .url { position: absolute; top: 34px; left: 70px; right: 140px; color: #FCE3B6; font-size: 38px; font-weight: 600; }
+  .url b { color: #F2A93B; font-weight: 700; }
+  .cta .pill.site { font-family: "Space Grotesk", Inter, sans-serif; font-size: 76px; padding: 26px 60px; margin-top: 40px; }
   .hide { display: none !important; }
 </style></head><body>
+<div class="url" id="url">Full answer + 15 more free → <b>${SITE_URL}</b></div>
 <div class="wrap" id="main">
   <div class="top"><div class="brand">Y<b>Neet</b></div><div class="badge">${esc(badge)}</div></div>
   <div class="meta">${esc(q.subject)} · ${esc(q.chapter)}</div>
@@ -76,13 +83,10 @@ export function pageHtml(q) {
   <div class="ex hide" id="ex"><h3>Answer: (${LETTERS[q.answer - 1]}) · Why?</h3><div id="exText">${esc(explanation)}</div></div>
 </div>
 <div class="cta hide" id="cta">
-  <div class="big">Y<b>Neet</b>.in</div>
-  ${PROMOS[q.promo]
-    ? `<p>${PROMOS[q.promo].line}</p>
-  <div class="pill">${esc(PROMOS[q.promo].pill)}</div>
-  <p class="small">Follow for 3 NEET questions daily</p>`
-    : `<p>Full solution + 5,000 free NEET PYQs<br>chapter-wise, no login</p>
-  <div class="pill">Follow for 3 NEET questions daily</div>`}
+  <div class="big">Y<b>Neet</b></div>
+  <p>Got it right? Try 15 more<br>and get your NEET score, free</p>
+  <div class="pill site">${SITE_URL}</div>
+  <p class="small">${PROMOS[q.promo] ? `${esc(PROMOS[q.promo])} · ` : ""}Follow for 3 questions daily</p>
 </div>
 <script>
   const T = ${JSON.stringify(T)}, D = ${JSON.stringify(TIMELINE)}, ANSWER = ${q.answer - 1};
@@ -118,6 +122,7 @@ export function pageHtml(q) {
     }
     $("ex").classList.toggle("hide", t < T.explain || t >= T.cta);
     $("cta").classList.toggle("hide", t < T.cta);
+    $("url").classList.toggle("hide", t >= T.cta);
   };
 </script></body></html>`;
 }
