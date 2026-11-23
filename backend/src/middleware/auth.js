@@ -108,6 +108,24 @@ const requireActiveSubscriptionOrJunior = (req, res, next) => {
   return requireActiveSubscription(req, res, next);
 };
 
+// Free tier after the trial (Class 9–Dropper): a student with no active plan can
+// still take ONE short test a day (Daily Practice or a Chapter Test) — see
+// FREE_TEST_TYPES in mockController. Keeps the study habit alive and keeps
+// Refer & Earn / upgrade in front of them. Students with a plan are gated exactly
+// like requireActiveSubscription; req.freeDaily marks the free-tier request.
+const requireActiveSubscriptionOrFreeDaily = (req, res, next) => {
+  if (isJuniorClass(req.user?.profile?.class)) return next();
+  const sub = req.user?.subscription;
+  const isActive = sub?.status === "active" && sub?.endDate && new Date(sub.endDate) > new Date();
+  if (isActive) return requireActiveSubscription(req, res, next);
+  const { verificationState } = require("../utils/verification");
+  if (verificationState(req.user).blocked) {
+    return res.status(403).json({ success: false, verifyRequired: true, message: "Confirm your WhatsApp number or email to keep using YNeet." });
+  }
+  req.freeDaily = true;
+  next();
+};
+
 // Gates the /admin content-management panel — role is synced from Raise Academy
 // on every login, so promoting/demoting an admin happens over there, not here.
 const requireAdmin = (req, res, next) => {
@@ -117,4 +135,4 @@ const requireAdmin = (req, res, next) => {
   next();
 };
 
-module.exports = { protect, optionalAuth, requirePlan, requireActiveSubscription, requireActiveSubscriptionOrJunior, requireAdmin };
+module.exports = { protect, optionalAuth, requirePlan, requireActiveSubscription, requireActiveSubscriptionOrJunior, requireActiveSubscriptionOrFreeDaily, requireAdmin };

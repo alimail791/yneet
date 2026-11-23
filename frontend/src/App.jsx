@@ -40,7 +40,8 @@ import CreatorForgotPage      from "./pages/creator/CreatorForgotPage";
 import CreatorTermsPage       from "./pages/creator/CreatorTermsPage";
 import CreatorDashboard     from "./pages/creator/CreatorDashboard";
 import AdminCreatorsPage    from "./pages/admin/AdminCreatorsPage";
-import { hasActivePlan, isJuniorFree } from "./utils/plan";
+import { hasActivePlan, isJuniorFree, isSeniorFree } from "./utils/plan";
+import FreeHome from "./components/home/FreeHome";
 import AdminLayout          from "./components/admin/AdminLayout";
 import AdminSummaryPage     from "./pages/admin/AdminSummaryPage";
 import AdminUsersPage       from "./pages/admin/AdminUsersPage";
@@ -81,18 +82,30 @@ function RequireSubscription({ children }) {
   if (user?.role === "admin") return children;
   // Free trial paused after 3 days until WhatsApp/email is confirmed (see backend utils/verification.js).
   if (user?.verification?.blocked) return <Navigate to="/verify" replace />;
-  return hasActivePlan(user) || isJuniorFree(user) ? children : <Navigate to="/pricing" replace />;
+  // No plan (trial over) → still allowed in, on the free tier (see isSeniorFree).
+  return hasActivePlan(user) || isJuniorFree(user) || isSeniorFree(user) ? children : <Navigate to="/pricing" replace />;
 }
 
 // Pages that are not part of the free Class 6–8 tier send those students home.
+// Free Class 9+ students (trial over) are sent to Pricing from paid pages.
 function Paid({ children }) {
   const { user } = useAuth();
-  return isJuniorFree(user) ? <Navigate to="/" replace /> : children;
+  if (isJuniorFree(user)) return <Navigate to="/" replace />;
+  if (isSeniorFree(user)) return <Navigate to="/pricing" replace />;
+  return children;
+}
+
+// Pages that are free for Class 6–8 but need a plan for Class 9+.
+function PlanOrJunior({ children }) {
+  const { user } = useAuth();
+  return isSeniorFree(user) ? <Navigate to="/pricing" replace /> : children;
 }
 
 function Home() {
   const { user } = useAuth();
-  return isJuniorFree(user) ? <JuniorHomePage /> : <DashboardPage />;
+  if (isJuniorFree(user)) return <JuniorHomePage />;
+  if (isSeniorFree(user)) return <FreeHome />;
+  return <DashboardPage />;
 }
 
 // The /admin panel (content management + enrolled users) — role is synced
@@ -125,6 +138,8 @@ export default function App() {
       <Route path="/teaser" element={<Guard><TeaserPage /></Guard>} />
       <Route path="/ask" element={<Guard><AskPage /></Guard>} />
       <Route path="/verify" element={<Guard><VerifyPage /></Guard>} />
+      {/* Refer & Earn outside the app shell, for students on Pricing / Verify. */}
+      <Route path="/invite" element={<Guard><div className="container" style={{ maxWidth: 760, margin: "0 auto", padding: 16 }}><a href="/" style={{ fontSize: 13 }}>← Back to YNeet</a><ReferralPage /></div></Guard>} />
       <Route path="/verify-email" element={<VerifyEmailPage />} />
 
       <Route path="/admin" element={<Guard><RequireAdmin><AdminLayout /></RequireAdmin></Guard>}>
@@ -148,8 +163,8 @@ export default function App() {
         <Route path="mock"           element={<MockPage />} />
         <Route path="mock/:attemptId/start"    element={<MockTestPage />} />
         <Route path="mock/:attemptId/analysis" element={<AnalysisPage />} />
-        <Route path="shorts"         element={<ShortsPage />} />
-        <Route path="quiz"           element={<QuizPage />} />
+        <Route path="shorts"         element={<PlanOrJunior><ShortsPage /></PlanOrJunior>} />
+        <Route path="quiz"           element={<PlanOrJunior><QuizPage /></PlanOrJunior>} />
         <Route path="practice"       element={<Paid><PracticePage /></Paid>} />
         <Route path="pyq"            element={<Paid><PYQPage /></Paid>} />
         <Route path="pyq/:year"      element={<Paid><PYQPage /></Paid>} />
@@ -162,7 +177,8 @@ export default function App() {
         <Route path="chemistry"      element={<Paid><ChemistryPage /></Paid>} />
         <Route path="mistakes"       element={<Paid><MistakesPage /></Paid>} />
         <Route path="profile"        element={<ProfilePage />} />
-        <Route path="referral"       element={<Paid><ReferralPage /></Paid>} />
+        {/* Open to every student — free days matter most once the trial is over. */}
+        <Route path="referral"       element={<ReferralPage />} />
       </Route>
     </Routes>
   );

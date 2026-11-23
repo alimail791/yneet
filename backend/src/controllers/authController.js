@@ -15,6 +15,18 @@ const toClassLevel = (raiseUser) => {
   return `${raw}th`;
 };
 
+// Trial length for a student who joined with a friend's referral link
+// (everyone else gets 30 days). Shown as "45 days free" on share links.
+const REFERRED_TRIAL_DAYS = 45;
+
+// Number of submitted tests — the app sends brand-new students to a short
+// starter test first (students who finish one test come back far more often).
+const withStats = async (user) => {
+  const { verificationState } = require("../utils/verification");
+  const submittedAttempts = await prisma.attempt.count({ where: { userId: user.id, status: "submitted" } }).catch(() => null);
+  return { ...user, verification: verificationState(user), submittedAttempts };
+};
+
 // Short, shareable, human-typeable code — e.g. "X7K2QPLM". Collisions are
 // astronomically unlikely at this scale, but we retry once just in case.
 const generateReferralCode = async () => {
@@ -119,7 +131,13 @@ const provisionFromRaiseAcademy = async (token) => {
   if (isNewUser && raiseUser.referredByCode) {
     const referrer = await prisma.user.findUnique({ where: { referralCode: raiseUser.referredByCode } });
     if (referrer && referrer.id !== user.id) {
-      await prisma.referral.create({ data: { referrerId: referrer.id, referredId: user.id } }).catch(() => {});
+      const made = await prisma.referral.create({ data: { referrerId: referrer.id, referredId: user.id } }).catch(() => null);
+      // Two-sided reward: a friend who joins with a link gets a longer trial.
+      if (made && user.subscription?.plan === "TRIAL_30D") {
+        const end = new Date(user.subscription.startDate);
+        end.setDate(end.getDate() + REFERRED_TRIAL_DAYS);
+        user.subscription = await prisma.subscription.update({ where: { userId: user.id }, data: { endDate: end } }).catch(() => user.subscription);
+      }
     }
   }
 
@@ -162,8 +180,7 @@ exports.bridge = async (req, res) => {
     if (!token) return res.status(400).json({ success: false, message: "token is required" });
 
     const user = await provisionFromRaiseAcademy(token);
-    const { verificationState } = require("../utils/verification");
-    res.json({ success: true, token, user: { ...user, verification: verificationState(user) } });
+    res.json({ success: true, token, user: await withStats(user) });
   } catch (err) {
     console.error("SSO bridge error:", err.response?.data || err.message);
     res.status(401).json({ success: false, message: "Could not verify Raise Academy session" });
@@ -171,8 +188,7 @@ exports.bridge = async (req, res) => {
 };
 
 exports.getMe = async (req, res) => {
-  const { verificationState } = require("../utils/verification");
-  res.json({ success: true, user: { ...req.user, verification: verificationState(req.user) } });
+  res.json({ success: true, user: await withStats(req.user) });
 };
 
 module.exports.provisionFromRaiseAcademy = provisionFromRaiseAcademy;

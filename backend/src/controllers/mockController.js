@@ -3,6 +3,19 @@ const { awardXP } = require("../utils/xp");
 const { analyseAttempt } = require("../utils/studyPlan");
 const prisma = new PrismaClient();
 
+// Free tier (no active plan, Class 9+): one short test per day, IST.
+const FREE_TEST_TYPES = ["daily", "chapter"];
+const FREE_TESTS_PER_DAY = 1;
+const istDayStart = () => {
+  const IST = 330 * 60000;
+  const d = new Date(Date.now() + IST);
+  d.setUTCHours(0, 0, 0, 0);
+  return new Date(d.getTime() - IST);
+};
+const freeTestsUsedToday = (userId) =>
+  prisma.attempt.count({ where: { userId, startedAt: { gte: istDayStart() } } });
+const FREE_LIMIT_MSG = "You've used today's free test. Come back tomorrow, invite 2 friends for 1 month free, or pick a plan.";
+
 exports.listTests = async (req, res) => {
   try {
     const classLevel = req.user.profile?.class || "12th";
@@ -10,7 +23,10 @@ exports.listTests = async (req, res) => {
       where: { isActive: true, classLevel }, orderBy: { createdAt: "asc" },
       include: { _count: { select: { questions: true } }, attempts: { where: { userId: req.user.id }, orderBy: { startedAt: "desc" }, take: 1 } },
     });
-    res.json({ success: true, tests: tests.map(t => ({ ...t, lastAttempt: t.attempts[0] || null })) });
+    const free = req.freeDaily
+      ? { types: FREE_TEST_TYPES, perDay: FREE_TESTS_PER_DAY, usedToday: await freeTestsUsedToday(req.user.id) }
+      : null;
+    res.json({ success: true, free, tests: tests.map(t => ({ ...t, lastAttempt: t.attempts[0] || null })) });
   } catch (err) { res.status(500).json({ success: false, message: err.message }); }
 };
 
@@ -59,6 +75,16 @@ exports.startTest = async (req, res) => {
       return res.status(403).json({ success: false, message: "This mock test isn't part of your class's syllabus" });
     }
     let attempt = await prisma.attempt.findFirst({ where: { userId: req.user.id, mockTestId: testId, status: "in_progress" }, include: { responses: true } });
+    if (req.freeDaily) {
+      if (!FREE_TEST_TYPES.includes(test.type)) {
+        return res.status(403).json({ success: false, code: "free_limit", message: "Free plan includes Daily Practice and Chapter Tests. Invite 2 friends for 1 month free, or pick a plan to unlock all tests." });
+      }
+      // Continuing today's unfinished free test is fine; a new one counts.
+      const continuing = attempt && secsLeftFor(attempt, test.durationMin) >= -GRACE_SEC;
+      if (!continuing && (await freeTestsUsedToday(req.user.id)) >= FREE_TESTS_PER_DAY) {
+        return res.status(403).json({ success: false, code: "free_limit", message: FREE_LIMIT_MSG });
+      }
+    }
     // An unfinished attempt whose time ran out is scored as it stands, and a fresh one starts.
     if (attempt && secsLeftFor(attempt, test.durationMin) < -GRACE_SEC) {
       await finalizeAttempt(attempt.id, req.user, test.durationMin * 60);

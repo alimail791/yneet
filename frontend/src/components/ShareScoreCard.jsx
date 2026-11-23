@@ -71,7 +71,7 @@ async function makeCard({ score, total, title, physics, chemistry, biology, accu
   ctx.fillText("Can you beat my score?", W / 2, 1145);
   ctx.font = "700 36px system-ui, sans-serif";
   // yneet.in/r/<code> redirects to sign-up with the referral code (www serve.json).
-  ctx.fillText(code ? `yneet.in/r/${code} · 30 days free` : "yneet.in · 30 days free", W / 2, 1197);
+  ctx.fillText(code ? `yneet.in/r/${code} · 45 days free` : "yneet.in · 30 days free", W / 2, 1197);
 
   ctx.fillStyle = "#94a3b8"; ctx.font = "500 30px system-ui, sans-serif";
   ctx.fillText("Full NEET mocks, PYQs and your All India Rank", W / 2, 1290);
@@ -87,7 +87,7 @@ export default function ShareScoreCard({ attempt }) {
 
   const total = attempt.totalMarks || 720;
   const title = attempt.mockTest?.title || "NEET mock test";
-  const text = (medium) => `I scored ${attempt.score}/${total} in a NEET mock test on YNeet (${title}). Can you beat it? Start 30 days free with my link: ${withUtm(ref.url, medium)}`;
+  const text = (medium) => `I scored ${attempt.score}/${total} in a NEET mock test on YNeet (${title}). Can you beat it? Get 45 days free with my link: ${withUtm(ref.url, medium)}`;
 
   const shareCard = async () => {
     setBusy(true);

@@ -1,6 +1,7 @@
 import { useState, useEffect, useMemo } from "react";
 import { useNavigate } from "react-router-dom";
 import api from "../lib/api";
+import { useAuth } from "../context/AuthContext";
 
 const PAGE_SIZE = 24;
 
@@ -12,11 +13,16 @@ export default function MockPage() {
   const [chSubject, setChSubject] = useState("all"); // Chapter Tests sub-filter
   const [visible, setVisible] = useState(PAGE_SIZE);
   const [loading, setLoading] = useState(true);
+  // Free tier (trial over, Class 9+): { types, perDay, usedToday } — null with a plan.
+  const [free, setFree] = useState(null);
   const navigate = useNavigate();
+  const { user } = useAuth();
 
   useEffect(() => {
-    api.get("/mock").then(r => setTests(r.data.tests || [])).catch(() => {}).finally(() => setLoading(false));
+    api.get("/mock").then(r => { setTests(r.data.tests || []); setFree(r.data.free || null); }).catch(() => {}).finally(() => setLoading(false));
   }, []);
+
+  const freeLocked = (t) => !!free && !free.types.includes(t.type);
 
   // Reset pagination whenever the visible set changes shape.
   useEffect(() => { setVisible(PAGE_SIZE); }, [filter, search, chSubject]);
@@ -26,7 +32,12 @@ export default function MockPage() {
       const { data } = await api.post(`/mock/${testId}/start`);
       navigate(`/mock/${data.attempt.id}/start`, { state: { attempt: data.attempt, questions: data.questions, test: data.test } });
     } catch (err) {
-      alert(err.response?.data?.message || "Failed to start test");
+      const msg = err.response?.data?.message || "Failed to start test";
+      if (err.response?.data?.code === "free_limit") {
+        if (window.confirm(`${msg}\n\nOpen Refer & Earn now?`)) navigate("/referral");
+        return;
+      }
+      alert(msg);
     }
   };
 
@@ -61,6 +72,15 @@ export default function MockPage() {
 
   const visibleTests = filtered.slice(0, visible);
 
+  // Brand-new students (no test finished yet) get one short starter test up
+  // front: a Daily Practice, else a Chapter Test, else the shortest test.
+  const isNew = user?.role !== "admin" && (user?.submittedAttempts === 0 || new URLSearchParams(window.location.search).get("starter") === "1")
+    && !tests.some(t => t.lastAttempt?.status === "submitted");
+  const starter = isNew ? (
+    dailyTests.find(t => !t.lastAttempt) || chapterTests.find(t => !t.lastAttempt) ||
+    [...tests].filter(t => !freeLocked(t)).sort((a, b) => a.totalQs - b.totalQs)[0]
+  ) : null;
+
   if (loading) return <div className="loading-screen"><div className="spinner"></div></div>;
 
   return (
@@ -73,6 +93,29 @@ export default function MockPage() {
           </p>
         </div>
       </div>
+
+      {starter && (
+        <div className="card mb-4" style={{ background: "linear-gradient(135deg,var(--blue-mid),var(--purple))", color: "#fff" }}>
+          <div style={{ fontWeight: 700, fontSize: 17, marginBottom: 4 }}>👋 Start here: your first test</div>
+          <p style={{ fontSize: 13, opacity: 0.9, marginBottom: 10 }}>
+            {starter.title} · {starter.totalQs} questions · {starter.durationMin} min. See where you stand and get your personal study plan.
+          </p>
+          <button className="btn" style={{ background: "#fff", color: "var(--blue-mid)", fontWeight: 700 }} onClick={() => startTest(starter.id)}>Start my first test →</button>
+        </div>
+      )}
+
+      {free && (
+        <div className="card mb-4" style={{ borderLeft: "4px solid var(--green)" }}>
+          <div style={{ fontWeight: 700, fontSize: 15 }}>
+            Free plan: {free.perDay} Daily Practice or Chapter Test a day {free.usedToday >= free.perDay ? "· used today ✅" : "· available now"}
+          </div>
+          <p style={{ fontSize: 13, color: "var(--text2)", margin: "4px 0 8px" }}>Want every test? Invite 2 friends = 1 month free, or pick a plan.</p>
+          <div style={{ display: "flex", gap: 8, flexWrap: "wrap" }}>
+            <button className="btn btn-blue btn-sm" onClick={() => navigate("/referral")}>🎁 Invite friends</button>
+            <button className="btn btn-outline btn-sm" onClick={() => navigate("/pricing")}>See plans</button>
+          </div>
+        </div>
+      )}
 
       {/* Stats */}
       <div className="grid4 mb-5">
@@ -146,6 +189,8 @@ export default function MockPage() {
                 <button className="btn btn-amber btn-full btn-sm" onClick={() => navigate(`/mock/${test.lastAttempt.id}/start`, { state: { attempt: test.lastAttempt, questions: [], test } })}>
                   ▶ Resume Test
                 </button>
+              ) : freeLocked(test) ? (
+                <button className="btn btn-outline btn-full btn-sm" onClick={() => navigate("/pricing")}>🔒 Unlock with a plan</button>
               ) : (
                 <button className="btn btn-blue btn-full btn-sm" onClick={() => startTest(test.id)}>Start Test →</button>
               )}

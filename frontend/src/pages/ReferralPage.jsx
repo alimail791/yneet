@@ -24,7 +24,7 @@ export default function ReferralPage() {
       <div className="section-header mb-4">
         <div>
           <div className="section-title" style={{ fontSize: 22 }}>🎁 Refer &amp; Earn</div>
-          <p style={{ fontSize: 13, color: "var(--text2)" }}>Every friend who joins with your link and confirms their WhatsApp number gets you <strong>15 days free</strong>. 2 friends = 1 month free.</p>
+          <p style={{ fontSize: 13, color: "var(--text2)" }}>Every friend who joins with your link and confirms their WhatsApp number gets you <strong>15 days free</strong> (2 friends = 1 month free). Your friends get <strong>45 days free</strong> instead of 30.</p>
         </div>
       </div>
 
@@ -38,7 +38,7 @@ export default function ReferralPage() {
             {copied ? "Copied!" : "Copy Link"}
           </button>
           <a className="btn" style={{ background: "#25D366", color: "#fff", fontWeight: 700 }} target="_blank" rel="noopener noreferrer"
-            href={`https://wa.me/?text=${encodeURIComponent(`I'm preparing for NEET on YNeet — mock tests, PYQs and doubt support. Start your 30-day free trial with my link 👉 ${data.registerUrl}`)}`}
+            href={`https://wa.me/?text=${encodeURIComponent(`I'm preparing for NEET on YNeet — mock tests, PYQs and doubt support. Get 45 days free (instead of 30) with my link 👉 ${data.registerUrl}`)}`}
             onClick={() => { try { window.gtag?.("event", "referral_share", { method: "whatsapp" }); } catch { /* analytics only */ } }}>
             Share on WhatsApp
           </a>

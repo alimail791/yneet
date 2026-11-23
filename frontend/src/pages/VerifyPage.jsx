@@ -89,6 +89,9 @@ export default function VerifyPage() {
           <button className="btn" style={{ ...btn, background: "transparent", color: "var(--text3)", fontWeight: 500 }} onClick={() => navigate("/")}>Later</button>
         )}
       </div>
+      <p style={{ maxWidth: 440, margin: "14px auto 0", textAlign: "center", fontSize: 13, color: "var(--text2)" }}>
+        🎁 Invite 2 friends = 1 month free. <a href="/invite" style={{ fontWeight: 700 }}>Get your invite link</a>
+      </p>
     </div>
   );
 }

@@ -54,7 +54,6 @@ export default function Layout() {
   // every access is guarded and the popup simply doesn't show in that case.
   const [referralPopup, setReferralPopup] = useState(false);
   useEffect(() => {
-    if (junior) return; // Refer & Earn is a paid-plan reward
     try {
       const today = new Date().toISOString().slice(0, 10);
       if (localStorage.getItem("yneet_referral_popup_day") !== today) {
@@ -63,7 +62,7 @@ export default function Layout() {
         return () => clearTimeout(t);
       }
     } catch { /* storage unavailable — skip the popup */ }
-  }, [junior]);
+  }, []);
 
   const allTabs = [
     { to: "/",         label: "Dashboard", end: true },
@@ -101,6 +100,7 @@ export default function Layout() {
     { to: "/sprint", label: "60-Second Sprint" },
     { to: "/teaser", label: "Brain Teaser" },
     { to: "/ask",    label: "Ask a Doubt" },
+    { to: "/referral", label: "Refer & Earn" },
     { to: "/help",   label: "Help & FAQ" },
   ];
   const tabs = junior ? juniorTabs : allTabs;
@@ -128,6 +128,7 @@ export default function Layout() {
   const freeLink = [{ to: "/explore", label: "Free resources", icon: "📚" }];
   const moreLinks = junior ? [
     ...freeLink,
+    { to: "/referral", label: "Refer & Earn", icon: "🎁" },
     { to: "/profile", label: "Profile",    icon: "👤" },
     { to: "/help",    label: "Help & FAQ", icon: "❓" },
   ] : [
@@ -219,7 +220,7 @@ export default function Layout() {
             <div style={{ fontSize: 40, marginBottom: 10 }}>🎁</div>
             <h2 style={{ fontSize: 18, fontWeight: 800, marginBottom: 8 }}>Get 15 days of YNeet free!</h2>
             <p style={{ fontSize: 14, color: "var(--text2)", lineHeight: 1.5, marginBottom: 20 }}>
-              Every friend who joins with your link and confirms their WhatsApp number gets you 15 days free. 2 friends = 1 month. Share your link in just a tap.
+              Every friend who joins with your link and confirms their WhatsApp number gets you 15 days free. 2 friends = 1 month. Your friends get 45 days free too.
             </p>
             <div style={{ display: "flex", gap: 10, justifyContent: "center" }}>
               <button className="btn btn-outline" onClick={() => setReferralPopup(false)}>Maybe later</button>

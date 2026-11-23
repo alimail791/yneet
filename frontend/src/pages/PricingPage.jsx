@@ -182,6 +182,18 @@ export default function PricingPage() {
             : `${tier?.label || "NEET Full"} · priced for your class · one-time payment, no auto-charge`}
         </p>
 
+        {!tier?.free && (
+          <div className="card" style={{ maxWidth: 520, margin: "0 auto 20px", padding: "14px 18px", textAlign: "left", display: "flex", gap: 12, alignItems: "center", flexWrap: "wrap", justifyContent: "space-between" }}>
+            <span style={{ fontSize: 14, color: "var(--text2)" }}>
+              🎁 <strong>Can't pay right now?</strong> Invite 2 friends = 1 month free. Or keep your free daily test.
+            </span>
+            <span style={{ display: "flex", gap: 8 }}>
+              <button className="btn btn-blue btn-sm" onClick={() => navigate("/invite")}>Invite friends</button>
+              <button className="btn btn-outline btn-sm" onClick={() => navigate("/")}>Free test</button>
+            </span>
+          </div>
+        )}
+
         {error && (
           <div style={{ background: "var(--red-light)", color: "var(--red)", padding: "10px 16px", borderRadius: "var(--r)", marginBottom: 20, fontSize: 14 }}>
             {error}

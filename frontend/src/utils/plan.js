@@ -11,3 +11,7 @@ export const isJunior = (user) => JUNIOR_CLASSES.includes(user?.profile?.class);
 
 // True when this student should see the limited free Class 6–8 app.
 export const isJuniorFree = (user) => user?.role !== "admin" && isJunior(user) && !hasActivePlan(user);
+
+// Class 9–Dropper student with no active plan (trial over): free tier with one
+// Daily/Chapter test a day, Refer & Earn, Profile and the free tools.
+export const isSeniorFree = (user) => user?.role !== "admin" && !isJunior(user) && !hasActivePlan(user);

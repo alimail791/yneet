@@ -2,7 +2,6 @@ import { useEffect, useRef, useState } from "react";
 import { raiseEntryUrl } from "../utils/appMode";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
-import { isJuniorFree } from "../utils/plan";
 
 // Landing target of the "YNeet" button on Raise Academy: /bridge?token=<raise_academy_jwt>
 // Exchanges that token for a provisioned YNeet session, then routes the student to
@@ -34,10 +33,11 @@ export default function BridgePage() {
           navigate("/admin", { replace: true });
           return;
         }
-        const active = user?.subscription?.status === "active" &&
-          user?.subscription?.endDate && new Date(user.subscription.endDate) > new Date();
-        // Class 6–8 is free, so those students go straight in too.
-        navigate(active || isJuniorFree(user) ? "/" : "/pricing", { replace: true });
+        // Everyone goes in: Class 6–8 is free, and Class 9+ with no plan get the
+        // free tier (one test a day). A student who hasn't finished a single test
+        // yet lands on a short starter test first.
+        if (user?.submittedAttempts === 0) { navigate("/mock?filter=daily&starter=1", { replace: true }); return; }
+        navigate("/", { replace: true });
       })
       .catch(() => setError("Could not verify your Raise Academy session. Please try again from the dashboard."));
     // eslint-disable-next-line react-hooks/exhaustive-deps
