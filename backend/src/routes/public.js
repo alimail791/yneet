@@ -20,6 +20,7 @@ router.get("/challenge/:attemptId", async (req, res) => {
     if (!a || a.status !== "submitted" || ["6th", "7th", "8th"].includes(a.user?.profile?.class)) {
       return res.status(404).json({ success: false, message: "This challenge link isn't valid any more." });
     }
+    require("../utils/growth").logEvent("challenge_open", null, a.id);
     res.json({
       success: true,
       challenge: {

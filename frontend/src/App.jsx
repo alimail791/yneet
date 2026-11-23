@@ -46,6 +46,7 @@ import ChallengePage from "./pages/ChallengePage";
 import AllIndiaPage from "./pages/AllIndiaPage";
 import AdminLayout          from "./components/admin/AdminLayout";
 import AdminSummaryPage     from "./pages/admin/AdminSummaryPage";
+import AdminGrowthPage      from "./pages/admin/AdminGrowthPage";
 import AdminUsersPage       from "./pages/admin/AdminUsersPage";
 import AdminQuestionsPage   from "./pages/admin/AdminQuestionsPage";
 import AdminMockTestsPage   from "./pages/admin/AdminMockTestsPage";
@@ -154,6 +155,7 @@ export default function App() {
 
       <Route path="/admin" element={<Guard><RequireAdmin><AdminLayout /></RequireAdmin></Guard>}>
         <Route index                element={<AdminSummaryPage />} />
+        <Route path="growth"        element={<AdminGrowthPage />} />
         <Route path="users"         element={<AdminUsersPage />} />
         <Route path="questions"     element={<AdminQuestionsPage />} />
         <Route path="mocktests"     element={<AdminMockTestsPage />} />

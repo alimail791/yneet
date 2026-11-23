@@ -135,7 +135,7 @@ const findTestAttempts = (mockTestId, userId) =>
   prisma.attempt.findFirst({ where: { mockTestId, userId }, orderBy: { startedAt: "desc" } });
 
 module.exports = {
-  prisma, findTestAttempts,
+  prisma, findTestAttempts, rankedRows,
   TYPE, DURATION_MIN, COUNTS, istToday, addDays, dow, opensAt, closesAt, prettyDate,
   thisSunday, lastFinishedSunday, statusFor, isAllIndia, isJuniorClass, findTest, ensureTest, leaderboard,
 };

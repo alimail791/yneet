@@ -27,6 +27,11 @@ router.get("/mock-builder/chapter-tests/status", ct.getChapterBuildStatus);
 router.post("/mock-builder/chapter-tests/delete", ct.deleteChapterTests);
 
 router.get("/summary", c.getSummary);
+// Growth screen: activation, return, tests/week, invites & challenges, All-India takers.
+router.get("/growth", async (req, res) => {
+  try { res.json({ success: true, ...(await require("../utils/growth").metrics()) }); }
+  catch (err) { res.status(500).json({ success: false, message: err.message }); }
+});
 
 // Concept Map Monday + Brain Teaser Wednesday: AI drafts, approve, schedule.
 router.use("/weekly", require("./adminWeekly"));

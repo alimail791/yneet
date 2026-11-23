@@ -119,6 +119,7 @@ exports.startTest = async (req, res) => {
       await finalizeAttempt(attempt.id, req.user, test.durationMin * 60);
       attempt = null;
     }
+    if (!attempt && challenge) require("../utils/growth").logEvent("challenge_start", req.user.id, challenge.id);
     if (!attempt) attempt = await prisma.attempt.create({ data: { userId: req.user.id, mockTestId: testId, totalMarks: test.totalMarks }, include: { responses: true } });
     res.json(attemptPayload(attempt, test));
   } catch (err) { res.status(500).json({ success: false, message: err.message }); }

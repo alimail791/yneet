@@ -40,6 +40,28 @@ router.post("/institute-student", async (req, res) => {
   } catch (err) { res.status(500).json({ success: false, message: err.message }); }
 });
 
+// POST /api/v1/internal/allindia-results { date? } — every ranked student of an
+// All-India mock (default: the latest finished Sunday). Raise Academy maps the
+// students to their institutes for institute ranks and the Monday report.
+router.post("/allindia-results", async (req, res) => {
+  try {
+    const A = require("../utils/allIndia");
+    const date = /^\d{4}-\d{2}-\d{2}$/.test(req.body?.date || "") ? req.body.date : A.lastFinishedSunday();
+    const test = await A.findTest(date);
+    const next = { date: A.thisSunday(), label: A.prettyDate(A.thisSunday()) };
+    if (!test) return res.json({ success: true, date, label: A.prettyDate(date), found: false, takers: 0, rows: [], next });
+    const rows = await A.rankedRows(test);
+    const takers = rows.length;
+    res.json({
+      success: true, date, label: A.prettyDate(date), found: true, title: test.title, totalMarks: test.totalMarks, takers, next,
+      rows: rows.map((r, i) => ({
+        userId: r.userId, rank: i + 1, score: r.score, accuracy: Math.round(r.accuracy || 0),
+        percentile: takers > 1 ? Math.round(((takers - 1 - i) / (takers - 1)) * 1000) / 10 : 100,
+      })),
+    });
+  } catch (err) { res.status(500).json({ success: false, message: err.message }); }
+});
+
 // POST /api/v1/internal/trials-ending { days } — free trials (TRIAL_30D, still
 // active) ending within the next `days` days (default 7), soonest first.
 // Used by the Raise Academy admin dashboard's "Trials ending this week" tile.

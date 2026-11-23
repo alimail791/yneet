@@ -30,5 +30,6 @@ export async function startChallenge(challenge, navigate) {
 export function shareChallenge({ attemptId, score, totalMarks, title }) {
   const text = `I scored ${score}/${totalMarks} in "${title}" on YNeet. Can you beat me? Take the same NEET test here 👉 ${challengeUrl(attemptId)}`;
   safe(() => window.gtag?.("event", "challenge_share", { method: "whatsapp" }));
+  api.post("/user/track", { kind: "challenge_share", ref: attemptId }).catch(() => {});
   window.open(`https://wa.me/?text=${encodeURIComponent(text)}`, "_blank", "noopener");
 }

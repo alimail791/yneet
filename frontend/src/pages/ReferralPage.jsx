@@ -11,6 +11,7 @@ export default function ReferralPage() {
   }, []);
 
   const copyLink = () => {
+    api.post("/user/track", { kind: "invite_share" }).catch(() => {});
     navigator.clipboard.writeText(data.registerUrl);
     setCopied(true);
     setTimeout(() => setCopied(false), 2000);
@@ -39,7 +40,7 @@ export default function ReferralPage() {
           </button>
           <a className="btn" style={{ background: "#25D366", color: "#fff", fontWeight: 700 }} target="_blank" rel="noopener noreferrer"
             href={`https://wa.me/?text=${encodeURIComponent(`I'm preparing for NEET on YNeet — mock tests, PYQs and doubt support. Get 45 days free (instead of 30) with my link 👉 ${data.registerUrl}`)}`}
-            onClick={() => { try { window.gtag?.("event", "referral_share", { method: "whatsapp" }); } catch { /* analytics only */ } }}>
+            onClick={() => { try { window.gtag?.("event", "referral_share", { method: "whatsapp" }); } catch { /* analytics only */ } api.post("/user/track", { kind: "invite_share" }).catch(() => {}); }}>
             Share on WhatsApp
           </a>
         </div>
