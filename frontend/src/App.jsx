@@ -40,8 +40,10 @@ import CreatorForgotPage      from "./pages/creator/CreatorForgotPage";
 import CreatorTermsPage       from "./pages/creator/CreatorTermsPage";
 import CreatorDashboard     from "./pages/creator/CreatorDashboard";
 import AdminCreatorsPage    from "./pages/admin/AdminCreatorsPage";
-import { hasActivePlan, isJuniorFree, isSeniorFree } from "./utils/plan";
+import { hasActivePlan, isJunior, isJuniorFree, isSeniorFree } from "./utils/plan";
 import FreeHome from "./components/home/FreeHome";
+import ChallengePage from "./pages/ChallengePage";
+import AllIndiaPage from "./pages/AllIndiaPage";
 import AdminLayout          from "./components/admin/AdminLayout";
 import AdminSummaryPage     from "./pages/admin/AdminSummaryPage";
 import AdminUsersPage       from "./pages/admin/AdminUsersPage";
@@ -95,6 +97,12 @@ function Paid({ children }) {
   return children;
 }
 
+// Class 9+ only, plan or not (Class 6–8 go home).
+function NotJunior({ children }) {
+  const { user } = useAuth();
+  return isJunior(user) ? <Navigate to="/" replace /> : children;
+}
+
 // Pages that are free for Class 6–8 but need a plan for Class 9+.
 function PlanOrJunior({ children }) {
   const { user } = useAuth();
@@ -125,6 +133,8 @@ export default function App() {
       <Route path="/explore/open" element={<ExploreOpenPage />} />
       {/* Public share page for featured Shorts, and the creator area (own login). */}
       <Route path="/s/:id" element={<ShareShortPage />} />
+      {/* Challenge a friend: public link shared on WhatsApp (no login needed to view). */}
+      <Route path="/c/:attemptId" element={<ChallengePage />} />
       <Route path="/creator/apply" element={<CreatorAuthPage mode="apply" />} />
       <Route path="/creator/login" element={<CreatorAuthPage mode="login" />} />
       <Route path="/creator/forgot" element={<CreatorForgotPage />} />
@@ -161,6 +171,8 @@ export default function App() {
       <Route path="/" element={<Guard><RequireSubscription><Layout /></RequireSubscription></Guard>}>
         <Route index                 element={<Home />} />
         <Route path="mock"           element={<MockPage />} />
+        {/* Free weekly All-India mock — open to every Class 9+ student, plan or not. */}
+        <Route path="all-india"      element={<NotJunior><AllIndiaPage /></NotJunior>} />
         <Route path="mock/:attemptId/start"    element={<MockTestPage />} />
         <Route path="mock/:attemptId/analysis" element={<AnalysisPage />} />
         <Route path="shorts"         element={<PlanOrJunior><ShortsPage /></PlanOrJunior>} />

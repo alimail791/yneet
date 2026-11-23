@@ -4,6 +4,7 @@
 //   17:00  Mon: Concept Map Monday · Wed: new Brain Teaser (Class 6–8) · Fri: Ask YNeet Friday
 //   19:00  "Today's 60-Second Sprint is waiting"     → anyone who hasn't played today
 //   19:05  Thu: Brain Teaser answer is out           → students who answered
+//   08:00 Sun / 19:30 Sat / 18:30 Mon: All-India NEET Mock (live / tomorrow / results)
 //   20:30  "Keep your streak" / "Your practice waits" → anyone who hasn't opened YNeet today
 // A minute ticker checks the clock; push.job_runs makes each job run once a day,
 // even across redeploys. A job only starts inside its 2-hour window, so a late
@@ -133,7 +134,27 @@ async function askFridayJob() {
   console.log(`[push] ask friday: ${JSON.stringify(r)}`);
 }
 
+// All-India NEET Mock (free, every Sunday): Saturday evening heads-up, Sunday
+// morning "live now", Monday evening "results are out". Class 9–Dropper only.
+async function allIndiaJob(kind) {
+  const A = require("./allIndia");
+  const d = A.dow(istDay());
+  const want = { eve: 6, live: 0, result: 1 }[kind];
+  if (d !== want) return;
+  const rows = (await push.allSubscriptionsWithClass()).filter((r) => !A.isJuniorClass(r.cls));
+  const msg = {
+    eve: { title: "Tomorrow: free All-India NEET Mock", body: "90 questions, 90 minutes, real NEET marking. See your All-India rank on Sunday.", url: "/all-india", tag: "allindia" },
+    live: { title: "All-India NEET Mock is live now", body: "Free for everyone, open all day today. Take it and see where you stand.", url: "/all-india", tag: "allindia" },
+    result: { title: "All-India Mock results are out", body: "See your rank and percentile, and challenge your friends to beat it.", url: "/all-india", tag: "allindia" },
+  }[kind];
+  const r = await push.sendTo(rows, msg);
+  console.log(`[push] allindia ${kind}: ${JSON.stringify(r)}`);
+}
+
 const JOBS = [
+  { name: "allindia_live", at: 8 * 60, run: () => allIndiaJob("live") },
+  { name: "allindia_eve", at: 19 * 60 + 30, run: () => allIndiaJob("eve") },
+  { name: "allindia_result", at: 18 * 60 + 30, run: () => allIndiaJob("result") },
   { name: "qotd", at: 7 * 60, run: qotdJob },
   { name: "trial", at: 18 * 60, run: trialEndingJob },
   { name: "weekly", at: 17 * 60, run: async () => { await conceptMapJob(); await teaserJob(); await askFridayJob(); } },

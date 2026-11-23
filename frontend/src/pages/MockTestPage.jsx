@@ -1,6 +1,7 @@
 import { useState, useEffect, useRef, useCallback } from "react";
 import { useParams, useNavigate } from "react-router-dom";
 import api from "../lib/api";
+import { challengeFor } from "../utils/challenge";
 
 // NEET-style computer-based test screen.
 //
@@ -181,7 +182,8 @@ export default function MockTestPage() {
     }
     const timeTaken = (test?.durationMin || 200) * 60 - Math.max(0, Math.round((deadlineRef.current - Date.now()) / 1000));
     try {
-      await api.post(`/mock/${attemptId}/submit`, { timeTaken });
+      // If this test was a friend's challenge, the friend gets told the result.
+      await api.post(`/mock/${attemptId}/submit`, { timeTaken, challenge: challengeFor(attemptId) || undefined });
       try { localStorage.removeItem(storeKey); } catch { /* ignore */ }
       navigate(`/mock/${attemptId}/analysis`, { replace: true });
     } catch (err) {

@@ -5,7 +5,7 @@ import api from "../../lib/api";
 import { Outlet, NavLink, useNavigate, useLocation } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import InstallPrompt from "../InstallPrompt";
-import { isJuniorFree, PUZZLES_URL } from "../../utils/plan";
+import { isJunior, isJuniorFree, PUZZLES_URL } from "../../utils/plan";
 
 // Free NEET tools from www.yneet.in, opened full screen inside the app (prices hidden).
 const TOOL = (p, t) => `/explore/open?p=${encodeURIComponent(p)}&t=${encodeURIComponent(t)}`;
@@ -67,6 +67,7 @@ export default function Layout() {
   const allTabs = [
     { to: "/",         label: "Dashboard", end: true },
     { to: "/mock",     label: "Mock Tests" },
+    ...(isJunior(user) ? [] : [{ to: "/all-india", label: "All-India Mock" }]),
     { to: "/shorts",   label: "Shorts" },
     { to: "/quiz",     label: "Daily Quiz" },
     { to: "/practice", label: "Practice" },
@@ -132,6 +133,7 @@ export default function Layout() {
     { to: "/profile", label: "Profile",    icon: "👤" },
     { to: "/help",    label: "Help & FAQ", icon: "❓" },
   ] : [
+    ...(isJunior(user) ? [] : [{ to: "/all-india", label: "All-India Mock (Sun)", icon: "🏆" }]),
     { to: "/pyq",        label: "Previous Year Qs",   icon: "📅" },
     { to: "/biology",   label: "Biology Flashcards", icon: "🧬" },
     { to: "/physics",   label: "Physics Formulas",   icon: "⚛️" },

@@ -1,5 +1,6 @@
 import { useEffect, useRef, useState } from "react";
 import { raiseEntryUrl } from "../utils/appMode";
+import { takePendingChallenge } from "../utils/challenge";
 import { useNavigate, useSearchParams } from "react-router-dom";
 import { useAuth } from "../context/AuthContext";
 
@@ -36,6 +37,9 @@ export default function BridgePage() {
         // Everyone goes in: Class 6–8 is free, and Class 9+ with no plan get the
         // free tier (one test a day). A student who hasn't finished a single test
         // yet lands on a short starter test first.
+        // Signed up from a friend's challenge link → straight back to that challenge.
+        const pendingChallenge = takePendingChallenge();
+        if (pendingChallenge) { navigate(`/c/${pendingChallenge}`, { replace: true }); return; }
         if (user?.submittedAttempts === 0) { navigate("/mock?filter=daily&starter=1", { replace: true }); return; }
         navigate("/", { replace: true });
       })

@@ -2,6 +2,7 @@ const { PrismaClient } = require("@prisma/client");
 const { awardXP } = require("../utils/xp");
 const { analyseAttempt } = require("../utils/studyPlan");
 const prisma = new PrismaClient();
+const AllIndia = require("../utils/allIndia");
 
 // Free tier (no active plan, Class 9+): one short test per day, IST.
 const FREE_TEST_TYPES = ["daily", "chapter"];
@@ -12,9 +13,30 @@ const istDayStart = () => {
   d.setUTCHours(0, 0, 0, 0);
   return new Date(d.getTime() - IST);
 };
+// The free All-India mock doesn't use up the day's free test.
 const freeTestsUsedToday = (userId) =>
-  prisma.attempt.count({ where: { userId, startedAt: { gte: istDayStart() } } });
+  prisma.attempt.count({ where: { userId, startedAt: { gte: istDayStart() }, mockTest: { type: { not: AllIndia.TYPE } } } });
 const FREE_LIMIT_MSG = "You've used today's free test. Come back tomorrow, invite 2 friends for 1 month free, or pick a plan.";
+
+// A friend's challenge is valid when it points at their SUBMITTED attempt on
+// this same test (and isn't the student's own attempt). Returns the attempt or null.
+async function validChallenge(challengeId, testId, userId) {
+  if (!challengeId || typeof challengeId !== "string") return null;
+  const a = await prisma.attempt.findUnique({ where: { id: challengeId }, select: { id: true, userId: true, mockTestId: true, status: true, score: true } });
+  return a && a.mockTestId === testId && a.status === "submitted" && a.userId !== userId ? a : null;
+}
+
+// Tell the friend who sent the challenge how it went (push notification, if they have them on).
+async function notifyChallenger(challengeId, attempt, user) {
+  const ch = await prisma.attempt.findUnique({ where: { id: challengeId }, select: { userId: true, score: true, mockTestId: true, status: true } });
+  if (!ch || ch.status !== "submitted" || ch.mockTestId !== attempt.mockTestId || ch.userId === user.id) return;
+  const push = require("../utils/push");
+  if (!push.enabled) return;
+  const first = String(user.name || "Your friend").split(" ")[0];
+  const verdict = attempt.score > ch.score ? `${first} beat you` : attempt.score === ch.score ? `${first} tied with you` : `You beat ${first}`;
+  const rows = await push.subscriptionsForUser(ch.userId);
+  await push.sendTo(rows, { title: `Challenge result: ${verdict}!`, body: `${first} scored ${attempt.score}, you scored ${ch.score}. Take another test and challenge them back.`, url: "/mock", tag: "challenge" });
+}
 
 exports.listTests = async (req, res) => {
   try {
@@ -71,12 +93,19 @@ exports.startTest = async (req, res) => {
     });
     if (!test) return res.status(404).json({ success: false, message: "Test not found" });
     const classLevel = req.user.profile?.class || "12th";
-    if (test.classLevel !== classLevel) {
+    // Challenge a friend: taking the exact test a friend shared (any class).
+    const challenge = await validChallenge(req.body?.challenge, testId, req.user.id);
+    const allIndia = AllIndia.isAllIndia(test);
+    if (allIndia) {
+      if (AllIndia.isJuniorClass(classLevel)) return res.status(403).json({ success: false, message: "The All-India Mock is for Class 9 to Dropper students." });
+      if (Date.now() < AllIndia.opensAt(test.subject).getTime()) return res.status(403).json({ success: false, message: "The All-India Mock opens on Sunday at 12:00 AM." });
+    } else if (test.classLevel !== classLevel && !challenge) {
       return res.status(403).json({ success: false, message: "This mock test isn't part of your class's syllabus" });
     }
     let attempt = await prisma.attempt.findFirst({ where: { userId: req.user.id, mockTestId: testId, status: "in_progress" }, include: { responses: true } });
-    if (req.freeDaily) {
-      if (!FREE_TEST_TYPES.includes(test.type)) {
+    // The All-India mock is free for everyone and doesn't use the daily free test.
+    if (req.freeDaily && !allIndia) {
+      if (!FREE_TEST_TYPES.includes(test.type) && !challenge) {
         return res.status(403).json({ success: false, code: "free_limit", message: "Free plan includes Daily Practice and Chapter Tests. Invite 2 friends for 1 month free, or pick a plan to unlock all tests." });
       }
       // Continuing today's unfinished free test is fine; a new one counts.
@@ -183,6 +212,7 @@ exports.submitTest = async (req, res) => {
     const attempt = await prisma.attempt.findUnique({ where: { id: attemptId } });
     if (!attempt || attempt.userId !== req.user.id) return res.status(403).json({ success: false, message: "Forbidden" });
     const result = await finalizeAttempt(attemptId, req.user, req.body.timeTaken);
+    if (result && req.body?.challenge) notifyChallenger(String(req.body.challenge), result, req.user).catch((e) => console.warn("[challenge] notify failed:", e.message));
     // Already submitted (double tap, auto-submit racing the button): not an error.
     if (!result) return res.json({ success: true, alreadySubmitted: true, result: await prisma.attempt.findUnique({ where: { id: attemptId } }) });
     res.json({ success: true, result });

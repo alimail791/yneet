@@ -6,6 +6,7 @@ import api from "../lib/api";
 import { useAuth } from "../context/AuthContext";
 import { isJuniorFree, isJunior } from "../utils/plan";
 import ShareScoreCard from "../components/ShareScoreCard";
+import ChallengeCard from "../components/ChallengeCard";
 ChartJS.register(BarElement, LinearScale, CategoryScale, Tooltip);
 
 export default function AnalysisPage() {
@@ -47,6 +48,7 @@ export default function AnalysisPage() {
       </div>
 
       {/* Not for Class 6–8 students (younger children; Play Store Families policy). */}
+      {!isJunior(user) && <ChallengeCard attempt={attempt} />}
       {!isJunior(user) && <ShareScoreCard attempt={attempt} />}
 
       {plan.length > 0 && (

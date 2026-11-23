@@ -22,6 +22,12 @@ export default function FreeHome() {
         <button className="btn btn-blue btn-full" onClick={() => navigate("/mock?filter=daily")}>Take today's free test →</button>
       </div>
 
+      <div className="card" style={{ marginBottom: 14, borderLeft: "4px solid var(--amber)" }}>
+        <div style={{ fontWeight: 700, fontSize: 16, marginBottom: 4 }}>🏆 All-India NEET Mock — every Sunday, free</div>
+        <p style={{ fontSize: 13, color: "var(--text2)", marginBottom: 10 }}>90 questions, real NEET marking, your All-India rank. Doesn't use your daily free test.</p>
+        <button className="btn btn-outline btn-full" onClick={() => navigate("/all-india")}>Open All-India Mock</button>
+      </div>
+
       <div className="card" style={{ marginBottom: 14, background: "linear-gradient(135deg,var(--blue-mid),var(--purple))", color: "#fff" }}>
         <div style={{ fontWeight: 700, fontSize: 16, marginBottom: 4 }}>🎁 Get 1 month free</div>
         <p style={{ fontSize: 13, opacity: 0.9, marginBottom: 10 }}>

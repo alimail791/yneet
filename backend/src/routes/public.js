@@ -5,6 +5,34 @@ const { getSampleQuiz } = require("../controllers/publicController");
 // public, no-login taster quiz linked from Raise Academy's landing page.
 router.get("/sample-quiz", getSampleQuiz);
 
+// Challenge a friend (app.yneet.in/c/:attemptId): what the friend sees before
+// signing in — first name, score and the test. Only submitted attempts; no answers.
+router.get("/challenge/:attemptId", async (req, res) => {
+  try {
+    const { prisma } = require("../utils/allIndia");
+    const a = await prisma.attempt.findUnique({
+      where: { id: String(req.params.attemptId) },
+      select: { id: true, status: true, score: true, accuracy: true, timeTaken: true,
+        user: { select: { name: true, referralCode: true, profile: { select: { class: true } } } },
+        mockTest: { select: { id: true, title: true, type: true, totalQs: true, totalMarks: true, durationMin: true } } },
+    });
+    // Not for Class 6–8 (younger children; same rule as the score cards).
+    if (!a || a.status !== "submitted" || ["6th", "7th", "8th"].includes(a.user?.profile?.class)) {
+      return res.status(404).json({ success: false, message: "This challenge link isn't valid any more." });
+    }
+    res.json({
+      success: true,
+      challenge: {
+        attemptId: a.id, name: String(a.user?.name || "Your friend").split(" ")[0], referralCode: a.user?.referralCode || "",
+        score: a.score, accuracy: Math.round(a.accuracy || 0), minutes: Math.round((a.timeTaken || 0) / 60),
+        test: a.mockTest,
+      },
+    });
+  } catch (e) {
+    res.status(500).json({ success: false, message: "Couldn't load this challenge." });
+  }
+});
+
 // Crash reports from students' browsers / the Android app (frontend
 // lib/errorReport.js). Logged only, so they show in Railway's logs; no storage.
 // Sent as text/plain (no CORS preflight for sendBeacon), so parse it here.

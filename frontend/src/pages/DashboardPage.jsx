@@ -78,6 +78,11 @@ export default function DashboardPage() {
     <div>
       <TodayPlan today={today} name={user?.name?.split(" ")[0]} />
       <TodayCards />
+      {/* Free weekly All-India mock (every Sunday). */}
+      {!["6th", "7th", "8th"].includes(user?.profile?.class) && <div className="card mb-4" style={{ display: "flex", gap: 12, alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", borderLeft: "4px solid var(--amber)" }}>
+        <span style={{ fontSize: 14 }}><strong>🏆 All-India NEET Mock</strong> — {new Date().getDay() === 0 ? "live today! Take it and see your rank" : "every Sunday, free. See your All-India rank"}</span>
+        <button className="btn btn-outline btn-sm" onClick={() => navigate("/all-india")}>Open →</button>
+      </div>}
       {/* Motivation */}
       <div className="motiv-card">
         <div className="motiv-quote">"{motiv}"</div>

@@ -104,6 +104,13 @@ export default function MockPage() {
         </div>
       )}
 
+      {!["6th", "7th", "8th"].includes(user?.profile?.class) && (
+        <div className="card mb-4" style={{ display: "flex", gap: 12, alignItems: "center", justifyContent: "space-between", flexWrap: "wrap", borderLeft: "4px solid var(--amber)" }}>
+          <span style={{ fontSize: 14 }}><strong>🏆 All-India NEET Mock</strong> — free every Sunday, see your All-India rank</span>
+          <button className="btn btn-outline btn-sm" onClick={() => navigate("/all-india")}>Open →</button>
+        </div>
+      )}
+
       {free && (
         <div className="card mb-4" style={{ borderLeft: "4px solid var(--green)" }}>
           <div style={{ fontWeight: 700, fontSize: 15 }}>
