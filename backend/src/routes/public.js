@@ -71,6 +71,7 @@ router.get("/shorts/:id", publicShort);
 // Free chapter practice pages on www.yneet.in (no login; SEO).
 const { listChapters, getChapter, readinessQuiz, listQuestionPages, getQuestionPage, listSchoolPages, getSchoolPage } = require("../controllers/practicePagesController");
 router.get("/practice", listChapters);
+router.get("/practice-daily-mixed", require("../controllers/practicePagesController").mixedDaily); // mixed PYQ-of-the-day widget
 router.get("/practice/:subject/:chapter", getChapter);
 router.get("/practice/:subject/:chapter/daily", require("../controllers/practicePagesController").chapterDaily); // chapter PYQ widget
 // One-question pages on www.yneet.in/neet-question/<slug> (no login; SEO).

@@ -521,3 +521,29 @@ exports.schoolChapterDaily = async (req, res) => {
     res.status(500).json({ success: false, message: "Could not load questions" });
   }
 };
+
+// Mixed "PYQ of the day" for the widget when no chapter is picked
+// (www.yneet.in/embed/pyq?chapter=mixed): 2 Physics, 2 Chemistry, 2 Biology
+// NEET PYQs a day, rotating through each subject's public question pages.
+//   GET /api/v1/public/practice-daily-mixed
+const MIXED_PER_SUBJECT = 2;
+exports.mixedDaily = async (req, res) => {
+  try {
+    const d = await data();
+    const day = istDay();
+    const picks = SUBJECT_ORDER.map((s) => {
+      const all = d.questionPages.filter((q) => q.subject === s);
+      const pool = all.filter((q) => q.pyqYear).length >= MIXED_PER_SUBJECT ? all.filter((q) => q.pyqYear) : all;
+      if (pool.length <= MIXED_PER_SUBJECT) return pool;
+      const start = (day * MIXED_PER_SUBJECT) % pool.length;
+      return Array.from({ length: MIXED_PER_SUBJECT }, (_, i) => pool[(start + i) % pool.length]);
+    });
+    const questions = [];
+    for (let i = 0; i < MIXED_PER_SUBJECT; i++) for (const l of picks) if (l[i]) questions.push({ ...widgetQ(l[i]), subject: l[i].subject, chapter: l[i].chapter, chapterSlug: l[i].chapterSlug });
+    res.set("Cache-Control", "public, max-age=1800");
+    res.json({ success: true, chapter: { slug: "mixed", subject: "Mixed", chapter: "PYQs of the day", total: d.questionPages.filter((q) => q.pyqYear).length }, questions });
+  } catch (err) {
+    console.error("mixed daily error:", err);
+    res.status(500).json({ success: false, message: "Could not load questions" });
+  }
+};

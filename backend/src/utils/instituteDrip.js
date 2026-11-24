@@ -145,7 +145,10 @@ Or reply to this email and I'll set it up for you.
 
 — Akbar
 YNeet · Raise Academy
-WhatsApp: +91 94434 24064`,
+WhatsApp: +91 94434 24064
+
+P.S. Also free: a daily NEET PYQ box for your website (6 previous-year questions a day with answers, no sign-up needed), plus free chapter-wise NEET PYQ PDFs for your students:
+${link("/neet-question-widget#pyq", 1)}`,
   },
   {
     step: 2,
@@ -191,7 +194,7 @@ Yearly packs (about 8 months' price, by bank transfer, UPI or cheque):
 The 14-day pilot is still free, and any pilot days left over are kept when you choose a plan:
 ${link("/institutes#pricing", 3)}
 
-Also free, with no sign-up: NEET question-of-the-day and chapter-weightage widgets for your institute's website.
+Also free, with no sign-up: a daily NEET PYQ box, question-of-the-day and chapter-weightage widgets for your institute's website.
 ${link("/neet-question-widget", 3)}
 
 — Akbar, YNeet`,
